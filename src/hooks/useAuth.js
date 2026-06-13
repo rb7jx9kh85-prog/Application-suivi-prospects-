@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 const USERS_KEY = 'app_users'
 const SESSION_KEY = 'app_session'
@@ -11,18 +11,23 @@ function initUsers() {
   }
 }
 
+initUsers()
+
 export function useAuth() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(() => {
+    try {
+      const session = localStorage.getItem(SESSION_KEY)
+      return session ? JSON.parse(session) : null
+    } catch {
+      return null
+    }
+  })
 
-  useEffect(() => {
-    initUsers()
-    const session = localStorage.getItem(SESSION_KEY)
-    if (session) setUser(JSON.parse(session))
-  }, [])
-
-  const login = (username, password) => {
+  const login = (identifier, password) => {
     const users = JSON.parse(localStorage.getItem(USERS_KEY) || '[]')
-    const found = users.find(u => (u.username === username || u.email === username) && u.password === password)
+    const found = users.find(u =>
+      (u.username === identifier || u.email === identifier) && u.password === password
+    )
     if (found) {
       localStorage.setItem(SESSION_KEY, JSON.stringify(found))
       setUser(found)
