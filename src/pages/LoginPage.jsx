@@ -43,10 +43,10 @@ export default function LoginPage() {
         <div style={{ background: 'white', borderRadius: '20px', boxShadow: '0 10px 40px rgba(0,0,0,0.1)', border: '1px solid rgba(0,0,0,0.06)', padding: '32px' }}>
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <div>
-              <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#374151', marginBottom: '6px' }}>Nom d'utilisateur</label>
+              <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#374151', marginBottom: '6px' }}>Email ou nom d'utilisateur</label>
               <input type="text" required style={inputStyle} value={form.username}
                 onChange={e => setForm({ ...form, username: e.target.value })}
-                placeholder="Entrez votre nom d'utilisateur"
+                placeholder="votre@email.com ou admin"
                 onFocus={e => e.target.style.borderColor = '#0ea5e9'}
                 onBlur={e => e.target.style.borderColor = '#e5e7eb'}
                 autoComplete="username"

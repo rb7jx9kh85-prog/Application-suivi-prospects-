@@ -22,7 +22,7 @@ export function useAuth() {
 
   const login = (username, password) => {
     const users = JSON.parse(localStorage.getItem(USERS_KEY) || '[]')
-    const found = users.find(u => u.username === username && u.password === password)
+    const found = users.find(u => (u.username === username || u.email === username) && u.password === password)
     if (found) {
       localStorage.setItem(SESSION_KEY, JSON.stringify(found))
       setUser(found)
