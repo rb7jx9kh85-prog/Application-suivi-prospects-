@@ -170,7 +170,6 @@ export default function Dashboard() {
 
       {showCallModal && <CallModal call={editingCall} onSave={handleSave} onClose={() => { setShowCallModal(false); setEditingCall(null) }} />}
       {showDrive && <GoogleDriveImport onImport={data => { setDriveData(data); setShowDrive(false) }} onClose={() => setShowDrive(false)} />}
-      <Chatbot />
     </div>
   )
 }
