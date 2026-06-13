@@ -1,7 +1,35 @@
-// Backend IA — supporte OpenAI (prioritaire) ou Anthropic en secours.
-// Configure UNE de ces variables d'environnement sur Netlify :
-//   OPENAI_API_KEY=sk-...        (recommandé)
-//   ANTHROPIC_API_KEY=sk-ant-... (alternative)
+// Backend IA — OpenAI uniquement.
+// Sur Netlify : Site configuration → Environment variables →
+//   OPENAI_API_KEY = sk-...
+// Utilise le module natif "https" (aucune dépendance, compatible toutes versions Node).
+
+const https = require('https')
+
+function callOpenAI(apiKey, payload) {
+  return new Promise((resolve, reject) => {
+    const body = JSON.stringify(payload)
+    const req = https.request({
+      hostname: 'api.openai.com',
+      path: '/v1/chat/completions',
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + apiKey,
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(body),
+      },
+    }, (res) => {
+      let data = ''
+      res.on('data', (chunk) => { data += chunk })
+      res.on('end', () => {
+        try { resolve(JSON.parse(data)) }
+        catch (e) { reject(new Error('Réponse OpenAI illisible')) }
+      })
+    })
+    req.on('error', reject)
+    req.write(body)
+    req.end()
+  })
+}
 
 exports.handler = async (event) => {
   const headers = {
@@ -14,62 +42,33 @@ exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') return { statusCode: 200, headers, body: '' }
   if (event.httpMethod !== 'POST') return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method Not Allowed' }) }
 
-  const openaiKey = process.env.OPENAI_API_KEY
-  const anthropicKey = process.env.ANTHROPIC_API_KEY
-
-  if (!openaiKey && !anthropicKey) {
-    return { statusCode: 500, headers, body: JSON.stringify({ error: 'Aucune clé configurée. Ajoutez OPENAI_API_KEY (ou ANTHROPIC_API_KEY) dans les variables d\'environnement Netlify.' }) }
+  const apiKey = process.env.OPENAI_API_KEY
+  if (!apiKey) {
+    return { statusCode: 200, headers, body: JSON.stringify({ error: 'OPENAI_API_KEY non configurée dans les variables d\'environnement Netlify.' }) }
   }
 
   try {
-    const { system, messages } = JSON.parse(event.body)
+    const { system, messages } = JSON.parse(event.body || '{}')
 
-    let text = ''
+    const data = await callOpenAI(apiKey, {
+      model: 'gpt-4o-mini',
+      max_tokens: 1500,
+      messages: [
+        { role: 'system', content: system || 'Tu es un assistant utile.' },
+        ...(Array.isArray(messages) ? messages : []),
+      ],
+    })
 
-    if (openaiKey) {
-      // ── OpenAI ──
-      const res = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${openaiKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: 'gpt-4o-mini',
-          max_tokens: 1500,
-          messages: [
-            { role: 'system', content: system },
-            ...messages,
-          ],
-        }),
-      })
-      const data = await res.json()
-      if (data.error) return { statusCode: 200, headers, body: JSON.stringify({ error: data.error.message }) }
-      text = data.choices?.[0]?.message?.content || ''
-    } else {
-      // ── Anthropic (secours) ──
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: {
-          'x-api-key': anthropicKey,
-          'anthropic-version': '2023-06-01',
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: 'claude-haiku-4-5-20251001',
-          max_tokens: 1500,
-          system,
-          messages,
-        }),
-      })
-      const data = await res.json()
-      if (data.error) return { statusCode: 200, headers, body: JSON.stringify({ error: data.error.message }) }
-      text = data.content?.[0]?.text || ''
+    if (data.error) {
+      return { statusCode: 200, headers, body: JSON.stringify({ error: data.error.message || 'Erreur OpenAI' }) }
     }
 
-    // Format normalisé attendu par le frontend : { content: [{ text }] }
+    const text = data.choices && data.choices[0] && data.choices[0].message
+      ? data.choices[0].message.content
+      : ''
+
     return { statusCode: 200, headers, body: JSON.stringify({ content: [{ text }] }) }
   } catch (err) {
-    return { statusCode: 200, headers, body: JSON.stringify({ error: err.message }) }
+    return { statusCode: 200, headers, body: JSON.stringify({ error: err.message || 'Erreur serveur' }) }
   }
 }

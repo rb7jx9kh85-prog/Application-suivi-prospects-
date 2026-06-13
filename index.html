@@ -384,8 +384,8 @@ async function sendChat(){
   try{
     const r=await askAI('Tu es un assistant commercial expert en prospection B2B. Aide les commerciaux avec: gestion des prospects, réponses aux objections, scripts d\'appel, planification RDV. Réponds en français, de façon concise et actionnable (max 120 mots).',msg)
     const t=$('#ct'); if(t) t.textContent=r
-  }catch{
-    const t=$('#ct'); if(t) t.textContent='Désolé, l\'IA n\'est pas disponible. Vérifiez que ANTHROPIC_API_KEY est configurée dans Netlify.'
+  }catch(e){
+    const t=$('#ct'); if(t) t.textContent='⚠️ IA indisponible : '+(e.message||'erreur')+'. Vérifiez OPENAI_API_KEY sur Netlify puis redéployez.'
   }
   msgs.scrollTop=msgs.scrollHeight
 }
@@ -418,7 +418,7 @@ PAGES['#/']=function(){
       <div style="position:absolute;bottom:15%;right:8%;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(236,72,153,.12) 0%,transparent 70%);filter:blur(60px)"></div>
     </div>
     <div class="hc">
-      <div class="hero-badge"><span class="hero-dot"></span>100% Gratuit · Propulsé par Claude IA</div>
+      <div class="hero-badge"><span class="hero-dot"></span>100% Gratuit · Propulsé par l'IA</div>
       <h1 class="hero-title">${animTitle('Prospectez',false)}<br>${animTitle('2× plus vite',true,10)}</h1>
       <p class="hero-sub">Scripts personnalisés par l'IA, assistant vocal en direct, suivi des appels et rendez-vous automatiques. Tout ce qu'il faut pour décrocher plus de RDV — gratuitement.</p>
       <a href="#/register" class="hero-cta magnetic">Créer mon compte gratuit →</a>
@@ -430,7 +430,7 @@ PAGES['#/']=function(){
       <span class="sl">Fonctionnalités</span><h2 class="st">Tout ce qu'il vous faut</h2><p class="ss">Sans payer un centime.</p>
       <div class="feat-grid">
         ${[
-          {ic:'✨',t:'Scripts IA personnalisés',d:'Entrez nom + secteur, <span class="feat-hl">Claude génère</span> un script percutant en secondes.'},
+          {ic:'✨',t:'Scripts IA personnalisés',d:'Entrez nom + secteur, <span class="feat-hl">l\'IA génère</span> un script percutant en secondes.'},
           {ic:'🎙️',t:'Assistant vocal en direct',d:'Microphone intégré : l\'IA propose des réponses aux objections. <span class="feat-hl">Mains libres.</span>'},
           {ic:'📅',t:'Gestion des rendez-vous',d:'Planifiez, confirmez et suivez vos RDV. <span class="feat-hl">Tout organisé</span> en un coup d\'œil.'},
           {ic:'📞',t:'Session Cold Call',d:'Liste de prospects, statuts visuels, notes. Votre <span class="feat-hl">cockpit de prospection.</span>'},
