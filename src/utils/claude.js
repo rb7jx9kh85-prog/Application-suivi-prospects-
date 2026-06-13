@@ -1,7 +1,7 @@
 const KEY_STORAGE = 'anthropic_api_key'
 
 export function getAnthropicKey() {
-  return localStorage.getItem(KEY_STORAGE) || ''
+  return localStorage.getItem(KEY_STORAGE) || import.meta.env.VITE_ANTHROPIC_API_KEY || ''
 }
 
 export function setAnthropicKey(key) {
@@ -9,7 +9,7 @@ export function setAnthropicKey(key) {
 }
 
 export function hasAnthropicKey() {
-  return !!localStorage.getItem(KEY_STORAGE)
+  return !!getAnthropicKey()
 }
 
 export async function askClaude(messages, systemPrompt = '') {
