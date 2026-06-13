@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
+import { useAuth } from './hooks/useAuth'
 import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
@@ -6,7 +7,6 @@ import Dashboard from './pages/Dashboard'
 import AppointmentPage from './pages/AppointmentPage'
 import ColdCallPage from './pages/ColdCallPage'
 import ScriptsPage from './pages/ScriptsPage'
-import { useAuth } from './hooks/useAuth'
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth()
