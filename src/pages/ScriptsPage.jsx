@@ -99,7 +99,7 @@ export default function ScriptsPage() {
 
     await new Promise(r => setTimeout(r, 800))
 
-    let response = "Je n'ai pas bien compris. Pouvez-vous être plus spécifique ? Par exemple : 'Comment répondre à "je n'ai pas le temps"' ?"
+    let response = `Je n'ai pas bien compris. Pouvez-vous être plus spécifique ? Par exemple : 'Comment répondre à "je n'ai pas le temps"' ?`
 
     for (const [key, objection] of Object.entries(OBJECTIONS)) {
       if (query.includes(objection.q.toLowerCase().split(' ')[0])) {
