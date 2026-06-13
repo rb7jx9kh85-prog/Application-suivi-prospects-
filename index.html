@@ -210,6 +210,29 @@
     @keyframes fin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
     .fin{animation:fin .35s ease}
     .div{height:1px;background:var(--border);margin:20px 0}
+    /* letter-by-letter hero */
+    @keyframes letterIn{from{opacity:0;transform:translateY(70px)}to{opacity:1;transform:translateY(0)}}
+    .hl{display:inline-block;opacity:0;animation:letterIn .7s cubic-bezier(.2,.8,.2,1) forwards}
+    /* DEMO SECTION */
+    .demo-grid{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-top:50px}
+    @media(max-width:900px){.demo-grid{grid-template-columns:1fr}}
+    .demo-main{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:20px;padding:10px;position:relative;overflow:hidden;min-height:380px;display:flex}
+    .demo-main video,.demo-main img{width:100%;height:100%;object-fit:cover;border-radius:14px}
+    .demo-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,0,25,.35);cursor:pointer;transition:background .3s;border:none;border-radius:14px}
+    .demo-play:hover{background:rgba(10,0,25,.15)}
+    .demo-play span{width:74px;height:74px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff;box-shadow:0 0 40px rgba(124,58,237,.6)}
+    .demo-feats{display:grid;grid-template-rows:repeat(4,1fr);gap:12px}
+    .demo-feat{background:rgba(255,255,255,.03);border:1px solid var(--border2);border-radius:14px;padding:14px 16px;transition:border-color .25s,transform .25s}
+    .demo-feat:hover{border-color:rgba(168,85,247,.4);transform:translateX(4px)}
+    .demo-feat h4{font-size:13px;font-weight:700;margin-bottom:4px;color:#fff}
+    .demo-feat p{font-size:11.5px;color:var(--text2);line-height:1.5}
+    .integ-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:40px}
+    @media(max-width:760px){.integ-grid{grid-template-columns:repeat(2,1fr)}}
+    .integ{display:flex;align-items:center;gap:10px;padding:12px;border-radius:13px;transition:background .2s}
+    .integ:hover{background:rgba(168,85,247,.07)}
+    .integ-ic{width:38px;height:38px;border-radius:10px;background:rgba(124,58,237,.14);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+    .integ-n{font-size:13px;font-weight:600}
+    .integ-s{font-size:11px;color:var(--text2)}
   </style>
 </head>
 <body>
@@ -222,6 +245,13 @@
 const $  = (s,c=document) => c.querySelector(s)
 const uid = () => Math.random().toString(36).slice(2,10)
 const esc = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
+function animTitle(text,grad,offset=0){
+  return text.split('').map((ch,i)=>{
+    const c=ch===' '?'&nbsp;':esc(ch)
+    const style=`animation-delay:${0.3+(offset+i)*0.045}s;${grad?'background:var(--grad2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:transparent':''}`
+    return `<span class="hl" style="${style}">${c}</span>`
+  }).join('')
+}
 function toast(msg,type='ok'){
   const t=document.createElement('div')
   t.className=`toast t-${type}`; t.textContent=msg
@@ -289,8 +319,33 @@ function dispatch(){
   if((route==='#/login'||route==='#/register')&&Auth.loggedIn()){go('#/dashboard');return}
   const fn=PAGES[route]||PAGES['#/404']
   $('#app').className='fin'; fn(); window.scrollTo(0,0)
+  setTimeout(bindMagnetic,50)
 }
 window.addEventListener('hashchange',dispatch)
+
+/* ── DEMO VIDEO ── */
+function playDemo(){
+  const main=document.querySelector('.demo-main'); if(!main) return
+  main.innerHTML=`<video src="https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/crm(1)(1)(1).mp4" autoplay muted loop playsinline></video>`
+}
+
+/* ── MAGNETIC BUTTONS (desktop only) ── */
+let _magBound=false
+function bindMagnetic(){
+  if(window.innerWidth<900) return
+  document.querySelectorAll('.magnetic').forEach(el=>{
+    if(el.dataset.mag) return
+    el.dataset.mag='1'
+    el.style.transition='transform .25s cubic-bezier(.2,.8,.2,1)'
+    el.addEventListener('mousemove',e=>{
+      const r=el.getBoundingClientRect()
+      const mx=e.clientX-(r.left+r.width/2)
+      const my=e.clientY-(r.top+r.height/2)
+      el.style.transform=`translate(${mx*0.35}px,${my*0.45}px)`
+    })
+    el.addEventListener('mouseleave',()=>{el.style.transform='translate(0,0)'})
+  })
+}
 
 /* ── SHARED NAV ── */
 const NAV=[
@@ -364,9 +419,9 @@ PAGES['#/']=function(){
     </div>
     <div class="hc">
       <div class="hero-badge"><span class="hero-dot"></span>100% Gratuit · Propulsé par Claude IA</div>
-      <h1 class="hero-title">Prospectez<br><span>2× plus vite</span></h1>
+      <h1 class="hero-title">${animTitle('Prospectez',false)}<br>${animTitle('2× plus vite',true,10)}</h1>
       <p class="hero-sub">Scripts personnalisés par l'IA, assistant vocal en direct, suivi des appels et rendez-vous automatiques. Tout ce qu'il faut pour décrocher plus de RDV — gratuitement.</p>
-      <a href="#/register" class="hero-cta">Créer mon compte gratuit →</a>
+      <a href="#/register" class="hero-cta magnetic">Créer mon compte gratuit →</a>
       <p class="hero-proof">✦ Aucune carte bancaire &nbsp;✦&nbsp; Compte en 30 secondes &nbsp;✦&nbsp; Gratuit pour toujours</p>
     </div>
   </section>
@@ -382,6 +437,37 @@ PAGES['#/']=function(){
           {ic:'📊',t:'Dashboard temps réel',d:'Appels du jour, taux de conversion — <span class="feat-hl">pilotez votre activité</span> instantanément.'},
           {ic:'📝',t:'Bibliothèque de scripts',d:'Cold, Warm, Hot Call + objections — scripts <span class="feat-hl">prêts à l\'emploi.</span>'},
         ].map(f=>`<div class="feat-card"><div class="feat-ic">${f.ic}</div><div class="feat-t">${f.t}</div><p class="feat-d">${f.d}</p></div>`).join('')}
+      </div>
+    </div>
+  </section>
+  <section class="land-sec">
+    <div class="container">
+      <div style="text-align:center"><span class="sl">Aperçu</span><h2 class="st">ProspectPro en action</h2><p class="ss">Une interface pensée pour les commerciaux qui veulent aller vite.</p></div>
+      <div class="demo-grid">
+        <div class="demo-main">
+          <img id="demoThumb" src="https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/crm-featured.png" alt="Démo ProspectPro" onerror="this.style.display='none'">
+          <button class="demo-play" id="demoPlay" onclick="playDemo()"><span>▶</span></button>
+        </div>
+        <div class="demo-feats">
+          ${[
+            {t:'Suivi du pipeline',d:'Visualisez chaque prospect du premier contact à la signature, en un coup d\'œil.'},
+            {t:'Relances automatiques',d:'Des rappels intelligents propulsés par l\'IA pour ne jamais perdre une opportunité.'},
+            {t:'Scripts sur mesure',d:'Générez des scripts d\'appel personnalisés par secteur en quelques secondes.'},
+            {t:'Tout centralisé',d:'Appels, RDV, prospects et notes réunis dans une seule interface fluide.'},
+          ].map(f=>`<div class="demo-feat"><h4>${f.t}</h4><p>${f.d}</p></div>`).join('')}
+        </div>
+      </div>
+      <div class="integ-grid">
+        ${[
+          {ic:'📅',n:'Google Calendar',s:'Synchro des RDV'},
+          {ic:'📧',n:'Email auto',s:'Confirmations'},
+          {ic:'🎙️',n:'Reconnaissance vocale',s:'Mains libres'},
+          {ic:'🤖',n:'IA générative',s:'Scripts & objections'},
+          {ic:'📊',n:'Tableau de bord',s:'Stats en direct'},
+          {ic:'📞',n:'Cold Call',s:'Session guidée'},
+          {ic:'💬',n:'Assistant chat',s:'Aide en continu'},
+          {ic:'☁️',n:'Sauvegarde locale',s:'Vos données privées'},
+        ].map(g=>`<div class="integ"><div class="integ-ic">${g.ic}</div><div><div class="integ-n">${g.n}</div><div class="integ-s">${g.s}</div></div></div>`).join('')}
       </div>
     </div>
   </section>
@@ -407,7 +493,7 @@ PAGES['#/']=function(){
       <div class="price-card">
         <div class="price-tag">0€</div><p class="price-sub">Pour toujours. Vraiment.</p>
         <ul class="price-feat">${['Scripts IA illimités','Assistant vocal','Suivi des prospects','Gestion des RDV','Dashboard complet','Bibliothèque scripts','Support IA inclus','Aucune limite'].map(f=>`<li>${f}</li>`).join('')}</ul>
-        <a href="#/register" class="hero-cta" style="display:inline-flex;font-size:15px;padding:14px 36px">Commencer maintenant — Gratuit →</a>
+        <a href="#/register" class="hero-cta magnetic" style="display:inline-flex;font-size:15px;padding:14px 36px">Commencer maintenant — Gratuit →</a>
       </div>
     </div>
   </section>
