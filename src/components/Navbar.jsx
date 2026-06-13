@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Phone, Calendar, LayoutDashboard, LogOut, Menu, X } from 'lucide-react'
+import { Phone, Calendar, LayoutDashboard, LogOut, Menu, X, BookOpen } from 'lucide-react'
 import { useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
 
@@ -17,6 +17,8 @@ export default function Navbar() {
   const navLinks = [
     { to: '/dashboard', label: 'Tableau de bord', icon: LayoutDashboard },
     { to: '/appointments', label: 'Rendez-vous', icon: Calendar },
+    { to: '/cold-call', label: 'Session cold call', icon: Phone },
+    { to: '/scripts', label: 'Scripts', icon: BookOpen },
   ]
 
   const isActive = (path) => location.pathname === path

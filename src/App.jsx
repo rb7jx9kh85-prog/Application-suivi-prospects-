@@ -4,6 +4,8 @@ import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import Dashboard from './pages/Dashboard'
 import AppointmentPage from './pages/AppointmentPage'
+import ColdCallPage from './pages/ColdCallPage'
+import ScriptsPage from './pages/ScriptsPage'
 import { useAuth } from './hooks/useAuth'
 
 function ProtectedRoute({ children }) {
@@ -19,6 +21,8 @@ export default function App() {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       <Route path="/appointments" element={<ProtectedRoute><AppointmentPage /></ProtectedRoute>} />
+      <Route path="/cold-call" element={<ProtectedRoute><ColdCallPage /></ProtectedRoute>} />
+      <Route path="/scripts" element={<ProtectedRoute><ScriptsPage /></ProtectedRoute>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )

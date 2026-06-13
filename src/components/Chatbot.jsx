@@ -37,17 +37,32 @@ export default function Chatbot() {
   }
 
   const confirmAppointment = async (data) => {
-    const apptData = { ...data, title: `RDV - ${data.establishment || 'Rendez-vous'}`, status: 'scheduled' }
-    const newAppt = addAppointment(apptData)
-    let emailSent = false
-    try { emailSent = await sendAppointmentEmail({ ...apptData, ...newAppt }) } catch {}
-    const calUrl = generateGoogleCalendarUrl({ ...apptData, ...newAppt })
-    setMessages(prev => [...prev, {
-      id: Date.now(), role: 'bot', type: 'confirmed',
-      text: `✅ Rendez-vous créé !${emailSent ? '\n📧 Email envoyé à NoéVouillamoz3@gmail.com' : ''}\n\nCliquez ci-dessous pour ajouter à votre agenda :`,
-      calendarUrl: calUrl
-    }])
-    setPendingAppt(null)
+    try {
+      const apptData = { ...data, title: `RDV - ${data.establishment || 'Rendez-vous'}`, status: 'scheduled' }
+      const newAppt = addAppointment(apptData)
+      let emailSent = false
+      try {
+        emailSent = await Promise.race([
+          sendAppointmentEmail({ ...apptData, ...newAppt }),
+          new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 3000))
+        ])
+      } catch (e) {
+        console.log('Email failed, continuing anyway')
+      }
+      const calUrl = generateGoogleCalendarUrl({ ...apptData, ...newAppt })
+      setMessages(prev => [...prev, {
+        id: Date.now(), role: 'bot', type: 'confirmed',
+        text: `✅ Rendez-vous créé !${emailSent ? '\n📧 Email envoyé à NoéVouillamoz3@gmail.com' : ''}\n\nCliquez ci-dessous pour ajouter à votre agenda :`,
+        calendarUrl: calUrl
+      }])
+      setPendingAppt(null)
+    } catch (error) {
+      console.error('Error confirming appointment:', error)
+      setMessages(prev => [...prev, {
+        id: Date.now(), role: 'bot',
+        text: '⚠️ Erreur lors de la création du RDV. Veuillez réessayer.'
+      }])
+    }
   }
 
   const renderText = (text) => {
