@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Plus, Trash2, Edit3, Phone, Building2, Video, Clock, XCircle, Search } from 'lucide-react'
-import Navbar from '../components/Navbar'
-import Chatbot from '../components/Chatbot'
+import ProNavBar from '../components/ProNavBar'
+import EnhancedChatbot from '../components/EnhancedChatbot'
 import PlacePreview from '../components/PlacePreview'
 import { useColdCall } from '../hooks/useColdCall'
 
@@ -42,7 +42,8 @@ export default function ColdCallPage() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#f8fafc' }}>
-      <Navbar />
+      <ProNavBar />
+      <EnhancedChatbot />
       <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 24px' }}>
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '28px' }}>
@@ -177,7 +178,7 @@ export default function ColdCallPage() {
           onClose={() => setPreviewProspect(null)}
         />
       )}
-      <Chatbot />
+
     </div>
   )
 }

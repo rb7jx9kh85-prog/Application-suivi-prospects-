@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { Phone, Eye, EyeOff, LogIn, AlertCircle } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { useAuth } from '../hooks/useAuth'
+import ShaderBackground from '../components/ShaderBackground'
 
 export default function LoginPage() {
   const [form, setForm] = useState({ username: '', password: '' })
@@ -22,90 +24,125 @@ export default function LoginPage() {
     setLoading(false)
   }
 
-  const inputStyle = {
-    width: '100%', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '12px 16px',
-    fontSize: '15px', outline: 'none', boxSizing: 'border-box', transition: 'border-color 0.15s'
-  }
-
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #f0f9ff 0%, #eff6ff 50%, #faf5ff 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
-      <div style={{ width: '100%', maxWidth: '420px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: '24px' }}>
-            <div style={{ width: '56px', height: '56px', background: 'linear-gradient(135deg,#0ea5e9,#2563eb)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 25px rgba(14,165,233,0.35)' }}>
-              <Phone size={28} color="white" />
-            </div>
-          </Link>
-          <h1 style={{ margin: '0 0 8px', fontSize: '28px', fontWeight: 800, color: '#111827' }}>Bon retour !</h1>
-          <p style={{ margin: 0, color: '#6b7280', fontSize: '15px' }}>Connectez-vous à votre espace ProspectPro</p>
+    <div className="min-h-screen bg-black flex items-center justify-center p-4">
+      <ShaderBackground />
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="w-full max-w-md relative z-10"
+      >
+        {/* Logo */}
+        <Link to="/" className="flex justify-center mb-8">
+          <div className="w-16 h-16 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-violet-500/50">
+            <Phone size={32} className="text-white" />
+          </div>
+        </Link>
+
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-black text-white mb-2">Bon retour !</h1>
+          <p className="text-gray-400">Connectez-vous à votre espace ProspectPro</p>
         </div>
 
-        <div style={{ background: 'white', borderRadius: '20px', boxShadow: '0 10px 40px rgba(0,0,0,0.1)', border: '1px solid rgba(0,0,0,0.06)', padding: '32px' }}>
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        {/* Form Card */}
+        <div className="bg-black/40 backdrop-blur-xl border border-violet-500/30 rounded-2xl p-8 shadow-2xl">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Username */}
             <div>
-              <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#374151', marginBottom: '6px' }}>Email ou nom d'utilisateur</label>
-              <input type="text" required style={inputStyle} value={form.username}
-                onChange={e => setForm({ ...form, username: e.target.value })}
+              <label className="block text-sm font-semibold text-gray-300 mb-2">Email ou nom d'utilisateur</label>
+              <input
+                type="text"
+                required
+                value={form.username}
+                onChange={(e) => setForm({ ...form, username: e.target.value })}
                 placeholder="votre@email.com ou admin"
-                onFocus={e => e.target.style.borderColor = '#0ea5e9'}
-                onBlur={e => e.target.style.borderColor = '#e5e7eb'}
                 autoComplete="username"
+                className="w-full px-4 py-3 bg-white/5 border border-violet-500/30 rounded-lg text-white placeholder-gray-500 focus:border-violet-500 focus:outline-none transition-colors"
               />
             </div>
+
+            {/* Password */}
             <div>
-              <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#374151', marginBottom: '6px' }}>Mot de passe</label>
-              <div style={{ position: 'relative' }}>
-                <input type={showPass ? 'text' : 'password'} required style={{ ...inputStyle, paddingRight: '44px' }}
-                  value={form.password} onChange={e => setForm({ ...form, password: e.target.value })}
+              <label className="block text-sm font-semibold text-gray-300 mb-2">Mot de passe</label>
+              <div className="relative">
+                <input
+                  type={showPass ? 'text' : 'password'}
+                  required
+                  value={form.password}
+                  onChange={(e) => setForm({ ...form, password: e.target.value })}
                   placeholder="Entrez votre mot de passe"
-                  onFocus={e => e.target.style.borderColor = '#0ea5e9'}
-                  onBlur={e => e.target.style.borderColor = '#e5e7eb'}
                   autoComplete="current-password"
+                  className="w-full px-4 py-3 bg-white/5 border border-violet-500/30 rounded-lg text-white placeholder-gray-500 focus:border-violet-500 focus:outline-none transition-colors pr-12"
                 />
-                <button type="button" onClick={() => setShowPass(!showPass)} style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: '#9ca3af', padding: '4px' }}>
-                  {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
+                <button
+                  type="button"
+                  onClick={() => setShowPass(!showPass)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300 transition-colors"
+                >
+                  {showPass ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
               </div>
             </div>
 
+            {/* Error */}
             {error && (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: '#fef2f2', color: '#dc2626', padding: '12px 14px', borderRadius: '10px', fontSize: '13px', border: '1px solid #fecaca' }}>
-                <AlertCircle size={16} />{error}
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center gap-3 bg-red-500/10 border border-red-500/30 text-red-400 p-3 rounded-lg text-sm"
+              >
+                <AlertCircle size={16} />
+                {error}
+              </motion.div>
             )}
 
-            <button type="submit" disabled={loading} style={{
-              width: '100%', padding: '13px', background: 'linear-gradient(135deg,#0ea5e9,#2563eb)', border: 'none', borderRadius: '12px',
-              fontSize: '15px', fontWeight: 700, color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
-              boxShadow: loading ? 'none' : '0 4px 15px rgba(14,165,233,0.35)', opacity: loading ? 0.75 : 1, transition: 'all 0.2s'
-            }}>
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white rounded-lg font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-50"
+            >
               {loading ? (
-                <><div style={{ width: '16px', height: '16px', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: 'white', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} /> Connexion...</>
+                <>
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  Connexion...
+                </>
               ) : (
-                <><LogIn size={16} /> Se connecter</>
+                <>
+                  <LogIn size={18} />
+                  Se connecter
+                </>
               )}
             </button>
           </form>
 
-          <div style={{ marginTop: '24px', paddingTop: '24px', borderTop: '1px solid #f3f4f6', textAlign: 'center' }}>
-            <p style={{ margin: '0 0 8px', fontSize: '12px', color: '#9ca3af' }}>Compte par défaut</p>
-            <div style={{ background: '#f9fafb', borderRadius: '10px', padding: '10px 16px', display: 'inline-block' }}>
-              <code style={{ fontSize: '13px', color: '#374151' }}>admin</code>
-              <span style={{ color: '#9ca3af', margin: '0 8px' }}>/</span>
-              <code style={{ fontSize: '13px', color: '#374151' }}>admin123</code>
+          {/* Demo Account */}
+          <div className="mt-6 pt-6 border-t border-violet-500/20 text-center">
+            <p className="text-xs text-gray-500 mb-2">Compte par défaut</p>
+            <div className="bg-white/5 border border-violet-500/20 rounded-lg inline-block px-4 py-2">
+              <code className="text-sm text-violet-300">admin</code>
+              <span className="text-gray-500 mx-2">/</span>
+              <code className="text-sm text-violet-300">admin123</code>
             </div>
           </div>
         </div>
 
-        <p style={{ textAlign: 'center', marginTop: '20px', fontSize: '14px', color: '#6b7280' }}>
-          Pas encore de compte ?{' '}
-          <Link to="/register" style={{ color: '#0284c7', textDecoration: 'none', fontWeight: 600 }}>Créer un compte</Link>
-        </p>
-        <p style={{ textAlign: 'center', marginTop: '8px', fontSize: '14px', color: '#9ca3af' }}>
-          <Link to="/" style={{ color: '#9ca3af', textDecoration: 'none' }}>← Retour à l'accueil</Link>
-        </p>
-      </div>
-      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+        {/* Footer Links */}
+        <div className="mt-6 text-center space-y-3">
+          <p className="text-sm text-gray-400">
+            Pas encore de compte ?{' '}
+            <Link to="/register" className="text-violet-400 hover:text-violet-300 font-semibold transition-colors">
+              Créer un compte
+            </Link>
+          </p>
+          <Link to="/" className="inline-block text-sm text-gray-500 hover:text-gray-300 transition-colors">
+            ← Retour à l'accueil
+          </Link>
+        </div>
+      </motion.div>
     </div>
   )
 }

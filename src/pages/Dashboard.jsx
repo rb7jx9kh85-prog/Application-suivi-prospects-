@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { Plus, Phone, Search, Filter, Trash2, Edit3, CheckCircle, Clock, XCircle, PhoneOff, Calendar, Cloud } from 'lucide-react'
-import Navbar from '../components/Navbar'
+import ProNavBar from '../components/ProNavBar'
 import DailySummary from '../components/DailySummary'
 import CallModal from '../components/CallModal'
 import GoogleDriveImport from '../components/GoogleDriveImport'
-import Chatbot from '../components/Chatbot'
+import EnhancedChatbot from '../components/EnhancedChatbot'
 import { useData } from '../hooks/useData'
 
 const STATUS = {
@@ -47,7 +47,8 @@ export default function Dashboard() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#f8fafc' }}>
-      <Navbar />
+      <ProNavBar />
+      <EnhancedChatbot />
       <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 24px' }}>
 
         {/* Header */}

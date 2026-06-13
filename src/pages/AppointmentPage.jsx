@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Plus, Search, Calendar, ExternalLink, Trash2, Edit3, Clock, MapPin, User, CheckCircle, Cloud } from 'lucide-react'
-import Navbar from '../components/Navbar'
+import ProNavBar from '../components/ProNavBar'
 import AppointmentModal from '../components/AppointmentModal'
 import GoogleDriveImport from '../components/GoogleDriveImport'
-import Chatbot from '../components/Chatbot'
+import EnhancedChatbot from '../components/EnhancedChatbot'
 import { useData } from '../hooks/useData'
 import { generateGoogleCalendarUrl } from '../utils/calendar'
 
@@ -98,7 +98,8 @@ export default function AppointmentPage() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#f8fafc' }}>
-      <Navbar />
+      <ProNavBar />
+      <EnhancedChatbot />
       <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 24px' }}>
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '28px', flexWrap: 'wrap', gap: '12px' }}>
@@ -176,7 +177,7 @@ export default function AppointmentPage() {
 
       {showModal && <AppointmentModal appointment={editing} onSave={handleSave} onClose={() => { setShowModal(false); setEditing(null) }} />}
       {showDrive && <GoogleDriveImport onImport={() => setShowDrive(false)} onClose={() => setShowDrive(false)} />}
-      <Chatbot />
+
     </div>
   )
 }
