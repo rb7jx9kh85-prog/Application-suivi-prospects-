@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { Plus, Trash2, Edit3, Phone, Building2, FileText, CheckCircle, Clock, XCircle, Video } from 'lucide-react'
+import { Plus, Trash2, Edit3, Phone, Building2, Video, Clock, XCircle, Search } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Chatbot from '../components/Chatbot'
+import PlacePreview from '../components/PlacePreview'
 import { useColdCall } from '../hooks/useColdCall'
 
 const STATUS = {
@@ -17,6 +18,7 @@ export default function ColdCallPage() {
   const [showForm, setShowForm] = useState(false)
   const [editing, setEditing] = useState(null)
   const [search, setSearch] = useState('')
+  const [previewProspect, setPreviewProspect] = useState(null)
   const [form, setForm] = useState({ establishment: '', domain: '', contact: '', notes: '', status: 'to_call' })
 
   const filtered = prospects.filter(p =>
@@ -116,6 +118,9 @@ export default function ColdCallPage() {
                       value={p.status} onChange={e => updateProspect(p.id, { status: e.target.value })}>
                       {Object.entries(STATUS).map(([k, v]) => <option key={k} value={k}>{v.label}</option>)}
                     </select>
+                    <button onClick={() => setPreviewProspect(p)} title="Aperçu Google Places" style={{ padding: '6px 10px', background: '#eff6ff', border: 'none', borderRadius: '8px', cursor: 'pointer', color: '#2563eb' }}>
+                      <Search size={13} />
+                    </button>
                     <button onClick={() => { setEditing(p); setForm(p); setShowForm(true) }} style={{ padding: '6px 10px', background: '#f3f4f6', border: 'none', borderRadius: '8px', cursor: 'pointer', color: '#9ca3af' }}>
                       <Edit3 size={13} />
                     </button>
@@ -165,6 +170,13 @@ export default function ColdCallPage() {
           </div>
         )}
       </main>
+      {previewProspect && (
+        <PlacePreview
+          establishment={previewProspect.establishment}
+          domain={previewProspect.domain}
+          onClose={() => setPreviewProspect(null)}
+        />
+      )}
       <Chatbot />
     </div>
   )
