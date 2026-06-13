@@ -41,18 +41,18 @@ export default function ColdCallPage() {
   const called = filtered.filter(p => p.status !== 'to_call')
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f8fafc' }}>
+    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #09001a 0%, #0d0020 50%, #080010 100%)' }}>
       <ProNavBar />
       <EnhancedChatbot />
-      <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 24px' }}>
+      <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 24px', paddingTop: '96px' }}>
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '28px' }}>
           <div>
-            <h1 style={{ margin: 0, fontSize: '24px', fontWeight: 800, color: '#111827' }}>Session Cold Call</h1>
+            <h1 style={{ margin: 0, fontSize: '24px', fontWeight: 800, background: 'linear-gradient(135deg,#a855f7,#ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Session Cold Call</h1>
             <p style={{ margin: '3px 0 0', fontSize: '14px', color: '#9ca3af' }}>{toCall.length} à appeler • {called.length} complétés</p>
           </div>
           <button onClick={() => { setEditing(null); setForm({ establishment: '', domain: '', contact: '', notes: '', status: 'to_call' }); setShowForm(true) }}
-            style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '9px 18px', background: 'linear-gradient(135deg,#0ea5e9,#2563eb)', border: 'none', borderRadius: '12px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', color: 'white', boxShadow: '0 3px 10px rgba(14,165,233,0.3)' }}>
+            style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '9px 18px', background: 'linear-gradient(135deg,#7c3aed,#ec4899)', border: 'none', borderRadius: '12px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', color: 'white', boxShadow: '0 3px 10px rgba(124,58,237,0.3)' }}>
             <Plus size={15} /> Ajouter un prospect
           </button>
         </div>

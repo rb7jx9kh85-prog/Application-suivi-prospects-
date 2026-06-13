@@ -46,22 +46,22 @@ export default function Dashboard() {
   const today = new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f8fafc' }}>
+    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #09001a 0%, #0d0020 50%, #080010 100%)' }}>
       <ProNavBar />
       <EnhancedChatbot />
-      <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 24px' }}>
+      <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 24px', paddingTop: '96px' }}>
 
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px', flexWrap: 'wrap', gap: '12px' }}>
           <div>
-            <h1 style={{ margin: 0, fontSize: '24px', fontWeight: 800, color: '#111827' }}>Tableau de bord</h1>
+            <h1 style={{ margin: 0, fontSize: '24px', fontWeight: 800, background: 'linear-gradient(135deg,#a855f7,#ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Tableau de bord</h1>
             <p style={{ margin: '3px 0 0', fontSize: '14px', color: '#9ca3af', textTransform: 'capitalize' }}>{today}</p>
           </div>
           <div style={{ display: 'flex', gap: '8px' }}>
             <button onClick={() => setShowDrive(true)} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '9px 16px', border: '1px solid #e5e7eb', background: 'white', borderRadius: '12px', fontSize: '13px', fontWeight: 500, cursor: 'pointer', color: '#374151' }}>
               <Cloud size={15} color="#2563eb" /> Drive
             </button>
-            <button onClick={() => { setEditingCall(null); setShowCallModal(true) }} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '9px 18px', background: 'linear-gradient(135deg,#0ea5e9,#2563eb)', border: 'none', borderRadius: '12px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', color: 'white', boxShadow: '0 3px 10px rgba(14,165,233,0.3)' }}>
+            <button onClick={() => { setEditingCall(null); setShowCallModal(true) }} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '9px 18px', background: 'linear-gradient(135deg,#7c3aed,#ec4899)', border: 'none', borderRadius: '12px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', color: 'white', boxShadow: '0 3px 10px rgba(124,58,237,0.3)' }}>
               <Plus size={15} /> Nouvel appel
             </button>
           </div>
@@ -70,11 +70,11 @@ export default function Dashboard() {
         {/* Stats + Summary */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr) 1.2fr', gap: '16px', marginBottom: '28px', alignItems: 'start' }}>
           {stats.map(({ label, value, icon: Icon, bg, color }) => (
-            <div key={label} style={{ background: 'white', borderRadius: '16px', padding: '18px', border: '1px solid #f3f4f6', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
+            <div key={label} style={{ background: 'rgba(255,255,255,0.04)', borderRadius: '16px', padding: '18px', border: '1px solid rgba(168,85,247,0.15)', boxShadow: '0 1px 4px rgba(0,0,0,0.2)' }}>
               <div style={{ width: '40px', height: '40px', background: bg, borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
                 <Icon size={20} color={color} />
               </div>
-              <p style={{ margin: '0 0 2px', fontSize: '26px', fontWeight: 800, color: '#111827' }}>{value}</p>
+              <p style={{ margin: '0 0 2px', fontSize: '26px', fontWeight: 800, color: 'white' }}>{value}</p>
               <p style={{ margin: 0, fontSize: '12px', color: '#9ca3af' }}>{label}</p>
             </div>
           ))}
@@ -96,18 +96,18 @@ export default function Dashboard() {
         )}
 
         {/* Call list */}
-        <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #f3f4f6', boxShadow: '0 1px 4px rgba(0,0,0,0.05)', overflow: 'hidden' }}>
-          <div style={{ padding: '16px 20px', borderBottom: '1px solid #f3f4f6', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+        <div style={{ background: 'rgba(255,255,255,0.04)', borderRadius: '20px', border: '1px solid rgba(168,85,247,0.15)', boxShadow: '0 1px 4px rgba(0,0,0,0.2)', overflow: 'hidden' }}>
+          <div style={{ padding: '16px 20px', borderBottom: '1px solid rgba(168,85,247,0.1)', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
             <div style={{ position: 'relative', flex: 1, minWidth: '180px' }}>
               <Search size={15} color="#9ca3af" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)' }} />
               <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher un appel..."
-                style={{ width: '100%', paddingLeft: '36px', paddingRight: '12px', paddingTop: '9px', paddingBottom: '9px', border: '1px solid #e5e7eb', borderRadius: '10px', fontSize: '13px', outline: 'none', boxSizing: 'border-box' }}
-                onFocus={e => e.target.style.borderColor = '#0ea5e9'} onBlur={e => e.target.style.borderColor = '#e5e7eb'}
+                style={{ width: '100%', paddingLeft: '36px', paddingRight: '12px', paddingTop: '9px', paddingBottom: '9px', border: '1px solid rgba(168,85,247,0.2)', borderRadius: '10px', fontSize: '13px', outline: 'none', boxSizing: 'border-box', background: 'rgba(255,255,255,0.05)', color: 'white' }}
+                onFocus={e => e.target.style.borderColor = '#a855f7'} onBlur={e => e.target.style.borderColor = 'rgba(168,85,247,0.2)'}
               />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Filter size={14} color="#9ca3af" />
-              <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: '10px', padding: '9px 12px', fontSize: '13px', outline: 'none', background: 'white', cursor: 'pointer' }}>
+              <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)} style={{ border: '1px solid rgba(168,85,247,0.2)', borderRadius: '10px', padding: '9px 12px', fontSize: '13px', outline: 'none', background: '#1a0035', color: 'white', cursor: 'pointer' }}>
                 <option value="all">Tous les statuts</option>
                 <option value="completed">Complétés</option>
                 <option value="pending">En attente</option>
@@ -132,14 +132,14 @@ export default function Dashboard() {
                 const cfg = STATUS[call.status] || STATUS.pending
                 const StatusIcon = cfg.icon
                 return (
-                  <div key={call.id} style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '12px 20px', borderBottom: '1px solid #fafafa', transition: 'background 0.1s' }}
-                    onMouseEnter={e => e.currentTarget.style.background = '#fafafa'}
-                    onMouseLeave={e => e.currentTarget.style.background = 'white'}>
-                    <div style={{ width: '36px', height: '36px', background: '#f0f9ff', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div key={call.id} style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '12px 20px', borderBottom: '1px solid rgba(168,85,247,0.08)', transition: 'background 0.1s' }}
+                    onMouseEnter={e => e.currentTarget.style.background = 'rgba(168,85,247,0.05)'}
+                    onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
+                    <div style={{ width: '36px', height: '36px', background: 'rgba(168,85,247,0.12)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <Phone size={16} color="#0ea5e9" />
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <p style={{ margin: 0, fontWeight: 600, color: '#111827', fontSize: '14px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{call.establishment}</p>
+                      <p style={{ margin: 0, fontWeight: 600, color: 'white', fontSize: '14px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{call.establishment}</p>
                       <p style={{ margin: '2px 0 0', fontSize: '12px', color: '#9ca3af' }}>
                         {[call.contact, call.date && new Date(call.date + 'T12:00:00').toLocaleDateString('fr-FR'), call.time].filter(Boolean).join(' · ')}
                       </p>

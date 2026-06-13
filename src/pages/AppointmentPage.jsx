@@ -97,14 +97,14 @@ export default function AppointmentPage() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f8fafc' }}>
+    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #09001a 0%, #0d0020 50%, #080010 100%)' }}>
       <ProNavBar />
       <EnhancedChatbot />
-      <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 24px' }}>
+      <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 24px', paddingTop: '96px' }}>
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '28px', flexWrap: 'wrap', gap: '12px' }}>
           <div>
-            <h1 style={{ margin: 0, fontSize: '24px', fontWeight: 800, color: '#111827' }}>Rendez-vous</h1>
+            <h1 style={{ margin: 0, fontSize: '24px', fontWeight: 800, background: 'linear-gradient(135deg,#a855f7,#ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Rendez-vous</h1>
             <p style={{ margin: '3px 0 0', fontSize: '14px', color: '#9ca3af' }}>{appointments.length} rendez-vous au total</p>
           </div>
           <div style={{ display: 'flex', gap: '8px' }}>
