@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { Send, Bot, X, MessageCircle, Calendar, CheckCircle, Key } from 'lucide-react'
-import { generateBotResponse } from '../utils/chatbot'
+import { generateBotResponse, parseAppointmentFromText } from '../utils/chatbot'
 import { generateGoogleCalendarUrl } from '../utils/calendar'
 import { sendAppointmentEmail } from '../utils/email'
 import { askClaude, hasAnthropicKey } from '../utils/claude'
@@ -49,7 +49,6 @@ export default function Chatbot() {
         const aiText = await askClaude(history, SYSTEM_PROMPT)
 
         // Check if AI response suggests creating an appointment
-        const { parseAppointmentFromText } = await import('../utils/chatbot')
         const parsed = parseAppointmentFromText(msgText)
         const wantsAppt = /rdv|rendez.vous|réunion|rencontre/i.test(msgText) && (parsed.date || parsed.establishment)
 

@@ -51,7 +51,7 @@ export function generateBotResponse(userMessage, appointments, calls) {
   if (/^(bonjour|salut|hello|coucou|bonsoir|hi)/i.test(lower)) {
     return {
       type: 'greeting',
-      message: `Bonjour ! Je suis votre assistant ProspectPro 👋\n\nJe peux vous aider à :\n• Créer un rendez-vous\n• Voir votre résumé du jour\n• Lister vos RDV à venir\n• Consulter vos statistiques\n\nQue puis-je faire pour vous ?`
+      text: `Bonjour ! Je suis votre assistant ProspectPro 👋\n\nJe peux vous aider à :\n• Créer un rendez-vous\n• Voir votre résumé du jour\n• Lister vos RDV à venir\n• Consulter vos statistiques\n\nQue puis-je faire pour vous ?`
     }
   }
 
@@ -62,7 +62,7 @@ export function generateBotResponse(userMessage, appointments, calls) {
     const completed = todayCalls.filter(c => c.status === 'completed').length
     return {
       type: 'summary',
-      message: `📊 **Résumé du ${new Date().toLocaleDateString('fr-FR')}**\n\n📞 Appels : ${todayCalls.length} (${completed} complétés)\n📅 Rendez-vous : ${todayAppts.length}\n\n${todayAppts.length > 0 ? '**RDV du jour :**\n' + todayAppts.map(a => `• ${a.time || '—'} — ${a.establishment}`).join('\n') : 'Aucun rendez-vous aujourd\'hui.'}`
+      text: `📊 **Résumé du ${new Date().toLocaleDateString('fr-FR')}**\n\n📞 Appels : ${todayCalls.length} (${completed} complétés)\n📅 Rendez-vous : ${todayAppts.length}\n\n${todayAppts.length > 0 ? '**RDV du jour :**\n' + todayAppts.map(a => `• ${a.time || '—'} — ${a.establishment}`).join('\n') : 'Aucun rendez-vous aujourd\'hui.'}`
     }
   }
 
@@ -70,7 +70,7 @@ export function generateBotResponse(userMessage, appointments, calls) {
     const upcoming = appointments.filter(a => new Date(a.date) >= new Date()).length
     return {
       type: 'stats',
-      message: `📈 **Statistiques globales**\n\n📞 Total appels : ${calls.length}\n✅ Appels complétés : ${calls.filter(c => c.status === 'completed').length}\n📅 Total rendez-vous : ${appointments.length}\n🔜 RDV à venir : ${upcoming}`
+      text: `📈 **Statistiques globales**\n\n📞 Total appels : ${calls.length}\n✅ Appels complétés : ${calls.filter(c => c.status === 'completed').length}\n📅 Total rendez-vous : ${appointments.length}\n🔜 RDV à venir : ${upcoming}`
     }
   }
 
@@ -79,10 +79,10 @@ export function generateBotResponse(userMessage, appointments, calls) {
       .filter(a => new Date(a.date) >= new Date())
       .sort((a, b) => new Date(a.date) - new Date(b.date))
       .slice(0, 5)
-    if (!upcoming.length) return { type: 'info', message: "Vous n'avez aucun rendez-vous à venir." }
+    if (!upcoming.length) return { type: 'info', text: "Vous n'avez aucun rendez-vous à venir." }
     return {
       type: 'list',
-      message: `📅 **Vos prochains rendez-vous :**\n\n${upcoming.map(a => `• ${new Date(a.date).toLocaleDateString('fr-FR')} ${a.time ? 'à ' + a.time : ''} — **${a.establishment}**`).join('\n')}`
+      text: `📅 **Vos prochains rendez-vous :**\n\n${upcoming.map(a => `• ${new Date(a.date).toLocaleDateString('fr-FR')} ${a.time ? 'à ' + a.time : ''} — **${a.establishment}**`).join('\n')}`
     }
   }
 
@@ -91,25 +91,25 @@ export function generateBotResponse(userMessage, appointments, calls) {
     if (parsed.date || parsed.establishment || parsed.time) {
       return {
         type: 'create_appointment',
-        message: `Parfait ! Voici le rendez-vous détecté :\n\n📍 Établissement : **${parsed.establishment || 'À préciser'}**\n📅 Date : **${parsed.date ? new Date(parsed.date + 'T12:00:00').toLocaleDateString('fr-FR') : 'À préciser'}**\n🕐 Heure : **${parsed.time || 'À préciser'}**\n\nConfirmez-vous la création de ce rendez-vous ? (email + Google Calendar)`,
+        text: `Parfait ! Voici le rendez-vous détecté :\n\n📍 Établissement : **${parsed.establishment || 'À préciser'}**\n📅 Date : **${parsed.date ? new Date(parsed.date + 'T12:00:00').toLocaleDateString('fr-FR') : 'À préciser'}**\n🕐 Heure : **${parsed.time || 'À préciser'}**\n\nConfirmez-vous la création de ce rendez-vous ? (email + Google Calendar)`,
         appointmentData: parsed
       }
     }
     return {
       type: 'info',
-      message: `Pour créer un rendez-vous, dites-moi par exemple :\n\n*"RDV avec Hôtel du Lac le 20 juin à 14h"*\n*"Rendez-vous chez McDonald's demain à 10h"*`
+      text: `Pour créer un rendez-vous, dites-moi par exemple :\n\n*"RDV avec Hôtel du Lac le 20 juin à 14h"*\n*"Rendez-vous chez McDonald's demain à 10h"*`
     }
   }
 
   if (/aide|help|\?$/i.test(lower)) {
     return {
       type: 'help',
-      message: `**Comment puis-je vous aider ?**\n\n• *"Bonjour"* → accueil\n• *"RDV avec [nom] le [date] à [heure]"* → créer un RDV\n• *"Résumé du jour"* → bilan quotidien\n• *"Mes statistiques"* → vue d'ensemble\n• *"Liste mes rendez-vous"* → RDV à venir`
+      text: `**Comment puis-je vous aider ?**\n\n• *"Bonjour"* → accueil\n• *"RDV avec [nom] le [date] à [heure]"* → créer un RDV\n• *"Résumé du jour"* → bilan quotidien\n• *"Mes statistiques"* → vue d'ensemble\n• *"Liste mes rendez-vous"* → RDV à venir`
     }
   }
 
   return {
     type: 'default',
-    message: `Je n'ai pas compris. Essayez :\n• *"RDV avec [établissement] le [date]"*\n• *"Résumé du jour"*\n• *"Mes statistiques"*\n\nOu tapez *"aide"* pour voir toutes les commandes.`
+    text: `Je n'ai pas compris. Essayez :\n• *"RDV avec [établissement] le [date]"*\n• *"Résumé du jour"*\n• *"Mes statistiques"*\n\nOu tapez *"aide"* pour voir toutes les commandes.`
   }
 }
