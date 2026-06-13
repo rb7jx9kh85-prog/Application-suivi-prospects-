@@ -1,7 +1,9 @@
+import { ENV } from '../config'
+
 const KEY_STORAGE = 'anthropic_api_key'
 
 export function getAnthropicKey() {
-  return localStorage.getItem(KEY_STORAGE) || import.meta.env.VITE_ANTHROPIC_API_KEY || ''
+  return localStorage.getItem(KEY_STORAGE) || ENV.ANTHROPIC_KEY || ''
 }
 
 export function setAnthropicKey(key) {
