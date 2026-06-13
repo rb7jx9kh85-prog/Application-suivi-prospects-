@@ -97,8 +97,12 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <p style={{ textAlign: 'center', marginTop: '24px', fontSize: '14px', color: '#9ca3af' }}>
-          <Link to="/" style={{ color: '#0284c7', textDecoration: 'none', fontWeight: 500 }}>← Retour à l'accueil</Link>
+        <p style={{ textAlign: 'center', marginTop: '20px', fontSize: '14px', color: '#6b7280' }}>
+          Pas encore de compte ?{' '}
+          <Link to="/register" style={{ color: '#0284c7', textDecoration: 'none', fontWeight: 600 }}>Créer un compte</Link>
+        </p>
+        <p style={{ textAlign: 'center', marginTop: '8px', fontSize: '14px', color: '#9ca3af' }}>
+          <Link to="/" style={{ color: '#9ca3af', textDecoration: 'none' }}>← Retour à l'accueil</Link>
         </p>
       </div>
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>

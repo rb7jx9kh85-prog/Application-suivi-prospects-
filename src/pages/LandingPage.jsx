@@ -33,7 +33,7 @@ export default function LandingPage() {
           </div>
           <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
             <Link to="/login" style={s.btnSecondary}>Connexion</Link>
-            <Link to="/login" style={s.btnPrimary}>Commencer →</Link>
+            <Link to="/register" style={s.btnPrimary}>S'inscrire →</Link>
           </div>
         </div>
       </header>
@@ -156,8 +156,8 @@ export default function LandingPage() {
         <div style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ margin: '0 0 12px', fontSize: 'clamp(1.6rem,3vw,2.2rem)', fontWeight: 800, color: 'white' }}>Prêt à booster vos ventes ?</h2>
           <p style={{ margin: '0 0 32px', color: 'rgba(255,255,255,0.8)', fontSize: '1.05rem' }}>Commencez maintenant — gratuit et sans installation.</p>
-          <Link to="/login" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'white', color: '#0284c7', fontWeight: 700, padding: '14px 32px', borderRadius: '14px', textDecoration: 'none', fontSize: '15px', boxShadow: '0 8px 25px rgba(0,0,0,0.15)' }}>
-            Accéder à ProspectPro <ArrowRight size={18} />
+          <Link to="/register" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'white', color: '#0284c7', fontWeight: 700, padding: '14px 32px', borderRadius: '14px', textDecoration: 'none', fontSize: '15px', boxShadow: '0 8px 25px rgba(0,0,0,0.15)' }}>
+            Créer mon compte <ArrowRight size={18} />
           </Link>
         </div>
       </section>
