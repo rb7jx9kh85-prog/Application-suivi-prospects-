@@ -25,7 +25,7 @@ body{background:var(--bg);color:var(--t1);font-family:'Inter',-apple-system,sans
 .b1{background:radial-gradient(circle at 30% 30%,var(--violet),transparent 60%);top:-18%;left:-12%;animation:d1 19s var(--ease) infinite}
 .b2{background:radial-gradient(circle at 70% 70%,var(--pink),transparent 60%);bottom:-20%;right:-12%;animation:d2 23s var(--ease) infinite}
 .b3{background:radial-gradient(circle at 50% 50%,var(--violet2),transparent 62%);top:25%;left:35%;opacity:.4;animation:d3 27s var(--ease) infinite}
-.aurora::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,transparent 0%,rgba(10,10,10,.6) 70%,#0a0a0a 100%)}
+.aurora::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,transparent 0%,rgba(10,10,10,.6) 70%,#0a0a0a 100%);pointer-events:none}
 @keyframes d1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(8vw,6vh) scale(1.12)}}
 @keyframes d2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-7vw,-5vh) scale(1.08)}}
 @keyframes d3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-5vw,7vh) scale(1.15)}}
@@ -73,6 +73,11 @@ label{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bottom
 [data-view]{display:none}
 [data-view].on{display:block}
 .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+/* Loading screen */
+#loading{position:fixed;inset:0;z-index:9000;background:var(--bg);display:flex;align-items:center;justify-content:center}
+#loading.hide{display:none}
+.spin{width:32px;height:32px;border:3px solid var(--br2);border-top-color:var(--violet2);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 /* Toast */
 #toasts{position:fixed;bottom:76px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
 @media(min-width:768px){#toasts{bottom:24px}}
@@ -93,11 +98,11 @@ label{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bottom
 .nav-btn:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
 .nav-right{display:flex;align-items:center;gap:10px;flex:none}
 .nav-user{font-size:12px;color:var(--t3);max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#bnav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;height:60px;background:rgba(10,10,10,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--br);justify-content:space-around;align-items:center;padding:0 8px}
+#bnav{position:fixed;bottom:0;left:0;right:0;z-index:100;height:60px;background:rgba(10,10,10,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--br);display:none;justify-content:space-around;align-items:center;padding:0 8px}
 .bnav-btn{display:flex;flex-direction:column;align-items:center;gap:2px;height:52px;justify-content:center;padding:0 12px;background:none;border:none;color:var(--t3);font-size:10px;font-weight:500;cursor:pointer;font-family:inherit;border-radius:var(--r10);transition:color .15s;min-width:60px}
 .bnav-btn svg{width:20px;height:20px}
 .bnav-btn.on{color:var(--violet2)}
-@media(max-width:767px){#topnav .nav-links{display:none}#bnav{display:flex}#app{padding-bottom:60px}}
+@media(max-width:767px){#topnav .nav-links{display:none}#app{padding-bottom:60px}}
 /* Login */
 #view-login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 20px}
 .auth-wrap{width:100%;max-width:420px;display:flex;flex-direction:column;gap:32px}
@@ -199,11 +204,11 @@ tr.expanded td{border-bottom:none}
 .chat-send{width:40px;height:40px;border-radius:var(--r10);background:var(--violet);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;transition:background .15s}
 .chat-send:hover{background:var(--violet2)}
 .chat-send:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
-.typing{align-self:flex-start;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.07);border-bottom-left-radius:4px}
-.td{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--t3);margin:0 2px;animation:tp 1.2s infinite}
-.td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
+.typing-dots{align-self:flex-start;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.07);border-bottom-left-radius:4px}
+.dot-a{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--t3);margin:0 2px;animation:tp 1.2s infinite}
+.dot-a:nth-child(2){animation-delay:.2s}.dot-a:nth-child(3){animation-delay:.4s}
 @keyframes tp{0%,80%,100%{opacity:.3}40%{opacity:1}}
-@media(prefers-reduced-motion:reduce){.td{animation:none}}
+@media(prefers-reduced-motion:reduce){.dot-a{animation:none}}
 .sec-title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.03em;margin-bottom:4px}
 .sec-sub{font-size:13px;color:var(--t2);margin-bottom:20px}
 .load-td td{text-align:center;padding:40px;color:var(--t3);font-size:13px}
@@ -213,6 +218,10 @@ tr.expanded td{border-bottom:none}
 <div class="aurora" aria-hidden="true">
   <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
 </div>
+
+<!-- Loading screen shown until session check completes -->
+<div id="loading"><div class="spin"></div></div>
+
 <div id="app">
 
 <!-- NAV -->
@@ -240,7 +249,7 @@ tr.expanded td{border-bottom:none}
     </button>
   </div>
 </nav>
-<nav id="bnav" style="display:none">
+<nav id="bnav">
   <button class="bnav-btn" data-nav="dashboard">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
     Prospects
@@ -259,7 +268,7 @@ tr.expanded td{border-bottom:none}
 <section data-view="login" id="view-login">
   <div class="auth-wrap">
     <div>
-      <div class="eyebrow"><i class="dot"></i> Alpinia · Agence Web Valais</div>
+      <div class="eyebrow"><i class="dot"></i> Alpinia &middot; Agence Web Valais</div>
       <h1 class="hero-title"><span class="grad-text">Prospectez</span><br>plus vite.</h1>
       <p class="hero-sub">Enrichissement IA, scripts de cold call et suivi des RDV.</p>
     </div>
@@ -271,7 +280,7 @@ tr.expanded td{border-bottom:none}
       </div>
       <div class="fgrp">
         <label for="li-pw">Mot de passe</label>
-        <input class="fi" type="password" id="li-pw" placeholder="••••••••" autocomplete="current-password"/>
+        <input class="fi" type="password" id="li-pw" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" autocomplete="current-password"/>
       </div>
       <span class="ferr on" id="li-err" style="margin-bottom:12px;min-height:16px"></span>
       <button class="btn btn-primary" id="btn-login" style="width:100%">Se connecter</button>
@@ -285,8 +294,8 @@ tr.expanded td{border-bottom:none}
           <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <p class="rev-txt">« Avec Alpinia Pro, j'ai doublé mes appels qualifiés en 2 semaines. L'enrichissement IA fait gagner un temps fou. »</p>
-        <span class="rev-auth">Laurent M. — Gérant PME, Sion</span>
+        <p class="rev-txt">&laquo; Avec Alpinia Pro, j'ai doubl&eacute; mes appels qualifi&eacute;s en 2 semaines. L'enrichissement IA fait gagner un temps fou. &raquo;</p>
+        <span class="rev-auth">Laurent M. &mdash; G&eacute;rant PME, Sion</span>
       </div>
       <div class="rev-card glass">
         <div class="rev-stars">
@@ -296,8 +305,8 @@ tr.expanded td{border-bottom:none}
           <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <p class="rev-txt">« Le coach IA m'aide à gérer les objections en direct. Mon taux de RDV a augmenté de 30 %. »</p>
-        <span class="rev-auth">Sophie R. — Commerciale, Martigny</span>
+        <p class="rev-txt">&laquo; Le coach IA m'aide &agrave; g&eacute;rer les objections en direct. Mon taux de RDV a augment&eacute; de 30&nbsp;%. &raquo;</p>
+        <span class="rev-auth">Sophie R. &mdash; Commerciale, Martigny</span>
       </div>
     </div>
   </div>
@@ -308,16 +317,16 @@ tr.expanded td{border-bottom:none}
   <div class="wrap">
     <div class="stats">
       <div class="stat glass"><span class="stat-n n-violet" id="s-total">0</span><span class="stat-l">Total</span></div>
-      <div class="stat glass"><span class="stat-n n-warn" id="s-tocall">0</span><span class="stat-l">À appeler</span></div>
+      <div class="stat glass"><span class="stat-n n-warn" id="s-tocall">0</span><span class="stat-l">&Agrave; appeler</span></div>
       <div class="stat glass"><span class="stat-n n-ok" id="s-rdv">0</span><span class="stat-l">RDV obtenus</span></div>
     </div>
     <div class="toolbar">
-      <div class="t-search"><input class="fi fi-sm" type="search" id="d-search" placeholder="Rechercher…" aria-label="Rechercher"/></div>
+      <div class="t-search"><input class="fi fi-sm" type="search" id="d-search" placeholder="Rechercher&hellip;" aria-label="Rechercher"/></div>
       <select class="fi fi-sm" id="d-filter" style="width:auto;min-width:140px" aria-label="Filtrer">
         <option value="">Tous les statuts</option>
-        <option value="to_call">À appeler</option>
-        <option value="called">Appelé</option>
-        <option value="voicemail">Répondeur</option>
+        <option value="to_call">&Agrave; appeler</option>
+        <option value="called">Appel&eacute;</option>
+        <option value="voicemail">R&eacute;pondeur</option>
         <option value="refusal">Refus</option>
         <option value="video_rdv">RDV</option>
       </select>
@@ -328,8 +337,8 @@ tr.expanded td{border-bottom:none}
     </div>
     <div class="tbl-wrap">
       <table aria-label="Prospects">
-        <thead><tr><th>Nom / Établissement</th><th>Ville</th><th>Type</th><th>Statut</th><th>Notes</th><th style="text-align:right">Actions</th></tr></thead>
-        <tbody id="d-tbody"><tr class="load-td"><td colspan="6">Chargement…</td></tr></tbody>
+        <thead><tr><th>Nom / &Eacute;tablissement</th><th>Ville</th><th>Type</th><th>Statut</th><th>Notes</th><th style="text-align:right">Actions</th></tr></thead>
+        <tbody id="d-tbody"><tr class="load-td"><td colspan="6">Chargement&hellip;</td></tr></tbody>
       </table>
     </div>
     <div class="p-cards" id="d-cards"></div>
@@ -342,7 +351,7 @@ tr.expanded td{border-bottom:none}
     <div class="cc-head">
       <div>
         <h1 class="sec-title">Cold Call</h1>
-        <span class="cc-counter" id="cc-count">—</span>
+        <span class="cc-counter" id="cc-count">&mdash;</span>
       </div>
       <button class="btn btn-ghost" id="cc-toggle">Voir tous</button>
     </div>
@@ -354,39 +363,39 @@ tr.expanded td{border-bottom:none}
 <section data-view="scripts" id="view-scripts">
   <div class="wrap">
     <h1 class="sec-title">Scripts IA</h1>
-    <p class="sec-sub">Génère un script personnalisé ou utilise un preset.</p>
+    <p class="sec-sub">G&eacute;n&egrave;re un script personnalis&eacute; ou utilise un preset.</p>
     <div class="sc-layout">
       <div>
         <h2 style="font-size:14px;font-weight:600;color:var(--t2);margin-bottom:12px">Presets rapides</h2>
         <div class="presets">
           <button class="preset" data-preset="coldb2b"><div class="preset-title">Cold Call B2B</div><div class="preset-desc">Premier contact, accroche AIDA, objectif RDV</div></button>
-          <button class="preset" data-preset="relance"><div class="preset-title">Relance</div><div class="preset-desc">Suite d'un premier contact sans réponse</div></button>
-          <button class="preset" data-preset="objections"><div class="preset-title">Traitement des objections</div><div class="preset-desc">Réponses aux 5 objections fréquentes</div></button>
-          <button class="preset" data-preset="closing"><div class="preset-title">Closing RDV</div><div class="preset-desc">Conclure et fixer un créneau concret</div></button>
+          <button class="preset" data-preset="relance"><div class="preset-title">Relance</div><div class="preset-desc">Suite d'un premier contact sans r&eacute;ponse</div></button>
+          <button class="preset" data-preset="objections"><div class="preset-title">Traitement des objections</div><div class="preset-desc">R&eacute;ponses aux 5 objections fr&eacute;quentes</div></button>
+          <button class="preset" data-preset="closing"><div class="preset-title">Closing RDV</div><div class="preset-desc">Conclure et fixer un cr&eacute;neau concret</div></button>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px">
-        <h2 style="font-size:14px;font-weight:600;color:var(--t2)">Script personnalisé</h2>
-        <div class="fgrp" style="margin-bottom:0"><label for="sc-name">Prénom prospect</label><input class="fi" type="text" id="sc-name" placeholder="Marc"/></div>
-        <div class="fgrp" style="margin-bottom:0"><label for="sc-co">Établissement</label><input class="fi" type="text" id="sc-co" placeholder="Restaurant du Lac"/></div>
-        <div class="fgrp" style="margin-bottom:0"><label for="sc-sec">Secteur</label><input class="fi" type="text" id="sc-sec" placeholder="restauration, hôtellerie…"/></div>
+        <h2 style="font-size:14px;font-weight:600;color:var(--t2)">Script personnalis&eacute;</h2>
+        <div class="fgrp" style="margin-bottom:0"><label for="sc-name">Pr&eacute;nom prospect</label><input class="fi" type="text" id="sc-name" placeholder="Marc"/></div>
+        <div class="fgrp" style="margin-bottom:0"><label for="sc-co">&Eacute;tablissement</label><input class="fi" type="text" id="sc-co" placeholder="Restaurant du Lac"/></div>
+        <div class="fgrp" style="margin-bottom:0"><label for="sc-sec">Secteur</label><input class="fi" type="text" id="sc-sec" placeholder="restauration, h&ocirc;tellerie&hellip;"/></div>
         <div class="fgrp" style="margin-bottom:0"><label for="sc-type">Type d'appel</label><select class="fi" id="sc-type"><option value="premier contact">Premier contact</option><option value="relance">Relance</option><option value="closing">Closing RDV</option></select></div>
-        <div class="fgrp" style="margin-bottom:0"><label for="sc-info">Infos clés (optionnel)</label><textarea class="fi" id="sc-info" placeholder="ex : pas de site web…" style="min-height:72px"></textarea></div>
+        <div class="fgrp" style="margin-bottom:0"><label for="sc-info">Infos cl&eacute;s (optionnel)</label><textarea class="fi" id="sc-info" placeholder="ex&nbsp;: pas de site web&hellip;" style="min-height:72px"></textarea></div>
         <button class="btn btn-cf" id="btn-gen" style="width:100%">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          <span>Générer le script</span>
+          <span>G&eacute;n&eacute;rer le script</span>
         </button>
       </div>
     </div>
     <div style="margin-top:20px">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-        <span style="font-size:13px;font-weight:600;color:var(--t2)">Résultat</span>
+        <span style="font-size:13px;font-weight:600;color:var(--t2)">R&eacute;sultat</span>
         <button class="btn btn-ghost" id="btn-copy" style="font-size:12px;height:30px;padding:0 10px">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           Copier
         </button>
       </div>
-      <div class="sc-out" id="sc-out"><span class="sc-ph">Le script généré apparaîtra ici…</span></div>
+      <div class="sc-out" id="sc-out"><span class="sc-ph">Le script g&eacute;n&eacute;r&eacute; appara&icirc;tra ici&hellip;</span></div>
     </div>
   </div>
 </section>
@@ -399,16 +408,16 @@ tr.expanded td{border-bottom:none}
       <button class="btn btn-icon" id="modal-x" aria-label="Fermer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
     <div class="modal-grid">
-      <div class="fgrp" style="margin-bottom:0"><label for="m-name">Nom / Établissement *</label><input class="fi" type="text" id="m-name" placeholder="Restaurant du Lac"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-name">Nom / &Eacute;tablissement *</label><input class="fi" type="text" id="m-name" placeholder="Restaurant du Lac"/></div>
       <div class="fgrp" style="margin-bottom:0"><label for="m-city">Ville</label><input class="fi" type="text" id="m-city" placeholder="Sion"/></div>
-      <div class="fgrp" style="margin-bottom:0"><label for="m-type">Type</label><input class="fi" type="text" id="m-type" placeholder="Restaurant, Hôtel…"/></div>
-      <div class="fgrp" style="margin-bottom:0"><label for="m-phone">Téléphone</label><input class="fi" type="tel" id="m-phone" placeholder="+41 27 123 45 67"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-type">Type</label><input class="fi" type="text" id="m-type" placeholder="Restaurant, H&ocirc;tel&hellip;"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-phone">T&eacute;l&eacute;phone</label><input class="fi" type="tel" id="m-phone" placeholder="+41 27 123 45 67"/></div>
       <div class="fgrp" style="margin-bottom:0"><label for="m-email">Email</label><input class="fi" type="email" id="m-email" placeholder="contact@exemple.ch"/></div>
-      <div class="fgrp" style="margin-bottom:0"><label for="m-web">Site web</label><input class="fi" type="url" id="m-web" placeholder="https://…"/></div>
-      <div class="fgrp" style="margin-bottom:0"><label for="m-status">Statut</label><select class="fi" id="m-status"><option value="to_call">À appeler</option><option value="called">Appelé</option><option value="voicemail">Répondeur</option><option value="refusal">Refus</option><option value="video_rdv">RDV</option></select></div>
-      <div class="fgrp" style="margin-bottom:0"><label for="m-contact">Contact décideur</label><input class="fi" type="text" id="m-contact" placeholder="Prénom Nom"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-web">Site web</label><input class="fi" type="url" id="m-web" placeholder="https://&hellip;"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-status">Statut</label><select class="fi" id="m-status"><option value="to_call">&Agrave; appeler</option><option value="called">Appel&eacute;</option><option value="voicemail">R&eacute;pondeur</option><option value="refusal">Refus</option><option value="video_rdv">RDV</option></select></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-contact">Contact d&eacute;cideur</label><input class="fi" type="text" id="m-contact" placeholder="Pr&eacute;nom Nom"/></div>
     </div>
-    <div class="fgrp" style="margin-top:12px;margin-bottom:0"><label for="m-notes">Notes</label><textarea class="fi" id="m-notes" placeholder="Observations…" style="min-height:72px"></textarea></div>
+    <div class="fgrp" style="margin-top:12px;margin-bottom:0"><label for="m-notes">Notes</label><textarea class="fi" id="m-notes" placeholder="Observations&hellip;" style="min-height:72px"></textarea></div>
     <div style="display:flex;gap:10px;margin-top:20px;justify-content:flex-end">
       <button class="btn btn-ghost" id="modal-cancel">Annuler</button>
       <button class="btn btn-primary" id="modal-save"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Enregistrer</button>
@@ -423,14 +432,14 @@ tr.expanded td{border-bottom:none}
 <div class="glass-s" id="chat-panel" role="dialog" aria-label="Coach Alpinia">
   <div class="chat-hd">
     <div class="chat-av"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-    <div><div style="font-weight:700;font-size:13px">Coach Alpinia</div><div style="font-size:11px;color:var(--ok)">En ligne · Expert prospection</div></div>
+    <div><div style="font-weight:700;font-size:13px">Coach Alpinia</div><div style="font-size:11px;color:var(--ok)">En ligne &middot; Expert prospection</div></div>
     <button class="btn btn-icon" id="chat-x" aria-label="Fermer" style="margin-left:auto;border:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
   </div>
   <div class="chat-msgs" id="chat-msgs">
-    <div class="msg b">Salut ! Je suis Coach Alpinia, expert en prospection B2B. Demande-moi un script, comment gérer une objection, ou comment préparer ton prochain appel !</div>
+    <div class="msg b">Salut ! Je suis Coach Alpinia, expert en prospection B2B. Demande-moi un script, comment g&eacute;rer une objection, ou comment pr&eacute;parer ton prochain appel !</div>
   </div>
   <div class="chat-ft">
-    <input type="text" id="chat-inp" placeholder="Pose ta question…" autocomplete="off" aria-label="Message"/>
+    <input type="text" id="chat-inp" placeholder="Pose ta question&hellip;" autocomplete="off" aria-label="Message"/>
     <button class="chat-send" id="chat-send" aria-label="Envoyer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
   </div>
 </div>
@@ -439,285 +448,631 @@ tr.expanded td{border-bottom:none}
 </div>
 
 <script>
+(function() {
 'use strict';
-// ===== STATE =====
-const S={token:localStorage.getItem('ap_token')||null,user:null,prospects:[],enrichOpen:null,chatHistory:[],ccShowAll:false};
-const $=id=>document.getElementById(id);
-const esc=s=>s?String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'):'';
-const genId=()=>Math.random().toString(36).slice(2)+Date.now().toString(36);
+
+// ===== GLOBALS =====
+var S = {
+  token: null,
+  user: null,
+  prospects: [],
+  enrichOpen: null,
+  chatHistory: [],
+  ccShowAll: false
+};
+try { S.token = localStorage.getItem('ap_token') || null; } catch(e) {}
+
+function $(id) { return document.getElementById(id); }
+function esc(s) {
+  if (!s && s !== 0) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function genId() { return Math.random().toString(36).slice(2) + Date.now().toString(36); }
+
+// ===== LOADING SCREEN =====
+function hideLoading() {
+  var el = $('loading');
+  if (el) el.classList.add('hide');
+}
 
 // ===== TOAST =====
-const toast=(msg,type='')=>{
-  const el=document.createElement('div');el.className='toast'+(type?' '+type:'');el.textContent=msg;
-  $('toasts').appendChild(el);
-  setTimeout(()=>{el.classList.add('out');setTimeout(()=>el.remove(),250)},3500);
-};
+function toast(msg, type) {
+  var el = document.createElement('div');
+  el.className = 'toast' + (type ? ' ' + type : '');
+  el.textContent = msg;
+  var container = $('toasts');
+  if (!container) return;
+  container.appendChild(el);
+  setTimeout(function() {
+    el.classList.add('out');
+    setTimeout(function() { el.remove(); }, 250);
+  }, 3500);
+}
 
 // ===== STATUSES =====
-const ST={to_call:{l:'À appeler',c:'b-to_call'},called:{l:'Appelé',c:'b-called'},voicemail:{l:'Répondeur',c:'b-voicemail'},refusal:{l:'Refus',c:'b-refusal'},video_rdv:{l:'RDV',c:'b-video_rdv'}};
-const badge=s=>{const x=ST[s]||ST.to_call;return`<span class="badge ${x.c}">${x.l}</span>`;};
-const sopts=cur=>Object.entries(ST).map(([k,v])=>`<option value="${k}"${(cur||'to_call')===k?' selected':''}>${v.l}</option>`).join('');
+var ST = {
+  to_call:   { l: 'A appeler',  c: 'b-to_call'  },
+  called:    { l: 'Appele',     c: 'b-called'    },
+  voicemail: { l: 'Repondeur',  c: 'b-voicemail' },
+  refusal:   { l: 'Refus',      c: 'b-refusal'   },
+  video_rdv: { l: 'RDV',        c: 'b-video_rdv' }
+};
+var ST_LABELS = {
+  to_call: 'À appeler', called: 'Appelé',
+  voicemail: 'Répondeur', refusal: 'Refus', video_rdv: 'RDV'
+};
+function badge(s) {
+  var x = ST[s] || ST.to_call;
+  return '<span class="badge ' + x.c + '">' + (ST_LABELS[s] || x.l) + '</span>';
+}
+function sopts(cur) {
+  var keys = ['to_call','called','voicemail','refusal','video_rdv'];
+  return keys.map(function(k) {
+    return '<option value="' + k + '"' + ((cur || 'to_call') === k ? ' selected' : '') + '>' + (ST_LABELS[k] || k) + '</option>';
+  }).join('');
+}
 
 // ===== ROUTING =====
-const VIEWS=['login','dashboard','coldcall','scripts'];
-function nav(v,rep=false){
-  const h='#/'+v;
-  if(rep)history.replaceState(null,'',h);else if(location.hash!==h)history.pushState(null,'',h);
+var VIEWS = ['login','dashboard','coldcall','scripts'];
+function nav(v, rep) {
+  var h = '#/' + v;
+  if (rep) history.replaceState(null, '', h);
+  else if (location.hash !== h) history.pushState(null, '', h);
   render(v);
 }
-function render(v){
-  VIEWS.forEach(x=>{const el=document.querySelector('[data-view="'+x+'"]');if(el)el.classList.toggle('on',x===v);});
-  const auth=['dashboard','coldcall','scripts'].includes(v);
-  $('topnav').style.display=auth?'':'none';
-  $('bnav').style.display=auth?'flex':'none';
-  document.querySelectorAll('.nav-btn,.bnav-btn').forEach(b=>{b.classList.toggle('on',b.dataset.nav===v);b.setAttribute('aria-current',b.dataset.nav===v?'page':'false');});
-  if(v==='dashboard')renderDash();
-  if(v==='coldcall')renderCC();
+function render(v) {
+  VIEWS.forEach(function(x) {
+    var el = document.querySelector('[data-view="' + x + '"]');
+    if (el) el.classList.toggle('on', x === v);
+  });
+  var auth = ['dashboard','coldcall','scripts'].indexOf(v) !== -1;
+  var topnav = $('topnav');
+  var bnav = $('bnav');
+  if (topnav) topnav.style.display = auth ? '' : 'none';
+  if (bnav) bnav.style.display = auth ? 'flex' : 'none';
+  document.querySelectorAll('.nav-btn,.bnav-btn').forEach(function(b) {
+    b.classList.toggle('on', b.dataset.nav === v);
+    b.setAttribute('aria-current', b.dataset.nav === v ? 'page' : 'false');
+  });
+  if (v === 'dashboard') renderDash();
+  if (v === 'coldcall') renderCC();
 }
-window.addEventListener('hashchange',()=>{
-  const h=location.hash.replace('#/','').split('/')[0]||'login';
-  if(!S.token&&h!=='login'){nav('login',true);return;}
-  if(S.token&&h==='login'){nav('dashboard',true);return;}
+window.addEventListener('hashchange', function() {
+  var h = location.hash.replace('#/', '').split('/')[0] || 'login';
+  if (!S.token && h !== 'login') { nav('login', true); return; }
+  if (S.token && h === 'login') { nav('dashboard', true); return; }
   render(h);
 });
 
 // ===== API =====
-async function api(fn,body){
-  try{
-    const r=await fetch('/.netlify/functions/'+fn,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-    const txt=await r.text();
-    try{
-      const d=JSON.parse(txt);
-      if(!d.error&&!d.token&&!d.ok&&!d.content&&!d.enrichedData&&!d.user&&!d.prospects){
-        if(d.message)return{error:d.message};
-        if(!r.ok)return{error:'Erreur serveur ('+r.status+')'};
+function api(fn, body) {
+  return fetch('/.netlify/functions/' + fn, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  }).then(function(r) {
+    return r.text().then(function(txt) {
+      var d;
+      try { d = JSON.parse(txt); } catch(e) {
+        return { error: 'Erreur serveur (' + r.status + ')' };
       }
+      if (!r.ok && !d.error) d.error = 'Erreur serveur (' + r.status + ')';
       return d;
-    }catch(e){return{error:'Erreur '+r.status+(txt?': '+txt.slice(0,120):'');};}
-  }catch(e){return{error:'Connexion impossible. Vérifie ta connexion internet.'};}
+    });
+  }).catch(function(e) {
+    return { error: 'Connexion impossible. Vérifie ta connexion internet.' };
+  });
 }
 
 // ===== PROSPECTS (localStorage) =====
-function loadProspects(){
-  try{S.prospects=JSON.parse(localStorage.getItem('ap_prospects')||'[]');}catch{S.prospects=[];}
+function loadProspects() {
+  try {
+    var raw = localStorage.getItem('ap_prospects') || '[]';
+    S.prospects = JSON.parse(raw);
+    if (!Array.isArray(S.prospects)) S.prospects = [];
+  } catch(e) { S.prospects = []; }
 }
-function saveProspects(){
-  try{localStorage.setItem('ap_prospects',JSON.stringify(S.prospects));}catch(e){toast('Erreur de sauvegarde locale.','err');}
+function saveProspects() {
+  try { localStorage.setItem('ap_prospects', JSON.stringify(S.prospects)); }
+  catch(e) { toast('Erreur de sauvegarde locale.', 'err'); }
 }
 
 // ===== AUTH =====
-async function checkSession(){
-  if(!S.token){nav('login',true);return;}
-  const d=await api('auth',{action:'me',token:S.token});
-  if(d.error){localStorage.removeItem('ap_token');S.token=null;nav('login',true);return;}
-  S.user=d.user;const el=$('nav-user');if(el)el.textContent=S.user.name||S.user.email;
-  loadProspects();
-  const h=location.hash.replace('#/','').split('/')[0]||'dashboard';
-  nav(['dashboard','coldcall','scripts'].includes(h)?h:'dashboard',true);
+function checkSession() {
+  if (!S.token) {
+    hideLoading();
+    nav('login', true);
+    return;
+  }
+  api('auth', { action: 'me', token: S.token }).then(function(d) {
+    hideLoading();
+    if (d.error) {
+      try { localStorage.removeItem('ap_token'); } catch(e) {}
+      S.token = null;
+      nav('login', true);
+      return;
+    }
+    S.user = d.user;
+    var navUser = $('nav-user');
+    if (navUser && S.user) navUser.textContent = S.user.name || S.user.email || '';
+    loadProspects();
+    var h = location.hash.replace('#/', '').split('/')[0] || 'dashboard';
+    var valid = ['dashboard','coldcall','scripts'];
+    nav(valid.indexOf(h) !== -1 ? h : 'dashboard', true);
+  });
 }
 
-async function doLogin(){
-  const email=$('li-email').value.trim(),pw=$('li-pw').value;
-  $('li-err').textContent='';
-  if(!email){$('li-email-err').textContent='Email requis.';$('li-email-err').classList.add('on');return;}
-  $('li-email-err').classList.remove('on');
-  const btn=$('btn-login');btn.disabled=true;btn.textContent='Connexion…';
-  const d=await api('auth',{action:'login',email,password:pw});
-  btn.disabled=false;btn.textContent='Se connecter';
-  if(d.error){$('li-err').textContent=d.error;return;}
-  S.token=d.token;S.user=d.user;localStorage.setItem('ap_token',d.token);
-  const el=$('nav-user');if(el)el.textContent=S.user.name||S.user.email;
-  loadProspects();nav('dashboard',true);
+function doLogin() {
+  var emailEl = $('li-email');
+  var pwEl = $('li-pw');
+  var errEl = $('li-err');
+  var emailErrEl = $('li-email-err');
+  var btn = $('btn-login');
+  if (!emailEl || !pwEl) return;
+  var email = emailEl.value.trim();
+  var pw = pwEl.value;
+  if (errEl) errEl.textContent = '';
+  if (!email) {
+    if (emailErrEl) { emailErrEl.textContent = 'Email requis.'; emailErrEl.classList.add('on'); }
+    return;
+  }
+  if (emailErrEl) emailErrEl.classList.remove('on');
+  if (btn) { btn.disabled = true; btn.textContent = 'Connexion…'; }
+  api('auth', { action: 'login', email: email, password: pw }).then(function(d) {
+    if (btn) { btn.disabled = false; btn.textContent = 'Se connecter'; }
+    if (d.error) {
+      if (errEl) errEl.textContent = d.error;
+      return;
+    }
+    S.token = d.token;
+    S.user = d.user;
+    try { localStorage.setItem('ap_token', d.token); } catch(e) {}
+    var navUser = $('nav-user');
+    if (navUser && S.user) navUser.textContent = S.user.name || S.user.email || '';
+    loadProspects();
+    nav('dashboard', true);
+  });
 }
 
-async function doLogout(){
-  await api('auth',{action:'logout',token:S.token});
-  localStorage.removeItem('ap_token');S.token=null;S.user=null;S.prospects=[];nav('login',true);
+function doLogout() {
+  api('auth', { action: 'logout', token: S.token }).then(function() {
+    try { localStorage.removeItem('ap_token'); } catch(e) {}
+    S.token = null; S.user = null; S.prospects = [];
+    nav('login', true);
+  });
 }
 
 // ===== DASHBOARD =====
-function updateStats(){
-  $('s-total').textContent=S.prospects.length;
-  $('s-tocall').textContent=S.prospects.filter(p=>!p.status||p.status==='to_call').length;
-  $('s-rdv').textContent=S.prospects.filter(p=>p.status==='video_rdv').length;
+function updateStats() {
+  var total = $('s-total'), tocall = $('s-tocall'), rdv = $('s-rdv');
+  if (total) total.textContent = S.prospects.length;
+  if (tocall) tocall.textContent = S.prospects.filter(function(p) { return !p.status || p.status === 'to_call'; }).length;
+  if (rdv) rdv.textContent = S.prospects.filter(function(p) { return p.status === 'video_rdv'; }).length;
 }
-function getFiltered(){
-  const q=($('d-search').value||'').toLowerCase(),f=$('d-filter').value;
-  return S.prospects.filter(p=>{
-    const m=!q||[p.name,p.city,p.type,p.notes,p.contact].filter(Boolean).join(' ').toLowerCase().includes(q);
-    return m&&(!f||(p.status||'to_call')===f);
+function getFiltered() {
+  var ds = $('d-search'), df = $('d-filter');
+  var q = (ds ? ds.value || '' : '').toLowerCase();
+  var f = df ? df.value : '';
+  return S.prospects.filter(function(p) {
+    var m = !q || [p.name, p.city, p.type, p.notes, p.contact].filter(Boolean).join(' ').toLowerCase().indexOf(q) !== -1;
+    return m && (!f || (p.status || 'to_call') === f);
   });
 }
-function renderDash(){
-  updateStats();const l=getFiltered();renderTable(l);renderCards(l);
+function renderDash() {
+  updateStats();
+  var l = getFiltered();
+  renderTable(l);
+  renderCards(l);
 }
-function renderTable(list){
-  const tbody=$('d-tbody');
-  if(!list.length){tbody.innerHTML='<tr><td colspan="6"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Aucun prospect.<br>Ajoutez le premier !</p><button class="btn btn-cf" onclick="openModal()"><span>Ajouter un prospect</span></button></div></td></tr>';return;}
-  tbody.innerHTML=list.map(p=>pRow(p)).join('');
+function renderTable(list) {
+  var tbody = $('d-tbody');
+  if (!tbody) return;
+  if (!list.length) {
+    tbody.innerHTML = '<tr><td colspan="6"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Aucun prospect.<br>Ajoutez le premier !</p><button class="btn btn-cf" onclick="openModal()"><span>Ajouter un prospect</span></button></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = list.map(pRow).join('');
 }
-function pRow(p){
-  const isOpen=S.enrichOpen===p.id;
-  return`<tr data-id="${p.id}"${isOpen?' class="expanded"':''}><td><div class="name-cell">${esc(p.name)}<small>${esc(p.contact||'')}</small></div></td><td>${esc(p.city||'—')}</td><td style="color:var(--t2);font-size:12px">${esc(p.type||'—')}</td><td><select class="ss" data-pid="${p.id}" onchange="chgStatus(this)" style="height:26px;font-size:11px">${sopts(p.status)}</select></td><td style="color:var(--t2);font-size:12px;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(p.notes||'')}</td><td><div class="row-acts">
-<button class="btn btn-icon" onclick="toggleEnrich('${p.id}')" title="Enrichissement IA" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></button>
-<button class="btn btn-icon" onclick="openModal('${p.id}')" title="Modifier" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-<button class="btn btn-icon" onclick="delProspect('${p.id}')" title="Supprimer" style="color:var(--err);width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button>
-</div></td></tr>${isOpen?eRow(p):''}`;
+function pRow(p) {
+  var isOpen = S.enrichOpen === p.id;
+  return '<tr data-id="' + p.id + '"' + (isOpen ? ' class="expanded"' : '') + '>'
+    + '<td><div class="name-cell">' + esc(p.name) + '<small>' + esc(p.contact || '') + '</small></div></td>'
+    + '<td>' + esc(p.city || '—') + '</td>'
+    + '<td style="color:var(--t2);font-size:12px">' + esc(p.type || '—') + '</td>'
+    + '<td><select class="ss" data-pid="' + p.id + '" onchange="chgStatus(this)" style="height:26px;font-size:11px">' + sopts(p.status) + '</select></td>'
+    + '<td style="color:var(--t2);font-size:12px;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + esc(p.notes || '') + '</td>'
+    + '<td><div class="row-acts">'
+    + '<button class="btn btn-icon" onclick="toggleEnrich(\'' + p.id + '\')" title="Enrichissement IA" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></button>'
+    + '<button class="btn btn-icon" onclick="openModal(\'' + p.id + '\')" title="Modifier" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>'
+    + '<button class="btn btn-icon" onclick="delProspect(\'' + p.id + '\')" title="Supprimer" style="color:var(--err);width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button>'
+    + '</div></td></tr>'
+    + (isOpen ? eRow(p) : '');
 }
-function eRow(p){
-  if(p._enriching)return`<tr class="enrich-row"><td colspan="6"><div class="enrich-panel"><p style="font-size:13px;color:var(--t2)">Recherche en cours <span class="td"></span><span class="td"></span><span class="td"></span></p></div></td></tr>`;
-  if(!p._enrich)return`<tr class="enrich-row"><td colspan="6"><div class="enrich-panel"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><span style="font-size:13px;font-weight:600">Enrichissement IA — ${esc(p.name)}</span><button class="btn btn-cf" onclick="doEnrich('${p.id}')" style="height:36px;font-size:12px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Rechercher sur le web</span></button></div><p style="font-size:12px;color:var(--t3)">OpenAI Web Search enrichit automatiquement ce prospect.</p></div></td></tr>`;
-  const e=p._enrich,fields=[{k:'Adresse',v:e.full_address},{k:'Téléphone',v:e.phone},{k:'Email',v:e.email},{k:'Horaires',v:e.opening_hours},{k:'Note Google',v:e.google_rating},{k:'Employés',v:e.employees_approx},{k:'Décideur',v:e.key_decision_maker},{k:'Description',v:e.description}].filter(f=>f.v&&f.v!=='null'&&f.v!==null);
-  return`<tr class="enrich-row"><td colspan="6"><div class="enrich-panel"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><span style="font-size:13px;font-weight:600">Données enrichies — ${esc(p.name)}</span><button class="btn btn-ghost" onclick="doEnrich('${p.id}')" style="font-size:11px;height:28px;padding:0 10px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg> Actualiser</button></div><div class="enrich-grid">${fields.map(f=>`<div class="ei"><div class="ei-k">${esc(f.k)}</div><div class="ei-v">${esc(String(f.v))}</div></div>`).join('')}</div></div></td></tr>`;
+function eRow(p) {
+  if (p._enriching) {
+    return '<tr class="enrich-row"><td colspan="6"><div class="enrich-panel"><p style="font-size:13px;color:var(--t2)">Recherche en cours <span class="dot-a"></span><span class="dot-a"></span><span class="dot-a"></span></p></div></td></tr>';
+  }
+  if (!p._enrich) {
+    return '<tr class="enrich-row"><td colspan="6"><div class="enrich-panel">'
+      + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">'
+      + '<span style="font-size:13px;font-weight:600">Enrichissement IA — ' + esc(p.name) + '</span>'
+      + '<button class="btn btn-cf" onclick="doEnrich(\'' + p.id + '\')" style="height:36px;font-size:12px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Rechercher sur le web</span></button>'
+      + '</div><p style="font-size:12px;color:var(--t3)">OpenAI Web Search enrichit automatiquement ce prospect.</p>'
+      + '</div></td></tr>';
+  }
+  var e = p._enrich;
+  var fields = [
+    { k: 'Adresse', v: e.full_address },
+    { k: 'Téléphone', v: e.phone },
+    { k: 'Email', v: e.email },
+    { k: 'Horaires', v: e.opening_hours },
+    { k: 'Note Google', v: e.google_rating },
+    { k: 'Employés', v: e.employees_approx },
+    { k: 'Décideur', v: e.key_decision_maker },
+    { k: 'Description', v: e.description }
+  ].filter(function(f) { return f.v && f.v !== 'null'; });
+  return '<tr class="enrich-row"><td colspan="6"><div class="enrich-panel">'
+    + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">'
+    + '<span style="font-size:13px;font-weight:600">Données enrichies — ' + esc(p.name) + '</span>'
+    + '<button class="btn btn-ghost" onclick="doEnrich(\'' + p.id + '\')" style="font-size:11px;height:28px;padding:0 10px">'
+    + '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg> Actualiser</button>'
+    + '</div><div class="enrich-grid">'
+    + fields.map(function(f) { return '<div class="ei"><div class="ei-k">' + esc(f.k) + '</div><div class="ei-v">' + esc(String(f.v)) + '</div></div>'; }).join('')
+    + '</div></div></td></tr>';
 }
-function renderCards(list){
-  const c=$('d-cards');
-  if(!list.length){c.innerHTML='<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Aucun prospect.</p><button class="btn btn-cf" onclick="openModal()"><span>Ajouter</span></button></div>';return;}
-  c.innerHTML=list.map(p=>`<div class="p-card card"><div class="p-card-h"><div><div class="p-card-n">${esc(p.name)}</div><div class="p-card-m">${[p.type,p.city].filter(Boolean).join(' · ')||'—'}</div></div>${badge(p.status||'to_call')}</div>${p.notes?`<div style="font-size:12px;color:var(--t2);line-height:1.5">${esc(p.notes)}</div>`:''}<div class="p-card-f"><select class="ss" data-pid="${p.id}" onchange="chgStatus(this)">${sopts(p.status)}</select><div style="display:flex;gap:4px">
-<button class="btn btn-icon" onclick="toggleEnrich('${p.id}')" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></button>
-<button class="btn btn-icon" onclick="openModal('${p.id}')" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-<button class="btn btn-icon" onclick="delProspect('${p.id}')" style="color:var(--err);width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button>
-</div></div></div>`).join('');
+function renderCards(list) {
+  var c = $('d-cards');
+  if (!c) return;
+  if (!list.length) {
+    c.innerHTML = '<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Aucun prospect.</p><button class="btn btn-cf" onclick="openModal()"><span>Ajouter</span></button></div>';
+    return;
+  }
+  c.innerHTML = list.map(function(p) {
+    return '<div class="p-card card">'
+      + '<div class="p-card-h"><div><div class="p-card-n">' + esc(p.name) + '</div>'
+      + '<div class="p-card-m">' + esc([p.type, p.city].filter(Boolean).join(' · ') || '—') + '</div></div>'
+      + badge(p.status || 'to_call') + '</div>'
+      + (p.notes ? '<div style="font-size:12px;color:var(--t2);line-height:1.5">' + esc(p.notes) + '</div>' : '')
+      + '<div class="p-card-f"><select class="ss" data-pid="' + p.id + '" onchange="chgStatus(this)">' + sopts(p.status) + '</select>'
+      + '<div style="display:flex;gap:4px">'
+      + '<button class="btn btn-icon" onclick="toggleEnrich(\'' + p.id + '\')" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></button>'
+      + '<button class="btn btn-icon" onclick="openModal(\'' + p.id + '\')" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>'
+      + '<button class="btn btn-icon" onclick="delProspect(\'' + p.id + '\')" style="color:var(--err);width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button>'
+      + '</div></div></div>';
+  }).join('');
 }
-function chgStatus(sel){const p=S.prospects.find(x=>x.id===sel.dataset.pid);if(!p)return;p.status=sel.value;saveProspects();renderDash();renderCC();}
-function delProspect(id){if(!confirm('Supprimer ce prospect ?'))return;S.prospects=S.prospects.filter(p=>p.id!==id);if(S.enrichOpen===id)S.enrichOpen=null;saveProspects();renderDash();renderCC();toast('Supprimé.','ok');}
-function toggleEnrich(id){S.enrichOpen=S.enrichOpen===id?null:id;renderDash();}
-async function doEnrich(id){
-  const p=S.prospects.find(x=>x.id===id);if(!p)return;
-  p._enriching=true;delete p._enrich;renderDash();
-  const d=await api('enrich',{prospectName:p.name,website:p.web,type:p.type,city:p.city});
-  p._enriching=false;
-  if(d.error){toast('Enrichissement : '+d.error,'err');renderDash();return;}
-  p._enrich=d.enrichedData;renderDash();toast('Enrichissement terminé — '+p.name,'ok');
+function chgStatus(sel) {
+  var p = S.prospects.filter(function(x) { return x.id === sel.dataset.pid; })[0];
+  if (!p) return;
+  p.status = sel.value;
+  saveProspects();
+  renderDash();
+  renderCC();
+}
+function delProspect(id) {
+  if (!confirm('Supprimer ce prospect ?')) return;
+  S.prospects = S.prospects.filter(function(p) { return p.id !== id; });
+  if (S.enrichOpen === id) S.enrichOpen = null;
+  saveProspects();
+  renderDash();
+  renderCC();
+  toast('Supprimé.', 'ok');
+}
+function toggleEnrich(id) {
+  S.enrichOpen = S.enrichOpen === id ? null : id;
+  renderDash();
+}
+function doEnrich(id) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p) return;
+  p._enriching = true;
+  delete p._enrich;
+  renderDash();
+  api('enrich', { prospectName: p.name, website: p.web, type: p.type, city: p.city }).then(function(d) {
+    p._enriching = false;
+    if (d.error) { toast('Enrichissement : ' + d.error, 'err'); renderDash(); return; }
+    p._enrich = d.enrichedData;
+    renderDash();
+    toast('Enrichissement terminé — ' + p.name, 'ok');
+  });
 }
 
 // ===== COLD CALL =====
-function renderCC(){
-  const list=S.ccShowAll?S.prospects:S.prospects.filter(p=>!p.status||p.status==='to_call'||p.status==='voicemail');
-  const toCall=S.prospects.filter(p=>!p.status||p.status==='to_call').length;
-  const treated=S.prospects.filter(p=>p.status&&p.status!=='to_call').length;
-  $('cc-count').textContent=`${toCall} à appeler · ${treated} traités`;
-  const btn=$('cc-toggle');if(btn)btn.textContent=S.ccShowAll?'À appeler seulement':'Voir tous';
-  const cont=$('cc-list');
-  if(!list.length){cont.innerHTML='<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><p>Aucun prospect à appeler.</p></div>';return;}
-  const dc=s=>s==='video_rdv'?'var(--ok)':s==='refusal'?'var(--err)':s==='voicemail'?'var(--warn)':s==='called'?'var(--t3)':'var(--violet2)';
-  cont.innerHTML=list.map(p=>`<div class="cc-item card"><div style="width:8px;height:8px;border-radius:50%;background:${dc(p.status)};flex:none"></div><div class="cc-info"><div class="cc-name">${esc(p.name)}</div><div class="cc-sub">${[p.phone,p.city,p.type].filter(Boolean).join(' · ')||'—'}</div></div><div class="cc-acts">${p.phone?`<a href="tel:${esc(p.phone)}" class="btn btn-icon" aria-label="Appeler" style="width:36px;height:36px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>`:''}
-<select class="ss" data-pid="${p.id}" onchange="chgStatus(this)" aria-label="Statut">${sopts(p.status)}</select></div></div>`).join('');
+function renderCC() {
+  var list = S.ccShowAll
+    ? S.prospects
+    : S.prospects.filter(function(p) { return !p.status || p.status === 'to_call' || p.status === 'voicemail'; });
+  var toCall = S.prospects.filter(function(p) { return !p.status || p.status === 'to_call'; }).length;
+  var treated = S.prospects.filter(function(p) { return p.status && p.status !== 'to_call'; }).length;
+  var ccCount = $('cc-count');
+  var ccToggle = $('cc-toggle');
+  var cont = $('cc-list');
+  if (ccCount) ccCount.textContent = toCall + ' à appeler · ' + treated + ' traités';
+  if (ccToggle) ccToggle.textContent = S.ccShowAll ? 'À appeler seulement' : 'Voir tous';
+  if (!cont) return;
+  if (!list.length) {
+    cont.innerHTML = '<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><p>Aucun prospect à appeler.</p></div>';
+    return;
+  }
+  function dc(s) {
+    if (s === 'video_rdv') return 'var(--ok)';
+    if (s === 'refusal') return 'var(--err)';
+    if (s === 'voicemail') return 'var(--warn)';
+    if (s === 'called') return 'var(--t3)';
+    return 'var(--violet2)';
+  }
+  cont.innerHTML = list.map(function(p) {
+    return '<div class="cc-item card">'
+      + '<div style="width:8px;height:8px;border-radius:50%;background:' + dc(p.status) + ';flex:none"></div>'
+      + '<div class="cc-info"><div class="cc-name">' + esc(p.name) + '</div>'
+      + '<div class="cc-sub">' + esc([p.phone, p.city, p.type].filter(Boolean).join(' · ') || '—') + '</div></div>'
+      + '<div class="cc-acts">'
+      + (p.phone ? '<a href="tel:' + esc(p.phone) + '" class="btn btn-icon" aria-label="Appeler" style="width:36px;height:36px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>' : '')
+      + '<select class="ss" data-pid="' + p.id + '" onchange="chgStatus(this)" aria-label="Statut">' + sopts(p.status) + '</select>'
+      + '</div></div>';
+  }).join('');
 }
 
 // ===== MODAL =====
-let editId=null;
-function openModal(id){
-  editId=id||null;const p=id?S.prospects.find(x=>x.id===id):null;
-  $('modal-title').textContent=p?'Modifier le prospect':'Nouveau prospect';
-  $('m-name').value=p?.name||'';$('m-city').value=p?.city||'';$('m-type').value=p?.type||'';
-  $('m-phone').value=p?.phone||'';$('m-email').value=p?.email||'';$('m-web').value=p?.web||'';
-  $('m-status').value=p?.status||'to_call';$('m-contact').value=p?.contact||'';$('m-notes').value=p?.notes||'';
-  $('modal').classList.add('on');setTimeout(()=>$('m-name').focus(),50);
+var editId = null;
+function openModal(id) {
+  editId = id || null;
+  var p = id ? S.prospects.filter(function(x) { return x.id === id; })[0] : null;
+  var title = $('modal-title');
+  if (title) title.textContent = p ? 'Modifier le prospect' : 'Nouveau prospect';
+  function val(id, v) { var el = $(id); if (el) el.value = v || ''; }
+  val('m-name', p ? p.name : '');
+  val('m-city', p ? p.city : '');
+  val('m-type', p ? p.type : '');
+  val('m-phone', p ? p.phone : '');
+  val('m-email', p ? p.email : '');
+  val('m-web', p ? p.web : '');
+  val('m-status', p ? (p.status || 'to_call') : 'to_call');
+  val('m-contact', p ? p.contact : '');
+  val('m-notes', p ? p.notes : '');
+  var modal = $('modal');
+  if (modal) modal.classList.add('on');
+  setTimeout(function() { var el = $('m-name'); if (el) el.focus(); }, 50);
 }
-function closeModal(){$('modal').classList.remove('on');editId=null;}
-function saveModal(){
-  const name=$('m-name').value.trim();if(!name){toast('Le nom est requis.','err');$('m-name').focus();return;}
-  if(editId){
-    const p=S.prospects.find(x=>x.id===editId);
-    if(p){p.name=name;p.city=$('m-city').value.trim();p.type=$('m-type').value.trim();p.phone=$('m-phone').value.trim();p.email=$('m-email').value.trim();p.web=$('m-web').value.trim();p.status=$('m-status').value;p.contact=$('m-contact').value.trim();p.notes=$('m-notes').value.trim();}
-  }else{
-    S.prospects.unshift({id:genId(),name,city:$('m-city').value.trim(),type:$('m-type').value.trim(),phone:$('m-phone').value.trim(),email:$('m-email').value.trim(),web:$('m-web').value.trim(),status:$('m-status').value,contact:$('m-contact').value.trim(),notes:$('m-notes').value.trim(),at:Date.now()});
+function closeModal() {
+  var modal = $('modal');
+  if (modal) modal.classList.remove('on');
+  editId = null;
+}
+function saveModal() {
+  var nameEl = $('m-name');
+  var name = nameEl ? nameEl.value.trim() : '';
+  if (!name) { toast('Le nom est requis.', 'err'); if (nameEl) nameEl.focus(); return; }
+  function fv(id) { var el = $(id); return el ? el.value.trim() : ''; }
+  function fvr(id) { var el = $(id); return el ? el.value : ''; }
+  if (editId) {
+    var p = S.prospects.filter(function(x) { return x.id === editId; })[0];
+    if (p) {
+      p.name = name; p.city = fv('m-city'); p.type = fv('m-type');
+      p.phone = fv('m-phone'); p.email = fv('m-email'); p.web = fv('m-web');
+      p.status = fvr('m-status'); p.contact = fv('m-contact'); p.notes = fv('m-notes');
+    }
+  } else {
+    S.prospects.unshift({
+      id: genId(), name: name, city: fv('m-city'), type: fv('m-type'),
+      phone: fv('m-phone'), email: fv('m-email'), web: fv('m-web'),
+      status: fvr('m-status'), contact: fv('m-contact'), notes: fv('m-notes'), at: Date.now()
+    });
   }
-  saveProspects();renderDash();renderCC();closeModal();toast(editId?'Prospect modifié.':'Prospect ajouté.','ok');
+  saveProspects();
+  renderDash();
+  renderCC();
+  closeModal();
+  toast(editId ? 'Prospect modifié.' : 'Prospect ajouté.', 'ok');
 }
 
 // ===== SCRIPTS =====
-const PRESETS={
-  coldb2b:{s:'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',m:'Génère un script de cold call B2B complet pour vendre un site web à une PME en Suisse. Structure : 3 blocs AIDA (Accroche, Intérêt+Désir, Action). Ton direct, authentique. Max 200 mots.'},
-  relance:{s:'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',m:'Génère un script de relance pour un prospect sans réponse au premier appel. Rappel contexte, nouvelle accroche, closing RDV. Max 150 mots.'},
-  objections:{s:'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',m:'Liste les 5 objections les plus fréquentes lors d\'un cold call pour vente de site web en Suisse, avec 1-2 répliques efficaces chacune. Format structuré.'},
-  closing:{s:'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',m:'Génère 3 techniques de closing pour fixer un RDV par téléphone avec les formulations exactes. Inclure la méthode des 2 créneaux. Max 150 mots.'},
+var COACH_SYS = 'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.';
+var PRESETS = {
+  coldb2b: {
+    s: COACH_SYS,
+    m: 'Génère un script de cold call B2B complet pour vendre un site web à une PME en Suisse. Structure : 3 blocs AIDA (Accroche, Intérêt+Désir, Action). Ton direct, authentique. Max 200 mots.'
+  },
+  relance: {
+    s: COACH_SYS,
+    m: 'Génère un script de relance pour un prospect sans réponse au premier appel. Rappel contexte, nouvelle accroche, closing RDV. Max 150 mots.'
+  },
+  objections: {
+    s: COACH_SYS,
+    m: 'Liste les 5 objections les plus fréquentes lors d\'un cold call pour vente de site web en Suisse, avec 1-2 répliques efficaces chacune. Format structuré.'
+  },
+  closing: {
+    s: COACH_SYS,
+    m: 'Génère 3 techniques de closing pour fixer un RDV par téléphone avec les formulations exactes. Inclure la méthode des 2 créneaux. Max 150 mots.'
+  }
 };
-async function genScript(sys,msg){
-  const btn=$('btn-gen');btn.disabled=true;
-  const out=$('sc-out');out.innerHTML='<span class="sc-ph">Génération en cours <span class="td"></span><span class="td"></span><span class="td"></span></span>';
-  const d=await api('ai',{system:sys,messages:[{role:'user',content:msg}]});
-  btn.disabled=false;
-  if(d.error){out.innerHTML=`<span style="color:var(--err)">${esc(d.error)}</span>`;return;}
-  out.textContent=d.content?.[0]?.text||'';
+function genScript(sys, msg) {
+  var btn = $('btn-gen');
+  var out = $('sc-out');
+  if (btn) btn.disabled = true;
+  if (out) out.innerHTML = '<span class="sc-ph">Génération en cours <span class="dot-a"></span><span class="dot-a"></span><span class="dot-a"></span></span>';
+  api('ai', { system: sys, messages: [{ role: 'user', content: msg }] }).then(function(d) {
+    if (btn) btn.disabled = false;
+    if (d.error) {
+      if (out) out.innerHTML = '<span style="color:var(--err)">' + esc(d.error) + '</span>';
+      return;
+    }
+    var text = (d.content && d.content[0] && d.content[0].text) ? d.content[0].text : '';
+    if (out) out.textContent = text;
+  });
 }
 
 // ===== CHATBOT =====
-const COACH=`Tu es Coach Alpinia, l'assistant de prospection B2B intégré à Alpinia Prospect Pro. Tu aides l'équipe d'Alpinia Web Craft à décrocher des rendez-vous par cold call pour vendre des sites web à des PME et établissements (restaurants, commerces, hôtellerie) en Suisse romande / Valais.
+var COACH = [
+  'Tu es Coach Alpinia, l\'assistant de prospection B2B intégré à Alpinia Prospect Pro.',
+  'Tu aides l\'équipe d\'Alpinia Web Craft à décrocher des rendez-vous par cold call pour vendre des sites web',
+  'à des PME et établissements (restaurants, commerces, hôtellerie) en Suisse romande / Valais.',
+  '',
+  'Rôle : conseiller en temps réel pendant la prospection. Réponds en français, concis et actionnable',
+  '(max ~120 mots), ton direct et chaleureux, jamais corporate.',
+  '',
+  'PRINCIPES :',
+  '- L\'objectif d\'un cold call, c\'est obtenir un RDV, pas vendre au téléphone.',
+  '- Les 10 premières secondes sont décisives : créer un "pattern interrupt".',
+  '- Toujours un script en support, jamais récité mot pour mot.',
+  '- Questions ouvertes, jamais une rafale de questions fermées.',
+  '- Parler bénéfices et résultats concrets, jamais de détails techniques.',
+  '- S\'adapter au bon timing (ex : ne pas appeler un resto en plein service).',
+  '',
+  'FRAMEWORK AIDA :',
+  '- Accroche : qui je suis / ce que je fais / confirmer l\'identité.',
+  '  Ex : "Bonjour, c\'est bien [Prénom] ? Je suis Noé d\'Alpinia Web Craft — 30 secondes ?"',
+  '- Intérêt : avantage clé orienté bénéfice.',
+  '- Désir : preuve sociale + chiffre concret (ex : "+15% de clientèle").',
+  '- Action : 2 créneaux proposés directement.',
+  '',
+  'OBJECTIONS :',
+  '- "Envoyez un mail" -> proposer 10 min à la place.',
+  '- "On est déjà équipés" -> compléter, pas remplacer.',
+  '- "Pas le temps" -> demander 90 secondes pour 2 questions.',
+  '- Secrétaire -> ton d\'autorité, rester bref.',
+  '',
+  'Si on demande un script : 3 blocs AIDA prêts à lire.',
+  'Si c\'est une objection : 1-2 répliques max.',
+  'Toujours orienté action vers le RDV.'
+].join('\n');
 
-Rôle : conseiller en temps réel pendant la prospection. Réponds en français, concis et actionnable (max ~120 mots), ton direct et chaleureux, jamais corporate.
-
-PRINCIPES :
-- L'objectif d'un cold call, c'est obtenir un RDV, pas vendre au téléphone.
-- Les 10 premières secondes sont décisives : créer un "pattern interrupt".
-- Toujours un script en support, jamais récité mot pour mot.
-- Questions ouvertes, jamais une rafale de questions fermées.
-- Parler bénéfices et résultats concrets, jamais de détails techniques.
-- S'adapter au bon timing (ex : ne pas appeler un resto en plein service).
-
-FRAMEWORK AIDA :
-- Accroche : qui je suis / ce que je fais / confirmer l'identité. Ex : "Bonjour, c'est bien [Prénom] ? Je suis Noé d'Alpinia Web Craft — 30 secondes ?"
-- Intérêt : avantage clé orienté bénéfice.
-- Désir : preuve sociale + chiffre concret (ex : "+15% de clientèle").
-- Action : 2 créneaux proposés directement.
-
-OBJECTIONS :
-- "Envoyez un mail" → proposer 10 min à la place.
-- "On est déjà équipés" → compléter, pas remplacer.
-- "Pas le temps" → demander 90 secondes pour 2 questions.
-- Secrétaire → ton d'autorité, rester bref.
-
-Si on demande un script : 3 blocs AIDA prêts à lire. Si c'est une objection : 1-2 répliques max. Toujours orienté action vers le RDV.`;
-
-function chatAppend(role,text){
-  const el=document.createElement('div');el.className='msg '+role;el.textContent=text;
-  $('chat-msgs').appendChild(el);$('chat-msgs').scrollTop=$('chat-msgs').scrollHeight;return el;
+function chatAppend(role, text) {
+  var msgs = $('chat-msgs');
+  if (!msgs) return;
+  var el = document.createElement('div');
+  el.className = 'msg ' + role;
+  el.textContent = text;
+  msgs.appendChild(el);
+  msgs.scrollTop = msgs.scrollHeight;
+  return el;
 }
-async function sendChat(){
-  const inp=$('chat-inp'),text=inp.value.trim();if(!text)return;
-  inp.value='';chatAppend('u',text);S.chatHistory.push({role:'user',content:text});
-  const typing=document.createElement('div');typing.className='typing';
-  typing.innerHTML='<span class="td"></span><span class="td"></span><span class="td"></span>';
-  $('chat-msgs').appendChild(typing);$('chat-msgs').scrollTop=$('chat-msgs').scrollHeight;
-  const d=await api('ai',{system:COACH,messages:S.chatHistory});
-  typing.remove();
-  const reply=d.error?'Erreur : '+d.error:(d.content?.[0]?.text||'');
-  S.chatHistory.push({role:'assistant',content:reply});chatAppend('b',reply);
+function sendChat() {
+  var inp = $('chat-inp');
+  var msgs = $('chat-msgs');
+  if (!inp) return;
+  var text = inp.value.trim();
+  if (!text) return;
+  inp.value = '';
+  chatAppend('u', text);
+  S.chatHistory.push({ role: 'user', content: text });
+  var typing = document.createElement('div');
+  typing.className = 'typing-dots';
+  typing.innerHTML = '<span class="dot-a"></span><span class="dot-a"></span><span class="dot-a"></span>';
+  if (msgs) { msgs.appendChild(typing); msgs.scrollTop = msgs.scrollHeight; }
+  api('ai', { system: COACH, messages: S.chatHistory }).then(function(d) {
+    typing.remove();
+    var reply = d.error ? ('Erreur : ' + d.error) : ((d.content && d.content[0] && d.content[0].text) ? d.content[0].text : '');
+    S.chatHistory.push({ role: 'assistant', content: reply });
+    chatAppend('b', reply);
+  });
 }
 
 // ===== EVENTS =====
-document.addEventListener('DOMContentLoaded',()=>{
-  $('btn-login').addEventListener('click',doLogin);
-  $('li-pw').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
-  $('li-email').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
-  $('btn-logout').addEventListener('click',doLogout);
-  document.querySelectorAll('[data-nav]').forEach(b=>b.addEventListener('click',()=>nav(b.dataset.nav)));
-  $('btn-add').addEventListener('click',()=>openModal());
-  $('d-search').addEventListener('input',()=>renderDash());
-  $('d-filter').addEventListener('change',()=>renderDash());
-  $('modal-x').addEventListener('click',closeModal);
-  $('modal-cancel').addEventListener('click',closeModal);
-  $('modal-save').addEventListener('click',saveModal);
-  $('modal').addEventListener('click',e=>{if(e.target===$('modal'))closeModal();});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-  $('cc-toggle').addEventListener('click',()=>{S.ccShowAll=!S.ccShowAll;renderCC();});
-  document.querySelectorAll('.preset').forEach(b=>b.addEventListener('click',()=>{const p=PRESETS[b.dataset.preset];if(p)genScript(p.s,p.m);}));
-  $('btn-gen').addEventListener('click',()=>{
-    const co=$('sc-co').value.trim(),nm=$('sc-name').value.trim();
-    if(!co&&!nm){toast('Indique au moins l\'établissement.','err');return;}
-    genScript('Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',`Génère un script de cold call (framework AIDA) pour un appel "${$('sc-type').value}" avec ${nm?nm+' de ':''}${co||'l\'établissement'}, secteur ${$('sc-sec').value.trim()||'non précisé'}. Infos : ${$('sc-info').value.trim()||'aucune'}. 3 blocs AIDA, ton naturel, max 200 mots.`);
+document.addEventListener('DOMContentLoaded', function() {
+  // Login
+  var btnLogin = $('btn-login');
+  var liPw = $('li-pw');
+  var liEmail = $('li-email');
+  var btnLogout = $('btn-logout');
+  if (btnLogin) btnLogin.addEventListener('click', doLogin);
+  if (liPw) liPw.addEventListener('keydown', function(e) { if (e.key === 'Enter') doLogin(); });
+  if (liEmail) liEmail.addEventListener('keydown', function(e) { if (e.key === 'Enter') doLogin(); });
+  if (btnLogout) btnLogout.addEventListener('click', doLogout);
+
+  // Nav
+  document.querySelectorAll('[data-nav]').forEach(function(b) {
+    b.addEventListener('click', function() { nav(b.dataset.nav); });
   });
-  $('btn-copy').addEventListener('click',()=>{
-    const t=$('sc-out').textContent;if(!t||t.includes('apparaîtra')){toast('Rien à copier.');return;}
-    navigator.clipboard.writeText(t).then(()=>toast('Copié !','ok')).catch(()=>toast('Copie impossible.','err'));
+
+  // Dashboard
+  var btnAdd = $('btn-add');
+  var dSearch = $('d-search');
+  var dFilter = $('d-filter');
+  if (btnAdd) btnAdd.addEventListener('click', function() { openModal(); });
+  if (dSearch) dSearch.addEventListener('input', function() { renderDash(); });
+  if (dFilter) dFilter.addEventListener('change', function() { renderDash(); });
+
+  // Modal
+  var modalX = $('modal-x');
+  var modalCancel = $('modal-cancel');
+  var modalSave = $('modal-save');
+  var modalBg = $('modal');
+  if (modalX) modalX.addEventListener('click', closeModal);
+  if (modalCancel) modalCancel.addEventListener('click', closeModal);
+  if (modalSave) modalSave.addEventListener('click', saveModal);
+  if (modalBg) modalBg.addEventListener('click', function(e) { if (e.target === modalBg) closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+  // Cold call
+  var ccToggle = $('cc-toggle');
+  if (ccToggle) ccToggle.addEventListener('click', function() { S.ccShowAll = !S.ccShowAll; renderCC(); });
+
+  // Scripts
+  document.querySelectorAll('.preset').forEach(function(b) {
+    b.addEventListener('click', function() {
+      var p = PRESETS[b.dataset.preset];
+      if (p) genScript(p.s, p.m);
+    });
   });
-  $('chat-btn').addEventListener('click',()=>{const o=$('chat-panel').classList.toggle('on');$('chat-btn').setAttribute('aria-expanded',o);if(o)setTimeout(()=>$('chat-inp').focus(),100);});
-  $('chat-x').addEventListener('click',()=>{$('chat-panel').classList.remove('on');$('chat-btn').setAttribute('aria-expanded','false');});
-  $('chat-send').addEventListener('click',sendChat);
-  $('chat-inp').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat();});
+  var btnGen = $('btn-gen');
+  if (btnGen) btnGen.addEventListener('click', function() {
+    var co = $('sc-co') ? $('sc-co').value.trim() : '';
+    var nm = $('sc-name') ? $('sc-name').value.trim() : '';
+    if (!co && !nm) { toast('Indique au moins l\'établissement.', 'err'); return; }
+    var type = $('sc-type') ? $('sc-type').value : 'premier contact';
+    var sec = $('sc-sec') ? $('sc-sec').value.trim() : '';
+    var info = $('sc-info') ? $('sc-info').value.trim() : '';
+    genScript(COACH_SYS,
+      'Génère un script de cold call (framework AIDA) pour un appel "' + type + '" avec '
+      + (nm ? nm + ' de ' : '') + (co || 'l\'établissement')
+      + ', secteur ' + (sec || 'non précisé')
+      + '. Infos : ' + (info || 'aucune')
+      + '. 3 blocs AIDA, ton naturel, max 200 mots.'
+    );
+  });
+  var btnCopy = $('btn-copy');
+  if (btnCopy) btnCopy.addEventListener('click', function() {
+    var scOut = $('sc-out');
+    var t = scOut ? scOut.textContent : '';
+    if (!t || t.indexOf('appara') !== -1) { toast('Rien à copier.'); return; }
+    navigator.clipboard.writeText(t)
+      .then(function() { toast('Copié !', 'ok'); })
+      .catch(function() { toast('Copie impossible.', 'err'); });
+  });
+
+  // Chatbot
+  var chatBtn = $('chat-btn');
+  var chatPanel = $('chat-panel');
+  var chatX = $('chat-x');
+  var chatSend = $('chat-send');
+  var chatInp = $('chat-inp');
+  if (chatBtn) chatBtn.addEventListener('click', function() {
+    if (!chatPanel) return;
+    var open = chatPanel.classList.toggle('on');
+    chatBtn.setAttribute('aria-expanded', String(open));
+    if (open && chatInp) setTimeout(function() { chatInp.focus(); }, 100);
+  });
+  if (chatX) chatX.addEventListener('click', function() {
+    if (chatPanel) chatPanel.classList.remove('on');
+    if (chatBtn) chatBtn.setAttribute('aria-expanded', 'false');
+  });
+  if (chatSend) chatSend.addEventListener('click', sendChat);
+  if (chatInp) chatInp.addEventListener('keydown', function(e) { if (e.key === 'Enter') sendChat(); });
+
+  // Init
   checkSession();
 });
+
+// Expose globals needed by inline onclick handlers
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.delProspect = delProspect;
+window.chgStatus = chgStatus;
+window.toggleEnrich = toggleEnrich;
+window.doEnrich = doEnrich;
+
+})();
 </script>
 </body>
 </html>
