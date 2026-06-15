@@ -485,7 +485,15 @@ window.addEventListener('hashchange',()=>{
 async function api(fn,body){
   try{
     const r=await fetch('/.netlify/functions/'+fn,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-    const d=await r.json();return d;
+    const txt=await r.text();
+    try{
+      const d=JSON.parse(txt);
+      if(!d.error&&!d.token&&!d.ok&&!d.content&&!d.enrichedData&&!d.user&&!d.prospects){
+        if(d.message)return{error:d.message};
+        if(!r.ok)return{error:'Erreur serveur ('+r.status+')'};
+      }
+      return d;
+    }catch(e){return{error:'Erreur '+r.status+(txt?': '+txt.slice(0,120):'');};}
   }catch(e){return{error:'Connexion impossible. Vérifie ta connexion internet.'};}
 }
 

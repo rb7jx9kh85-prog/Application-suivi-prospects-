@@ -19,22 +19,23 @@ function makeToken(email) {
   const exp = Date.now() + THIRTY_DAYS
   const payload = email + '|' + exp
   const sig = crypto.createHmac('sha256', secret()).update(payload).digest('hex')
-  return Buffer.from(payload + '|' + sig).toString('base64url')
+  return Buffer.from(payload + '|' + sig).toString('base64')
 }
 
 function verifyToken(token) {
   try {
-    const decoded = Buffer.from(token, 'base64url').toString()
+    const decoded = Buffer.from(token, 'base64').toString('utf8')
     const lastPipe = decoded.lastIndexOf('|')
+    if (lastPipe === -1) return null
     const sig = decoded.slice(lastPipe + 1)
     const payload = decoded.slice(0, lastPipe)
     const expected = crypto.createHmac('sha256', secret()).update(payload).digest('hex')
     if (sig !== expected) return null
     const parts = payload.split('|')
-    const exp = parseInt(parts[parts.length - 1])
-    if (exp < Date.now()) return null
+    const exp = parseInt(parts[parts.length - 1], 10)
+    if (isNaN(exp) || exp < Date.now()) return null
     return { email: parts[0] }
-  } catch { return null }
+  } catch (e) { return null }
 }
 
 exports.handler = async (event) => {
@@ -42,15 +43,20 @@ exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') return json(405, { error: 'Method Not Allowed' })
 
   let body = {}
-  try { body = JSON.parse(event.body || '{}') } catch { return json(400, { error: 'JSON invalide.' }) }
+  try {
+    const raw = event.body || '{}'
+    body = JSON.parse(typeof raw === 'string' ? raw : JSON.stringify(raw))
+  } catch (e) {
+    return json(400, { error: 'Corps de requête invalide.' })
+  }
 
-  const { action } = body
+  const action = body.action || ''
 
   if (action === 'login') {
     const email = (body.email || '').trim().toLowerCase()
     const pw = String(body.password || '')
-    if (!appEmail()) return json(500, { error: 'APP_EMAIL non configuré dans les variables Netlify.' })
-    if (!appPassword()) return json(500, { error: 'APP_PASSWORD non configuré dans les variables Netlify.' })
+    if (!appEmail()) return json(500, { error: 'Variable APP_EMAIL non configurée dans Netlify → Site configuration → Environment variables.' })
+    if (!appPassword()) return json(500, { error: 'Variable APP_PASSWORD non configurée dans Netlify → Site configuration → Environment variables.' })
     if (email !== appEmail() || pw !== appPassword()) {
       return json(401, { error: 'Email ou mot de passe incorrect.' })
     }
@@ -59,7 +65,7 @@ exports.handler = async (event) => {
   }
 
   if (action === 'me') {
-    const u = body.token && verifyToken(body.token)
+    const u = body.token ? verifyToken(body.token) : null
     if (!u) return json(401, { error: 'Session expirée.' })
     return json(200, { user: { email: u.email, name: appName() } })
   }
@@ -68,5 +74,5 @@ exports.handler = async (event) => {
     return json(200, { ok: true })
   }
 
-  return json(400, { error: 'Action inconnue.' })
+  return json(400, { error: 'Action inconnue : ' + action })
 }
