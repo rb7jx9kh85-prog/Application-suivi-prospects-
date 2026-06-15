@@ -1,6 +1,6 @@
 [build]
   publish = "public"
-  command = ""
+  command = "echo 'static build — no bundler needed'"
 
 [build.environment]
   NODE_VERSION = "20"
