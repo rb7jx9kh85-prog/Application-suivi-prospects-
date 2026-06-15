@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Alpinia Prospect Pro — Enrichissement IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ══ TOKENS ══════════════════════════════════════════════════════════════ */
+:root {
+  --bg:    #0a0a0a;
+  --s1:    #111111;
+  --s2:    #1a1a1a;
+  --s3:    #252525;
+  --br:    rgba(255,255,255,.07);
+  --br2:   rgba(255,255,255,.13);
+  --vi:    #7c3aed;
+  --pk:    #ec4899;
+  --grad:  linear-gradient(135deg,#7c3aed 0%,#a855f7 50%,#ec4899 100%);
+  --t1:    #f0f0f0;
+  --t2:    #9ca3af;
+  --t3:    #4b5563;
+  --ok:    #10b981;
+  --warn:  #f59e0b;
+  --err:   #ef4444;
+  --info:  #3b82f6;
+  --r8:    8px; --r12:12px; --r16:16px; --r20:20px; --r24:24px; --rfull:9999px;
+}
+
+/* ══ RESET ═══════════════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--t1);min-height:100vh;overflow-x:hidden;}
+input,select,textarea,button{font-family:inherit;}
+input::placeholder,textarea::placeholder{color:var(--t3);}
+select option{background:#1a1a1a;}
+a{color:inherit;text-decoration:none;}
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:#333;border-radius:4px;}
+::-webkit-scrollbar-thumb:hover{background:#555;}
+
+/* ══ ANIMATIONS ══════════════════════════════════════════════════════════ */
+@keyframes shapeIn{
+  from{opacity:0;transform:translateY(-130px) rotate(calc(var(--r,0deg) - 15deg)) scaleX(.8);}
+  to  {opacity:1;transform:translateY(0) rotate(var(--r,0deg)) scaleX(1);}
+}
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(var(--r,0deg));}
+  50%     {transform:translateY(18px) rotate(var(--r,0deg));}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px);}
+  to  {opacity:1;transform:translateY(0);}
+}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes pulse{0%,100%{opacity:.35;}50%{opacity:.75;}}
+@keyframes slideDown{
+  from{opacity:0;transform:translateY(-10px);}
+  to  {opacity:1;transform:translateY(0);}
+}
+@keyframes modalIn{
+  from{opacity:0;transform:scale(.93) translateY(14px);}
+  to  {opacity:1;transform:scale(1)   translateY(0);}
+}
+@keyframes toastIn {from{opacity:0;transform:translateX(50px);}to{opacity:1;transform:translateX(0);}}
+@keyframes toastOut{from{opacity:1;transform:translateX(0);}to{opacity:0;transform:translateX(50px);}}
+@keyframes gradShift{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+
+/* ══ BUTTONS — Cool Nuance (violet/rose) ═════════════════════════════════ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:44px;padding:0 20px;border-radius:var(--r12);
+  font-size:14px;font-weight:700;cursor:pointer;border:none;outline:none;
+  transition:filter .2s ease,transform .1s ease,box-shadow .2s ease;
+  white-space:nowrap;position:relative;overflow:hidden;
+  -webkit-user-select:none;user-select:none;
+}
+.btn:active{transform:translateY(1.5px);}
+.btn:disabled{opacity:.45;pointer-events:none;}
+.btn::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(255,255,255,.1),transparent);
+  border-radius:inherit;pointer-events:none;
+}
+
+/* Primary — violet, inset highlight, glow */
+.btn-primary{
+  background:linear-gradient(to bottom,#9333ea,#7c3aed);
+  border:1px solid rgba(50,0,100,.55);border-bottom-width:2px;
+  box-shadow:0 4px 18px rgba(124,58,237,.32),inset 0 1px 0 rgba(255,255,255,.26),inset 0 0 0 1px rgba(255,255,255,.14);
+  color:#fff;
+}
+.btn-primary:hover{filter:brightness(1.13);box-shadow:0 7px 26px rgba(124,58,237,.48),inset 0 1px 0 rgba(255,255,255,.26),inset 0 0 0 1px rgba(255,255,255,.14);}
+.btn-primary:active{filter:brightness(.9);}
+
+/* Gradient (hero CTA) */
+.btn-grad{
+  background:linear-gradient(135deg,#7c3aed,#a855f7,#ec4899);
+  background-size:200% 200%;
+  animation:gradShift 4s ease infinite;
+  border:1px solid rgba(236,72,153,.3);border-bottom-width:2px;
+  box-shadow:0 4px 22px rgba(168,85,247,.4),inset 0 1px 0 rgba(255,255,255,.24),inset 0 0 0 1px rgba(255,255,255,.12);
+  color:#fff;
+}
+.btn-grad:hover{filter:brightness(1.1);box-shadow:0 8px 32px rgba(168,85,247,.55),inset 0 1px 0 rgba(255,255,255,.24),inset 0 0 0 1px rgba(255,255,255,.12);}
+.btn-grad:active{filter:brightness(.9);}
+
+/* Ghost */
+.btn-ghost{background:rgba(255,255,255,.05);border:1px solid var(--br2);color:var(--t2);}
+.btn-ghost:hover{background:rgba(255,255,255,.09);color:var(--t1);border-color:rgba(255,255,255,.2);}
+.btn-ghost::after{display:none;}
+
+/* Danger */
+.btn-danger{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.22);color:#f87171;}
+.btn-danger:hover{background:rgba(239,68,68,.2);}
+.btn-danger::after{display:none;}
+
+/* Sizes */
+.btn-sm{height:36px;padding:0 14px;font-size:13px;border-radius:var(--r8);}
+.btn-xs{height:30px;padding:0 10px;font-size:12px;border-radius:7px;}
+.btn-lg{height:52px;padding:0 28px;font-size:15px;border-radius:var(--r16);}
+
+/* ══ GLASS MORPHISM ══════════════════════════════════════════════════════ */
+.glass{
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(20px) saturate(1.6);
+  -webkit-backdrop-filter:blur(20px) saturate(1.6);
+  border:1px solid rgba(255,255,255,.09);
+}
+.glass-strong{
+  background:rgba(255,255,255,.055);
+  backdrop-filter:blur(40px) saturate(2.2);
+  -webkit-backdrop-filter:blur(40px) saturate(2.2);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 8px 40px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.1),inset 0 -1px 0 rgba(0,0,0,.25);
+}
+
+/* ══ FORMS ═══════════════════════════════════════════════════════════════ */
+.fg{display:flex;flex-direction:column;gap:6px;}
+.fl{font-size:12px;font-weight:600;color:var(--t2);letter-spacing:.4px;}
+.fi{
+  height:44px;width:100%;
+  background:rgba(255,255,255,.05);border:1px solid var(--br);border-radius:var(--r12);
+  padding:0 14px;color:var(--t1);font-size:14px;outline:none;
+  transition:border .15s,box-shadow .15s;
+}
+.fi:focus{border-color:rgba(168,85,247,.5);box-shadow:0 0 0 3px rgba(124,58,237,.14);}
+textarea.fi{height:auto;padding:12px 14px;resize:vertical;}
+select.fi{cursor:pointer;}
+
+/* ══ BADGES ══════════════════════════════════════════════════════════════ */
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:var(--rfull);font-size:11px;font-weight:600;letter-spacing:.3px;white-space:nowrap;}
+.badge-to_call  {background:rgba(59,130,246,.14);color:#60a5fa;}
+.badge-called   {background:rgba(99,102,241,.14);color:#818cf8;}
+.badge-voicemail{background:rgba(245,158,11,.14);color:#fbbf24;}
+.badge-refusal  {background:rgba(239,68,68,.14);color:#f87171;}
+.badge-video_rdv{background:rgba(16,185,129,.14);color:#34d399;}
+
+/* ══ TOAST ═══════════════════════════════════════════════════════════════ */
+#toast-container{position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none;}
+.toast{
+  background:var(--s2);border:1px solid var(--br2);border-radius:var(--r12);
+  padding:11px 18px;font-size:13px;font-weight:600;color:var(--t1);
+  box-shadow:0 8px 28px rgba(0,0,0,.45);animation:toastIn .3s ease-out;
+  max-width:320px;pointer-events:auto;
+}
+.toast-err{border-color:rgba(239,68,68,.3);color:#f87171;}
+.toast-ok {border-color:rgba(16,185,129,.3);color:#34d399;}
+
+/* ══ ICON BUTTON ══════════════════════════════════════════════════════════ */
+.ibt{
+  width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;
+  border-radius:var(--r8);border:1px solid var(--br);background:transparent;
+  color:var(--t3);cursor:pointer;font-size:15px;transition:all .18s;flex-shrink:0;
+}
+.ibt:hover{background:var(--s2);color:var(--t1);border-color:var(--br2);}
+.ibt.del:hover{background:rgba(239,68,68,.1);color:#f87171;border-color:rgba(239,68,68,.3);}
+
+/* ══ SPINNER ══════════════════════════════════════════════════════════════ */
+.spin{
+  width:18px;height:18px;border:2px solid rgba(255,255,255,.2);
+  border-top-color:currentColor;border-radius:50%;
+  animation:spin .8s linear infinite;display:inline-block;flex-shrink:0;
+}
+
+/* ══════════════════════════════════════════
+   AUTH PAGE
+══════════════════════════════════════════ */
+#auth-page{
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;position:relative;overflow:hidden;
+  padding:24px 16px 60px;background:#030303;
+}
+#auth-page::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 30%,rgba(124,58,237,.13),transparent),
+    radial-gradient(ellipse 50% 40% at 85% 70%,rgba(236,72,153,.11),transparent);
+}
+
+/* Floating shapes */
+.shape{
+  position:absolute;border-radius:var(--rfull);
+  border:2px solid rgba(255,255,255,.14);
+  box-shadow:0 8px 32px rgba(255,255,255,.04),inset 0 0 20px rgba(255,255,255,.02);
+  pointer-events:none;
+}
+
+/* Auth card */
+.auth-card{
+  position:relative;z-index:10;width:100%;max-width:420px;
+  border-radius:var(--r24);padding:36px 32px;
+  animation:fadeUp .9s cubic-bezier(.25,.4,.25,1) .4s both;
+}
+
+/* Auth logo */
+.auth-logo{text-align:center;margin-bottom:28px;}
+.auth-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 16px;border-radius:var(--rfull);
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+  font-size:12px;color:var(--t2);margin-bottom:16px;
+  animation:fadeUp .8s cubic-bezier(.25,.4,.25,1) .5s both;
+}
+.auth-title{font-size:32px;font-weight:900;letter-spacing:-1px;line-height:1.1;margin-bottom:6px;}
+.auth-sub{font-size:13px;color:var(--t3);}
+.t-grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* Tabs */
+.auth-tabs{
+  display:flex;gap:4px;background:rgba(255,255,255,.04);
+  border:1px solid var(--br);border-radius:var(--r12);
+  padding:4px;margin-bottom:24px;
+}
+.auth-tab{
+  flex:1;height:36px;border-radius:9px;border:none;
+  background:transparent;color:var(--t2);font-size:13px;font-weight:600;
+  cursor:pointer;transition:all .2s;
+}
+.auth-tab.active{background:var(--s3);color:var(--t1);box-shadow:0 2px 8px rgba(0,0,0,.35);}
+.auth-form{display:flex;flex-direction:column;gap:14px;}
+
+/* ══ REVIEWS — Liquid Glass ══════════════════════════════════════════════ */
+.reviews-section{
+  width:100%;max-width:960px;margin-top:52px;
+  position:relative;z-index:10;
+  animation:fadeUp .9s cubic-bezier(.25,.4,.25,1) 1.3s both;
+}
+.reviews-label{
+  text-align:center;font-size:11px;font-weight:700;color:var(--t3);
+  letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;
+}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.review-card{
+  padding:22px;border-radius:var(--r20);position:relative;overflow:hidden;
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+.review-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4);}
+.review-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.01));
+  pointer-events:none;border-radius:inherit;
+}
+.review-stars{color:#f59e0b;font-size:12px;margin-bottom:10px;letter-spacing:2px;}
+.review-text{font-size:13px;color:var(--t2);line-height:1.72;margin-bottom:14px;font-style:italic;}
+.review-author{display:flex;align-items:center;gap:10px;}
+.review-av{
+  width:34px;height:34px;border-radius:var(--rfull);background:var(--grad);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;color:#fff;flex-shrink:0;
+}
+.review-name{font-size:13px;font-weight:700;}
+.review-role{font-size:11px;color:var(--t3);}
+
+/* ══════════════════════════════════════════
+   MAIN APP
+══════════════════════════════════════════ */
+#main-app{min-height:100vh;display:flex;flex-direction:column;}
+
+/* Header */
+#app-header{
+  position:sticky;top:0;z-index:100;height:60px;
+  border-bottom:1px solid var(--br);
+  background:rgba(10,10,10,.92);backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  display:flex;align-items:center;padding:0 24px;gap:16px;
+}
+.header-logo{font-size:17px;font-weight:900;letter-spacing:-.5px;white-space:nowrap;flex-shrink:0;}
+.header-nav{display:flex;gap:3px;flex:1;}
+.nav-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  height:34px;padding:0 14px;border-radius:var(--r8);
+  border:none;background:transparent;color:var(--t3);
+  font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;
+}
+.nav-btn:hover{background:rgba(255,255,255,.06);color:var(--t1);}
+.nav-btn.active{background:rgba(168,85,247,.13);color:#c084fc;}
+.header-right{display:flex;align-items:center;gap:10px;margin-left:auto;}
+.user-chip{
+  display:flex;align-items:center;gap:8px;
+  padding:4px 10px 4px 4px;border-radius:var(--rfull);
+  background:rgba(255,255,255,.05);border:1px solid var(--br);
+}
+.user-av{
+  width:26px;height:26px;border-radius:var(--rfull);background:var(--grad);
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:800;color:#fff;
+}
+.user-name-lbl{font-size:12px;font-weight:600;color:var(--t2);}
+
+/* Main content */
+#app-main{flex:1;max-width:1280px;width:100%;margin:0 auto;padding:24px 16px 60px;}
+
+/* ══ STATS ════════════════════════════════════════════════════════════════ */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px;}
+.stat-card{
+  padding:20px;border-radius:var(--r20);background:var(--s1);
+  border:1px solid var(--br);display:flex;align-items:center;gap:14px;
+  transition:border-color .2s,transform .2s;
+}
+.stat-card:hover{border-color:var(--br2);transform:translateY(-2px);}
+.stat-ico{width:44px;height:44px;border-radius:var(--r12);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.stat-val{font-size:28px;font-weight:800;line-height:1.1;}
+.stat-lbl{font-size:12px;color:var(--t2);margin-top:2px;}
+
+/* ══ TOOLBAR ══════════════════════════════════════════════════════════════ */
+.toolbar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
+.srch-wrap{position:relative;flex:1;min-width:200px;}
+.srch-ico{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:15px;opacity:.38;pointer-events:none;}
+.srch-inp{
+  width:100%;height:44px;background:var(--s1);border:1px solid var(--br);
+  border-radius:var(--r12);padding:0 14px 0 38px;color:var(--t1);
+  font-size:14px;outline:none;transition:border .15s;
+}
+.srch-inp:focus{border-color:rgba(168,85,247,.4);}
+
+/* ══ TABLE ════════════════════════════════════════════════════════════════ */
+.table-wrap{background:var(--s1);border:1px solid var(--br);border-radius:var(--r20);overflow:hidden;}
+table{width:100%;border-collapse:collapse;}
+thead th{
+  padding:11px 16px;text-align:left;font-size:11px;font-weight:700;
+  color:var(--t3);text-transform:uppercase;letter-spacing:.6px;
+  background:rgba(255,255,255,.02);border-bottom:1px solid var(--br);
+}
+tbody tr{transition:background .14s;cursor:pointer;}
+tbody tr:hover td{background:rgba(255,255,255,.024);}
+tbody tr.xp td{background:rgba(168,85,247,.05);}
+tbody tr.xp td:first-child{border-left:2px solid rgba(168,85,247,.55);}
+tbody td{padding:13px 16px;border-bottom:1px solid var(--br);font-size:14px;vertical-align:middle;}
+tbody tr:last-child td{border-bottom:none;}
+.skel{border-radius:6px;background:rgba(255,255,255,.05);animation:pulse 1.6s ease-in-out infinite;}
+
+/* ══ ENRICH PANEL ════════════════════════════════════════════════════════ */
+.enrich-panel{
+  padding:20px 24px;border-top:1px solid var(--br);
+  background:rgba(124,58,237,.03);animation:slideDown .24s ease-out;
+}
+.enrich-ttl{font-size:11px;font-weight:700;color:#a78bfa;text-transform:uppercase;letter-spacing:.5px;}
+.enrich-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px;}
+.enrich-item{background:rgba(255,255,255,.025);border:1px solid var(--br);border-radius:var(--r12);padding:12px 14px;}
+.enrich-k{font-size:11px;color:var(--t3);font-weight:600;margin-bottom:4px;}
+.enrich-v{font-size:13px;color:var(--t1);}
+
+/* Empty */
+.empty-state{padding:60px 24px;text-align:center;}
+.empty-ico{font-size:44px;margin-bottom:14px;opacity:.45;}
+.empty-t{font-size:16px;font-weight:700;color:var(--t2);margin-bottom:6px;}
+.empty-s{font-size:13px;color:var(--t3);margin-bottom:20px;}
+
+/* ══ MODAL ═══════════════════════════════════════════════════════════════ */
+#modal-ov{
+  position:fixed;inset:0;background:rgba(0,0,0,.78);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  z-index:500;display:flex;align-items:center;justify-content:center;padding:16px;
+}
+.modal-box{
+  background:#141414;border:1px solid var(--br2);border-radius:var(--r24);
+  padding:30px;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;
+  animation:modalIn .3s cubic-bezier(.25,.4,.25,1);
+}
+.modal-title{font-size:18px;font-weight:800;margin-bottom:22px;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.modal-foot{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;}
+
+/* ══ SCRIPTS ══════════════════════════════════════════════════════════════ */
+.scripts-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:24px;}
+.script-box{
+  background:rgba(124,58,237,.07);border:1px solid rgba(124,58,237,.2);
+  border-radius:var(--r20);padding:24px;
+}
+.script-ph{
+  min-height:280px;display:flex;align-items:center;justify-content:center;
+  text-align:center;border:2px dashed rgba(124,58,237,.14);
+  border-radius:var(--r20);padding:40px;color:var(--t3);
+}
+.preset-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+.preset-card{
+  background:var(--s1);border:1px solid var(--br);border-radius:var(--r16);
+  padding:16px;cursor:pointer;transition:border-color .2s,background .2s,transform .18s;
+}
+.preset-card:hover{background:var(--s2);border-color:var(--br2);transform:translateY(-2px);}
+
+/* ══ COLD CALL ════════════════════════════════════════════════════════════ */
+.cc-row{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 18px;border-bottom:1px solid var(--br);
+  transition:background .14s;
+}
+.cc-row:hover{background:rgba(255,255,255,.02);}
+.cc-row:last-child{border-bottom:none;}
+.cc-av{
+  width:38px;height:38px;border-radius:10px;
+  background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.26);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:#a78bfa;flex-shrink:0;
+}
+
+/* ══ RESPONSIVE ═══════════════════════════════════════════════════════════ */
+@media(max-width:768px){
+  .stats-row{grid-template-columns:repeat(2,1fr);}
+  .stats-row .stat-card:last-child{grid-column:span 2;}
+  .reviews-grid{grid-template-columns:1fr;}
+  .scripts-layout{grid-template-columns:1fr!important;}
+  .g2,.enrich-grid{grid-template-columns:1fr;}
+  .dk{display:none!important;}
+  .auth-card{padding:26px 18px;}
+  #app-header{padding:0 14px;}
+  .nav-btn span:last-child{display:none;}
+}
+@media(max-width:480px){
+  .stats-row{grid-template-columns:1fr;}
+  .stats-row .stat-card:last-child{grid-column:auto;}
+  .preset-grid{grid-template-columns:1fr;}
+  .header-logo{font-size:15px;}
+}
+</style>
+</head>
+<body>
+
+<!-- SVG Liquid Glass Filter -->
+<svg hidden aria-hidden="true">
+  <defs>
+    <filter id="lg" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.06 0.06" numOctaves="1" seed="3" result="t"/>
+      <feGaussianBlur in="t" stdDeviation="2" result="bn"/>
+      <feDisplacementMap in="SourceGraphic" in2="bn" scale="55" xChannelSelector="R" yChannelSelector="B" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="3.5" result="fb"/>
+      <feComposite in="fb" in2="fb" operator="over"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- Toast -->
+<div id="toast-container"></div>
+
+<!-- ══════════════════════════════════════════
+     AUTH PAGE
+══════════════════════════════════════════ -->
+<div id="auth-page">
+
+  <!-- Floating Shapes (replicated from HeroGeometric) -->
+  <div class="shape" style="width:600px;height:140px;--r:12deg;
+    background:radial-gradient(ellipse at 30% 50%,rgba(99,102,241,.18),transparent);
+    left:-8%;top:18%;
+    animation:shapeIn 2.4s cubic-bezier(.23,.86,.39,.96) .3s both,float 13s ease-in-out 2.7s infinite;"></div>
+
+  <div class="shape" style="width:500px;height:120px;--r:-15deg;
+    background:radial-gradient(ellipse at 70% 50%,rgba(236,72,153,.16),transparent);
+    right:-4%;top:68%;
+    animation:shapeIn 2.4s cubic-bezier(.23,.86,.39,.96) .5s both,float 15s ease-in-out 2.9s infinite;"></div>
+
+  <div class="shape" style="width:300px;height:80px;--r:-8deg;
+    background:radial-gradient(ellipse at 50% 50%,rgba(167,85,247,.18),transparent);
+    left:5%;bottom:8%;
+    animation:shapeIn 2.4s cubic-bezier(.23,.86,.39,.96) .4s both,float 11s ease-in-out 2.8s infinite;"></div>
+
+  <div class="shape" style="width:220px;height:58px;--r:20deg;
+    background:radial-gradient(ellipse at 50% 50%,rgba(245,158,11,.14),transparent);
+    right:16%;top:10%;
+    animation:shapeIn 2.4s cubic-bezier(.23,.86,.39,.96) .6s both,float 17s ease-in-out 3s infinite;"></div>
+
+  <div class="shape" style="width:150px;height:40px;--r:-25deg;
+    background:radial-gradient(ellipse at 50% 50%,rgba(6,182,212,.14),transparent);
+    left:22%;top:5%;
+    animation:shapeIn 2.4s cubic-bezier(.23,.86,.39,.96) .7s both,float 9s ease-in-out 3.1s infinite;"></div>
+
+  <!-- Auth Card -->
+  <div class="auth-card glass-strong">
+    <div class="auth-logo">
+      <div class="auth-badge">
+        <span style="width:7px;height:7px;border-radius:50%;background:#ec4899;box-shadow:0 0 8px #ec4899,0 0 16px rgba(236,72,153,.4);display:inline-block;animation:pulse 2s ease-in-out infinite;"></span>
+        Alpinia · Agence Web Suisse
+      </div>
+      <h1 class="auth-title t-grad">Alpinia<br>Prospect Pro</h1>
+      <p class="auth-sub">Enrichissement IA · Prospection B2B</p>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchTab('login')">Connexion</button>
+      <button class="auth-tab" onclick="switchTab('register')">Créer un compte</button>
+    </div>
+
+    <!-- Login -->
+    <div id="form-login" class="auth-form" style="animation:fadeUp .6s ease .8s both;">
+      <div class="fg"><label class="fl">Email</label><input id="l-email" type="email" class="fi" placeholder="vous@agence.ch" autocomplete="email"></div>
+      <div class="fg"><label class="fl">Mot de passe</label><input id="l-pass" type="password" class="fi" placeholder="••••••••" autocomplete="current-password"></div>
+      <button class="btn btn-grad" style="width:100%;margin-top:4px;" onclick="doLogin()">Se connecter</button>
+      <p style="text-align:center;font-size:12px;color:var(--t3);">Pas de compte ? <span style="color:#c084fc;cursor:pointer;" onclick="switchTab('register')">S'inscrire</span></p>
+    </div>
+
+    <!-- Register -->
+    <div id="form-register" class="auth-form" style="display:none;animation:fadeUp .6s ease .8s both;">
+      <div class="fg"><label class="fl">Prénom &amp; Nom</label><input id="r-name" type="text" class="fi" placeholder="Jean Martin" autocomplete="name"></div>
+      <div class="fg"><label class="fl">Email</label><input id="r-email" type="email" class="fi" placeholder="vous@agence.ch" autocomplete="email"></div>
+      <div class="fg"><label class="fl">Mot de passe (min. 6 car.)</label><input id="r-pass" type="password" class="fi" placeholder="••••••••" autocomplete="new-password"></div>
+      <button class="btn btn-grad" style="width:100%;margin-top:4px;" onclick="doRegister()">Créer mon compte</button>
+    </div>
+  </div>
+
+  <!-- Reviews — Liquid Glass -->
+  <div class="reviews-section">
+    <p class="reviews-label">Ils utilisent Alpinia Prospect Pro</p>
+    <div class="reviews-grid" id="reviews-grid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MAIN APP
+══════════════════════════════════════════ -->
+<div id="main-app" style="display:none;">
+  <header id="app-header">
+    <div class="header-logo t-grad">🚀 Alpinia Prospect Pro</div>
+    <nav class="header-nav">
+      <button class="nav-btn active" data-page="dashboard" onclick="goPage('dashboard')">
+        <span>👥</span><span>Prospects</span>
+      </button>
+      <button class="nav-btn" data-page="coldcall" onclick="goPage('coldcall')">
+        <span>📞</span><span>Cold Call</span>
+      </button>
+      <button class="nav-btn" data-page="scripts" onclick="goPage('scripts')">
+        <span>✨</span><span>Scripts IA</span>
+      </button>
+    </nav>
+    <div class="header-right">
+      <div class="user-chip">
+        <div class="user-av" id="u-av">?</div>
+        <span class="user-name-lbl" id="u-name"></span>
+      </div>
+      <button class="btn btn-ghost btn-sm" onclick="doLogout()">Déconnexion</button>
+    </div>
+  </header>
+
+  <main id="app-main">
+
+    <!-- ─── DASHBOARD ────────────────────────────────── -->
+    <section id="page-dashboard">
+      <div class="stats-row" id="stats-row"></div>
+      <div class="toolbar">
+        <div class="srch-wrap">
+          <span class="srch-ico">🔍</span>
+          <input id="d-q" type="search" class="srch-inp" placeholder="Rechercher un prospect..." oninput="renderTable()">
+        </div>
+        <select class="fi" id="d-f" style="max-width:175px;" onchange="renderTable()">
+          <option value="">Tous les statuts</option>
+          <option value="to_call">À appeler</option>
+          <option value="called">Appelé</option>
+          <option value="voicemail">Répondeur</option>
+          <option value="refusal">Refus</option>
+          <option value="video_rdv">RDV ✅</option>
+        </select>
+        <button class="btn btn-primary btn-sm" onclick="openModal()">+ Ajouter</button>
+      </div>
+      <div class="table-wrap" id="tbl-wrap"></div>
+    </section>
+
+    <!-- ─── COLD CALL ────────────────────────────────── -->
+    <section id="page-coldcall" style="display:none;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px;">
+        <div>
+          <h2 style="font-size:20px;font-weight:800;letter-spacing:-.4px;">📞 Session Cold Call</h2>
+          <p id="cc-stat" style="font-size:13px;color:var(--t2);margin-top:3px;"></p>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="openModal()">+ Ajouter un prospect</button>
+      </div>
+      <div class="table-wrap"><div id="cc-list"></div></div>
+    </section>
+
+    <!-- ─── SCRIPTS IA ──────────────────────────────── -->
+    <section id="page-scripts" style="display:none;">
+      <div style="margin-bottom:20px;">
+        <h2 style="font-size:20px;font-weight:800;letter-spacing:-.4px;">✨ Générateur de Scripts IA</h2>
+        <p style="font-size:13px;color:var(--t2);margin-top:3px;">Script personnalisé via OpenAI (variable <code style="background:rgba(255,255,255,.07);padding:1px 6px;border-radius:5px;font-size:12px;">OPENAI_API_KEY</code> Netlify)</p>
+      </div>
+      <div class="scripts-layout">
+        <div style="background:var(--s1);border:1px solid var(--br);border-radius:var(--r20);padding:24px;display:flex;flex-direction:column;gap:14px;">
+          <p style="font-size:14px;font-weight:700;">✨ Paramètres</p>
+          <div class="fg"><label class="fl">Nom du prospect *</label><input id="sc-n" class="fi" placeholder="Ex: Jean Martin"></div>
+          <div class="fg"><label class="fl">Entreprise *</label><input id="sc-c" class="fi" placeholder="Ex: Restaurant Le Gourmet"></div>
+          <div class="fg"><label class="fl">Secteur</label><input id="sc-s" class="fi" placeholder="Ex: Restauration, IT..."></div>
+          <div class="fg">
+            <label class="fl">Type d'appel</label>
+            <select id="sc-t" class="fi">
+              <option>Prospection (1er contact)</option><option>Relance</option>
+              <option>Closing</option><option>Service client</option>
+            </select>
+          </div>
+          <div class="fg"><label class="fl">Info clé 1</label><input id="sc-i1" class="fi" placeholder="Ex: Vient d'ouvrir un 2e site"></div>
+          <div class="fg"><label class="fl">Info clé 2</label><input id="sc-i2" class="fi" placeholder="Ex: Concurrent de X"></div>
+          <button id="sc-btn" class="btn btn-grad" style="width:100%;justify-content:center;" onclick="generateScript()">✨ Générer le script IA</button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div id="sc-result"></div>
+          <div>
+            <p style="font-size:11px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px;">📚 Scripts prêts à l'emploi</p>
+            <div class="preset-grid" id="preset-grid"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MODAL
+══════════════════════════════════════════ -->
+<div id="modal-ov" style="display:none;" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <h3 class="modal-title" id="m-title">Nouveau prospect</h3>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="fg"><label class="fl">Établissement *</label><input id="m-est" class="fi" placeholder="Nom de l'entreprise"></div>
+      <div class="g2">
+        <div class="fg"><label class="fl">Site web</label><input id="m-web" class="fi" placeholder="https://..."></div>
+        <div class="fg"><label class="fl">Secteur</label><input id="m-dom" class="fi" placeholder="Restauration..."></div>
+      </div>
+      <div class="g2">
+        <div class="fg"><label class="fl">Ville</label><input id="m-city" class="fi" placeholder="Genève, Zurich..."></div>
+        <div class="fg"><label class="fl">Contact</label><input id="m-con" class="fi" placeholder="Décideur"></div>
+      </div>
+      <div class="fg">
+        <label class="fl">Statut</label>
+        <select id="m-stat" class="fi">
+          <option value="to_call">À appeler</option><option value="called">Appelé</option>
+          <option value="voicemail">Répondeur</option><option value="refusal">Refus</option>
+          <option value="video_rdv">RDV ✅</option>
+        </select>
+      </div>
+      <div class="fg"><label class="fl">Notes</label><textarea id="m-notes" class="fi" rows="3" placeholder="Infos utiles..."></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost btn-sm" onclick="closeModal()">Annuler</button>
+      <button class="btn btn-primary btn-sm" onclick="saveProspect()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══ STORAGE ══════════════════════════════════════════════════════════════ */
+const S={
+  get:(k,d=null)=>{try{const v=localStorage.getItem(k);return v!==null?JSON.parse(v):d;}catch{return d;}},
+  set:(k,v)=>localStorage.setItem(k,JSON.stringify(v)),
+};
+
+/* ══ AUTH (sessionStorage = fresh per tab) ════════════════════════════════ */
+const Auth={
+  me:()=>{try{return JSON.parse(sessionStorage.getItem('ap_sess'));}catch{return null;}},
+  login(email,pass){
+    const users=S.get('ap_users',[]);
+    const u=users.find(x=>x.email===email.trim().toLowerCase()&&x.pass===pass);
+    if(!u)throw new Error('Email ou mot de passe incorrect.');
+    sessionStorage.setItem('ap_sess',JSON.stringify(u));
+    return u;
+  },
+  register(name,email,pass){
+    if(!name.trim()||!email.trim()||pass.length<6)throw new Error('Tous les champs requis (mot de passe min. 6 car.).');
+    const users=S.get('ap_users',[]);
+    if(users.find(x=>x.email===email.trim().toLowerCase()))throw new Error('Cet email est déjà utilisé.');
+    const u={id:Date.now().toString(36)+Math.random().toString(36).slice(2,5),name:name.trim(),email:email.trim().toLowerCase(),pass};
+    S.set('ap_users',[...users,u]);
+    sessionStorage.setItem('ap_sess',JSON.stringify(u));
+    return u;
+  },
+  logout(){sessionStorage.removeItem('ap_sess');location.reload();}
+};
+
+/* ══ DB ═══════════════════════════════════════════════════════════════════ */
+const DB={
+  _k:()=>`pp_${Auth.me()?.id}_pros`,
+  all:()=>S.get(DB._k(),[]),
+  add(d){const a=DB.all();const i={...d,id:Date.now().toString(36)+Math.random().toString(36).slice(2,5)};S.set(DB._k(),[...a,i]);return i;},
+  upd(id,d){S.set(DB._k(),DB.all().map(i=>i.id===id?{...i,...d}:i));},
+  del(id){S.set(DB._k(),DB.all().filter(i=>i.id!==id));}
+};
+
+/* ══ TOAST ════════════════════════════════════════════════════════════════ */
+function toast(msg,type='ok'){
+  const el=document.createElement('div');
+  el.className=`toast toast-${type}`;
+  el.textContent=(type==='err'?'❌ ':'✅ ')+msg;
+  document.getElementById('toast-container').appendChild(el);
+  setTimeout(()=>{el.style.animation='toastOut .3s ease forwards';setTimeout(()=>el.remove(),300);},3200);
+}
+
+/* ══ HELPERS ══════════════════════════════════════════════════════════════ */
+const ST={
+  to_call:{l:'À appeler',cls:'badge-to_call'},
+  called:{l:'Appelé',cls:'badge-called'},
+  voicemail:{l:'Répondeur',cls:'badge-voicemail'},
+  refusal:{l:'Refus',cls:'badge-refusal'},
+  video_rdv:{l:'RDV ✅',cls:'badge-video_rdv'},
+};
+const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const ini=n=>(n||'?').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+
+/* ══ AUTH HANDLERS ════════════════════════════════════════════════════════ */
+function switchTab(t){
+  document.querySelectorAll('.auth-tab').forEach((b,i)=>b.classList.toggle('active',i===(t==='login'?0:1)));
+  document.getElementById('form-login').style.display=t==='login'?'flex':'none';
+  document.getElementById('form-register').style.display=t==='register'?'flex':'none';
+}
+function doLogin(){
+  const e=document.getElementById('l-email').value,p=document.getElementById('l-pass').value;
+  if(!e||!p){toast('Email et mot de passe requis.','err');return;}
+  try{Auth.login(e,p);enterApp();}catch(ex){toast(ex.message,'err');}
+}
+function doRegister(){
+  const n=document.getElementById('r-name').value,e=document.getElementById('r-email').value,p=document.getElementById('r-pass').value;
+  try{Auth.register(n,e,p);enterApp();}catch(ex){toast(ex.message,'err');}
+}
+function doLogout(){Auth.logout();}
+
+/* ══ ROUTING ══════════════════════════════════════════════════════════════ */
+let curPage='dashboard';
+function enterApp(){
+  const u=Auth.me();if(!u)return;
+  document.getElementById('auth-page').style.display='none';
+  document.getElementById('main-app').style.display='flex';
+  document.getElementById('main-app').style.flexDirection='column';
+  const av=ini(u.name);
+  document.getElementById('u-av').textContent=av;
+  document.getElementById('u-name').textContent=u.name;
+  goPage('dashboard');
+}
+function goPage(page){
+  curPage=page;
+  ['dashboard','coldcall','scripts'].forEach(p=>{
+    document.getElementById('page-'+p).style.display=p===page?'block':'none';
+  });
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
+  if(page==='dashboard'){renderStats();renderTable();}
+  if(page==='coldcall')renderCC();
+  if(page==='scripts'){renderPresets();renderScriptPh();}
+}
+
+/* ══ STATS ════════════════════════════════════════════════════════════════ */
+function renderStats(){
+  const p=DB.all();
+  const cards=[
+    {ico:'👥',val:p.length,lbl:'Total prospects',c:'#a78bfa',bg:'rgba(167,85,247,.12)'},
+    {ico:'📞',val:p.filter(x=>x.status==='to_call').length,lbl:'À appeler',c:'#60a5fa',bg:'rgba(59,130,246,.12)'},
+    {ico:'✅',val:p.filter(x=>x.status==='video_rdv').length,lbl:'RDV obtenus',c:'#34d399',bg:'rgba(16,185,129,.12)'},
+  ];
+  document.getElementById('stats-row').innerHTML=cards.map(s=>`
+    <div class="stat-card">
+      <div class="stat-ico" style="background:${s.bg};">${s.ico}</div>
+      <div><div class="stat-val" style="color:${s.c};">${s.val}</div><div class="stat-lbl">${s.lbl}</div></div>
+    </div>`).join('');
+}
+
+/* ══ PROSPECT TABLE ═══════════════════════════════════════════════════════ */
+let xp=null;
+const enrichData={},enrichLoading={};
+
+function renderTable(){
+  const q=(document.getElementById('d-q')?.value||'').toLowerCase();
+  const f=document.getElementById('d-f')?.value||'';
+  const pros=DB.all().filter(p=>{
+    const mq=!q||[p.establishment,p.domain,p.city,p.contact].some(v=>(v||'').toLowerCase().includes(q));
+    return mq&&(!f||p.status===f);
+  });
+  const wrap=document.getElementById('tbl-wrap');
+  if(!pros.length){
+    wrap.innerHTML=`<div class="empty-state"><div class="empty-ico">📋</div><div class="empty-t">Aucun prospect</div><div class="empty-s">Ajoutez votre premier prospect</div><button class="btn btn-primary btn-sm" onclick="openModal()">+ Ajouter</button></div>`;
+    return;
+  }
+  const rows=pros.map(p=>{
+    const ex=xp===p.id;
+    return `
+      <tr class="${ex?'xp':''}" onclick="toggleXp('${p.id}')">
+        <td>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:36px;height:36px;border-radius:9px;background:rgba(124,58,237,.18);border:1px solid rgba(124,58,237,.26);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#a78bfa;flex-shrink:0;">${ini(p.establishment)}</div>
+            <div style="min-width:0;">
+              <div style="font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(p.establishment)}</div>
+              ${p.contact?`<div style="font-size:11px;color:var(--t3);margin-top:1px;">${esc(p.contact)}</div>`:''}
+            </div>
+          </div>
+        </td>
+        <td class="dk" style="font-size:13px;color:var(--t2);max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+          ${p.website?`<a href="${esc(p.website)}" target="_blank" rel="noreferrer" style="color:#818cf8;" onclick="event.stopPropagation()">${esc(p.website.replace(/^https?:\/\//,'').replace(/\/$/,''))}</a>`:'<span style="color:var(--t3)">—</span>'}
+        </td>
+        <td class="dk" style="font-size:13px;color:var(--t2);">${esc(p.domain)||'<span style="color:var(--t3)">—</span>'}</td>
+        <td class="dk" style="font-size:13px;color:var(--t2);">${esc(p.city)||'<span style="color:var(--t3)">—</span>'}</td>
+        <td onclick="event.stopPropagation()">
+          <select class="fi" style="height:34px;font-size:12px;padding:0 10px;max-width:145px;" onchange="setStatus('${p.id}',this.value)">
+            ${Object.entries(ST).map(([v,s])=>`<option value="${v}"${p.status===v?' selected':''}>${s.l}</option>`).join('')}
+          </select>
+        </td>
+        <td onclick="event.stopPropagation()">
+          <div style="display:flex;gap:5px;">
+            <button class="ibt" title="Enrichir IA" onclick="toggleXp('${p.id}')" style="color:#a78bfa;">⚡</button>
+            <button class="ibt" title="Modifier" onclick="openModal('${p.id}')">✏️</button>
+            <button class="ibt del" title="Supprimer" onclick="delPros('${p.id}')">🗑️</button>
+          </div>
+        </td>
+      </tr>
+      ${ex?`<tr><td colspan="6" style="padding:0;border-bottom:1px solid var(--br);">
+        <div class="enrich-panel">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+            <span style="font-size:16px;">⚡</span>
+            <span class="enrich-ttl">Enrichissement IA — ${esc(p.establishment)}</span>
+          </div>
+          ${renderEnrich(p)}
+        </div>
+      </td></tr>`:``}`;
+  }).join('');
+  wrap.innerHTML=`
+    <table>
+      <thead><tr>
+        <th>Nom / Établissement</th>
+        <th class="dk">Site web</th>
+        <th class="dk">Secteur</th>
+        <th class="dk">Ville</th>
+        <th>Statut</th>
+        <th>Actions</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+function renderEnrich(p){
+  const loading=enrichLoading[p.id];
+  const data=enrichData[p.id];
+  if(loading)return`<div style="display:flex;align-items:center;gap:10px;color:var(--t2);font-size:13px;"><span class="spin" style="color:#a78bfa;"></span> Recherche avec Claude IA en cours...</div>`;
+  if(!data)return`
+    <p style="font-size:13px;color:var(--t3);margin-bottom:14px;">Lancez l'enrichissement pour obtenir adresse, téléphone, email, horaires, note Google et plus.</p>
+    <button class="btn btn-primary btn-sm" onclick="startEnrich('${p.id}','${esc(p.establishment)}','${esc(p.website||'')}','${esc(p.domain||'')}','${esc(p.city||'')}')">⚡ Enrichir ce prospect</button>`;
+  if(data._err)return`
+    <p style="color:#f87171;font-size:13px;margin-bottom:10px;">❌ ${esc(data._err)}</p>
+    <button class="btn btn-ghost btn-sm" onclick="startEnrich('${p.id}','${esc(p.establishment)}','${esc(p.website||'')}','${esc(p.domain||'')}','${esc(p.city||'')}')">Réessayer</button>`;
+  const LABELS={full_address:'📍 Adresse',phone:'📞 Téléphone',email:'📧 Email',opening_hours:'🕐 Horaires',description:'📝 Description',google_rating:'⭐ Note Google',employees_approx:'👥 Employés',key_decision_maker:'🎯 Décisionnaire'};
+  const items=Object.entries(LABELS).map(([k,lb])=>{
+    const v=data[k];
+    return`<div class="enrich-item"><div class="enrich-k">${lb}</div><div class="enrich-v">${(!v||v==='null')?`<span style="color:var(--t3)">—</span>`:esc(String(v))}</div></div>`;
+  }).join('');
+  const notes=Object.entries(LABELS).map(([k,lb])=>data[k]&&data[k]!=='null'?`${lb}: ${data[k]}`:null).filter(Boolean).join('\n');
+  const safeNotes=notes.replace(/\\/g,'\\\\').replace(/`/g,'\\`').replace(/\$/g,'\\$');
+  return`
+    <div class="enrich-grid">${items}</div>
+    <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="btn btn-primary btn-sm" onclick="saveEnrich('${p.id}',\`${safeNotes}\`)">💾 Sauvegarder dans les notes</button>
+      <button class="btn btn-ghost btn-sm" onclick="startEnrich('${p.id}','${esc(p.establishment)}','${esc(p.website||'')}','${esc(p.domain||'')}','${esc(p.city||'')}')">🔄 Réenrichir</button>
+    </div>`;
+}
+
+function toggleXp(id){xp=xp===id?null:id;if(curPage==='dashboard')renderTable();}
+function setStatus(id,s){DB.upd(id,{status:s});renderStats();renderTable();}
+function delPros(id){
+  if(!confirm('Supprimer ce prospect ?'))return;
+  DB.del(id);if(xp===id){xp=null;delete enrichData[id];}
+  renderStats();renderTable();toast('Prospect supprimé.');
+}
+async function startEnrich(id,name,website,type,city){
+  enrichLoading[id]=true;if(curPage==='dashboard')renderTable();
+  try{
+    const res=await fetch('/.netlify/functions/enrich-prospect',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({prospectName:name,website,type,city}),
+    });
+    const json=await res.json();
+    enrichData[id]=json.enrichedData||(json.error?{_err:json.error}:{_err:'Réponse inattendue.'});
+  }catch(e){enrichData[id]={_err:e.message};}
+  enrichLoading[id]=false;if(curPage==='dashboard')renderTable();
+}
+function saveEnrich(id,notes){DB.upd(id,{notes});toast('Notes sauvegardées !');renderTable();}
+
+/* ══ MODAL ════════════════════════════════════════════════════════════════ */
+let editId=null;
+function openModal(id=null){
+  editId=id;
+  document.getElementById('m-title').textContent=id?'✏️ Modifier le prospect':'➕ Nouveau prospect';
+  const ids=['m-est','m-web','m-dom','m-city','m-con','m-notes'];
+  if(id){
+    const p=DB.all().find(x=>x.id===id);
+    if(p){
+      document.getElementById('m-est').value=p.establishment||'';
+      document.getElementById('m-web').value=p.website||'';
+      document.getElementById('m-dom').value=p.domain||'';
+      document.getElementById('m-city').value=p.city||'';
+      document.getElementById('m-con').value=p.contact||'';
+      document.getElementById('m-stat').value=p.status||'to_call';
+      document.getElementById('m-notes').value=p.notes||'';
+    }
+  }else{ids.forEach(i=>document.getElementById(i).value='');document.getElementById('m-stat').value='to_call';}
+  document.getElementById('modal-ov').style.display='flex';
+  setTimeout(()=>document.getElementById('m-est').focus(),60);
+}
+function closeModal(){document.getElementById('modal-ov').style.display='none';editId=null;}
+function saveProspect(){
+  const est=document.getElementById('m-est').value.trim();
+  if(!est){toast('Nom de l\'établissement requis.','err');return;}
+  const d={establishment:est,website:document.getElementById('m-web').value.trim(),domain:document.getElementById('m-dom').value.trim(),city:document.getElementById('m-city').value.trim(),contact:document.getElementById('m-con').value.trim(),status:document.getElementById('m-stat').value,notes:document.getElementById('m-notes').value.trim()};
+  if(editId){DB.upd(editId,d);toast('Prospect mis à jour !');}
+  else{DB.add(d);toast('Prospect ajouté !');}
+  closeModal();renderStats();
+  if(curPage==='dashboard')renderTable();
+  if(curPage==='coldcall')renderCC();
+}
+
+/* ══ COLD CALL ════════════════════════════════════════════════════════════ */
+function renderCC(){
+  const pros=DB.all();
+  const tc=pros.filter(p=>p.status==='to_call').length;
+  document.getElementById('cc-stat').textContent=`${tc} à appeler · ${pros.length-tc} traités`;
+  const list=document.getElementById('cc-list');
+  if(!pros.length){
+    list.innerHTML=`<div class="empty-state"><div class="empty-ico">📞</div><div class="empty-t">Aucun prospect</div><div class="empty-s">Ajoutez des prospects pour démarrer</div><button class="btn btn-primary btn-sm" onclick="openModal()">+ Ajouter</button></div>`;
+    return;
+  }
+  list.innerHTML=pros.map(p=>`
+    <div class="cc-row">
+      <div class="cc-av">${ini(p.establishment)}</div>
+      <div style="flex:1;min-width:0;">
+        <div style="font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(p.establishment)}</div>
+        <div style="font-size:12px;color:var(--t3);margin-top:2px;">${[p.domain,p.contact,p.city].filter(Boolean).map(esc).join(' · ')||'&nbsp;'}</div>
+        ${p.notes?`<div style="font-size:11px;color:var(--t3);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(p.notes)}</div>`:''}
+      </div>
+      <select class="fi" style="height:34px;font-size:12px;padding:0 10px;max-width:150px;flex-shrink:0;" onchange="ccStat('${p.id}',this.value)">
+        ${Object.entries(ST).map(([v,s])=>`<option value="${v}"${p.status===v?' selected':''}>${s.l}</option>`).join('')}
+      </select>
+      <div style="display:flex;gap:5px;flex-shrink:0;">
+        <button class="ibt" title="Modifier" onclick="openModal('${p.id}')">✏️</button>
+        <button class="ibt del" title="Supprimer" onclick="delPros('${p.id}');renderCC()">🗑️</button>
+      </div>
+    </div>`).join('');
+}
+function ccStat(id,s){
+  DB.upd(id,{status:s});
+  const pros=DB.all();const tc=pros.filter(p=>p.status==='to_call').length;
+  document.getElementById('cc-stat').textContent=`${tc} à appeler · ${pros.length-tc} traités`;
+  if(s==='video_rdv')toast('🎉 RDV décroché !');
+}
+
+/* ══ SCRIPTS ══════════════════════════════════════════════════════════════ */
+const PRESETS={
+  '❄️ Cold Call B2B':`**OUVERTURE**\nBonjour [Prénom], c'est [Votre Nom] de [Votre Société].\nNous accompagnons des entreprises de votre secteur à [bénéfice clé].\nJ'aurais 2 questions rapides — 90 secondes, c'est possible ?\n\n**PITCH**\nComment gérez-vous actuellement [problème principal] ?\nNos clients comme [référence] ont obtenu [résultat concret] en [délai].\n\n**CLOSING**\n"Pas le temps" → "C'est justement pour ça — 15 min suffisent. Mardi ou jeudi ?"`,
+  '🔥 Relance chaude':`**OUVERTURE**\nBonjour [Prénom], c'est [Votre Nom].\nJe reviens suite à notre dernier échange — avez-vous pu réfléchir ?\n\n**PITCH**\nDepuis notre dernier contact, un client similaire a obtenu [résultat concret].\n\n**CLOSING**\n"Toujours en réflexion" → "Qu'est-ce qui freine la décision ?"`,
+  '🛡️ Objections':`**"Pas le temps"** → "90 secondes — 2 questions seulement."\n\n**"Envoyez un email"** → "Avec plaisir. Pour cibler : [question clé] ?"\n\n**"On est équipés"** → "Est-ce que ça vous garantit [résultat] ?"\n\n**"Trop cher"** → "Quel budget ? Calculons le ROI ensemble."`,
+  '🎯 Closing RDV':`**OUVERTURE**\nVous avez posé d'excellentes questions — je pense qu'on peut vous aider sur [point précis].\n\n**PITCH**\n20 minutes pour vous montrer concrètement [résultat].\n\n**CLOSING**\nMardi ou jeudi matin — qu'est-ce qui vous convient ?\n[Hésitation] : Ce n'est pas un engagement. Juste 20 min.`,
+};
+
+function renderPresets(){
+  document.getElementById('preset-grid').innerHTML=Object.entries(PRESETS).map(([t,txt])=>`
+    <div class="preset-card" onclick="showPreset(${JSON.stringify(t)},${JSON.stringify(txt)})">
+      <div style="font-size:22px;margin-bottom:6px;">${t.split(' ')[0]}</div>
+      <div style="font-weight:700;font-size:13px;">${t.split(' ').slice(1).join(' ')}</div>
+    </div>`).join('');
+}
+
+function renderScriptPh(){
+  document.getElementById('sc-result').innerHTML=`
+    <div class="script-ph">
+      <div>
+        <div style="font-size:42px;opacity:.3;margin-bottom:12px;">✨</div>
+        <p style="font-weight:600;font-size:14px;color:var(--t2);">Votre script apparaîtra ici</p>
+        <p style="font-size:13px;margin-top:4px;">Remplissez le formulaire et cliquez sur Générer</p>
+      </div>
+    </div>`;
+}
+
+function showPreset(title,text){
+  document.getElementById('sc-result').innerHTML=renderScBox(title,text);
+}
+
+function renderScBox(title,text){
+  return`
+    <div class="script-box">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+        <span style="font-weight:700;font-size:13px;color:#a78bfa;">${esc(title)}</span>
+        <button class="btn btn-ghost btn-xs" onclick="navigator.clipboard.writeText(${JSON.stringify(text)}).then(()=>toast('Copié !'))">📋 Copier</button>
+      </div>
+      <pre style="white-space:pre-wrap;font-size:13px;line-height:1.85;color:#e2d9f3;font-family:inherit;">${esc(text)}</pre>
+    </div>`;
+}
+
+async function generateScript(){
+  const name=document.getElementById('sc-n').value.trim();
+  const company=document.getElementById('sc-c').value.trim();
+  if(!name||!company){toast('Nom et entreprise requis.','err');return;}
+  const sector=document.getElementById('sc-s').value.trim();
+  const type=document.getElementById('sc-t').value;
+  const infos=[document.getElementById('sc-i1').value.trim(),document.getElementById('sc-i2').value.trim()].filter(Boolean);
+  const btn=document.getElementById('sc-btn');
+  btn.disabled=true;
+  btn.innerHTML=`<span class="spin" style="width:16px;height:16px;"></span> Génération en cours...`;
+  document.getElementById('sc-result').innerHTML=`
+    <div class="script-ph">
+      <div>
+        <span class="spin" style="width:28px;height:28px;border-width:3px;color:#a78bfa;margin-bottom:14px;display:block;margin-inline:auto;"></span>
+        <p style="font-size:13px;color:var(--t2);">Génération du script via OpenAI...</p>
+      </div>
+    </div>`;
+  try{
+    const res=await fetch('/.netlify/functions/ai',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        system:`Tu es un expert en vente B2B. Génère des scripts d'appel naturels en français. Structure: **OUVERTURE** (3 lignes), **PITCH** (4-5 lignes), **OBJECTIONS & CLOSING** (4-5 lignes).`,
+        messages:[{role:'user',content:`Script "${type}" pour:\n- Prospect: ${name}, ${company}${sector?`\n- Secteur: ${sector}`:''}${infos.length?`\n- Infos: ${infos.join(', ')}`:''}.\nFinir par proposition de RDV.`}]
+      }),
+    });
+    const json=await res.json();
+    if(json.error)throw new Error(json.error);
+    const text=json.content?.[0]?.text||'';
+    document.getElementById('sc-result').innerHTML=renderScBox(`✨ Script pour ${name} — ${company}`,text);
+  }catch(e){
+    document.getElementById('sc-result').innerHTML=`<div style="color:#f87171;background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.2);border-radius:var(--r16);padding:20px;font-size:13px;">❌ Erreur: ${esc(e.message)}</div>`;
+  }
+  btn.disabled=false;
+  btn.innerHTML='✨ Générer le script IA';
+}
+
+/* ══ REVIEWS (render) ══════════════════════════════════════════════════════ */
+const REVIEWS=[
+  {stars:'★★★★★',text:'"On a multiplié nos RDV par 3 en 2 mois. L\'enrichissement IA nous donne les infos clés avant chaque appel. Indispensable pour notre équipe."',name:'Sophie Chevalier',role:'Directrice commerciale · Zurich',av:'SC'},
+  {stars:'★★★★★',text:'"Les scripts générés par IA sont naturels et adaptés. Fini les scripts génériques — un outil vraiment pensé pour la prospection suisse."',name:'Marc Rossier',role:'Business Dev · Lausanne',av:'MR'},
+  {stars:'★★★★☆',text:'"Interface épurée, données enrichies en 10 secondes. Notre équipe de 8 commerciaux l\'adopte au quotidien sans formation préalable."',name:'Lucie Brunner',role:'Chef d\'équipe · Genève',av:'LB'},
+];
+document.getElementById('reviews-grid').innerHTML=REVIEWS.map(r=>`
+  <div class="review-card glass" style="backdrop-filter:blur(28px) saturate(2) url('#lg');-webkit-backdrop-filter:blur(28px) saturate(2);">
+    <div class="review-stars">${r.stars}</div>
+    <p class="review-text">${r.text}</p>
+    <div class="review-author">
+      <div class="review-av">${r.av}</div>
+      <div><div class="review-name">${r.name}</div><div class="review-role">${r.role}</div></div>
+    </div>
+  </div>`).join('');
+
+/* ══ KEYBOARD ═════════════════════════════════════════════════════════════ */
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeModal();
+  if(e.key==='Enter'&&document.getElementById('modal-ov').style.display!=='none')saveProspect();
+  if(e.key==='Enter'&&document.getElementById('auth-page').style.display!=='none'){
+    const t=document.querySelector('.auth-tab.active')?.textContent;
+    if(t==='Connexion')doLogin();else doRegister();
+  }
+});
+['l-email','l-pass'].forEach(id=>document.getElementById(id)?.addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();}));
+['r-name','r-email','r-pass'].forEach(id=>document.getElementById(id)?.addEventListener('keydown',e=>{if(e.key==='Enter')doRegister();}));
+
+/* ══ INIT ═════════════════════════════════════════════════════════════════ */
+(function(){
+  const u=Auth.me();
+  if(u)enterApp();
+})();
+</script>
+</body>
+</html>
