@@ -9,7 +9,7 @@ const HEAD = {
 const json = (s, b) => ({ statusCode: s, headers: HEAD, body: JSON.stringify(b) })
 
 const secret = () => process.env.APP_SECRET || 'alpinia-default-secret-change-me'
-const appEmail = () => (process.env.APP_EMAIL || '').toLowerCase().trim()
+const appEmail = () => (process.env.APP_EMAIL || process.env.APP_MAIL || '').toLowerCase().trim()
 const appPassword = () => process.env.APP_PASSWORD || ''
 const appName = () => process.env.APP_NAME || 'Alpinia Pro'
 
