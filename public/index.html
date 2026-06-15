@@ -11,7 +11,7 @@
 :root{
   --bg:#0a0a0a;--s1:#111114;--s2:#17171c;--s3:#202028;
   --br:rgba(255,255,255,.07);--br2:rgba(255,255,255,.13);
-  --violet:#7c3aed;--violet2:#a855f7;--pink:#ec4899;--white:#ffffff;
+  --violet:#7c3aed;--violet2:#a855f7;--pink:#ec4899;
   --grad:linear-gradient(135deg,#7c3aed 0%,#a855f7 50%,#ec4899 100%);
   --t1:#f4f1fb;--t2:#a1a1b3;--t3:#5b5b6b;
   --ok:#34d399;--warn:#fbbf24;--err:#f87171;
@@ -19,202 +19,194 @@
   --ease:cubic-bezier(.22,.8,.3,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--t1);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}
-.aurora{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#0a0a0a}
-.aurora .blob{position:absolute;width:62vmax;height:62vmax;border-radius:50%;filter:blur(90px);opacity:.55;mix-blend-mode:screen;will-change:transform}
-.aurora .b1{background:radial-gradient(circle at 30% 30%,var(--violet),transparent 60%);top:-18%;left:-12%;animation:drift1 19s var(--ease) infinite}
-.aurora .b2{background:radial-gradient(circle at 70% 70%,var(--pink),transparent 60%);bottom:-20%;right:-12%;animation:drift2 23s var(--ease) infinite}
-.aurora .b3{background:radial-gradient(circle at 50% 50%,var(--violet2),transparent 62%);top:25%;left:35%;opacity:.4;animation:drift3 27s var(--ease) infinite}
-.aurora::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,transparent 0%,rgba(10,10,10,.55) 70%,#0a0a0a 100%)}
-@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(8vw,6vh) scale(1.12)}}
-@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-7vw,-5vh) scale(1.08)}}
-@keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-5vw,7vh) scale(1.15)}}
-@media(prefers-reduced-motion:reduce){.aurora .blob{animation:none}}
+body{background:var(--bg);color:var(--t1);font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}
+.aurora{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.blob{position:absolute;width:62vmax;height:62vmax;border-radius:50%;filter:blur(90px);opacity:.55;mix-blend-mode:screen;will-change:transform}
+.b1{background:radial-gradient(circle at 30% 30%,var(--violet),transparent 60%);top:-18%;left:-12%;animation:d1 19s var(--ease) infinite}
+.b2{background:radial-gradient(circle at 70% 70%,var(--pink),transparent 60%);bottom:-20%;right:-12%;animation:d2 23s var(--ease) infinite}
+.b3{background:radial-gradient(circle at 50% 50%,var(--violet2),transparent 62%);top:25%;left:35%;opacity:.4;animation:d3 27s var(--ease) infinite}
+.aurora::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,transparent 0%,rgba(10,10,10,.6) 70%,#0a0a0a 100%)}
+@keyframes d1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(8vw,6vh) scale(1.12)}}
+@keyframes d2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-7vw,-5vh) scale(1.08)}}
+@keyframes d3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-5vw,7vh) scale(1.15)}}
+@media(prefers-reduced-motion:reduce){.blob{animation:none}}
 #app{position:relative;z-index:1;min-height:100vh}
 .glass{background:rgba(255,255,255,.045);backdrop-filter:blur(22px) saturate(1.7);-webkit-backdrop-filter:blur(22px) saturate(1.7);border:1px solid var(--br2)}
-.glass-strong{background:rgba(255,255,255,.06);backdrop-filter:blur(40px) saturate(2);-webkit-backdrop-filter:blur(40px) saturate(2);border:1px solid var(--br2);box-shadow:0 8px 40px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08)}
+.glass-s{background:rgba(255,255,255,.06);backdrop-filter:blur(40px) saturate(2);-webkit-backdrop-filter:blur(40px) saturate(2);border:1px solid var(--br2);box-shadow:0 8px 40px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08)}
 .card{background:var(--s1);border:1px solid var(--br);border-radius:var(--r20);padding:20px}
-.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.btn-colorful{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;border-radius:var(--r14);border:1px solid rgba(255,255,255,.08);background:#0c0c10;color:#fff;font-weight:700;font-size:14px;cursor:pointer;overflow:hidden;transition:transform .12s var(--ease);font-family:inherit;text-decoration:none;white-space:nowrap}
-.btn-colorful::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--violet),var(--violet2),var(--pink));opacity:.45;filter:blur(12px);transition:opacity .5s var(--ease)}
-.btn-colorful:hover::before{opacity:.9}
-.btn-colorful:active{transform:translateY(1px)}
-.btn-colorful>*{position:relative;z-index:1}
-.btn-colorful:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
-.btn-colorful span{position:relative;z-index:1}
-.btn-primary{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;border-radius:var(--r14);border:none;background:var(--grad);color:#fff;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;transition:transform .12s var(--ease),box-shadow .2s;box-shadow:0 8px 30px rgba(168,85,247,.35)}
-.btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 40px rgba(168,85,247,.5)}
-.btn-primary:active{transform:translateY(1px)}
-.btn-primary:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
-.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
-.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 14px;border-radius:var(--r10);border:1px solid var(--br);background:transparent;color:var(--t2);font-size:13px;cursor:pointer;font-family:inherit;transition:background .15s,color .15s,border .15s}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;border-radius:var(--r14);border:none;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;transition:transform .12s var(--ease),box-shadow .2s;white-space:nowrap;text-decoration:none}
+.btn:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none !important}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 30px rgba(168,85,247,.35)}
+.btn-primary:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 12px 40px rgba(168,85,247,.5)}
+.btn-primary:active:not(:disabled){transform:translateY(1px)}
+.btn-cf{position:relative;background:#0c0c10;color:#fff;border:1px solid rgba(255,255,255,.08);overflow:hidden}
+.btn-cf::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--violet),var(--violet2),var(--pink));opacity:.4;filter:blur(12px);transition:opacity .4s}
+.btn-cf:hover::before{opacity:.85}
+.btn-cf>*{position:relative;z-index:1}
+.btn-cf:active{transform:translateY(1px)}
+.btn-ghost{background:transparent;color:var(--t2);border:1px solid var(--br);height:36px;padding:0 14px;font-size:13px;font-weight:500}
 .btn-ghost:hover{background:rgba(255,255,255,.07);color:var(--t1);border-color:var(--br2)}
-.btn-ghost:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
-.btn-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:var(--r10);border:1px solid var(--br);background:transparent;color:var(--t2);cursor:pointer;transition:background .15s,color .15s;text-decoration:none}
+.btn-icon{width:36px;height:36px;padding:0;background:transparent;color:var(--t2);border:1px solid var(--br);border-radius:var(--r10)}
 .btn-icon:hover{background:rgba(255,255,255,.07);color:var(--t1)}
-.btn-icon:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+/* Forms */
 .fi{height:44px;width:100%;background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:var(--r14);padding:0 14px;color:var(--t1);font-size:14px;outline:none;transition:border .15s,box-shadow .15s;font-family:inherit}
 .fi:focus{border-color:rgba(168,85,247,.55);box-shadow:0 0 0 3px rgba(124,58,237,.18)}
 .fi::placeholder{color:var(--t3)}
 .fi-sm{height:36px;border-radius:var(--r10);font-size:13px;padding:0 12px}
 select.fi{appearance:none;cursor:pointer}
 textarea.fi{height:auto;padding:12px 14px;resize:vertical;min-height:80px}
-a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
-label.lbl{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bottom:6px}
-.fgroup{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
-.err-msg{font-size:12px;color:var(--err);margin-top:4px;display:none}
-.err-msg.show{display:block}
-.badge{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 8px;border-radius:var(--rfull);font-size:11px;font-weight:600;letter-spacing:.02em}
-.badge-to_call{background:rgba(99,102,241,.2);color:#a5b4fc}
-.badge-called{background:rgba(34,197,94,.15);color:#86efac}
-.badge-voicemail{background:rgba(251,191,36,.15);color:#fde68a}
-.badge-refusal{background:rgba(248,113,113,.2);color:#fca5a5}
-.badge-video_rdv{background:rgba(52,211,153,.2);color:#6ee7b7}
+label{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bottom:6px}
+.fgrp{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.ferr{font-size:12px;color:var(--err);margin-top:3px;display:none}
+.ferr.on{display:block}
+/* Badges */
+.badge{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:var(--rfull);font-size:11px;font-weight:600}
+.b-to_call{background:rgba(99,102,241,.2);color:#a5b4fc}
+.b-called{background:rgba(34,197,94,.15);color:#86efac}
+.b-voicemail{background:rgba(251,191,36,.15);color:#fde68a}
+.b-refusal{background:rgba(248,113,113,.2);color:#fca5a5}
+.b-video_rdv{background:rgba(52,211,153,.2);color:#6ee7b7}
+/* Views */
 [data-view]{display:none}
-[data-view].active{display:block}
-.page-wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-#toast-container{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
-@media(min-width:768px){#toast-container{bottom:24px}}
-.toast{background:var(--s2);border:1px solid var(--br2);border-radius:var(--rfull);padding:10px 18px;font-size:13px;color:var(--t1);box-shadow:0 4px 24px rgba(0,0,0,.5);animation:toastIn .2s var(--ease) forwards;pointer-events:auto}
-.toast.out{animation:toastOut .2s var(--ease) forwards}
+[data-view].on{display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+/* Toast */
+#toasts{position:fixed;bottom:76px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
+@media(min-width:768px){#toasts{bottom:24px}}
+.toast{background:var(--s2);border:1px solid var(--br2);border-radius:var(--rfull);padding:10px 18px;font-size:13px;color:var(--t1);box-shadow:0 4px 24px rgba(0,0,0,.5);animation:tIn .2s var(--ease) forwards}
+.toast.out{animation:tOut .2s var(--ease) forwards}
 .toast.ok{border-color:rgba(52,211,153,.4);color:var(--ok)}
 .toast.err{border-color:rgba(248,113,113,.4);color:var(--err)}
-@keyframes toastIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-@keyframes toastOut{to{opacity:0;transform:translateY(8px)}}
-#topnav{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px;padding:0 20px;height:60px;background:rgba(10,10,10,.75);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--br)}
+@keyframes tIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes tOut{to{opacity:0;transform:translateY(8px)}}
+/* Nav */
+#topnav{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px;padding:0 20px;height:60px;background:rgba(10,10,10,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--br)}
 .nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:17px;letter-spacing:-.03em;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;flex:none}
 .nav-links{display:flex;align-items:center;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none}
 .nav-links::-webkit-scrollbar{display:none}
-.nav-link{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:var(--r10);font-size:13px;font-weight:500;color:var(--t2);cursor:pointer;background:transparent;border:none;font-family:inherit;transition:background .15s,color .15s;white-space:nowrap}
-.nav-link:hover{background:rgba(255,255,255,.07);color:var(--t1)}
-.nav-link.current{background:rgba(124,58,237,.18);color:var(--violet2)}
+.nav-btn{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:var(--r10);font-size:13px;font-weight:500;color:var(--t2);cursor:pointer;background:transparent;border:none;font-family:inherit;transition:background .15s,color .15s;white-space:nowrap}
+.nav-btn:hover{background:rgba(255,255,255,.07);color:var(--t1)}
+.nav-btn.on{background:rgba(124,58,237,.18);color:var(--violet2)}
+.nav-btn:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
 .nav-right{display:flex;align-items:center;gap:10px;flex:none}
-.nav-user{font-size:12px;color:var(--t3);max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#sync-status{font-size:11px;color:var(--t3);transition:color .3s;white-space:nowrap}
-#sync-status.saving{color:var(--warn)}
-#sync-status.saved{color:var(--ok)}
-#bottomnav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;height:60px;background:rgba(10,10,10,.9);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-top:1px solid var(--br);justify-content:space-around;align-items:center;padding:0 8px}
-.bnav-btn{display:flex;flex-direction:column;align-items:center;gap:2px;height:52px;justify-content:center;padding:0 12px;background:none;border:none;color:var(--t3);font-size:10px;font-weight:500;cursor:pointer;font-family:inherit;border-radius:var(--r10);transition:color .15s}
-.bnav-btn.current{color:var(--violet2)}
+.nav-user{font-size:12px;color:var(--t3);max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#bnav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;height:60px;background:rgba(10,10,10,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--br);justify-content:space-around;align-items:center;padding:0 8px}
+.bnav-btn{display:flex;flex-direction:column;align-items:center;gap:2px;height:52px;justify-content:center;padding:0 12px;background:none;border:none;color:var(--t3);font-size:10px;font-weight:500;cursor:pointer;font-family:inherit;border-radius:var(--r10);transition:color .15s;min-width:60px}
 .bnav-btn svg{width:20px;height:20px}
-@media(max-width:767px){#topnav .nav-links{display:none}#bottomnav{display:flex}#app{padding-bottom:60px}}
-#view-login,#view-register{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 20px}
-.auth-layout{width:100%;max-width:420px;display:flex;flex-direction:column;gap:32px}
-.auth-hero{text-align:left}
+.bnav-btn.on{color:var(--violet2)}
+@media(max-width:767px){#topnav .nav-links{display:none}#bnav{display:flex}#app{padding-bottom:60px}}
+/* Login */
+#view-login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 20px}
+.auth-wrap{width:100%;max-width:420px;display:flex;flex-direction:column;gap:32px}
 .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--t2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--pink);box-shadow:0 0 10px var(--pink);display:inline-block;flex:none;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
 .hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.4rem,7vw,3.8rem);font-weight:900;letter-spacing:-.04em;line-height:1.02;margin-bottom:12px}
-.hero-sub{font-size:15px;color:var(--t2);line-height:1.6;max-width:340px}
+.hero-sub{font-size:15px;color:var(--t2);line-height:1.6}
 .auth-card{border-radius:var(--r20);padding:28px 24px}
-.auth-tabs{display:flex;gap:4px;margin-bottom:24px;background:rgba(255,255,255,.04);border-radius:var(--r10);padding:4px}
-.auth-tab{flex:1;height:36px;border-radius:8px;border:none;background:transparent;color:var(--t2);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .15s,color .15s}
-.auth-tab.active{background:var(--s3);color:var(--t1)}
-.auth-tab:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
-.auth-form-wrap{display:none}
-.auth-form-wrap.active{display:block}
-.reviews{display:flex;flex-direction:column;gap:10px}
-.review-card{border-radius:var(--r14);padding:14px 16px}
-.review-stars{display:flex;gap:2px;margin-bottom:6px}
-.review-star{width:12px;height:12px}
-.review-text{font-size:12px;color:var(--t2);line-height:1.5;margin-bottom:8px}
-.review-author{font-size:11px;color:var(--t3);font-weight:600}
+.rev-card{border-radius:var(--r14);padding:14px 16px}
+.rev-stars{display:flex;gap:2px;margin-bottom:6px}
+.rev-stars svg{width:12px;height:12px}
+.rev-txt{font-size:12px;color:var(--t2);line-height:1.5;margin-bottom:8px}
+.rev-auth{font-size:11px;color:var(--t3);font-weight:600}
+/* Dashboard */
 #view-dashboard{padding:24px 0 40px}
-.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
-.stat-card{border-radius:var(--r14);padding:16px 18px;display:flex;flex-direction:column;gap:4px}
-.stat-num{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;letter-spacing:-.03em;line-height:1}
-.stat-lbl{font-size:12px;color:var(--t2);font-weight:500}
-.stat-num.violet{color:var(--violet2)}
-.stat-num.green{color:var(--ok)}
-.stat-num.warn{color:var(--warn)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.stat{border-radius:var(--r14);padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.stat-n{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;letter-spacing:-.03em;line-height:1}
+.stat-l{font-size:12px;color:var(--t2);font-weight:500}
+.n-violet{color:var(--violet2)}.n-warn{color:var(--warn)}.n-ok{color:var(--ok)}
 .toolbar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
-.toolbar-search{flex:1;min-width:180px}
-.prospect-table-wrap{overflow-x:auto;border-radius:var(--r20);border:1px solid var(--br)}
-.prospect-table{width:100%;border-collapse:collapse;font-size:13px}
-.prospect-table th{padding:10px 14px;text-align:left;font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--br);background:rgba(255,255,255,.025)}
-.prospect-table td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle}
-.prospect-table tr:last-child td{border-bottom:none}
-.prospect-table tr.expanded td{border-bottom:none}
+.t-search{flex:1;min-width:180px}
+.tbl-wrap{overflow-x:auto;border-radius:var(--r20);border:1px solid var(--br)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{padding:10px 14px;text-align:left;font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--br);background:rgba(255,255,255,.025)}
+td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr.expanded td{border-bottom:none}
 .enrich-row td{background:rgba(124,58,237,.06);padding:0}
 .enrich-panel{padding:16px 20px}
 .enrich-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
 @media(min-width:768px){.enrich-grid{grid-template-columns:repeat(4,1fr)}}
-.enrich-item{background:rgba(255,255,255,.04);border-radius:var(--r10);padding:10px 12px}
-.enrich-key{font-size:10px;color:var(--t3);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
-.enrich-val{font-size:13px;color:var(--t1);line-height:1.4}
+.ei{background:rgba(255,255,255,.04);border-radius:var(--r10);padding:10px 12px}
+.ei-k{font-size:10px;color:var(--t3);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.ei-v{font-size:13px;color:var(--t1);line-height:1.4}
 .name-cell{font-weight:600;color:var(--t1)}
 .name-cell small{display:block;font-size:11px;color:var(--t3);font-weight:400;margin-top:1px}
-.row-actions{display:flex;align-items:center;gap:4px}
-.prospect-cards{display:none;flex-direction:column;gap:10px}
-.prospect-card{border-radius:var(--r14);padding:14px 16px;display:flex;flex-direction:column;gap:10px;cursor:default}
-.prospect-card-header{display:flex;justify-content:space-between;align-items:start;gap:8px}
-.prospect-card-name{font-weight:600;font-size:14px;color:var(--t1)}
-.prospect-card-meta{font-size:12px;color:var(--t3)}
-.prospect-card-footer{display:flex;justify-content:space-between;align-items:center;gap:8px}
-@media(max-width:767px){.prospect-table-wrap{display:none}.prospect-cards{display:flex}.stats-row{grid-template-columns:repeat(3,1fr);gap:8px}.stat-card{padding:12px 10px}.stat-num{font-size:1.5rem}}
-.empty-state{text-align:center;padding:60px 20px;color:var(--t3)}
-.empty-state svg{width:40px;height:40px;margin:0 auto 12px;display:block;color:var(--t3)}
-.empty-state p{font-size:14px;line-height:1.6;margin-bottom:16px}
+.row-acts{display:flex;align-items:center;gap:4px;justify-content:flex-end}
+.p-cards{display:none;flex-direction:column;gap:10px}
+.p-card{border-radius:var(--r14);padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.p-card-h{display:flex;justify-content:space-between;align-items:start;gap:8px}
+.p-card-n{font-weight:600;font-size:14px;color:var(--t1)}
+.p-card-m{font-size:12px;color:var(--t3)}
+.p-card-f{display:flex;justify-content:space-between;align-items:center;gap:8px}
+@media(max-width:767px){.tbl-wrap{display:none}.p-cards{display:flex}.stats{gap:8px}.stat{padding:12px 10px}.stat-n{font-size:1.5rem}}
+.empty{text-align:center;padding:60px 20px;color:var(--t3)}
+.empty svg{width:40px;height:40px;margin:0 auto 12px;display:block}
+.empty p{font-size:14px;line-height:1.6;margin-bottom:16px}
+.ss{height:32px;background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:var(--r10);padding:0 10px;color:var(--t1);font-size:12px;font-family:inherit;cursor:pointer;outline:none}
+.ss:focus{border-color:rgba(168,85,247,.55)}
+/* Cold call */
 #view-coldcall{padding:24px 0 40px}
-.cc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap}
+.cc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap}
 .cc-counter{font-size:13px;color:var(--t2);font-weight:500}
 .cc-list{display:flex;flex-direction:column;gap:8px}
 .cc-item{border-radius:var(--r14);padding:14px 16px;display:flex;align-items:center;gap:12px}
 .cc-info{flex:1;min-width:0}
 .cc-name{font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .cc-sub{font-size:12px;color:var(--t3);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.cc-actions{display:flex;gap:6px;flex:none;align-items:center}
-.cc-status-select{height:32px;background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:var(--r10);padding:0 10px;color:var(--t1);font-size:12px;font-family:inherit;cursor:pointer;outline:none}
-.cc-status-select:focus{border-color:rgba(168,85,247,.55)}
+.cc-acts{display:flex;gap:6px;flex:none;align-items:center}
+/* Scripts */
 #view-scripts{padding:24px 0 40px}
-.scripts-layout{display:grid;gap:20px}
-@media(min-width:768px){.scripts-layout{grid-template-columns:1fr 1fr}}
+.sc-layout{display:grid;gap:20px}
+@media(min-width:768px){.sc-layout{grid-template-columns:1fr 1fr}}
 .presets{display:flex;flex-direction:column;gap:8px}
-.preset-btn{width:100%;text-align:left;background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:var(--r14);padding:12px 16px;color:var(--t1);font-size:13px;cursor:pointer;font-family:inherit;transition:background .15s,border .15s}
-.preset-btn:hover{background:rgba(255,255,255,.07);border-color:var(--br2)}
-.preset-btn:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+.preset{width:100%;text-align:left;background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:var(--r14);padding:12px 16px;color:var(--t1);font-size:13px;cursor:pointer;font-family:inherit;transition:background .15s,border .15s}
+.preset:hover{background:rgba(255,255,255,.07);border-color:var(--br2)}
+.preset:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
 .preset-title{font-weight:600;margin-bottom:2px}
 .preset-desc{font-size:11px;color:var(--t3)}
-.script-output{min-height:200px;white-space:pre-wrap;font-size:13px;line-height:1.7;color:var(--t1);background:rgba(255,255,255,.025);border-radius:var(--r14);padding:16px;border:1px solid var(--br)}
-.output-placeholder{color:var(--t3);font-style:italic}
-.modal-backdrop{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px}
-.modal-backdrop.open{display:flex}
+.sc-out{min-height:200px;white-space:pre-wrap;font-size:13px;line-height:1.7;color:var(--t1);background:rgba(255,255,255,.025);border-radius:var(--r14);padding:16px;border:1px solid var(--br)}
+.sc-ph{color:var(--t3);font-style:italic}
+/* Modal */
+.modal-bg{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px}
+.modal-bg.on{display:flex}
 .modal{background:var(--s1);border:1px solid var(--br2);border-radius:var(--r20);width:100%;max-width:560px;max-height:90vh;overflow-y:auto;padding:28px 24px}
-.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.modal-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
 .modal-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.02em}
 .modal-grid{display:grid;gap:12px}
 @media(min-width:480px){.modal-grid{grid-template-columns:1fr 1fr}}
+/* Chat */
 #chat-btn{position:fixed;bottom:76px;right:16px;z-index:300;width:52px;height:52px;border-radius:50%;background:var(--grad);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(168,85,247,.5);transition:transform .15s,box-shadow .15s}
 #chat-btn:hover{transform:scale(1.08);box-shadow:0 8px 32px rgba(168,85,247,.7)}
 #chat-btn:focus-visible{outline:2px solid var(--violet2);outline-offset:3px}
 @media(min-width:768px){#chat-btn{bottom:24px;right:24px}}
 #chat-panel{display:none;position:fixed;bottom:76px;right:16px;z-index:300;width:calc(100vw - 32px);max-width:380px;height:520px;border-radius:var(--r20);overflow:hidden;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.6)}
-#chat-panel.open{display:flex}
+#chat-panel.on{display:flex}
 @media(min-width:768px){#chat-panel{bottom:88px;right:24px}}
-.chat-header{display:flex;align-items:center;gap:10px;padding:14px 16px;background:rgba(255,255,255,.06);border-bottom:1px solid var(--br);flex:none}
-.chat-avatar{width:32px;height:32px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;flex:none}
-.chat-hname{font-weight:700;font-size:13px}
-.chat-hsub{font-size:11px;color:var(--ok)}
+.chat-hd{display:flex;align-items:center;gap:10px;padding:14px 16px;background:rgba(255,255,255,.06);border-bottom:1px solid var(--br);flex:none}
+.chat-av{width:32px;height:32px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;flex:none}
 .chat-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;scrollbar-color:var(--br) transparent}
-.chat-msg{max-width:88%;font-size:13px;line-height:1.6;padding:10px 14px;border-radius:14px}
-.chat-msg.user{align-self:flex-end;background:linear-gradient(135deg,var(--violet) 0%,var(--violet2) 100%);color:#fff;border-bottom-right-radius:4px}
-.chat-msg.bot{align-self:flex-start;background:rgba(255,255,255,.07);color:var(--t1);border-bottom-left-radius:4px}
-.chat-footer{padding:12px;border-top:1px solid var(--br);display:flex;gap:8px;flex:none;background:rgba(10,10,10,.5)}
-#chat-input{flex:1;height:40px;background:rgba(255,255,255,.06);border:1px solid var(--br);border-radius:var(--r10);padding:0 12px;color:var(--t1);font-size:13px;outline:none;font-family:inherit}
-#chat-input:focus{border-color:rgba(168,85,247,.55)}
-.chat-send{width:40px;height:40px;border-radius:var(--r10);background:var(--violet);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;flex:none}
+.msg{max-width:88%;font-size:13px;line-height:1.6;padding:10px 14px;border-radius:14px}
+.msg.u{align-self:flex-end;background:linear-gradient(135deg,var(--violet) 0%,var(--violet2) 100%);color:#fff;border-bottom-right-radius:4px}
+.msg.b{align-self:flex-start;background:rgba(255,255,255,.07);color:var(--t1);border-bottom-left-radius:4px}
+.chat-ft{padding:12px;border-top:1px solid var(--br);display:flex;gap:8px;flex:none;background:rgba(10,10,10,.5)}
+#chat-inp{flex:1;height:40px;background:rgba(255,255,255,.06);border:1px solid var(--br);border-radius:var(--r10);padding:0 12px;color:var(--t1);font-size:13px;outline:none;font-family:inherit}
+#chat-inp:focus{border-color:rgba(168,85,247,.55)}
+.chat-send{width:40px;height:40px;border-radius:var(--r10);background:var(--violet);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;transition:background .15s}
 .chat-send:hover{background:var(--violet2)}
 .chat-send:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
-.chat-typing{align-self:flex-start;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.07);font-size:13px;color:var(--t3);border-bottom-left-radius:4px}
-.typing-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--t3);margin:0 2px;animation:typingPulse 1.2s infinite}
-.typing-dot:nth-child(2){animation-delay:.2s}
-.typing-dot:nth-child(3){animation-delay:.4s}
-@keyframes typingPulse{0%,80%,100%{opacity:.3}40%{opacity:1}}
-@media(prefers-reduced-motion:reduce){.typing-dot{animation:none}}
-.section-title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.03em;margin-bottom:4px}
-.section-sub{font-size:13px;color:var(--t2);margin-bottom:20px}
-.loading-row td{text-align:center;padding:40px;color:var(--t3);font-size:13px}
+.typing{align-self:flex-start;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.07);border-bottom-left-radius:4px}
+.td{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--t3);margin:0 2px;animation:tp 1.2s infinite}
+.td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
+@keyframes tp{0%,80%,100%{opacity:.3}40%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.td{animation:none}}
+.sec-title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.03em;margin-bottom:4px}
+.sec-sub{font-size:13px;color:var(--t2);margin-bottom:20px}
+.load-td td{text-align:center;padding:40px;color:var(--t3);font-size:13px}
 </style>
 </head>
 <body>
@@ -226,30 +218,29 @@ label.lbl{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bo
 <!-- NAV -->
 <nav id="topnav" style="display:none">
   <span class="nav-logo">Alpinia Pro</span>
-  <div class="nav-links" role="navigation" aria-label="Navigation principale">
-    <button class="nav-link" data-nav="dashboard" aria-current="false">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+  <div class="nav-links">
+    <button class="nav-btn" data-nav="dashboard">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
       Prospects
     </button>
-    <button class="nav-link" data-nav="coldcall">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    <button class="nav-btn" data-nav="coldcall">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
       Cold Call
     </button>
-    <button class="nav-link" data-nav="scripts">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+    <button class="nav-btn" data-nav="scripts">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
       Scripts IA
     </button>
   </div>
   <div class="nav-right">
-    <span id="sync-status" aria-live="polite"></span>
-    <span class="nav-user" id="nav-user-name"></span>
-    <button class="btn-ghost" id="btn-logout" style="font-size:12px;height:32px;padding:0 12px">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+    <span class="nav-user" id="nav-user"></span>
+    <button class="btn btn-ghost" id="btn-logout" style="height:32px;padding:0 12px;font-size:12px">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
       Quitter
     </button>
   </div>
 </nav>
-<nav id="bottomnav" style="display:none" aria-label="Navigation">
+<nav id="bnav" style="display:none">
   <button class="bnav-btn" data-nav="dashboard">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
     Prospects
@@ -259,79 +250,54 @@ label.lbl{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bo
     Cold Call
   </button>
   <button class="bnav-btn" data-nav="scripts">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
     Scripts
   </button>
 </nav>
 
 <!-- LOGIN -->
 <section data-view="login" id="view-login">
-  <div class="auth-layout">
-    <div class="auth-hero">
+  <div class="auth-wrap">
+    <div>
       <div class="eyebrow"><i class="dot"></i> Alpinia · Agence Web Valais</div>
-      <h1 class="hero-title"><span class="grad">Prospectez</span><br>plus vite.</h1>
-      <p class="hero-sub">Enrichissement IA, scripts de cold call et suivi des RDV — sur une seule plateforme.</p>
+      <h1 class="hero-title"><span class="grad-text">Prospectez</span><br>plus vite.</h1>
+      <p class="hero-sub">Enrichissement IA, scripts de cold call et suivi des RDV.</p>
     </div>
-    <div class="auth-card glass-strong">
-      <div class="auth-tabs">
-        <button class="auth-tab active" data-tab="login-form">Connexion</button>
-        <button class="auth-tab" data-tab="register-form">Inscription</button>
+    <div class="auth-card glass-s">
+      <div class="fgrp">
+        <label for="li-email">Email</label>
+        <input class="fi" type="email" id="li-email" placeholder="vous@exemple.com" autocomplete="email"/>
+        <span class="ferr" id="li-email-err"></span>
       </div>
-      <div class="auth-form-wrap active" id="login-form">
-        <div class="fgroup">
-          <label class="lbl" for="li-email">Email</label>
-          <input class="fi" type="email" id="li-email" placeholder="vous@exemple.com" autocomplete="email"/>
-          <span class="err-msg" id="li-email-err"></span>
-        </div>
-        <div class="fgroup">
-          <label class="lbl" for="li-pw">Mot de passe</label>
-          <input class="fi" type="password" id="li-pw" placeholder="••••••••" autocomplete="current-password"/>
-        </div>
-        <span class="err-msg show" id="li-global-err" style="margin-bottom:12px;min-height:16px"></span>
-        <button class="btn-primary" id="btn-login" style="width:100%">Se connecter</button>
+      <div class="fgrp">
+        <label for="li-pw">Mot de passe</label>
+        <input class="fi" type="password" id="li-pw" placeholder="••••••••" autocomplete="current-password"/>
       </div>
-      <div class="auth-form-wrap" id="register-form">
-        <div class="fgroup">
-          <label class="lbl" for="re-name">Prénom &amp; Nom</label>
-          <input class="fi" type="text" id="re-name" placeholder="Noé Vuillame" autocomplete="name"/>
-          <span class="err-msg" id="re-name-err"></span>
-        </div>
-        <div class="fgroup">
-          <label class="lbl" for="re-email">Email</label>
-          <input class="fi" type="email" id="re-email" placeholder="vous@exemple.com" autocomplete="email"/>
-          <span class="err-msg" id="re-email-err"></span>
-        </div>
-        <div class="fgroup">
-          <label class="lbl" for="re-pw">Mot de passe</label>
-          <input class="fi" type="password" id="re-pw" placeholder="min. 6 caractères" autocomplete="new-password"/>
-          <span class="err-msg" id="re-pw-err"></span>
-        </div>
-        <span class="err-msg show" id="re-global-err" style="margin-bottom:12px;min-height:16px"></span>
-        <button class="btn-primary" id="btn-register" style="width:100%">Créer mon compte</button>
-      </div>
+      <span class="ferr on" id="li-err" style="margin-bottom:12px;min-height:16px"></span>
+      <button class="btn btn-primary" id="btn-login" style="width:100%">Se connecter</button>
     </div>
-    <div class="reviews">
-      <div class="review-card glass">
-        <div class="review-stars">
-          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="rev-card glass">
+        <div class="rev-stars">
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <p class="review-text">« Avec Alpinia Pro, j'ai doublé mes appels qualifiés en 2 semaines. L'enrichissement IA fait gagner un temps fou. »</p>
-        <span class="review-author">Laurent M. — Gérant PME, Sion</span>
+        <p class="rev-txt">« Avec Alpinia Pro, j'ai doublé mes appels qualifiés en 2 semaines. L'enrichissement IA fait gagner un temps fou. »</p>
+        <span class="rev-auth">Laurent M. — Gérant PME, Sion</span>
       </div>
-      <div class="review-card glass">
-        <div class="review-stars">
-          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <div class="rev-card glass">
+        <div class="rev-stars">
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <p class="review-text">« Le coach IA m'aide à gérer les objections en direct. Mon taux de RDV a augmenté de 30 %. »</p>
-        <span class="review-author">Sophie R. — Commerciale, Martigny</span>
+        <p class="rev-txt">« Le coach IA m'aide à gérer les objections en direct. Mon taux de RDV a augmenté de 30 %. »</p>
+        <span class="rev-auth">Sophie R. — Commerciale, Martigny</span>
       </div>
     </div>
   </div>
@@ -339,26 +305,15 @@ label.lbl{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bo
 
 <!-- DASHBOARD -->
 <section data-view="dashboard" id="view-dashboard">
-  <div class="page-wrap">
-    <div class="stats-row">
-      <div class="stat-card glass">
-        <span class="stat-num violet" id="stat-total">0</span>
-        <span class="stat-lbl">Total</span>
-      </div>
-      <div class="stat-card glass">
-        <span class="stat-num warn" id="stat-tocall">0</span>
-        <span class="stat-lbl">À appeler</span>
-      </div>
-      <div class="stat-card glass">
-        <span class="stat-num green" id="stat-rdv">0</span>
-        <span class="stat-lbl">RDV obtenus</span>
-      </div>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat glass"><span class="stat-n n-violet" id="s-total">0</span><span class="stat-l">Total</span></div>
+      <div class="stat glass"><span class="stat-n n-warn" id="s-tocall">0</span><span class="stat-l">À appeler</span></div>
+      <div class="stat glass"><span class="stat-n n-ok" id="s-rdv">0</span><span class="stat-l">RDV obtenus</span></div>
     </div>
     <div class="toolbar">
-      <div class="toolbar-search">
-        <input class="fi fi-sm" type="search" id="dash-search" placeholder="Rechercher…" aria-label="Rechercher un prospect"/>
-      </div>
-      <select class="fi fi-sm" id="dash-filter" style="width:auto;min-width:140px" aria-label="Filtrer par statut">
+      <div class="t-search"><input class="fi fi-sm" type="search" id="d-search" placeholder="Rechercher…" aria-label="Rechercher"/></div>
+      <select class="fi fi-sm" id="d-filter" style="width:auto;min-width:140px" aria-label="Filtrer">
         <option value="">Tous les statuts</option>
         <option value="to_call">À appeler</option>
         <option value="called">Appelé</option>
@@ -366,41 +321,30 @@ label.lbl{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bo
         <option value="refusal">Refus</option>
         <option value="video_rdv">RDV</option>
       </select>
-      <button class="btn-colorful" id="btn-add-prospect">
+      <button class="btn btn-cf" id="btn-add">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         <span>Ajouter</span>
       </button>
     </div>
-    <div class="prospect-table-wrap">
-      <table class="prospect-table" id="prospect-table" aria-label="Liste des prospects">
-        <thead>
-          <tr>
-            <th>Nom / Établissement</th>
-            <th>Ville</th>
-            <th>Type</th>
-            <th>Statut</th>
-            <th>Notes</th>
-            <th style="text-align:right">Actions</th>
-          </tr>
-        </thead>
-        <tbody id="prospect-tbody">
-          <tr class="loading-row"><td colspan="6">Chargement…</td></tr>
-        </tbody>
+    <div class="tbl-wrap">
+      <table aria-label="Prospects">
+        <thead><tr><th>Nom / Établissement</th><th>Ville</th><th>Type</th><th>Statut</th><th>Notes</th><th style="text-align:right">Actions</th></tr></thead>
+        <tbody id="d-tbody"><tr class="load-td"><td colspan="6">Chargement…</td></tr></tbody>
       </table>
     </div>
-    <div class="prospect-cards" id="prospect-cards"></div>
+    <div class="p-cards" id="d-cards"></div>
   </div>
 </section>
 
 <!-- COLD CALL -->
 <section data-view="coldcall" id="view-coldcall">
-  <div class="page-wrap">
-    <div class="cc-header">
+  <div class="wrap">
+    <div class="cc-head">
       <div>
-        <h1 class="section-title">Cold Call</h1>
-        <span class="cc-counter" id="cc-counter">—</span>
+        <h1 class="sec-title">Cold Call</h1>
+        <span class="cc-counter" id="cc-count">—</span>
       </div>
-      <button class="btn-ghost" id="cc-filter-all">Voir tous</button>
+      <button class="btn btn-ghost" id="cc-toggle">Voir tous</button>
     </div>
     <div class="cc-list" id="cc-list"></div>
   </div>
@@ -408,58 +352,27 @@ label.lbl{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bo
 
 <!-- SCRIPTS -->
 <section data-view="scripts" id="view-scripts">
-  <div class="page-wrap">
-    <h1 class="section-title">Scripts IA</h1>
-    <p class="section-sub">Génère un script personnalisé ou utilise un preset prêt à l'emploi.</p>
-    <div class="scripts-layout">
+  <div class="wrap">
+    <h1 class="sec-title">Scripts IA</h1>
+    <p class="sec-sub">Génère un script personnalisé ou utilise un preset.</p>
+    <div class="sc-layout">
       <div>
-        <h2 style="font-size:14px;font-weight:600;margin-bottom:12px;color:var(--t2)">Presets rapides</h2>
+        <h2 style="font-size:14px;font-weight:600;color:var(--t2);margin-bottom:12px">Presets rapides</h2>
         <div class="presets">
-          <button class="preset-btn" data-preset="coldb2b">
-            <div class="preset-title">Cold Call B2B</div>
-            <div class="preset-desc">Premier contact, accroche AIDA, objectif RDV</div>
-          </button>
-          <button class="preset-btn" data-preset="relance">
-            <div class="preset-title">Relance</div>
-            <div class="preset-desc">Suite d'un premier contact sans réponse</div>
-          </button>
-          <button class="preset-btn" data-preset="objections">
-            <div class="preset-title">Traitement des objections</div>
-            <div class="preset-desc">Réponses aux 5 objections les plus fréquentes</div>
-          </button>
-          <button class="preset-btn" data-preset="closing">
-            <div class="preset-title">Closing RDV</div>
-            <div class="preset-desc">Conclure et fixer un créneau concret</div>
-          </button>
+          <button class="preset" data-preset="coldb2b"><div class="preset-title">Cold Call B2B</div><div class="preset-desc">Premier contact, accroche AIDA, objectif RDV</div></button>
+          <button class="preset" data-preset="relance"><div class="preset-title">Relance</div><div class="preset-desc">Suite d'un premier contact sans réponse</div></button>
+          <button class="preset" data-preset="objections"><div class="preset-title">Traitement des objections</div><div class="preset-desc">Réponses aux 5 objections fréquentes</div></button>
+          <button class="preset" data-preset="closing"><div class="preset-title">Closing RDV</div><div class="preset-desc">Conclure et fixer un créneau concret</div></button>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px">
         <h2 style="font-size:14px;font-weight:600;color:var(--t2)">Script personnalisé</h2>
-        <div class="fgroup" style="margin-bottom:0">
-          <label class="lbl" for="sc-name">Prénom prospect</label>
-          <input class="fi" type="text" id="sc-name" placeholder="Marc"/>
-        </div>
-        <div class="fgroup" style="margin-bottom:0">
-          <label class="lbl" for="sc-company">Établissement</label>
-          <input class="fi" type="text" id="sc-company" placeholder="Restaurant du Lac"/>
-        </div>
-        <div class="fgroup" style="margin-bottom:0">
-          <label class="lbl" for="sc-sector">Secteur</label>
-          <input class="fi" type="text" id="sc-sector" placeholder="restauration, hôtellerie…"/>
-        </div>
-        <div class="fgroup" style="margin-bottom:0">
-          <label class="lbl" for="sc-type">Type d'appel</label>
-          <select class="fi" id="sc-type">
-            <option value="premier contact">Premier contact</option>
-            <option value="relance">Relance</option>
-            <option value="closing">Closing RDV</option>
-          </select>
-        </div>
-        <div class="fgroup" style="margin-bottom:0">
-          <label class="lbl" for="sc-info">Infos clés (optionnel)</label>
-          <textarea class="fi" id="sc-info" placeholder="ex : pas de site web, concurrent voisin en a un…" style="min-height:72px"></textarea>
-        </div>
-        <button class="btn-colorful" id="btn-gen-script" style="width:100%">
+        <div class="fgrp" style="margin-bottom:0"><label for="sc-name">Prénom prospect</label><input class="fi" type="text" id="sc-name" placeholder="Marc"/></div>
+        <div class="fgrp" style="margin-bottom:0"><label for="sc-co">Établissement</label><input class="fi" type="text" id="sc-co" placeholder="Restaurant du Lac"/></div>
+        <div class="fgrp" style="margin-bottom:0"><label for="sc-sec">Secteur</label><input class="fi" type="text" id="sc-sec" placeholder="restauration, hôtellerie…"/></div>
+        <div class="fgrp" style="margin-bottom:0"><label for="sc-type">Type d'appel</label><select class="fi" id="sc-type"><option value="premier contact">Premier contact</option><option value="relance">Relance</option><option value="closing">Closing RDV</option></select></div>
+        <div class="fgrp" style="margin-bottom:0"><label for="sc-info">Infos clés (optionnel)</label><textarea class="fi" id="sc-info" placeholder="ex : pas de site web…" style="min-height:72px"></textarea></div>
+        <button class="btn btn-cf" id="btn-gen" style="width:100%">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           <span>Générer le script</span>
         </button>
@@ -468,77 +381,37 @@ label.lbl{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bo
     <div style="margin-top:20px">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
         <span style="font-size:13px;font-weight:600;color:var(--t2)">Résultat</span>
-        <button class="btn-ghost" id="btn-copy-script" style="font-size:12px;height:30px;padding:0 10px">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        <button class="btn btn-ghost" id="btn-copy" style="font-size:12px;height:30px;padding:0 10px">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           Copier
         </button>
       </div>
-      <div class="script-output" id="script-output">
-        <span class="output-placeholder">Le script généré apparaîtra ici…</span>
-      </div>
+      <div class="sc-out" id="sc-out"><span class="sc-ph">Le script généré apparaîtra ici…</span></div>
     </div>
   </div>
 </section>
 
 <!-- MODAL PROSPECT -->
-<div class="modal-backdrop" id="modal-prospect" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+<div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
   <div class="modal">
-    <div class="modal-header">
+    <div class="modal-hd">
       <h2 class="modal-title" id="modal-title">Nouveau prospect</h2>
-      <button class="btn-icon" id="modal-close" aria-label="Fermer">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
+      <button class="btn btn-icon" id="modal-x" aria-label="Fermer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
     <div class="modal-grid">
-      <div class="fgroup" style="margin-bottom:0">
-        <label class="lbl" for="m-name">Nom / Établissement *</label>
-        <input class="fi" type="text" id="m-name" placeholder="Restaurant du Lac"/>
-      </div>
-      <div class="fgroup" style="margin-bottom:0">
-        <label class="lbl" for="m-city">Ville</label>
-        <input class="fi" type="text" id="m-city" placeholder="Sion"/>
-      </div>
-      <div class="fgroup" style="margin-bottom:0">
-        <label class="lbl" for="m-type">Type</label>
-        <input class="fi" type="text" id="m-type" placeholder="Restaurant, Hôtel, Commerce…"/>
-      </div>
-      <div class="fgroup" style="margin-bottom:0">
-        <label class="lbl" for="m-phone">Téléphone</label>
-        <input class="fi" type="tel" id="m-phone" placeholder="+41 27 123 45 67"/>
-      </div>
-      <div class="fgroup" style="margin-bottom:0">
-        <label class="lbl" for="m-email">Email</label>
-        <input class="fi" type="email" id="m-email" placeholder="contact@exemple.ch"/>
-      </div>
-      <div class="fgroup" style="margin-bottom:0">
-        <label class="lbl" for="m-website">Site web</label>
-        <input class="fi" type="url" id="m-website" placeholder="https://…"/>
-      </div>
-      <div class="fgroup" style="margin-bottom:0">
-        <label class="lbl" for="m-status">Statut</label>
-        <select class="fi" id="m-status">
-          <option value="to_call">À appeler</option>
-          <option value="called">Appelé</option>
-          <option value="voicemail">Répondeur</option>
-          <option value="refusal">Refus</option>
-          <option value="video_rdv">RDV</option>
-        </select>
-      </div>
-      <div class="fgroup" style="margin-bottom:0">
-        <label class="lbl" for="m-contact">Contact décideur</label>
-        <input class="fi" type="text" id="m-contact" placeholder="Prénom Nom"/>
-      </div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-name">Nom / Établissement *</label><input class="fi" type="text" id="m-name" placeholder="Restaurant du Lac"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-city">Ville</label><input class="fi" type="text" id="m-city" placeholder="Sion"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-type">Type</label><input class="fi" type="text" id="m-type" placeholder="Restaurant, Hôtel…"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-phone">Téléphone</label><input class="fi" type="tel" id="m-phone" placeholder="+41 27 123 45 67"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-email">Email</label><input class="fi" type="email" id="m-email" placeholder="contact@exemple.ch"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-web">Site web</label><input class="fi" type="url" id="m-web" placeholder="https://…"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-status">Statut</label><select class="fi" id="m-status"><option value="to_call">À appeler</option><option value="called">Appelé</option><option value="voicemail">Répondeur</option><option value="refusal">Refus</option><option value="video_rdv">RDV</option></select></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-contact">Contact décideur</label><input class="fi" type="text" id="m-contact" placeholder="Prénom Nom"/></div>
     </div>
-    <div class="fgroup" style="margin-top:12px;margin-bottom:0">
-      <label class="lbl" for="m-notes">Notes</label>
-      <textarea class="fi" id="m-notes" placeholder="Observations, infos utiles…" style="min-height:72px"></textarea>
-    </div>
+    <div class="fgrp" style="margin-top:12px;margin-bottom:0"><label for="m-notes">Notes</label><textarea class="fi" id="m-notes" placeholder="Observations…" style="min-height:72px"></textarea></div>
     <div style="display:flex;gap:10px;margin-top:20px;justify-content:flex-end">
-      <button class="btn-ghost" id="modal-cancel">Annuler</button>
-      <button class="btn-primary" id="modal-save">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Enregistrer
-      </button>
+      <button class="btn btn-ghost" id="modal-cancel">Annuler</button>
+      <button class="btn btn-primary" id="modal-save"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Enregistrer</button>
     </div>
   </div>
 </div>
@@ -547,399 +420,294 @@ label.lbl{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bo
 <button id="chat-btn" aria-label="Ouvrir Coach Alpinia" aria-expanded="false">
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
 </button>
-<div class="chat-panel glass-strong" id="chat-panel" role="dialog" aria-label="Coach Alpinia">
-  <div class="chat-header">
-    <div class="chat-avatar">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-    </div>
-    <div>
-      <div class="chat-hname">Coach Alpinia</div>
-      <div class="chat-hsub">En ligne · Expert prospection</div>
-    </div>
-    <button class="btn-icon" id="chat-close" aria-label="Fermer" style="margin-left:auto;border:none">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
+<div class="glass-s" id="chat-panel" role="dialog" aria-label="Coach Alpinia">
+  <div class="chat-hd">
+    <div class="chat-av"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+    <div><div style="font-weight:700;font-size:13px">Coach Alpinia</div><div style="font-size:11px;color:var(--ok)">En ligne · Expert prospection</div></div>
+    <button class="btn btn-icon" id="chat-x" aria-label="Fermer" style="margin-left:auto;border:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
   </div>
   <div class="chat-msgs" id="chat-msgs">
-    <div class="chat-msg bot">Salut ! Je suis Coach Alpinia, expert en prospection B2B. Demande-moi un script, comment gérer une objection, ou comment préparer ton prochain appel !</div>
+    <div class="msg b">Salut ! Je suis Coach Alpinia, expert en prospection B2B. Demande-moi un script, comment gérer une objection, ou comment préparer ton prochain appel !</div>
   </div>
-  <div class="chat-footer">
-    <input type="text" id="chat-input" placeholder="Pose ta question…" autocomplete="off" aria-label="Message"/>
-    <button class="chat-send" id="chat-send" aria-label="Envoyer">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-    </button>
+  <div class="chat-ft">
+    <input type="text" id="chat-inp" placeholder="Pose ta question…" autocomplete="off" aria-label="Message"/>
+    <button class="chat-send" id="chat-send" aria-label="Envoyer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
   </div>
 </div>
 
-<div id="toast-container" aria-live="polite" aria-atomic="false"></div>
-</div><!-- #app -->
+<div id="toasts" aria-live="polite" aria-atomic="false"></div>
+</div>
 
 <script>
 'use strict';
-const S={token:localStorage.getItem('ap_token')||null,user:null,prospects:[],saveTimer:null,enrichOpen:null,chatHistory:[],ccShowAll:false};
+// ===== STATE =====
+const S={token:localStorage.getItem('ap_token')||null,user:null,prospects:[],enrichOpen:null,chatHistory:[],ccShowAll:false};
 const $=id=>document.getElementById(id);
 const esc=s=>s?String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'):'';
 const genId=()=>Math.random().toString(36).slice(2)+Date.now().toString(36);
 
+// ===== TOAST =====
 const toast=(msg,type='')=>{
-  const el=document.createElement('div');
-  el.className='toast'+(type?' '+type:'');el.textContent=msg;
-  $('toast-container').appendChild(el);
-  setTimeout(()=>{el.classList.add('out');setTimeout(()=>el.remove(),250);},3500);
+  const el=document.createElement('div');el.className='toast'+(type?' '+type:'');el.textContent=msg;
+  $('toasts').appendChild(el);
+  setTimeout(()=>{el.classList.add('out');setTimeout(()=>el.remove(),250)},3500);
 };
 
-const STATUSES={to_call:{label:'À appeler',cls:'badge-to_call'},called:{label:'Appelé',cls:'badge-called'},voicemail:{label:'Répondeur',cls:'badge-voicemail'},refusal:{label:'Refus',cls:'badge-refusal'},video_rdv:{label:'RDV',cls:'badge-video_rdv'}};
-const badge=s=>{const x=STATUSES[s]||STATUSES.to_call;return`<span class="badge ${x.cls}">${x.label}</span>`;};
+// ===== STATUSES =====
+const ST={to_call:{l:'À appeler',c:'b-to_call'},called:{l:'Appelé',c:'b-called'},voicemail:{l:'Répondeur',c:'b-voicemail'},refusal:{l:'Refus',c:'b-refusal'},video_rdv:{l:'RDV',c:'b-video_rdv'}};
+const badge=s=>{const x=ST[s]||ST.to_call;return`<span class="badge ${x.c}">${x.l}</span>`;};
+const sopts=cur=>Object.entries(ST).map(([k,v])=>`<option value="${k}"${(cur||'to_call')===k?' selected':''}>${v.l}</option>`).join('');
 
-function setSyncStatus(state){
-  const el=$('sync-status');if(!el)return;
-  if(state==='saving'){el.textContent='Enregistrement…';el.className='saving';}
-  else if(state==='saved'){el.textContent='Enregistré';el.className='saved';setTimeout(()=>{el.textContent='';el.className='';},2500);}
-  else{el.textContent='';el.className='';}
-}
-
+// ===== ROUTING =====
 const VIEWS=['login','dashboard','coldcall','scripts'];
-function navigate(view,replace=false){
-  const hash='#/'+view;
-  if(replace)history.replaceState(null,'',hash);
-  else if(location.hash!==hash)history.pushState(null,'',hash);
-  render(view);
+function nav(v,rep=false){
+  const h='#/'+v;
+  if(rep)history.replaceState(null,'',h);else if(location.hash!==h)history.pushState(null,'',h);
+  render(v);
 }
-function render(view){
-  VIEWS.forEach(v=>{const el=document.querySelector('[data-view="'+v+'"]');if(el)el.classList.toggle('active',v===view);});
-  const isAuth=['dashboard','coldcall','scripts'].includes(view);
-  $('topnav').style.display=isAuth?'':'none';
-  $('bottomnav').style.display=isAuth?'flex':'none';
-  document.querySelectorAll('.nav-link,.bnav-btn').forEach(btn=>{
-    btn.classList.toggle('current',btn.dataset.nav===view);
-    btn.setAttribute('aria-current',btn.dataset.nav===view?'page':'false');
-  });
-  if(view==='dashboard')renderDashboard();
-  if(view==='coldcall')renderColdCall();
+function render(v){
+  VIEWS.forEach(x=>{const el=document.querySelector('[data-view="'+x+'"]');if(el)el.classList.toggle('on',x===v);});
+  const auth=['dashboard','coldcall','scripts'].includes(v);
+  $('topnav').style.display=auth?'':'none';
+  $('bnav').style.display=auth?'flex':'none';
+  document.querySelectorAll('.nav-btn,.bnav-btn').forEach(b=>{b.classList.toggle('on',b.dataset.nav===v);b.setAttribute('aria-current',b.dataset.nav===v?'page':'false');});
+  if(v==='dashboard')renderDash();
+  if(v==='coldcall')renderCC();
 }
 window.addEventListener('hashchange',()=>{
-  const hash=location.hash.replace('#/','').split('/')[0]||'login';
-  if(!S.token&&hash!=='login'){navigate('login',true);return;}
-  if(S.token&&hash==='login'){navigate('dashboard',true);return;}
-  render(hash);
+  const h=location.hash.replace('#/','').split('/')[0]||'login';
+  if(!S.token&&h!=='login'){nav('login',true);return;}
+  if(S.token&&h==='login'){nav('dashboard',true);return;}
+  render(h);
 });
 
+// ===== API =====
 async function api(fn,body){
   try{
     const r=await fetch('/.netlify/functions/'+fn,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-    if(!r.ok&&r.status!==200){return{error:'Erreur serveur ('+r.status+')'};}
-    return r.json();
-  }catch(e){return{error:'Impossible de joindre le serveur. Vérifie ta connexion.'};}
+    const d=await r.json();return d;
+  }catch(e){return{error:'Connexion impossible. Vérifie ta connexion internet.'};}
 }
 
+// ===== PROSPECTS (localStorage) =====
+function loadProspects(){
+  try{S.prospects=JSON.parse(localStorage.getItem('ap_prospects')||'[]');}catch{S.prospects=[];}
+}
+function saveProspects(){
+  try{localStorage.setItem('ap_prospects',JSON.stringify(S.prospects));}catch(e){toast('Erreur de sauvegarde locale.','err');}
+}
+
+// ===== AUTH =====
 async function checkSession(){
-  if(!S.token){navigate('login',true);return;}
-  let d;try{d=await api('auth',{action:'me',token:S.token});}catch(e){d={error:1};}
-  if(!d||d.error){localStorage.removeItem('ap_token');S.token=null;navigate('login',true);return;}
-  S.user=d.user;
-  const el=$('nav-user-name');if(el)el.textContent=S.user.name;
-  await loadProspects();
-  const hash=location.hash.replace('#/','').split('/')[0]||'dashboard';
-  navigate(['dashboard','coldcall','scripts'].includes(hash)?hash:'dashboard',true);
+  if(!S.token){nav('login',true);return;}
+  const d=await api('auth',{action:'me',token:S.token});
+  if(d.error){localStorage.removeItem('ap_token');S.token=null;nav('login',true);return;}
+  S.user=d.user;const el=$('nav-user');if(el)el.textContent=S.user.name||S.user.email;
+  loadProspects();
+  const h=location.hash.replace('#/','').split('/')[0]||'dashboard';
+  nav(['dashboard','coldcall','scripts'].includes(h)?h:'dashboard',true);
 }
 
 async function doLogin(){
   const email=$('li-email').value.trim(),pw=$('li-pw').value;
-  $('li-global-err').textContent='';
-  if(!email){$('li-email-err').textContent='Email requis.';$('li-email-err').classList.add('show');return;}
-  $('li-email-err').classList.remove('show');
+  $('li-err').textContent='';
+  if(!email){$('li-email-err').textContent='Email requis.';$('li-email-err').classList.add('on');return;}
+  $('li-email-err').classList.remove('on');
   const btn=$('btn-login');btn.disabled=true;btn.textContent='Connexion…';
-  let d;try{d=await api('auth',{action:'login',email,password:pw});}catch(e){d={error:'Erreur réseau.'};}
+  const d=await api('auth',{action:'login',email,password:pw});
   btn.disabled=false;btn.textContent='Se connecter';
-  if(!d||d.error){$('li-global-err').textContent=(d&&d.error)||'Erreur inconnue.';return;}
+  if(d.error){$('li-err').textContent=d.error;return;}
   S.token=d.token;S.user=d.user;localStorage.setItem('ap_token',d.token);
-  const el=$('nav-user-name');if(el)el.textContent=S.user.name;
-  await loadProspects();
-  navigate('dashboard',true);
-}
-
-async function doRegister(){
-  const name=$('re-name').value.trim(),email=$('re-email').value.trim(),pw=$('re-pw').value;
-  $('re-global-err').textContent='';
-  let ok=true;
-  if(!name){$('re-name-err').textContent='Nom requis.';$('re-name-err').classList.add('show');ok=false;}else $('re-name-err').classList.remove('show');
-  if(!email){$('re-email-err').textContent='Email requis.';$('re-email-err').classList.add('show');ok=false;}else $('re-email-err').classList.remove('show');
-  if(pw.length<6){$('re-pw-err').textContent='Min. 6 caractères.';$('re-pw-err').classList.add('show');ok=false;}else $('re-pw-err').classList.remove('show');
-  if(!ok)return;
-  const btn=$('btn-register');btn.disabled=true;btn.textContent='Création…';
-  let d;try{d=await api('auth',{action:'register',name,email,password:pw});}catch(e){d={error:'Erreur réseau.'};}
-  btn.disabled=false;btn.textContent='Créer mon compte';
-  if(!d||d.error){$('re-global-err').textContent=(d&&d.error)||'Erreur inconnue.';return;}
-  S.token=d.token;S.user=d.user;localStorage.setItem('ap_token',d.token);
-  const el=$('nav-user-name');if(el)el.textContent=S.user.name;
-  S.prospects=[];
-  navigate('dashboard',true);
-  toast('Bienvenue '+S.user.name+' !','ok');
+  const el=$('nav-user');if(el)el.textContent=S.user.name||S.user.email;
+  loadProspects();nav('dashboard',true);
 }
 
 async function doLogout(){
   await api('auth',{action:'logout',token:S.token});
-  localStorage.removeItem('ap_token');S.token=null;S.user=null;S.prospects=[];
-  navigate('login',true);
+  localStorage.removeItem('ap_token');S.token=null;S.user=null;S.prospects=[];nav('login',true);
 }
 
-async function loadProspects(){
-  const d=await api('prospects',{action:'list',token:S.token});
-  if(d.error){toast('Erreur chargement prospects.','err');return;}
-  S.prospects=d.prospects||[];
-}
-
-function scheduleSave(){
-  setSyncStatus('saving');
-  clearTimeout(S.saveTimer);
-  S.saveTimer=setTimeout(async()=>{
-    const d=await api('prospects',{action:'save',token:S.token,prospects:S.prospects});
-    if(d.error)toast('Erreur sauvegarde.','err');
-    else setSyncStatus('saved');
-  },600);
-}
-
+// ===== DASHBOARD =====
 function updateStats(){
-  $('stat-total').textContent=S.prospects.length;
-  $('stat-tocall').textContent=S.prospects.filter(p=>!p.status||p.status==='to_call').length;
-  $('stat-rdv').textContent=S.prospects.filter(p=>p.status==='video_rdv').length;
+  $('s-total').textContent=S.prospects.length;
+  $('s-tocall').textContent=S.prospects.filter(p=>!p.status||p.status==='to_call').length;
+  $('s-rdv').textContent=S.prospects.filter(p=>p.status==='video_rdv').length;
 }
-
 function getFiltered(){
-  const q=($('dash-search').value||'').toLowerCase();
-  const f=$('dash-filter').value;
+  const q=($('d-search').value||'').toLowerCase(),f=$('d-filter').value;
   return S.prospects.filter(p=>{
-    const match=!q||[p.name,p.city,p.type,p.notes,p.contact].filter(Boolean).join(' ').toLowerCase().includes(q);
-    const sm=!f||(p.status||'to_call')===f;
-    return match&&sm;
+    const m=!q||[p.name,p.city,p.type,p.notes,p.contact].filter(Boolean).join(' ').toLowerCase().includes(q);
+    return m&&(!f||(p.status||'to_call')===f);
   });
 }
-
-function renderDashboard(){
-  updateStats();
-  const list=getFiltered();
-  renderTable(list);
-  renderCards(list);
+function renderDash(){
+  updateStats();const l=getFiltered();renderTable(l);renderCards(l);
 }
-
 function renderTable(list){
-  const tbody=$('prospect-tbody');
-  if(!list.length){
-    tbody.innerHTML='<tr><td colspan="6"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><p>Aucun prospect.<br>Ajoutez le premier !</p><button class="btn-colorful" onclick="openModal()"><span>Ajouter un prospect</span></button></div></td></tr>';
-    return;
-  }
-  tbody.innerHTML=list.map(p=>prospectRow(p)).join('');
+  const tbody=$('d-tbody');
+  if(!list.length){tbody.innerHTML='<tr><td colspan="6"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Aucun prospect.<br>Ajoutez le premier !</p><button class="btn btn-cf" onclick="openModal()"><span>Ajouter un prospect</span></button></div></td></tr>';return;}
+  tbody.innerHTML=list.map(p=>pRow(p)).join('');
 }
-
-function prospectRow(p){
+function pRow(p){
   const isOpen=S.enrichOpen===p.id;
-  return`<tr data-id="${p.id}"${isOpen?' class="expanded"':''}>
-<td><div class="name-cell">${esc(p.name)}<small>${esc(p.contact||'')}</small></div></td>
-<td>${esc(p.city||'—')}</td>
-<td style="color:var(--t2);font-size:12px">${esc(p.type||'—')}</td>
-<td><select class="cc-status-select" data-pid="${p.id}" onchange="changeStatus(this)" style="font-size:11px;height:26px">${statusOptions(p.status)}</select></td>
-<td style="color:var(--t2);font-size:12px;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(p.notes||'')}</td>
-<td><div class="row-actions" style="justify-content:flex-end">
-<button class="btn-icon" onclick="toggleEnrich('${p.id}')" title="Enrichissement IA" aria-label="Enrichissement IA" style="width:32px;height:32px">
-<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></button>
-<button class="btn-icon" onclick="openModal('${p.id}')" title="Modifier" aria-label="Modifier" style="width:32px;height:32px">
-<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-<button class="btn-icon" onclick="deleteProspect('${p.id}')" title="Supprimer" aria-label="Supprimer" style="color:var(--err);width:32px;height:32px">
-<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button>
-</div></td></tr>${isOpen?enrichRow(p):''}`;
+  return`<tr data-id="${p.id}"${isOpen?' class="expanded"':''}><td><div class="name-cell">${esc(p.name)}<small>${esc(p.contact||'')}</small></div></td><td>${esc(p.city||'—')}</td><td style="color:var(--t2);font-size:12px">${esc(p.type||'—')}</td><td><select class="ss" data-pid="${p.id}" onchange="chgStatus(this)" style="height:26px;font-size:11px">${sopts(p.status)}</select></td><td style="color:var(--t2);font-size:12px;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(p.notes||'')}</td><td><div class="row-acts">
+<button class="btn btn-icon" onclick="toggleEnrich('${p.id}')" title="Enrichissement IA" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></button>
+<button class="btn btn-icon" onclick="openModal('${p.id}')" title="Modifier" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+<button class="btn btn-icon" onclick="delProspect('${p.id}')" title="Supprimer" style="color:var(--err);width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button>
+</div></td></tr>${isOpen?eRow(p):''}`;
 }
-
-function statusOptions(cur){
-  return Object.entries(STATUSES).map(([k,v])=>`<option value="${k}"${(cur||'to_call')===k?' selected':''}>${v.label}</option>`).join('');
+function eRow(p){
+  if(p._enriching)return`<tr class="enrich-row"><td colspan="6"><div class="enrich-panel"><p style="font-size:13px;color:var(--t2)">Recherche en cours <span class="td"></span><span class="td"></span><span class="td"></span></p></div></td></tr>`;
+  if(!p._enrich)return`<tr class="enrich-row"><td colspan="6"><div class="enrich-panel"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><span style="font-size:13px;font-weight:600">Enrichissement IA — ${esc(p.name)}</span><button class="btn btn-cf" onclick="doEnrich('${p.id}')" style="height:36px;font-size:12px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Rechercher sur le web</span></button></div><p style="font-size:12px;color:var(--t3)">OpenAI Web Search enrichit automatiquement ce prospect.</p></div></td></tr>`;
+  const e=p._enrich,fields=[{k:'Adresse',v:e.full_address},{k:'Téléphone',v:e.phone},{k:'Email',v:e.email},{k:'Horaires',v:e.opening_hours},{k:'Note Google',v:e.google_rating},{k:'Employés',v:e.employees_approx},{k:'Décideur',v:e.key_decision_maker},{k:'Description',v:e.description}].filter(f=>f.v&&f.v!=='null'&&f.v!==null);
+  return`<tr class="enrich-row"><td colspan="6"><div class="enrich-panel"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><span style="font-size:13px;font-weight:600">Données enrichies — ${esc(p.name)}</span><button class="btn btn-ghost" onclick="doEnrich('${p.id}')" style="font-size:11px;height:28px;padding:0 10px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg> Actualiser</button></div><div class="enrich-grid">${fields.map(f=>`<div class="ei"><div class="ei-k">${esc(f.k)}</div><div class="ei-v">${esc(String(f.v))}</div></div>`).join('')}</div></div></td></tr>`;
 }
-
-function enrichRow(p){
-  if(p._enriching)return`<tr class="enrich-row"><td colspan="6"><div class="enrich-panel"><p style="font-size:13px;color:var(--t2)">Recherche en cours <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></p></div></td></tr>`;
-  if(!p._enrich)return`<tr class="enrich-row"><td colspan="6"><div class="enrich-panel"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><span style="font-size:13px;font-weight:600">Enrichissement IA — ${esc(p.name)}</span><button class="btn-colorful" onclick="doEnrich('${p.id}')" style="height:36px;font-size:12px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Rechercher sur le web</span></button></div><p style="font-size:12px;color:var(--t3)">OpenAI Web Search enrichit automatiquement ce prospect avec adresse, téléphone, horaires, note Google…</p></div></td></tr>`;
-  const e=p._enrich;
-  const fields=[{k:'Adresse',v:e.full_address},{k:'Téléphone',v:e.phone},{k:'Email',v:e.email},{k:'Horaires',v:e.opening_hours},{k:'Note Google',v:e.google_rating},{k:'Employés',v:e.employees_approx},{k:'Décideur',v:e.key_decision_maker},{k:'Description',v:e.description}].filter(f=>f.v&&f.v!=='null'&&f.v!==null);
-  return`<tr class="enrich-row"><td colspan="6"><div class="enrich-panel"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><span style="font-size:13px;font-weight:600">Données enrichies — ${esc(p.name)}</span><button class="btn-ghost" onclick="doEnrich('${p.id}')" style="font-size:11px;height:28px;padding:0 10px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg> Actualiser</button></div><div class="enrich-grid">${fields.map(f=>`<div class="enrich-item"><div class="enrich-key">${esc(f.k)}</div><div class="enrich-val">${esc(String(f.v))}</div></div>`).join('')}</div></div></td></tr>`;
-}
-
 function renderCards(list){
-  const c=$('prospect-cards');
-  if(!list.length){c.innerHTML='<div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Aucun prospect.</p><button class="btn-colorful" onclick="openModal()"><span>Ajouter</span></button></div>';return;}
-  c.innerHTML=list.map(p=>`<div class="prospect-card card"><div class="prospect-card-header"><div><div class="prospect-card-name">${esc(p.name)}</div><div class="prospect-card-meta">${[p.type,p.city].filter(Boolean).join(' · ')||'—'}</div></div>${badge(p.status||'to_call')}</div>${p.notes?`<div style="font-size:12px;color:var(--t2);line-height:1.5">${esc(p.notes)}</div>`:''}<div class="prospect-card-footer"><select class="cc-status-select" data-pid="${p.id}" onchange="changeStatus(this)">${statusOptions(p.status)}</select><div style="display:flex;gap:4px"><button class="btn-icon" onclick="toggleEnrich('${p.id}')" aria-label="Enrichissement" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></button><button class="btn-icon" onclick="openModal('${p.id}')" aria-label="Modifier" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button class="btn-icon" onclick="deleteProspect('${p.id}')" aria-label="Supprimer" style="color:var(--err);width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button></div></div></div>`).join('');
+  const c=$('d-cards');
+  if(!list.length){c.innerHTML='<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Aucun prospect.</p><button class="btn btn-cf" onclick="openModal()"><span>Ajouter</span></button></div>';return;}
+  c.innerHTML=list.map(p=>`<div class="p-card card"><div class="p-card-h"><div><div class="p-card-n">${esc(p.name)}</div><div class="p-card-m">${[p.type,p.city].filter(Boolean).join(' · ')||'—'}</div></div>${badge(p.status||'to_call')}</div>${p.notes?`<div style="font-size:12px;color:var(--t2);line-height:1.5">${esc(p.notes)}</div>`:''}<div class="p-card-f"><select class="ss" data-pid="${p.id}" onchange="chgStatus(this)">${sopts(p.status)}</select><div style="display:flex;gap:4px">
+<button class="btn btn-icon" onclick="toggleEnrich('${p.id}')" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></button>
+<button class="btn btn-icon" onclick="openModal('${p.id}')" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+<button class="btn btn-icon" onclick="delProspect('${p.id}')" style="color:var(--err);width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button>
+</div></div></div>`).join('');
 }
-
-function changeStatus(sel){
-  const p=S.prospects.find(x=>x.id===sel.dataset.pid);if(!p)return;
-  p.status=sel.value;scheduleSave();renderDashboard();renderColdCall();
-}
-
-function deleteProspect(id){
-  if(!confirm('Supprimer ce prospect ?'))return;
-  S.prospects=S.prospects.filter(p=>p.id!==id);
-  if(S.enrichOpen===id)S.enrichOpen=null;
-  scheduleSave();renderDashboard();renderColdCall();
-  toast('Prospect supprimé.','ok');
-}
-
-function toggleEnrich(id){S.enrichOpen=S.enrichOpen===id?null:id;renderDashboard();}
-
+function chgStatus(sel){const p=S.prospects.find(x=>x.id===sel.dataset.pid);if(!p)return;p.status=sel.value;saveProspects();renderDash();renderCC();}
+function delProspect(id){if(!confirm('Supprimer ce prospect ?'))return;S.prospects=S.prospects.filter(p=>p.id!==id);if(S.enrichOpen===id)S.enrichOpen=null;saveProspects();renderDash();renderCC();toast('Supprimé.','ok');}
+function toggleEnrich(id){S.enrichOpen=S.enrichOpen===id?null:id;renderDash();}
 async function doEnrich(id){
   const p=S.prospects.find(x=>x.id===id);if(!p)return;
-  p._enriching=true;delete p._enrich;renderDashboard();
-  const d=await api('enrich',{prospectName:p.name,website:p.website,type:p.type,city:p.city});
+  p._enriching=true;delete p._enrich;renderDash();
+  const d=await api('enrich',{prospectName:p.name,website:p.web,type:p.type,city:p.city});
   p._enriching=false;
-  if(d.error){toast('Enrichissement : '+d.error,'err');renderDashboard();return;}
-  p._enrich=d.enrichedData;renderDashboard();
-  toast('Enrichissement terminé — '+p.name,'ok');
+  if(d.error){toast('Enrichissement : '+d.error,'err');renderDash();return;}
+  p._enrich=d.enrichedData;renderDash();toast('Enrichissement terminé — '+p.name,'ok');
 }
 
-function renderColdCall(){
+// ===== COLD CALL =====
+function renderCC(){
   const list=S.ccShowAll?S.prospects:S.prospects.filter(p=>!p.status||p.status==='to_call'||p.status==='voicemail');
   const toCall=S.prospects.filter(p=>!p.status||p.status==='to_call').length;
   const treated=S.prospects.filter(p=>p.status&&p.status!=='to_call').length;
-  $('cc-counter').textContent=`${toCall} à appeler · ${treated} traités`;
-  const btn=$('cc-filter-all');if(btn)btn.textContent=S.ccShowAll?'À appeler seulement':'Voir tous';
+  $('cc-count').textContent=`${toCall} à appeler · ${treated} traités`;
+  const btn=$('cc-toggle');if(btn)btn.textContent=S.ccShowAll?'À appeler seulement':'Voir tous';
   const cont=$('cc-list');
-  if(!list.length){cont.innerHTML='<div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><p>Aucun prospect à appeler.</p></div>';return;}
-  const dot=s=>s==='video_rdv'?'var(--ok)':s==='refusal'?'var(--err)':s==='voicemail'?'var(--warn)':s==='called'?'var(--t3)':'var(--violet2)';
-  cont.innerHTML=list.map(p=>`<div class="cc-item card"><div style="width:8px;height:8px;border-radius:50%;background:${dot(p.status)};flex:none"></div><div class="cc-info"><div class="cc-name">${esc(p.name)}</div><div class="cc-sub">${[p.phone,p.city,p.type].filter(Boolean).join(' · ')||'—'}</div></div><div class="cc-actions">${p.phone?`<a href="tel:${esc(p.phone)}" class="btn-icon" aria-label="Appeler ${esc(p.name)}" style="width:36px;height:36px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>`:''}
-<select class="cc-status-select" data-pid="${p.id}" onchange="changeStatus(this)" aria-label="Statut de ${esc(p.name)}">${statusOptions(p.status)}</select></div></div>`).join('');
+  if(!list.length){cont.innerHTML='<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><p>Aucun prospect à appeler.</p></div>';return;}
+  const dc=s=>s==='video_rdv'?'var(--ok)':s==='refusal'?'var(--err)':s==='voicemail'?'var(--warn)':s==='called'?'var(--t3)':'var(--violet2)';
+  cont.innerHTML=list.map(p=>`<div class="cc-item card"><div style="width:8px;height:8px;border-radius:50%;background:${dc(p.status)};flex:none"></div><div class="cc-info"><div class="cc-name">${esc(p.name)}</div><div class="cc-sub">${[p.phone,p.city,p.type].filter(Boolean).join(' · ')||'—'}</div></div><div class="cc-acts">${p.phone?`<a href="tel:${esc(p.phone)}" class="btn btn-icon" aria-label="Appeler" style="width:36px;height:36px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>`:''}
+<select class="ss" data-pid="${p.id}" onchange="chgStatus(this)" aria-label="Statut">${sopts(p.status)}</select></div></div>`).join('');
 }
 
-let editingId=null;
+// ===== MODAL =====
+let editId=null;
 function openModal(id){
-  editingId=id||null;
-  const p=id?S.prospects.find(x=>x.id===id):null;
+  editId=id||null;const p=id?S.prospects.find(x=>x.id===id):null;
   $('modal-title').textContent=p?'Modifier le prospect':'Nouveau prospect';
   $('m-name').value=p?.name||'';$('m-city').value=p?.city||'';$('m-type').value=p?.type||'';
-  $('m-phone').value=p?.phone||'';$('m-email').value=p?.email||'';$('m-website').value=p?.website||'';
+  $('m-phone').value=p?.phone||'';$('m-email').value=p?.email||'';$('m-web').value=p?.web||'';
   $('m-status').value=p?.status||'to_call';$('m-contact').value=p?.contact||'';$('m-notes').value=p?.notes||'';
-  $('modal-prospect').classList.add('open');
-  setTimeout(()=>$('m-name').focus(),50);
+  $('modal').classList.add('on');setTimeout(()=>$('m-name').focus(),50);
 }
-function closeModal(){$('modal-prospect').classList.remove('open');editingId=null;}
+function closeModal(){$('modal').classList.remove('on');editId=null;}
 function saveModal(){
-  const name=$('m-name').value.trim();
-  if(!name){toast('Le nom est requis.','err');$('m-name').focus();return;}
-  if(editingId){
-    const p=S.prospects.find(x=>x.id===editingId);
-    if(p){p.name=name;p.city=$('m-city').value.trim();p.type=$('m-type').value.trim();p.phone=$('m-phone').value.trim();p.email=$('m-email').value.trim();p.website=$('m-website').value.trim();p.status=$('m-status').value;p.contact=$('m-contact').value.trim();p.notes=$('m-notes').value.trim();}
+  const name=$('m-name').value.trim();if(!name){toast('Le nom est requis.','err');$('m-name').focus();return;}
+  if(editId){
+    const p=S.prospects.find(x=>x.id===editId);
+    if(p){p.name=name;p.city=$('m-city').value.trim();p.type=$('m-type').value.trim();p.phone=$('m-phone').value.trim();p.email=$('m-email').value.trim();p.web=$('m-web').value.trim();p.status=$('m-status').value;p.contact=$('m-contact').value.trim();p.notes=$('m-notes').value.trim();}
   }else{
-    S.prospects.unshift({id:genId(),name,city:$('m-city').value.trim(),type:$('m-type').value.trim(),phone:$('m-phone').value.trim(),email:$('m-email').value.trim(),website:$('m-website').value.trim(),status:$('m-status').value,contact:$('m-contact').value.trim(),notes:$('m-notes').value.trim(),createdAt:Date.now()});
+    S.prospects.unshift({id:genId(),name,city:$('m-city').value.trim(),type:$('m-type').value.trim(),phone:$('m-phone').value.trim(),email:$('m-email').value.trim(),web:$('m-web').value.trim(),status:$('m-status').value,contact:$('m-contact').value.trim(),notes:$('m-notes').value.trim(),at:Date.now()});
   }
-  scheduleSave();renderDashboard();renderColdCall();closeModal();
-  toast(editingId?'Prospect modifié.':'Prospect ajouté.','ok');
+  saveProspects();renderDash();renderCC();closeModal();toast(editId?'Prospect modifié.':'Prospect ajouté.','ok');
 }
 
+// ===== SCRIPTS =====
 const PRESETS={
-  coldb2b:{s:'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',m:'Génère un script de cold call B2B complet pour vendre un site web à une PME en Suisse. Structure : 3 blocs AIDA (Accroche, Intérêt+Désir, Action). Ton direct, authentique, pas corporate. Max 200 mots.'},
-  relance:{s:'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',m:'Génère un script de relance téléphonique pour un prospect sans réponse au premier appel. Rappel du contexte, nouvelle accroche, proposition de valeur, closing RDV. Max 150 mots.'},
-  objections:{s:'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',m:'Liste les 5 objections les plus fréquentes lors d\'un cold call pour vente de site web en Suisse, avec pour chacune 1-2 répliques naturelles et efficaces. Format structuré.'},
-  closing:{s:'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',m:'Génère 3 techniques de closing pour fixer un RDV concret par téléphone, avec les formulations exactes. Inclure la méthode des 2 créneaux. Max 150 mots.'},
+  coldb2b:{s:'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',m:'Génère un script de cold call B2B complet pour vendre un site web à une PME en Suisse. Structure : 3 blocs AIDA (Accroche, Intérêt+Désir, Action). Ton direct, authentique. Max 200 mots.'},
+  relance:{s:'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',m:'Génère un script de relance pour un prospect sans réponse au premier appel. Rappel contexte, nouvelle accroche, closing RDV. Max 150 mots.'},
+  objections:{s:'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',m:'Liste les 5 objections les plus fréquentes lors d\'un cold call pour vente de site web en Suisse, avec 1-2 répliques efficaces chacune. Format structuré.'},
+  closing:{s:'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',m:'Génère 3 techniques de closing pour fixer un RDV par téléphone avec les formulations exactes. Inclure la méthode des 2 créneaux. Max 150 mots.'},
 };
-
-async function generateScript(sys,msg){
-  const btn=$('btn-gen-script');btn.disabled=true;
-  const out=$('script-output');out.innerHTML='<span class="output-placeholder">Génération en cours <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>';
+async function genScript(sys,msg){
+  const btn=$('btn-gen');btn.disabled=true;
+  const out=$('sc-out');out.innerHTML='<span class="sc-ph">Génération en cours <span class="td"></span><span class="td"></span><span class="td"></span></span>';
   const d=await api('ai',{system:sys,messages:[{role:'user',content:msg}]});
   btn.disabled=false;
   if(d.error){out.innerHTML=`<span style="color:var(--err)">${esc(d.error)}</span>`;return;}
   out.textContent=d.content?.[0]?.text||'';
 }
 
-const COACH_SYSTEM=`Tu es Coach Alpinia, l'assistant de prospection B2B intégré à Alpinia Prospect Pro. Tu aides l'équipe d'Alpinia Web Craft à décrocher des rendez-vous par cold call pour vendre des sites web à des PME et établissements (restaurants, commerces, hôtellerie) en Suisse romande / Valais.
+// ===== CHATBOT =====
+const COACH=`Tu es Coach Alpinia, l'assistant de prospection B2B intégré à Alpinia Prospect Pro. Tu aides l'équipe d'Alpinia Web Craft à décrocher des rendez-vous par cold call pour vendre des sites web à des PME et établissements (restaurants, commerces, hôtellerie) en Suisse romande / Valais.
 
-Rôle : conseiller en temps réel pendant la prospection — répondre aux objections, affiner un script, préparer un appel, qualifier un lead. Réponds en français, concis et actionnable (max ~120 mots), ton direct et un brin chaleureux, jamais corporate.
+Rôle : conseiller en temps réel pendant la prospection. Réponds en français, concis et actionnable (max ~120 mots), ton direct et chaleureux, jamais corporate.
 
-PRINCIPES À APPLIQUER ET RAPPELER :
+PRINCIPES :
 - L'objectif d'un cold call, c'est obtenir un RDV, pas vendre au téléphone.
-- Les 10 premières secondes sont décisives : créer un "pattern interrupt", un élément différenciant, pour que le prospect reste en ligne.
-- Toujours un script en support, jamais récité mot pour mot. Authentique, humour maîtrisé, jamais sur-joué.
-- Questions ouvertes préparées (et disqualifiantes pour qualifier le lead), jamais une rafale de questions fermées.
-- Parler bénéfices et résultats concrets sur LEUR business, jamais des détails techniques du produit.
-- S'adapter à l'interlocuteur et au bon timing (ex : ne pas appeler un resto en plein service de midi).
+- Les 10 premières secondes sont décisives : créer un "pattern interrupt".
+- Toujours un script en support, jamais récité mot pour mot.
+- Questions ouvertes, jamais une rafale de questions fermées.
+- Parler bénéfices et résultats concrets, jamais de détails techniques.
+- S'adapter au bon timing (ex : ne pas appeler un resto en plein service).
 
-STRUCTURE DE SCRIPT — FRAMEWORK AIDA :
-- Accroche : qui je suis / ce que je fais / ce que je veux, et confirmer l'identité. Ex : "Bonjour, c'est bien [Prénom] ? Parfait, je suis Noé, fondateur d'Alpinia Web Craft — vous auriez 30 secondes ?"
-- Intérêt : l'avantage clé vs la concurrence, orienté bénéfice. Ex : "je crée des sites web sur mesure livrés rapidement pour des restaurateurs comme vous."
-- Désir : preuve sociale (clients accompagnés) + un chiffre concret pour qu'il se projette (ex : "+15 % de clientèle"), via un cas client.
-- Action : conclure en proposant directement 2 créneaux. Ex : "plutôt jeudi ou vendredi pour en discuter ?"
+FRAMEWORK AIDA :
+- Accroche : qui je suis / ce que je fais / confirmer l'identité. Ex : "Bonjour, c'est bien [Prénom] ? Je suis Noé d'Alpinia Web Craft — 30 secondes ?"
+- Intérêt : avantage clé orienté bénéfice.
+- Désir : preuve sociale + chiffre concret (ex : "+15% de clientèle").
+- Action : 2 créneaux proposés directement.
 
-CRÉER L'URGENCE : soulever un point précis et vrai que le site web résout. Ex : "vous êtes le seul resto du coin sans site, vous perdez des clients chaque semaine."
+OBJECTIONS :
+- "Envoyez un mail" → proposer 10 min à la place.
+- "On est déjà équipés" → compléter, pas remplacer.
+- "Pas le temps" → demander 90 secondes pour 2 questions.
+- Secrétaire → ton d'autorité, rester bref.
 
-TRAITER LES OBJECTIONS — méthode Découverte → Empathie → Diffusion, toujours dans le sens du prospect :
-- "Envoyez-moi un mail" → "Je peux, mais je vous propose plutôt 10 min pour vous montrer comment on a accompagné [réf] et le résultat obtenu."
-- "On est déjà équipés" → "Le but n'est pas de remplacer, mais de compléter ce que vous avez."
-- "Pas le temps" → reformuler, demander 90 secondes pour 2 questions.
-- Barrière secrétaire ("il est en rendez-vous") → ton d'autorité, rester bref et assuré.
-
-APRÈS UN OUI : faire une pré-qualification (récolter quelques infos sur le prospect) pour que le RDV soit qualifié et que le lead se sente unique, pas un numéro dans une liste.
-
-Si on te demande un script complet, produis-le en 3 blocs AIDA prêts à lire. Si on te donne une objection, réponds en 1-2 répliques. Reste toujours orienté action : la prochaine étape, c'est le RDV.`;
+Si on demande un script : 3 blocs AIDA prêts à lire. Si c'est une objection : 1-2 répliques max. Toujours orienté action vers le RDV.`;
 
 function chatAppend(role,text){
-  const msgs=$('chat-msgs');
-  const el=document.createElement('div');el.className='chat-msg '+role;el.textContent=text;
-  msgs.appendChild(el);msgs.scrollTop=msgs.scrollHeight;return el;
+  const el=document.createElement('div');el.className='msg '+role;el.textContent=text;
+  $('chat-msgs').appendChild(el);$('chat-msgs').scrollTop=$('chat-msgs').scrollHeight;return el;
 }
-
 async function sendChat(){
-  const inp=$('chat-input'),text=inp.value.trim();if(!text)return;
-  inp.value='';chatAppend('user',text);S.chatHistory.push({role:'user',content:text});
-  const typing=document.createElement('div');typing.className='chat-typing';
-  typing.innerHTML='<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+  const inp=$('chat-inp'),text=inp.value.trim();if(!text)return;
+  inp.value='';chatAppend('u',text);S.chatHistory.push({role:'user',content:text});
+  const typing=document.createElement('div');typing.className='typing';
+  typing.innerHTML='<span class="td"></span><span class="td"></span><span class="td"></span>';
   $('chat-msgs').appendChild(typing);$('chat-msgs').scrollTop=$('chat-msgs').scrollHeight;
-  const d=await api('ai',{system:COACH_SYSTEM,messages:S.chatHistory});
+  const d=await api('ai',{system:COACH,messages:S.chatHistory});
   typing.remove();
   const reply=d.error?'Erreur : '+d.error:(d.content?.[0]?.text||'');
-  S.chatHistory.push({role:'assistant',content:reply});
-  chatAppend('bot',reply);
+  S.chatHistory.push({role:'assistant',content:reply});chatAppend('b',reply);
 }
 
+// ===== EVENTS =====
 document.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('.auth-tab').forEach(tab=>{
-    tab.addEventListener('click',()=>{
-      document.querySelectorAll('.auth-tab').forEach(t=>t.classList.remove('active'));
-      document.querySelectorAll('.auth-form-wrap').forEach(f=>f.classList.remove('active'));
-      tab.classList.add('active');document.getElementById(tab.dataset.tab).classList.add('active');
-    });
-  });
   $('btn-login').addEventListener('click',doLogin);
-  $('btn-register').addEventListener('click',doRegister);
   $('li-pw').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
-  $('re-pw').addEventListener('keydown',e=>{if(e.key==='Enter')doRegister();});
+  $('li-email').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
   $('btn-logout').addEventListener('click',doLogout);
-  document.querySelectorAll('[data-nav]').forEach(btn=>btn.addEventListener('click',()=>navigate(btn.dataset.nav)));
-  $('btn-add-prospect').addEventListener('click',()=>openModal());
-  $('dash-search').addEventListener('input',()=>renderDashboard());
-  $('dash-filter').addEventListener('change',()=>renderDashboard());
-  $('modal-close').addEventListener('click',closeModal);
+  document.querySelectorAll('[data-nav]').forEach(b=>b.addEventListener('click',()=>nav(b.dataset.nav)));
+  $('btn-add').addEventListener('click',()=>openModal());
+  $('d-search').addEventListener('input',()=>renderDash());
+  $('d-filter').addEventListener('change',()=>renderDash());
+  $('modal-x').addEventListener('click',closeModal);
   $('modal-cancel').addEventListener('click',closeModal);
   $('modal-save').addEventListener('click',saveModal);
-  $('modal-prospect').addEventListener('click',e=>{if(e.target===$('modal-prospect'))closeModal();});
+  $('modal').addEventListener('click',e=>{if(e.target===$('modal'))closeModal();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-  $('cc-filter-all').addEventListener('click',()=>{S.ccShowAll=!S.ccShowAll;renderColdCall();});
-  document.querySelectorAll('[data-preset]').forEach(btn=>{
-    btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p)generateScript(p.s,p.m);});
+  $('cc-toggle').addEventListener('click',()=>{S.ccShowAll=!S.ccShowAll;renderCC();});
+  document.querySelectorAll('.preset').forEach(b=>b.addEventListener('click',()=>{const p=PRESETS[b.dataset.preset];if(p)genScript(p.s,p.m);}));
+  $('btn-gen').addEventListener('click',()=>{
+    const co=$('sc-co').value.trim(),nm=$('sc-name').value.trim();
+    if(!co&&!nm){toast('Indique au moins l\'établissement.','err');return;}
+    genScript('Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',`Génère un script de cold call (framework AIDA) pour un appel "${$('sc-type').value}" avec ${nm?nm+' de ':''}${co||'l\'établissement'}, secteur ${$('sc-sec').value.trim()||'non précisé'}. Infos : ${$('sc-info').value.trim()||'aucune'}. 3 blocs AIDA, ton naturel, max 200 mots.`);
   });
-  $('btn-gen-script').addEventListener('click',()=>{
-    const company=$('sc-company').value.trim(),name=$('sc-name').value.trim();
-    if(!company&&!name){toast('Indique au moins l\'établissement.','err');return;}
-    const msg=`Génère un script de cold call personnalisé (framework AIDA) pour un appel de type "${$('sc-type').value}" avec ${name?name+' de ':''}${company||'l\'établissement'}, secteur ${$('sc-sector').value.trim()||'non précisé'}. Infos clés : ${$('sc-info').value.trim()||'aucune'}. Script en 3 blocs AIDA, ton naturel, max 200 mots.`;
-    generateScript('Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',msg);
+  $('btn-copy').addEventListener('click',()=>{
+    const t=$('sc-out').textContent;if(!t||t.includes('apparaîtra')){toast('Rien à copier.');return;}
+    navigator.clipboard.writeText(t).then(()=>toast('Copié !','ok')).catch(()=>toast('Copie impossible.','err'));
   });
-  $('btn-copy-script').addEventListener('click',()=>{
-    const text=$('script-output').textContent;
-    if(!text||text.includes('apparaîtra ici')){toast('Rien à copier.');return;}
-    navigator.clipboard.writeText(text).then(()=>toast('Script copié !','ok')).catch(()=>toast('Copie impossible.','err'));
-  });
-  $('chat-btn').addEventListener('click',()=>{
-    const panel=$('chat-panel'),open=panel.classList.toggle('open');
-    $('chat-btn').setAttribute('aria-expanded',open);
-    if(open)setTimeout(()=>$('chat-input').focus(),100);
-  });
-  $('chat-close').addEventListener('click',()=>{$('chat-panel').classList.remove('open');$('chat-btn').setAttribute('aria-expanded','false');});
+  $('chat-btn').addEventListener('click',()=>{const o=$('chat-panel').classList.toggle('on');$('chat-btn').setAttribute('aria-expanded',o);if(o)setTimeout(()=>$('chat-inp').focus(),100);});
+  $('chat-x').addEventListener('click',()=>{$('chat-panel').classList.remove('on');$('chat-btn').setAttribute('aria-expanded','false');});
   $('chat-send').addEventListener('click',sendChat);
-  $('chat-input').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat();});
+  $('chat-inp').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat();});
   checkSession();
 });
 </script>
