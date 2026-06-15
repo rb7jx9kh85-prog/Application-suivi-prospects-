@@ -625,14 +625,17 @@ window.addEventListener('hashchange',()=>{
 });
 
 async function api(fn,body){
-  const r=await fetch('/.netlify/functions/'+fn,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-  return r.json();
+  try{
+    const r=await fetch('/.netlify/functions/'+fn,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(!r.ok&&r.status!==200){return{error:'Erreur serveur ('+r.status+')'};}
+    return r.json();
+  }catch(e){return{error:'Impossible de joindre le serveur. Vérifie ta connexion.'};}
 }
 
 async function checkSession(){
   if(!S.token){navigate('login',true);return;}
-  const d=await api('auth',{action:'me',token:S.token});
-  if(d.error){localStorage.removeItem('ap_token');S.token=null;navigate('login',true);return;}
+  let d;try{d=await api('auth',{action:'me',token:S.token});}catch(e){d={error:1};}
+  if(!d||d.error){localStorage.removeItem('ap_token');S.token=null;navigate('login',true);return;}
   S.user=d.user;
   const el=$('nav-user-name');if(el)el.textContent=S.user.name;
   await loadProspects();
@@ -646,9 +649,9 @@ async function doLogin(){
   if(!email){$('li-email-err').textContent='Email requis.';$('li-email-err').classList.add('show');return;}
   $('li-email-err').classList.remove('show');
   const btn=$('btn-login');btn.disabled=true;btn.textContent='Connexion…';
-  const d=await api('auth',{action:'login',email,password:pw});
+  let d;try{d=await api('auth',{action:'login',email,password:pw});}catch(e){d={error:'Erreur réseau.'};}
   btn.disabled=false;btn.textContent='Se connecter';
-  if(d.error){$('li-global-err').textContent=d.error;return;}
+  if(!d||d.error){$('li-global-err').textContent=(d&&d.error)||'Erreur inconnue.';return;}
   S.token=d.token;S.user=d.user;localStorage.setItem('ap_token',d.token);
   const el=$('nav-user-name');if(el)el.textContent=S.user.name;
   await loadProspects();
@@ -664,9 +667,9 @@ async function doRegister(){
   if(pw.length<6){$('re-pw-err').textContent='Min. 6 caractères.';$('re-pw-err').classList.add('show');ok=false;}else $('re-pw-err').classList.remove('show');
   if(!ok)return;
   const btn=$('btn-register');btn.disabled=true;btn.textContent='Création…';
-  const d=await api('auth',{action:'register',name,email,password:pw});
+  let d;try{d=await api('auth',{action:'register',name,email,password:pw});}catch(e){d={error:'Erreur réseau.'};}
   btn.disabled=false;btn.textContent='Créer mon compte';
-  if(d.error){$('re-global-err').textContent=d.error;return;}
+  if(!d||d.error){$('re-global-err').textContent=(d&&d.error)||'Erreur inconnue.';return;}
   S.token=d.token;S.user=d.user;localStorage.setItem('ap_token',d.token);
   const el=$('nav-user-name');if(el)el.textContent=S.user.name;
   S.prospects=[];
