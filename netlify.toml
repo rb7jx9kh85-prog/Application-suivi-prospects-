@@ -1,6 +1,6 @@
 [build]
   publish = "public"
-  command = "echo 'static build — no bundler needed'"
+  command = "echo 'static — no bundler'"
 
 [build.environment]
   NODE_VERSION = "20"
@@ -8,13 +8,6 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
-  external_node_modules = ["@anthropic-ai/sdk"]
-
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Content-Type-Options = "nosniff"
 
 [[redirects]]
   from = "/*"

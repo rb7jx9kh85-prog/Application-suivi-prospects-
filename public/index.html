@@ -1,1073 +1,944 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Alpinia Prospect Pro — Enrichissement IA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Alpinia Prospect Pro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-/* ══ TOKENS ══════════════════════════════════════════════════════════════ */
-:root {
-  --bg:    #0a0a0a;
-  --s1:    #111111;
-  --s2:    #1a1a1a;
-  --s3:    #252525;
-  --br:    rgba(255,255,255,.07);
-  --br2:   rgba(255,255,255,.13);
-  --vi:    #7c3aed;
-  --pk:    #ec4899;
-  --grad:  linear-gradient(135deg,#7c3aed 0%,#a855f7 50%,#ec4899 100%);
-  --t1:    #f0f0f0;
-  --t2:    #9ca3af;
-  --t3:    #4b5563;
-  --ok:    #10b981;
-  --warn:  #f59e0b;
-  --err:   #ef4444;
-  --info:  #3b82f6;
-  --r8:    8px; --r12:12px; --r16:16px; --r20:20px; --r24:24px; --rfull:9999px;
+:root{
+  --bg:#0a0a0a;--s1:#111114;--s2:#17171c;--s3:#202028;
+  --br:rgba(255,255,255,.07);--br2:rgba(255,255,255,.13);
+  --violet:#7c3aed;--violet2:#a855f7;--pink:#ec4899;--white:#ffffff;
+  --grad:linear-gradient(135deg,#7c3aed 0%,#a855f7 50%,#ec4899 100%);
+  --t1:#f4f1fb;--t2:#a1a1b3;--t3:#5b5b6b;
+  --ok:#34d399;--warn:#fbbf24;--err:#f87171;
+  --r10:10px;--r14:14px;--r20:20px;--rfull:9999px;
+  --ease:cubic-bezier(.22,.8,.3,1);
 }
-
-/* ══ RESET ═══════════════════════════════════════════════════════════════ */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--t1);min-height:100vh;overflow-x:hidden;}
-input,select,textarea,button{font-family:inherit;}
-input::placeholder,textarea::placeholder{color:var(--t3);}
-select option{background:#1a1a1a;}
-a{color:inherit;text-decoration:none;}
-::-webkit-scrollbar{width:5px;height:5px;}
-::-webkit-scrollbar-track{background:transparent;}
-::-webkit-scrollbar-thumb{background:#333;border-radius:4px;}
-::-webkit-scrollbar-thumb:hover{background:#555;}
-
-/* ══ ANIMATIONS ══════════════════════════════════════════════════════════ */
-@keyframes shapeIn{
-  from{opacity:0;transform:translateY(-130px) rotate(calc(var(--r,0deg) - 15deg)) scaleX(.8);}
-  to  {opacity:1;transform:translateY(0) rotate(var(--r,0deg)) scaleX(1);}
-}
-@keyframes float{
-  0%,100%{transform:translateY(0) rotate(var(--r,0deg));}
-  50%     {transform:translateY(18px) rotate(var(--r,0deg));}
-}
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px);}
-  to  {opacity:1;transform:translateY(0);}
-}
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-@keyframes spin{to{transform:rotate(360deg);}}
-@keyframes pulse{0%,100%{opacity:.35;}50%{opacity:.75;}}
-@keyframes slideDown{
-  from{opacity:0;transform:translateY(-10px);}
-  to  {opacity:1;transform:translateY(0);}
-}
-@keyframes modalIn{
-  from{opacity:0;transform:scale(.93) translateY(14px);}
-  to  {opacity:1;transform:scale(1)   translateY(0);}
-}
-@keyframes toastIn {from{opacity:0;transform:translateX(50px);}to{opacity:1;transform:translateX(0);}}
-@keyframes toastOut{from{opacity:1;transform:translateX(0);}to{opacity:0;transform:translateX(50px);}}
-@keyframes gradShift{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
-
-/* ══ BUTTONS — Cool Nuance (violet/rose) ═════════════════════════════════ */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  height:44px;padding:0 20px;border-radius:var(--r12);
-  font-size:14px;font-weight:700;cursor:pointer;border:none;outline:none;
-  transition:filter .2s ease,transform .1s ease,box-shadow .2s ease;
-  white-space:nowrap;position:relative;overflow:hidden;
-  -webkit-user-select:none;user-select:none;
-}
-.btn:active{transform:translateY(1.5px);}
-.btn:disabled{opacity:.45;pointer-events:none;}
-.btn::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(255,255,255,.1),transparent);
-  border-radius:inherit;pointer-events:none;
-}
-
-/* Primary — violet, inset highlight, glow */
-.btn-primary{
-  background:linear-gradient(to bottom,#9333ea,#7c3aed);
-  border:1px solid rgba(50,0,100,.55);border-bottom-width:2px;
-  box-shadow:0 4px 18px rgba(124,58,237,.32),inset 0 1px 0 rgba(255,255,255,.26),inset 0 0 0 1px rgba(255,255,255,.14);
-  color:#fff;
-}
-.btn-primary:hover{filter:brightness(1.13);box-shadow:0 7px 26px rgba(124,58,237,.48),inset 0 1px 0 rgba(255,255,255,.26),inset 0 0 0 1px rgba(255,255,255,.14);}
-.btn-primary:active{filter:brightness(.9);}
-
-/* Gradient (hero CTA) */
-.btn-grad{
-  background:linear-gradient(135deg,#7c3aed,#a855f7,#ec4899);
-  background-size:200% 200%;
-  animation:gradShift 4s ease infinite;
-  border:1px solid rgba(236,72,153,.3);border-bottom-width:2px;
-  box-shadow:0 4px 22px rgba(168,85,247,.4),inset 0 1px 0 rgba(255,255,255,.24),inset 0 0 0 1px rgba(255,255,255,.12);
-  color:#fff;
-}
-.btn-grad:hover{filter:brightness(1.1);box-shadow:0 8px 32px rgba(168,85,247,.55),inset 0 1px 0 rgba(255,255,255,.24),inset 0 0 0 1px rgba(255,255,255,.12);}
-.btn-grad:active{filter:brightness(.9);}
-
-/* Ghost */
-.btn-ghost{background:rgba(255,255,255,.05);border:1px solid var(--br2);color:var(--t2);}
-.btn-ghost:hover{background:rgba(255,255,255,.09);color:var(--t1);border-color:rgba(255,255,255,.2);}
-.btn-ghost::after{display:none;}
-
-/* Danger */
-.btn-danger{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.22);color:#f87171;}
-.btn-danger:hover{background:rgba(239,68,68,.2);}
-.btn-danger::after{display:none;}
-
-/* Sizes */
-.btn-sm{height:36px;padding:0 14px;font-size:13px;border-radius:var(--r8);}
-.btn-xs{height:30px;padding:0 10px;font-size:12px;border-radius:7px;}
-.btn-lg{height:52px;padding:0 28px;font-size:15px;border-radius:var(--r16);}
-
-/* ══ GLASS MORPHISM ══════════════════════════════════════════════════════ */
-.glass{
-  background:rgba(255,255,255,.04);
-  backdrop-filter:blur(20px) saturate(1.6);
-  -webkit-backdrop-filter:blur(20px) saturate(1.6);
-  border:1px solid rgba(255,255,255,.09);
-}
-.glass-strong{
-  background:rgba(255,255,255,.055);
-  backdrop-filter:blur(40px) saturate(2.2);
-  -webkit-backdrop-filter:blur(40px) saturate(2.2);
-  border:1px solid rgba(255,255,255,.14);
-  box-shadow:0 8px 40px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.1),inset 0 -1px 0 rgba(0,0,0,.25);
-}
-
-/* ══ FORMS ═══════════════════════════════════════════════════════════════ */
-.fg{display:flex;flex-direction:column;gap:6px;}
-.fl{font-size:12px;font-weight:600;color:var(--t2);letter-spacing:.4px;}
-.fi{
-  height:44px;width:100%;
-  background:rgba(255,255,255,.05);border:1px solid var(--br);border-radius:var(--r12);
-  padding:0 14px;color:var(--t1);font-size:14px;outline:none;
-  transition:border .15s,box-shadow .15s;
-}
-.fi:focus{border-color:rgba(168,85,247,.5);box-shadow:0 0 0 3px rgba(124,58,237,.14);}
-textarea.fi{height:auto;padding:12px 14px;resize:vertical;}
-select.fi{cursor:pointer;}
-
-/* ══ BADGES ══════════════════════════════════════════════════════════════ */
-.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:var(--rfull);font-size:11px;font-weight:600;letter-spacing:.3px;white-space:nowrap;}
-.badge-to_call  {background:rgba(59,130,246,.14);color:#60a5fa;}
-.badge-called   {background:rgba(99,102,241,.14);color:#818cf8;}
-.badge-voicemail{background:rgba(245,158,11,.14);color:#fbbf24;}
-.badge-refusal  {background:rgba(239,68,68,.14);color:#f87171;}
-.badge-video_rdv{background:rgba(16,185,129,.14);color:#34d399;}
-
-/* ══ TOAST ═══════════════════════════════════════════════════════════════ */
-#toast-container{position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none;}
-.toast{
-  background:var(--s2);border:1px solid var(--br2);border-radius:var(--r12);
-  padding:11px 18px;font-size:13px;font-weight:600;color:var(--t1);
-  box-shadow:0 8px 28px rgba(0,0,0,.45);animation:toastIn .3s ease-out;
-  max-width:320px;pointer-events:auto;
-}
-.toast-err{border-color:rgba(239,68,68,.3);color:#f87171;}
-.toast-ok {border-color:rgba(16,185,129,.3);color:#34d399;}
-
-/* ══ ICON BUTTON ══════════════════════════════════════════════════════════ */
-.ibt{
-  width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;
-  border-radius:var(--r8);border:1px solid var(--br);background:transparent;
-  color:var(--t3);cursor:pointer;font-size:15px;transition:all .18s;flex-shrink:0;
-}
-.ibt:hover{background:var(--s2);color:var(--t1);border-color:var(--br2);}
-.ibt.del:hover{background:rgba(239,68,68,.1);color:#f87171;border-color:rgba(239,68,68,.3);}
-
-/* ══ SPINNER ══════════════════════════════════════════════════════════════ */
-.spin{
-  width:18px;height:18px;border:2px solid rgba(255,255,255,.2);
-  border-top-color:currentColor;border-radius:50%;
-  animation:spin .8s linear infinite;display:inline-block;flex-shrink:0;
-}
-
-/* ══════════════════════════════════════════
-   AUTH PAGE
-══════════════════════════════════════════ */
-#auth-page{
-  min-height:100vh;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;position:relative;overflow:hidden;
-  padding:24px 16px 60px;background:#030303;
-}
-#auth-page::before{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 60% 50% at 15% 30%,rgba(124,58,237,.13),transparent),
-    radial-gradient(ellipse 50% 40% at 85% 70%,rgba(236,72,153,.11),transparent);
-}
-
-/* Floating shapes */
-.shape{
-  position:absolute;border-radius:var(--rfull);
-  border:2px solid rgba(255,255,255,.14);
-  box-shadow:0 8px 32px rgba(255,255,255,.04),inset 0 0 20px rgba(255,255,255,.02);
-  pointer-events:none;
-}
-
-/* Auth card */
-.auth-card{
-  position:relative;z-index:10;width:100%;max-width:420px;
-  border-radius:var(--r24);padding:36px 32px;
-  animation:fadeUp .9s cubic-bezier(.25,.4,.25,1) .4s both;
-}
-
-/* Auth logo */
-.auth-logo{text-align:center;margin-bottom:28px;}
-.auth-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:6px 16px;border-radius:var(--rfull);
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
-  font-size:12px;color:var(--t2);margin-bottom:16px;
-  animation:fadeUp .8s cubic-bezier(.25,.4,.25,1) .5s both;
-}
-.auth-title{font-size:32px;font-weight:900;letter-spacing:-1px;line-height:1.1;margin-bottom:6px;}
-.auth-sub{font-size:13px;color:var(--t3);}
-.t-grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-
-/* Tabs */
-.auth-tabs{
-  display:flex;gap:4px;background:rgba(255,255,255,.04);
-  border:1px solid var(--br);border-radius:var(--r12);
-  padding:4px;margin-bottom:24px;
-}
-.auth-tab{
-  flex:1;height:36px;border-radius:9px;border:none;
-  background:transparent;color:var(--t2);font-size:13px;font-weight:600;
-  cursor:pointer;transition:all .2s;
-}
-.auth-tab.active{background:var(--s3);color:var(--t1);box-shadow:0 2px 8px rgba(0,0,0,.35);}
-.auth-form{display:flex;flex-direction:column;gap:14px;}
-
-/* ══ REVIEWS — Liquid Glass ══════════════════════════════════════════════ */
-.reviews-section{
-  width:100%;max-width:960px;margin-top:52px;
-  position:relative;z-index:10;
-  animation:fadeUp .9s cubic-bezier(.25,.4,.25,1) 1.3s both;
-}
-.reviews-label{
-  text-align:center;font-size:11px;font-weight:700;color:var(--t3);
-  letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;
-}
-.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.review-card{
-  padding:22px;border-radius:var(--r20);position:relative;overflow:hidden;
-  transition:transform .22s ease,box-shadow .22s ease;
-}
-.review-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4);}
-.review-card::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.01));
-  pointer-events:none;border-radius:inherit;
-}
-.review-stars{color:#f59e0b;font-size:12px;margin-bottom:10px;letter-spacing:2px;}
-.review-text{font-size:13px;color:var(--t2);line-height:1.72;margin-bottom:14px;font-style:italic;}
-.review-author{display:flex;align-items:center;gap:10px;}
-.review-av{
-  width:34px;height:34px;border-radius:var(--rfull);background:var(--grad);
-  display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:800;color:#fff;flex-shrink:0;
-}
-.review-name{font-size:13px;font-weight:700;}
-.review-role{font-size:11px;color:var(--t3);}
-
-/* ══════════════════════════════════════════
-   MAIN APP
-══════════════════════════════════════════ */
-#main-app{min-height:100vh;display:flex;flex-direction:column;}
-
-/* Header */
-#app-header{
-  position:sticky;top:0;z-index:100;height:60px;
-  border-bottom:1px solid var(--br);
-  background:rgba(10,10,10,.92);backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  display:flex;align-items:center;padding:0 24px;gap:16px;
-}
-.header-logo{font-size:17px;font-weight:900;letter-spacing:-.5px;white-space:nowrap;flex-shrink:0;}
-.header-nav{display:flex;gap:3px;flex:1;}
-.nav-btn{
-  display:inline-flex;align-items:center;gap:6px;
-  height:34px;padding:0 14px;border-radius:var(--r8);
-  border:none;background:transparent;color:var(--t3);
-  font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;
-}
-.nav-btn:hover{background:rgba(255,255,255,.06);color:var(--t1);}
-.nav-btn.active{background:rgba(168,85,247,.13);color:#c084fc;}
-.header-right{display:flex;align-items:center;gap:10px;margin-left:auto;}
-.user-chip{
-  display:flex;align-items:center;gap:8px;
-  padding:4px 10px 4px 4px;border-radius:var(--rfull);
-  background:rgba(255,255,255,.05);border:1px solid var(--br);
-}
-.user-av{
-  width:26px;height:26px;border-radius:var(--rfull);background:var(--grad);
-  display:flex;align-items:center;justify-content:center;
-  font-size:10px;font-weight:800;color:#fff;
-}
-.user-name-lbl{font-size:12px;font-weight:600;color:var(--t2);}
-
-/* Main content */
-#app-main{flex:1;max-width:1280px;width:100%;margin:0 auto;padding:24px 16px 60px;}
-
-/* ══ STATS ════════════════════════════════════════════════════════════════ */
-.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px;}
-.stat-card{
-  padding:20px;border-radius:var(--r20);background:var(--s1);
-  border:1px solid var(--br);display:flex;align-items:center;gap:14px;
-  transition:border-color .2s,transform .2s;
-}
-.stat-card:hover{border-color:var(--br2);transform:translateY(-2px);}
-.stat-ico{width:44px;height:44px;border-radius:var(--r12);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
-.stat-val{font-size:28px;font-weight:800;line-height:1.1;}
-.stat-lbl{font-size:12px;color:var(--t2);margin-top:2px;}
-
-/* ══ TOOLBAR ══════════════════════════════════════════════════════════════ */
-.toolbar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
-.srch-wrap{position:relative;flex:1;min-width:200px;}
-.srch-ico{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:15px;opacity:.38;pointer-events:none;}
-.srch-inp{
-  width:100%;height:44px;background:var(--s1);border:1px solid var(--br);
-  border-radius:var(--r12);padding:0 14px 0 38px;color:var(--t1);
-  font-size:14px;outline:none;transition:border .15s;
-}
-.srch-inp:focus{border-color:rgba(168,85,247,.4);}
-
-/* ══ TABLE ════════════════════════════════════════════════════════════════ */
-.table-wrap{background:var(--s1);border:1px solid var(--br);border-radius:var(--r20);overflow:hidden;}
-table{width:100%;border-collapse:collapse;}
-thead th{
-  padding:11px 16px;text-align:left;font-size:11px;font-weight:700;
-  color:var(--t3);text-transform:uppercase;letter-spacing:.6px;
-  background:rgba(255,255,255,.02);border-bottom:1px solid var(--br);
-}
-tbody tr{transition:background .14s;cursor:pointer;}
-tbody tr:hover td{background:rgba(255,255,255,.024);}
-tbody tr.xp td{background:rgba(168,85,247,.05);}
-tbody tr.xp td:first-child{border-left:2px solid rgba(168,85,247,.55);}
-tbody td{padding:13px 16px;border-bottom:1px solid var(--br);font-size:14px;vertical-align:middle;}
-tbody tr:last-child td{border-bottom:none;}
-.skel{border-radius:6px;background:rgba(255,255,255,.05);animation:pulse 1.6s ease-in-out infinite;}
-
-/* ══ ENRICH PANEL ════════════════════════════════════════════════════════ */
-.enrich-panel{
-  padding:20px 24px;border-top:1px solid var(--br);
-  background:rgba(124,58,237,.03);animation:slideDown .24s ease-out;
-}
-.enrich-ttl{font-size:11px;font-weight:700;color:#a78bfa;text-transform:uppercase;letter-spacing:.5px;}
-.enrich-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px;}
-.enrich-item{background:rgba(255,255,255,.025);border:1px solid var(--br);border-radius:var(--r12);padding:12px 14px;}
-.enrich-k{font-size:11px;color:var(--t3);font-weight:600;margin-bottom:4px;}
-.enrich-v{font-size:13px;color:var(--t1);}
-
-/* Empty */
-.empty-state{padding:60px 24px;text-align:center;}
-.empty-ico{font-size:44px;margin-bottom:14px;opacity:.45;}
-.empty-t{font-size:16px;font-weight:700;color:var(--t2);margin-bottom:6px;}
-.empty-s{font-size:13px;color:var(--t3);margin-bottom:20px;}
-
-/* ══ MODAL ═══════════════════════════════════════════════════════════════ */
-#modal-ov{
-  position:fixed;inset:0;background:rgba(0,0,0,.78);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  z-index:500;display:flex;align-items:center;justify-content:center;padding:16px;
-}
-.modal-box{
-  background:#141414;border:1px solid var(--br2);border-radius:var(--r24);
-  padding:30px;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;
-  animation:modalIn .3s cubic-bezier(.25,.4,.25,1);
-}
-.modal-title{font-size:18px;font-weight:800;margin-bottom:22px;}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.modal-foot{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;}
-
-/* ══ SCRIPTS ══════════════════════════════════════════════════════════════ */
-.scripts-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:24px;}
-.script-box{
-  background:rgba(124,58,237,.07);border:1px solid rgba(124,58,237,.2);
-  border-radius:var(--r20);padding:24px;
-}
-.script-ph{
-  min-height:280px;display:flex;align-items:center;justify-content:center;
-  text-align:center;border:2px dashed rgba(124,58,237,.14);
-  border-radius:var(--r20);padding:40px;color:var(--t3);
-}
-.preset-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
-.preset-card{
-  background:var(--s1);border:1px solid var(--br);border-radius:var(--r16);
-  padding:16px;cursor:pointer;transition:border-color .2s,background .2s,transform .18s;
-}
-.preset-card:hover{background:var(--s2);border-color:var(--br2);transform:translateY(-2px);}
-
-/* ══ COLD CALL ════════════════════════════════════════════════════════════ */
-.cc-row{
-  display:flex;align-items:center;gap:12px;
-  padding:14px 18px;border-bottom:1px solid var(--br);
-  transition:background .14s;
-}
-.cc-row:hover{background:rgba(255,255,255,.02);}
-.cc-row:last-child{border-bottom:none;}
-.cc-av{
-  width:38px;height:38px;border-radius:10px;
-  background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.26);
-  display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-weight:800;color:#a78bfa;flex-shrink:0;
-}
-
-/* ══ RESPONSIVE ═══════════════════════════════════════════════════════════ */
-@media(max-width:768px){
-  .stats-row{grid-template-columns:repeat(2,1fr);}
-  .stats-row .stat-card:last-child{grid-column:span 2;}
-  .reviews-grid{grid-template-columns:1fr;}
-  .scripts-layout{grid-template-columns:1fr!important;}
-  .g2,.enrich-grid{grid-template-columns:1fr;}
-  .dk{display:none!important;}
-  .auth-card{padding:26px 18px;}
-  #app-header{padding:0 14px;}
-  .nav-btn span:last-child{display:none;}
-}
-@media(max-width:480px){
-  .stats-row{grid-template-columns:1fr;}
-  .stats-row .stat-card:last-child{grid-column:auto;}
-  .preset-grid{grid-template-columns:1fr;}
-  .header-logo{font-size:15px;}
-}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}
+.aurora{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#0a0a0a}
+.aurora .blob{position:absolute;width:62vmax;height:62vmax;border-radius:50%;filter:blur(90px);opacity:.55;mix-blend-mode:screen;will-change:transform}
+.aurora .b1{background:radial-gradient(circle at 30% 30%,var(--violet),transparent 60%);top:-18%;left:-12%;animation:drift1 19s var(--ease) infinite}
+.aurora .b2{background:radial-gradient(circle at 70% 70%,var(--pink),transparent 60%);bottom:-20%;right:-12%;animation:drift2 23s var(--ease) infinite}
+.aurora .b3{background:radial-gradient(circle at 50% 50%,var(--violet2),transparent 62%);top:25%;left:35%;opacity:.4;animation:drift3 27s var(--ease) infinite}
+.aurora::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,transparent 0%,rgba(10,10,10,.55) 70%,#0a0a0a 100%)}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(8vw,6vh) scale(1.12)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-7vw,-5vh) scale(1.08)}}
+@keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-5vw,7vh) scale(1.15)}}
+@media(prefers-reduced-motion:reduce){.aurora .blob{animation:none}}
+#app{position:relative;z-index:1;min-height:100vh}
+.glass{background:rgba(255,255,255,.045);backdrop-filter:blur(22px) saturate(1.7);-webkit-backdrop-filter:blur(22px) saturate(1.7);border:1px solid var(--br2)}
+.glass-strong{background:rgba(255,255,255,.06);backdrop-filter:blur(40px) saturate(2);-webkit-backdrop-filter:blur(40px) saturate(2);border:1px solid var(--br2);box-shadow:0 8px 40px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08)}
+.card{background:var(--s1);border:1px solid var(--br);border-radius:var(--r20);padding:20px}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.btn-colorful{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;border-radius:var(--r14);border:1px solid rgba(255,255,255,.08);background:#0c0c10;color:#fff;font-weight:700;font-size:14px;cursor:pointer;overflow:hidden;transition:transform .12s var(--ease);font-family:inherit;text-decoration:none;white-space:nowrap}
+.btn-colorful::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--violet),var(--violet2),var(--pink));opacity:.45;filter:blur(12px);transition:opacity .5s var(--ease)}
+.btn-colorful:hover::before{opacity:.9}
+.btn-colorful:active{transform:translateY(1px)}
+.btn-colorful>*{position:relative;z-index:1}
+.btn-colorful:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+.btn-colorful span{position:relative;z-index:1}
+.btn-primary{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;border-radius:var(--r14);border:none;background:var(--grad);color:#fff;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;transition:transform .12s var(--ease),box-shadow .2s;box-shadow:0 8px 30px rgba(168,85,247,.35)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 40px rgba(168,85,247,.5)}
+.btn-primary:active{transform:translateY(1px)}
+.btn-primary:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 14px;border-radius:var(--r10);border:1px solid var(--br);background:transparent;color:var(--t2);font-size:13px;cursor:pointer;font-family:inherit;transition:background .15s,color .15s,border .15s}
+.btn-ghost:hover{background:rgba(255,255,255,.07);color:var(--t1);border-color:var(--br2)}
+.btn-ghost:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+.btn-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:var(--r10);border:1px solid var(--br);background:transparent;color:var(--t2);cursor:pointer;transition:background .15s,color .15s;text-decoration:none}
+.btn-icon:hover{background:rgba(255,255,255,.07);color:var(--t1)}
+.btn-icon:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+.fi{height:44px;width:100%;background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:var(--r14);padding:0 14px;color:var(--t1);font-size:14px;outline:none;transition:border .15s,box-shadow .15s;font-family:inherit}
+.fi:focus{border-color:rgba(168,85,247,.55);box-shadow:0 0 0 3px rgba(124,58,237,.18)}
+.fi::placeholder{color:var(--t3)}
+.fi-sm{height:36px;border-radius:var(--r10);font-size:13px;padding:0 12px}
+select.fi{appearance:none;cursor:pointer}
+textarea.fi{height:auto;padding:12px 14px;resize:vertical;min-height:80px}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+label.lbl{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bottom:6px}
+.fgroup{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.err-msg{font-size:12px;color:var(--err);margin-top:4px;display:none}
+.err-msg.show{display:block}
+.badge{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 8px;border-radius:var(--rfull);font-size:11px;font-weight:600;letter-spacing:.02em}
+.badge-to_call{background:rgba(99,102,241,.2);color:#a5b4fc}
+.badge-called{background:rgba(34,197,94,.15);color:#86efac}
+.badge-voicemail{background:rgba(251,191,36,.15);color:#fde68a}
+.badge-refusal{background:rgba(248,113,113,.2);color:#fca5a5}
+.badge-video_rdv{background:rgba(52,211,153,.2);color:#6ee7b7}
+[data-view]{display:none}
+[data-view].active{display:block}
+.page-wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+#toast-container{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
+@media(min-width:768px){#toast-container{bottom:24px}}
+.toast{background:var(--s2);border:1px solid var(--br2);border-radius:var(--rfull);padding:10px 18px;font-size:13px;color:var(--t1);box-shadow:0 4px 24px rgba(0,0,0,.5);animation:toastIn .2s var(--ease) forwards;pointer-events:auto}
+.toast.out{animation:toastOut .2s var(--ease) forwards}
+.toast.ok{border-color:rgba(52,211,153,.4);color:var(--ok)}
+.toast.err{border-color:rgba(248,113,113,.4);color:var(--err)}
+@keyframes toastIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes toastOut{to{opacity:0;transform:translateY(8px)}}
+#topnav{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px;padding:0 20px;height:60px;background:rgba(10,10,10,.75);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--br)}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:17px;letter-spacing:-.03em;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;flex:none}
+.nav-links{display:flex;align-items:center;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-link{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:var(--r10);font-size:13px;font-weight:500;color:var(--t2);cursor:pointer;background:transparent;border:none;font-family:inherit;transition:background .15s,color .15s;white-space:nowrap}
+.nav-link:hover{background:rgba(255,255,255,.07);color:var(--t1)}
+.nav-link.current{background:rgba(124,58,237,.18);color:var(--violet2)}
+.nav-right{display:flex;align-items:center;gap:10px;flex:none}
+.nav-user{font-size:12px;color:var(--t3);max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#sync-status{font-size:11px;color:var(--t3);transition:color .3s;white-space:nowrap}
+#sync-status.saving{color:var(--warn)}
+#sync-status.saved{color:var(--ok)}
+#bottomnav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;height:60px;background:rgba(10,10,10,.9);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-top:1px solid var(--br);justify-content:space-around;align-items:center;padding:0 8px}
+.bnav-btn{display:flex;flex-direction:column;align-items:center;gap:2px;height:52px;justify-content:center;padding:0 12px;background:none;border:none;color:var(--t3);font-size:10px;font-weight:500;cursor:pointer;font-family:inherit;border-radius:var(--r10);transition:color .15s}
+.bnav-btn.current{color:var(--violet2)}
+.bnav-btn svg{width:20px;height:20px}
+@media(max-width:767px){#topnav .nav-links{display:none}#bottomnav{display:flex}#app{padding-bottom:60px}}
+#view-login,#view-register{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 20px}
+.auth-layout{width:100%;max-width:420px;display:flex;flex-direction:column;gap:32px}
+.auth-hero{text-align:left}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--t2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--pink);box-shadow:0 0 10px var(--pink);display:inline-block;flex:none;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+.hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.4rem,7vw,3.8rem);font-weight:900;letter-spacing:-.04em;line-height:1.02;margin-bottom:12px}
+.hero-sub{font-size:15px;color:var(--t2);line-height:1.6;max-width:340px}
+.auth-card{border-radius:var(--r20);padding:28px 24px}
+.auth-tabs{display:flex;gap:4px;margin-bottom:24px;background:rgba(255,255,255,.04);border-radius:var(--r10);padding:4px}
+.auth-tab{flex:1;height:36px;border-radius:8px;border:none;background:transparent;color:var(--t2);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .15s,color .15s}
+.auth-tab.active{background:var(--s3);color:var(--t1)}
+.auth-tab:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+.auth-form-wrap{display:none}
+.auth-form-wrap.active{display:block}
+.reviews{display:flex;flex-direction:column;gap:10px}
+.review-card{border-radius:var(--r14);padding:14px 16px}
+.review-stars{display:flex;gap:2px;margin-bottom:6px}
+.review-star{width:12px;height:12px}
+.review-text{font-size:12px;color:var(--t2);line-height:1.5;margin-bottom:8px}
+.review-author{font-size:11px;color:var(--t3);font-weight:600}
+#view-dashboard{padding:24px 0 40px}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.stat-card{border-radius:var(--r14);padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;letter-spacing:-.03em;line-height:1}
+.stat-lbl{font-size:12px;color:var(--t2);font-weight:500}
+.stat-num.violet{color:var(--violet2)}
+.stat-num.green{color:var(--ok)}
+.stat-num.warn{color:var(--warn)}
+.toolbar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.toolbar-search{flex:1;min-width:180px}
+.prospect-table-wrap{overflow-x:auto;border-radius:var(--r20);border:1px solid var(--br)}
+.prospect-table{width:100%;border-collapse:collapse;font-size:13px}
+.prospect-table th{padding:10px 14px;text-align:left;font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--br);background:rgba(255,255,255,.025)}
+.prospect-table td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle}
+.prospect-table tr:last-child td{border-bottom:none}
+.prospect-table tr.expanded td{border-bottom:none}
+.enrich-row td{background:rgba(124,58,237,.06);padding:0}
+.enrich-panel{padding:16px 20px}
+.enrich-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+@media(min-width:768px){.enrich-grid{grid-template-columns:repeat(4,1fr)}}
+.enrich-item{background:rgba(255,255,255,.04);border-radius:var(--r10);padding:10px 12px}
+.enrich-key{font-size:10px;color:var(--t3);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.enrich-val{font-size:13px;color:var(--t1);line-height:1.4}
+.name-cell{font-weight:600;color:var(--t1)}
+.name-cell small{display:block;font-size:11px;color:var(--t3);font-weight:400;margin-top:1px}
+.row-actions{display:flex;align-items:center;gap:4px}
+.prospect-cards{display:none;flex-direction:column;gap:10px}
+.prospect-card{border-radius:var(--r14);padding:14px 16px;display:flex;flex-direction:column;gap:10px;cursor:default}
+.prospect-card-header{display:flex;justify-content:space-between;align-items:start;gap:8px}
+.prospect-card-name{font-weight:600;font-size:14px;color:var(--t1)}
+.prospect-card-meta{font-size:12px;color:var(--t3)}
+.prospect-card-footer{display:flex;justify-content:space-between;align-items:center;gap:8px}
+@media(max-width:767px){.prospect-table-wrap{display:none}.prospect-cards{display:flex}.stats-row{grid-template-columns:repeat(3,1fr);gap:8px}.stat-card{padding:12px 10px}.stat-num{font-size:1.5rem}}
+.empty-state{text-align:center;padding:60px 20px;color:var(--t3)}
+.empty-state svg{width:40px;height:40px;margin:0 auto 12px;display:block;color:var(--t3)}
+.empty-state p{font-size:14px;line-height:1.6;margin-bottom:16px}
+#view-coldcall{padding:24px 0 40px}
+.cc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap}
+.cc-counter{font-size:13px;color:var(--t2);font-weight:500}
+.cc-list{display:flex;flex-direction:column;gap:8px}
+.cc-item{border-radius:var(--r14);padding:14px 16px;display:flex;align-items:center;gap:12px}
+.cc-info{flex:1;min-width:0}
+.cc-name{font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cc-sub{font-size:12px;color:var(--t3);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cc-actions{display:flex;gap:6px;flex:none;align-items:center}
+.cc-status-select{height:32px;background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:var(--r10);padding:0 10px;color:var(--t1);font-size:12px;font-family:inherit;cursor:pointer;outline:none}
+.cc-status-select:focus{border-color:rgba(168,85,247,.55)}
+#view-scripts{padding:24px 0 40px}
+.scripts-layout{display:grid;gap:20px}
+@media(min-width:768px){.scripts-layout{grid-template-columns:1fr 1fr}}
+.presets{display:flex;flex-direction:column;gap:8px}
+.preset-btn{width:100%;text-align:left;background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:var(--r14);padding:12px 16px;color:var(--t1);font-size:13px;cursor:pointer;font-family:inherit;transition:background .15s,border .15s}
+.preset-btn:hover{background:rgba(255,255,255,.07);border-color:var(--br2)}
+.preset-btn:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+.preset-title{font-weight:600;margin-bottom:2px}
+.preset-desc{font-size:11px;color:var(--t3)}
+.script-output{min-height:200px;white-space:pre-wrap;font-size:13px;line-height:1.7;color:var(--t1);background:rgba(255,255,255,.025);border-radius:var(--r14);padding:16px;border:1px solid var(--br)}
+.output-placeholder{color:var(--t3);font-style:italic}
+.modal-backdrop{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px}
+.modal-backdrop.open{display:flex}
+.modal{background:var(--s1);border:1px solid var(--br2);border-radius:var(--r20);width:100%;max-width:560px;max-height:90vh;overflow-y:auto;padding:28px 24px}
+.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.modal-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.02em}
+.modal-grid{display:grid;gap:12px}
+@media(min-width:480px){.modal-grid{grid-template-columns:1fr 1fr}}
+#chat-btn{position:fixed;bottom:76px;right:16px;z-index:300;width:52px;height:52px;border-radius:50%;background:var(--grad);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(168,85,247,.5);transition:transform .15s,box-shadow .15s}
+#chat-btn:hover{transform:scale(1.08);box-shadow:0 8px 32px rgba(168,85,247,.7)}
+#chat-btn:focus-visible{outline:2px solid var(--violet2);outline-offset:3px}
+@media(min-width:768px){#chat-btn{bottom:24px;right:24px}}
+#chat-panel{display:none;position:fixed;bottom:76px;right:16px;z-index:300;width:calc(100vw - 32px);max-width:380px;height:520px;border-radius:var(--r20);overflow:hidden;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#chat-panel.open{display:flex}
+@media(min-width:768px){#chat-panel{bottom:88px;right:24px}}
+.chat-header{display:flex;align-items:center;gap:10px;padding:14px 16px;background:rgba(255,255,255,.06);border-bottom:1px solid var(--br);flex:none}
+.chat-avatar{width:32px;height:32px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;flex:none}
+.chat-hname{font-weight:700;font-size:13px}
+.chat-hsub{font-size:11px;color:var(--ok)}
+.chat-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;scrollbar-color:var(--br) transparent}
+.chat-msg{max-width:88%;font-size:13px;line-height:1.6;padding:10px 14px;border-radius:14px}
+.chat-msg.user{align-self:flex-end;background:linear-gradient(135deg,var(--violet) 0%,var(--violet2) 100%);color:#fff;border-bottom-right-radius:4px}
+.chat-msg.bot{align-self:flex-start;background:rgba(255,255,255,.07);color:var(--t1);border-bottom-left-radius:4px}
+.chat-footer{padding:12px;border-top:1px solid var(--br);display:flex;gap:8px;flex:none;background:rgba(10,10,10,.5)}
+#chat-input{flex:1;height:40px;background:rgba(255,255,255,.06);border:1px solid var(--br);border-radius:var(--r10);padding:0 12px;color:var(--t1);font-size:13px;outline:none;font-family:inherit}
+#chat-input:focus{border-color:rgba(168,85,247,.55)}
+.chat-send{width:40px;height:40px;border-radius:var(--r10);background:var(--violet);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;flex:none}
+.chat-send:hover{background:var(--violet2)}
+.chat-send:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+.chat-typing{align-self:flex-start;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.07);font-size:13px;color:var(--t3);border-bottom-left-radius:4px}
+.typing-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--t3);margin:0 2px;animation:typingPulse 1.2s infinite}
+.typing-dot:nth-child(2){animation-delay:.2s}
+.typing-dot:nth-child(3){animation-delay:.4s}
+@keyframes typingPulse{0%,80%,100%{opacity:.3}40%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.typing-dot{animation:none}}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.03em;margin-bottom:4px}
+.section-sub{font-size:13px;color:var(--t2);margin-bottom:20px}
+.loading-row td{text-align:center;padding:40px;color:var(--t3);font-size:13px}
 </style>
 </head>
 <body>
-
-<!-- SVG Liquid Glass Filter -->
-<svg hidden aria-hidden="true">
-  <defs>
-    <filter id="lg" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.06 0.06" numOctaves="1" seed="3" result="t"/>
-      <feGaussianBlur in="t" stdDeviation="2" result="bn"/>
-      <feDisplacementMap in="SourceGraphic" in2="bn" scale="55" xChannelSelector="R" yChannelSelector="B" result="d"/>
-      <feGaussianBlur in="d" stdDeviation="3.5" result="fb"/>
-      <feComposite in="fb" in2="fb" operator="over"/>
-    </filter>
-  </defs>
-</svg>
-
-<!-- Toast -->
-<div id="toast-container"></div>
-
-<!-- ══════════════════════════════════════════
-     AUTH PAGE
-══════════════════════════════════════════ -->
-<div id="auth-page">
-
-  <!-- Floating Shapes (replicated from HeroGeometric) -->
-  <div class="shape" style="width:600px;height:140px;--r:12deg;
-    background:radial-gradient(ellipse at 30% 50%,rgba(99,102,241,.18),transparent);
-    left:-8%;top:18%;
-    animation:shapeIn 2.4s cubic-bezier(.23,.86,.39,.96) .3s both,float 13s ease-in-out 2.7s infinite;"></div>
-
-  <div class="shape" style="width:500px;height:120px;--r:-15deg;
-    background:radial-gradient(ellipse at 70% 50%,rgba(236,72,153,.16),transparent);
-    right:-4%;top:68%;
-    animation:shapeIn 2.4s cubic-bezier(.23,.86,.39,.96) .5s both,float 15s ease-in-out 2.9s infinite;"></div>
-
-  <div class="shape" style="width:300px;height:80px;--r:-8deg;
-    background:radial-gradient(ellipse at 50% 50%,rgba(167,85,247,.18),transparent);
-    left:5%;bottom:8%;
-    animation:shapeIn 2.4s cubic-bezier(.23,.86,.39,.96) .4s both,float 11s ease-in-out 2.8s infinite;"></div>
-
-  <div class="shape" style="width:220px;height:58px;--r:20deg;
-    background:radial-gradient(ellipse at 50% 50%,rgba(245,158,11,.14),transparent);
-    right:16%;top:10%;
-    animation:shapeIn 2.4s cubic-bezier(.23,.86,.39,.96) .6s both,float 17s ease-in-out 3s infinite;"></div>
-
-  <div class="shape" style="width:150px;height:40px;--r:-25deg;
-    background:radial-gradient(ellipse at 50% 50%,rgba(6,182,212,.14),transparent);
-    left:22%;top:5%;
-    animation:shapeIn 2.4s cubic-bezier(.23,.86,.39,.96) .7s both,float 9s ease-in-out 3.1s infinite;"></div>
-
-  <!-- Auth Card -->
-  <div class="auth-card glass-strong">
-    <div class="auth-logo">
-      <div class="auth-badge">
-        <span style="width:7px;height:7px;border-radius:50%;background:#ec4899;box-shadow:0 0 8px #ec4899,0 0 16px rgba(236,72,153,.4);display:inline-block;animation:pulse 2s ease-in-out infinite;"></span>
-        Alpinia · Agence Web Suisse
-      </div>
-      <h1 class="auth-title t-grad">Alpinia<br>Prospect Pro</h1>
-      <p class="auth-sub">Enrichissement IA · Prospection B2B</p>
-    </div>
-
-    <div class="auth-tabs">
-      <button class="auth-tab active" onclick="switchTab('login')">Connexion</button>
-      <button class="auth-tab" onclick="switchTab('register')">Créer un compte</button>
-    </div>
-
-    <!-- Login -->
-    <div id="form-login" class="auth-form" style="animation:fadeUp .6s ease .8s both;">
-      <div class="fg"><label class="fl">Email</label><input id="l-email" type="email" class="fi" placeholder="vous@agence.ch" autocomplete="email"></div>
-      <div class="fg"><label class="fl">Mot de passe</label><input id="l-pass" type="password" class="fi" placeholder="••••••••" autocomplete="current-password"></div>
-      <button class="btn btn-grad" style="width:100%;margin-top:4px;" onclick="doLogin()">Se connecter</button>
-      <p style="text-align:center;font-size:12px;color:var(--t3);">Pas de compte ? <span style="color:#c084fc;cursor:pointer;" onclick="switchTab('register')">S'inscrire</span></p>
-    </div>
-
-    <!-- Register -->
-    <div id="form-register" class="auth-form" style="display:none;animation:fadeUp .6s ease .8s both;">
-      <div class="fg"><label class="fl">Prénom &amp; Nom</label><input id="r-name" type="text" class="fi" placeholder="Jean Martin" autocomplete="name"></div>
-      <div class="fg"><label class="fl">Email</label><input id="r-email" type="email" class="fi" placeholder="vous@agence.ch" autocomplete="email"></div>
-      <div class="fg"><label class="fl">Mot de passe (min. 6 car.)</label><input id="r-pass" type="password" class="fi" placeholder="••••••••" autocomplete="new-password"></div>
-      <button class="btn btn-grad" style="width:100%;margin-top:4px;" onclick="doRegister()">Créer mon compte</button>
-    </div>
-  </div>
-
-  <!-- Reviews — Liquid Glass -->
-  <div class="reviews-section">
-    <p class="reviews-label">Ils utilisent Alpinia Prospect Pro</p>
-    <div class="reviews-grid" id="reviews-grid">
-      <!-- injected by JS -->
-    </div>
-  </div>
+<div class="aurora" aria-hidden="true">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
 </div>
+<div id="app">
 
-<!-- ══════════════════════════════════════════
-     MAIN APP
-══════════════════════════════════════════ -->
-<div id="main-app" style="display:none;">
-  <header id="app-header">
-    <div class="header-logo t-grad">🚀 Alpinia Prospect Pro</div>
-    <nav class="header-nav">
-      <button class="nav-btn active" data-page="dashboard" onclick="goPage('dashboard')">
-        <span>👥</span><span>Prospects</span>
-      </button>
-      <button class="nav-btn" data-page="coldcall" onclick="goPage('coldcall')">
-        <span>📞</span><span>Cold Call</span>
-      </button>
-      <button class="nav-btn" data-page="scripts" onclick="goPage('scripts')">
-        <span>✨</span><span>Scripts IA</span>
-      </button>
-    </nav>
-    <div class="header-right">
-      <div class="user-chip">
-        <div class="user-av" id="u-av">?</div>
-        <span class="user-name-lbl" id="u-name"></span>
-      </div>
-      <button class="btn btn-ghost btn-sm" onclick="doLogout()">Déconnexion</button>
+<!-- NAV -->
+<nav id="topnav" style="display:none">
+  <span class="nav-logo">Alpinia Pro</span>
+  <div class="nav-links" role="navigation" aria-label="Navigation principale">
+    <button class="nav-link" data-nav="dashboard" aria-current="false">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Prospects
+    </button>
+    <button class="nav-link" data-nav="coldcall">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Cold Call
+    </button>
+    <button class="nav-link" data-nav="scripts">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      Scripts IA
+    </button>
+  </div>
+  <div class="nav-right">
+    <span id="sync-status" aria-live="polite"></span>
+    <span class="nav-user" id="nav-user-name"></span>
+    <button class="btn-ghost" id="btn-logout" style="font-size:12px;height:32px;padding:0 12px">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Quitter
+    </button>
+  </div>
+</nav>
+<nav id="bottomnav" style="display:none" aria-label="Navigation">
+  <button class="bnav-btn" data-nav="dashboard">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+    Prospects
+  </button>
+  <button class="bnav-btn" data-nav="coldcall">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Cold Call
+  </button>
+  <button class="bnav-btn" data-nav="scripts">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+    Scripts
+  </button>
+</nav>
+
+<!-- LOGIN -->
+<section data-view="login" id="view-login">
+  <div class="auth-layout">
+    <div class="auth-hero">
+      <div class="eyebrow"><i class="dot"></i> Alpinia · Agence Web Valais</div>
+      <h1 class="hero-title"><span class="grad">Prospectez</span><br>plus vite.</h1>
+      <p class="hero-sub">Enrichissement IA, scripts de cold call et suivi des RDV — sur une seule plateforme.</p>
     </div>
-  </header>
-
-  <main id="app-main">
-
-    <!-- ─── DASHBOARD ────────────────────────────────── -->
-    <section id="page-dashboard">
-      <div class="stats-row" id="stats-row"></div>
-      <div class="toolbar">
-        <div class="srch-wrap">
-          <span class="srch-ico">🔍</span>
-          <input id="d-q" type="search" class="srch-inp" placeholder="Rechercher un prospect..." oninput="renderTable()">
+    <div class="auth-card glass-strong">
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login-form">Connexion</button>
+        <button class="auth-tab" data-tab="register-form">Inscription</button>
+      </div>
+      <div class="auth-form-wrap active" id="login-form">
+        <div class="fgroup">
+          <label class="lbl" for="li-email">Email</label>
+          <input class="fi" type="email" id="li-email" placeholder="vous@exemple.com" autocomplete="email"/>
+          <span class="err-msg" id="li-email-err"></span>
         </div>
-        <select class="fi" id="d-f" style="max-width:175px;" onchange="renderTable()">
-          <option value="">Tous les statuts</option>
+        <div class="fgroup">
+          <label class="lbl" for="li-pw">Mot de passe</label>
+          <input class="fi" type="password" id="li-pw" placeholder="••••••••" autocomplete="current-password"/>
+        </div>
+        <span class="err-msg show" id="li-global-err" style="margin-bottom:12px;min-height:16px"></span>
+        <button class="btn-primary" id="btn-login" style="width:100%">Se connecter</button>
+      </div>
+      <div class="auth-form-wrap" id="register-form">
+        <div class="fgroup">
+          <label class="lbl" for="re-name">Prénom &amp; Nom</label>
+          <input class="fi" type="text" id="re-name" placeholder="Noé Vuillame" autocomplete="name"/>
+          <span class="err-msg" id="re-name-err"></span>
+        </div>
+        <div class="fgroup">
+          <label class="lbl" for="re-email">Email</label>
+          <input class="fi" type="email" id="re-email" placeholder="vous@exemple.com" autocomplete="email"/>
+          <span class="err-msg" id="re-email-err"></span>
+        </div>
+        <div class="fgroup">
+          <label class="lbl" for="re-pw">Mot de passe</label>
+          <input class="fi" type="password" id="re-pw" placeholder="min. 6 caractères" autocomplete="new-password"/>
+          <span class="err-msg" id="re-pw-err"></span>
+        </div>
+        <span class="err-msg show" id="re-global-err" style="margin-bottom:12px;min-height:16px"></span>
+        <button class="btn-primary" id="btn-register" style="width:100%">Créer mon compte</button>
+      </div>
+    </div>
+    <div class="reviews">
+      <div class="review-card glass">
+        <div class="review-stars">
+          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="review-text">« Avec Alpinia Pro, j'ai doublé mes appels qualifiés en 2 semaines. L'enrichissement IA fait gagner un temps fou. »</p>
+        <span class="review-author">Laurent M. — Gérant PME, Sion</span>
+      </div>
+      <div class="review-card glass">
+        <div class="review-stars">
+          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="review-text">« Le coach IA m'aide à gérer les objections en direct. Mon taux de RDV a augmenté de 30 %. »</p>
+        <span class="review-author">Sophie R. — Commerciale, Martigny</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section data-view="dashboard" id="view-dashboard">
+  <div class="page-wrap">
+    <div class="stats-row">
+      <div class="stat-card glass">
+        <span class="stat-num violet" id="stat-total">0</span>
+        <span class="stat-lbl">Total</span>
+      </div>
+      <div class="stat-card glass">
+        <span class="stat-num warn" id="stat-tocall">0</span>
+        <span class="stat-lbl">À appeler</span>
+      </div>
+      <div class="stat-card glass">
+        <span class="stat-num green" id="stat-rdv">0</span>
+        <span class="stat-lbl">RDV obtenus</span>
+      </div>
+    </div>
+    <div class="toolbar">
+      <div class="toolbar-search">
+        <input class="fi fi-sm" type="search" id="dash-search" placeholder="Rechercher…" aria-label="Rechercher un prospect"/>
+      </div>
+      <select class="fi fi-sm" id="dash-filter" style="width:auto;min-width:140px" aria-label="Filtrer par statut">
+        <option value="">Tous les statuts</option>
+        <option value="to_call">À appeler</option>
+        <option value="called">Appelé</option>
+        <option value="voicemail">Répondeur</option>
+        <option value="refusal">Refus</option>
+        <option value="video_rdv">RDV</option>
+      </select>
+      <button class="btn-colorful" id="btn-add-prospect">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span>Ajouter</span>
+      </button>
+    </div>
+    <div class="prospect-table-wrap">
+      <table class="prospect-table" id="prospect-table" aria-label="Liste des prospects">
+        <thead>
+          <tr>
+            <th>Nom / Établissement</th>
+            <th>Ville</th>
+            <th>Type</th>
+            <th>Statut</th>
+            <th>Notes</th>
+            <th style="text-align:right">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="prospect-tbody">
+          <tr class="loading-row"><td colspan="6">Chargement…</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prospect-cards" id="prospect-cards"></div>
+  </div>
+</section>
+
+<!-- COLD CALL -->
+<section data-view="coldcall" id="view-coldcall">
+  <div class="page-wrap">
+    <div class="cc-header">
+      <div>
+        <h1 class="section-title">Cold Call</h1>
+        <span class="cc-counter" id="cc-counter">—</span>
+      </div>
+      <button class="btn-ghost" id="cc-filter-all">Voir tous</button>
+    </div>
+    <div class="cc-list" id="cc-list"></div>
+  </div>
+</section>
+
+<!-- SCRIPTS -->
+<section data-view="scripts" id="view-scripts">
+  <div class="page-wrap">
+    <h1 class="section-title">Scripts IA</h1>
+    <p class="section-sub">Génère un script personnalisé ou utilise un preset prêt à l'emploi.</p>
+    <div class="scripts-layout">
+      <div>
+        <h2 style="font-size:14px;font-weight:600;margin-bottom:12px;color:var(--t2)">Presets rapides</h2>
+        <div class="presets">
+          <button class="preset-btn" data-preset="coldb2b">
+            <div class="preset-title">Cold Call B2B</div>
+            <div class="preset-desc">Premier contact, accroche AIDA, objectif RDV</div>
+          </button>
+          <button class="preset-btn" data-preset="relance">
+            <div class="preset-title">Relance</div>
+            <div class="preset-desc">Suite d'un premier contact sans réponse</div>
+          </button>
+          <button class="preset-btn" data-preset="objections">
+            <div class="preset-title">Traitement des objections</div>
+            <div class="preset-desc">Réponses aux 5 objections les plus fréquentes</div>
+          </button>
+          <button class="preset-btn" data-preset="closing">
+            <div class="preset-title">Closing RDV</div>
+            <div class="preset-desc">Conclure et fixer un créneau concret</div>
+          </button>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <h2 style="font-size:14px;font-weight:600;color:var(--t2)">Script personnalisé</h2>
+        <div class="fgroup" style="margin-bottom:0">
+          <label class="lbl" for="sc-name">Prénom prospect</label>
+          <input class="fi" type="text" id="sc-name" placeholder="Marc"/>
+        </div>
+        <div class="fgroup" style="margin-bottom:0">
+          <label class="lbl" for="sc-company">Établissement</label>
+          <input class="fi" type="text" id="sc-company" placeholder="Restaurant du Lac"/>
+        </div>
+        <div class="fgroup" style="margin-bottom:0">
+          <label class="lbl" for="sc-sector">Secteur</label>
+          <input class="fi" type="text" id="sc-sector" placeholder="restauration, hôtellerie…"/>
+        </div>
+        <div class="fgroup" style="margin-bottom:0">
+          <label class="lbl" for="sc-type">Type d'appel</label>
+          <select class="fi" id="sc-type">
+            <option value="premier contact">Premier contact</option>
+            <option value="relance">Relance</option>
+            <option value="closing">Closing RDV</option>
+          </select>
+        </div>
+        <div class="fgroup" style="margin-bottom:0">
+          <label class="lbl" for="sc-info">Infos clés (optionnel)</label>
+          <textarea class="fi" id="sc-info" placeholder="ex : pas de site web, concurrent voisin en a un…" style="min-height:72px"></textarea>
+        </div>
+        <button class="btn-colorful" id="btn-gen-script" style="width:100%">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>Générer le script</span>
+        </button>
+      </div>
+    </div>
+    <div style="margin-top:20px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <span style="font-size:13px;font-weight:600;color:var(--t2)">Résultat</span>
+        <button class="btn-ghost" id="btn-copy-script" style="font-size:12px;height:30px;padding:0 10px">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copier
+        </button>
+      </div>
+      <div class="script-output" id="script-output">
+        <span class="output-placeholder">Le script généré apparaîtra ici…</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL PROSPECT -->
+<div class="modal-backdrop" id="modal-prospect" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modal-title">Nouveau prospect</h2>
+      <button class="btn-icon" id="modal-close" aria-label="Fermer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-grid">
+      <div class="fgroup" style="margin-bottom:0">
+        <label class="lbl" for="m-name">Nom / Établissement *</label>
+        <input class="fi" type="text" id="m-name" placeholder="Restaurant du Lac"/>
+      </div>
+      <div class="fgroup" style="margin-bottom:0">
+        <label class="lbl" for="m-city">Ville</label>
+        <input class="fi" type="text" id="m-city" placeholder="Sion"/>
+      </div>
+      <div class="fgroup" style="margin-bottom:0">
+        <label class="lbl" for="m-type">Type</label>
+        <input class="fi" type="text" id="m-type" placeholder="Restaurant, Hôtel, Commerce…"/>
+      </div>
+      <div class="fgroup" style="margin-bottom:0">
+        <label class="lbl" for="m-phone">Téléphone</label>
+        <input class="fi" type="tel" id="m-phone" placeholder="+41 27 123 45 67"/>
+      </div>
+      <div class="fgroup" style="margin-bottom:0">
+        <label class="lbl" for="m-email">Email</label>
+        <input class="fi" type="email" id="m-email" placeholder="contact@exemple.ch"/>
+      </div>
+      <div class="fgroup" style="margin-bottom:0">
+        <label class="lbl" for="m-website">Site web</label>
+        <input class="fi" type="url" id="m-website" placeholder="https://…"/>
+      </div>
+      <div class="fgroup" style="margin-bottom:0">
+        <label class="lbl" for="m-status">Statut</label>
+        <select class="fi" id="m-status">
           <option value="to_call">À appeler</option>
           <option value="called">Appelé</option>
           <option value="voicemail">Répondeur</option>
           <option value="refusal">Refus</option>
-          <option value="video_rdv">RDV ✅</option>
-        </select>
-        <button class="btn btn-primary btn-sm" onclick="openModal()">+ Ajouter</button>
-      </div>
-      <div class="table-wrap" id="tbl-wrap"></div>
-    </section>
-
-    <!-- ─── COLD CALL ────────────────────────────────── -->
-    <section id="page-coldcall" style="display:none;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px;">
-        <div>
-          <h2 style="font-size:20px;font-weight:800;letter-spacing:-.4px;">📞 Session Cold Call</h2>
-          <p id="cc-stat" style="font-size:13px;color:var(--t2);margin-top:3px;"></p>
-        </div>
-        <button class="btn btn-primary btn-sm" onclick="openModal()">+ Ajouter un prospect</button>
-      </div>
-      <div class="table-wrap"><div id="cc-list"></div></div>
-    </section>
-
-    <!-- ─── SCRIPTS IA ──────────────────────────────── -->
-    <section id="page-scripts" style="display:none;">
-      <div style="margin-bottom:20px;">
-        <h2 style="font-size:20px;font-weight:800;letter-spacing:-.4px;">✨ Générateur de Scripts IA</h2>
-        <p style="font-size:13px;color:var(--t2);margin-top:3px;">Script personnalisé via OpenAI (variable <code style="background:rgba(255,255,255,.07);padding:1px 6px;border-radius:5px;font-size:12px;">OPENAI_API</code> Netlify)</p>
-      </div>
-      <div class="scripts-layout">
-        <div style="background:var(--s1);border:1px solid var(--br);border-radius:var(--r20);padding:24px;display:flex;flex-direction:column;gap:14px;">
-          <p style="font-size:14px;font-weight:700;">✨ Paramètres</p>
-          <div class="fg"><label class="fl">Nom du prospect *</label><input id="sc-n" class="fi" placeholder="Ex: Jean Martin"></div>
-          <div class="fg"><label class="fl">Entreprise *</label><input id="sc-c" class="fi" placeholder="Ex: Restaurant Le Gourmet"></div>
-          <div class="fg"><label class="fl">Secteur</label><input id="sc-s" class="fi" placeholder="Ex: Restauration, IT..."></div>
-          <div class="fg">
-            <label class="fl">Type d'appel</label>
-            <select id="sc-t" class="fi">
-              <option>Prospection (1er contact)</option><option>Relance</option>
-              <option>Closing</option><option>Service client</option>
-            </select>
-          </div>
-          <div class="fg"><label class="fl">Info clé 1</label><input id="sc-i1" class="fi" placeholder="Ex: Vient d'ouvrir un 2e site"></div>
-          <div class="fg"><label class="fl">Info clé 2</label><input id="sc-i2" class="fi" placeholder="Ex: Concurrent de X"></div>
-          <button id="sc-btn" class="btn btn-grad" style="width:100%;justify-content:center;" onclick="generateScript()">✨ Générer le script IA</button>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:16px;">
-          <div id="sc-result"></div>
-          <div>
-            <p style="font-size:11px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px;">📚 Scripts prêts à l'emploi</p>
-            <div class="preset-grid" id="preset-grid"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-</div>
-
-<!-- ══════════════════════════════════════════
-     MODAL
-══════════════════════════════════════════ -->
-<div id="modal-ov" style="display:none;" onclick="if(event.target===this)closeModal()">
-  <div class="modal-box">
-    <h3 class="modal-title" id="m-title">Nouveau prospect</h3>
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      <div class="fg"><label class="fl">Établissement *</label><input id="m-est" class="fi" placeholder="Nom de l'entreprise"></div>
-      <div class="g2">
-        <div class="fg"><label class="fl">Site web</label><input id="m-web" class="fi" placeholder="https://..."></div>
-        <div class="fg"><label class="fl">Secteur</label><input id="m-dom" class="fi" placeholder="Restauration..."></div>
-      </div>
-      <div class="g2">
-        <div class="fg"><label class="fl">Ville</label><input id="m-city" class="fi" placeholder="Genève, Zurich..."></div>
-        <div class="fg"><label class="fl">Contact</label><input id="m-con" class="fi" placeholder="Décideur"></div>
-      </div>
-      <div class="fg">
-        <label class="fl">Statut</label>
-        <select id="m-stat" class="fi">
-          <option value="to_call">À appeler</option><option value="called">Appelé</option>
-          <option value="voicemail">Répondeur</option><option value="refusal">Refus</option>
-          <option value="video_rdv">RDV ✅</option>
+          <option value="video_rdv">RDV</option>
         </select>
       </div>
-      <div class="fg"><label class="fl">Notes</label><textarea id="m-notes" class="fi" rows="3" placeholder="Infos utiles..."></textarea></div>
+      <div class="fgroup" style="margin-bottom:0">
+        <label class="lbl" for="m-contact">Contact décideur</label>
+        <input class="fi" type="text" id="m-contact" placeholder="Prénom Nom"/>
+      </div>
     </div>
-    <div class="modal-foot">
-      <button class="btn btn-ghost btn-sm" onclick="closeModal()">Annuler</button>
-      <button class="btn btn-primary btn-sm" onclick="saveProspect()">Enregistrer</button>
+    <div class="fgroup" style="margin-top:12px;margin-bottom:0">
+      <label class="lbl" for="m-notes">Notes</label>
+      <textarea class="fi" id="m-notes" placeholder="Observations, infos utiles…" style="min-height:72px"></textarea>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:20px;justify-content:flex-end">
+      <button class="btn-ghost" id="modal-cancel">Annuler</button>
+      <button class="btn-primary" id="modal-save">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Enregistrer
+      </button>
     </div>
   </div>
 </div>
 
-<script>
-/* ══ STORAGE ══════════════════════════════════════════════════════════════ */
-const S={
-  get:(k,d=null)=>{try{const v=localStorage.getItem(k);return v!==null?JSON.parse(v):d;}catch{return d;}},
-  set:(k,v)=>localStorage.setItem(k,JSON.stringify(v)),
-};
-
-/* ══ AUTH (sessionStorage = fresh per tab) ════════════════════════════════ */
-const Auth={
-  me:()=>{try{return JSON.parse(sessionStorage.getItem('ap_sess'));}catch{return null;}},
-  login(email,pass){
-    const users=S.get('ap_users',[]);
-    const u=users.find(x=>x.email===email.trim().toLowerCase()&&x.pass===pass);
-    if(!u)throw new Error('Email ou mot de passe incorrect.');
-    sessionStorage.setItem('ap_sess',JSON.stringify(u));
-    return u;
-  },
-  register(name,email,pass){
-    if(!name.trim()||!email.trim()||pass.length<6)throw new Error('Tous les champs requis (mot de passe min. 6 car.).');
-    const users=S.get('ap_users',[]);
-    if(users.find(x=>x.email===email.trim().toLowerCase()))throw new Error('Cet email est déjà utilisé.');
-    const u={id:Date.now().toString(36)+Math.random().toString(36).slice(2,5),name:name.trim(),email:email.trim().toLowerCase(),pass};
-    S.set('ap_users',[...users,u]);
-    sessionStorage.setItem('ap_sess',JSON.stringify(u));
-    return u;
-  },
-  logout(){sessionStorage.removeItem('ap_sess');location.reload();}
-};
-
-/* ══ DB ═══════════════════════════════════════════════════════════════════ */
-const DB={
-  _k:()=>`pp_${Auth.me()?.id}_pros`,
-  all:()=>S.get(DB._k(),[]),
-  add(d){const a=DB.all();const i={...d,id:Date.now().toString(36)+Math.random().toString(36).slice(2,5)};S.set(DB._k(),[...a,i]);return i;},
-  upd(id,d){S.set(DB._k(),DB.all().map(i=>i.id===id?{...i,...d}:i));},
-  del(id){S.set(DB._k(),DB.all().filter(i=>i.id!==id));}
-};
-
-/* ══ TOAST ════════════════════════════════════════════════════════════════ */
-function toast(msg,type='ok'){
-  const el=document.createElement('div');
-  el.className=`toast toast-${type}`;
-  el.textContent=(type==='err'?'❌ ':'✅ ')+msg;
-  document.getElementById('toast-container').appendChild(el);
-  setTimeout(()=>{el.style.animation='toastOut .3s ease forwards';setTimeout(()=>el.remove(),300);},3200);
-}
-
-/* ══ HELPERS ══════════════════════════════════════════════════════════════ */
-const ST={
-  to_call:{l:'À appeler',cls:'badge-to_call'},
-  called:{l:'Appelé',cls:'badge-called'},
-  voicemail:{l:'Répondeur',cls:'badge-voicemail'},
-  refusal:{l:'Refus',cls:'badge-refusal'},
-  video_rdv:{l:'RDV ✅',cls:'badge-video_rdv'},
-};
-const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-const ini=n=>(n||'?').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
-
-/* ══ AUTH HANDLERS ════════════════════════════════════════════════════════ */
-function switchTab(t){
-  document.querySelectorAll('.auth-tab').forEach((b,i)=>b.classList.toggle('active',i===(t==='login'?0:1)));
-  document.getElementById('form-login').style.display=t==='login'?'flex':'none';
-  document.getElementById('form-register').style.display=t==='register'?'flex':'none';
-}
-function doLogin(){
-  const e=document.getElementById('l-email').value,p=document.getElementById('l-pass').value;
-  if(!e||!p){toast('Email et mot de passe requis.','err');return;}
-  try{Auth.login(e,p);enterApp();}catch(ex){toast(ex.message,'err');}
-}
-function doRegister(){
-  const n=document.getElementById('r-name').value,e=document.getElementById('r-email').value,p=document.getElementById('r-pass').value;
-  try{Auth.register(n,e,p);enterApp();}catch(ex){toast(ex.message,'err');}
-}
-function doLogout(){Auth.logout();}
-
-/* ══ ROUTING ══════════════════════════════════════════════════════════════ */
-let curPage='dashboard';
-function enterApp(){
-  const u=Auth.me();if(!u)return;
-  document.getElementById('auth-page').style.display='none';
-  document.getElementById('main-app').style.display='flex';
-  document.getElementById('main-app').style.flexDirection='column';
-  const av=ini(u.name);
-  document.getElementById('u-av').textContent=av;
-  document.getElementById('u-name').textContent=u.name;
-  goPage('dashboard');
-}
-function goPage(page){
-  curPage=page;
-  ['dashboard','coldcall','scripts'].forEach(p=>{
-    document.getElementById('page-'+p).style.display=p===page?'block':'none';
-  });
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
-  if(page==='dashboard'){renderStats();renderTable();}
-  if(page==='coldcall')renderCC();
-  if(page==='scripts'){renderPresets();renderScriptPh();}
-}
-
-/* ══ STATS ════════════════════════════════════════════════════════════════ */
-function renderStats(){
-  const p=DB.all();
-  const cards=[
-    {ico:'👥',val:p.length,lbl:'Total prospects',c:'#a78bfa',bg:'rgba(167,85,247,.12)'},
-    {ico:'📞',val:p.filter(x=>x.status==='to_call').length,lbl:'À appeler',c:'#60a5fa',bg:'rgba(59,130,246,.12)'},
-    {ico:'✅',val:p.filter(x=>x.status==='video_rdv').length,lbl:'RDV obtenus',c:'#34d399',bg:'rgba(16,185,129,.12)'},
-  ];
-  document.getElementById('stats-row').innerHTML=cards.map(s=>`
-    <div class="stat-card">
-      <div class="stat-ico" style="background:${s.bg};">${s.ico}</div>
-      <div><div class="stat-val" style="color:${s.c};">${s.val}</div><div class="stat-lbl">${s.lbl}</div></div>
-    </div>`).join('');
-}
-
-/* ══ PROSPECT TABLE ═══════════════════════════════════════════════════════ */
-let xp=null;
-const enrichData={},enrichLoading={};
-
-function renderTable(){
-  const q=(document.getElementById('d-q')?.value||'').toLowerCase();
-  const f=document.getElementById('d-f')?.value||'';
-  const pros=DB.all().filter(p=>{
-    const mq=!q||[p.establishment,p.domain,p.city,p.contact].some(v=>(v||'').toLowerCase().includes(q));
-    return mq&&(!f||p.status===f);
-  });
-  const wrap=document.getElementById('tbl-wrap');
-  if(!pros.length){
-    wrap.innerHTML=`<div class="empty-state"><div class="empty-ico">📋</div><div class="empty-t">Aucun prospect</div><div class="empty-s">Ajoutez votre premier prospect</div><button class="btn btn-primary btn-sm" onclick="openModal()">+ Ajouter</button></div>`;
-    return;
-  }
-  const rows=pros.map(p=>{
-    const ex=xp===p.id;
-    return `
-      <tr class="${ex?'xp':''}" onclick="toggleXp('${p.id}')">
-        <td>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div style="width:36px;height:36px;border-radius:9px;background:rgba(124,58,237,.18);border:1px solid rgba(124,58,237,.26);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#a78bfa;flex-shrink:0;">${ini(p.establishment)}</div>
-            <div style="min-width:0;">
-              <div style="font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(p.establishment)}</div>
-              ${p.contact?`<div style="font-size:11px;color:var(--t3);margin-top:1px;">${esc(p.contact)}</div>`:''}
-            </div>
-          </div>
-        </td>
-        <td class="dk" style="font-size:13px;color:var(--t2);max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
-          ${p.website?`<a href="${esc(p.website)}" target="_blank" rel="noreferrer" style="color:#818cf8;" onclick="event.stopPropagation()">${esc(p.website.replace(/^https?:\/\//,'').replace(/\/$/,''))}</a>`:'<span style="color:var(--t3)">—</span>'}
-        </td>
-        <td class="dk" style="font-size:13px;color:var(--t2);">${esc(p.domain)||'<span style="color:var(--t3)">—</span>'}</td>
-        <td class="dk" style="font-size:13px;color:var(--t2);">${esc(p.city)||'<span style="color:var(--t3)">—</span>'}</td>
-        <td onclick="event.stopPropagation()">
-          <select class="fi" style="height:34px;font-size:12px;padding:0 10px;max-width:145px;" onchange="setStatus('${p.id}',this.value)">
-            ${Object.entries(ST).map(([v,s])=>`<option value="${v}"${p.status===v?' selected':''}>${s.l}</option>`).join('')}
-          </select>
-        </td>
-        <td onclick="event.stopPropagation()">
-          <div style="display:flex;gap:5px;">
-            <button class="ibt" title="Enrichir IA" onclick="toggleXp('${p.id}')" style="color:#a78bfa;">⚡</button>
-            <button class="ibt" title="Modifier" onclick="openModal('${p.id}')">✏️</button>
-            <button class="ibt del" title="Supprimer" onclick="delPros('${p.id}')">🗑️</button>
-          </div>
-        </td>
-      </tr>
-      ${ex?`<tr><td colspan="6" style="padding:0;border-bottom:1px solid var(--br);">
-        <div class="enrich-panel">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-            <span style="font-size:16px;">⚡</span>
-            <span class="enrich-ttl">Enrichissement IA — ${esc(p.establishment)}</span>
-          </div>
-          ${renderEnrich(p)}
-        </div>
-      </td></tr>`:``}`;
-  }).join('');
-  wrap.innerHTML=`
-    <table>
-      <thead><tr>
-        <th>Nom / Établissement</th>
-        <th class="dk">Site web</th>
-        <th class="dk">Secteur</th>
-        <th class="dk">Ville</th>
-        <th>Statut</th>
-        <th>Actions</th>
-      </tr></thead>
-      <tbody>${rows}</tbody>
-    </table>`;
-}
-
-function renderEnrich(p){
-  const loading=enrichLoading[p.id];
-  const data=enrichData[p.id];
-  if(loading)return`<div style="display:flex;align-items:center;gap:10px;color:var(--t2);font-size:13px;"><span class="spin" style="color:#a78bfa;"></span> Recherche avec Claude IA en cours...</div>`;
-  if(!data)return`
-    <p style="font-size:13px;color:var(--t3);margin-bottom:14px;">Lancez l'enrichissement pour obtenir adresse, téléphone, email, horaires, note Google et plus.</p>
-    <button class="btn btn-primary btn-sm" onclick="startEnrich('${p.id}','${esc(p.establishment)}','${esc(p.website||'')}','${esc(p.domain||'')}','${esc(p.city||'')}')">⚡ Enrichir ce prospect</button>`;
-  if(data._err)return`
-    <p style="color:#f87171;font-size:13px;margin-bottom:10px;">❌ ${esc(data._err)}</p>
-    <button class="btn btn-ghost btn-sm" onclick="startEnrich('${p.id}','${esc(p.establishment)}','${esc(p.website||'')}','${esc(p.domain||'')}','${esc(p.city||'')}')">Réessayer</button>`;
-  const LABELS={full_address:'📍 Adresse',phone:'📞 Téléphone',email:'📧 Email',opening_hours:'🕐 Horaires',description:'📝 Description',google_rating:'⭐ Note Google',employees_approx:'👥 Employés',key_decision_maker:'🎯 Décisionnaire'};
-  const items=Object.entries(LABELS).map(([k,lb])=>{
-    const v=data[k];
-    return`<div class="enrich-item"><div class="enrich-k">${lb}</div><div class="enrich-v">${(!v||v==='null')?`<span style="color:var(--t3)">—</span>`:esc(String(v))}</div></div>`;
-  }).join('');
-  const notes=Object.entries(LABELS).map(([k,lb])=>data[k]&&data[k]!=='null'?`${lb}: ${data[k]}`:null).filter(Boolean).join('\n');
-  const safeNotes=notes.replace(/\\/g,'\\\\').replace(/`/g,'\\`').replace(/\$/g,'\\$');
-  return`
-    <div class="enrich-grid">${items}</div>
-    <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
-      <button class="btn btn-primary btn-sm" onclick="saveEnrich('${p.id}',\`${safeNotes}\`)">💾 Sauvegarder dans les notes</button>
-      <button class="btn btn-ghost btn-sm" onclick="startEnrich('${p.id}','${esc(p.establishment)}','${esc(p.website||'')}','${esc(p.domain||'')}','${esc(p.city||'')}')">🔄 Réenrichir</button>
-    </div>`;
-}
-
-function toggleXp(id){xp=xp===id?null:id;if(curPage==='dashboard')renderTable();}
-function setStatus(id,s){DB.upd(id,{status:s});renderStats();renderTable();}
-function delPros(id){
-  if(!confirm('Supprimer ce prospect ?'))return;
-  DB.del(id);if(xp===id){xp=null;delete enrichData[id];}
-  renderStats();renderTable();toast('Prospect supprimé.');
-}
-async function startEnrich(id,name,website,type,city){
-  enrichLoading[id]=true;if(curPage==='dashboard')renderTable();
-  try{
-    const res=await fetch('/.netlify/functions/enrich-prospect',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({prospectName:name,website,type,city}),
-    });
-    const json=await res.json();
-    enrichData[id]=json.enrichedData||(json.error?{_err:json.error}:{_err:'Réponse inattendue.'});
-  }catch(e){enrichData[id]={_err:e.message};}
-  enrichLoading[id]=false;if(curPage==='dashboard')renderTable();
-}
-function saveEnrich(id,notes){DB.upd(id,{notes});toast('Notes sauvegardées !');renderTable();}
-
-/* ══ MODAL ════════════════════════════════════════════════════════════════ */
-let editId=null;
-function openModal(id=null){
-  editId=id;
-  document.getElementById('m-title').textContent=id?'✏️ Modifier le prospect':'➕ Nouveau prospect';
-  const ids=['m-est','m-web','m-dom','m-city','m-con','m-notes'];
-  if(id){
-    const p=DB.all().find(x=>x.id===id);
-    if(p){
-      document.getElementById('m-est').value=p.establishment||'';
-      document.getElementById('m-web').value=p.website||'';
-      document.getElementById('m-dom').value=p.domain||'';
-      document.getElementById('m-city').value=p.city||'';
-      document.getElementById('m-con').value=p.contact||'';
-      document.getElementById('m-stat').value=p.status||'to_call';
-      document.getElementById('m-notes').value=p.notes||'';
-    }
-  }else{ids.forEach(i=>document.getElementById(i).value='');document.getElementById('m-stat').value='to_call';}
-  document.getElementById('modal-ov').style.display='flex';
-  setTimeout(()=>document.getElementById('m-est').focus(),60);
-}
-function closeModal(){document.getElementById('modal-ov').style.display='none';editId=null;}
-function saveProspect(){
-  const est=document.getElementById('m-est').value.trim();
-  if(!est){toast('Nom de l\'établissement requis.','err');return;}
-  const d={establishment:est,website:document.getElementById('m-web').value.trim(),domain:document.getElementById('m-dom').value.trim(),city:document.getElementById('m-city').value.trim(),contact:document.getElementById('m-con').value.trim(),status:document.getElementById('m-stat').value,notes:document.getElementById('m-notes').value.trim()};
-  if(editId){DB.upd(editId,d);toast('Prospect mis à jour !');}
-  else{DB.add(d);toast('Prospect ajouté !');}
-  closeModal();renderStats();
-  if(curPage==='dashboard')renderTable();
-  if(curPage==='coldcall')renderCC();
-}
-
-/* ══ COLD CALL ════════════════════════════════════════════════════════════ */
-function renderCC(){
-  const pros=DB.all();
-  const tc=pros.filter(p=>p.status==='to_call').length;
-  document.getElementById('cc-stat').textContent=`${tc} à appeler · ${pros.length-tc} traités`;
-  const list=document.getElementById('cc-list');
-  if(!pros.length){
-    list.innerHTML=`<div class="empty-state"><div class="empty-ico">📞</div><div class="empty-t">Aucun prospect</div><div class="empty-s">Ajoutez des prospects pour démarrer</div><button class="btn btn-primary btn-sm" onclick="openModal()">+ Ajouter</button></div>`;
-    return;
-  }
-  list.innerHTML=pros.map(p=>`
-    <div class="cc-row">
-      <div class="cc-av">${ini(p.establishment)}</div>
-      <div style="flex:1;min-width:0;">
-        <div style="font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(p.establishment)}</div>
-        <div style="font-size:12px;color:var(--t3);margin-top:2px;">${[p.domain,p.contact,p.city].filter(Boolean).map(esc).join(' · ')||'&nbsp;'}</div>
-        ${p.notes?`<div style="font-size:11px;color:var(--t3);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(p.notes)}</div>`:''}
-      </div>
-      <select class="fi" style="height:34px;font-size:12px;padding:0 10px;max-width:150px;flex-shrink:0;" onchange="ccStat('${p.id}',this.value)">
-        ${Object.entries(ST).map(([v,s])=>`<option value="${v}"${p.status===v?' selected':''}>${s.l}</option>`).join('')}
-      </select>
-      <div style="display:flex;gap:5px;flex-shrink:0;">
-        <button class="ibt" title="Modifier" onclick="openModal('${p.id}')">✏️</button>
-        <button class="ibt del" title="Supprimer" onclick="delPros('${p.id}');renderCC()">🗑️</button>
-      </div>
-    </div>`).join('');
-}
-function ccStat(id,s){
-  DB.upd(id,{status:s});
-  const pros=DB.all();const tc=pros.filter(p=>p.status==='to_call').length;
-  document.getElementById('cc-stat').textContent=`${tc} à appeler · ${pros.length-tc} traités`;
-  if(s==='video_rdv')toast('🎉 RDV décroché !');
-}
-
-/* ══ SCRIPTS ══════════════════════════════════════════════════════════════ */
-const PRESETS={
-  '❄️ Cold Call B2B':`**OUVERTURE**\nBonjour [Prénom], c'est [Votre Nom] de [Votre Société].\nNous accompagnons des entreprises de votre secteur à [bénéfice clé].\nJ'aurais 2 questions rapides — 90 secondes, c'est possible ?\n\n**PITCH**\nComment gérez-vous actuellement [problème principal] ?\nNos clients comme [référence] ont obtenu [résultat concret] en [délai].\n\n**CLOSING**\n"Pas le temps" → "C'est justement pour ça — 15 min suffisent. Mardi ou jeudi ?"`,
-  '🔥 Relance chaude':`**OUVERTURE**\nBonjour [Prénom], c'est [Votre Nom].\nJe reviens suite à notre dernier échange — avez-vous pu réfléchir ?\n\n**PITCH**\nDepuis notre dernier contact, un client similaire a obtenu [résultat concret].\n\n**CLOSING**\n"Toujours en réflexion" → "Qu'est-ce qui freine la décision ?"`,
-  '🛡️ Objections':`**"Pas le temps"** → "90 secondes — 2 questions seulement."\n\n**"Envoyez un email"** → "Avec plaisir. Pour cibler : [question clé] ?"\n\n**"On est équipés"** → "Est-ce que ça vous garantit [résultat] ?"\n\n**"Trop cher"** → "Quel budget ? Calculons le ROI ensemble."`,
-  '🎯 Closing RDV':`**OUVERTURE**\nVous avez posé d'excellentes questions — je pense qu'on peut vous aider sur [point précis].\n\n**PITCH**\n20 minutes pour vous montrer concrètement [résultat].\n\n**CLOSING**\nMardi ou jeudi matin — qu'est-ce qui vous convient ?\n[Hésitation] : Ce n'est pas un engagement. Juste 20 min.`,
-};
-
-function renderPresets(){
-  document.getElementById('preset-grid').innerHTML=Object.entries(PRESETS).map(([t,txt])=>`
-    <div class="preset-card" onclick="showPreset(${JSON.stringify(t)},${JSON.stringify(txt)})">
-      <div style="font-size:22px;margin-bottom:6px;">${t.split(' ')[0]}</div>
-      <div style="font-weight:700;font-size:13px;">${t.split(' ').slice(1).join(' ')}</div>
-    </div>`).join('');
-}
-
-function renderScriptPh(){
-  document.getElementById('sc-result').innerHTML=`
-    <div class="script-ph">
-      <div>
-        <div style="font-size:42px;opacity:.3;margin-bottom:12px;">✨</div>
-        <p style="font-weight:600;font-size:14px;color:var(--t2);">Votre script apparaîtra ici</p>
-        <p style="font-size:13px;margin-top:4px;">Remplissez le formulaire et cliquez sur Générer</p>
-      </div>
-    </div>`;
-}
-
-function showPreset(title,text){
-  document.getElementById('sc-result').innerHTML=renderScBox(title,text);
-}
-
-function renderScBox(title,text){
-  return`
-    <div class="script-box">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-        <span style="font-weight:700;font-size:13px;color:#a78bfa;">${esc(title)}</span>
-        <button class="btn btn-ghost btn-xs" onclick="navigator.clipboard.writeText(${JSON.stringify(text)}).then(()=>toast('Copié !'))">📋 Copier</button>
-      </div>
-      <pre style="white-space:pre-wrap;font-size:13px;line-height:1.85;color:#e2d9f3;font-family:inherit;">${esc(text)}</pre>
-    </div>`;
-}
-
-async function generateScript(){
-  const name=document.getElementById('sc-n').value.trim();
-  const company=document.getElementById('sc-c').value.trim();
-  if(!name||!company){toast('Nom et entreprise requis.','err');return;}
-  const sector=document.getElementById('sc-s').value.trim();
-  const type=document.getElementById('sc-t').value;
-  const infos=[document.getElementById('sc-i1').value.trim(),document.getElementById('sc-i2').value.trim()].filter(Boolean);
-  const btn=document.getElementById('sc-btn');
-  btn.disabled=true;
-  btn.innerHTML=`<span class="spin" style="width:16px;height:16px;"></span> Génération en cours...`;
-  document.getElementById('sc-result').innerHTML=`
-    <div class="script-ph">
-      <div>
-        <span class="spin" style="width:28px;height:28px;border-width:3px;color:#a78bfa;margin-bottom:14px;display:block;margin-inline:auto;"></span>
-        <p style="font-size:13px;color:var(--t2);">Génération du script via OpenAI...</p>
-      </div>
-    </div>`;
-  try{
-    const res=await fetch('/.netlify/functions/ai',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        system:`Tu es un expert en vente B2B. Génère des scripts d'appel naturels en français. Structure: **OUVERTURE** (3 lignes), **PITCH** (4-5 lignes), **OBJECTIONS & CLOSING** (4-5 lignes).`,
-        messages:[{role:'user',content:`Script "${type}" pour:\n- Prospect: ${name}, ${company}${sector?`\n- Secteur: ${sector}`:''}${infos.length?`\n- Infos: ${infos.join(', ')}`:''}.\nFinir par proposition de RDV.`}]
-      }),
-    });
-    const json=await res.json();
-    if(json.error)throw new Error(json.error);
-    const text=json.content?.[0]?.text||'';
-    document.getElementById('sc-result').innerHTML=renderScBox(`✨ Script pour ${name} — ${company}`,text);
-  }catch(e){
-    document.getElementById('sc-result').innerHTML=`<div style="color:#f87171;background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.2);border-radius:var(--r16);padding:20px;font-size:13px;">❌ Erreur: ${esc(e.message)}</div>`;
-  }
-  btn.disabled=false;
-  btn.innerHTML='✨ Générer le script IA';
-}
-
-/* ══ REVIEWS (render) ══════════════════════════════════════════════════════ */
-const REVIEWS=[
-  {stars:'★★★★★',text:'"On a multiplié nos RDV par 3 en 2 mois. L\'enrichissement IA nous donne les infos clés avant chaque appel. Indispensable pour notre équipe."',name:'Sophie Chevalier',role:'Directrice commerciale · Zurich',av:'SC'},
-  {stars:'★★★★★',text:'"Les scripts générés par IA sont naturels et adaptés. Fini les scripts génériques — un outil vraiment pensé pour la prospection suisse."',name:'Marc Rossier',role:'Business Dev · Lausanne',av:'MR'},
-  {stars:'★★★★☆',text:'"Interface épurée, données enrichies en 10 secondes. Notre équipe de 8 commerciaux l\'adopte au quotidien sans formation préalable."',name:'Lucie Brunner',role:'Chef d\'équipe · Genève',av:'LB'},
-];
-document.getElementById('reviews-grid').innerHTML=REVIEWS.map(r=>`
-  <div class="review-card glass" style="backdrop-filter:blur(28px) saturate(2) url('#lg');-webkit-backdrop-filter:blur(28px) saturate(2);">
-    <div class="review-stars">${r.stars}</div>
-    <p class="review-text">${r.text}</p>
-    <div class="review-author">
-      <div class="review-av">${r.av}</div>
-      <div><div class="review-name">${r.name}</div><div class="review-role">${r.role}</div></div>
+<!-- CHATBOT -->
+<button id="chat-btn" aria-label="Ouvrir Coach Alpinia" aria-expanded="false">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+</button>
+<div class="chat-panel glass-strong" id="chat-panel" role="dialog" aria-label="Coach Alpinia">
+  <div class="chat-header">
+    <div class="chat-avatar">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
     </div>
-  </div>`).join('');
+    <div>
+      <div class="chat-hname">Coach Alpinia</div>
+      <div class="chat-hsub">En ligne · Expert prospection</div>
+    </div>
+    <button class="btn-icon" id="chat-close" aria-label="Fermer" style="margin-left:auto;border:none">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="chat-msgs" id="chat-msgs">
+    <div class="chat-msg bot">Salut ! Je suis Coach Alpinia, expert en prospection B2B. Demande-moi un script, comment gérer une objection, ou comment préparer ton prochain appel !</div>
+  </div>
+  <div class="chat-footer">
+    <input type="text" id="chat-input" placeholder="Pose ta question…" autocomplete="off" aria-label="Message"/>
+    <button class="chat-send" id="chat-send" aria-label="Envoyer">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
 
-/* ══ KEYBOARD ═════════════════════════════════════════════════════════════ */
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape')closeModal();
-  if(e.key==='Enter'&&document.getElementById('modal-ov').style.display!=='none')saveProspect();
-  if(e.key==='Enter'&&document.getElementById('auth-page').style.display!=='none'){
-    const t=document.querySelector('.auth-tab.active')?.textContent;
-    if(t==='Connexion')doLogin();else doRegister();
-  }
+<div id="toast-container" aria-live="polite" aria-atomic="false"></div>
+</div><!-- #app -->
+
+<script>
+'use strict';
+const S={token:localStorage.getItem('ap_token')||null,user:null,prospects:[],saveTimer:null,enrichOpen:null,chatHistory:[],ccShowAll:false};
+const $=id=>document.getElementById(id);
+const esc=s=>s?String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'):'';
+const genId=()=>Math.random().toString(36).slice(2)+Date.now().toString(36);
+
+const toast=(msg,type='')=>{
+  const el=document.createElement('div');
+  el.className='toast'+(type?' '+type:'');el.textContent=msg;
+  $('toast-container').appendChild(el);
+  setTimeout(()=>{el.classList.add('out');setTimeout(()=>el.remove(),250);},3500);
+};
+
+const STATUSES={to_call:{label:'À appeler',cls:'badge-to_call'},called:{label:'Appelé',cls:'badge-called'},voicemail:{label:'Répondeur',cls:'badge-voicemail'},refusal:{label:'Refus',cls:'badge-refusal'},video_rdv:{label:'RDV',cls:'badge-video_rdv'}};
+const badge=s=>{const x=STATUSES[s]||STATUSES.to_call;return`<span class="badge ${x.cls}">${x.label}</span>`;};
+
+function setSyncStatus(state){
+  const el=$('sync-status');if(!el)return;
+  if(state==='saving'){el.textContent='Enregistrement…';el.className='saving';}
+  else if(state==='saved'){el.textContent='Enregistré';el.className='saved';setTimeout(()=>{el.textContent='';el.className='';},2500);}
+  else{el.textContent='';el.className='';}
+}
+
+const VIEWS=['login','dashboard','coldcall','scripts'];
+function navigate(view,replace=false){
+  const hash='#/'+view;
+  if(replace)history.replaceState(null,'',hash);
+  else if(location.hash!==hash)history.pushState(null,'',hash);
+  render(view);
+}
+function render(view){
+  VIEWS.forEach(v=>{const el=document.querySelector('[data-view="'+v+'"]');if(el)el.classList.toggle('active',v===view);});
+  const isAuth=['dashboard','coldcall','scripts'].includes(view);
+  $('topnav').style.display=isAuth?'':'none';
+  $('bottomnav').style.display=isAuth?'flex':'none';
+  document.querySelectorAll('.nav-link,.bnav-btn').forEach(btn=>{
+    btn.classList.toggle('current',btn.dataset.nav===view);
+    btn.setAttribute('aria-current',btn.dataset.nav===view?'page':'false');
+  });
+  if(view==='dashboard')renderDashboard();
+  if(view==='coldcall')renderColdCall();
+}
+window.addEventListener('hashchange',()=>{
+  const hash=location.hash.replace('#/','').split('/')[0]||'login';
+  if(!S.token&&hash!=='login'){navigate('login',true);return;}
+  if(S.token&&hash==='login'){navigate('dashboard',true);return;}
+  render(hash);
 });
-['l-email','l-pass'].forEach(id=>document.getElementById(id)?.addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();}));
-['r-name','r-email','r-pass'].forEach(id=>document.getElementById(id)?.addEventListener('keydown',e=>{if(e.key==='Enter')doRegister();}));
 
-/* ══ INIT ═════════════════════════════════════════════════════════════════ */
-(function(){
-  const u=Auth.me();
-  if(u)enterApp();
-})();
+async function api(fn,body){
+  const r=await fetch('/.netlify/functions/'+fn,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  return r.json();
+}
+
+async function checkSession(){
+  if(!S.token){navigate('login',true);return;}
+  const d=await api('auth',{action:'me',token:S.token});
+  if(d.error){localStorage.removeItem('ap_token');S.token=null;navigate('login',true);return;}
+  S.user=d.user;
+  const el=$('nav-user-name');if(el)el.textContent=S.user.name;
+  await loadProspects();
+  const hash=location.hash.replace('#/','').split('/')[0]||'dashboard';
+  navigate(['dashboard','coldcall','scripts'].includes(hash)?hash:'dashboard',true);
+}
+
+async function doLogin(){
+  const email=$('li-email').value.trim(),pw=$('li-pw').value;
+  $('li-global-err').textContent='';
+  if(!email){$('li-email-err').textContent='Email requis.';$('li-email-err').classList.add('show');return;}
+  $('li-email-err').classList.remove('show');
+  const btn=$('btn-login');btn.disabled=true;btn.textContent='Connexion…';
+  const d=await api('auth',{action:'login',email,password:pw});
+  btn.disabled=false;btn.textContent='Se connecter';
+  if(d.error){$('li-global-err').textContent=d.error;return;}
+  S.token=d.token;S.user=d.user;localStorage.setItem('ap_token',d.token);
+  const el=$('nav-user-name');if(el)el.textContent=S.user.name;
+  await loadProspects();
+  navigate('dashboard',true);
+}
+
+async function doRegister(){
+  const name=$('re-name').value.trim(),email=$('re-email').value.trim(),pw=$('re-pw').value;
+  $('re-global-err').textContent='';
+  let ok=true;
+  if(!name){$('re-name-err').textContent='Nom requis.';$('re-name-err').classList.add('show');ok=false;}else $('re-name-err').classList.remove('show');
+  if(!email){$('re-email-err').textContent='Email requis.';$('re-email-err').classList.add('show');ok=false;}else $('re-email-err').classList.remove('show');
+  if(pw.length<6){$('re-pw-err').textContent='Min. 6 caractères.';$('re-pw-err').classList.add('show');ok=false;}else $('re-pw-err').classList.remove('show');
+  if(!ok)return;
+  const btn=$('btn-register');btn.disabled=true;btn.textContent='Création…';
+  const d=await api('auth',{action:'register',name,email,password:pw});
+  btn.disabled=false;btn.textContent='Créer mon compte';
+  if(d.error){$('re-global-err').textContent=d.error;return;}
+  S.token=d.token;S.user=d.user;localStorage.setItem('ap_token',d.token);
+  const el=$('nav-user-name');if(el)el.textContent=S.user.name;
+  S.prospects=[];
+  navigate('dashboard',true);
+  toast('Bienvenue '+S.user.name+' !','ok');
+}
+
+async function doLogout(){
+  await api('auth',{action:'logout',token:S.token});
+  localStorage.removeItem('ap_token');S.token=null;S.user=null;S.prospects=[];
+  navigate('login',true);
+}
+
+async function loadProspects(){
+  const d=await api('prospects',{action:'list',token:S.token});
+  if(d.error){toast('Erreur chargement prospects.','err');return;}
+  S.prospects=d.prospects||[];
+}
+
+function scheduleSave(){
+  setSyncStatus('saving');
+  clearTimeout(S.saveTimer);
+  S.saveTimer=setTimeout(async()=>{
+    const d=await api('prospects',{action:'save',token:S.token,prospects:S.prospects});
+    if(d.error)toast('Erreur sauvegarde.','err');
+    else setSyncStatus('saved');
+  },600);
+}
+
+function updateStats(){
+  $('stat-total').textContent=S.prospects.length;
+  $('stat-tocall').textContent=S.prospects.filter(p=>!p.status||p.status==='to_call').length;
+  $('stat-rdv').textContent=S.prospects.filter(p=>p.status==='video_rdv').length;
+}
+
+function getFiltered(){
+  const q=($('dash-search').value||'').toLowerCase();
+  const f=$('dash-filter').value;
+  return S.prospects.filter(p=>{
+    const match=!q||[p.name,p.city,p.type,p.notes,p.contact].filter(Boolean).join(' ').toLowerCase().includes(q);
+    const sm=!f||(p.status||'to_call')===f;
+    return match&&sm;
+  });
+}
+
+function renderDashboard(){
+  updateStats();
+  const list=getFiltered();
+  renderTable(list);
+  renderCards(list);
+}
+
+function renderTable(list){
+  const tbody=$('prospect-tbody');
+  if(!list.length){
+    tbody.innerHTML='<tr><td colspan="6"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><p>Aucun prospect.<br>Ajoutez le premier !</p><button class="btn-colorful" onclick="openModal()"><span>Ajouter un prospect</span></button></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML=list.map(p=>prospectRow(p)).join('');
+}
+
+function prospectRow(p){
+  const isOpen=S.enrichOpen===p.id;
+  return`<tr data-id="${p.id}"${isOpen?' class="expanded"':''}>
+<td><div class="name-cell">${esc(p.name)}<small>${esc(p.contact||'')}</small></div></td>
+<td>${esc(p.city||'—')}</td>
+<td style="color:var(--t2);font-size:12px">${esc(p.type||'—')}</td>
+<td><select class="cc-status-select" data-pid="${p.id}" onchange="changeStatus(this)" style="font-size:11px;height:26px">${statusOptions(p.status)}</select></td>
+<td style="color:var(--t2);font-size:12px;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(p.notes||'')}</td>
+<td><div class="row-actions" style="justify-content:flex-end">
+<button class="btn-icon" onclick="toggleEnrich('${p.id}')" title="Enrichissement IA" aria-label="Enrichissement IA" style="width:32px;height:32px">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></button>
+<button class="btn-icon" onclick="openModal('${p.id}')" title="Modifier" aria-label="Modifier" style="width:32px;height:32px">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+<button class="btn-icon" onclick="deleteProspect('${p.id}')" title="Supprimer" aria-label="Supprimer" style="color:var(--err);width:32px;height:32px">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button>
+</div></td></tr>${isOpen?enrichRow(p):''}`;
+}
+
+function statusOptions(cur){
+  return Object.entries(STATUSES).map(([k,v])=>`<option value="${k}"${(cur||'to_call')===k?' selected':''}>${v.label}</option>`).join('');
+}
+
+function enrichRow(p){
+  if(p._enriching)return`<tr class="enrich-row"><td colspan="6"><div class="enrich-panel"><p style="font-size:13px;color:var(--t2)">Recherche en cours <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></p></div></td></tr>`;
+  if(!p._enrich)return`<tr class="enrich-row"><td colspan="6"><div class="enrich-panel"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><span style="font-size:13px;font-weight:600">Enrichissement IA — ${esc(p.name)}</span><button class="btn-colorful" onclick="doEnrich('${p.id}')" style="height:36px;font-size:12px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Rechercher sur le web</span></button></div><p style="font-size:12px;color:var(--t3)">OpenAI Web Search enrichit automatiquement ce prospect avec adresse, téléphone, horaires, note Google…</p></div></td></tr>`;
+  const e=p._enrich;
+  const fields=[{k:'Adresse',v:e.full_address},{k:'Téléphone',v:e.phone},{k:'Email',v:e.email},{k:'Horaires',v:e.opening_hours},{k:'Note Google',v:e.google_rating},{k:'Employés',v:e.employees_approx},{k:'Décideur',v:e.key_decision_maker},{k:'Description',v:e.description}].filter(f=>f.v&&f.v!=='null'&&f.v!==null);
+  return`<tr class="enrich-row"><td colspan="6"><div class="enrich-panel"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><span style="font-size:13px;font-weight:600">Données enrichies — ${esc(p.name)}</span><button class="btn-ghost" onclick="doEnrich('${p.id}')" style="font-size:11px;height:28px;padding:0 10px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg> Actualiser</button></div><div class="enrich-grid">${fields.map(f=>`<div class="enrich-item"><div class="enrich-key">${esc(f.k)}</div><div class="enrich-val">${esc(String(f.v))}</div></div>`).join('')}</div></div></td></tr>`;
+}
+
+function renderCards(list){
+  const c=$('prospect-cards');
+  if(!list.length){c.innerHTML='<div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Aucun prospect.</p><button class="btn-colorful" onclick="openModal()"><span>Ajouter</span></button></div>';return;}
+  c.innerHTML=list.map(p=>`<div class="prospect-card card"><div class="prospect-card-header"><div><div class="prospect-card-name">${esc(p.name)}</div><div class="prospect-card-meta">${[p.type,p.city].filter(Boolean).join(' · ')||'—'}</div></div>${badge(p.status||'to_call')}</div>${p.notes?`<div style="font-size:12px;color:var(--t2);line-height:1.5">${esc(p.notes)}</div>`:''}<div class="prospect-card-footer"><select class="cc-status-select" data-pid="${p.id}" onchange="changeStatus(this)">${statusOptions(p.status)}</select><div style="display:flex;gap:4px"><button class="btn-icon" onclick="toggleEnrich('${p.id}')" aria-label="Enrichissement" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></button><button class="btn-icon" onclick="openModal('${p.id}')" aria-label="Modifier" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button class="btn-icon" onclick="deleteProspect('${p.id}')" aria-label="Supprimer" style="color:var(--err);width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button></div></div></div>`).join('');
+}
+
+function changeStatus(sel){
+  const p=S.prospects.find(x=>x.id===sel.dataset.pid);if(!p)return;
+  p.status=sel.value;scheduleSave();renderDashboard();renderColdCall();
+}
+
+function deleteProspect(id){
+  if(!confirm('Supprimer ce prospect ?'))return;
+  S.prospects=S.prospects.filter(p=>p.id!==id);
+  if(S.enrichOpen===id)S.enrichOpen=null;
+  scheduleSave();renderDashboard();renderColdCall();
+  toast('Prospect supprimé.','ok');
+}
+
+function toggleEnrich(id){S.enrichOpen=S.enrichOpen===id?null:id;renderDashboard();}
+
+async function doEnrich(id){
+  const p=S.prospects.find(x=>x.id===id);if(!p)return;
+  p._enriching=true;delete p._enrich;renderDashboard();
+  const d=await api('enrich',{prospectName:p.name,website:p.website,type:p.type,city:p.city});
+  p._enriching=false;
+  if(d.error){toast('Enrichissement : '+d.error,'err');renderDashboard();return;}
+  p._enrich=d.enrichedData;renderDashboard();
+  toast('Enrichissement terminé — '+p.name,'ok');
+}
+
+function renderColdCall(){
+  const list=S.ccShowAll?S.prospects:S.prospects.filter(p=>!p.status||p.status==='to_call'||p.status==='voicemail');
+  const toCall=S.prospects.filter(p=>!p.status||p.status==='to_call').length;
+  const treated=S.prospects.filter(p=>p.status&&p.status!=='to_call').length;
+  $('cc-counter').textContent=`${toCall} à appeler · ${treated} traités`;
+  const btn=$('cc-filter-all');if(btn)btn.textContent=S.ccShowAll?'À appeler seulement':'Voir tous';
+  const cont=$('cc-list');
+  if(!list.length){cont.innerHTML='<div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><p>Aucun prospect à appeler.</p></div>';return;}
+  const dot=s=>s==='video_rdv'?'var(--ok)':s==='refusal'?'var(--err)':s==='voicemail'?'var(--warn)':s==='called'?'var(--t3)':'var(--violet2)';
+  cont.innerHTML=list.map(p=>`<div class="cc-item card"><div style="width:8px;height:8px;border-radius:50%;background:${dot(p.status)};flex:none"></div><div class="cc-info"><div class="cc-name">${esc(p.name)}</div><div class="cc-sub">${[p.phone,p.city,p.type].filter(Boolean).join(' · ')||'—'}</div></div><div class="cc-actions">${p.phone?`<a href="tel:${esc(p.phone)}" class="btn-icon" aria-label="Appeler ${esc(p.name)}" style="width:36px;height:36px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>`:''}
+<select class="cc-status-select" data-pid="${p.id}" onchange="changeStatus(this)" aria-label="Statut de ${esc(p.name)}">${statusOptions(p.status)}</select></div></div>`).join('');
+}
+
+let editingId=null;
+function openModal(id){
+  editingId=id||null;
+  const p=id?S.prospects.find(x=>x.id===id):null;
+  $('modal-title').textContent=p?'Modifier le prospect':'Nouveau prospect';
+  $('m-name').value=p?.name||'';$('m-city').value=p?.city||'';$('m-type').value=p?.type||'';
+  $('m-phone').value=p?.phone||'';$('m-email').value=p?.email||'';$('m-website').value=p?.website||'';
+  $('m-status').value=p?.status||'to_call';$('m-contact').value=p?.contact||'';$('m-notes').value=p?.notes||'';
+  $('modal-prospect').classList.add('open');
+  setTimeout(()=>$('m-name').focus(),50);
+}
+function closeModal(){$('modal-prospect').classList.remove('open');editingId=null;}
+function saveModal(){
+  const name=$('m-name').value.trim();
+  if(!name){toast('Le nom est requis.','err');$('m-name').focus();return;}
+  if(editingId){
+    const p=S.prospects.find(x=>x.id===editingId);
+    if(p){p.name=name;p.city=$('m-city').value.trim();p.type=$('m-type').value.trim();p.phone=$('m-phone').value.trim();p.email=$('m-email').value.trim();p.website=$('m-website').value.trim();p.status=$('m-status').value;p.contact=$('m-contact').value.trim();p.notes=$('m-notes').value.trim();}
+  }else{
+    S.prospects.unshift({id:genId(),name,city:$('m-city').value.trim(),type:$('m-type').value.trim(),phone:$('m-phone').value.trim(),email:$('m-email').value.trim(),website:$('m-website').value.trim(),status:$('m-status').value,contact:$('m-contact').value.trim(),notes:$('m-notes').value.trim(),createdAt:Date.now()});
+  }
+  scheduleSave();renderDashboard();renderColdCall();closeModal();
+  toast(editingId?'Prospect modifié.':'Prospect ajouté.','ok');
+}
+
+const PRESETS={
+  coldb2b:{s:'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',m:'Génère un script de cold call B2B complet pour vendre un site web à une PME en Suisse. Structure : 3 blocs AIDA (Accroche, Intérêt+Désir, Action). Ton direct, authentique, pas corporate. Max 200 mots.'},
+  relance:{s:'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',m:'Génère un script de relance téléphonique pour un prospect sans réponse au premier appel. Rappel du contexte, nouvelle accroche, proposition de valeur, closing RDV. Max 150 mots.'},
+  objections:{s:'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',m:'Liste les 5 objections les plus fréquentes lors d\'un cold call pour vente de site web en Suisse, avec pour chacune 1-2 répliques naturelles et efficaces. Format structuré.'},
+  closing:{s:'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',m:'Génère 3 techniques de closing pour fixer un RDV concret par téléphone, avec les formulations exactes. Inclure la méthode des 2 créneaux. Max 150 mots.'},
+};
+
+async function generateScript(sys,msg){
+  const btn=$('btn-gen-script');btn.disabled=true;
+  const out=$('script-output');out.innerHTML='<span class="output-placeholder">Génération en cours <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>';
+  const d=await api('ai',{system:sys,messages:[{role:'user',content:msg}]});
+  btn.disabled=false;
+  if(d.error){out.innerHTML=`<span style="color:var(--err)">${esc(d.error)}</span>`;return;}
+  out.textContent=d.content?.[0]?.text||'';
+}
+
+const COACH_SYSTEM=`Tu es Coach Alpinia, l'assistant de prospection B2B intégré à Alpinia Prospect Pro. Tu aides l'équipe d'Alpinia Web Craft à décrocher des rendez-vous par cold call pour vendre des sites web à des PME et établissements (restaurants, commerces, hôtellerie) en Suisse romande / Valais.
+
+Rôle : conseiller en temps réel pendant la prospection — répondre aux objections, affiner un script, préparer un appel, qualifier un lead. Réponds en français, concis et actionnable (max ~120 mots), ton direct et un brin chaleureux, jamais corporate.
+
+PRINCIPES À APPLIQUER ET RAPPELER :
+- L'objectif d'un cold call, c'est obtenir un RDV, pas vendre au téléphone.
+- Les 10 premières secondes sont décisives : créer un "pattern interrupt", un élément différenciant, pour que le prospect reste en ligne.
+- Toujours un script en support, jamais récité mot pour mot. Authentique, humour maîtrisé, jamais sur-joué.
+- Questions ouvertes préparées (et disqualifiantes pour qualifier le lead), jamais une rafale de questions fermées.
+- Parler bénéfices et résultats concrets sur LEUR business, jamais des détails techniques du produit.
+- S'adapter à l'interlocuteur et au bon timing (ex : ne pas appeler un resto en plein service de midi).
+
+STRUCTURE DE SCRIPT — FRAMEWORK AIDA :
+- Accroche : qui je suis / ce que je fais / ce que je veux, et confirmer l'identité. Ex : "Bonjour, c'est bien [Prénom] ? Parfait, je suis Noé, fondateur d'Alpinia Web Craft — vous auriez 30 secondes ?"
+- Intérêt : l'avantage clé vs la concurrence, orienté bénéfice. Ex : "je crée des sites web sur mesure livrés rapidement pour des restaurateurs comme vous."
+- Désir : preuve sociale (clients accompagnés) + un chiffre concret pour qu'il se projette (ex : "+15 % de clientèle"), via un cas client.
+- Action : conclure en proposant directement 2 créneaux. Ex : "plutôt jeudi ou vendredi pour en discuter ?"
+
+CRÉER L'URGENCE : soulever un point précis et vrai que le site web résout. Ex : "vous êtes le seul resto du coin sans site, vous perdez des clients chaque semaine."
+
+TRAITER LES OBJECTIONS — méthode Découverte → Empathie → Diffusion, toujours dans le sens du prospect :
+- "Envoyez-moi un mail" → "Je peux, mais je vous propose plutôt 10 min pour vous montrer comment on a accompagné [réf] et le résultat obtenu."
+- "On est déjà équipés" → "Le but n'est pas de remplacer, mais de compléter ce que vous avez."
+- "Pas le temps" → reformuler, demander 90 secondes pour 2 questions.
+- Barrière secrétaire ("il est en rendez-vous") → ton d'autorité, rester bref et assuré.
+
+APRÈS UN OUI : faire une pré-qualification (récolter quelques infos sur le prospect) pour que le RDV soit qualifié et que le lead se sente unique, pas un numéro dans une liste.
+
+Si on te demande un script complet, produis-le en 3 blocs AIDA prêts à lire. Si on te donne une objection, réponds en 1-2 répliques. Reste toujours orienté action : la prochaine étape, c'est le RDV.`;
+
+function chatAppend(role,text){
+  const msgs=$('chat-msgs');
+  const el=document.createElement('div');el.className='chat-msg '+role;el.textContent=text;
+  msgs.appendChild(el);msgs.scrollTop=msgs.scrollHeight;return el;
+}
+
+async function sendChat(){
+  const inp=$('chat-input'),text=inp.value.trim();if(!text)return;
+  inp.value='';chatAppend('user',text);S.chatHistory.push({role:'user',content:text});
+  const typing=document.createElement('div');typing.className='chat-typing';
+  typing.innerHTML='<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+  $('chat-msgs').appendChild(typing);$('chat-msgs').scrollTop=$('chat-msgs').scrollHeight;
+  const d=await api('ai',{system:COACH_SYSTEM,messages:S.chatHistory});
+  typing.remove();
+  const reply=d.error?'Erreur : '+d.error:(d.content?.[0]?.text||'');
+  S.chatHistory.push({role:'assistant',content:reply});
+  chatAppend('bot',reply);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.auth-tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      document.querySelectorAll('.auth-tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.auth-form-wrap').forEach(f=>f.classList.remove('active'));
+      tab.classList.add('active');document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+  });
+  $('btn-login').addEventListener('click',doLogin);
+  $('btn-register').addEventListener('click',doRegister);
+  $('li-pw').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+  $('re-pw').addEventListener('keydown',e=>{if(e.key==='Enter')doRegister();});
+  $('btn-logout').addEventListener('click',doLogout);
+  document.querySelectorAll('[data-nav]').forEach(btn=>btn.addEventListener('click',()=>navigate(btn.dataset.nav)));
+  $('btn-add-prospect').addEventListener('click',()=>openModal());
+  $('dash-search').addEventListener('input',()=>renderDashboard());
+  $('dash-filter').addEventListener('change',()=>renderDashboard());
+  $('modal-close').addEventListener('click',closeModal);
+  $('modal-cancel').addEventListener('click',closeModal);
+  $('modal-save').addEventListener('click',saveModal);
+  $('modal-prospect').addEventListener('click',e=>{if(e.target===$('modal-prospect'))closeModal();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+  $('cc-filter-all').addEventListener('click',()=>{S.ccShowAll=!S.ccShowAll;renderColdCall();});
+  document.querySelectorAll('[data-preset]').forEach(btn=>{
+    btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p)generateScript(p.s,p.m);});
+  });
+  $('btn-gen-script').addEventListener('click',()=>{
+    const company=$('sc-company').value.trim(),name=$('sc-name').value.trim();
+    if(!company&&!name){toast('Indique au moins l\'établissement.','err');return;}
+    const msg=`Génère un script de cold call personnalisé (framework AIDA) pour un appel de type "${$('sc-type').value}" avec ${name?name+' de ':''}${company||'l\'établissement'}, secteur ${$('sc-sector').value.trim()||'non précisé'}. Infos clés : ${$('sc-info').value.trim()||'aucune'}. Script en 3 blocs AIDA, ton naturel, max 200 mots.`;
+    generateScript('Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.',msg);
+  });
+  $('btn-copy-script').addEventListener('click',()=>{
+    const text=$('script-output').textContent;
+    if(!text||text.includes('apparaîtra ici')){toast('Rien à copier.');return;}
+    navigator.clipboard.writeText(text).then(()=>toast('Script copié !','ok')).catch(()=>toast('Copie impossible.','err'));
+  });
+  $('chat-btn').addEventListener('click',()=>{
+    const panel=$('chat-panel'),open=panel.classList.toggle('open');
+    $('chat-btn').setAttribute('aria-expanded',open);
+    if(open)setTimeout(()=>$('chat-input').focus(),100);
+  });
+  $('chat-close').addEventListener('click',()=>{$('chat-panel').classList.remove('open');$('chat-btn').setAttribute('aria-expanded','false');});
+  $('chat-send').addEventListener('click',sendChat);
+  $('chat-input').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat();});
+  checkSession();
+});
 </script>
 </body>
 </html>

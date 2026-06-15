@@ -26,15 +26,20 @@ exports.handler = async (event) => {
   const key = process.env.OPENAI_API_KEY
   if (!key) return json(200, { error: "OPENAI_API_KEY non configurée dans les variables Netlify." })
   try {
-    const { system, messages, model } = JSON.parse(event.body || '{}')
+    const { prospectName, website, type, city } = JSON.parse(event.body || '{}')
+    if (!prospectName) return json(400, { error: 'prospectName requis.' })
+    const loc = [type, city ? `à ${city}` : ''].filter(Boolean).join(' ')
+    const prompt = `Recherche sur le web des informations à jour sur l'établissement "${prospectName}"${loc ? ` (${loc})` : ''}${website ? `, site web ${website}` : ''}, en Suisse.\nRéponds UNIQUEMENT par un objet JSON valide, sans markdown, sans texte autour :\n{"full_address":"adresse complète CP+ville","phone":"téléphone direct","email":"email de contact","opening_hours":"horaires","description":"1-2 phrases","google_rating":"note Google ex 4.3/5","employees_approx":"estimation employés","key_decision_maker":"fonction du décideur (patron/gérant/directeur)"}\nMets null pour toute info introuvable.`
     const r = await openai(key, {
-      model: model || 'gpt-4o-mini',
-      max_tokens: 1200,
-      messages: [{ role: 'system', content: system || 'Tu es un assistant utile.' }, ...(Array.isArray(messages) ? messages : [])],
+      model: 'gpt-4o-mini-search-preview',
+      web_search_options: { user_location: { type: 'approximate', approximate: { country: 'CH' } } },
+      messages: [{ role: 'user', content: prompt }],
     })
     if (r.error) return json(200, { error: r.error.message || 'Erreur OpenAI' })
     const text = r.choices?.[0]?.message?.content || ''
-    return json(200, { content: [{ text }] })
+    const m = text.match(/\{[\s\S]*\}/)
+    if (!m) return json(200, { error: 'Réponse IA non parseable.', raw: text.slice(0, 400) })
+    return json(200, { enrichedData: JSON.parse(m[0]) })
   } catch (e) {
     return json(200, { error: e.message || 'Erreur serveur' })
   }
