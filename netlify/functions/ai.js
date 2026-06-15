@@ -1,6 +1,6 @@
 // Backend IA — OpenAI uniquement.
 // Sur Netlify : Site configuration → Environment variables →
-//   OPENAI_API_KEY = sk-...
+//   OPENAI_API = sk-...
 // Utilise le module natif "https" (aucune dépendance, compatible toutes versions Node).
 
 const https = require('https')
@@ -42,9 +42,9 @@ exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') return { statusCode: 200, headers, body: '' }
   if (event.httpMethod !== 'POST') return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method Not Allowed' }) }
 
-  const apiKey = process.env.OPENAI_API_KEY
+  const apiKey = process.env.OPENAI_API
   if (!apiKey) {
-    return { statusCode: 200, headers, body: JSON.stringify({ error: 'OPENAI_API_KEY non configurée dans les variables d\'environnement Netlify.' }) }
+    return { statusCode: 200, headers, body: JSON.stringify({ error: 'OPENAI_API non configurée dans les variables d\'environnement Netlify.' }) }
   }
 
   try {
