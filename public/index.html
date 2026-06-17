@@ -213,6 +213,72 @@ tr.expanded td{border-bottom:none}
 .sec-title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.03em;margin-bottom:4px}
 .sec-sub{font-size:13px;color:var(--t2);margin-bottom:20px}
 .load-td td{text-align:center;padding:40px;color:var(--t3);font-size:13px}
+/* Tasks view */
+#view-tasks{padding:24px 0 40px}
+.task-badge{background:var(--err);color:#fff;border-radius:var(--rfull);font-size:10px;font-weight:700;min-width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px;margin-left:4px;vertical-align:middle}
+.tasks-toolbar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.task-list{display:flex;flex-direction:column;gap:8px}
+.task-item{border-radius:var(--r14);padding:12px 16px;display:flex;align-items:flex-start;gap:10px;border:1px solid var(--br);background:var(--s1)}
+.task-item.done-item{opacity:.5}
+.task-cb-wrap{padding-top:1px}
+.task-cb{width:18px;height:18px;border-radius:6px;border:2px solid var(--br2);background:transparent;cursor:pointer;flex:none;display:flex;align-items:center;justify-content:center;transition:background .15s,border .15s}
+.task-cb.done{background:var(--ok);border-color:var(--ok)}
+.task-body{flex:1;min-width:0}
+.task-txt{font-size:13px;font-weight:500;line-height:1.4}
+.task-txt.done{text-decoration:line-through;color:var(--t3)}
+.task-meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:5px}
+.cat-badge{display:inline-flex;align-items:center;height:18px;padding:0 7px;border-radius:var(--rfull);font-size:10px;font-weight:600}
+.cat-call{background:rgba(99,102,241,.2);color:#a5b4fc}
+.cat-email{background:rgba(168,85,247,.2);color:#d8b4fe}
+.cat-follow_up{background:rgba(251,191,36,.15);color:#fde68a}
+.cat-meeting{background:rgba(52,211,153,.2);color:#6ee7b7}
+.cat-admin{background:rgba(161,161,179,.15);color:#a1a1b3}
+.cat-agency{background:rgba(236,72,153,.15);color:#f9a8d4}
+.prio-high{color:var(--err);font-size:10px;font-weight:700;text-transform:uppercase}
+.prio-medium{color:var(--warn);font-size:10px;font-weight:700;text-transform:uppercase}
+.prio-low{color:var(--t3);font-size:10px;font-weight:700;text-transform:uppercase}
+.overdue{color:var(--err);font-size:10px}
+.task-prospect-link{font-size:11px;color:var(--violet2);cursor:pointer;text-decoration:underline;background:none;border:none;font-family:inherit;padding:0}
+.task-actions{display:flex;gap:4px;align-items:center;flex:none}
+/* Batch enrichment progress */
+.progress-bar-wrap{background:rgba(255,255,255,.08);border-radius:var(--rfull);height:8px;overflow:hidden;margin:10px 0}
+.progress-bar-fill{height:100%;background:var(--grad);border-radius:var(--rfull);transition:width .3s var(--ease);min-width:4px}
+.batch-log{font-size:11px;color:var(--t3);margin-top:6px;min-height:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* Prospect card fullscreen */
+.modal-full-bg{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);overflow-y:auto;padding:20px}
+.modal-full-bg.on{display:block}
+.modal-full{background:var(--s1);border:1px solid var(--br2);border-radius:var(--r20);width:100%;max-width:820px;margin:0 auto;padding:28px 24px}
+.pcard-hd{display:flex;align-items:center;gap:14px;margin-bottom:24px;flex-wrap:wrap}
+.pcard-av{width:52px;height:52px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#fff;flex:none}
+.pcard-grid{display:grid;gap:16px;margin-bottom:16px}
+@media(min-width:640px){.pcard-grid{grid-template-columns:1fr 1fr}}
+.pcard-sec{background:rgba(255,255,255,.03);border:1px solid var(--br);border-radius:var(--r14);padding:16px}
+.pcard-sec-title{font-size:10px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.pcard-field{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px;font-size:13px;color:var(--t2)}
+.pcard-field-val{flex:1;color:var(--t1);word-break:break-all}
+.tag-chip{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 10px;background:rgba(124,58,237,.18);color:var(--violet2);border-radius:var(--rfull);font-size:11px;font-weight:600;cursor:pointer;border:none;font-family:inherit;margin:2px}
+.tag-chip:hover{background:rgba(124,58,237,.35)}
+.timeline{display:flex;flex-direction:column;gap:10px}
+.tl-item{display:flex;gap:10px;align-items:flex-start;font-size:13px;position:relative}
+.tl-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;font-size:14px;background:rgba(255,255,255,.07)}
+.tl-pos .tl-dot{background:rgba(52,211,153,.15);color:var(--ok)}
+.tl-neg .tl-dot{background:rgba(248,113,113,.15);color:var(--err)}
+.tl-neu .tl-dot{background:rgba(161,161,179,.1);color:var(--t2)}
+/* Second filter row */
+.toolbar2{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
+/* Checkbox for batch selection */
+.row-cb{width:16px;height:16px;accent-color:var(--violet2);cursor:pointer}
+.hdr-cb{width:16px;height:16px;accent-color:var(--violet2);cursor:pointer}
+/* Batch button */
+.btn-batch{background:linear-gradient(135deg,var(--violet),var(--violet2));color:#fff;height:36px;padding:0 14px;font-size:13px;font-weight:600;border:none;border-radius:var(--r10);cursor:pointer;font-family:inherit;display:none;align-items:center;gap:6px;white-space:nowrap}
+.btn-batch.visible{display:inline-flex}
+/* Print */
+@media print{
+  .aurora,.chat-btn,#chat-panel,#topnav,#bnav,#toasts,.pcard-hide-print{display:none!important}
+  .modal-full-bg{position:static!important;background:none!important;backdrop-filter:none!important;padding:0!important;display:block!important}
+  .modal-full{max-height:none!important;border:none!important;box-shadow:none!important;padding:0!important}
+  body{background:#fff!important;color:#000!important}
+}
 </style>
 </head>
 <body>
@@ -241,6 +307,10 @@ tr.expanded td{border-bottom:none}
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
       Scripts IA
     </button>
+    <button class="nav-btn" data-nav="tasks">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      T&acirc;ches<span class="task-badge" id="nav-task-badge" style="display:none">0</span>
+    </button>
   </div>
   <div class="nav-right">
     <span class="nav-user" id="nav-user"></span>
@@ -262,6 +332,10 @@ tr.expanded td{border-bottom:none}
   <button class="bnav-btn" data-nav="scripts">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
     Scripts
+  </button>
+  <button class="bnav-btn" data-nav="tasks" style="position:relative">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    T&acirc;ches<span class="task-badge" id="bnav-task-badge" style="display:none;position:absolute;top:6px;right:8px">0</span>
   </button>
 </nav>
 
@@ -348,14 +422,81 @@ tr.expanded td{border-bottom:none}
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         <span>Ajouter</span>
       </button>
+      <button class="btn-batch" id="btn-batch-enrich">&#9889; Enrichir <span id="batch-count">0</span> prospect(s)</button>
+    </div>
+    <div class="toolbar2" id="toolbar2">
+      <select class="fi fi-sm" id="d-sector" style="width:auto" aria-label="Filtrer par secteur">
+        <option value="">Tous secteurs</option>
+      </select>
+      <select class="fi fi-sm" id="d-city" style="width:auto" aria-label="Filtrer par ville">
+        <option value="">Toutes villes</option>
+      </select>
+      <select class="fi fi-sm" id="d-sort" style="width:auto" aria-label="Trier">
+        <option value="">Tri : Date ajout ↓</option>
+        <option value="name_asc">Nom A→Z</option>
+        <option value="name_desc">Nom Z→A</option>
+        <option value="date_asc">Date ajout ↑</option>
+        <option value="enriched">Enrichis d'abord</option>
+      </select>
+      <button class="btn btn-ghost" id="d-clear-filters" style="height:32px;padding:0 12px;font-size:12px;display:none">
+        &times; Effacer filtres (<span id="d-filter-count">0</span>)
+      </button>
     </div>
     <div class="tbl-wrap">
       <table aria-label="Prospects">
-        <thead><tr><th>Nom / &Eacute;tablissement</th><th>Ville</th><th>Type</th><th>Statut</th><th>Notes</th><th style="text-align:right">Actions</th></tr></thead>
+        <thead><tr><th style="width:36px;padding:10px 6px 10px 14px"><input type="checkbox" class="hdr-cb" id="select-all-cb" onchange="selectAll(this.checked)" aria-label="Tout sélectionner"/></th><th>Nom / &Eacute;tablissement</th><th>Ville</th><th>Type</th><th>Statut</th><th>Notes</th><th style="text-align:right">Actions</th></tr></thead>
         <tbody id="d-tbody"><tr class="load-td"><td colspan="6">Chargement&hellip;</td></tr></tbody>
       </table>
     </div>
     <div class="p-cards" id="d-cards"></div>
+  </div>
+</section>
+
+<!-- TASKS -->
+<section data-view="tasks" id="view-tasks">
+  <div class="wrap">
+    <div class="cc-head">
+      <div>
+        <h1 class="sec-title">T&acirc;ches</h1>
+        <p class="sec-sub" style="margin-bottom:0">Suivi de vos actions de prospection</p>
+      </div>
+    </div>
+    <!-- Quick add -->
+    <div class="card" style="margin-bottom:16px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end">
+        <div style="flex:1;min-width:200px"><input class="fi fi-sm" type="text" id="t-text" placeholder="Nouvelle t&acirc;che&hellip;"/></div>
+        <select class="fi fi-sm" id="t-prio" style="width:auto">
+          <option value="medium">Priorit&eacute; normale</option>
+          <option value="high">! Urgent</option>
+          <option value="low">Basse</option>
+        </select>
+        <select class="fi fi-sm" id="t-cat" style="width:auto">
+          <option value="call">Appel</option>
+          <option value="email">Email</option>
+          <option value="follow_up">Relance</option>
+          <option value="meeting">RDV</option>
+          <option value="admin">Admin</option>
+          <option value="agency">Agence</option>
+        </select>
+        <input class="fi fi-sm" type="date" id="t-due" style="width:auto"/>
+        <select class="fi fi-sm" id="t-prospect" style="width:auto">
+          <option value="">Aucun prospect</option>
+        </select>
+        <button class="btn btn-cf" id="t-add-btn" style="height:36px;padding:0 14px;font-size:13px">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Ajouter
+        </button>
+      </div>
+    </div>
+    <!-- Filters -->
+    <div class="tasks-toolbar">
+      <button class="btn btn-ghost t-filter-btn on" data-tf="all" style="height:32px;padding:0 12px;font-size:12px">Toutes</button>
+      <button class="btn btn-ghost t-filter-btn" data-tf="todo" style="height:32px;padding:0 12px;font-size:12px">&Agrave; faire</button>
+      <button class="btn btn-ghost t-filter-btn" data-tf="in_progress" style="height:32px;padding:0 12px;font-size:12px">En cours</button>
+      <button class="btn btn-ghost t-filter-btn" data-tf="done" style="height:32px;padding:0 12px;font-size:12px">Termin&eacute;es</button>
+      <button class="btn btn-ghost t-filter-btn" data-tf="urgent" style="height:32px;padding:0 12px;font-size:12px">Urgentes</button>
+    </div>
+    <div class="task-list" id="task-list"></div>
   </div>
 </section>
 
@@ -457,6 +598,60 @@ tr.expanded td{border-bottom:none}
   </div>
 </div>
 
+<!-- MODAL BATCH ENRICHMENT -->
+<div class="modal-bg" id="modal-batch" role="dialog" aria-modal="true" aria-labelledby="batch-modal-title">
+  <div class="modal" style="max-width:500px">
+    <div class="modal-hd">
+      <h2 class="modal-title" id="batch-modal-title">&#9889; Enrichissement batch</h2>
+      <button class="btn btn-icon" id="batch-modal-x" aria-label="Fermer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div id="batch-fields-wrap">
+      <p style="font-size:13px;color:var(--t2);margin-bottom:14px">Champs &agrave; enrichir pour <strong id="batch-prospect-count">0</strong> prospect(s) s&eacute;lectionn&eacute;(s)&nbsp;:</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px">
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="email" checked/> Email</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="phone" checked/> T&eacute;l&eacute;phone</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="website" checked/> Site web</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="address"/> Adresse</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="industry"/> Secteur</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="employees"/> Employ&eacute;s</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="decision_maker"/> D&eacute;cisionnaire</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="description"/> Description</label>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="btn btn-ghost" id="batch-modal-cancel">Annuler</button>
+        <button class="btn btn-primary" id="batch-start-btn">&#9889; Lancer l'enrichissement</button>
+      </div>
+    </div>
+    <div id="batch-progress-wrap" style="display:none">
+      <div style="font-size:13px;color:var(--t2);margin-bottom:8px">Enrichissement en cours&hellip;</div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="batch-bar" style="width:0%"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--t3);margin-top:4px">
+        <span id="batch-prog-label">0 / 0</span>
+        <span id="batch-eta"></span>
+      </div>
+      <div class="batch-log" id="batch-log">Initialisation&hellip;</div>
+      <div style="margin-top:16px;display:flex;justify-content:flex-end">
+        <button class="btn btn-ghost" id="batch-cancel-btn">Annuler</button>
+      </div>
+    </div>
+    <div id="batch-result-wrap" style="display:none">
+      <div style="font-size:15px;font-weight:600;margin-bottom:8px" id="batch-result-title">Enrichissement termin&eacute;</div>
+      <div style="font-size:13px;color:var(--t2);margin-bottom:16px" id="batch-result-detail"></div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap">
+        <button class="btn btn-ghost" id="batch-undo-btn" style="display:none">&#8634; Annuler tout (undo)</button>
+        <button class="btn btn-primary" id="batch-done-btn">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PROSPECT CARD -->
+<div class="modal-full-bg" id="modal-pcard" role="dialog" aria-modal="true">
+  <div class="modal-full" id="pcard-inner">
+    <!-- content injected by JS -->
+  </div>
+</div>
+
 <!-- MODAL PROSPECT -->
 <div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
   <div class="modal">
@@ -513,9 +708,19 @@ var S = {
   token: null,
   user: null,
   prospects: [],
+  todos: [],
   enrichOpen: null,
   chatHistory: [],
-  ccShowAll: false
+  ccShowAll: false,
+  selectedIds: {},
+  filterSector: '',
+  filterCity: '',
+  sortBy: '',
+  taskFilter: 'all',
+  cardProspect: null,
+  batchRunning: false,
+  batchAbort: false,
+  batchBackup: null
 };
 try { S.token = localStorage.getItem('ap_token') || null; } catch(e) {}
 
@@ -570,7 +775,7 @@ function sopts(cur) {
 }
 
 // ===== ROUTING =====
-var VIEWS = ['login','dashboard','coldcall','scripts'];
+var VIEWS = ['login','dashboard','coldcall','scripts','tasks'];
 function nav(v, rep) {
   var h = '#/' + v;
   if (rep) history.replaceState(null, '', h);
@@ -582,7 +787,7 @@ function render(v) {
     var el = document.querySelector('[data-view="' + x + '"]');
     if (el) el.classList.toggle('on', x === v);
   });
-  var auth = ['dashboard','coldcall','scripts'].indexOf(v) !== -1;
+  var auth = ['dashboard','coldcall','scripts','tasks'].indexOf(v) !== -1;
   var topnav = $('topnav');
   var bnav = $('bnav');
   if (topnav) topnav.style.display = auth ? '' : 'none';
@@ -594,6 +799,7 @@ function render(v) {
   if (v === 'dashboard') renderDash();
   if (v === 'coldcall') renderCC();
   if (v === 'scripts') refreshScriptProspects();
+  if (v === 'tasks') { refreshTaskProspects(); renderTasks(); }
 }
 window.addEventListener('hashchange', function() {
   var h = location.hash.replace('#/', '').split('/')[0] || 'login';
@@ -654,8 +860,9 @@ function checkSession() {
     var navUser = $('nav-user');
     if (navUser && S.user) navUser.textContent = S.user.name || S.user.email || '';
     loadProspects();
+    loadTodos();
     var h = location.hash.replace('#/', '').split('/')[0] || 'dashboard';
-    var valid = ['dashboard','coldcall','scripts'];
+    var valid = ['dashboard','coldcall','scripts','tasks'];
     nav(valid.indexOf(h) !== -1 ? h : 'dashboard', true);
   });
 }
@@ -711,30 +918,78 @@ function getFiltered() {
   var ds = $('d-search'), df = $('d-filter');
   var q = (ds ? ds.value || '' : '').toLowerCase();
   var f = df ? df.value : '';
-  return S.prospects.filter(function(p) {
+  var sector = S.filterSector;
+  var city = S.filterCity;
+  var list = S.prospects.filter(function(p) {
     var m = !q || [p.name, p.city, p.type, p.notes, p.contact].filter(Boolean).join(' ').toLowerCase().indexOf(q) !== -1;
-    return m && (!f || (p.status || 'to_call') === f);
+    if (!m) return false;
+    if (f && (p.status || 'to_call') !== f) return false;
+    if (sector && (p.type || '').toLowerCase() !== sector.toLowerCase()) return false;
+    if (city && (p.city || '').toLowerCase() !== city.toLowerCase()) return false;
+    return true;
   });
+  var sort = S.sortBy;
+  if (sort === 'name_asc') list.sort(function(a,b){ return (a.name||'').localeCompare(b.name||''); });
+  else if (sort === 'name_desc') list.sort(function(a,b){ return (b.name||'').localeCompare(a.name||''); });
+  else if (sort === 'date_asc') list.sort(function(a,b){ return (a.at||0)-(b.at||0); });
+  else if (sort === 'enriched') list.sort(function(a,b){ return (b._enrich||b.enriched?1:0)-(a._enrich||a.enriched?1:0); });
+  return list;
+}
+function updateFilterSelects() {
+  var sectors = {}, cities = {};
+  S.prospects.forEach(function(p) {
+    if (p.type && p.type.trim()) sectors[p.type.trim()] = 1;
+    if (p.city && p.city.trim()) cities[p.city.trim()] = 1;
+  });
+  var sec = $('d-sector');
+  if (sec) {
+    var curSec = sec.value;
+    sec.innerHTML = '<option value="">Tous secteurs</option>'
+      + Object.keys(sectors).sort().map(function(s) { return '<option value="' + esc(s) + '"' + (s === curSec ? ' selected' : '') + '>' + esc(s) + '</option>'; }).join('');
+  }
+  var cit = $('d-city');
+  if (cit) {
+    var curCit = cit.value;
+    cit.innerHTML = '<option value="">Toutes villes</option>'
+      + Object.keys(cities).sort().map(function(c) { return '<option value="' + esc(c) + '"' + (c === curCit ? ' selected' : '') + '>' + esc(c) + '</option>'; }).join('');
+  }
+  var active = (S.filterSector ? 1 : 0) + (S.filterCity ? 1 : 0) + (S.sortBy ? 1 : 0);
+  var clearBtn = $('d-clear-filters');
+  var countSpan = $('d-filter-count');
+  if (clearBtn) clearBtn.style.display = active > 0 ? '' : 'none';
+  if (countSpan) countSpan.textContent = active;
 }
 function renderDash() {
   updateStats();
+  updateFilterSelects();
   var l = getFiltered();
   renderTable(l);
   renderCards(l);
+  updateBatchBtn();
+}
+function updateBatchBtn() {
+  var btn = $('btn-batch-enrich');
+  var cnt = $('batch-count');
+  var n = Object.keys(S.selectedIds).length;
+  if (btn) { if (n > 0) btn.classList.add('visible'); else btn.classList.remove('visible'); }
+  if (cnt) cnt.textContent = n;
 }
 function renderTable(list) {
   var tbody = $('d-tbody');
   if (!tbody) return;
   if (!list.length) {
-    tbody.innerHTML = '<tr><td colspan="6"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Aucun prospect.<br>Ajoutez le premier !</p><button class="btn btn-cf" onclick="openModal()"><span>Ajouter un prospect</span></button></div></td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Aucun prospect.<br>Ajoutez le premier !</p><button class="btn btn-cf" onclick="openModal()"><span>Ajouter un prospect</span></button></div></td></tr>';
     return;
   }
   tbody.innerHTML = list.map(pRow).join('');
 }
 function pRow(p) {
   var isOpen = S.enrichOpen === p.id;
+  var checked = S.selectedIds[p.id] ? ' checked' : '';
+  var enrichedDot = (p._enrich || p.enriched) ? '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ok);margin-left:4px;vertical-align:middle" title="Enrichi"></span>' : '';
   return '<tr data-id="' + p.id + '"' + (isOpen ? ' class="expanded"' : '') + '>'
-    + '<td><div class="name-cell">' + esc(p.name) + '<small>' + esc(p.contact || '') + '</small></div></td>'
+    + '<td style="width:36px;padding:12px 6px 12px 14px"><input type="checkbox" class="row-cb" data-pid="' + p.id + '" onchange="toggleSelect(\'' + p.id + '\',this.checked)"' + checked + '/></td>'
+    + '<td><div class="name-cell"><button onclick="openCard(\'' + p.id + '\')" style="background:none;border:none;font-weight:600;color:var(--t1);cursor:pointer;font-family:inherit;font-size:inherit;text-align:left;padding:0">' + esc(p.name) + enrichedDot + '</button><small>' + esc(p.contact || '') + '</small></div></td>'
     + '<td>' + esc(p.city || '—') + '</td>'
     + '<td style="color:var(--t2);font-size:12px">' + esc(p.type || '—') + '</td>'
     + '<td><select class="ss" data-pid="' + p.id + '" onchange="chgStatus(this)" style="height:26px;font-size:11px">' + sopts(p.status) + '</select></td>'
@@ -745,6 +1000,20 @@ function pRow(p) {
     + '<button class="btn btn-icon" onclick="delProspect(\'' + p.id + '\')" title="Supprimer" style="color:var(--err);width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button>'
     + '</div></td></tr>'
     + (isOpen ? eRow(p) : '');
+}
+function toggleSelect(id, checked) {
+  if (checked) S.selectedIds[id] = 1;
+  else delete S.selectedIds[id];
+  updateBatchBtn();
+}
+function selectAll(checked) {
+  if (checked) {
+    getFiltered().forEach(function(p) { S.selectedIds[p.id] = 1; });
+  } else {
+    S.selectedIds = {};
+  }
+  renderTable(getFiltered());
+  updateBatchBtn();
 }
 function eRow(p) {
   if (p._enriching) {
@@ -811,10 +1080,389 @@ function delProspect(id) {
   if (!confirm('Supprimer ce prospect ?')) return;
   S.prospects = S.prospects.filter(function(p) { return p.id !== id; });
   if (S.enrichOpen === id) S.enrichOpen = null;
+  delete S.selectedIds[id];
   saveProspects();
   renderDash();
   renderCC();
   toast('Supprimé.', 'ok');
+}
+
+// ===== BATCH ENRICHMENT =====
+function openBatchModal() {
+  var n = Object.keys(S.selectedIds).length;
+  if (!n) { toast('Sélectionne au moins un prospect.', 'err'); return; }
+  var cnt = $('batch-prospect-count');
+  if (cnt) cnt.textContent = n;
+  var fw = $('batch-fields-wrap'); if (fw) fw.style.display = '';
+  var pw = $('batch-progress-wrap'); if (pw) pw.style.display = 'none';
+  var rw = $('batch-result-wrap'); if (rw) rw.style.display = 'none';
+  var m = $('modal-batch'); if (m) m.classList.add('on');
+}
+function closeBatchModal() {
+  S.batchAbort = true;
+  var m = $('modal-batch'); if (m) m.classList.remove('on');
+}
+function startBatchEnrich() {
+  var ids = Object.keys(S.selectedIds);
+  if (!ids.length) return;
+  var fields = [];
+  document.querySelectorAll('.batch-field-cb:checked').forEach(function(cb) { fields.push(cb.value); });
+  if (!fields.length) { toast('Sélectionne au moins un champ.', 'err'); return; }
+  var prospects = ids.map(function(id) {
+    return S.prospects.filter(function(p) { return p.id === id; })[0];
+  }).filter(Boolean);
+  if (prospects.length > 20) { toast('Maximum 20 prospects par batch.', 'err'); return; }
+  S.batchBackup = JSON.parse(JSON.stringify(S.prospects));
+  S.batchAbort = false;
+  S.batchRunning = true;
+  var fw = $('batch-fields-wrap'); if (fw) fw.style.display = 'none';
+  var pw = $('batch-progress-wrap'); if (pw) pw.style.display = '';
+  var bar = $('batch-bar'); if (bar) bar.style.width = '0%';
+  var pl = $('batch-prog-label'); if (pl) pl.textContent = '0 / ' + prospects.length;
+  var log = $('batch-log'); if (log) log.textContent = 'Envoi en cours…';
+  var payload = { prospects: prospects.map(function(p) { return { id: p.id, name: p.name, city: p.city, domain: p.type, website: p.web }; }), fields: fields };
+  fetch('/api/enrich-batch', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(function(r) { return r.json(); }).then(function(d) {
+    S.batchRunning = false;
+    if (d.error) { toast('Erreur batch: ' + d.error, 'err'); return; }
+    var results = d.results || [];
+    var ok = 0, errs = 0;
+    results.forEach(function(r) {
+      if (r.error) { errs++; return; }
+      ok++;
+      var p = S.prospects.filter(function(x) { return x.id === r.id; })[0];
+      if (p && r.enriched) { p.enriched = r.enriched; p.enrichedAt = Date.now(); }
+    });
+    saveProspects();
+    renderDash();
+    var pw = $('batch-progress-wrap'); if (pw) pw.style.display = 'none';
+    var rw = $('batch-result-wrap'); if (rw) rw.style.display = '';
+    var rt = $('batch-result-title'); if (rt) rt.textContent = ok + ' enrichi(s)' + (errs ? ', ' + errs + ' erreur(s)' : '') + ' !';
+    var rd = $('batch-result-detail'); if (rd) rd.textContent = 'Résultats sauvegardés dans chaque fiche prospect.';
+    var undoBtn = $('batch-undo-btn');
+    if (undoBtn) {
+      undoBtn.style.display = '';
+      var undoTimer = setTimeout(function() { if (undoBtn) undoBtn.style.display = 'none'; }, 30000);
+      undoBtn.onclick = function() {
+        clearTimeout(undoTimer);
+        undoBatchEnrich();
+      };
+    }
+    S.selectedIds = {};
+    updateBatchBtn();
+  }).catch(function(e) {
+    S.batchRunning = false;
+    toast('Erreur réseau: ' + (e.message || 'inconnue'), 'err');
+    closeBatchModal();
+  });
+  var simulateProgress = function(done, total) {
+    if (done >= total || S.batchAbort) return;
+    var pct = Math.round(done / total * 100);
+    var bar = $('batch-bar'); if (bar) bar.style.width = pct + '%';
+    var pl = $('batch-prog-label'); if (pl) pl.textContent = done + ' / ' + total;
+    var log = $('batch-log');
+    if (log && prospects[done]) log.textContent = prospects[done].name || '';
+    setTimeout(function() { simulateProgress(done + 1, total); }, 900);
+  };
+  simulateProgress(0, prospects.length);
+}
+function undoBatchEnrich() {
+  if (!S.batchBackup) return;
+  S.prospects = S.batchBackup;
+  S.batchBackup = null;
+  saveProspects();
+  renderDash();
+  closeBatchModal();
+  toast('Enrichissement annulé — données restaurées.', 'ok');
+}
+
+// ===== PROSPECT CARD =====
+function openCard(id) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p) return;
+  S.cardProspect = p;
+  renderCard(p);
+  var bg = $('modal-pcard'); if (bg) bg.classList.add('on');
+}
+function closeCard() {
+  var bg = $('modal-pcard'); if (bg) bg.classList.remove('on');
+  S.cardProspect = null;
+}
+function renderCard(p) {
+  var inner = $('pcard-inner');
+  if (!inner) return;
+  if (!p.interactions) p.interactions = [];
+  if (!p.tags) p.tags = [];
+  var initials = (p.name || '?').split(' ').slice(0,2).map(function(w) { return w[0]; }).join('').toUpperCase();
+  var enriched = p.enriched || p._enrich || {};
+  var enrichedFields = [
+    { k: '📞 Téléphone', v: enriched.phone || enriched.full_address && '' || p.phone },
+    { k: '📧 Email', v: enriched.email || p.email },
+    { k: '🌐 Site web', v: enriched.website || p.web },
+    { k: '📍 Adresse', v: enriched.address || enriched.full_address || p.city },
+    { k: '🏢 Secteur', v: enriched.industry || p.type },
+    { k: '👥 Employés', v: enriched.employees || enriched.employees_approx },
+    { k: '🎯 Décisionnaire', v: enriched.decision_maker || enriched.key_decision_maker || p.contact },
+    { k: '📝 Description', v: enriched.description }
+  ].filter(function(f) { return f.v && f.v !== 'null'; });
+  var linkedTodos = S.todos.filter(function(t) { return t.prospectId === p.id; });
+  inner.innerHTML = '<div class="pcard-hide-print" style="display:flex;justify-content:flex-end;gap:8px;margin-bottom:16px">'
+    + '<button class="btn btn-ghost" onclick="window.print()" style="height:36px;font-size:13px">📄 PDF</button>'
+    + '<button class="btn btn-ghost" onclick="closeCard()" style="height:36px;font-size:13px" aria-label="Fermer">✕ Fermer</button>'
+    + '</div>'
+    + '<div class="pcard-hd">'
+    + '<div class="pcard-av">' + esc(initials) + '</div>'
+    + '<div style="flex:1">'
+    + '<div style="font-family:\'Space Grotesk\',sans-serif;font-size:20px;font-weight:700">' + esc(p.name) + '</div>'
+    + '<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px">'
+    + badge(p.status || 'to_call')
+    + (p.tags.map ? p.tags.map(function(t) { return '<button class="tag-chip" onclick="removeTag(\'' + p.id + '\',\'' + esc(t) + '\')">' + esc(t) + ' ✕</button>'; }).join('') : '')
+    + '<span style="font-size:11px;color:var(--t3)">Ajouté le ' + new Date(p.at||Date.now()).toLocaleDateString('fr-CH') + '</span>'
+    + '</div>'
+    + '<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">'
+    + '<input id="pcard-tag-input" class="fi fi-sm" type="text" placeholder="Ajouter un tag…" style="width:150px" onkeydown="if(event.key===\'Enter\')addTag(\'' + p.id + '\')"/>'
+    + '<button class="btn btn-ghost" onclick="addTag(\'' + p.id + '\')" style="height:32px;font-size:12px">+</button>'
+    + '</div>'
+    + '</div>'
+    + '</div>'
+    + '<div class="pcard-grid">'
+    + '<div class="pcard-sec">'
+    + '<div class="pcard-sec-title">Infos contact</div>'
+    + [
+        { k: '📞', v: enriched.phone || p.phone, href: enriched.phone || p.phone ? 'tel:' + (enriched.phone || p.phone) : null },
+        { k: '📧', v: enriched.email || p.email, href: enriched.email || p.email ? 'mailto:' + (enriched.email || p.email) : null },
+        { k: '🌐', v: enriched.website || p.web, href: enriched.website || p.web },
+        { k: '📍', v: p.city || enriched.address },
+        { k: '🏢', v: p.type || enriched.industry },
+        { k: '👥', v: enriched.employees || enriched.employees_approx },
+        { k: '🎯', v: p.contact || enriched.decision_maker }
+      ].filter(function(f) { return f.v; }).map(function(f) {
+        var val = f.href ? '<a href="' + esc(f.href) + '" style="color:var(--violet2)">' + esc(f.v) + '</a>' : esc(f.v);
+        return '<div class="pcard-field"><span class="pcard-field-icon">' + f.k + '</span><span class="pcard-field-val">' + val + '</span></div>';
+      }).join('')
+    + '</div>'
+    + '<div class="pcard-sec">'
+    + '<div class="pcard-sec-title">Historique interactions</div>'
+    + '<div class="timeline" id="pcard-timeline">' + renderTimeline(p) + '</div>'
+    + '<div style="margin-top:12px;display:flex;flex-direction:column;gap:6px" id="pcard-add-interaction">'
+    + '<select class="fi fi-sm" id="int-type"><option value="call">📞 Appel</option><option value="email">📧 Email</option><option value="rdv">🤝 RDV</option><option value="note">📝 Note</option><option value="visit">🏠 Visite</option></select>'
+    + '<select class="fi fi-sm" id="int-outcome"><option value="neutral">— Neutre</option><option value="positive">✅ Positif</option><option value="negative">❌ Négatif</option></select>'
+    + '<input class="fi fi-sm" type="text" id="int-note" placeholder="Note…"/>'
+    + '<button class="btn btn-ghost" onclick="addInteraction(\'' + p.id + '\')" style="height:32px;font-size:12px">+ Ajouter interaction</button>'
+    + '</div>'
+    + '</div>'
+    + '</div>'
+    + '<div class="pcard-sec" style="margin-bottom:12px">'
+    + '<div class="pcard-sec-title">Notes personnalisées</div>'
+    + '<textarea class="fi" id="pcard-notes" style="min-height:100px" oninput="debounceNotes(\'' + p.id + '\')">' + esc(p.notes || '') + '</textarea>'
+    + '</div>'
+    + '<div class="pcard-sec">'
+    + '<div class="pcard-sec-title" style="display:flex;justify-content:space-between;align-items:center">Tâches liées <button class="btn btn-ghost pcard-hide-print" onclick="openAddTaskForProspect(\'' + p.id + '\')" style="height:26px;font-size:11px;padding:0 8px">+ Créer</button></div>'
+    + (linkedTodos.length ? '<div style="display:flex;flex-direction:column;gap:6px">' + linkedTodos.map(function(t) {
+        return '<div style="font-size:13px;display:flex;align-items:center;gap:8px">'
+          + '<span>' + (t.status === 'done' ? '✅' : t.status === 'in_progress' ? '▶' : '⬜') + '</span>'
+          + '<span style="' + (t.status === 'done' ? 'text-decoration:line-through;color:var(--t3)' : '') + '">' + esc(t.text) + '</span>'
+          + (t.dueDate ? '<span style="font-size:11px;color:var(--t3)">' + esc(t.dueDate) + '</span>' : '')
+          + '</div>';
+      }).join('') + '</div>'
+    : '<div style="font-size:13px;color:var(--t3)">Aucune tâche liée.</div>')
+    + '</div>';
+}
+function renderTimeline(p) {
+  if (!p.interactions || !p.interactions.length) return '<div style="font-size:13px;color:var(--t3)">Aucune interaction.</div>';
+  var icons = { call: '📞', email: '📧', rdv: '🤝', note: '📝', visit: '🏠' };
+  return p.interactions.slice().reverse().map(function(it, i) {
+    var cls = it.outcome === 'positive' ? 'tl-pos' : it.outcome === 'negative' ? 'tl-neg' : 'tl-neu';
+    var realIdx = p.interactions.length - 1 - i;
+    return '<div class="tl-item ' + cls + '">'
+      + '<div class="tl-dot">' + (icons[it.type] || '📝') + '</div>'
+      + '<div style="flex:1"><div style="font-size:13px">' + esc(it.note || it.type) + '</div>'
+      + '<div style="font-size:11px;color:var(--t3)">' + new Date(it.at||Date.now()).toLocaleDateString('fr-CH') + '</div></div>'
+      + '<button onclick="deleteInteraction(\'' + p.id + '\',' + realIdx + ')" style="background:none;border:none;color:var(--t3);cursor:pointer;font-size:14px;padding:2px" aria-label="Supprimer">✕</button>'
+      + '</div>';
+  }).join('');
+}
+function addInteraction(id) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p) return;
+  if (!p.interactions) p.interactions = [];
+  var type = $('int-type') ? $('int-type').value : 'note';
+  var outcome = $('int-outcome') ? $('int-outcome').value : 'neutral';
+  var note = $('int-note') ? $('int-note').value.trim() : '';
+  p.interactions.push({ id: genId(), type: type, outcome: outcome, note: note, at: Date.now() });
+  saveProspects();
+  var el = $('pcard-timeline');
+  if (el) el.innerHTML = renderTimeline(p);
+  var noteInput = $('int-note'); if (noteInput) noteInput.value = '';
+  toast('Interaction ajoutée.', 'ok');
+}
+function deleteInteraction(id, idx) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p || !p.interactions) return;
+  p.interactions.splice(idx, 1);
+  saveProspects();
+  var el = $('pcard-timeline');
+  if (el) el.innerHTML = renderTimeline(p);
+  toast('Interaction supprimée.', 'ok');
+}
+function addTag(id) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p) return;
+  if (!p.tags) p.tags = [];
+  var inp = $('pcard-tag-input');
+  var tag = inp ? inp.value.trim() : '';
+  if (!tag) return;
+  if (p.tags.indexOf(tag) !== -1) { toast('Tag déjà présent.'); return; }
+  p.tags.push(tag);
+  saveProspects();
+  renderCard(p);
+  toast('Tag ajouté.', 'ok');
+}
+function removeTag(id, tag) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p || !p.tags) return;
+  p.tags = p.tags.filter(function(t) { return t !== tag; });
+  saveProspects();
+  renderCard(p);
+}
+var _notesTimer = null;
+function debounceNotes(id) {
+  if (_notesTimer) clearTimeout(_notesTimer);
+  _notesTimer = setTimeout(function() {
+    var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+    if (!p) return;
+    var el = $('pcard-notes');
+    if (el) { p.notes = el.value; saveProspects(); toast('Notes sauvegardées.', 'ok'); }
+  }, 800);
+}
+function openAddTaskForProspect(prospectId) {
+  closeCard();
+  nav('tasks');
+  setTimeout(function() {
+    var sel = $('t-prospect');
+    if (sel) sel.value = prospectId;
+    var inp = $('t-text'); if (inp) inp.focus();
+  }, 100);
+}
+
+// ===== TODOS =====
+function loadTodos() {
+  try { S.todos = JSON.parse(localStorage.getItem('ap_todos') || '[]'); } catch(e) { S.todos = []; }
+  updateTaskBadge();
+}
+function saveTodos() {
+  try { localStorage.setItem('ap_todos', JSON.stringify(S.todos)); } catch(e) {}
+  updateTaskBadge();
+}
+function updateTaskBadge() {
+  var now = Date.now();
+  var overdue = S.todos.filter(function(t) {
+    return t.status !== 'done' && t.dueDate && new Date(t.dueDate).getTime() < now;
+  }).length;
+  var urgent = S.todos.filter(function(t) { return t.status !== 'done' && t.priority === 'high'; }).length;
+  var n = overdue + urgent;
+  ['nav-task-badge','bnav-task-badge'].forEach(function(id) {
+    var el = $(id);
+    if (!el) return;
+    if (n > 0) { el.textContent = n; el.style.display = ''; }
+    else el.style.display = 'none';
+  });
+}
+function addTodo() {
+  var textEl = $('t-text');
+  var text = textEl ? textEl.value.trim() : '';
+  if (!text) { toast('Entre une tâche.', 'err'); return; }
+  var prio = $('t-prio') ? $('t-prio').value : 'medium';
+  var cat = $('t-cat') ? $('t-cat').value : 'call';
+  var due = $('t-due') ? $('t-due').value : '';
+  var pid = $('t-prospect') ? $('t-prospect').value : '';
+  S.todos.unshift({
+    id: genId(), text: text, status: 'todo', priority: prio,
+    category: cat, dueDate: due || null, prospectId: pid || null,
+    notes: '', at: Date.now(), doneAt: null
+  });
+  saveTodos();
+  renderTasks();
+  if (textEl) textEl.value = '';
+  toast('Tâche ajoutée.', 'ok');
+}
+function setTodoStatus(id, status) {
+  var t = S.todos.filter(function(x) { return x.id === id; })[0];
+  if (!t) return;
+  t.status = status;
+  if (status === 'done') t.doneAt = Date.now(); else t.doneAt = null;
+  saveTodos();
+  renderTasks();
+}
+function deleteTodo(id) {
+  S.todos = S.todos.filter(function(t) { return t.id !== id; });
+  saveTodos();
+  renderTasks();
+  toast('Tâche supprimée.', 'ok');
+}
+function refreshTaskProspects() {
+  var sel = $('t-prospect');
+  if (!sel) return;
+  var cur = sel.value;
+  sel.innerHTML = '<option value="">Aucun prospect</option>'
+    + S.prospects.map(function(p) {
+      return '<option value="' + p.id + '"' + (p.id === cur ? ' selected' : '') + '>' + esc(p.name) + (p.city ? ' — ' + esc(p.city) : '') + '</option>';
+    }).join('');
+}
+var CAT_LABELS = { call: 'Appel', email: 'Email', follow_up: 'Relance', meeting: 'RDV', admin: 'Admin', agency: 'Agence' };
+var PRIO_LABELS = { high: '! URGENT', medium: 'Normal', low: 'Basse' };
+function renderTasks() {
+  var list = $('task-list');
+  if (!list) return;
+  var f = S.taskFilter;
+  var now = Date.now();
+  var tasks = S.todos.filter(function(t) {
+    if (f === 'all') return true;
+    if (f === 'todo') return t.status === 'todo';
+    if (f === 'in_progress') return t.status === 'in_progress';
+    if (f === 'done') return t.status === 'done';
+    if (f === 'urgent') return t.priority === 'high' && t.status !== 'done';
+    return true;
+  });
+  document.querySelectorAll('.t-filter-btn').forEach(function(b) {
+    b.classList.toggle('on', b.dataset.tf === f);
+  });
+  if (!tasks.length) {
+    list.innerHTML = '<div class="empty" style="padding:40px 0"><p>Aucune tâche.</p></div>';
+    return;
+  }
+  list.innerHTML = tasks.map(function(t) {
+    var overdue = t.status !== 'done' && t.dueDate && new Date(t.dueDate).getTime() < now;
+    var pName = '';
+    if (t.prospectId) {
+      var p = S.prospects.filter(function(x) { return x.id === t.prospectId; })[0];
+      if (p) pName = p.name;
+    }
+    return '<div class="task-item' + (t.status === 'done' ? ' done-item' : '') + '">'
+      + '<div class="task-cb-wrap"><div class="task-cb' + (t.status === 'done' ? ' done' : '') + '" onclick="setTodoStatus(\'' + t.id + '\',' + (t.status === 'done' ? '\'todo\'' : '\'done\'') + ')">'
+      + (t.status === 'done' ? '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' : '')
+      + '</div></div>'
+      + '<div class="task-body">'
+      + '<div class="task-txt' + (t.status === 'done' ? ' done' : '') + '">' + esc(t.text) + '</div>'
+      + '<div class="task-meta">'
+      + '<span class="cat-badge cat-' + (t.category || 'admin') + '">' + (CAT_LABELS[t.category] || t.category) + '</span>'
+      + (t.priority === 'high' ? '<span class="prio-high">URGENT</span>' : '')
+      + (t.priority === 'low' ? '<span class="prio-low">Basse</span>' : '')
+      + (t.dueDate ? '<span class="' + (overdue ? 'overdue' : '') + '" style="font-size:11px;color:' + (overdue ? 'var(--err)' : 'var(--t3)') + '">' + (overdue ? '⚠ ' : '') + esc(t.dueDate) + '</span>' : '')
+      + (t.status === 'in_progress' ? '<span style="font-size:10px;color:var(--warn);font-weight:600">▶ EN COURS</span>' : '')
+      + (pName ? '<button class="task-prospect-link" onclick="openCard(\'' + t.prospectId + '\')">' + esc(pName) + '</button>' : '')
+      + '</div>'
+      + '</div>'
+      + '<div class="task-actions">'
+      + (t.status === 'todo' ? '<button class="btn btn-icon" onclick="setTodoStatus(\'' + t.id + '\',\'in_progress\')" title="En cours" style="width:28px;height:28px;font-size:11px">▶</button>' : '')
+      + (t.status === 'in_progress' ? '<button class="btn btn-icon" onclick="setTodoStatus(\'' + t.id + '\',\'todo\')" title="À faire" style="width:28px;height:28px;font-size:11px">⏸</button>' : '')
+      + '<button class="btn btn-icon" onclick="deleteTodo(\'' + t.id + '\')" style="color:var(--err);width:28px;height:28px" aria-label="Supprimer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg></button>'
+      + '</div>'
+      + '</div>';
+  }).join('');
 }
 function toggleEnrich(id) {
   S.enrichOpen = S.enrichOpen === id ? null : id;
@@ -1407,7 +2055,53 @@ document.addEventListener('DOMContentLoaded', function() {
   if (chatInp) chatInp.addEventListener('keydown', function(e) { if (e.key === 'Enter') sendChat(); });
 
   // Init
+  loadTodos();
   checkSession();
+
+  // Batch enrichment
+  var batchBtn = $('btn-batch-enrich');
+  if (batchBtn) batchBtn.addEventListener('click', openBatchModal);
+  var batchModalX = $('batch-modal-x');
+  if (batchModalX) batchModalX.addEventListener('click', closeBatchModal);
+  var batchModalCancel = $('batch-modal-cancel');
+  if (batchModalCancel) batchModalCancel.addEventListener('click', closeBatchModal);
+  var batchStartBtn = $('batch-start-btn');
+  if (batchStartBtn) batchStartBtn.addEventListener('click', startBatchEnrich);
+  var batchCancelBtn = $('batch-cancel-btn');
+  if (batchCancelBtn) batchCancelBtn.addEventListener('click', function() { S.batchAbort = true; closeBatchModal(); toast('Enrichissement annulé.'); });
+  var batchDoneBtn = $('batch-done-btn');
+  if (batchDoneBtn) batchDoneBtn.addEventListener('click', closeBatchModal);
+  var batchModalBg = $('modal-batch');
+  if (batchModalBg) batchModalBg.addEventListener('click', function(e) { if (e.target === batchModalBg) closeBatchModal(); });
+
+  // Prospect card
+  var pcardBg = $('modal-pcard');
+  if (pcardBg) pcardBg.addEventListener('click', function(e) { if (e.target === pcardBg) closeCard(); });
+
+  // Tasks
+  var tAddBtn = $('t-add-btn');
+  if (tAddBtn) tAddBtn.addEventListener('click', addTodo);
+  var tText = $('t-text');
+  if (tText) tText.addEventListener('keydown', function(e) { if (e.key === 'Enter') addTodo(); });
+  document.querySelectorAll('.t-filter-btn').forEach(function(b) {
+    b.addEventListener('click', function() { S.taskFilter = b.dataset.tf; renderTasks(); });
+  });
+
+  // Advanced filters
+  var dSector = $('d-sector');
+  if (dSector) dSector.addEventListener('change', function() { S.filterSector = this.value; renderDash(); });
+  var dCity = $('d-city');
+  if (dCity) dCity.addEventListener('change', function() { S.filterCity = this.value; renderDash(); });
+  var dSort = $('d-sort');
+  if (dSort) dSort.addEventListener('change', function() { S.sortBy = this.value; renderDash(); });
+  var dClearFilters = $('d-clear-filters');
+  if (dClearFilters) dClearFilters.addEventListener('click', function() {
+    S.filterSector = ''; S.filterCity = ''; S.sortBy = '';
+    var dSec = $('d-sector'); if (dSec) dSec.value = '';
+    var dCit = $('d-city'); if (dCit) dCit.value = '';
+    var dSrt = $('d-sort'); if (dSrt) dSrt.value = '';
+    renderDash();
+  });
 });
 
 // Expose globals needed by inline onclick handlers
@@ -1418,6 +2112,18 @@ window.chgStatus = chgStatus;
 window.toggleEnrich = toggleEnrich;
 window.doEnrich = doEnrich;
 window.removeAIParsed = removeAIParsed;
+window.toggleSelect = toggleSelect;
+window.selectAll = selectAll;
+window.openCard = openCard;
+window.closeCard = closeCard;
+window.addInteraction = addInteraction;
+window.deleteInteraction = deleteInteraction;
+window.addTag = addTag;
+window.removeTag = removeTag;
+window.debounceNotes = debounceNotes;
+window.openAddTaskForProspect = openAddTaskForProspect;
+window.setTodoStatus = setTodoStatus;
+window.deleteTodo = deleteTodo;
 
 })();
 </script>
