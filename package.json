@@ -1,7 +1,10 @@
 {
-  "name": "prospectpro",
-  "version": "1.0.0",
+  "name": "alpinia-prospect-pro",
+  "version": "2.0.0",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
-    "build": "echo 'static — no bundler'"
+    "build": "echo 'static site — no build step'"
   }
 }

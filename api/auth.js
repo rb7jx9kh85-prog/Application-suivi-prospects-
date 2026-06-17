@@ -1,18 +1,9 @@
 const crypto = require('crypto')
 
-const HEAD = {
-  'Content-Type': 'application/json',
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'Content-Type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-}
-const json = (s, b) => ({ statusCode: s, headers: HEAD, body: JSON.stringify(b) })
-
 const secret = () => process.env.APP_SECRET || 'alpinia-default-secret-change-me'
 const appEmail = () => (process.env.APP_EMAIL || process.env.APP_MAIL || '').toLowerCase().trim()
 const appPassword = () => process.env.APP_PASSWORD || ''
 const appName = () => process.env.APP_NAME || 'Alpinia Pro'
-
 const THIRTY_DAYS = 1000 * 60 * 60 * 24 * 30
 
 function makeToken(email) {
@@ -38,41 +29,34 @@ function verifyToken(token) {
   } catch (e) { return null }
 }
 
-exports.handler = async (event) => {
-  if (event.httpMethod === 'OPTIONS') return json(200, {})
-  if (event.httpMethod !== 'POST') return json(405, { error: 'Method Not Allowed' })
+module.exports = async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
 
-  let body = {}
-  try {
-    const raw = event.body || '{}'
-    body = JSON.parse(typeof raw === 'string' ? raw : JSON.stringify(raw))
-  } catch (e) {
-    return json(400, { error: 'Corps de requête invalide.' })
-  }
+  if (req.method === 'OPTIONS') return res.status(200).end()
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method Not Allowed' })
 
+  const body = req.body || {}
   const action = body.action || ''
 
   if (action === 'login') {
     const email = (body.email || '').trim().toLowerCase()
     const pw = String(body.password || '')
-    if (!appEmail()) return json(500, { error: 'Variable APP_EMAIL non configurée dans Netlify → Site configuration → Environment variables.' })
-    if (!appPassword()) return json(500, { error: 'Variable APP_PASSWORD non configurée dans Netlify → Site configuration → Environment variables.' })
-    if (email !== appEmail() || pw !== appPassword()) {
-      return json(401, { error: 'Email ou mot de passe incorrect.' })
-    }
+    if (!appEmail()) return res.status(500).json({ error: 'Variable APP_EMAIL non configurée dans Vercel → Settings → Environment Variables.' })
+    if (!appPassword()) return res.status(500).json({ error: 'Variable APP_PASSWORD non configurée dans Vercel → Settings → Environment Variables.' })
+    if (email !== appEmail() || pw !== appPassword()) return res.status(401).json({ error: 'Email ou mot de passe incorrect.' })
     const token = makeToken(email)
-    return json(200, { token, user: { email, name: appName() } })
+    return res.status(200).json({ token, user: { email, name: appName() } })
   }
 
   if (action === 'me') {
     const u = body.token ? verifyToken(body.token) : null
-    if (!u) return json(401, { error: 'Session expirée.' })
-    return json(200, { user: { email: u.email, name: appName() } })
+    if (!u) return res.status(401).json({ error: 'Session expirée.' })
+    return res.status(200).json({ user: { email: u.email, name: appName() } })
   }
 
-  if (action === 'logout') {
-    return json(200, { ok: true })
-  }
+  if (action === 'logout') return res.status(200).json({ ok: true })
 
-  return json(400, { error: 'Action inconnue : ' + action })
+  return res.status(400).json({ error: 'Action inconnue : ' + action })
 }

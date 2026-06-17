@@ -546,7 +546,7 @@ window.addEventListener('hashchange', function() {
 
 // ===== API =====
 function api(fn, body) {
-  return fetch('/.netlify/functions/' + fn, {
+  return fetch('/api/' + fn, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
