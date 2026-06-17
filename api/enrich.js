@@ -1,0 +1,70 @@
+const https = require('https')
+
+function openai(key, payload) {
+  return new Promise((resolve, reject) => {
+    const data = JSON.stringify(payload)
+    const req = https.request({
+      hostname: 'api.openai.com',
+      path: '/v1/chat/completions',
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + key,
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(data),
+      },
+    }, (r) => {
+      let out = ''
+      r.on('data', (c) => { out += c })
+      r.on('end', () => {
+        try { resolve(JSON.parse(out)) } catch (e) { reject(new Error('Réponse OpenAI illisible')) }
+      })
+    })
+    req.on('error', reject)
+    req.write(data)
+    req.end()
+  })
+}
+
+module.exports = async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+
+  if (req.method === 'OPTIONS') return res.status(200).end()
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method Not Allowed' })
+
+  const key = process.env.OPENAI_API_KEY || process.env.OPENAI_API
+  if (!key) return res.status(200).json({ error: 'OPENAI_API_KEY (ou OPENAI_API) non configurée dans les variables Vercel.' })
+
+  try {
+    const { prospectName, website, type, city } = req.body || {}
+    if (!prospectName) return res.status(400).json({ error: 'prospectName requis.' })
+
+    const loc = [type, city ? 'à ' + city : ''].filter(Boolean).join(' ')
+    const prompt = 'Recherche sur le web des informations à jour sur l\'établissement "' + prospectName + '"'
+      + (loc ? ' (' + loc + ')' : '')
+      + (website ? ', site web ' + website : '')
+      + ', en Suisse.\n'
+      + 'Réponds UNIQUEMENT par un objet JSON valide, sans markdown, sans texte autour :\n'
+      + '{"full_address":"adresse complète CP+ville","phone":"téléphone direct","email":"email de contact",'
+      + '"opening_hours":"horaires","description":"1-2 phrases","google_rating":"note Google ex 4.3/5",'
+      + '"employees_approx":"estimation employés","key_decision_maker":"fonction du décideur (patron/gérant/directeur)"}\n'
+      + 'Mets null pour toute info introuvable.'
+
+    const r = await openai(key, {
+      model: 'gpt-4o-mini-search-preview',
+      web_search_options: { user_location: { type: 'approximate', approximate: { country: 'CH' } } },
+      messages: [{ role: 'user', content: prompt }],
+    })
+
+    if (r.error) return res.status(200).json({ error: r.error.message || 'Erreur OpenAI' })
+
+    const text = (r.choices && r.choices[0] && r.choices[0].message && r.choices[0].message.content) ? r.choices[0].message.content : ''
+    const m = text.match(/\{[\s\S]*\}/)
+    if (!m) return res.status(200).json({ error: 'Réponse IA non parseable.', raw: text.slice(0, 400) })
+
+    return res.status(200).json({ enrichedData: JSON.parse(m[0]) })
+  } catch (e) {
+    return res.status(200).json({ error: e.message || 'Erreur serveur' })
+  }
+}

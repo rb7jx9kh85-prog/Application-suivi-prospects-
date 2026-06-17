@@ -1,0 +1,2201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Alpinia Prospect Pro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0a0a0a;--s1:#111114;--s2:#17171c;--s3:#202028;
+  --br:rgba(255,255,255,.07);--br2:rgba(255,255,255,.13);
+  --violet:#7c3aed;--violet2:#a855f7;--pink:#ec4899;
+  --grad:linear-gradient(135deg,#7c3aed 0%,#a855f7 50%,#ec4899 100%);
+  --t1:#f4f1fb;--t2:#a1a1b3;--t3:#5b5b6b;
+  --ok:#34d399;--warn:#fbbf24;--err:#f87171;
+  --r10:10px;--r14:14px;--r20:20px;--rfull:9999px;
+  --ease:cubic-bezier(.22,.8,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--t1);font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}
+.aurora{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.blob{position:absolute;width:62vmax;height:62vmax;border-radius:50%;filter:blur(90px);opacity:.55;mix-blend-mode:screen;will-change:transform}
+.b1{background:radial-gradient(circle at 30% 30%,var(--violet),transparent 60%);top:-18%;left:-12%;animation:d1 19s var(--ease) infinite}
+.b2{background:radial-gradient(circle at 70% 70%,var(--pink),transparent 60%);bottom:-20%;right:-12%;animation:d2 23s var(--ease) infinite}
+.b3{background:radial-gradient(circle at 50% 50%,var(--violet2),transparent 62%);top:25%;left:35%;opacity:.4;animation:d3 27s var(--ease) infinite}
+.aurora::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,transparent 0%,rgba(10,10,10,.6) 70%,#0a0a0a 100%);pointer-events:none}
+@keyframes d1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(8vw,6vh) scale(1.12)}}
+@keyframes d2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-7vw,-5vh) scale(1.08)}}
+@keyframes d3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-5vw,7vh) scale(1.15)}}
+@media(prefers-reduced-motion:reduce){.blob{animation:none}}
+#app{position:relative;z-index:1;min-height:100vh}
+.glass{background:rgba(255,255,255,.045);backdrop-filter:blur(22px) saturate(1.7);-webkit-backdrop-filter:blur(22px) saturate(1.7);border:1px solid var(--br2)}
+.glass-s{background:rgba(255,255,255,.06);backdrop-filter:blur(40px) saturate(2);-webkit-backdrop-filter:blur(40px) saturate(2);border:1px solid var(--br2);box-shadow:0 8px 40px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08)}
+.card{background:var(--s1);border:1px solid var(--br);border-radius:var(--r20);padding:20px}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;border-radius:var(--r14);border:none;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;transition:transform .12s var(--ease),box-shadow .2s;white-space:nowrap;text-decoration:none}
+.btn:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none !important}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 30px rgba(168,85,247,.35)}
+.btn-primary:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 12px 40px rgba(168,85,247,.5)}
+.btn-primary:active:not(:disabled){transform:translateY(1px)}
+.btn-cf{position:relative;background:#0c0c10;color:#fff;border:1px solid rgba(255,255,255,.08);overflow:hidden}
+.btn-cf::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--violet),var(--violet2),var(--pink));opacity:.4;filter:blur(12px);transition:opacity .4s}
+.btn-cf:hover::before{opacity:.85}
+.btn-cf>*{position:relative;z-index:1}
+.btn-cf:active{transform:translateY(1px)}
+.btn-ghost{background:transparent;color:var(--t2);border:1px solid var(--br);height:36px;padding:0 14px;font-size:13px;font-weight:500}
+.btn-ghost:hover{background:rgba(255,255,255,.07);color:var(--t1);border-color:var(--br2)}
+.btn-icon{width:36px;height:36px;padding:0;background:transparent;color:var(--t2);border:1px solid var(--br);border-radius:var(--r10)}
+.btn-icon:hover{background:rgba(255,255,255,.07);color:var(--t1)}
+/* Forms */
+.fi{height:44px;width:100%;background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:var(--r14);padding:0 14px;color:var(--t1);font-size:14px;outline:none;transition:border .15s,box-shadow .15s;font-family:inherit}
+.fi:focus{border-color:rgba(168,85,247,.55);box-shadow:0 0 0 3px rgba(124,58,237,.18)}
+.fi::placeholder{color:var(--t3)}
+.fi-sm{height:36px;border-radius:var(--r10);font-size:13px;padding:0 12px}
+select.fi{appearance:none;cursor:pointer}
+textarea.fi{height:auto;padding:12px 14px;resize:vertical;min-height:80px}
+label{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bottom:6px}
+.fgrp{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.ferr{font-size:12px;color:var(--err);margin-top:3px;display:none}
+.ferr.on{display:block}
+/* Badges */
+.badge{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:var(--rfull);font-size:11px;font-weight:600}
+.b-to_call{background:rgba(99,102,241,.2);color:#a5b4fc}
+.b-called{background:rgba(34,197,94,.15);color:#86efac}
+.b-voicemail{background:rgba(251,191,36,.15);color:#fde68a}
+.b-refusal{background:rgba(248,113,113,.2);color:#fca5a5}
+.b-video_rdv{background:rgba(52,211,153,.2);color:#6ee7b7}
+/* Views */
+[data-view]{display:none}
+[data-view].on{display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+/* Loading screen */
+#loading{position:fixed;inset:0;z-index:9000;background:var(--bg);display:flex;align-items:center;justify-content:center}
+#loading.hide{display:none}
+.spin{width:32px;height:32px;border:3px solid var(--br2);border-top-color:var(--violet2);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* Toast */
+#toasts{position:fixed;bottom:76px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
+@media(min-width:768px){#toasts{bottom:24px}}
+.toast{background:var(--s2);border:1px solid var(--br2);border-radius:var(--rfull);padding:10px 18px;font-size:13px;color:var(--t1);box-shadow:0 4px 24px rgba(0,0,0,.5);animation:tIn .2s var(--ease) forwards}
+.toast.out{animation:tOut .2s var(--ease) forwards}
+.toast.ok{border-color:rgba(52,211,153,.4);color:var(--ok)}
+.toast.err{border-color:rgba(248,113,113,.4);color:var(--err)}
+@keyframes tIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes tOut{to{opacity:0;transform:translateY(8px)}}
+/* Nav */
+#topnav{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px;padding:0 20px;height:60px;background:rgba(10,10,10,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--br)}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:17px;letter-spacing:-.03em;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;flex:none}
+.nav-links{display:flex;align-items:center;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-btn{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:var(--r10);font-size:13px;font-weight:500;color:var(--t2);cursor:pointer;background:transparent;border:none;font-family:inherit;transition:background .15s,color .15s;white-space:nowrap}
+.nav-btn:hover{background:rgba(255,255,255,.07);color:var(--t1)}
+.nav-btn.on{background:rgba(124,58,237,.18);color:var(--violet2)}
+.nav-btn:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+.nav-right{display:flex;align-items:center;gap:10px;flex:none}
+.nav-user{font-size:12px;color:var(--t3);max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#bnav{position:fixed;bottom:0;left:0;right:0;z-index:100;height:60px;background:rgba(10,10,10,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--br);display:none;justify-content:space-around;align-items:center;padding:0 8px}
+.bnav-btn{display:flex;flex-direction:column;align-items:center;gap:2px;height:52px;justify-content:center;padding:0 12px;background:none;border:none;color:var(--t3);font-size:10px;font-weight:500;cursor:pointer;font-family:inherit;border-radius:var(--r10);transition:color .15s;min-width:60px}
+.bnav-btn svg{width:20px;height:20px}
+.bnav-btn.on{color:var(--violet2)}
+@media(max-width:767px){#topnav .nav-links{display:none}#app{padding-bottom:60px}}
+/* Login */
+#view-login{min-height:100vh;align-items:center;justify-content:center;padding:24px 20px}
+#view-login.on{display:flex}
+.auth-wrap{width:100%;max-width:420px;display:flex;flex-direction:column;gap:32px}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--t2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--pink);box-shadow:0 0 10px var(--pink);display:inline-block;flex:none;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+.hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.4rem,7vw,3.8rem);font-weight:900;letter-spacing:-.04em;line-height:1.02;margin-bottom:12px}
+.hero-sub{font-size:15px;color:var(--t2);line-height:1.6}
+.auth-card{border-radius:var(--r20);padding:28px 24px}
+.rev-card{border-radius:var(--r14);padding:14px 16px}
+.rev-stars{display:flex;gap:2px;margin-bottom:6px}
+.rev-stars svg{width:12px;height:12px}
+.rev-txt{font-size:12px;color:var(--t2);line-height:1.5;margin-bottom:8px}
+.rev-auth{font-size:11px;color:var(--t3);font-weight:600}
+/* Dashboard */
+#view-dashboard{padding:24px 0 40px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.stat{border-radius:var(--r14);padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.stat-n{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;letter-spacing:-.03em;line-height:1}
+.stat-l{font-size:12px;color:var(--t2);font-weight:500}
+.n-violet{color:var(--violet2)}.n-warn{color:var(--warn)}.n-ok{color:var(--ok)}
+.toolbar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.t-search{flex:1;min-width:180px}
+.tbl-wrap{overflow-x:auto;border-radius:var(--r20);border:1px solid var(--br)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{padding:10px 14px;text-align:left;font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--br);background:rgba(255,255,255,.025)}
+td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr.expanded td{border-bottom:none}
+.enrich-row td{background:rgba(124,58,237,.06);padding:0}
+.enrich-panel{padding:16px 20px}
+.enrich-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+@media(min-width:768px){.enrich-grid{grid-template-columns:repeat(4,1fr)}}
+.ei{background:rgba(255,255,255,.04);border-radius:var(--r10);padding:10px 12px}
+.ei-k{font-size:10px;color:var(--t3);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.ei-v{font-size:13px;color:var(--t1);line-height:1.4}
+.name-cell{font-weight:600;color:var(--t1)}
+.name-cell small{display:block;font-size:11px;color:var(--t3);font-weight:400;margin-top:1px}
+.row-acts{display:flex;align-items:center;gap:4px;justify-content:flex-end}
+.p-cards{display:none;flex-direction:column;gap:10px}
+.p-card{border-radius:var(--r14);padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.p-card-h{display:flex;justify-content:space-between;align-items:start;gap:8px}
+.p-card-n{font-weight:600;font-size:14px;color:var(--t1)}
+.p-card-m{font-size:12px;color:var(--t3)}
+.p-card-f{display:flex;justify-content:space-between;align-items:center;gap:8px}
+@media(max-width:767px){.tbl-wrap{display:none}.p-cards{display:flex}.stats{gap:8px}.stat{padding:12px 10px}.stat-n{font-size:1.5rem}}
+.empty{text-align:center;padding:60px 20px;color:var(--t3)}
+.empty svg{width:40px;height:40px;margin:0 auto 12px;display:block}
+.empty p{font-size:14px;line-height:1.6;margin-bottom:16px}
+.ss{height:32px;background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:var(--r10);padding:0 10px;color:var(--t1);font-size:12px;font-family:inherit;cursor:pointer;outline:none}
+.ss:focus{border-color:rgba(168,85,247,.55)}
+/* Cold call */
+#view-coldcall{padding:24px 0 40px}
+.cc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap}
+.cc-counter{font-size:13px;color:var(--t2);font-weight:500}
+.cc-list{display:flex;flex-direction:column;gap:8px}
+.cc-item{border-radius:var(--r14);padding:14px 16px;display:flex;align-items:center;gap:12px}
+.cc-info{flex:1;min-width:0}
+.cc-name{font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cc-sub{font-size:12px;color:var(--t3);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cc-acts{display:flex;gap:6px;flex:none;align-items:center}
+/* Scripts */
+#view-scripts{padding:24px 0 40px}
+.sc-layout{display:grid;gap:20px}
+@media(min-width:768px){.sc-layout{grid-template-columns:1fr 1fr}}
+.presets{display:flex;flex-direction:column;gap:8px}
+.preset{width:100%;text-align:left;background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:var(--r14);padding:12px 16px;color:var(--t1);font-size:13px;cursor:pointer;font-family:inherit;transition:background .15s,border .15s}
+.preset:hover{background:rgba(255,255,255,.07);border-color:var(--br2)}
+.preset:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+.preset-title{font-weight:600;margin-bottom:2px}
+.preset-desc{font-size:11px;color:var(--t3)}
+.sc-out{min-height:200px;white-space:pre-wrap;font-size:13px;line-height:1.7;color:var(--t1);background:rgba(255,255,255,.025);border-radius:var(--r14);padding:16px;border:1px solid var(--br)}
+.sc-ph{color:var(--t3);font-style:italic}
+/* Modal */
+.modal-bg{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px}
+.modal-bg.on{display:flex}
+.modal{background:var(--s1);border:1px solid var(--br2);border-radius:var(--r20);width:100%;max-width:560px;max-height:90vh;overflow-y:auto;padding:28px 24px}
+.modal-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.modal-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.02em}
+.modal-grid{display:grid;gap:12px}
+@media(min-width:480px){.modal-grid{grid-template-columns:1fr 1fr}}
+/* Chat */
+#chat-btn{position:fixed;bottom:76px;right:16px;z-index:300;width:52px;height:52px;border-radius:50%;background:var(--grad);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(168,85,247,.5);transition:transform .15s,box-shadow .15s}
+#chat-btn:hover{transform:scale(1.08);box-shadow:0 8px 32px rgba(168,85,247,.7)}
+#chat-btn:focus-visible{outline:2px solid var(--violet2);outline-offset:3px}
+@media(min-width:768px){#chat-btn{bottom:24px;right:24px}}
+#chat-panel{display:none;position:fixed;bottom:76px;right:16px;z-index:300;width:calc(100vw - 32px);max-width:380px;height:520px;border-radius:var(--r20);overflow:hidden;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#chat-panel.on{display:flex}
+@media(min-width:768px){#chat-panel{bottom:88px;right:24px}}
+.chat-hd{display:flex;align-items:center;gap:10px;padding:14px 16px;background:rgba(255,255,255,.06);border-bottom:1px solid var(--br);flex:none}
+.chat-av{width:32px;height:32px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;flex:none}
+.chat-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;scrollbar-color:var(--br) transparent}
+.msg{max-width:88%;font-size:13px;line-height:1.6;padding:10px 14px;border-radius:14px}
+.msg.u{align-self:flex-end;background:linear-gradient(135deg,var(--violet) 0%,var(--violet2) 100%);color:#fff;border-bottom-right-radius:4px}
+.msg.b{align-self:flex-start;background:rgba(255,255,255,.07);color:var(--t1);border-bottom-left-radius:4px}
+.chat-ft{padding:12px;border-top:1px solid var(--br);display:flex;gap:8px;flex:none;background:rgba(10,10,10,.5)}
+#chat-inp{flex:1;height:40px;background:rgba(255,255,255,.06);border:1px solid var(--br);border-radius:var(--r10);padding:0 12px;color:var(--t1);font-size:13px;outline:none;font-family:inherit}
+#chat-inp:focus{border-color:rgba(168,85,247,.55)}
+.chat-send{width:40px;height:40px;border-radius:var(--r10);background:var(--violet);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;transition:background .15s}
+.chat-send:hover{background:var(--violet2)}
+.chat-send:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+.typing-dots{align-self:flex-start;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.07);border-bottom-left-radius:4px}
+.dot-a{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--t3);margin:0 2px;animation:tp 1.2s infinite}
+.dot-a:nth-child(2){animation-delay:.2s}.dot-a:nth-child(3){animation-delay:.4s}
+@keyframes tp{0%,80%,100%{opacity:.3}40%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.dot-a{animation:none}}
+.sec-title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.03em;margin-bottom:4px}
+.sec-sub{font-size:13px;color:var(--t2);margin-bottom:20px}
+.load-td td{text-align:center;padding:40px;color:var(--t3);font-size:13px}
+/* Tasks view */
+#view-tasks{padding:24px 0 40px}
+.task-badge{background:var(--err);color:#fff;border-radius:var(--rfull);font-size:10px;font-weight:700;min-width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px;margin-left:4px;vertical-align:middle}
+.tasks-toolbar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.task-list{display:flex;flex-direction:column;gap:8px}
+.task-item{border-radius:var(--r14);padding:12px 16px;display:flex;align-items:flex-start;gap:10px;border:1px solid var(--br);background:var(--s1)}
+.task-item.done-item{opacity:.5}
+.task-cb-wrap{padding-top:1px}
+.task-cb{width:18px;height:18px;border-radius:6px;border:2px solid var(--br2);background:transparent;cursor:pointer;flex:none;display:flex;align-items:center;justify-content:center;transition:background .15s,border .15s}
+.task-cb.done{background:var(--ok);border-color:var(--ok)}
+.task-body{flex:1;min-width:0}
+.task-txt{font-size:13px;font-weight:500;line-height:1.4}
+.task-txt.done{text-decoration:line-through;color:var(--t3)}
+.task-meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:5px}
+.cat-badge{display:inline-flex;align-items:center;height:18px;padding:0 7px;border-radius:var(--rfull);font-size:10px;font-weight:600}
+.cat-call{background:rgba(99,102,241,.2);color:#a5b4fc}
+.cat-email{background:rgba(168,85,247,.2);color:#d8b4fe}
+.cat-follow_up{background:rgba(251,191,36,.15);color:#fde68a}
+.cat-meeting{background:rgba(52,211,153,.2);color:#6ee7b7}
+.cat-admin{background:rgba(161,161,179,.15);color:#a1a1b3}
+.cat-agency{background:rgba(236,72,153,.15);color:#f9a8d4}
+.prio-high{color:var(--err);font-size:10px;font-weight:700;text-transform:uppercase}
+.prio-medium{color:var(--warn);font-size:10px;font-weight:700;text-transform:uppercase}
+.prio-low{color:var(--t3);font-size:10px;font-weight:700;text-transform:uppercase}
+.overdue{color:var(--err);font-size:10px}
+.task-prospect-link{font-size:11px;color:var(--violet2);cursor:pointer;text-decoration:underline;background:none;border:none;font-family:inherit;padding:0}
+.task-actions{display:flex;gap:4px;align-items:center;flex:none}
+/* Batch enrichment progress */
+.progress-bar-wrap{background:rgba(255,255,255,.08);border-radius:var(--rfull);height:8px;overflow:hidden;margin:10px 0}
+.progress-bar-fill{height:100%;background:var(--grad);border-radius:var(--rfull);transition:width .3s var(--ease);min-width:4px}
+.batch-log{font-size:11px;color:var(--t3);margin-top:6px;min-height:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* Prospect card fullscreen */
+.modal-full-bg{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);overflow-y:auto;padding:20px}
+.modal-full-bg.on{display:block}
+.modal-full{background:var(--s1);border:1px solid var(--br2);border-radius:var(--r20);width:100%;max-width:820px;margin:0 auto;padding:28px 24px}
+.pcard-hd{display:flex;align-items:center;gap:14px;margin-bottom:24px;flex-wrap:wrap}
+.pcard-av{width:52px;height:52px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#fff;flex:none}
+.pcard-grid{display:grid;gap:16px;margin-bottom:16px}
+@media(min-width:640px){.pcard-grid{grid-template-columns:1fr 1fr}}
+.pcard-sec{background:rgba(255,255,255,.03);border:1px solid var(--br);border-radius:var(--r14);padding:16px}
+.pcard-sec-title{font-size:10px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.pcard-field{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px;font-size:13px;color:var(--t2)}
+.pcard-field-val{flex:1;color:var(--t1);word-break:break-all}
+.tag-chip{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 10px;background:rgba(124,58,237,.18);color:var(--violet2);border-radius:var(--rfull);font-size:11px;font-weight:600;cursor:pointer;border:none;font-family:inherit;margin:2px}
+.tag-chip:hover{background:rgba(124,58,237,.35)}
+.timeline{display:flex;flex-direction:column;gap:10px}
+.tl-item{display:flex;gap:10px;align-items:flex-start;font-size:13px;position:relative}
+.tl-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;font-size:14px;background:rgba(255,255,255,.07)}
+.tl-pos .tl-dot{background:rgba(52,211,153,.15);color:var(--ok)}
+.tl-neg .tl-dot{background:rgba(248,113,113,.15);color:var(--err)}
+.tl-neu .tl-dot{background:rgba(161,161,179,.1);color:var(--t2)}
+/* Second filter row */
+.toolbar2{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
+/* Checkbox for batch selection */
+.row-cb{width:16px;height:16px;accent-color:var(--violet2);cursor:pointer}
+.hdr-cb{width:16px;height:16px;accent-color:var(--violet2);cursor:pointer}
+/* Batch button */
+.btn-batch{background:linear-gradient(135deg,var(--violet),var(--violet2));color:#fff;height:36px;padding:0 14px;font-size:13px;font-weight:600;border:none;border-radius:var(--r10);cursor:pointer;font-family:inherit;display:none;align-items:center;gap:6px;white-space:nowrap}
+.btn-batch.visible{display:inline-flex}
+/* Print */
+@media print{
+  .aurora,.chat-btn,#chat-panel,#topnav,#bnav,#toasts,.pcard-hide-print{display:none!important}
+  .modal-full-bg{position:static!important;background:none!important;backdrop-filter:none!important;padding:0!important;display:block!important}
+  .modal-full{max-height:none!important;border:none!important;box-shadow:none!important;padding:0!important}
+  body{background:#fff!important;color:#000!important}
+}
+</style>
+</head>
+<body>
+<div class="aurora" aria-hidden="true">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+</div>
+
+<!-- Loading screen shown until session check completes -->
+<div id="loading"><div class="spin"></div></div>
+
+<div id="app">
+
+<!-- NAV -->
+<nav id="topnav" style="display:none">
+  <span class="nav-logo">Alpinia Pro</span>
+  <div class="nav-links">
+    <button class="nav-btn" data-nav="dashboard">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Prospects
+    </button>
+    <button class="nav-btn" data-nav="coldcall">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Cold Call
+    </button>
+    <button class="nav-btn" data-nav="scripts">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      Scripts IA
+    </button>
+    <button class="nav-btn" data-nav="tasks">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      T&acirc;ches<span class="task-badge" id="nav-task-badge" style="display:none">0</span>
+    </button>
+  </div>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user"></span>
+    <button class="btn btn-ghost" id="btn-logout" style="height:32px;padding:0 12px;font-size:12px">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Quitter
+    </button>
+  </div>
+</nav>
+<nav id="bnav">
+  <button class="bnav-btn" data-nav="dashboard">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+    Prospects
+  </button>
+  <button class="bnav-btn" data-nav="coldcall">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Cold Call
+  </button>
+  <button class="bnav-btn" data-nav="scripts">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    Scripts
+  </button>
+  <button class="bnav-btn" data-nav="tasks" style="position:relative">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    T&acirc;ches<span class="task-badge" id="bnav-task-badge" style="display:none;position:absolute;top:6px;right:8px">0</span>
+  </button>
+</nav>
+
+<!-- LOGIN -->
+<section data-view="login" id="view-login">
+  <div class="auth-wrap">
+    <div>
+      <div class="eyebrow"><i class="dot"></i> Alpinia &middot; Agence Web Valais</div>
+      <h1 class="hero-title"><span class="grad-text">Prospectez</span><br>plus vite.</h1>
+      <p class="hero-sub">Enrichissement IA, scripts de cold call et suivi des RDV.</p>
+    </div>
+    <div class="auth-card glass-s">
+      <div class="fgrp">
+        <label for="li-email">Email</label>
+        <input class="fi" type="email" id="li-email" placeholder="vous@exemple.com" autocomplete="email"/>
+        <span class="ferr" id="li-email-err"></span>
+      </div>
+      <div class="fgrp">
+        <label for="li-pw">Mot de passe</label>
+        <input class="fi" type="password" id="li-pw" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" autocomplete="current-password"/>
+      </div>
+      <span class="ferr on" id="li-err" style="margin-bottom:12px;min-height:16px"></span>
+      <button class="btn btn-primary" id="btn-login" style="width:100%">Se connecter</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="rev-card glass">
+        <div class="rev-stars">
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="rev-txt">&laquo; Avec Alpinia Pro, j'ai doubl&eacute; mes appels qualifi&eacute;s en 2 semaines. L'enrichissement IA fait gagner un temps fou. &raquo;</p>
+        <span class="rev-auth">Laurent M. &mdash; G&eacute;rant PME, Sion</span>
+      </div>
+      <div class="rev-card glass">
+        <div class="rev-stars">
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="#fbbf24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="rev-txt">&laquo; Le coach IA m'aide &agrave; g&eacute;rer les objections en direct. Mon taux de RDV a augment&eacute; de 30&nbsp;%. &raquo;</p>
+        <span class="rev-auth">Sophie R. &mdash; Commerciale, Martigny</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section data-view="dashboard" id="view-dashboard">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat glass"><span class="stat-n n-violet" id="s-total">0</span><span class="stat-l">Total</span></div>
+      <div class="stat glass"><span class="stat-n n-warn" id="s-tocall">0</span><span class="stat-l">&Agrave; appeler</span></div>
+      <div class="stat glass"><span class="stat-n n-ok" id="s-rdv">0</span><span class="stat-l">RDV obtenus</span></div>
+    </div>
+    <div class="toolbar">
+      <div class="t-search"><input class="fi fi-sm" type="search" id="d-search" placeholder="Rechercher&hellip;" aria-label="Rechercher"/></div>
+      <select class="fi fi-sm" id="d-filter" style="width:auto;min-width:140px" aria-label="Filtrer">
+        <option value="">Tous les statuts</option>
+        <option value="to_call">&Agrave; appeler</option>
+        <option value="called">Appel&eacute;</option>
+        <option value="voicemail">R&eacute;pondeur</option>
+        <option value="refusal">Refus</option>
+        <option value="video_rdv">RDV</option>
+      </select>
+      <button class="btn btn-ghost" id="btn-export" title="Exporter en CSV">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Exporter</span>
+      </button>
+      <label class="btn btn-ghost" title="Importer un CSV" style="cursor:pointer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <span>Import CSV</span>
+        <input type="file" id="csv-file" accept=".csv,.txt,text/csv,text/plain" style="display:none"/>
+      </label>
+      <button class="btn btn-ghost" id="btn-ai-import" title="Importer avec l'IA">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span>Import IA</span>
+      </button>
+      <button class="btn btn-cf" id="btn-add">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span>Ajouter</span>
+      </button>
+      <button class="btn-batch" id="btn-batch-enrich">&#9889; Enrichir <span id="batch-count">0</span> prospect(s)</button>
+    </div>
+    <div class="toolbar2" id="toolbar2">
+      <select class="fi fi-sm" id="d-sector" style="width:auto" aria-label="Filtrer par secteur">
+        <option value="">Tous secteurs</option>
+      </select>
+      <select class="fi fi-sm" id="d-city" style="width:auto" aria-label="Filtrer par ville">
+        <option value="">Toutes villes</option>
+      </select>
+      <select class="fi fi-sm" id="d-sort" style="width:auto" aria-label="Trier">
+        <option value="">Tri : Date ajout ↓</option>
+        <option value="name_asc">Nom A→Z</option>
+        <option value="name_desc">Nom Z→A</option>
+        <option value="date_asc">Date ajout ↑</option>
+        <option value="enriched">Enrichis d'abord</option>
+      </select>
+      <button class="btn btn-ghost" id="d-clear-filters" style="height:32px;padding:0 12px;font-size:12px;display:none">
+        &times; Effacer filtres (<span id="d-filter-count">0</span>)
+      </button>
+    </div>
+    <div class="tbl-wrap">
+      <table aria-label="Prospects">
+        <thead><tr><th style="width:36px;padding:10px 6px 10px 14px"><input type="checkbox" class="hdr-cb" id="select-all-cb" onchange="selectAll(this.checked)" aria-label="Tout sélectionner"/></th><th>Nom / &Eacute;tablissement</th><th>Ville</th><th>Type</th><th>Statut</th><th>Notes</th><th style="text-align:right">Actions</th></tr></thead>
+        <tbody id="d-tbody"><tr class="load-td"><td colspan="6">Chargement&hellip;</td></tr></tbody>
+      </table>
+    </div>
+    <div class="p-cards" id="d-cards"></div>
+  </div>
+</section>
+
+<!-- TASKS -->
+<section data-view="tasks" id="view-tasks">
+  <div class="wrap">
+    <div class="cc-head">
+      <div>
+        <h1 class="sec-title">T&acirc;ches</h1>
+        <p class="sec-sub" style="margin-bottom:0">Suivi de vos actions de prospection</p>
+      </div>
+    </div>
+    <!-- Quick add -->
+    <div class="card" style="margin-bottom:16px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end">
+        <div style="flex:1;min-width:200px"><input class="fi fi-sm" type="text" id="t-text" placeholder="Nouvelle t&acirc;che&hellip;"/></div>
+        <select class="fi fi-sm" id="t-prio" style="width:auto">
+          <option value="medium">Priorit&eacute; normale</option>
+          <option value="high">! Urgent</option>
+          <option value="low">Basse</option>
+        </select>
+        <select class="fi fi-sm" id="t-cat" style="width:auto">
+          <option value="call">Appel</option>
+          <option value="email">Email</option>
+          <option value="follow_up">Relance</option>
+          <option value="meeting">RDV</option>
+          <option value="admin">Admin</option>
+          <option value="agency">Agence</option>
+        </select>
+        <input class="fi fi-sm" type="date" id="t-due" style="width:auto" title="Date d'échéance"/>
+        <input class="fi fi-sm" type="datetime-local" id="t-reminder" style="width:auto" title="Rappel (notification)"/>
+        <select class="fi fi-sm" id="t-prospect" style="width:auto">
+          <option value="">Aucun prospect</option>
+        </select>
+        <button class="btn btn-cf" id="t-add-btn" style="height:36px;padding:0 14px;font-size:13px">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Ajouter
+        </button>
+      </div>
+    </div>
+    <!-- Filters -->
+    <div class="tasks-toolbar" style="justify-content:space-between">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-ghost t-filter-btn on" data-tf="all" style="height:32px;padding:0 12px;font-size:12px">Toutes</button>
+      <button class="btn btn-ghost t-filter-btn" data-tf="todo" style="height:32px;padding:0 12px;font-size:12px">&Agrave; faire</button>
+      <button class="btn btn-ghost t-filter-btn" data-tf="in_progress" style="height:32px;padding:0 12px;font-size:12px">En cours</button>
+      <button class="btn btn-ghost t-filter-btn" data-tf="done" style="height:32px;padding:0 12px;font-size:12px">Termin&eacute;es</button>
+      <button class="btn btn-ghost t-filter-btn" data-tf="urgent" style="height:32px;padding:0 12px;font-size:12px">Urgentes</button>
+      </div>
+      <button class="btn btn-ghost" id="notif-perm-btn" style="height:32px;padding:0 12px;font-size:12px;display:none">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        Activer rappels
+      </button>
+    </div>
+    </div>
+    <div class="task-list" id="task-list"></div>
+  </div>
+</section>
+
+<!-- COLD CALL -->
+<section data-view="coldcall" id="view-coldcall">
+  <div class="wrap">
+    <div class="cc-head">
+      <div>
+        <h1 class="sec-title">Cold Call</h1>
+        <span class="cc-counter" id="cc-count">&mdash;</span>
+      </div>
+      <button class="btn btn-ghost" id="cc-toggle">Voir tous</button>
+    </div>
+    <div class="cc-list" id="cc-list"></div>
+  </div>
+</section>
+
+<!-- SCRIPTS -->
+<section data-view="scripts" id="view-scripts">
+  <div class="wrap">
+    <h1 class="sec-title">Scripts IA</h1>
+    <p class="sec-sub">G&eacute;n&egrave;re un script personnalis&eacute; ou utilise un preset.</p>
+    <div class="sc-layout">
+      <div>
+        <h2 style="font-size:14px;font-weight:600;color:var(--t2);margin-bottom:12px">Presets rapides</h2>
+        <div class="presets">
+          <button class="preset" data-preset="coldb2b"><div class="preset-title">Cold Call B2B</div><div class="preset-desc">Premier contact, accroche AIDA, objectif RDV</div></button>
+          <button class="preset" data-preset="relance"><div class="preset-title">Relance</div><div class="preset-desc">Suite d'un premier contact sans r&eacute;ponse</div></button>
+          <button class="preset" data-preset="objections"><div class="preset-title">Traitement des objections</div><div class="preset-desc">R&eacute;ponses aux 5 objections fr&eacute;quentes</div></button>
+          <button class="preset" data-preset="closing"><div class="preset-title">Closing RDV</div><div class="preset-desc">Conclure et fixer un cr&eacute;neau concret</div></button>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <h2 style="font-size:14px;font-weight:600;color:var(--t2)">Script personnalis&eacute;</h2>
+        <div class="fgrp" style="margin-bottom:0">
+          <label for="sc-prospect">Choisir un prospect (optionnel)</label>
+          <select class="fi" id="sc-prospect">
+            <option value="">— Saisie manuelle —</option>
+          </select>
+        </div>
+        <div class="fgrp" style="margin-bottom:0"><label for="sc-name">Pr&eacute;nom contact</label><input class="fi" type="text" id="sc-name" placeholder="Marc"/></div>
+        <div class="fgrp" style="margin-bottom:0"><label for="sc-co">&Eacute;tablissement</label><input class="fi" type="text" id="sc-co" placeholder="Restaurant du Lac"/></div>
+        <div class="fgrp" style="margin-bottom:0"><label for="sc-sec">Secteur</label><input class="fi" type="text" id="sc-sec" placeholder="restauration, h&ocirc;tellerie&hellip;"/></div>
+        <div class="fgrp" style="margin-bottom:0"><label for="sc-type">Type d'appel</label><select class="fi" id="sc-type"><option value="premier contact">Premier contact</option><option value="relance">Relance</option><option value="closing">Closing RDV</option></select></div>
+        <div class="fgrp" style="margin-bottom:0"><label for="sc-info">Infos cl&eacute;s (optionnel)</label><textarea class="fi" id="sc-info" placeholder="ex&nbsp;: pas de site web&hellip;" style="min-height:72px"></textarea></div>
+        <button class="btn btn-cf" id="btn-gen" style="width:100%">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>G&eacute;n&eacute;rer le script</span>
+        </button>
+      </div>
+    </div>
+    <div style="margin-top:20px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <span style="font-size:13px;font-weight:600;color:var(--t2)">R&eacute;sultat</span>
+        <button class="btn btn-ghost" id="btn-copy" style="font-size:12px;height:30px;padding:0 10px">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copier
+        </button>
+      </div>
+      <div class="sc-out" id="sc-out"><span class="sc-ph">Le script g&eacute;n&eacute;r&eacute; appara&icirc;tra ici&hellip;</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL IMPORT IA -->
+<div class="modal-bg" id="modal-ai" role="dialog" aria-modal="true" aria-labelledby="ai-modal-title">
+  <div class="modal" style="max-width:640px">
+    <div class="modal-hd">
+      <h2 class="modal-title" id="ai-modal-title">Import IA &mdash; Analyse de texte</h2>
+      <button class="btn btn-icon" id="ai-modal-x" aria-label="Fermer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <p style="font-size:13px;color:var(--t2);margin-bottom:16px;line-height:1.6">Colle n'importe quel texte (liste Google Maps, annuaire, notes, extrait web&hellip;) ou charge un fichier <code style="background:rgba(255,255,255,.07);padding:1px 5px;border-radius:4px">.txt</code> / <code style="background:rgba(255,255,255,.07);padding:1px 5px;border-radius:4px">.csv</code>. L'IA extrait les prospects automatiquement.</p>
+    <div class="fgrp" style="margin-bottom:12px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <label for="ai-import-txt" style="margin-bottom:0">Texte &agrave; analyser</label>
+        <label class="btn btn-ghost" style="cursor:pointer;height:28px;padding:0 10px;font-size:11px">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Charger un fichier
+          <input type="file" id="ai-import-file" accept=".csv,.txt,text/plain,text/csv" style="display:none"/>
+        </label>
+      </div>
+      <textarea class="fi" id="ai-import-txt" style="min-height:180px" placeholder="Ex:&#10;Restaurant du Lac, Sion, 027 123 45 67, contact@lac.ch&#10;H&ocirc;tel Bellevue - Martigny - h&ocirc;tellerie - +41 27 456 78 90&#10;Boulangerie Martin, Sierre..."></textarea>
+    </div>
+    <div id="ai-preview-wrap" style="display:none;margin-bottom:16px">
+      <div style="font-size:13px;font-weight:600;color:var(--t2);margin-bottom:8px" id="ai-preview-title">Prospects d&eacute;tect&eacute;s</div>
+      <div id="ai-preview-list" style="display:flex;flex-direction:column;gap:6px;max-height:220px;overflow-y:auto"></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap">
+      <button class="btn btn-ghost" id="ai-modal-cancel">Annuler</button>
+      <button class="btn btn-cf" id="ai-analyze-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span>Analyser avec l'IA</span>
+      </button>
+      <button class="btn btn-primary" id="ai-confirm-btn" style="display:none">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="ai-confirm-label">Importer</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL BATCH ENRICHMENT -->
+<div class="modal-bg" id="modal-batch" role="dialog" aria-modal="true" aria-labelledby="batch-modal-title">
+  <div class="modal" style="max-width:500px">
+    <div class="modal-hd">
+      <h2 class="modal-title" id="batch-modal-title">&#9889; Enrichissement batch</h2>
+      <button class="btn btn-icon" id="batch-modal-x" aria-label="Fermer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div id="batch-fields-wrap">
+      <p style="font-size:13px;color:var(--t2);margin-bottom:14px">Champs &agrave; enrichir pour <strong id="batch-prospect-count">0</strong> prospect(s) s&eacute;lectionn&eacute;(s)&nbsp;:</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px">
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="email" checked/> Email</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="phone" checked/> T&eacute;l&eacute;phone</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="website" checked/> Site web</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="address"/> Adresse</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="industry"/> Secteur</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="employees"/> Employ&eacute;s</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="decision_maker"/> D&eacute;cisionnaire</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="description"/> Description</label>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="btn btn-ghost" id="batch-modal-cancel">Annuler</button>
+        <button class="btn btn-primary" id="batch-start-btn">&#9889; Lancer l'enrichissement</button>
+      </div>
+    </div>
+    <div id="batch-progress-wrap" style="display:none">
+      <div style="font-size:13px;color:var(--t2);margin-bottom:8px">Enrichissement en cours&hellip;</div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="batch-bar" style="width:0%"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--t3);margin-top:4px">
+        <span id="batch-prog-label">0 / 0</span>
+        <span id="batch-eta"></span>
+      </div>
+      <div class="batch-log" id="batch-log">Initialisation&hellip;</div>
+      <div style="margin-top:16px;display:flex;justify-content:flex-end">
+        <button class="btn btn-ghost" id="batch-cancel-btn">Annuler</button>
+      </div>
+    </div>
+    <div id="batch-result-wrap" style="display:none">
+      <div style="font-size:15px;font-weight:600;margin-bottom:8px" id="batch-result-title">Enrichissement termin&eacute;</div>
+      <div style="font-size:13px;color:var(--t2);margin-bottom:16px" id="batch-result-detail"></div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap">
+        <button class="btn btn-ghost" id="batch-undo-btn" style="display:none">&#8634; Annuler tout (undo)</button>
+        <button class="btn btn-primary" id="batch-done-btn">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PROSPECT CARD -->
+<div class="modal-full-bg" id="modal-pcard" role="dialog" aria-modal="true">
+  <div class="modal-full" id="pcard-inner">
+    <!-- content injected by JS -->
+  </div>
+</div>
+
+<!-- MODAL PROSPECT -->
+<div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <div class="modal-hd">
+      <h2 class="modal-title" id="modal-title">Nouveau prospect</h2>
+      <button class="btn btn-icon" id="modal-x" aria-label="Fermer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-grid">
+      <div class="fgrp" style="margin-bottom:0"><label for="m-name">Nom / &Eacute;tablissement *</label><input class="fi" type="text" id="m-name" placeholder="Restaurant du Lac"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-city">Ville</label><input class="fi" type="text" id="m-city" placeholder="Sion"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-type">Type</label><input class="fi" type="text" id="m-type" placeholder="Restaurant, H&ocirc;tel&hellip;"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-phone">T&eacute;l&eacute;phone</label><input class="fi" type="tel" id="m-phone" placeholder="+41 27 123 45 67"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-email">Email</label><input class="fi" type="email" id="m-email" placeholder="contact@exemple.ch"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-web">Site web</label><input class="fi" type="url" id="m-web" placeholder="https://&hellip;"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-status">Statut</label><select class="fi" id="m-status"><option value="to_call">&Agrave; appeler</option><option value="called">Appel&eacute;</option><option value="voicemail">R&eacute;pondeur</option><option value="refusal">Refus</option><option value="video_rdv">RDV</option></select></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-contact">Contact d&eacute;cideur</label><input class="fi" type="text" id="m-contact" placeholder="Pr&eacute;nom Nom"/></div>
+    </div>
+    <div class="fgrp" style="margin-top:12px;margin-bottom:0"><label for="m-notes">Notes</label><textarea class="fi" id="m-notes" placeholder="Observations&hellip;" style="min-height:72px"></textarea></div>
+    <div style="display:flex;gap:10px;margin-top:20px;justify-content:flex-end">
+      <button class="btn btn-ghost" id="modal-cancel">Annuler</button>
+      <button class="btn btn-primary" id="modal-save"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- CHATBOT -->
+<button id="chat-btn" aria-label="Ouvrir Coach Alpinia" aria-expanded="false">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+</button>
+<div class="glass-s" id="chat-panel" role="dialog" aria-label="Coach Alpinia">
+  <div class="chat-hd">
+    <div class="chat-av"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+    <div><div style="font-weight:700;font-size:13px">Coach Alpinia</div><div style="font-size:11px;color:var(--ok)">En ligne &middot; Expert prospection</div></div>
+    <button class="btn btn-icon" id="chat-x" aria-label="Fermer" style="margin-left:auto;border:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="chat-msgs" id="chat-msgs">
+    <div class="msg b">Salut ! Je suis Coach Alpinia, expert en prospection B2B. Demande-moi un script, comment g&eacute;rer une objection, ou comment pr&eacute;parer ton prochain appel !</div>
+  </div>
+  <div class="chat-ft">
+    <input type="text" id="chat-inp" placeholder="Pose ta question&hellip;" autocomplete="off" aria-label="Message"/>
+    <button class="chat-send" id="chat-send" aria-label="Envoyer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+  </div>
+</div>
+
+<div id="toasts" aria-live="polite" aria-atomic="false"></div>
+</div>
+
+<script>
+(function() {
+'use strict';
+
+// ===== GLOBALS =====
+var S = {
+  token: null,
+  user: null,
+  prospects: [],
+  todos: [],
+  enrichOpen: null,
+  chatHistory: [],
+  ccShowAll: false,
+  selectedIds: {},
+  filterSector: '',
+  filterCity: '',
+  sortBy: '',
+  taskFilter: 'all',
+  cardProspect: null,
+  batchRunning: false,
+  batchAbort: false,
+  batchBackup: null
+};
+try { S.token = localStorage.getItem('ap_token') || null; } catch(e) {}
+
+function $(id) { return document.getElementById(id); }
+function esc(s) {
+  if (!s && s !== 0) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function genId() { return Math.random().toString(36).slice(2) + Date.now().toString(36); }
+
+// ===== LOADING SCREEN =====
+function hideLoading() {
+  var el = $('loading');
+  if (el) el.classList.add('hide');
+}
+
+// ===== TOAST =====
+function toast(msg, type) {
+  var el = document.createElement('div');
+  el.className = 'toast' + (type ? ' ' + type : '');
+  el.textContent = msg;
+  var container = $('toasts');
+  if (!container) return;
+  container.appendChild(el);
+  setTimeout(function() {
+    el.classList.add('out');
+    setTimeout(function() { el.remove(); }, 250);
+  }, 3500);
+}
+
+// ===== STATUSES =====
+var ST = {
+  to_call:   { l: 'A appeler',  c: 'b-to_call'  },
+  called:    { l: 'Appele',     c: 'b-called'    },
+  voicemail: { l: 'Repondeur',  c: 'b-voicemail' },
+  refusal:   { l: 'Refus',      c: 'b-refusal'   },
+  video_rdv: { l: 'RDV',        c: 'b-video_rdv' }
+};
+var ST_LABELS = {
+  to_call: 'À appeler', called: 'Appelé',
+  voicemail: 'Répondeur', refusal: 'Refus', video_rdv: 'RDV'
+};
+function badge(s) {
+  var x = ST[s] || ST.to_call;
+  return '<span class="badge ' + x.c + '">' + (ST_LABELS[s] || x.l) + '</span>';
+}
+function sopts(cur) {
+  var keys = ['to_call','called','voicemail','refusal','video_rdv'];
+  return keys.map(function(k) {
+    return '<option value="' + k + '"' + ((cur || 'to_call') === k ? ' selected' : '') + '>' + (ST_LABELS[k] || k) + '</option>';
+  }).join('');
+}
+
+// ===== ROUTING =====
+var VIEWS = ['login','dashboard','coldcall','scripts','tasks'];
+function nav(v, rep) {
+  var h = '#/' + v;
+  if (rep) history.replaceState(null, '', h);
+  else if (location.hash !== h) history.pushState(null, '', h);
+  render(v);
+}
+function render(v) {
+  VIEWS.forEach(function(x) {
+    var el = document.querySelector('[data-view="' + x + '"]');
+    if (el) el.classList.toggle('on', x === v);
+  });
+  var auth = ['dashboard','coldcall','scripts','tasks'].indexOf(v) !== -1;
+  var topnav = $('topnav');
+  var bnav = $('bnav');
+  if (topnav) topnav.style.display = auth ? '' : 'none';
+  if (bnav) bnav.style.display = auth ? 'flex' : 'none';
+  document.querySelectorAll('.nav-btn,.bnav-btn').forEach(function(b) {
+    b.classList.toggle('on', b.dataset.nav === v);
+    b.setAttribute('aria-current', b.dataset.nav === v ? 'page' : 'false');
+  });
+  if (v === 'dashboard') renderDash();
+  if (v === 'coldcall') renderCC();
+  if (v === 'scripts') refreshScriptProspects();
+  if (v === 'tasks') { refreshTaskProspects(); renderTasks(); }
+}
+window.addEventListener('hashchange', function() {
+  var h = location.hash.replace('#/', '').split('/')[0] || 'login';
+  if (!S.token && h !== 'login') { nav('login', true); return; }
+  if (S.token && h === 'login') { nav('dashboard', true); return; }
+  render(h);
+});
+
+// ===== API =====
+function api(fn, body) {
+  return fetch('/api/' + fn, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  }).then(function(r) {
+    return r.text().then(function(txt) {
+      var d;
+      try { d = JSON.parse(txt); } catch(e) {
+        return { error: 'Erreur serveur (' + r.status + ')' };
+      }
+      if (!r.ok && !d.error) d.error = 'Erreur serveur (' + r.status + ')';
+      return d;
+    });
+  }).catch(function(e) {
+    return { error: 'Connexion impossible. Vérifie ta connexion internet.' };
+  });
+}
+
+// ===== PROSPECTS (localStorage) =====
+function loadProspects() {
+  try {
+    var raw = localStorage.getItem('ap_prospects') || '[]';
+    S.prospects = JSON.parse(raw);
+    if (!Array.isArray(S.prospects)) S.prospects = [];
+  } catch(e) { S.prospects = []; }
+}
+function saveProspects() {
+  try { localStorage.setItem('ap_prospects', JSON.stringify(S.prospects)); }
+  catch(e) { toast('Erreur de sauvegarde locale.', 'err'); }
+}
+
+// ===== AUTH =====
+function checkSession() {
+  if (!S.token) {
+    hideLoading();
+    nav('login', true);
+    return;
+  }
+  api('auth', { action: 'me', token: S.token }).then(function(d) {
+    hideLoading();
+    if (d.error) {
+      try { localStorage.removeItem('ap_token'); } catch(e) {}
+      S.token = null;
+      nav('login', true);
+      return;
+    }
+    S.user = d.user;
+    var navUser = $('nav-user');
+    if (navUser && S.user) navUser.textContent = S.user.name || S.user.email || '';
+    loadProspects();
+    loadTodos();
+    var h = location.hash.replace('#/', '').split('/')[0] || 'dashboard';
+    var valid = ['dashboard','coldcall','scripts','tasks'];
+    nav(valid.indexOf(h) !== -1 ? h : 'dashboard', true);
+  });
+}
+
+function doLogin() {
+  var emailEl = $('li-email');
+  var pwEl = $('li-pw');
+  var errEl = $('li-err');
+  var emailErrEl = $('li-email-err');
+  var btn = $('btn-login');
+  if (!emailEl || !pwEl) return;
+  var email = emailEl.value.trim();
+  var pw = pwEl.value;
+  if (errEl) errEl.textContent = '';
+  if (!email) {
+    if (emailErrEl) { emailErrEl.textContent = 'Email requis.'; emailErrEl.classList.add('on'); }
+    return;
+  }
+  if (emailErrEl) emailErrEl.classList.remove('on');
+  if (btn) { btn.disabled = true; btn.textContent = 'Connexion…'; }
+  api('auth', { action: 'login', email: email, password: pw }).then(function(d) {
+    if (btn) { btn.disabled = false; btn.textContent = 'Se connecter'; }
+    if (d.error) {
+      if (errEl) errEl.textContent = d.error;
+      return;
+    }
+    S.token = d.token;
+    S.user = d.user;
+    try { localStorage.setItem('ap_token', d.token); } catch(e) {}
+    var navUser = $('nav-user');
+    if (navUser && S.user) navUser.textContent = S.user.name || S.user.email || '';
+    loadProspects();
+    nav('dashboard', true);
+  });
+}
+
+function doLogout() {
+  api('auth', { action: 'logout', token: S.token }).then(function() {
+    try { localStorage.removeItem('ap_token'); } catch(e) {}
+    S.token = null; S.user = null; S.prospects = [];
+    nav('login', true);
+  });
+}
+
+// ===== DASHBOARD =====
+function updateStats() {
+  var total = $('s-total'), tocall = $('s-tocall'), rdv = $('s-rdv');
+  if (total) total.textContent = S.prospects.length;
+  if (tocall) tocall.textContent = S.prospects.filter(function(p) { return !p.status || p.status === 'to_call'; }).length;
+  if (rdv) rdv.textContent = S.prospects.filter(function(p) { return p.status === 'video_rdv'; }).length;
+}
+function getFiltered() {
+  var ds = $('d-search'), df = $('d-filter');
+  var q = (ds ? ds.value || '' : '').toLowerCase();
+  var f = df ? df.value : '';
+  var sector = S.filterSector;
+  var city = S.filterCity;
+  var list = S.prospects.filter(function(p) {
+    var m = !q || [p.name, p.city, p.type, p.notes, p.contact].filter(Boolean).join(' ').toLowerCase().indexOf(q) !== -1;
+    if (!m) return false;
+    if (f && (p.status || 'to_call') !== f) return false;
+    if (sector && (p.type || '').toLowerCase() !== sector.toLowerCase()) return false;
+    if (city && (p.city || '').toLowerCase() !== city.toLowerCase()) return false;
+    return true;
+  });
+  var sort = S.sortBy;
+  if (sort === 'name_asc') list.sort(function(a,b){ return (a.name||'').localeCompare(b.name||''); });
+  else if (sort === 'name_desc') list.sort(function(a,b){ return (b.name||'').localeCompare(a.name||''); });
+  else if (sort === 'date_asc') list.sort(function(a,b){ return (a.at||0)-(b.at||0); });
+  else if (sort === 'enriched') list.sort(function(a,b){ return (b._enrich||b.enriched?1:0)-(a._enrich||a.enriched?1:0); });
+  return list;
+}
+function updateFilterSelects() {
+  var sectors = {}, cities = {};
+  S.prospects.forEach(function(p) {
+    if (p.type && p.type.trim()) sectors[p.type.trim()] = 1;
+    if (p.city && p.city.trim()) cities[p.city.trim()] = 1;
+  });
+  var sec = $('d-sector');
+  if (sec) {
+    var curSec = sec.value;
+    sec.innerHTML = '<option value="">Tous secteurs</option>'
+      + Object.keys(sectors).sort().map(function(s) { return '<option value="' + esc(s) + '"' + (s === curSec ? ' selected' : '') + '>' + esc(s) + '</option>'; }).join('');
+  }
+  var cit = $('d-city');
+  if (cit) {
+    var curCit = cit.value;
+    cit.innerHTML = '<option value="">Toutes villes</option>'
+      + Object.keys(cities).sort().map(function(c) { return '<option value="' + esc(c) + '"' + (c === curCit ? ' selected' : '') + '>' + esc(c) + '</option>'; }).join('');
+  }
+  var active = (S.filterSector ? 1 : 0) + (S.filterCity ? 1 : 0) + (S.sortBy ? 1 : 0);
+  var clearBtn = $('d-clear-filters');
+  var countSpan = $('d-filter-count');
+  if (clearBtn) clearBtn.style.display = active > 0 ? '' : 'none';
+  if (countSpan) countSpan.textContent = active;
+}
+function renderDash() {
+  updateStats();
+  updateFilterSelects();
+  var l = getFiltered();
+  renderTable(l);
+  renderCards(l);
+  updateBatchBtn();
+}
+function updateBatchBtn() {
+  var btn = $('btn-batch-enrich');
+  var cnt = $('batch-count');
+  var n = Object.keys(S.selectedIds).length;
+  if (btn) { if (n > 0) btn.classList.add('visible'); else btn.classList.remove('visible'); }
+  if (cnt) cnt.textContent = n;
+}
+function renderTable(list) {
+  var tbody = $('d-tbody');
+  if (!tbody) return;
+  if (!list.length) {
+    tbody.innerHTML = '<tr><td colspan="7"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Aucun prospect.<br>Ajoutez le premier !</p><button class="btn btn-cf" onclick="openModal()"><span>Ajouter un prospect</span></button></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = list.map(pRow).join('');
+}
+function pRow(p) {
+  var isOpen = S.enrichOpen === p.id;
+  var checked = S.selectedIds[p.id] ? ' checked' : '';
+  var enrichedDot = (p._enrich || p.enriched) ? '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ok);margin-left:4px;vertical-align:middle" title="Enrichi"></span>' : '';
+  return '<tr data-id="' + p.id + '"' + (isOpen ? ' class="expanded"' : '') + '>'
+    + '<td style="width:36px;padding:12px 6px 12px 14px"><input type="checkbox" class="row-cb" data-pid="' + p.id + '" onchange="toggleSelect(\'' + p.id + '\',this.checked)"' + checked + '/></td>'
+    + '<td><div class="name-cell"><button onclick="openCard(\'' + p.id + '\')" style="background:none;border:none;font-weight:600;color:var(--t1);cursor:pointer;font-family:inherit;font-size:inherit;text-align:left;padding:0">' + esc(p.name) + enrichedDot + '</button><small>' + esc(p.contact || '') + '</small></div></td>'
+    + '<td>' + esc(p.city || '—') + '</td>'
+    + '<td style="color:var(--t2);font-size:12px">' + esc(p.type || '—') + '</td>'
+    + '<td><select class="ss" data-pid="' + p.id + '" onchange="chgStatus(this)" style="height:26px;font-size:11px">' + sopts(p.status) + '</select></td>'
+    + '<td style="color:var(--t2);font-size:12px;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + esc(p.notes || '') + '</td>'
+    + '<td><div class="row-acts">'
+    + '<button class="btn btn-icon" onclick="toggleEnrich(\'' + p.id + '\')" title="Enrichissement IA" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></button>'
+    + '<button class="btn btn-icon" onclick="openModal(\'' + p.id + '\')" title="Modifier" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>'
+    + '<button class="btn btn-icon" onclick="delProspect(\'' + p.id + '\')" title="Supprimer" style="color:var(--err);width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button>'
+    + '</div></td></tr>'
+    + (isOpen ? eRow(p) : '');
+}
+function toggleSelect(id, checked) {
+  if (checked) S.selectedIds[id] = 1;
+  else delete S.selectedIds[id];
+  updateBatchBtn();
+}
+function selectAll(checked) {
+  if (checked) {
+    getFiltered().forEach(function(p) { S.selectedIds[p.id] = 1; });
+  } else {
+    S.selectedIds = {};
+  }
+  renderTable(getFiltered());
+  updateBatchBtn();
+}
+function eRow(p) {
+  if (p._enriching) {
+    return '<tr class="enrich-row"><td colspan="6"><div class="enrich-panel"><p style="font-size:13px;color:var(--t2)">Recherche en cours <span class="dot-a"></span><span class="dot-a"></span><span class="dot-a"></span></p></div></td></tr>';
+  }
+  if (!p._enrich) {
+    return '<tr class="enrich-row"><td colspan="6"><div class="enrich-panel">'
+      + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">'
+      + '<span style="font-size:13px;font-weight:600">Enrichissement IA — ' + esc(p.name) + '</span>'
+      + '<button class="btn btn-cf" onclick="doEnrich(\'' + p.id + '\')" style="height:36px;font-size:12px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Rechercher sur le web</span></button>'
+      + '</div><p style="font-size:12px;color:var(--t3)">OpenAI Web Search enrichit automatiquement ce prospect.</p>'
+      + '</div></td></tr>';
+  }
+  var e = p._enrich;
+  var fields = [
+    { k: 'Adresse', v: e.full_address },
+    { k: 'Téléphone', v: e.phone },
+    { k: 'Email', v: e.email },
+    { k: 'Horaires', v: e.opening_hours },
+    { k: 'Note Google', v: e.google_rating },
+    { k: 'Employés', v: e.employees_approx },
+    { k: 'Décideur', v: e.key_decision_maker },
+    { k: 'Description', v: e.description }
+  ].filter(function(f) { return f.v && f.v !== 'null'; });
+  return '<tr class="enrich-row"><td colspan="6"><div class="enrich-panel">'
+    + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">'
+    + '<span style="font-size:13px;font-weight:600">Données enrichies — ' + esc(p.name) + '</span>'
+    + '<button class="btn btn-ghost" onclick="doEnrich(\'' + p.id + '\')" style="font-size:11px;height:28px;padding:0 10px">'
+    + '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg> Actualiser</button>'
+    + '</div><div class="enrich-grid">'
+    + fields.map(function(f) { return '<div class="ei"><div class="ei-k">' + esc(f.k) + '</div><div class="ei-v">' + esc(String(f.v)) + '</div></div>'; }).join('')
+    + '</div></div></td></tr>';
+}
+function renderCards(list) {
+  var c = $('d-cards');
+  if (!c) return;
+  if (!list.length) {
+    c.innerHTML = '<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Aucun prospect.</p><button class="btn btn-cf" onclick="openModal()"><span>Ajouter</span></button></div>';
+    return;
+  }
+  c.innerHTML = list.map(function(p) {
+    return '<div class="p-card card">'
+      + '<div class="p-card-h"><div><div class="p-card-n">' + esc(p.name) + '</div>'
+      + '<div class="p-card-m">' + esc([p.type, p.city].filter(Boolean).join(' · ') || '—') + '</div></div>'
+      + badge(p.status || 'to_call') + '</div>'
+      + (p.notes ? '<div style="font-size:12px;color:var(--t2);line-height:1.5">' + esc(p.notes) + '</div>' : '')
+      + '<div class="p-card-f"><select class="ss" data-pid="' + p.id + '" onchange="chgStatus(this)">' + sopts(p.status) + '</select>'
+      + '<div style="display:flex;gap:4px">'
+      + '<button class="btn btn-icon" onclick="toggleEnrich(\'' + p.id + '\')" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></button>'
+      + '<button class="btn btn-icon" onclick="openModal(\'' + p.id + '\')" style="width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>'
+      + '<button class="btn btn-icon" onclick="delProspect(\'' + p.id + '\')" style="color:var(--err);width:32px;height:32px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button>'
+      + '</div></div></div>';
+  }).join('');
+}
+function chgStatus(sel) {
+  var p = S.prospects.filter(function(x) { return x.id === sel.dataset.pid; })[0];
+  if (!p) return;
+  p.status = sel.value;
+  saveProspects();
+  renderDash();
+  renderCC();
+}
+function delProspect(id) {
+  if (!confirm('Supprimer ce prospect ?')) return;
+  S.prospects = S.prospects.filter(function(p) { return p.id !== id; });
+  if (S.enrichOpen === id) S.enrichOpen = null;
+  delete S.selectedIds[id];
+  saveProspects();
+  renderDash();
+  renderCC();
+  toast('Supprimé.', 'ok');
+}
+
+// ===== BATCH ENRICHMENT =====
+function openBatchModal() {
+  var n = Object.keys(S.selectedIds).length;
+  if (!n) { toast('Sélectionne au moins un prospect.', 'err'); return; }
+  var cnt = $('batch-prospect-count');
+  if (cnt) cnt.textContent = n;
+  var fw = $('batch-fields-wrap'); if (fw) fw.style.display = '';
+  var pw = $('batch-progress-wrap'); if (pw) pw.style.display = 'none';
+  var rw = $('batch-result-wrap'); if (rw) rw.style.display = 'none';
+  var m = $('modal-batch'); if (m) m.classList.add('on');
+}
+function closeBatchModal() {
+  S.batchAbort = true;
+  var m = $('modal-batch'); if (m) m.classList.remove('on');
+}
+function startBatchEnrich() {
+  var ids = Object.keys(S.selectedIds);
+  if (!ids.length) return;
+  var fields = [];
+  document.querySelectorAll('.batch-field-cb:checked').forEach(function(cb) { fields.push(cb.value); });
+  if (!fields.length) { toast('Sélectionne au moins un champ.', 'err'); return; }
+  var prospects = ids.map(function(id) {
+    return S.prospects.filter(function(p) { return p.id === id; })[0];
+  }).filter(Boolean);
+  if (prospects.length > 20) { toast('Maximum 20 prospects par batch.', 'err'); return; }
+  S.batchBackup = JSON.parse(JSON.stringify(S.prospects));
+  S.batchAbort = false;
+  S.batchRunning = true;
+  var fw = $('batch-fields-wrap'); if (fw) fw.style.display = 'none';
+  var pw = $('batch-progress-wrap'); if (pw) pw.style.display = '';
+  var bar = $('batch-bar'); if (bar) bar.style.width = '0%';
+  var pl = $('batch-prog-label'); if (pl) pl.textContent = '0 / ' + prospects.length;
+  var log = $('batch-log'); if (log) log.textContent = 'Envoi en cours…';
+  var payload = { prospects: prospects.map(function(p) { return { id: p.id, name: p.name, city: p.city, domain: p.type, website: p.web }; }), fields: fields };
+  fetch('/api/enrich-batch', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(function(r) { return r.json(); }).then(function(d) {
+    S.batchRunning = false;
+    if (d.error) { toast('Erreur batch: ' + d.error, 'err'); return; }
+    var results = d.results || [];
+    var ok = 0, errs = 0;
+    results.forEach(function(r) {
+      if (r.error) { errs++; return; }
+      ok++;
+      var p = S.prospects.filter(function(x) { return x.id === r.id; })[0];
+      if (p && r.enriched) { p.enriched = r.enriched; p.enrichedAt = Date.now(); }
+    });
+    saveProspects();
+    renderDash();
+    var pw = $('batch-progress-wrap'); if (pw) pw.style.display = 'none';
+    var rw = $('batch-result-wrap'); if (rw) rw.style.display = '';
+    var rt = $('batch-result-title'); if (rt) rt.textContent = ok + ' enrichi(s)' + (errs ? ', ' + errs + ' erreur(s)' : '') + ' !';
+    var rd = $('batch-result-detail'); if (rd) rd.textContent = 'Résultats sauvegardés dans chaque fiche prospect.';
+    var undoBtn = $('batch-undo-btn');
+    if (undoBtn) {
+      undoBtn.style.display = '';
+      var undoTimer = setTimeout(function() { if (undoBtn) undoBtn.style.display = 'none'; }, 30000);
+      undoBtn.onclick = function() {
+        clearTimeout(undoTimer);
+        undoBatchEnrich();
+      };
+    }
+    S.selectedIds = {};
+    updateBatchBtn();
+  }).catch(function(e) {
+    S.batchRunning = false;
+    toast('Erreur réseau: ' + (e.message || 'inconnue'), 'err');
+    closeBatchModal();
+  });
+  var simulateProgress = function(done, total) {
+    if (done >= total || S.batchAbort) return;
+    var pct = Math.round(done / total * 100);
+    var bar = $('batch-bar'); if (bar) bar.style.width = pct + '%';
+    var pl = $('batch-prog-label'); if (pl) pl.textContent = done + ' / ' + total;
+    var log = $('batch-log');
+    if (log && prospects[done]) log.textContent = prospects[done].name || '';
+    setTimeout(function() { simulateProgress(done + 1, total); }, 900);
+  };
+  simulateProgress(0, prospects.length);
+}
+function undoBatchEnrich() {
+  if (!S.batchBackup) return;
+  S.prospects = S.batchBackup;
+  S.batchBackup = null;
+  saveProspects();
+  renderDash();
+  closeBatchModal();
+  toast('Enrichissement annulé — données restaurées.', 'ok');
+}
+
+// ===== PROSPECT CARD =====
+function openCard(id) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p) return;
+  S.cardProspect = p;
+  renderCard(p);
+  var bg = $('modal-pcard'); if (bg) bg.classList.add('on');
+}
+function closeCard() {
+  var bg = $('modal-pcard'); if (bg) bg.classList.remove('on');
+  S.cardProspect = null;
+}
+function renderCard(p) {
+  var inner = $('pcard-inner');
+  if (!inner) return;
+  if (!p.interactions) p.interactions = [];
+  if (!p.tags) p.tags = [];
+  var initials = (p.name || '?').split(' ').slice(0,2).map(function(w) { return w[0]; }).join('').toUpperCase();
+  var enriched = p.enriched || p._enrich || {};
+  var enrichedFields = [
+    { k: '📞 Téléphone', v: enriched.phone || enriched.full_address && '' || p.phone },
+    { k: '📧 Email', v: enriched.email || p.email },
+    { k: '🌐 Site web', v: enriched.website || p.web },
+    { k: '📍 Adresse', v: enriched.address || enriched.full_address || p.city },
+    { k: '🏢 Secteur', v: enriched.industry || p.type },
+    { k: '👥 Employés', v: enriched.employees || enriched.employees_approx },
+    { k: '🎯 Décisionnaire', v: enriched.decision_maker || enriched.key_decision_maker || p.contact },
+    { k: '📝 Description', v: enriched.description }
+  ].filter(function(f) { return f.v && f.v !== 'null'; });
+  var linkedTodos = S.todos.filter(function(t) { return t.prospectId === p.id; });
+  inner.innerHTML = '<div class="pcard-hide-print" style="display:flex;justify-content:flex-end;gap:8px;margin-bottom:16px">'
+    + '<button class="btn btn-ghost" onclick="window.print()" style="height:36px;font-size:13px">📄 PDF</button>'
+    + '<button class="btn btn-ghost" onclick="closeCard()" style="height:36px;font-size:13px" aria-label="Fermer">✕ Fermer</button>'
+    + '</div>'
+    + '<div class="pcard-hd">'
+    + '<div class="pcard-av">' + esc(initials) + '</div>'
+    + '<div style="flex:1">'
+    + '<div style="font-family:\'Space Grotesk\',sans-serif;font-size:20px;font-weight:700">' + esc(p.name) + '</div>'
+    + '<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px">'
+    + badge(p.status || 'to_call')
+    + (p.tags.map ? p.tags.map(function(t) { return '<button class="tag-chip" onclick="removeTag(\'' + p.id + '\',\'' + esc(t) + '\')">' + esc(t) + ' ✕</button>'; }).join('') : '')
+    + '<span style="font-size:11px;color:var(--t3)">Ajouté le ' + new Date(p.at||Date.now()).toLocaleDateString('fr-CH') + '</span>'
+    + '</div>'
+    + '<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">'
+    + '<input id="pcard-tag-input" class="fi fi-sm" type="text" placeholder="Ajouter un tag…" style="width:150px" onkeydown="if(event.key===\'Enter\')addTag(\'' + p.id + '\')"/>'
+    + '<button class="btn btn-ghost" onclick="addTag(\'' + p.id + '\')" style="height:32px;font-size:12px">+</button>'
+    + '</div>'
+    + '</div>'
+    + '</div>'
+    + '<div class="pcard-grid">'
+    + '<div class="pcard-sec">'
+    + '<div class="pcard-sec-title">Infos contact</div>'
+    + [
+        { k: '📞', v: enriched.phone || p.phone, href: enriched.phone || p.phone ? 'tel:' + (enriched.phone || p.phone) : null },
+        { k: '📧', v: enriched.email || p.email, href: enriched.email || p.email ? 'mailto:' + (enriched.email || p.email) : null },
+        { k: '🌐', v: enriched.website || p.web, href: enriched.website || p.web },
+        { k: '📍', v: p.city || enriched.address },
+        { k: '🏢', v: p.type || enriched.industry },
+        { k: '👥', v: enriched.employees || enriched.employees_approx },
+        { k: '🎯', v: p.contact || enriched.decision_maker }
+      ].filter(function(f) { return f.v; }).map(function(f) {
+        var val = f.href ? '<a href="' + esc(f.href) + '" style="color:var(--violet2)">' + esc(f.v) + '</a>' : esc(f.v);
+        return '<div class="pcard-field"><span class="pcard-field-icon">' + f.k + '</span><span class="pcard-field-val">' + val + '</span></div>';
+      }).join('')
+    + '</div>'
+    + '<div class="pcard-sec">'
+    + '<div class="pcard-sec-title">Historique interactions</div>'
+    + '<div class="timeline" id="pcard-timeline">' + renderTimeline(p) + '</div>'
+    + '<div style="margin-top:12px;display:flex;flex-direction:column;gap:6px" id="pcard-add-interaction">'
+    + '<select class="fi fi-sm" id="int-type"><option value="call">📞 Appel</option><option value="email">📧 Email</option><option value="rdv">🤝 RDV</option><option value="note">📝 Note</option><option value="visit">🏠 Visite</option></select>'
+    + '<select class="fi fi-sm" id="int-outcome"><option value="neutral">— Neutre</option><option value="positive">✅ Positif</option><option value="negative">❌ Négatif</option></select>'
+    + '<input class="fi fi-sm" type="text" id="int-note" placeholder="Note…"/>'
+    + '<button class="btn btn-ghost" onclick="addInteraction(\'' + p.id + '\')" style="height:32px;font-size:12px">+ Ajouter interaction</button>'
+    + '</div>'
+    + '</div>'
+    + '</div>'
+    + '<div class="pcard-sec" style="margin-bottom:12px">'
+    + '<div class="pcard-sec-title">Notes personnalisées</div>'
+    + '<textarea class="fi" id="pcard-notes" style="min-height:100px" oninput="debounceNotes(\'' + p.id + '\')">' + esc(p.notes || '') + '</textarea>'
+    + '</div>'
+    + '<div class="pcard-sec">'
+    + '<div class="pcard-sec-title" style="display:flex;justify-content:space-between;align-items:center">Tâches liées <button class="btn btn-ghost pcard-hide-print" onclick="openAddTaskForProspect(\'' + p.id + '\')" style="height:26px;font-size:11px;padding:0 8px">+ Créer</button></div>'
+    + (linkedTodos.length ? '<div style="display:flex;flex-direction:column;gap:6px">' + linkedTodos.map(function(t) {
+        return '<div style="font-size:13px;display:flex;align-items:center;gap:8px">'
+          + '<span>' + (t.status === 'done' ? '✅' : t.status === 'in_progress' ? '▶' : '⬜') + '</span>'
+          + '<span style="' + (t.status === 'done' ? 'text-decoration:line-through;color:var(--t3)' : '') + '">' + esc(t.text) + '</span>'
+          + (t.dueDate ? '<span style="font-size:11px;color:var(--t3)">' + esc(t.dueDate) + '</span>' : '')
+          + '</div>';
+      }).join('') + '</div>'
+    : '<div style="font-size:13px;color:var(--t3)">Aucune tâche liée.</div>')
+    + '</div>';
+}
+function renderTimeline(p) {
+  if (!p.interactions || !p.interactions.length) return '<div style="font-size:13px;color:var(--t3)">Aucune interaction.</div>';
+  var icons = { call: '📞', email: '📧', rdv: '🤝', note: '📝', visit: '🏠' };
+  return p.interactions.slice().reverse().map(function(it, i) {
+    var cls = it.outcome === 'positive' ? 'tl-pos' : it.outcome === 'negative' ? 'tl-neg' : 'tl-neu';
+    var realIdx = p.interactions.length - 1 - i;
+    return '<div class="tl-item ' + cls + '">'
+      + '<div class="tl-dot">' + (icons[it.type] || '📝') + '</div>'
+      + '<div style="flex:1"><div style="font-size:13px">' + esc(it.note || it.type) + '</div>'
+      + '<div style="font-size:11px;color:var(--t3)">' + new Date(it.at||Date.now()).toLocaleDateString('fr-CH') + '</div></div>'
+      + '<button onclick="deleteInteraction(\'' + p.id + '\',' + realIdx + ')" style="background:none;border:none;color:var(--t3);cursor:pointer;font-size:14px;padding:2px" aria-label="Supprimer">✕</button>'
+      + '</div>';
+  }).join('');
+}
+function addInteraction(id) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p) return;
+  if (!p.interactions) p.interactions = [];
+  var type = $('int-type') ? $('int-type').value : 'note';
+  var outcome = $('int-outcome') ? $('int-outcome').value : 'neutral';
+  var note = $('int-note') ? $('int-note').value.trim() : '';
+  p.interactions.push({ id: genId(), type: type, outcome: outcome, note: note, at: Date.now() });
+  saveProspects();
+  var el = $('pcard-timeline');
+  if (el) el.innerHTML = renderTimeline(p);
+  var noteInput = $('int-note'); if (noteInput) noteInput.value = '';
+  toast('Interaction ajoutée.', 'ok');
+}
+function deleteInteraction(id, idx) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p || !p.interactions) return;
+  p.interactions.splice(idx, 1);
+  saveProspects();
+  var el = $('pcard-timeline');
+  if (el) el.innerHTML = renderTimeline(p);
+  toast('Interaction supprimée.', 'ok');
+}
+function addTag(id) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p) return;
+  if (!p.tags) p.tags = [];
+  var inp = $('pcard-tag-input');
+  var tag = inp ? inp.value.trim() : '';
+  if (!tag) return;
+  if (p.tags.indexOf(tag) !== -1) { toast('Tag déjà présent.'); return; }
+  p.tags.push(tag);
+  saveProspects();
+  renderCard(p);
+  toast('Tag ajouté.', 'ok');
+}
+function removeTag(id, tag) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p || !p.tags) return;
+  p.tags = p.tags.filter(function(t) { return t !== tag; });
+  saveProspects();
+  renderCard(p);
+}
+var _notesTimer = null;
+function debounceNotes(id) {
+  if (_notesTimer) clearTimeout(_notesTimer);
+  _notesTimer = setTimeout(function() {
+    var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+    if (!p) return;
+    var el = $('pcard-notes');
+    if (el) { p.notes = el.value; saveProspects(); toast('Notes sauvegardées.', 'ok'); }
+  }, 800);
+}
+function openAddTaskForProspect(prospectId) {
+  closeCard();
+  nav('tasks');
+  setTimeout(function() {
+    var sel = $('t-prospect');
+    if (sel) sel.value = prospectId;
+    var inp = $('t-text'); if (inp) inp.focus();
+  }, 100);
+}
+
+// ===== TODOS =====
+function loadTodos() {
+  try { S.todos = JSON.parse(localStorage.getItem('ap_todos') || '[]'); } catch(e) { S.todos = []; }
+  updateTaskBadge();
+  scheduleAllReminders();
+  initNotifications();
+}
+function saveTodos() {
+  try { localStorage.setItem('ap_todos', JSON.stringify(S.todos)); } catch(e) {}
+  updateTaskBadge();
+}
+function updateTaskBadge() {
+  var now = Date.now();
+  var overdue = S.todos.filter(function(t) {
+    return t.status !== 'done' && t.dueDate && new Date(t.dueDate).getTime() < now;
+  }).length;
+  var urgent = S.todos.filter(function(t) { return t.status !== 'done' && t.priority === 'high'; }).length;
+  var n = overdue + urgent;
+  ['nav-task-badge','bnav-task-badge'].forEach(function(id) {
+    var el = $(id);
+    if (!el) return;
+    if (n > 0) { el.textContent = n; el.style.display = ''; }
+    else el.style.display = 'none';
+  });
+}
+
+// ===== NOTIFICATIONS =====
+var _reminderTimers = {};
+function initNotifications() {
+  var btn = $('notif-perm-btn');
+  if (!('Notification' in window)) return;
+  if (Notification.permission === 'granted') {
+    if (btn) btn.style.display = 'none';
+  } else if (Notification.permission !== 'denied') {
+    if (btn) btn.style.display = '';
+  }
+}
+function requestNotifPermission() {
+  if (!('Notification' in window)) { toast('Notifications non supportées.', 'err'); return; }
+  Notification.requestPermission().then(function(perm) {
+    var btn = $('notif-perm-btn');
+    if (perm === 'granted') {
+      if (btn) btn.style.display = 'none';
+      scheduleAllReminders();
+      toast('Notifications activées !', 'ok');
+    } else {
+      toast('Permission refusée.', 'err');
+    }
+  });
+}
+function scheduleReminder(todo) {
+  if (!todo.reminderAt || todo.status === 'done') return;
+  var delay = todo.reminderAt - Date.now();
+  if (delay <= 0) return;
+  if (_reminderTimers[todo.id]) clearTimeout(_reminderTimers[todo.id]);
+  _reminderTimers[todo.id] = setTimeout(function() {
+    delete _reminderTimers[todo.id];
+    if (!('Notification' in window) || Notification.permission !== 'granted') return;
+    var t = S.todos.filter(function(x) { return x.id === todo.id; })[0];
+    if (!t || t.status === 'done') return;
+    try {
+      new Notification('Rappel — Alpinia Pro', {
+        body: t.text,
+        icon: '/favicon.ico',
+        tag: 'todo-' + t.id
+      });
+    } catch(e) {}
+    toast('Rappel : ' + t.text);
+  }, delay);
+}
+function scheduleAllReminders() {
+  Object.keys(_reminderTimers).forEach(function(id) { clearTimeout(_reminderTimers[id]); });
+  _reminderTimers = {};
+  S.todos.forEach(function(t) { scheduleReminder(t); });
+}
+
+function addTodo() {
+  var textEl = $('t-text');
+  var text = textEl ? textEl.value.trim() : '';
+  if (!text) { toast('Entre une tâche.', 'err'); return; }
+  var prio = $('t-prio') ? $('t-prio').value : 'medium';
+  var cat = $('t-cat') ? $('t-cat').value : 'call';
+  var due = $('t-due') ? $('t-due').value : '';
+  var reminderVal = $('t-reminder') ? $('t-reminder').value : '';
+  var reminderAt = reminderVal ? new Date(reminderVal).getTime() : null;
+  var pid = $('t-prospect') ? $('t-prospect').value : '';
+  S.todos.unshift({
+    id: genId(), text: text, status: 'todo', priority: prio,
+    category: cat, dueDate: due || null, prospectId: pid || null,
+    reminderAt: reminderAt || null,
+    notes: '', at: Date.now(), doneAt: null
+  });
+  saveTodos();
+  renderTasks();
+  if (textEl) textEl.value = '';
+  var remEl = $('t-reminder'); if (remEl) remEl.value = '';
+  scheduleAllReminders();
+  toast('Tâche ajoutée.', 'ok');
+}
+function setTodoStatus(id, status) {
+  var t = S.todos.filter(function(x) { return x.id === id; })[0];
+  if (!t) return;
+  t.status = status;
+  if (status === 'done') t.doneAt = Date.now(); else t.doneAt = null;
+  saveTodos();
+  renderTasks();
+}
+function deleteTodo(id) {
+  S.todos = S.todos.filter(function(t) { return t.id !== id; });
+  saveTodos();
+  renderTasks();
+  toast('Tâche supprimée.', 'ok');
+}
+function refreshTaskProspects() {
+  var sel = $('t-prospect');
+  if (!sel) return;
+  var cur = sel.value;
+  sel.innerHTML = '<option value="">Aucun prospect</option>'
+    + S.prospects.map(function(p) {
+      return '<option value="' + p.id + '"' + (p.id === cur ? ' selected' : '') + '>' + esc(p.name) + (p.city ? ' — ' + esc(p.city) : '') + '</option>';
+    }).join('');
+}
+var CAT_LABELS = { call: 'Appel', email: 'Email', follow_up: 'Relance', meeting: 'RDV', admin: 'Admin', agency: 'Agence' };
+var PRIO_LABELS = { high: '! URGENT', medium: 'Normal', low: 'Basse' };
+function renderTasks() {
+  var list = $('task-list');
+  if (!list) return;
+  var f = S.taskFilter;
+  var now = Date.now();
+  var tasks = S.todos.filter(function(t) {
+    if (f === 'all') return true;
+    if (f === 'todo') return t.status === 'todo';
+    if (f === 'in_progress') return t.status === 'in_progress';
+    if (f === 'done') return t.status === 'done';
+    if (f === 'urgent') return t.priority === 'high' && t.status !== 'done';
+    return true;
+  });
+  document.querySelectorAll('.t-filter-btn').forEach(function(b) {
+    b.classList.toggle('on', b.dataset.tf === f);
+  });
+  if (!tasks.length) {
+    list.innerHTML = '<div class="empty" style="padding:40px 0"><p>Aucune tâche.</p></div>';
+    return;
+  }
+  list.innerHTML = tasks.map(function(t) {
+    var overdue = t.status !== 'done' && t.dueDate && new Date(t.dueDate).getTime() < now;
+    var pName = '';
+    if (t.prospectId) {
+      var p = S.prospects.filter(function(x) { return x.id === t.prospectId; })[0];
+      if (p) pName = p.name;
+    }
+    return '<div class="task-item' + (t.status === 'done' ? ' done-item' : '') + '">'
+      + '<div class="task-cb-wrap"><div class="task-cb' + (t.status === 'done' ? ' done' : '') + '" onclick="setTodoStatus(\'' + t.id + '\',' + (t.status === 'done' ? '\'todo\'' : '\'done\'') + ')">'
+      + (t.status === 'done' ? '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' : '')
+      + '</div></div>'
+      + '<div class="task-body">'
+      + '<div class="task-txt' + (t.status === 'done' ? ' done' : '') + '">' + esc(t.text) + '</div>'
+      + '<div class="task-meta">'
+      + '<span class="cat-badge cat-' + (t.category || 'admin') + '">' + (CAT_LABELS[t.category] || t.category) + '</span>'
+      + (t.priority === 'high' ? '<span class="prio-high">URGENT</span>' : '')
+      + (t.priority === 'low' ? '<span class="prio-low">Basse</span>' : '')
+      + (t.dueDate ? '<span class="' + (overdue ? 'overdue' : '') + '" style="font-size:11px;color:' + (overdue ? 'var(--err)' : 'var(--t3)') + '">' + (overdue ? '⚠ ' : '') + esc(t.dueDate) + '</span>' : '')
+      + (t.status === 'in_progress' ? '<span style="font-size:10px;color:var(--warn);font-weight:600">▶ EN COURS</span>' : '')
+      + (pName ? '<button class="task-prospect-link" onclick="openCard(\'' + t.prospectId + '\')">' + esc(pName) + '</button>' : '')
+      + (t.reminderAt && t.status !== 'done' ? '<span title="Rappel: ' + new Date(t.reminderAt).toLocaleString('fr-CH') + '" style="font-size:12px" aria-label="Rappel programmé">🔔</span>' : '')
+      + '</div>'
+      + '</div>'
+      + '<div class="task-actions">'
+      + (t.status === 'todo' ? '<button class="btn btn-icon" onclick="setTodoStatus(\'' + t.id + '\',\'in_progress\')" title="En cours" style="width:28px;height:28px;font-size:11px">▶</button>' : '')
+      + (t.status === 'in_progress' ? '<button class="btn btn-icon" onclick="setTodoStatus(\'' + t.id + '\',\'todo\')" title="À faire" style="width:28px;height:28px;font-size:11px">⏸</button>' : '')
+      + '<button class="btn btn-icon" onclick="deleteTodo(\'' + t.id + '\')" style="color:var(--err);width:28px;height:28px" aria-label="Supprimer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg></button>'
+      + '</div>'
+      + '</div>';
+  }).join('');
+}
+function toggleEnrich(id) {
+  S.enrichOpen = S.enrichOpen === id ? null : id;
+  renderDash();
+}
+function doEnrich(id) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p) return;
+  p._enriching = true;
+  delete p._enrich;
+  renderDash();
+  api('enrich', { prospectName: p.name, website: p.web, type: p.type, city: p.city }).then(function(d) {
+    p._enriching = false;
+    if (d.error) { toast('Enrichissement : ' + d.error, 'err'); renderDash(); return; }
+    p._enrich = d.enrichedData;
+    renderDash();
+    toast('Enrichissement terminé — ' + p.name, 'ok');
+  });
+}
+
+// ===== COLD CALL =====
+function renderCC() {
+  var list = S.ccShowAll
+    ? S.prospects
+    : S.prospects.filter(function(p) { return !p.status || p.status === 'to_call' || p.status === 'voicemail'; });
+  var toCall = S.prospects.filter(function(p) { return !p.status || p.status === 'to_call'; }).length;
+  var treated = S.prospects.filter(function(p) { return p.status && p.status !== 'to_call'; }).length;
+  var ccCount = $('cc-count');
+  var ccToggle = $('cc-toggle');
+  var cont = $('cc-list');
+  if (ccCount) ccCount.textContent = toCall + ' à appeler · ' + treated + ' traités';
+  if (ccToggle) ccToggle.textContent = S.ccShowAll ? 'À appeler seulement' : 'Voir tous';
+  if (!cont) return;
+  if (!list.length) {
+    cont.innerHTML = '<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><p>Aucun prospect à appeler.</p></div>';
+    return;
+  }
+  function dc(s) {
+    if (s === 'video_rdv') return 'var(--ok)';
+    if (s === 'refusal') return 'var(--err)';
+    if (s === 'voicemail') return 'var(--warn)';
+    if (s === 'called') return 'var(--t3)';
+    return 'var(--violet2)';
+  }
+  cont.innerHTML = list.map(function(p) {
+    return '<div class="cc-item card">'
+      + '<div style="width:8px;height:8px;border-radius:50%;background:' + dc(p.status) + ';flex:none"></div>'
+      + '<div class="cc-info"><div class="cc-name">' + esc(p.name) + '</div>'
+      + '<div class="cc-sub">' + esc([p.phone, p.city, p.type].filter(Boolean).join(' · ') || '—') + '</div></div>'
+      + '<div class="cc-acts">'
+      + (p.phone ? '<a href="tel:' + esc(p.phone) + '" class="btn btn-icon" aria-label="Appeler" style="width:36px;height:36px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>' : '')
+      + '<select class="ss" data-pid="' + p.id + '" onchange="chgStatus(this)" aria-label="Statut">' + sopts(p.status) + '</select>'
+      + '</div></div>';
+  }).join('');
+}
+
+// ===== MODAL =====
+var editId = null;
+function openModal(id) {
+  editId = id || null;
+  var p = id ? S.prospects.filter(function(x) { return x.id === id; })[0] : null;
+  var title = $('modal-title');
+  if (title) title.textContent = p ? 'Modifier le prospect' : 'Nouveau prospect';
+  function val(id, v) { var el = $(id); if (el) el.value = v || ''; }
+  val('m-name', p ? p.name : '');
+  val('m-city', p ? p.city : '');
+  val('m-type', p ? p.type : '');
+  val('m-phone', p ? p.phone : '');
+  val('m-email', p ? p.email : '');
+  val('m-web', p ? p.web : '');
+  val('m-status', p ? (p.status || 'to_call') : 'to_call');
+  val('m-contact', p ? p.contact : '');
+  val('m-notes', p ? p.notes : '');
+  var modal = $('modal');
+  if (modal) modal.classList.add('on');
+  setTimeout(function() { var el = $('m-name'); if (el) el.focus(); }, 50);
+}
+function closeModal() {
+  var modal = $('modal');
+  if (modal) modal.classList.remove('on');
+  editId = null;
+}
+function saveModal() {
+  var nameEl = $('m-name');
+  var name = nameEl ? nameEl.value.trim() : '';
+  if (!name) { toast('Le nom est requis.', 'err'); if (nameEl) nameEl.focus(); return; }
+  function fv(id) { var el = $(id); return el ? el.value.trim() : ''; }
+  function fvr(id) { var el = $(id); return el ? el.value : ''; }
+  if (editId) {
+    var p = S.prospects.filter(function(x) { return x.id === editId; })[0];
+    if (p) {
+      p.name = name; p.city = fv('m-city'); p.type = fv('m-type');
+      p.phone = fv('m-phone'); p.email = fv('m-email'); p.web = fv('m-web');
+      p.status = fvr('m-status'); p.contact = fv('m-contact'); p.notes = fv('m-notes');
+    }
+  } else {
+    S.prospects.unshift({
+      id: genId(), name: name, city: fv('m-city'), type: fv('m-type'),
+      phone: fv('m-phone'), email: fv('m-email'), web: fv('m-web'),
+      status: fvr('m-status'), contact: fv('m-contact'), notes: fv('m-notes'), at: Date.now()
+    });
+  }
+  saveProspects();
+  renderDash();
+  renderCC();
+  closeModal();
+  toast(editId ? 'Prospect modifié.' : 'Prospect ajouté.', 'ok');
+}
+
+// ===== EXPORT (CSV + TXT) =====
+function showExportMenu() {
+  var existing = $('export-menu');
+  if (existing) { existing.remove(); return; }
+  var menu = document.createElement('div');
+  menu.id = 'export-menu';
+  menu.style.cssText = 'position:fixed;z-index:500;background:var(--s2);border:1px solid var(--br2);border-radius:var(--r14);padding:6px;box-shadow:0 8px 32px rgba(0,0,0,.5);min-width:180px';
+  var btnEl = $('btn-export');
+  var rect = btnEl ? btnEl.getBoundingClientRect() : {bottom:60,left:0};
+  menu.style.top = (rect.bottom + 6) + 'px';
+  menu.style.left = rect.left + 'px';
+  function item(label, fn) {
+    var b = document.createElement('button');
+    b.style.cssText = 'display:block;width:100%;text-align:left;background:none;border:none;color:var(--t1);font-size:13px;padding:8px 12px;cursor:pointer;border-radius:var(--r10);font-family:inherit';
+    b.textContent = label;
+    b.addEventListener('mouseenter', function() { b.style.background = 'rgba(255,255,255,.07)'; });
+    b.addEventListener('mouseleave', function() { b.style.background = 'none'; });
+    b.addEventListener('click', function() { menu.remove(); fn(); });
+    menu.appendChild(b);
+  }
+  item('📄  Export CSV', exportCSV);
+  item('📝  Export Texte (.txt)', exportTXT);
+  document.body.appendChild(menu);
+  setTimeout(function() {
+    document.addEventListener('click', function rm(e) { if (!menu.contains(e.target)) { menu.remove(); document.removeEventListener('click', rm); } });
+  }, 10);
+}
+function exportCSV() {
+  var cols = ['Nom','Ville','Type','Telephone','Email','Site web','Statut','Contact','Notes'];
+  var rows = [cols.join(';')];
+  S.prospects.forEach(function(p) {
+    var row = [
+      p.name || '', p.city || '', p.type || '', p.phone || '',
+      p.email || '', p.web || '', p.status || 'to_call',
+      p.contact || '', (p.notes || '').replace(/\n/g,' ')
+    ].map(function(v) { return '"' + String(v).replace(/"/g,'""') + '"'; });
+    rows.push(row.join(';'));
+  });
+  var blob = new Blob(['﻿' + rows.join('\r\n')], { type: 'text/csv;charset=utf-8;' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'prospects-alpinia.csv';
+  document.body.appendChild(a); a.click();
+  setTimeout(function() { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+  toast('Export CSV téléchargé (' + S.prospects.length + ' prospects)', 'ok');
+}
+
+// ===== CSV IMPORT =====
+function importCSV(file) {
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var text = e.target.result;
+    var lines = text.replace(/\r\n/g,'\n').replace(/\r/g,'\n').split('\n').filter(function(l) { return l.trim(); });
+    if (lines.length < 2) { toast('Fichier CSV vide ou invalide.', 'err'); return; }
+    var header = parseCSVLine(lines[0]).map(function(h) { return h.toLowerCase().trim(); });
+    function col(h, aliases) {
+      var idx = header.indexOf(h);
+      if (idx !== -1) return idx;
+      for (var i = 0; i < aliases.length; i++) {
+        idx = header.indexOf(aliases[i]);
+        if (idx !== -1) return idx;
+      }
+      return -1;
+    }
+    var iName    = col('nom',        ['name','etablissement','établissement','company']);
+    var iCity    = col('ville',      ['city','localité','localite']);
+    var iType    = col('type',       ['secteur','category','categorie']);
+    var iPhone   = col('telephone',  ['téléphone','phone','tel']);
+    var iEmail   = col('email',      ['mail','courriel']);
+    var iWeb     = col('site web',   ['web','website','url','site']);
+    var iStatus  = col('statut',     ['status','état','etat']);
+    var iContact = col('contact',    ['décideur','decideur','contact décideur']);
+    var iNotes   = col('notes',      ['note','observation','commentaire']);
+
+    var added = 0, skipped = 0;
+    for (var i = 1; i < lines.length; i++) {
+      var vals = parseCSVLine(lines[i]);
+      var name = iName !== -1 ? (vals[iName] || '').trim() : '';
+      if (!name) { skipped++; continue; }
+      var status = iStatus !== -1 ? (vals[iStatus] || '').trim().toLowerCase() : 'to_call';
+      var validStatuses = ['to_call','called','voicemail','refusal','video_rdv'];
+      if (validStatuses.indexOf(status) === -1) status = 'to_call';
+      S.prospects.push({
+        id: genId(),
+        name: name,
+        city:    iCity    !== -1 ? (vals[iCity]    || '').trim() : '',
+        type:    iType    !== -1 ? (vals[iType]    || '').trim() : '',
+        phone:   iPhone   !== -1 ? (vals[iPhone]   || '').trim() : '',
+        email:   iEmail   !== -1 ? (vals[iEmail]   || '').trim() : '',
+        web:     iWeb     !== -1 ? (vals[iWeb]     || '').trim() : '',
+        status:  status,
+        contact: iContact !== -1 ? (vals[iContact] || '').trim() : '',
+        notes:   iNotes   !== -1 ? (vals[iNotes]   || '').trim() : '',
+        at: Date.now()
+      });
+      added++;
+    }
+    saveProspects();
+    renderDash();
+    renderCC();
+    toast(added + ' prospect(s) importé(s)' + (skipped ? ' · ' + skipped + ' ignoré(s)' : ''), 'ok');
+  };
+  reader.onerror = function() { toast('Erreur de lecture du fichier.', 'err'); };
+  reader.readAsText(file, 'UTF-8');
+}
+
+function exportTXT() {
+  if (!S.prospects.length) { toast('Aucun prospect à exporter.', 'err'); return; }
+  var lines = ['PROSPECTS ALPINIA PRO — ' + new Date().toLocaleDateString('fr-CH'), '='.repeat(50), ''];
+  S.prospects.forEach(function(p, i) {
+    lines.push((i+1) + '. ' + p.name + (p.city ? ' — ' + p.city : '') + (p.type ? ' (' + p.type + ')' : ''));
+    if (p.phone)   lines.push('   Tél: ' + p.phone);
+    if (p.email)   lines.push('   Email: ' + p.email);
+    if (p.web)     lines.push('   Web: ' + p.web);
+    if (p.contact) lines.push('   Contact: ' + p.contact);
+    if (p.notes)   lines.push('   Notes: ' + p.notes);
+    var st = ST_LABELS[p.status] || 'À appeler';
+    lines.push('   Statut: ' + st);
+    lines.push('');
+  });
+  var blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8;' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a'); a.href = url; a.download = 'prospects-alpinia.txt';
+  document.body.appendChild(a); a.click();
+  setTimeout(function() { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+  toast('Export texte téléchargé (' + S.prospects.length + ' prospects)', 'ok');
+}
+
+// ===== AI IMPORT =====
+var aiParsed = [];
+function openAIImport() {
+  aiParsed = [];
+  var txt = $('ai-import-txt'); if (txt) txt.value = '';
+  var wrap = $('ai-preview-wrap'); if (wrap) wrap.style.display = 'none';
+  var confirmBtn = $('ai-confirm-btn'); if (confirmBtn) confirmBtn.style.display = 'none';
+  var modal = $('modal-ai'); if (modal) modal.classList.add('on');
+}
+function closeAIImport() {
+  var modal = $('modal-ai'); if (modal) modal.classList.remove('on');
+  aiParsed = [];
+}
+function analyzeWithAI() {
+  var txt = $('ai-import-txt');
+  var content = txt ? txt.value.trim() : '';
+  if (!content) { toast('Colle du texte à analyser.', 'err'); return; }
+  var analyzeBtn = $('ai-analyze-btn');
+  if (analyzeBtn) { analyzeBtn.disabled = true; analyzeBtn.querySelector('span').textContent = 'Analyse en cours…'; }
+  var system = 'Tu es un extracteur de données de prospects commerciaux. Tu reçois du texte brut et tu extrais chaque établissement/entreprise mentionné.';
+  var prompt = 'Extrait tous les prospects/établissements de ce texte et retourne UNIQUEMENT un tableau JSON valide, sans markdown ni texte autour.\n'
+    + 'Format de chaque élément: {"name":"","city":"","type":"","phone":"","email":"","web":"","contact":"","notes":""}\n'
+    + 'Mets "" pour les champs introuvables. Le champ "name" est obligatoire.\n\n'
+    + 'Texte à analyser:\n' + content;
+  api('ai', { system: system, messages: [{ role: 'user', content: prompt }], model: 'gpt-4o-mini' }).then(function(d) {
+    if (analyzeBtn) { analyzeBtn.disabled = false; analyzeBtn.querySelector('span').textContent = 'Analyser avec l\'IA'; }
+    if (d.error) { toast('Erreur IA : ' + d.error, 'err'); return; }
+    var text = (d.content && d.content[0] && d.content[0].text) ? d.content[0].text : '';
+    var m = text.match(/\[[\s\S]*\]/);
+    if (!m) { toast('L\'IA n\'a pas trouvé de prospects dans ce texte.', 'err'); return; }
+    try {
+      var parsed = JSON.parse(m[0]);
+      aiParsed = parsed.filter(function(p) { return p.name && p.name.trim(); });
+    } catch(e) { toast('Erreur de parsing IA.', 'err'); return; }
+    if (!aiParsed.length) { toast('Aucun prospect détecté. Essaie avec plus de détails.', 'err'); return; }
+    renderAIPreview();
+  });
+}
+function renderAIPreview() {
+  var wrap = $('ai-preview-wrap');
+  var list = $('ai-preview-list');
+  var title = $('ai-preview-title');
+  var confirmBtn = $('ai-confirm-btn');
+  var label = $('ai-confirm-label');
+  if (!wrap || !list) return;
+  if (title) title.textContent = aiParsed.length + ' prospect(s) détecté(s)';
+  if (label) label.textContent = 'Importer ' + aiParsed.length + ' prospect(s)';
+  list.innerHTML = aiParsed.map(function(p, i) {
+    return '<div style="background:rgba(255,255,255,.04);border-radius:var(--r10);padding:10px 14px;display:flex;align-items:center;gap:10px">'
+      + '<div style="flex:1">'
+      + '<div style="font-weight:600;font-size:13px">' + esc(p.name) + (p.city ? ' <span style="color:var(--t3);font-weight:400">— ' + esc(p.city) + '</span>' : '') + '</div>'
+      + '<div style="font-size:11px;color:var(--t3);margin-top:2px">'
+      + [p.type, p.phone, p.email].filter(Boolean).join(' · ')
+      + '</div></div>'
+      + '<button onclick="removeAIParsed(' + i + ')" style="background:none;border:none;color:var(--t3);cursor:pointer;padding:4px;font-size:16px;line-height:1" title="Retirer">&times;</button>'
+      + '</div>';
+  }).join('');
+  wrap.style.display = 'block';
+  if (confirmBtn) confirmBtn.style.display = '';
+}
+function removeAIParsed(i) {
+  aiParsed.splice(i, 1);
+  if (!aiParsed.length) {
+    var wrap = $('ai-preview-wrap'); if (wrap) wrap.style.display = 'none';
+    var confirmBtn = $('ai-confirm-btn'); if (confirmBtn) confirmBtn.style.display = 'none';
+    return;
+  }
+  renderAIPreview();
+}
+function confirmAIImport() {
+  if (!aiParsed.length) return;
+  aiParsed.forEach(function(p) {
+    S.prospects.unshift({
+      id: genId(), name: p.name.trim(), city: (p.city||'').trim(), type: (p.type||'').trim(),
+      phone: (p.phone||'').trim(), email: (p.email||'').trim(), web: (p.web||'').trim(),
+      status: 'to_call', contact: (p.contact||'').trim(), notes: (p.notes||'').trim(), at: Date.now()
+    });
+  });
+  saveProspects(); renderDash(); renderCC();
+  toast(aiParsed.length + ' prospect(s) importé(s) via IA !', 'ok');
+  closeAIImport();
+}
+
+// ===== SCRIPTS — prospect selector =====
+function refreshScriptProspects() {
+  var sel = $('sc-prospect');
+  if (!sel) return;
+  var cur = sel.value;
+  sel.innerHTML = '<option value="">— Saisie manuelle —</option>'
+    + S.prospects.map(function(p) {
+      return '<option value="' + p.id + '"' + (p.id === cur ? ' selected' : '') + '>'
+        + esc(p.name) + (p.city ? ' — ' + esc(p.city) : '') + '</option>';
+    }).join('');
+}
+function onScriptProspectChange() {
+  var sel = $('sc-prospect');
+  if (!sel || !sel.value) return;
+  var p = S.prospects.filter(function(x) { return x.id === sel.value; })[0];
+  if (!p) return;
+  var scName = $('sc-name'), scCo = $('sc-co'), scSec = $('sc-sec'), scInfo = $('sc-info');
+  if (scName) scName.value = p.contact || '';
+  if (scCo)   scCo.value   = p.name   || '';
+  if (scSec)  scSec.value  = p.type   || '';
+  if (scInfo) {
+    var infos = [];
+    if (p.phone)   infos.push('Tél: ' + p.phone);
+    if (p.email)   infos.push('Email: ' + p.email);
+    if (p.web)     infos.push('Site: ' + p.web);
+    if (p.notes)   infos.push(p.notes);
+    scInfo.value = infos.join(' — ');
+  }
+  toast('Prospect pré-rempli : ' + p.name, 'ok');
+}
+
+function parseCSVLine(line) {
+  var result = [], cur = '', inQ = false;
+  for (var i = 0; i < line.length; i++) {
+    var c = line[i];
+    if (inQ) {
+      if (c === '"' && line[i+1] === '"') { cur += '"'; i++; }
+      else if (c === '"') { inQ = false; }
+      else { cur += c; }
+    } else {
+      if (c === '"') { inQ = true; }
+      else if (c === ';' || c === ',') { result.push(cur); cur = ''; }
+      else { cur += c; }
+    }
+  }
+  result.push(cur);
+  return result;
+}
+
+// ===== SCRIPTS =====
+var COACH_SYS = 'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.';
+var PRESETS = {
+  coldb2b: {
+    s: COACH_SYS,
+    m: 'Génère un script de cold call B2B complet pour vendre un site web à une PME en Suisse. Structure : 3 blocs AIDA (Accroche, Intérêt+Désir, Action). Ton direct, authentique. Max 200 mots.'
+  },
+  relance: {
+    s: COACH_SYS,
+    m: 'Génère un script de relance pour un prospect sans réponse au premier appel. Rappel contexte, nouvelle accroche, closing RDV. Max 150 mots.'
+  },
+  objections: {
+    s: COACH_SYS,
+    m: 'Liste les 5 objections les plus fréquentes lors d\'un cold call pour vente de site web en Suisse, avec 1-2 répliques efficaces chacune. Format structuré.'
+  },
+  closing: {
+    s: COACH_SYS,
+    m: 'Génère 3 techniques de closing pour fixer un RDV par téléphone avec les formulations exactes. Inclure la méthode des 2 créneaux. Max 150 mots.'
+  }
+};
+function genScript(sys, msg) {
+  var btn = $('btn-gen');
+  var out = $('sc-out');
+  if (btn) btn.disabled = true;
+  if (out) out.innerHTML = '<span class="sc-ph">Génération en cours <span class="dot-a"></span><span class="dot-a"></span><span class="dot-a"></span></span>';
+  api('ai', { system: sys, messages: [{ role: 'user', content: msg }] }).then(function(d) {
+    if (btn) btn.disabled = false;
+    if (d.error) {
+      if (out) out.innerHTML = '<span style="color:var(--err)">' + esc(d.error) + '</span>';
+      return;
+    }
+    var text = (d.content && d.content[0] && d.content[0].text) ? d.content[0].text : '';
+    if (out) out.textContent = text;
+  });
+}
+
+// ===== CHATBOT =====
+var COACH = [
+  'Tu es Coach Alpinia, l\'assistant de prospection B2B intégré à Alpinia Prospect Pro.',
+  'Tu aides l\'équipe d\'Alpinia Web Craft à décrocher des rendez-vous par cold call pour vendre des sites web',
+  'à des PME et établissements (restaurants, commerces, hôtellerie) en Suisse romande / Valais.',
+  '',
+  'Rôle : conseiller en temps réel pendant la prospection. Réponds en français, concis et actionnable',
+  '(max ~120 mots), ton direct et chaleureux, jamais corporate.',
+  '',
+  'PRINCIPES :',
+  '- L\'objectif d\'un cold call, c\'est obtenir un RDV, pas vendre au téléphone.',
+  '- Les 10 premières secondes sont décisives : créer un "pattern interrupt".',
+  '- Toujours un script en support, jamais récité mot pour mot.',
+  '- Questions ouvertes, jamais une rafale de questions fermées.',
+  '- Parler bénéfices et résultats concrets, jamais de détails techniques.',
+  '- S\'adapter au bon timing (ex : ne pas appeler un resto en plein service).',
+  '',
+  'FRAMEWORK AIDA :',
+  '- Accroche : qui je suis / ce que je fais / confirmer l\'identité.',
+  '  Ex : "Bonjour, c\'est bien [Prénom] ? Je suis Noé d\'Alpinia Web Craft — 30 secondes ?"',
+  '- Intérêt : avantage clé orienté bénéfice.',
+  '- Désir : preuve sociale + chiffre concret (ex : "+15% de clientèle").',
+  '- Action : 2 créneaux proposés directement.',
+  '',
+  'OBJECTIONS :',
+  '- "Envoyez un mail" -> proposer 10 min à la place.',
+  '- "On est déjà équipés" -> compléter, pas remplacer.',
+  '- "Pas le temps" -> demander 90 secondes pour 2 questions.',
+  '- Secrétaire -> ton d\'autorité, rester bref.',
+  '',
+  'Si on demande un script : 3 blocs AIDA prêts à lire.',
+  'Si c\'est une objection : 1-2 répliques max.',
+  'Toujours orienté action vers le RDV.'
+].join('\n');
+
+function chatAppend(role, text) {
+  var msgs = $('chat-msgs');
+  if (!msgs) return;
+  var el = document.createElement('div');
+  el.className = 'msg ' + role;
+  el.textContent = text;
+  msgs.appendChild(el);
+  msgs.scrollTop = msgs.scrollHeight;
+  return el;
+}
+function sendChat() {
+  var inp = $('chat-inp');
+  var msgs = $('chat-msgs');
+  if (!inp) return;
+  var text = inp.value.trim();
+  if (!text) return;
+  inp.value = '';
+  chatAppend('u', text);
+  S.chatHistory.push({ role: 'user', content: text });
+  var typing = document.createElement('div');
+  typing.className = 'typing-dots';
+  typing.innerHTML = '<span class="dot-a"></span><span class="dot-a"></span><span class="dot-a"></span>';
+  if (msgs) { msgs.appendChild(typing); msgs.scrollTop = msgs.scrollHeight; }
+  api('ai', { system: COACH, messages: S.chatHistory }).then(function(d) {
+    typing.remove();
+    var reply = d.error ? ('Erreur : ' + d.error) : ((d.content && d.content[0] && d.content[0].text) ? d.content[0].text : '');
+    S.chatHistory.push({ role: 'assistant', content: reply });
+    chatAppend('b', reply);
+  });
+}
+
+// ===== EVENTS =====
+document.addEventListener('DOMContentLoaded', function() {
+  // Login
+  var btnLogin = $('btn-login');
+  var liPw = $('li-pw');
+  var liEmail = $('li-email');
+  var btnLogout = $('btn-logout');
+  if (btnLogin) btnLogin.addEventListener('click', doLogin);
+  if (liPw) liPw.addEventListener('keydown', function(e) { if (e.key === 'Enter') doLogin(); });
+  if (liEmail) liEmail.addEventListener('keydown', function(e) { if (e.key === 'Enter') doLogin(); });
+  if (btnLogout) btnLogout.addEventListener('click', doLogout);
+
+  // Nav
+  document.querySelectorAll('[data-nav]').forEach(function(b) {
+    b.addEventListener('click', function() { nav(b.dataset.nav); });
+  });
+
+  // Dashboard
+  var btnAdd = $('btn-add');
+  var dSearch = $('d-search');
+  var dFilter = $('d-filter');
+  if (btnAdd) btnAdd.addEventListener('click', function() { openModal(); });
+  if (dSearch) dSearch.addEventListener('input', function() { renderDash(); });
+  if (dFilter) dFilter.addEventListener('change', function() { renderDash(); });
+  var btnExport = $('btn-export');
+  if (btnExport) btnExport.addEventListener('click', showExportMenu);
+  var csvFile = $('csv-file');
+  if (csvFile) csvFile.addEventListener('change', function() { if (this.files[0]) importCSV(this.files[0]); this.value = ''; });
+  var btnAiImport = $('btn-ai-import');
+  if (btnAiImport) btnAiImport.addEventListener('click', openAIImport);
+  var aiModalX = $('ai-modal-x');
+  var aiModalCancel = $('ai-modal-cancel');
+  if (aiModalX) aiModalX.addEventListener('click', closeAIImport);
+  if (aiModalCancel) aiModalCancel.addEventListener('click', closeAIImport);
+  var aiModalBg = $('modal-ai');
+  if (aiModalBg) aiModalBg.addEventListener('click', function(e) { if (e.target === aiModalBg) closeAIImport(); });
+  var aiAnalyzeBtn = $('ai-analyze-btn');
+  if (aiAnalyzeBtn) aiAnalyzeBtn.addEventListener('click', analyzeWithAI);
+  var aiConfirmBtn = $('ai-confirm-btn');
+  if (aiConfirmBtn) aiConfirmBtn.addEventListener('click', confirmAIImport);
+  var aiImportFile = $('ai-import-file');
+  if (aiImportFile) aiImportFile.addEventListener('change', function() {
+    if (!this.files[0]) return;
+    var reader = new FileReader();
+    var self = this;
+    reader.onload = function(e) { var txt = $('ai-import-txt'); if (txt) txt.value = e.target.result; };
+    reader.readAsText(this.files[0], 'UTF-8');
+    this.value = '';
+  });
+  var scProspect = $('sc-prospect');
+  if (scProspect) scProspect.addEventListener('change', onScriptProspectChange);
+
+  // Modal
+  var modalX = $('modal-x');
+  var modalCancel = $('modal-cancel');
+  var modalSave = $('modal-save');
+  var modalBg = $('modal');
+  if (modalX) modalX.addEventListener('click', closeModal);
+  if (modalCancel) modalCancel.addEventListener('click', closeModal);
+  if (modalSave) modalSave.addEventListener('click', saveModal);
+  if (modalBg) modalBg.addEventListener('click', function(e) { if (e.target === modalBg) closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+  // Cold call
+  var ccToggle = $('cc-toggle');
+  if (ccToggle) ccToggle.addEventListener('click', function() { S.ccShowAll = !S.ccShowAll; renderCC(); });
+
+  // Scripts
+  document.querySelectorAll('.preset').forEach(function(b) {
+    b.addEventListener('click', function() {
+      var p = PRESETS[b.dataset.preset];
+      if (p) genScript(p.s, p.m);
+    });
+  });
+  var btnGen = $('btn-gen');
+  if (btnGen) btnGen.addEventListener('click', function() {
+    var co = $('sc-co') ? $('sc-co').value.trim() : '';
+    var nm = $('sc-name') ? $('sc-name').value.trim() : '';
+    if (!co && !nm) { toast('Indique au moins l\'établissement.', 'err'); return; }
+    var type = $('sc-type') ? $('sc-type').value : 'premier contact';
+    var sec = $('sc-sec') ? $('sc-sec').value.trim() : '';
+    var info = $('sc-info') ? $('sc-info').value.trim() : '';
+    genScript(COACH_SYS,
+      'Génère un script de cold call (framework AIDA) pour un appel "' + type + '" avec '
+      + (nm ? nm + ' de ' : '') + (co || 'l\'établissement')
+      + ', secteur ' + (sec || 'non précisé')
+      + '. Infos : ' + (info || 'aucune')
+      + '. 3 blocs AIDA, ton naturel, max 200 mots.'
+    );
+  });
+  var btnCopy = $('btn-copy');
+  if (btnCopy) btnCopy.addEventListener('click', function() {
+    var scOut = $('sc-out');
+    var t = scOut ? scOut.textContent : '';
+    if (!t || t.indexOf('appara') !== -1) { toast('Rien à copier.'); return; }
+    navigator.clipboard.writeText(t)
+      .then(function() { toast('Copié !', 'ok'); })
+      .catch(function() { toast('Copie impossible.', 'err'); });
+  });
+
+  // Chatbot
+  var chatBtn = $('chat-btn');
+  var chatPanel = $('chat-panel');
+  var chatX = $('chat-x');
+  var chatSend = $('chat-send');
+  var chatInp = $('chat-inp');
+  if (chatBtn) chatBtn.addEventListener('click', function() {
+    if (!chatPanel) return;
+    var open = chatPanel.classList.toggle('on');
+    chatBtn.setAttribute('aria-expanded', String(open));
+    if (open && chatInp) setTimeout(function() { chatInp.focus(); }, 100);
+  });
+  if (chatX) chatX.addEventListener('click', function() {
+    if (chatPanel) chatPanel.classList.remove('on');
+    if (chatBtn) chatBtn.setAttribute('aria-expanded', 'false');
+  });
+  if (chatSend) chatSend.addEventListener('click', sendChat);
+  if (chatInp) chatInp.addEventListener('keydown', function(e) { if (e.key === 'Enter') sendChat(); });
+
+  // Init
+  loadTodos();
+  checkSession();
+
+  // Batch enrichment
+  var batchBtn = $('btn-batch-enrich');
+  if (batchBtn) batchBtn.addEventListener('click', openBatchModal);
+  var batchModalX = $('batch-modal-x');
+  if (batchModalX) batchModalX.addEventListener('click', closeBatchModal);
+  var batchModalCancel = $('batch-modal-cancel');
+  if (batchModalCancel) batchModalCancel.addEventListener('click', closeBatchModal);
+  var batchStartBtn = $('batch-start-btn');
+  if (batchStartBtn) batchStartBtn.addEventListener('click', startBatchEnrich);
+  var batchCancelBtn = $('batch-cancel-btn');
+  if (batchCancelBtn) batchCancelBtn.addEventListener('click', function() { S.batchAbort = true; closeBatchModal(); toast('Enrichissement annulé.'); });
+  var batchDoneBtn = $('batch-done-btn');
+  if (batchDoneBtn) batchDoneBtn.addEventListener('click', closeBatchModal);
+  var batchModalBg = $('modal-batch');
+  if (batchModalBg) batchModalBg.addEventListener('click', function(e) { if (e.target === batchModalBg) closeBatchModal(); });
+
+  // Prospect card
+  var pcardBg = $('modal-pcard');
+  if (pcardBg) pcardBg.addEventListener('click', function(e) { if (e.target === pcardBg) closeCard(); });
+
+  // Tasks
+  var tAddBtn = $('t-add-btn');
+  if (tAddBtn) tAddBtn.addEventListener('click', addTodo);
+  var tText = $('t-text');
+  if (tText) tText.addEventListener('keydown', function(e) { if (e.key === 'Enter') addTodo(); });
+  document.querySelectorAll('.t-filter-btn').forEach(function(b) {
+    b.addEventListener('click', function() { S.taskFilter = b.dataset.tf; renderTasks(); });
+  });
+  var notifBtn = $('notif-perm-btn');
+  if (notifBtn) notifBtn.addEventListener('click', requestNotifPermission);
+
+  // Advanced filters
+  var dSector = $('d-sector');
+  if (dSector) dSector.addEventListener('change', function() { S.filterSector = this.value; renderDash(); });
+  var dCity = $('d-city');
+  if (dCity) dCity.addEventListener('change', function() { S.filterCity = this.value; renderDash(); });
+  var dSort = $('d-sort');
+  if (dSort) dSort.addEventListener('change', function() { S.sortBy = this.value; renderDash(); });
+  var dClearFilters = $('d-clear-filters');
+  if (dClearFilters) dClearFilters.addEventListener('click', function() {
+    S.filterSector = ''; S.filterCity = ''; S.sortBy = '';
+    var dSec = $('d-sector'); if (dSec) dSec.value = '';
+    var dCit = $('d-city'); if (dCit) dCit.value = '';
+    var dSrt = $('d-sort'); if (dSrt) dSrt.value = '';
+    renderDash();
+  });
+});
+
+// Expose globals needed by inline onclick handlers
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.delProspect = delProspect;
+window.chgStatus = chgStatus;
+window.toggleEnrich = toggleEnrich;
+window.doEnrich = doEnrich;
+window.removeAIParsed = removeAIParsed;
+window.toggleSelect = toggleSelect;
+window.selectAll = selectAll;
+window.openCard = openCard;
+window.closeCard = closeCard;
+window.addInteraction = addInteraction;
+window.deleteInteraction = deleteInteraction;
+window.addTag = addTag;
+window.removeTag = removeTag;
+window.debounceNotes = debounceNotes;
+window.openAddTaskForProspect = openAddTaskForProspect;
+window.setTodoStatus = setTodoStatus;
+window.deleteTodo = deleteTodo;
+window.requestNotifPermission = requestNotifPermission;
+
+})();
+</script>
+</body>
+</html>
