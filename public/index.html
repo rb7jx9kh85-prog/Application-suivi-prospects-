@@ -478,7 +478,8 @@ tr.expanded td{border-bottom:none}
           <option value="admin">Admin</option>
           <option value="agency">Agence</option>
         </select>
-        <input class="fi fi-sm" type="date" id="t-due" style="width:auto"/>
+        <input class="fi fi-sm" type="date" id="t-due" style="width:auto" title="Date d'échéance"/>
+        <input class="fi fi-sm" type="datetime-local" id="t-reminder" style="width:auto" title="Rappel (notification)"/>
         <select class="fi fi-sm" id="t-prospect" style="width:auto">
           <option value="">Aucun prospect</option>
         </select>
@@ -489,12 +490,19 @@ tr.expanded td{border-bottom:none}
       </div>
     </div>
     <!-- Filters -->
-    <div class="tasks-toolbar">
+    <div class="tasks-toolbar" style="justify-content:space-between">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
       <button class="btn btn-ghost t-filter-btn on" data-tf="all" style="height:32px;padding:0 12px;font-size:12px">Toutes</button>
       <button class="btn btn-ghost t-filter-btn" data-tf="todo" style="height:32px;padding:0 12px;font-size:12px">&Agrave; faire</button>
       <button class="btn btn-ghost t-filter-btn" data-tf="in_progress" style="height:32px;padding:0 12px;font-size:12px">En cours</button>
       <button class="btn btn-ghost t-filter-btn" data-tf="done" style="height:32px;padding:0 12px;font-size:12px">Termin&eacute;es</button>
       <button class="btn btn-ghost t-filter-btn" data-tf="urgent" style="height:32px;padding:0 12px;font-size:12px">Urgentes</button>
+      </div>
+      <button class="btn btn-ghost" id="notif-perm-btn" style="height:32px;padding:0 12px;font-size:12px;display:none">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        Activer rappels
+      </button>
+    </div>
     </div>
     <div class="task-list" id="task-list"></div>
   </div>
@@ -1352,6 +1360,8 @@ function openAddTaskForProspect(prospectId) {
 function loadTodos() {
   try { S.todos = JSON.parse(localStorage.getItem('ap_todos') || '[]'); } catch(e) { S.todos = []; }
   updateTaskBadge();
+  scheduleAllReminders();
+  initNotifications();
 }
 function saveTodos() {
   try { localStorage.setItem('ap_todos', JSON.stringify(S.todos)); } catch(e) {}
@@ -1371,6 +1381,57 @@ function updateTaskBadge() {
     else el.style.display = 'none';
   });
 }
+
+// ===== NOTIFICATIONS =====
+var _reminderTimers = {};
+function initNotifications() {
+  var btn = $('notif-perm-btn');
+  if (!('Notification' in window)) return;
+  if (Notification.permission === 'granted') {
+    if (btn) btn.style.display = 'none';
+  } else if (Notification.permission !== 'denied') {
+    if (btn) btn.style.display = '';
+  }
+}
+function requestNotifPermission() {
+  if (!('Notification' in window)) { toast('Notifications non supportées.', 'err'); return; }
+  Notification.requestPermission().then(function(perm) {
+    var btn = $('notif-perm-btn');
+    if (perm === 'granted') {
+      if (btn) btn.style.display = 'none';
+      scheduleAllReminders();
+      toast('Notifications activées !', 'ok');
+    } else {
+      toast('Permission refusée.', 'err');
+    }
+  });
+}
+function scheduleReminder(todo) {
+  if (!todo.reminderAt || todo.status === 'done') return;
+  var delay = todo.reminderAt - Date.now();
+  if (delay <= 0) return;
+  if (_reminderTimers[todo.id]) clearTimeout(_reminderTimers[todo.id]);
+  _reminderTimers[todo.id] = setTimeout(function() {
+    delete _reminderTimers[todo.id];
+    if (!('Notification' in window) || Notification.permission !== 'granted') return;
+    var t = S.todos.filter(function(x) { return x.id === todo.id; })[0];
+    if (!t || t.status === 'done') return;
+    try {
+      new Notification('Rappel — Alpinia Pro', {
+        body: t.text,
+        icon: '/favicon.ico',
+        tag: 'todo-' + t.id
+      });
+    } catch(e) {}
+    toast('Rappel : ' + t.text);
+  }, delay);
+}
+function scheduleAllReminders() {
+  Object.keys(_reminderTimers).forEach(function(id) { clearTimeout(_reminderTimers[id]); });
+  _reminderTimers = {};
+  S.todos.forEach(function(t) { scheduleReminder(t); });
+}
+
 function addTodo() {
   var textEl = $('t-text');
   var text = textEl ? textEl.value.trim() : '';
@@ -1378,15 +1439,20 @@ function addTodo() {
   var prio = $('t-prio') ? $('t-prio').value : 'medium';
   var cat = $('t-cat') ? $('t-cat').value : 'call';
   var due = $('t-due') ? $('t-due').value : '';
+  var reminderVal = $('t-reminder') ? $('t-reminder').value : '';
+  var reminderAt = reminderVal ? new Date(reminderVal).getTime() : null;
   var pid = $('t-prospect') ? $('t-prospect').value : '';
   S.todos.unshift({
     id: genId(), text: text, status: 'todo', priority: prio,
     category: cat, dueDate: due || null, prospectId: pid || null,
+    reminderAt: reminderAt || null,
     notes: '', at: Date.now(), doneAt: null
   });
   saveTodos();
   renderTasks();
   if (textEl) textEl.value = '';
+  var remEl = $('t-reminder'); if (remEl) remEl.value = '';
+  scheduleAllReminders();
   toast('Tâche ajoutée.', 'ok');
 }
 function setTodoStatus(id, status) {
@@ -1454,6 +1520,7 @@ function renderTasks() {
       + (t.dueDate ? '<span class="' + (overdue ? 'overdue' : '') + '" style="font-size:11px;color:' + (overdue ? 'var(--err)' : 'var(--t3)') + '">' + (overdue ? '⚠ ' : '') + esc(t.dueDate) + '</span>' : '')
       + (t.status === 'in_progress' ? '<span style="font-size:10px;color:var(--warn);font-weight:600">▶ EN COURS</span>' : '')
       + (pName ? '<button class="task-prospect-link" onclick="openCard(\'' + t.prospectId + '\')">' + esc(pName) + '</button>' : '')
+      + (t.reminderAt && t.status !== 'done' ? '<span title="Rappel: ' + new Date(t.reminderAt).toLocaleString('fr-CH') + '" style="font-size:12px" aria-label="Rappel programmé">🔔</span>' : '')
       + '</div>'
       + '</div>'
       + '<div class="task-actions">'
@@ -2086,6 +2153,8 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.t-filter-btn').forEach(function(b) {
     b.addEventListener('click', function() { S.taskFilter = b.dataset.tf; renderTasks(); });
   });
+  var notifBtn = $('notif-perm-btn');
+  if (notifBtn) notifBtn.addEventListener('click', requestNotifPermission);
 
   // Advanced filters
   var dSector = $('d-sector');
@@ -2124,6 +2193,7 @@ window.debounceNotes = debounceNotes;
 window.openAddTaskForProspect = openAddTaskForProspect;
 window.setTodoStatus = setTodoStatus;
 window.deleteTodo = deleteTodo;
+window.requestNotifPermission = requestNotifPermission;
 
 })();
 </script>
