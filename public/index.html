@@ -333,13 +333,17 @@ tr.expanded td{border-bottom:none}
       </select>
       <button class="btn btn-ghost" id="btn-export" title="Exporter en CSV">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span>Export CSV</span>
+        <span>Exporter</span>
       </button>
-      <label class="btn btn-ghost" id="btn-import-lbl" title="Importer un CSV" style="cursor:pointer">
+      <label class="btn btn-ghost" title="Importer un CSV" style="cursor:pointer">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
         <span>Import CSV</span>
-        <input type="file" id="csv-file" accept=".csv,text/csv" style="display:none"/>
+        <input type="file" id="csv-file" accept=".csv,.txt,text/csv,text/plain" style="display:none"/>
       </label>
+      <button class="btn btn-ghost" id="btn-ai-import" title="Importer avec l'IA">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span>Import IA</span>
+      </button>
       <button class="btn btn-cf" id="btn-add">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         <span>Ajouter</span>
@@ -386,7 +390,13 @@ tr.expanded td{border-bottom:none}
       </div>
       <div style="display:flex;flex-direction:column;gap:14px">
         <h2 style="font-size:14px;font-weight:600;color:var(--t2)">Script personnalis&eacute;</h2>
-        <div class="fgrp" style="margin-bottom:0"><label for="sc-name">Pr&eacute;nom prospect</label><input class="fi" type="text" id="sc-name" placeholder="Marc"/></div>
+        <div class="fgrp" style="margin-bottom:0">
+          <label for="sc-prospect">Choisir un prospect (optionnel)</label>
+          <select class="fi" id="sc-prospect">
+            <option value="">— Saisie manuelle —</option>
+          </select>
+        </div>
+        <div class="fgrp" style="margin-bottom:0"><label for="sc-name">Pr&eacute;nom contact</label><input class="fi" type="text" id="sc-name" placeholder="Marc"/></div>
         <div class="fgrp" style="margin-bottom:0"><label for="sc-co">&Eacute;tablissement</label><input class="fi" type="text" id="sc-co" placeholder="Restaurant du Lac"/></div>
         <div class="fgrp" style="margin-bottom:0"><label for="sc-sec">Secteur</label><input class="fi" type="text" id="sc-sec" placeholder="restauration, h&ocirc;tellerie&hellip;"/></div>
         <div class="fgrp" style="margin-bottom:0"><label for="sc-type">Type d'appel</label><select class="fi" id="sc-type"><option value="premier contact">Premier contact</option><option value="relance">Relance</option><option value="closing">Closing RDV</option></select></div>
@@ -409,6 +419,43 @@ tr.expanded td{border-bottom:none}
     </div>
   </div>
 </section>
+
+<!-- MODAL IMPORT IA -->
+<div class="modal-bg" id="modal-ai" role="dialog" aria-modal="true" aria-labelledby="ai-modal-title">
+  <div class="modal" style="max-width:640px">
+    <div class="modal-hd">
+      <h2 class="modal-title" id="ai-modal-title">Import IA &mdash; Analyse de texte</h2>
+      <button class="btn btn-icon" id="ai-modal-x" aria-label="Fermer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <p style="font-size:13px;color:var(--t2);margin-bottom:16px;line-height:1.6">Colle n'importe quel texte (liste Google Maps, annuaire, notes, extrait web&hellip;) ou charge un fichier <code style="background:rgba(255,255,255,.07);padding:1px 5px;border-radius:4px">.txt</code> / <code style="background:rgba(255,255,255,.07);padding:1px 5px;border-radius:4px">.csv</code>. L'IA extrait les prospects automatiquement.</p>
+    <div class="fgrp" style="margin-bottom:12px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <label for="ai-import-txt" style="margin-bottom:0">Texte &agrave; analyser</label>
+        <label class="btn btn-ghost" style="cursor:pointer;height:28px;padding:0 10px;font-size:11px">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Charger un fichier
+          <input type="file" id="ai-import-file" accept=".csv,.txt,text/plain,text/csv" style="display:none"/>
+        </label>
+      </div>
+      <textarea class="fi" id="ai-import-txt" style="min-height:180px" placeholder="Ex:&#10;Restaurant du Lac, Sion, 027 123 45 67, contact@lac.ch&#10;H&ocirc;tel Bellevue - Martigny - h&ocirc;tellerie - +41 27 456 78 90&#10;Boulangerie Martin, Sierre..."></textarea>
+    </div>
+    <div id="ai-preview-wrap" style="display:none;margin-bottom:16px">
+      <div style="font-size:13px;font-weight:600;color:var(--t2);margin-bottom:8px" id="ai-preview-title">Prospects d&eacute;tect&eacute;s</div>
+      <div id="ai-preview-list" style="display:flex;flex-direction:column;gap:6px;max-height:220px;overflow-y:auto"></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap">
+      <button class="btn btn-ghost" id="ai-modal-cancel">Annuler</button>
+      <button class="btn btn-cf" id="ai-analyze-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span>Analyser avec l'IA</span>
+      </button>
+      <button class="btn btn-primary" id="ai-confirm-btn" style="display:none">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="ai-confirm-label">Importer</span>
+      </button>
+    </div>
+  </div>
+</div>
 
 <!-- MODAL PROSPECT -->
 <div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
@@ -546,6 +593,7 @@ function render(v) {
   });
   if (v === 'dashboard') renderDash();
   if (v === 'coldcall') renderCC();
+  if (v === 'scripts') refreshScriptProspects();
 }
 window.addEventListener('hashchange', function() {
   var h = location.hash.replace('#/', '').split('/')[0] || 'login';
@@ -876,7 +924,33 @@ function saveModal() {
   toast(editId ? 'Prospect modifié.' : 'Prospect ajouté.', 'ok');
 }
 
-// ===== CSV EXPORT =====
+// ===== EXPORT (CSV + TXT) =====
+function showExportMenu() {
+  var existing = $('export-menu');
+  if (existing) { existing.remove(); return; }
+  var menu = document.createElement('div');
+  menu.id = 'export-menu';
+  menu.style.cssText = 'position:fixed;z-index:500;background:var(--s2);border:1px solid var(--br2);border-radius:var(--r14);padding:6px;box-shadow:0 8px 32px rgba(0,0,0,.5);min-width:180px';
+  var btnEl = $('btn-export');
+  var rect = btnEl ? btnEl.getBoundingClientRect() : {bottom:60,left:0};
+  menu.style.top = (rect.bottom + 6) + 'px';
+  menu.style.left = rect.left + 'px';
+  function item(label, fn) {
+    var b = document.createElement('button');
+    b.style.cssText = 'display:block;width:100%;text-align:left;background:none;border:none;color:var(--t1);font-size:13px;padding:8px 12px;cursor:pointer;border-radius:var(--r10);font-family:inherit';
+    b.textContent = label;
+    b.addEventListener('mouseenter', function() { b.style.background = 'rgba(255,255,255,.07)'; });
+    b.addEventListener('mouseleave', function() { b.style.background = 'none'; });
+    b.addEventListener('click', function() { menu.remove(); fn(); });
+    menu.appendChild(b);
+  }
+  item('📄  Export CSV', exportCSV);
+  item('📝  Export Texte (.txt)', exportTXT);
+  document.body.appendChild(menu);
+  setTimeout(function() {
+    document.addEventListener('click', function rm(e) { if (!menu.contains(e.target)) { menu.remove(); document.removeEventListener('click', rm); } });
+  }, 10);
+}
 function exportCSV() {
   var cols = ['Nom','Ville','Type','Telephone','Email','Site web','Statut','Contact','Notes'];
   var rows = [cols.join(';')];
@@ -955,6 +1029,142 @@ function importCSV(file) {
   };
   reader.onerror = function() { toast('Erreur de lecture du fichier.', 'err'); };
   reader.readAsText(file, 'UTF-8');
+}
+
+function exportTXT() {
+  if (!S.prospects.length) { toast('Aucun prospect à exporter.', 'err'); return; }
+  var lines = ['PROSPECTS ALPINIA PRO — ' + new Date().toLocaleDateString('fr-CH'), '='.repeat(50), ''];
+  S.prospects.forEach(function(p, i) {
+    lines.push((i+1) + '. ' + p.name + (p.city ? ' — ' + p.city : '') + (p.type ? ' (' + p.type + ')' : ''));
+    if (p.phone)   lines.push('   Tél: ' + p.phone);
+    if (p.email)   lines.push('   Email: ' + p.email);
+    if (p.web)     lines.push('   Web: ' + p.web);
+    if (p.contact) lines.push('   Contact: ' + p.contact);
+    if (p.notes)   lines.push('   Notes: ' + p.notes);
+    var st = ST_LABELS[p.status] || 'À appeler';
+    lines.push('   Statut: ' + st);
+    lines.push('');
+  });
+  var blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8;' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a'); a.href = url; a.download = 'prospects-alpinia.txt';
+  document.body.appendChild(a); a.click();
+  setTimeout(function() { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+  toast('Export texte téléchargé (' + S.prospects.length + ' prospects)', 'ok');
+}
+
+// ===== AI IMPORT =====
+var aiParsed = [];
+function openAIImport() {
+  aiParsed = [];
+  var txt = $('ai-import-txt'); if (txt) txt.value = '';
+  var wrap = $('ai-preview-wrap'); if (wrap) wrap.style.display = 'none';
+  var confirmBtn = $('ai-confirm-btn'); if (confirmBtn) confirmBtn.style.display = 'none';
+  var modal = $('modal-ai'); if (modal) modal.classList.add('on');
+}
+function closeAIImport() {
+  var modal = $('modal-ai'); if (modal) modal.classList.remove('on');
+  aiParsed = [];
+}
+function analyzeWithAI() {
+  var txt = $('ai-import-txt');
+  var content = txt ? txt.value.trim() : '';
+  if (!content) { toast('Colle du texte à analyser.', 'err'); return; }
+  var analyzeBtn = $('ai-analyze-btn');
+  if (analyzeBtn) { analyzeBtn.disabled = true; analyzeBtn.querySelector('span').textContent = 'Analyse en cours…'; }
+  var system = 'Tu es un extracteur de données de prospects commerciaux. Tu reçois du texte brut et tu extrais chaque établissement/entreprise mentionné.';
+  var prompt = 'Extrait tous les prospects/établissements de ce texte et retourne UNIQUEMENT un tableau JSON valide, sans markdown ni texte autour.\n'
+    + 'Format de chaque élément: {"name":"","city":"","type":"","phone":"","email":"","web":"","contact":"","notes":""}\n'
+    + 'Mets "" pour les champs introuvables. Le champ "name" est obligatoire.\n\n'
+    + 'Texte à analyser:\n' + content;
+  api('ai', { system: system, messages: [{ role: 'user', content: prompt }], model: 'gpt-4o-mini' }).then(function(d) {
+    if (analyzeBtn) { analyzeBtn.disabled = false; analyzeBtn.querySelector('span').textContent = 'Analyser avec l\'IA'; }
+    if (d.error) { toast('Erreur IA : ' + d.error, 'err'); return; }
+    var text = (d.content && d.content[0] && d.content[0].text) ? d.content[0].text : '';
+    var m = text.match(/\[[\s\S]*\]/);
+    if (!m) { toast('L\'IA n\'a pas trouvé de prospects dans ce texte.', 'err'); return; }
+    try {
+      var parsed = JSON.parse(m[0]);
+      aiParsed = parsed.filter(function(p) { return p.name && p.name.trim(); });
+    } catch(e) { toast('Erreur de parsing IA.', 'err'); return; }
+    if (!aiParsed.length) { toast('Aucun prospect détecté. Essaie avec plus de détails.', 'err'); return; }
+    renderAIPreview();
+  });
+}
+function renderAIPreview() {
+  var wrap = $('ai-preview-wrap');
+  var list = $('ai-preview-list');
+  var title = $('ai-preview-title');
+  var confirmBtn = $('ai-confirm-btn');
+  var label = $('ai-confirm-label');
+  if (!wrap || !list) return;
+  if (title) title.textContent = aiParsed.length + ' prospect(s) détecté(s)';
+  if (label) label.textContent = 'Importer ' + aiParsed.length + ' prospect(s)';
+  list.innerHTML = aiParsed.map(function(p, i) {
+    return '<div style="background:rgba(255,255,255,.04);border-radius:var(--r10);padding:10px 14px;display:flex;align-items:center;gap:10px">'
+      + '<div style="flex:1">'
+      + '<div style="font-weight:600;font-size:13px">' + esc(p.name) + (p.city ? ' <span style="color:var(--t3);font-weight:400">— ' + esc(p.city) + '</span>' : '') + '</div>'
+      + '<div style="font-size:11px;color:var(--t3);margin-top:2px">'
+      + [p.type, p.phone, p.email].filter(Boolean).join(' · ')
+      + '</div></div>'
+      + '<button onclick="removeAIParsed(' + i + ')" style="background:none;border:none;color:var(--t3);cursor:pointer;padding:4px;font-size:16px;line-height:1" title="Retirer">&times;</button>'
+      + '</div>';
+  }).join('');
+  wrap.style.display = 'block';
+  if (confirmBtn) confirmBtn.style.display = '';
+}
+function removeAIParsed(i) {
+  aiParsed.splice(i, 1);
+  if (!aiParsed.length) {
+    var wrap = $('ai-preview-wrap'); if (wrap) wrap.style.display = 'none';
+    var confirmBtn = $('ai-confirm-btn'); if (confirmBtn) confirmBtn.style.display = 'none';
+    return;
+  }
+  renderAIPreview();
+}
+function confirmAIImport() {
+  if (!aiParsed.length) return;
+  aiParsed.forEach(function(p) {
+    S.prospects.unshift({
+      id: genId(), name: p.name.trim(), city: (p.city||'').trim(), type: (p.type||'').trim(),
+      phone: (p.phone||'').trim(), email: (p.email||'').trim(), web: (p.web||'').trim(),
+      status: 'to_call', contact: (p.contact||'').trim(), notes: (p.notes||'').trim(), at: Date.now()
+    });
+  });
+  saveProspects(); renderDash(); renderCC();
+  toast(aiParsed.length + ' prospect(s) importé(s) via IA !', 'ok');
+  closeAIImport();
+}
+
+// ===== SCRIPTS — prospect selector =====
+function refreshScriptProspects() {
+  var sel = $('sc-prospect');
+  if (!sel) return;
+  var cur = sel.value;
+  sel.innerHTML = '<option value="">— Saisie manuelle —</option>'
+    + S.prospects.map(function(p) {
+      return '<option value="' + p.id + '"' + (p.id === cur ? ' selected' : '') + '>'
+        + esc(p.name) + (p.city ? ' — ' + esc(p.city) : '') + '</option>';
+    }).join('');
+}
+function onScriptProspectChange() {
+  var sel = $('sc-prospect');
+  if (!sel || !sel.value) return;
+  var p = S.prospects.filter(function(x) { return x.id === sel.value; })[0];
+  if (!p) return;
+  var scName = $('sc-name'), scCo = $('sc-co'), scSec = $('sc-sec'), scInfo = $('sc-info');
+  if (scName) scName.value = p.contact || '';
+  if (scCo)   scCo.value   = p.name   || '';
+  if (scSec)  scSec.value  = p.type   || '';
+  if (scInfo) {
+    var infos = [];
+    if (p.phone)   infos.push('Tél: ' + p.phone);
+    if (p.email)   infos.push('Email: ' + p.email);
+    if (p.web)     infos.push('Site: ' + p.web);
+    if (p.notes)   infos.push(p.notes);
+    scInfo.value = infos.join(' — ');
+  }
+  toast('Prospect pré-rempli : ' + p.name, 'ok');
 }
 
 function parseCSVLine(line) {
@@ -1102,9 +1312,32 @@ document.addEventListener('DOMContentLoaded', function() {
   if (dSearch) dSearch.addEventListener('input', function() { renderDash(); });
   if (dFilter) dFilter.addEventListener('change', function() { renderDash(); });
   var btnExport = $('btn-export');
-  if (btnExport) btnExport.addEventListener('click', exportCSV);
+  if (btnExport) btnExport.addEventListener('click', showExportMenu);
   var csvFile = $('csv-file');
   if (csvFile) csvFile.addEventListener('change', function() { if (this.files[0]) importCSV(this.files[0]); this.value = ''; });
+  var btnAiImport = $('btn-ai-import');
+  if (btnAiImport) btnAiImport.addEventListener('click', openAIImport);
+  var aiModalX = $('ai-modal-x');
+  var aiModalCancel = $('ai-modal-cancel');
+  if (aiModalX) aiModalX.addEventListener('click', closeAIImport);
+  if (aiModalCancel) aiModalCancel.addEventListener('click', closeAIImport);
+  var aiModalBg = $('modal-ai');
+  if (aiModalBg) aiModalBg.addEventListener('click', function(e) { if (e.target === aiModalBg) closeAIImport(); });
+  var aiAnalyzeBtn = $('ai-analyze-btn');
+  if (aiAnalyzeBtn) aiAnalyzeBtn.addEventListener('click', analyzeWithAI);
+  var aiConfirmBtn = $('ai-confirm-btn');
+  if (aiConfirmBtn) aiConfirmBtn.addEventListener('click', confirmAIImport);
+  var aiImportFile = $('ai-import-file');
+  if (aiImportFile) aiImportFile.addEventListener('change', function() {
+    if (!this.files[0]) return;
+    var reader = new FileReader();
+    var self = this;
+    reader.onload = function(e) { var txt = $('ai-import-txt'); if (txt) txt.value = e.target.result; };
+    reader.readAsText(this.files[0], 'UTF-8');
+    this.value = '';
+  });
+  var scProspect = $('sc-prospect');
+  if (scProspect) scProspect.addEventListener('change', onScriptProspectChange);
 
   // Modal
   var modalX = $('modal-x');
@@ -1184,6 +1417,7 @@ window.delProspect = delProspect;
 window.chgStatus = chgStatus;
 window.toggleEnrich = toggleEnrich;
 window.doEnrich = doEnrich;
+window.removeAIParsed = removeAIParsed;
 
 })();
 </script>
