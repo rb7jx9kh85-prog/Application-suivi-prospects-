@@ -33,8 +33,8 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end()
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method Not Allowed' })
 
-  const key = process.env.OPENAI_API_KEY
-  if (!key) return res.status(200).json({ error: 'OPENAI_API_KEY non configurée dans les variables Vercel.' })
+  const key = process.env.OPENAI_API_KEY || process.env.OPENAI_API
+  if (!key) return res.status(200).json({ error: 'OPENAI_API_KEY (ou OPENAI_API) non configurée dans les variables Vercel.' })
 
   try {
     const { system, messages, model } = req.body || {}
