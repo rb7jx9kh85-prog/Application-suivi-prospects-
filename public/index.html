@@ -279,6 +279,121 @@ tr.expanded td{border-bottom:none}
   .modal-full{max-height:none!important;border:none!important;box-shadow:none!important;padding:0!important}
   body{background:#fff!important;color:#000!important}
 }
+
+/* ===== DESIGN ENHANCEMENTS ===== */
+
+/* View transitions */
+[data-view]{opacity:0;transform:translateY(10px);transition:opacity .28s var(--ease),transform .28s var(--ease)}
+[data-view].on{opacity:1;transform:translateY(0)}
+
+/* Shimmer skeleton */
+@keyframes shimmer{0%{background-position:-600px 0}100%{background-position:600px 0}}
+.skeleton{background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.1) 50%,rgba(255,255,255,.04) 75%);background-size:600px 100%;animation:shimmer 1.6s infinite linear;border-radius:6px;display:inline-block}
+.skel-row td{padding:12px 14px}
+.skel-row td span{display:block;height:14px;border-radius:6px;background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.1) 50%,rgba(255,255,255,.04) 75%);background-size:600px 100%;animation:shimmer 1.6s infinite linear}
+
+/* Button ripple */
+.btn{position:relative;overflow:hidden}
+.ripple-wave{position:absolute;border-radius:50%;transform:scale(0);animation:ripple-anim .5s linear;background:rgba(255,255,255,.25);pointer-events:none}
+@keyframes ripple-anim{to{transform:scale(3.5);opacity:0}}
+
+/* Enhanced button glow on primary */
+.btn-primary{transition:transform .12s var(--ease),box-shadow .2s,filter .2s}
+.btn-primary:hover:not(:disabled){filter:brightness(1.1)}
+.btn-cf:hover:not(:disabled){transform:translateY(-1px)}
+
+/* Card lift on hover */
+.card,.stat,.task-item,.p-card,.cc-item,.pcard-sec{transition:box-shadow .2s var(--ease),transform .2s var(--ease),border-color .2s}
+.card:hover,.stat:hover{box-shadow:0 8px 32px rgba(124,58,237,.12);transform:translateY(-2px);border-color:rgba(168,85,247,.2)}
+.task-item:hover{box-shadow:0 4px 20px rgba(0,0,0,.3);border-color:rgba(168,85,247,.2);transform:translateY(-1px)}
+.p-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.3);border-color:rgba(168,85,247,.2)}
+.cc-item:hover{box-shadow:0 4px 20px rgba(0,0,0,.25);border-color:rgba(168,85,247,.18)}
+
+/* Table row hover */
+tbody tr{transition:background .15s}
+tbody tr:hover td{background:rgba(124,58,237,.06)}
+tbody tr:hover td:first-child{border-left:2px solid var(--violet2)}
+
+/* Enhanced input focus */
+.fi:focus{border-color:rgba(168,85,247,.6);box-shadow:0 0 0 3px rgba(124,58,237,.2),0 0 16px rgba(124,58,237,.08)}
+
+/* Nav active underline glow */
+.nav-btn.on{background:rgba(124,58,237,.15);color:var(--violet2);box-shadow:0 2px 0 var(--violet2) inset}
+.bnav-btn.on{color:var(--violet2);text-shadow:0 0 12px rgba(168,85,247,.6)}
+.bnav-btn.on svg{filter:drop-shadow(0 0 5px rgba(168,85,247,.6))}
+
+/* Stat number pulse on update */
+@keyframes stat-pop{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
+.stat-n.popped{animation:stat-pop .3s var(--ease)}
+
+/* Modal open animation */
+.modal-bg.on .modal{animation:modal-in .22s var(--ease)}
+@keyframes modal-in{from{opacity:0;transform:scale(.96) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-full-bg.on .modal-full{animation:modal-in .25s var(--ease)}
+
+/* Stagger list items */
+@keyframes item-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.stagger-item{animation:item-in .3s var(--ease) both}
+
+/* Badge glow */
+.b-video_rdv{box-shadow:0 0 8px rgba(52,211,153,.3)}
+.b-to_call{box-shadow:0 0 8px rgba(99,102,241,.2)}
+
+/* Toast enhanced */
+.toast{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.toast.ok{box-shadow:0 4px 24px rgba(52,211,153,.25)}
+.toast.err{box-shadow:0 4px 24px rgba(248,113,113,.25)}
+
+/* Avatar gradient ring */
+.pcard-av{box-shadow:0 0 0 2px rgba(168,85,247,.35),0 0 20px rgba(124,58,237,.2)}
+
+/* Topnav border glow */
+#topnav{border-bottom:1px solid rgba(124,58,237,.15);box-shadow:0 1px 20px rgba(0,0,0,.3)}
+
+/* Bottom nav pill indicator */
+.bnav-btn.on::after{content:"";position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:20px;height:3px;background:var(--violet2);border-radius:99px;box-shadow:0 0 8px var(--violet2)}
+.bnav-btn{position:relative}
+
+/* Scroll bar */
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.22)}
+
+/* Progress bar shimmer */
+.progress-bar-fill{background:linear-gradient(90deg,var(--violet),var(--violet2),var(--pink),var(--violet2));background-size:200% 100%;animation:grad-move 2s linear infinite}
+@keyframes grad-move{0%{background-position:0% 0}100%{background-position:200% 0}}
+
+/* Task checkbox animation */
+.task-cb{transition:background .15s,border .15s,transform .12s}
+.task-cb.done{transform:scale(1.05)}
+.task-cb::after{content:"✓";font-size:11px;color:#fff;opacity:0;transition:opacity .12s}
+.task-cb.done::after{opacity:1}
+
+/* Input group animation on type */
+.fgrp{transition:none}
+.fi::selection{background:rgba(124,58,237,.35);color:#fff}
+
+/* Hero title shimmer */
+.grad-text{background-size:200% 100%;animation:grad-shift 4s ease infinite}
+@keyframes grad-shift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+/* Separator between sections */
+.sec-sep{height:1px;background:linear-gradient(90deg,transparent,rgba(168,85,247,.2),transparent);margin:24px 0}
+
+/* Chip hover */
+.tag-chip{transition:background .15s,transform .12s}
+.tag-chip:hover{transform:scale(1.05)}
+
+/* Link-style buttons */
+.task-prospect-link{transition:color .15s}
+.task-prospect-link:hover{color:var(--pink)}
+
+/* Cc-item phone btn glow on hover */
+.cc-acts a.btn-icon:hover{color:var(--ok);border-color:rgba(52,211,153,.4);box-shadow:0 0 12px rgba(52,211,153,.2)}
+
+/* Select arrow styling */
+select.fi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a1a1b3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:30px}
 </style>
 </head>
 <body>
@@ -916,11 +1031,29 @@ function doLogout() {
 }
 
 // ===== DASHBOARD =====
+function animateCounter(el, target) {
+  if (!el) return;
+  var start = parseInt(el.textContent, 10) || 0;
+  if (start === target) return;
+  var duration = 500, startTime = null;
+  el.classList.remove('popped');
+  void el.offsetWidth;
+  el.classList.add('popped');
+  function step(ts) {
+    if (!startTime) startTime = ts;
+    var progress = Math.min((ts - startTime) / duration, 1);
+    var eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(start + (target - start) * eased);
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target;
+  }
+  requestAnimationFrame(step);
+}
 function updateStats() {
   var total = $('s-total'), tocall = $('s-tocall'), rdv = $('s-rdv');
-  if (total) total.textContent = S.prospects.length;
-  if (tocall) tocall.textContent = S.prospects.filter(function(p) { return !p.status || p.status === 'to_call'; }).length;
-  if (rdv) rdv.textContent = S.prospects.filter(function(p) { return p.status === 'video_rdv'; }).length;
+  animateCounter(total, S.prospects.length);
+  animateCounter(tocall, S.prospects.filter(function(p) { return !p.status || p.status === 'to_call'; }).length);
+  animateCounter(rdv, S.prospects.filter(function(p) { return p.status === 'video_rdv'; }).length);
 }
 function getFiltered() {
   var ds = $('d-search'), df = $('d-filter');
@@ -1500,7 +1633,7 @@ function renderTasks() {
     list.innerHTML = '<div class="empty" style="padding:40px 0"><p>Aucune tâche.</p></div>';
     return;
   }
-  list.innerHTML = tasks.map(function(t) {
+  var taskHtml = tasks.map(function(t) {
     var overdue = t.status !== 'done' && t.dueDate && new Date(t.dueDate).getTime() < now;
     var pName = '';
     if (t.prospectId) {
@@ -1530,6 +1663,8 @@ function renderTasks() {
       + '</div>'
       + '</div>';
   }).join('');
+  list.innerHTML = taskHtml;
+  staggerAnimate(list, '.task-item');
 }
 function toggleEnrich(id) {
   S.enrichOpen = S.enrichOpen === id ? null : id;
@@ -1584,6 +1719,7 @@ function renderCC() {
       + '<select class="ss" data-pid="' + p.id + '" onchange="chgStatus(this)" aria-label="Statut">' + sopts(p.status) + '</select>'
       + '</div></div>';
   }).join('');
+  staggerAnimate(cont, '.cc-item');
 }
 
 // ===== MODAL =====
@@ -2172,6 +2308,32 @@ document.addEventListener('DOMContentLoaded', function() {
     renderDash();
   });
 });
+
+// ===== RIPPLE EFFECT =====
+document.addEventListener('click', function(e) {
+  var btn = e.target.closest('.btn,.btn-cf,.btn-primary,.btn-ghost,.btn-icon,.nav-btn,.bnav-btn,.preset');
+  if (!btn) return;
+  var rect = btn.getBoundingClientRect();
+  var size = Math.max(rect.width, rect.height) * 1.4;
+  var x = e.clientX - rect.left - size / 2;
+  var y = e.clientY - rect.top - size / 2;
+  var wave = document.createElement('span');
+  wave.className = 'ripple-wave';
+  wave.style.cssText = 'width:' + size + 'px;height:' + size + 'px;left:' + x + 'px;top:' + y + 'px';
+  btn.appendChild(wave);
+  setTimeout(function() { wave.remove(); }, 600);
+}, true);
+
+// ===== STAGGER ANIMATION =====
+function staggerAnimate(container, selector) {
+  var items = container ? container.querySelectorAll(selector || '.task-item,.cc-item,.p-card') : [];
+  Array.prototype.forEach.call(items, function(el, i) {
+    el.classList.remove('stagger-item');
+    el.style.animationDelay = (i * 40) + 'ms';
+    void el.offsetWidth;
+    el.classList.add('stagger-item');
+  });
+}
 
 // Expose globals needed by inline onclick handlers
 window.openModal = openModal;
