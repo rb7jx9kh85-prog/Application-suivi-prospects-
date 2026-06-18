@@ -1073,24 +1073,24 @@ html{scroll-behavior:smooth}
 </div>
 
 <!-- MODAL DOUBLONS -->
-<div id="modal-dupes" class="modal">
-  <div class="modal-box" style="max-width:560px">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-      <h3 style="font-family:'Space Grotesk',sans-serif;margin:0">🏷️ Doublons détectés</h3>
-      <button class="btn btn-ghost" onclick="document.getElementById('modal-dupes').classList.remove('on')" style="height:32px;font-size:13px">✕ Fermer</button>
+<div id="modal-dupes" class="modal-bg" role="dialog" aria-modal="true">
+  <div class="modal" style="max-width:560px">
+    <div class="modal-hd">
+      <span class="modal-title">🏷️ Doublons détectés</span>
+      <button class="btn btn-icon" onclick="document.getElementById('modal-dupes').classList.remove('on')" aria-label="Fermer">✕</button>
     </div>
     <div id="dupes-list"></div>
   </div>
 </div>
 
 <!-- MODAL SCRIPT APPEL -->
-<div id="modal-script" class="modal">
-  <div class="modal-box" style="max-width:600px">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-      <h3 style="font-family:'Space Grotesk',sans-serif;margin:0">📝 Script d'appel</h3>
-      <button class="btn btn-ghost" onclick="document.getElementById('modal-script').classList.remove('on')" style="height:32px;font-size:13px">✕ Fermer</button>
+<div id="modal-script" class="modal-bg" role="dialog" aria-modal="true">
+  <div class="modal" style="max-width:600px">
+    <div class="modal-hd">
+      <span class="modal-title">📝 Script d'appel</span>
+      <button class="btn btn-icon" onclick="document.getElementById('modal-script').classList.remove('on')" aria-label="Fermer">✕</button>
     </div>
-    <div id="script-content" style="white-space:pre-wrap;font-size:14px;line-height:1.7;color:var(--t1);background:var(--glass2);border-radius:10px;padding:16px;max-height:400px;overflow-y:auto"></div>
+    <div id="script-content" style="white-space:pre-wrap;font-size:14px;line-height:1.7;color:var(--t1);background:rgba(255,255,255,.04);border-radius:10px;padding:16px;max-height:400px;overflow-y:auto"></div>
     <div style="display:flex;gap:8px;margin-top:14px;justify-content:flex-end">
       <button class="btn btn-ghost" id="script-copy-btn" style="height:36px;font-size:13px">📋 Copier</button>
       <button class="btn btn-ghost" onclick="document.getElementById('modal-script').classList.remove('on')" style="height:36px;font-size:13px">Fermer</button>
@@ -1099,19 +1099,19 @@ html{scroll-behavior:smooth}
 </div>
 
 <!-- MODAL EMAIL -->
-<div id="modal-email" class="modal">
-  <div class="modal-box" style="max-width:600px">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-      <h3 style="font-family:'Space Grotesk',sans-serif;margin:0">📧 Email de prospection</h3>
-      <button class="btn btn-ghost" onclick="document.getElementById('modal-email').classList.remove('on')" style="height:32px;font-size:13px">✕ Fermer</button>
+<div id="modal-email" class="modal-bg" role="dialog" aria-modal="true">
+  <div class="modal" style="max-width:600px">
+    <div class="modal-hd">
+      <span class="modal-title">📧 Email de prospection</span>
+      <button class="btn btn-icon" onclick="document.getElementById('modal-email').classList.remove('on')" aria-label="Fermer">✕</button>
     </div>
     <div style="margin-bottom:10px">
-      <div style="font-size:11px;color:var(--t3);margin-bottom:4px">OBJET</div>
-      <div id="email-subject" style="font-size:14px;font-weight:600;color:var(--t1);background:var(--glass2);border-radius:8px;padding:10px 14px"></div>
+      <div style="font-size:11px;color:var(--t3);margin-bottom:4px;font-weight:600;letter-spacing:.05em">OBJET</div>
+      <div id="email-subject" style="font-size:14px;font-weight:600;color:var(--t1);background:rgba(255,255,255,.04);border-radius:8px;padding:10px 14px"></div>
     </div>
     <div>
-      <div style="font-size:11px;color:var(--t3);margin-bottom:4px">CORPS</div>
-      <div id="email-body" style="white-space:pre-wrap;font-size:14px;line-height:1.7;color:var(--t1);background:var(--glass2);border-radius:8px;padding:14px;max-height:340px;overflow-y:auto"></div>
+      <div style="font-size:11px;color:var(--t3);margin-bottom:4px;font-weight:600;letter-spacing:.05em">CORPS</div>
+      <div id="email-body" style="white-space:pre-wrap;font-size:14px;line-height:1.7;color:var(--t1);background:rgba(255,255,255,.04);border-radius:8px;padding:14px;max-height:340px;overflow-y:auto"></div>
     </div>
     <div style="display:flex;gap:8px;margin-top:14px;justify-content:flex-end">
       <button class="btn btn-ghost" id="email-copy-all-btn" style="height:36px;font-size:13px">📋 Copier tout</button>

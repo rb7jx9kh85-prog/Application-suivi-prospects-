@@ -6,8 +6,5 @@
   },
   "scripts": {
     "build": "echo 'static site — no build step'"
-  },
-  "dependencies": {
-    "@vercel/kv": "^3.0.0"
   }
 }
