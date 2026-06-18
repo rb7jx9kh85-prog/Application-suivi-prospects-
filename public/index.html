@@ -1266,19 +1266,20 @@ function loadProspects() {
     if (!Array.isArray(S.prospects)) S.prospects = [];
   } catch(e) { S.prospects = []; }
 }
+function pushToKV() {
+  if (!S.token) return Promise.resolve();
+  return fetch('/api/data-save', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token: S.token, prospects: S.prospects, todos: S.todos })
+  }).catch(function() {});
+}
 function saveProspects() {
   // Sauvegarde locale immédiate
   try { localStorage.setItem('ap_prospects', JSON.stringify(S.prospects)); } catch(e) {}
   // Sync KV avec debounce 1s pour ne pas spammer
   if (_saveTimer) clearTimeout(_saveTimer);
-  _saveTimer = setTimeout(function() {
-    if (!S.token) return;
-    fetch('/api/data-save', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token: S.token, prospects: S.prospects })
-    }).catch(function() {});
-  }, 1000);
+  _saveTimer = setTimeout(function() { pushToKV(); }, 1000);
 }
 function syncFromKV(cb) {
   if (!S.token) { if (cb) cb(); return; }
@@ -1287,20 +1288,35 @@ function syncFromKV(cb) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ token: S.token })
   }).then(function(r) { return r.json(); }).then(function(d) {
-    if (d.error) { if (cb) cb(); return; }
-    if (Array.isArray(d.prospects) && d.prospects.length >= S.prospects.length) {
-      S.prospects = d.prospects;
+    if (d.error) {
+      toast('Sync cloud : ' + d.error, 'err');
+      if (cb) cb();
+      return;
+    }
+    var kvP = Array.isArray(d.prospects) ? d.prospects : [];
+    var kvT = Array.isArray(d.todos) ? d.todos : [];
+    // Le cloud (KV) a plus de données → on adopte le cloud (cas : nouvel appareil)
+    if (kvP.length > S.prospects.length) {
+      S.prospects = kvP;
       try { localStorage.setItem('ap_prospects', JSON.stringify(S.prospects)); } catch(e) {}
     }
-    if (Array.isArray(d.todos) && d.todos.length >= S.todos.length) {
-      S.todos = d.todos;
+    if (kvT.length > S.todos.length) {
+      S.todos = kvT;
       try { localStorage.setItem('ap_todos', JSON.stringify(S.todos)); } catch(e) {}
       updateTaskBadge();
+    }
+    // Le local a plus de données que le cloud → on pousse le local vers le cloud
+    // (cas : PC déjà rempli, première synchro vers la nouvelle clé email)
+    if (S.prospects.length > kvP.length || S.todos.length > kvT.length) {
+      pushToKV();
     }
     renderDash();
     renderCC();
     if (cb) cb();
-  }).catch(function() { if (cb) cb(); });
+  }).catch(function() {
+    toast('Sync cloud indisponible.', 'err');
+    if (cb) cb();
+  });
 }
 
 // ===== AUTH =====
