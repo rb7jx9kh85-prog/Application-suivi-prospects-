@@ -1046,6 +1046,7 @@ html{scroll-behavior:smooth}
   <button class="bulk-bar-btn" id="bulk-tag-btn">&#127991; Tag</button>
   <button class="bulk-bar-btn" id="bulk-followup-btn">&#128197; Relance</button>
   <button class="bulk-bar-btn" id="bulk-enrich-btn">&#9889; Enrichir</button>
+  <button class="bulk-bar-btn" id="bulk-verify-web-btn">&#127758; V&eacute;rifier sites</button>
   <button class="bulk-bar-btn danger" id="bulk-delete-btn">&#128465; Suppr.</button>
   <button class="bulk-bar-btn" id="bulk-clear-btn" aria-label="D&eacute;s&eacute;lectionner">&times;</button>
 </div>
@@ -1965,6 +1966,48 @@ function bulkDelete() {
   renderDash();
   renderCC();
   toast(list.length + ' prospect(s) supprimé(s).', 'ok');
+}
+function bulkVerifyWebsite() {
+  var list = selectedProspects().filter(function(p) { return !p.web && !(p._enrich && p._enrich.website) && !(p.enriched && p.enriched.website); });
+  if (!list.length) { toast('Tous les prospects sélectionnés ont déjà un site renseigné.', 'err'); return; }
+  if (!confirm('Vérifier si ' + list.length + ' prospect(s) sans site web en ont un ?\n\nChaque vérification utilise une recherche web (quelques secondes par prospect).')) return;
+
+  var found = 0, confirmed = 0, errors = 0, done = 0;
+  toast('Vérification en cours : 0 / ' + list.length + '…', 'ok');
+
+  function next(i) {
+    if (i >= list.length) {
+      saveProspects();
+      renderDash();
+      toast('Vérification terminée — ' + found + ' site(s) trouvé(s), ' + confirmed + ' confirmé(s) absent(s)' + (errors ? ', ' + errors + ' erreur(s)' : '') + '.', 'ok');
+      return;
+    }
+    var p = list[i];
+    fetch('/api/verify-no-website', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prospectName: p.name, city: p.city, type: p.type })
+    }).then(function(r) { return r.json(); }).then(function(d) {
+      done++;
+      if (d.error) { errors++; }
+      else {
+        p._noWebsite = d.result;
+        if (d.result.has_website && d.result.website_url) {
+          p.web = d.result.website_url;
+          found++;
+        } else {
+          confirmed++;
+        }
+      }
+      toast('Vérification en cours : ' + done + ' / ' + list.length + ' (' + found + ' trouvé(s))…', 'ok');
+      next(i + 1);
+    }).catch(function() {
+      done++; errors++;
+      toast('Vérification en cours : ' + done + ' / ' + list.length + '…', 'ok');
+      next(i + 1);
+    });
+  }
+  next(0);
 }
 function bulkClear() {
   S.selectedIds = {};
@@ -3025,6 +3068,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (bulkFollowupBtn) bulkFollowupBtn.addEventListener('click', bulkFollowUp);
   var bulkEnrichBtn = $('bulk-enrich-btn');
   if (bulkEnrichBtn) bulkEnrichBtn.addEventListener('click', openBatchModal);
+  var bulkVerifyWebBtn = $('bulk-verify-web-btn');
+  if (bulkVerifyWebBtn) bulkVerifyWebBtn.addEventListener('click', bulkVerifyWebsite);
   var bulkDeleteBtn = $('bulk-delete-btn');
   if (bulkDeleteBtn) bulkDeleteBtn.addEventListener('click', bulkDelete);
   var bulkClearBtn = $('bulk-clear-btn');
