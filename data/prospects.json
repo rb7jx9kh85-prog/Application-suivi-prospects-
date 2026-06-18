@@ -4949,6 +4949,19 @@
     ],
     "todos": [
       {
+        "id": "2eb7yo48sebmqk1mz3b",
+        "text": "Contacter fille du site Anna Claret pour leur dire que j’ai créé un site web",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": "3p8un2cnzx3mqjlo25p",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1781820025895,
+        "doneAt": null
+      },
+      {
         "id": "k3n309f8jimqjrh9t8",
         "text": "cold calling vidéo: https://www.youtube.com/watch?v=A1dsYkSL7TM",
         "status": "todo",
