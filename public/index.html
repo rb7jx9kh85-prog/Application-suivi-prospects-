@@ -1256,8 +1256,10 @@ function api(fn, body) {
   });
 }
 
-// ===== PROSPECTS (localStorage) =====
+// ===== PROSPECTS (KV sync + localStorage cache) =====
+var _saveTimer = null;
 function loadProspects() {
+  // Charge immédiatement depuis localStorage (affichage instantané)
   try {
     var raw = localStorage.getItem('ap_prospects') || '[]';
     S.prospects = JSON.parse(raw);
@@ -1265,8 +1267,40 @@ function loadProspects() {
   } catch(e) { S.prospects = []; }
 }
 function saveProspects() {
-  try { localStorage.setItem('ap_prospects', JSON.stringify(S.prospects)); }
-  catch(e) { toast('Erreur de sauvegarde locale.', 'err'); }
+  // Sauvegarde locale immédiate
+  try { localStorage.setItem('ap_prospects', JSON.stringify(S.prospects)); } catch(e) {}
+  // Sync KV avec debounce 1s pour ne pas spammer
+  if (_saveTimer) clearTimeout(_saveTimer);
+  _saveTimer = setTimeout(function() {
+    if (!S.token) return;
+    fetch('/api/data-save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: S.token, prospects: S.prospects })
+    }).catch(function() {});
+  }, 1000);
+}
+function syncFromKV(cb) {
+  if (!S.token) { if (cb) cb(); return; }
+  fetch('/api/data-load', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token: S.token })
+  }).then(function(r) { return r.json(); }).then(function(d) {
+    if (d.error) { if (cb) cb(); return; }
+    if (Array.isArray(d.prospects) && d.prospects.length >= S.prospects.length) {
+      S.prospects = d.prospects;
+      try { localStorage.setItem('ap_prospects', JSON.stringify(S.prospects)); } catch(e) {}
+    }
+    if (Array.isArray(d.todos) && d.todos.length >= S.todos.length) {
+      S.todos = d.todos;
+      try { localStorage.setItem('ap_todos', JSON.stringify(S.todos)); } catch(e) {}
+      updateTaskBadge();
+    }
+    renderDash();
+    renderCC();
+    if (cb) cb();
+  }).catch(function() { if (cb) cb(); });
 }
 
 // ===== AUTH =====
@@ -1292,6 +1326,7 @@ function checkSession() {
     var h = location.hash.replace('#/', '').split('/')[0] || 'dashboard';
     var valid = ['dashboard','coldcall','scripts','tasks'];
     nav(valid.indexOf(h) !== -1 ? h : 'dashboard', true);
+    syncFromKV(); // sync silencieux depuis KV après affichage initial
   });
 }
 
@@ -1323,7 +1358,9 @@ function doLogin() {
     var navUser = $('nav-user');
     if (navUser && S.user) navUser.textContent = S.user.name || S.user.email || '';
     loadProspects();
+    loadTodos();
     nav('dashboard', true);
+    syncFromKV(); // charge les données depuis KV (autre appareil, autre navigateur)
   });
 }
 
@@ -2342,6 +2379,12 @@ function loadTodos() {
 function saveTodos() {
   try { localStorage.setItem('ap_todos', JSON.stringify(S.todos)); } catch(e) {}
   updateTaskBadge();
+  if (!S.token) return;
+  fetch('/api/data-save', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token: S.token, todos: S.todos })
+  }).catch(function() {});
 }
 function updateTaskBadge() {
   var now = Date.now();
