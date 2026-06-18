@@ -4949,6 +4949,19 @@
     ],
     "todos": [
       {
+        "id": "72dcr9ixjzkmqk2554c",
+        "text": "Regarder les DNS de AlpiniaWebCraft.ch, ça ne pointe plus vers vercel.app —> changer ça pour que ça soit all Okey ⚠️",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1781820873516,
+        "doneAt": null
+      },
+      {
         "id": "kb5ktt0jfy8mqk24bet",
         "text": "Configurer + trouver une new API GRATUITE ou bien payer les OPENai ou les Anthropic",
         "status": "todo",
