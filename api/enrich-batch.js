@@ -1,8 +1,8 @@
 const https = require('https')
 
-const MAX_BATCH = 20
-const DELAY_MS = 800
-const TIMEOUT_MS = 25000
+// Safety cap per HTTP call only — the client sends small chunks, so this is
+// never user-facing. There is NO limit on the total number of prospects.
+const MAX_PER_CALL = 25
 
 function openaiCall(key, messages) {
   return new Promise((resolve, reject) => {
@@ -30,13 +30,11 @@ function openaiCall(key, messages) {
       })
     })
     req.on('error', reject)
-    req.setTimeout(10000, () => { req.destroy(); reject(new Error('Timeout OpenAI')) })
+    req.setTimeout(15000, () => { req.destroy(); reject(new Error('Timeout OpenAI')) })
     req.write(payload)
     req.end()
   })
 }
-
-function delay(ms) { return new Promise(r => setTimeout(r, ms)) }
 
 function stripJSON(text) {
   const m = text.match(/\{[\s\S]*\}/)
@@ -57,8 +55,8 @@ module.exports = async function handler(req, res) {
   const { prospects, fields } = req.body || {}
   if (!Array.isArray(prospects) || !prospects.length)
     return res.status(400).json({ error: 'prospects[] requis.' })
-  if (prospects.length > MAX_BATCH)
-    return res.status(400).json({ error: 'Maximum ' + MAX_BATCH + ' prospects par batch.' })
+  if (prospects.length > MAX_PER_CALL)
+    return res.status(400).json({ error: 'Trop de prospects par requête (max ' + MAX_PER_CALL + ' par lot).' })
 
   const wantedFields = Array.isArray(fields) && fields.length
     ? fields
@@ -70,40 +68,28 @@ module.exports = async function handler(req, res) {
     + 'Champs possibles : email, phone, website, address, industry, '
     + 'employees (nombre approximatif), decision_maker (prénom nom probable), description (1 phrase max).'
 
-  const results = []
-  const start = Date.now()
-
-  for (let i = 0; i < prospects.length; i++) {
-    if (Date.now() - start > TIMEOUT_MS) {
-      for (let j = i; j < prospects.length; j++) {
-        results.push({ id: prospects[j].id, enriched: null, error: 'Timeout global atteint' })
-      }
-      break
-    }
-
-    const p = prospects[i]
+  // Process the whole chunk in parallel — fast and well within the time limit.
+  const tasks = prospects.map((p) => {
     const userMsg = 'Établissement: ' + (p.name || p.establishment || '?')
       + ', Ville: ' + (p.city || '?')
       + ', Secteur: ' + (p.type || p.domain || '?')
       + ', Site: ' + (p.web || p.website || 'inconnu')
       + '. Retourne JSON avec uniquement ces champs: ' + wantedFields.join(', ') + '.'
 
-    try {
-      const r = await openaiCall(key, [
-        { role: 'system', content: system },
-        { role: 'user', content: userMsg },
-      ])
-      if (r.error) { results.push({ id: p.id, enriched: null, error: r.error.message || 'Erreur OpenAI' }); continue }
+    return openaiCall(key, [
+      { role: 'system', content: system },
+      { role: 'user', content: userMsg },
+    ]).then((r) => {
+      if (r.error) return { id: p.id, enriched: null, error: r.error.message || 'Erreur OpenAI' }
       const text = r.choices?.[0]?.message?.content || ''
       const raw = stripJSON(text)
-      if (!raw) { results.push({ id: p.id, enriched: null, error: 'Format JSON invalide' }); continue }
-      results.push({ id: p.id, enriched: JSON.parse(raw), error: null })
-    } catch (e) {
-      results.push({ id: p.id, enriched: null, error: e.message || 'Erreur' })
-    }
+      if (!raw) return { id: p.id, enriched: null, error: 'Format JSON invalide' }
+      try { return { id: p.id, enriched: JSON.parse(raw), error: null } }
+      catch (e) { return { id: p.id, enriched: null, error: 'JSON illisible' } }
+    }).catch((e) => ({ id: p.id, enriched: null, error: e.message || 'Erreur' }))
+  })
 
-    if (i < prospects.length - 1) await delay(DELAY_MS)
-  }
-
+  const results = await Promise.all(tasks)
   return res.status(200).json({ results })
 }
+

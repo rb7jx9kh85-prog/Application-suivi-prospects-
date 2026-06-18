@@ -1570,7 +1570,8 @@ function startBatchEnrich() {
   var prospects = ids.map(function(id) {
     return S.prospects.filter(function(p) { return p.id === id; })[0];
   }).filter(Boolean);
-  if (prospects.length > 20) { toast('Maximum 20 prospects par batch.', 'err'); return; }
+  // Aucune limite : les prospects sont traités par lots successifs.
+  var CHUNK = 10;
   S.batchBackup = JSON.parse(JSON.stringify(S.prospects));
   S.batchAbort = false;
   S.batchRunning = true;
@@ -1578,26 +1579,17 @@ function startBatchEnrich() {
   var pw = $('batch-progress-wrap'); if (pw) pw.style.display = '';
   var bar = $('batch-bar'); if (bar) bar.style.width = '0%';
   var pl = $('batch-prog-label'); if (pl) pl.textContent = '0 / ' + prospects.length;
-  var log = $('batch-log'); if (log) log.textContent = 'Envoi en cours…';
-  var payload = { prospects: prospects.map(function(p) { return { id: p.id, name: p.name, city: p.city, domain: p.type, website: p.web }; }), fields: fields };
-  fetch('/api/enrich-batch', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  }).then(function(r) { return r.json(); }).then(function(d) {
+  var log = $('batch-log'); if (log) log.textContent = 'Démarrage…';
+
+  var total = prospects.length;
+  var done = 0, ok = 0, errs = 0;
+  var t0 = Date.now();
+
+  function finishBatch() {
     S.batchRunning = false;
-    if (d.error) { toast('Erreur batch: ' + d.error, 'err'); return; }
-    var results = d.results || [];
-    var ok = 0, errs = 0;
-    results.forEach(function(r) {
-      if (r.error) { errs++; return; }
-      ok++;
-      var p = S.prospects.filter(function(x) { return x.id === r.id; })[0];
-      if (p && r.enriched) { p.enriched = r.enriched; p.enrichedAt = Date.now(); }
-    });
     saveProspects();
     renderDash();
-    var pw = $('batch-progress-wrap'); if (pw) pw.style.display = 'none';
+    var pw2 = $('batch-progress-wrap'); if (pw2) pw2.style.display = 'none';
     var rw = $('batch-result-wrap'); if (rw) rw.style.display = '';
     var rt = $('batch-result-title'); if (rt) rt.textContent = ok + ' enrichi(s)' + (errs ? ', ' + errs + ' erreur(s)' : '') + ' !';
     var rd = $('batch-result-detail'); if (rd) rd.textContent = 'Résultats sauvegardés dans chaque fiche prospect.';
@@ -1605,28 +1597,59 @@ function startBatchEnrich() {
     if (undoBtn) {
       undoBtn.style.display = '';
       var undoTimer = setTimeout(function() { if (undoBtn) undoBtn.style.display = 'none'; }, 30000);
-      undoBtn.onclick = function() {
-        clearTimeout(undoTimer);
-        undoBatchEnrich();
-      };
+      undoBtn.onclick = function() { clearTimeout(undoTimer); undoBatchEnrich(); };
     }
     S.selectedIds = {};
     updateBatchBtn();
-  }).catch(function(e) {
-    S.batchRunning = false;
-    toast('Erreur réseau: ' + (e.message || 'inconnue'), 'err');
-    closeBatchModal();
-  });
-  var simulateProgress = function(done, total) {
-    if (done >= total || S.batchAbort) return;
-    var pct = Math.round(done / total * 100);
-    var bar = $('batch-bar'); if (bar) bar.style.width = pct + '%';
-    var pl = $('batch-prog-label'); if (pl) pl.textContent = done + ' / ' + total;
-    var log = $('batch-log');
-    if (log && prospects[done]) log.textContent = prospects[done].name || '';
-    setTimeout(function() { simulateProgress(done + 1, total); }, 900);
-  };
-  simulateProgress(0, prospects.length);
+    updateBulkBar();
+  }
+
+  function processChunk(startIdx) {
+    if (S.batchAbort) return;
+    if (startIdx >= total) { finishBatch(); return; }
+    var chunk = prospects.slice(startIdx, startIdx + CHUNK);
+    var rangeEnd = Math.min(startIdx + chunk.length, total);
+    var logEl = $('batch-log');
+    if (logEl) logEl.textContent = 'Enrichissement ' + (startIdx + 1) + '–' + rangeEnd + ' / ' + total + '…';
+    var payload = { prospects: chunk.map(function(p) { return { id: p.id, name: p.name, city: p.city, domain: p.type, website: p.web }; }), fields: fields };
+    fetch('/api/enrich-batch', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function(r) { return r.json(); }).then(function(d) {
+      if (S.batchAbort) return;
+      if (d.error) {
+        errs += chunk.length;
+      } else {
+        (d.results || []).forEach(function(r) {
+          if (r.error) { errs++; return; }
+          ok++;
+          var p = S.prospects.filter(function(x) { return x.id === r.id; })[0];
+          if (p && r.enriched) { p.enriched = r.enriched; p.enrichedAt = Date.now(); }
+        });
+      }
+      done = rangeEnd;
+      var pct = Math.round(done / total * 100);
+      var bar2 = $('batch-bar'); if (bar2) bar2.style.width = pct + '%';
+      var pl2 = $('batch-prog-label'); if (pl2) pl2.textContent = done + ' / ' + total;
+      // ETA estimate
+      var elapsed = (Date.now() - t0) / 1000;
+      var rate = done / elapsed;
+      var eta = rate > 0 ? Math.round((total - done) / rate) : 0;
+      var etaEl = $('batch-eta');
+      if (etaEl) etaEl.textContent = done < total && eta > 0 ? ('~' + eta + 's restantes') : '';
+      saveProspects(); // sauvegarde progressive : rien n'est perdu en cas d'arrêt
+      processChunk(startIdx + CHUNK);
+    }).catch(function() {
+      if (S.batchAbort) return;
+      errs += chunk.length;
+      done = rangeEnd;
+      var pl3 = $('batch-prog-label'); if (pl3) pl3.textContent = done + ' / ' + total;
+      processChunk(startIdx + CHUNK);
+    });
+  }
+
+  processChunk(0);
 }
 function undoBatchEnrich() {
   if (!S.batchBackup) return;
