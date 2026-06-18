@@ -4949,6 +4949,19 @@
     ],
     "todos": [
       {
+        "id": "kb5ktt0jfy8mqk24bet",
+        "text": "Configurer + trouver une new API GRATUITE ou bien payer les OPENai ou les Anthropic",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1781820835013,
+        "doneAt": null
+      },
+      {
         "id": "2eb7yo48sebmqk1mz3b",
         "text": "Contacter fille du site Anna Claret pour leur dire que j’ai créé un site web",
         "status": "todo",
