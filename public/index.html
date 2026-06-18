@@ -1047,6 +1047,8 @@ html{scroll-behavior:smooth}
   <button class="bulk-bar-btn" id="bulk-followup-btn">&#128197; Relance</button>
   <button class="bulk-bar-btn" id="bulk-enrich-btn">&#9889; Enrichir</button>
   <button class="bulk-bar-btn" id="bulk-verify-web-btn">&#127758; V&eacute;rifier sites</button>
+  <button class="bulk-bar-btn" id="bulk-dupes-btn">&#127991; Doublons</button>
+  <button class="bulk-bar-btn" id="bulk-score-btn">&#128202; Score IA</button>
   <button class="bulk-bar-btn danger" id="bulk-delete-btn">&#128465; Suppr.</button>
   <button class="bulk-bar-btn" id="bulk-clear-btn" aria-label="D&eacute;s&eacute;lectionner">&times;</button>
 </div>
@@ -1067,6 +1069,54 @@ html{scroll-behavior:smooth}
   <div class="chat-ft">
     <input type="text" id="chat-inp" placeholder="Pose ta question&hellip;" autocomplete="off" aria-label="Message"/>
     <button class="chat-send" id="chat-send" aria-label="Envoyer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+  </div>
+</div>
+
+<!-- MODAL DOUBLONS -->
+<div id="modal-dupes" class="modal">
+  <div class="modal-box" style="max-width:560px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <h3 style="font-family:'Space Grotesk',sans-serif;margin:0">🏷️ Doublons détectés</h3>
+      <button class="btn btn-ghost" onclick="document.getElementById('modal-dupes').classList.remove('on')" style="height:32px;font-size:13px">✕ Fermer</button>
+    </div>
+    <div id="dupes-list"></div>
+  </div>
+</div>
+
+<!-- MODAL SCRIPT APPEL -->
+<div id="modal-script" class="modal">
+  <div class="modal-box" style="max-width:600px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <h3 style="font-family:'Space Grotesk',sans-serif;margin:0">📝 Script d'appel</h3>
+      <button class="btn btn-ghost" onclick="document.getElementById('modal-script').classList.remove('on')" style="height:32px;font-size:13px">✕ Fermer</button>
+    </div>
+    <div id="script-content" style="white-space:pre-wrap;font-size:14px;line-height:1.7;color:var(--t1);background:var(--glass2);border-radius:10px;padding:16px;max-height:400px;overflow-y:auto"></div>
+    <div style="display:flex;gap:8px;margin-top:14px;justify-content:flex-end">
+      <button class="btn btn-ghost" id="script-copy-btn" style="height:36px;font-size:13px">📋 Copier</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('modal-script').classList.remove('on')" style="height:36px;font-size:13px">Fermer</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL EMAIL -->
+<div id="modal-email" class="modal">
+  <div class="modal-box" style="max-width:600px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <h3 style="font-family:'Space Grotesk',sans-serif;margin:0">📧 Email de prospection</h3>
+      <button class="btn btn-ghost" onclick="document.getElementById('modal-email').classList.remove('on')" style="height:32px;font-size:13px">✕ Fermer</button>
+    </div>
+    <div style="margin-bottom:10px">
+      <div style="font-size:11px;color:var(--t3);margin-bottom:4px">OBJET</div>
+      <div id="email-subject" style="font-size:14px;font-weight:600;color:var(--t1);background:var(--glass2);border-radius:8px;padding:10px 14px"></div>
+    </div>
+    <div>
+      <div style="font-size:11px;color:var(--t3);margin-bottom:4px">CORPS</div>
+      <div id="email-body" style="white-space:pre-wrap;font-size:14px;line-height:1.7;color:var(--t1);background:var(--glass2);border-radius:8px;padding:14px;max-height:340px;overflow-y:auto"></div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:14px;justify-content:flex-end">
+      <button class="btn btn-ghost" id="email-copy-all-btn" style="height:36px;font-size:13px">📋 Copier tout</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('modal-email').classList.remove('on')" style="height:36px;font-size:13px">Fermer</button>
+    </div>
   </div>
 </div>
 
@@ -1704,7 +1754,9 @@ function renderCard(p) {
     enriched.description ? { k: '📝 Description', v: enriched.description } : null
   ].filter(function(f) { return f && f.v && f.v !== 'null'; });
   var linkedTodos = S.todos.filter(function(t) { return t.prospectId === p.id; });
-  inner.innerHTML = '<div class="pcard-hide-print" style="display:flex;justify-content:flex-end;gap:8px;margin-bottom:16px">'
+  inner.innerHTML = '<div class="pcard-hide-print" style="display:flex;justify-content:flex-end;gap:8px;margin-bottom:16px;flex-wrap:wrap">'
+    + '<button class="btn btn-ghost" onclick="window.generateCallScript(\'' + p.id + '\')" style="height:36px;font-size:13px">📝 Script</button>'
+    + '<button class="btn btn-ghost" onclick="window.generateEmail(\'' + p.id + '\')" style="height:36px;font-size:13px">📧 Email</button>'
     + '<button class="btn btn-ghost" onclick="window.print()" style="height:36px;font-size:13px">📄 PDF</button>'
     + '<button class="btn btn-ghost" onclick="closeCard()" style="height:36px;font-size:13px" aria-label="Fermer">✕ Fermer</button>'
     + '</div>'
@@ -1714,6 +1766,7 @@ function renderCard(p) {
     + '<div style="font-family:\'Space Grotesk\',sans-serif;font-size:20px;font-weight:700">' + esc(p.name) + '</div>'
     + '<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px">'
     + badge(p.status || 'to_call')
+    + (p.aiScore ? '<span style="padding:3px 8px;border-radius:20px;font-size:12px;font-weight:700;background:' + (p.aiScore >= 8 ? '#16a34a' : p.aiScore >= 5 ? '#d97706' : '#dc2626') + ';color:#fff">Score ' + p.aiScore + '/10</span>' : '')
     + (p.tags.map ? p.tags.map(function(t) { return '<button class="tag-chip" onclick="removeTag(\'' + p.id + '\',\'' + esc(t) + '\')">' + esc(t) + ' ✕</button>'; }).join('') : '')
     + '<span style="font-size:11px;color:var(--t3)">Ajouté le ' + new Date(p.at||Date.now()).toLocaleDateString('fr-CH') + '</span>'
     + '</div>'
@@ -1756,6 +1809,7 @@ function renderCard(p) {
           + '</button>'
           + '</span></div>'
         : '')
+    + '<div class="pcard-field"><span class="pcard-field-icon">🕐</span><span class="pcard-field-val" style="font-size:12px"><strong>Meilleur moment :</strong> ' + getBestCallTime(p.type) + '</span></div>'
     + '</div>'
     + '<div class="pcard-sec">'
     + '<div class="pcard-sec-title">Historique interactions</div>'
@@ -2008,6 +2062,144 @@ function bulkVerifyWebsite() {
     });
   }
   next(0);
+}
+function levenshtein(a, b) {
+  var m = a.length, n = b.length;
+  var dp = [];
+  for (var i = 0; i <= m; i++) { dp[i] = [i]; }
+  for (var j = 0; j <= n; j++) { dp[0][j] = j; }
+  for (var i = 1; i <= m; i++) {
+    for (var j = 1; j <= n; j++) {
+      if (a[i-1] === b[j-1]) dp[i][j] = dp[i-1][j-1];
+      else dp[i][j] = 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
+    }
+  }
+  return dp[m][n];
+}
+function bulkDetectDupes() {
+  var list = S.prospects;
+  if (list.length < 2) { toast('Pas assez de prospects pour détecter des doublons.', 'err'); return; }
+  var pairs = [];
+  for (var i = 0; i < list.length; i++) {
+    for (var j = i + 1; j < list.length; j++) {
+      var a = list[i], b = list[j];
+      var na = (a.name || '').toLowerCase().trim();
+      var nb = (b.name || '').toLowerCase().trim();
+      var phoneMatch = a.phone && b.phone && a.phone.replace(/\s/g,'') === b.phone.replace(/\s/g,'');
+      var dist = levenshtein(na, nb);
+      if (dist <= 2 || phoneMatch) {
+        pairs.push({ a: a, b: b });
+      }
+    }
+  }
+  var modal = document.getElementById('modal-dupes');
+  var listEl = document.getElementById('dupes-list');
+  if (!modal || !listEl) return;
+  if (!pairs.length) {
+    listEl.innerHTML = '<div style="color:var(--t3);font-size:14px;text-align:center;padding:20px">✅ Aucun doublon détecté.</div>';
+  } else {
+    listEl.innerHTML = pairs.map(function(p, idx) {
+      return '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--glass2)">'
+        + '<div><div style="font-size:14px;font-weight:600">' + esc(p.a.name) + '</div>'
+        + '<div style="font-size:12px;color:var(--t3)">' + esc(p.b.name) + ' · ' + (p.a.phone && p.b.phone && p.a.phone.replace(/\s/g,'')===p.b.phone.replace(/\s/g,'') ? '📞 même tél.' : 'noms similaires') + '</div></div>'
+        + '<button class="btn btn-ghost" onclick="window._deleteDupe(\'' + p.b.id + '\',this)" style="height:30px;font-size:12px;color:var(--err)">🗑️ Supprimer doublon</button>'
+        + '</div>';
+    }).join('');
+  }
+  modal.classList.add('on');
+}
+window._deleteDupe = function(id, btn) {
+  S.prospects = S.prospects.filter(function(p) { return p.id !== id; });
+  saveProspects();
+  renderDash();
+  var row = btn.closest('div[style*="border-bottom"]');
+  if (row) row.remove();
+  toast('Doublon supprimé.', 'ok');
+};
+function bulkScoreProspects() {
+  var list = S.prospects;
+  if (!list.length) { toast('Aucun prospect à scorer.', 'err'); return; }
+  toast('Score IA en cours…', 'ok');
+  var batches = [];
+  var batchSize = 20;
+  for (var i = 0; i < list.length; i += batchSize) {
+    batches.push(list.slice(i, i + batchSize));
+  }
+  var payload = batches.map(function(batch) {
+    return fetch('/api/score-prospects', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prospects: batch.map(function(p) {
+        return { id: p.id, name: p.name, type: p.type, employees: p.employees, website: p.web, lastContact: p.lastContact, status: p.status, notes: p.notes };
+      })})
+    }).then(function(r) { return r.json(); });
+  });
+  Promise.all(payload).then(function(results) {
+    var flat = [];
+    results.forEach(function(r) { if (r.scores) flat = flat.concat(r.scores); });
+    flat.forEach(function(item) {
+      var p = S.prospects.filter(function(x) { return x.id === item.id; })[0];
+      if (p) { p.aiScore = item.score; p.aiScoreReason = item.reason; }
+    });
+    saveProspects();
+    renderDash();
+    toast('Scores IA calculés pour ' + flat.length + ' prospect(s).', 'ok');
+  }).catch(function() { toast('Erreur lors du scoring IA.', 'err'); });
+}
+function getBestCallTime(type) {
+  var t = (type || '').toLowerCase();
+  if (/restaurant|café|cafe|bar|brasserie/.test(t)) return 'Éviter 11h-14h et 18h-22h. Idéal : 9h-11h ou 15h-17h';
+  if (/comptable|fiduciaire|audit|finance|expert/.test(t)) return 'Éviter jan, mars, juin, sept (bilans). Idéal : mardi-jeudi 10h-12h';
+  if (/médecin|dentiste|santé|médical|pharma|clinique/.test(t)) return 'Idéal : lundi ou vendredi 8h-9h avant les patients';
+  if (/construction|artisan|plombier|électricien|menuisier|charpentier/.test(t)) return 'Idéal : matin tôt 7h-8h30 ou fin de journée 17h-18h';
+  if (/coiffeur|esthétique|beauté|spa|institut/.test(t)) return 'Éviter lundi (fermé souvent). Idéal : mardi-jeudi 9h-11h';
+  return 'Idéal : mardi-jeudi entre 10h et 12h';
+}
+function generateCallScript(id) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p) return;
+  var modal = document.getElementById('modal-script');
+  var content = document.getElementById('script-content');
+  if (!modal || !content) return;
+  content.textContent = '⏳ Génération du script en cours…';
+  modal.classList.add('on');
+  fetch('/api/call-script', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: p.name, city: p.city, type: p.type, contact: p.contact, website: p.web, description: (p._enrich && p._enrich.description) || (p.enriched && p.enriched.description) || '', notes: p.notes })
+  }).then(function(r) { return r.json(); }).then(function(d) {
+    if (d.error) { content.textContent = 'Erreur : ' + d.error; return; }
+    content.textContent = d.script || 'Script vide.';
+    var copyBtn = document.getElementById('script-copy-btn');
+    if (copyBtn) copyBtn.onclick = function() {
+      navigator.clipboard.writeText(content.textContent).then(function() { toast('Script copié !', 'ok'); }).catch(function() { toast('Copie impossible.', 'err'); });
+    };
+  }).catch(function() { content.textContent = 'Erreur réseau.'; });
+}
+function generateEmail(id) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p) return;
+  var modal = document.getElementById('modal-email');
+  var subjectEl = document.getElementById('email-subject');
+  var bodyEl = document.getElementById('email-body');
+  if (!modal || !subjectEl || !bodyEl) return;
+  subjectEl.textContent = '⏳ Génération en cours…';
+  bodyEl.textContent = '';
+  modal.classList.add('on');
+  fetch('/api/draft-email', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: p.name, city: p.city, type: p.type, contact: p.contact, website: p.web, description: (p._enrich && p._enrich.description) || (p.enriched && p.enriched.description) || '' })
+  }).then(function(r) { return r.json(); }).then(function(d) {
+    if (d.error) { subjectEl.textContent = 'Erreur : ' + d.error; return; }
+    subjectEl.textContent = d.subject || '';
+    bodyEl.textContent = d.body || '';
+    var copyAllBtn = document.getElementById('email-copy-all-btn');
+    if (copyAllBtn) copyAllBtn.onclick = function() {
+      var text = 'Objet : ' + subjectEl.textContent + '\n\n' + bodyEl.textContent;
+      navigator.clipboard.writeText(text).then(function() { toast('Email copié !', 'ok'); }).catch(function() { toast('Copie impossible.', 'err'); });
+    };
+  }).catch(function() { subjectEl.textContent = 'Erreur réseau.'; });
 }
 function bulkClear() {
   S.selectedIds = {};
@@ -3074,6 +3266,10 @@ document.addEventListener('DOMContentLoaded', function() {
   if (bulkDeleteBtn) bulkDeleteBtn.addEventListener('click', bulkDelete);
   var bulkClearBtn = $('bulk-clear-btn');
   if (bulkClearBtn) bulkClearBtn.addEventListener('click', bulkClear);
+  var bulkDupesBtn = $('bulk-dupes-btn');
+  if (bulkDupesBtn) bulkDupesBtn.addEventListener('click', bulkDetectDupes);
+  var bulkScoreBtn = $('bulk-score-btn');
+  if (bulkScoreBtn) bulkScoreBtn.addEventListener('click', bulkScoreProspects);
 
   // Tasks
   var tAddBtn = $('t-add-btn');
@@ -3153,6 +3349,10 @@ window.setFollowUp = setFollowUp;
 window.setTodoStatus = setTodoStatus;
 window.deleteTodo = deleteTodo;
 window.requestNotifPermission = requestNotifPermission;
+window.bulkDetectDupes = bulkDetectDupes;
+window.bulkScoreProspects = bulkScoreProspects;
+window.generateCallScript = generateCallScript;
+window.generateEmail = generateEmail;
 
 })();
 </script>
