@@ -4949,6 +4949,19 @@
     ],
     "todos": [
       {
+        "id": "4v8cxoe95mtmqk25uas",
+        "text": "Regarder comment faire exactement avce la visio de demain, est ce que je montrer ma tête etc…",
+        "status": "todo",
+        "priority": "high",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": "apus4nw9vw8mqjn6t2o",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1781820906148,
+        "doneAt": null
+      },
+      {
         "id": "72dcr9ixjzkmqk2554c",
         "text": "Regarder les DNS de AlpiniaWebCraft.ch, ça ne pointe plus vers vercel.app —> changer ça pour que ça soit all Okey ⚠️",
         "status": "todo",
