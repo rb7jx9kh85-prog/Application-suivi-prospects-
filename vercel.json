@@ -1,7 +1,8 @@
 {
   "outputDirectory": "public",
   "functions": {
-    "api/enrich-batch.js": { "maxDuration": 60 }
+    "api/enrich-batch.js": { "maxDuration": 60 },
+    "api/verify-no-website.js": { "maxDuration": 30 }
   },
   "rewrites": [
     { "source": "/((?!api/).*)", "destination": "/index.html" }

@@ -1741,6 +1741,20 @@ function renderCard(p) {
         else if (f.label) val += ' <span style="font-size:10px;color:var(--t3)">(' + f.label + ')</span>';
         return '<div class="pcard-field"><span class="pcard-field-icon">' + f.k + '</span><span class="pcard-field-val">' + val + '</span></div>';
       }).join('')
+    + (!(enriched.website || p.web)
+        ? '<div class="pcard-field" id="pcard-no-web-' + p.id + '">'
+          + '<span class="pcard-field-icon">🌐</span>'
+          + '<span class="pcard-field-val" style="display:flex;align-items:center;gap:8px">'
+          + (p._noWebsite
+              ? (p._noWebsite.has_website
+                  ? '<span style="color:var(--ok)">Site trouvé : <a href="' + esc(p._noWebsite.website_url||'#') + '" target="_blank" rel="noopener" style="color:var(--violet2)">' + esc(p._noWebsite.website_url||'voir') + '</a></span>'
+                  : '<span style="color:var(--t3)">Aucun site confirmé</span> <span style="font-size:10px;color:var(--t3)">(' + esc(p._noWebsite.verdict||'') + ')</span>')
+              : '<span style="color:var(--t3);font-size:12px">Pas de site renseigné</span>')
+          + '<button class="btn btn-ghost" onclick="verifyNoWebsite(\'' + p.id + '\')" id="pcard-no-web-btn-' + p.id + '" style="height:26px;font-size:11px;padding:0 8px">'
+          + (p._verifyingWebsite ? '⏳ Vérification…' : '🔍 Vérifier')
+          + '</button>'
+          + '</span></div>'
+        : '')
     + '</div>'
     + '<div class="pcard-sec">'
     + '<div class="pcard-sec-title">Historique interactions</div>'
@@ -2276,6 +2290,34 @@ function doEnrich(id) {
     p._enrich = d.enrichedData;
     renderDash();
     toast('Enrichissement terminé — ' + p.name, 'ok');
+  });
+}
+function verifyNoWebsite(id) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p || p._verifyingWebsite) return;
+  p._verifyingWebsite = true;
+  var btn = document.getElementById('pcard-no-web-btn-' + id);
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ Vérification…'; }
+  fetch('/api/verify-no-website', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ prospectName: p.name, city: p.city, type: p.type })
+  }).then(function(r) { return r.json(); }).then(function(d) {
+    p._verifyingWebsite = false;
+    if (d.error) { toast('Vérification : ' + d.error, 'err'); if (btn) { btn.disabled = false; btn.textContent = '🔍 Vérifier'; } return; }
+    p._noWebsite = d.result;
+    if (d.result.has_website && d.result.website_url) {
+      p.web = d.result.website_url;
+      saveProspects();
+      toast('Site trouvé pour ' + p.name + ' — mis à jour !', 'ok');
+    } else {
+      toast('Confirmé : ' + p.name + ' n\'a pas de site web (' + (d.result.confidence||'') + ')', 'ok');
+    }
+    if (S.cardProspect && S.cardProspect.id === id) renderCard(p);
+  }).catch(function(e) {
+    p._verifyingWebsite = false;
+    toast('Erreur vérification : ' + e.message, 'err');
+    if (btn) { btn.disabled = false; btn.textContent = '🔍 Vérifier'; }
   });
 }
 
@@ -3050,6 +3092,7 @@ window.delProspect = delProspect;
 window.chgStatus = chgStatus;
 window.toggleEnrich = toggleEnrich;
 window.doEnrich = doEnrich;
+window.verifyNoWebsite = verifyNoWebsite;
 window.removeAIParsed = removeAIParsed;
 window.toggleSelect = toggleSelect;
 window.selectAll = selectAll;
