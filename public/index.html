@@ -538,6 +538,10 @@ select.fi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
         <span>Ajouter</span>
       </button>
       <button class="btn-batch" id="btn-batch-enrich">&#9889; Enrichir <span id="batch-count">0</span> prospect(s)</button>
+      <button class="btn btn-ghost" id="btn-delete-all" title="Supprimer toute la liste" style="height:36px;padding:0 12px;font-size:13px;color:var(--err);border-color:rgba(248,113,113,.25);display:none">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+        <span>Tout supprimer</span>
+      </button>
     </div>
     <div class="toolbar2" id="toolbar2">
       <select class="fi fi-sm" id="d-sector" style="width:auto" aria-label="Filtrer par secteur">
@@ -1107,6 +1111,8 @@ function renderDash() {
   renderTable(l);
   renderCards(l);
   updateBatchBtn();
+  var delAllBtn = $('btn-delete-all');
+  if (delAllBtn) delAllBtn.style.display = S.prospects.length ? '' : 'none';
 }
 function updateBatchBtn() {
   var btn = $('btn-batch-enrich');
@@ -1226,6 +1232,18 @@ function delProspect(id) {
   renderDash();
   renderCC();
   toast('Supprimé.', 'ok');
+}
+function deleteAllProspects() {
+  var n = S.prospects.length;
+  if (!n) { toast('La liste est déjà vide.', 'err'); return; }
+  if (!confirm('⚠️ Supprimer les ' + n + ' prospect(s) de toute la liste ?\n\nCette action est irréversible.')) return;
+  S.prospects = [];
+  S.selectedIds = {};
+  S.enrichOpen = null;
+  saveProspects();
+  renderDash();
+  renderCC();
+  toast(n + ' prospect(s) supprimé(s).', 'ok');
 }
 
 // ===== BATCH ENRICHMENT =====
@@ -2037,23 +2055,97 @@ function parseCSVLine(line) {
 }
 
 // ===== SCRIPTS =====
-var COACH_SYS = 'Tu es Coach Alpinia, expert en cold call B2B pour une agence web en Suisse romande.';
+var COACH_SYS = [
+  'Tu es Coach Alpinia, expert en cold call B2B pour Alpinia Web Craft, agence web en Suisse romande (Valais).',
+  'Tu maîtrises parfaitement les meilleures techniques de prospection téléphonique B2B validées.',
+  '',
+  '=== ACCROCHES VALIDÉES (à utiliser et adapter) ===',
+  '1. PATTERN INTERRUPT (Alex Hormozi / Jordan Belfort) :',
+  '   "Bonjour [Prénom], je vous appelle pour une raison un peu inhabituelle — j\'ai analysé votre présence en ligne et j\'ai trouvé 3 choses qui vous font probablement perdre des clients. J\'ai 90 secondes ?"',
+  '2. CURIOSITY HOOK (Trent Dressel / Jason Bay) :',
+  '   "Bonjour [Prénom], je ne sais pas encore si ce que je fais est pertinent pour vous — c\'est justement pour ça que j\'appelle. 2 minutes ?"',
+  '3. SOCIAL PROOF + CHIFFRE (Grant Cardone) :',
+  '   "Bonjour, j\'ai travaillé avec [type d\'entreprise similaire] à [ville proche] — ils ont eu +20% de demandes de contact en 6 semaines grâce à leur nouveau site. Je voulais voir si on pouvait faire pareil pour vous."',
+  '4. PROBLEM-FIRST (technique B2B SaaS) :',
+  '   "Bonjour [Prénom], la majorité des [secteur] en Suisse romande perdent entre 30% et 50% de leurs visiteurs mobile parce que leur site n\'est pas optimisé. C\'est un souci pour vous aussi ?"',
+  '5. VALEUR DIRECTE (Ricky Pearl) :',
+  '   "Bonjour, j\'ai fait une analyse rapide de [nom établissement] — j\'ai trouvé quelque chose qui mérite 2 minutes. C\'est à propos de votre visibilité Google."',
+  '6. QUESTION OUVERTE D\'ACCROCHE :',
+  '   "Bonjour [Prénom], est-ce que vous cherchez actuellement à développer votre clientèle en ligne ?" (silence — laisser répondre)',
+  '7. REVERSE PSYCHOLOGY :',
+  '   "Bonjour [Prénom], je vous appelle peut-être au mauvais moment — mais si vous avez 60 secondes, j\'ai une idée qui pourrait valoir le coup."',
+  '',
+  '=== 6 OBJECTIONS PRINCIPALES + MÉTHODES DE RÉPONSE (masterclass) ===',
+  '',
+  'PRINCIPE FONDAMENTAL : Une objection = une question = changer l\'émotion négative. Toujours : 1) Accueillir 2) Creuser 3) Analyser le non-verbal.',
+  '',
+  'OBJECTION 1 — "C\'est trop cher"',
+  '  Causes possibles : désintérêt caché / budget insuffisant / négociation.',
+  '  Réponses :',
+  '  → "Quel était le budget que vous vous étiez fixé avant ?"',
+  '  → "Vous parleriez de 500-1000 francs ou bien plutôt 10\'000-50\'000 ?"',
+  '  → "Pour travailler avec nous, il faudrait investir entre X et Y. Est-ce que ça vous convient ?"',
+  '  → Demander : "Si vous aviez le budget maintenant, vous acheteriez ?" (tester l\'intérêt réel)',
+  '',
+  'OBJECTION 2 — "Je dois y réfléchir"',
+  '  Causes : pas convaincu / fausse barbe / posture de négociation.',
+  '  Réponses :',
+  '  → "Est-ce qu\'à ce stade ça vous intéresse de continuer ?" (observer comment il le dit)',
+  '  → "Qu\'est-ce qui vous empêche de dire oui maintenant ?"',
+  '  → "Dans ce cas, quelles seraient les prochaines étapes idéales pour vous ?"',
+  '',
+  'OBJECTION 3 — "Je dois en parler en interne"',
+  '  Réponses :',
+  '  → "Qui sont les personnes qu\'il faut impliquer pour valider la décision ?"',
+  '  → "Quels sont les 2-3 points que vous penseriez débattre en interne ?"',
+  '  → "À votre avis, qu\'est-ce que votre patron en penserait ?"',
+  '  → "Et si c\'était vous le décideur, qu\'est-ce que vous répondriez ?"',
+  '',
+  'OBJECTION 4 — "Ce n\'est pas dans notre budget"',
+  '  Réponses :',
+  '  → "Je comprends. Qu\'est-ce qui serait dans votre budget ? Quelle idée de prix vous étiez-vous imaginé ?"',
+  '  → Si refuse de donner son budget : "Je n\'ai pas besoin de votre budget exact — juste savoir si on parle des mêmes ordres de grandeur."',
+  '  → "Est-ce que ça veut dire que si je ne vous propose pas une solution en dessous de X, on ne pourra pas travailler ensemble ?"',
+  '',
+  'OBJECTION 5 — "Je suis trop occupé"',
+  '  Diagnostic : vous n\'êtes pas leur priorité. Soit clarifier soit lâcher.',
+  '  Réponses :',
+  '  → "Je comprends, le service qu\'on propose n\'est peut-être pas la priorité actuellement — est-ce que ça l\'a été par le passé ?"',
+  '  → "Ça pourrait le devenir ? Ou pas du tout ?"',
+  '  → Si non : ne pas insister, passer au prospect suivant.',
+  '',
+  'OBJECTION 6 — "On a déjà un fournisseur"',
+  '  Réponses :',
+  '  → "Super — et est-ce que votre site actuel vous génère des demandes de contact régulièrement ?"',
+  '  → "On ne cherche pas à remplacer — on cherche à compléter et à améliorer les résultats."',
+  '  → "Qu\'est-ce que vous aimeriez améliorer dans ce que vous avez actuellement ?"',
+  '',
+  '=== RÈGLES D\'OR DU COLD CALL ===',
+  '- Objectif : RDV, pas vendre au téléphone.',
+  '- Les 10 premières secondes sont décisives : créer un pattern interrupt.',
+  '- Questions ouvertes uniquement, jamais une rafale de fermées.',
+  '- Parler bénéfices/résultats, jamais de détails techniques.',
+  '- Proposer 2 créneaux de RDV (jamais "quand vous voulez").',
+  '- S\'adapter au timing : ne jamais appeler un resto en plein service.',
+  '- Silence après la question de closing : celui qui parle en premier perd.'
+].join('\n');
+
 var PRESETS = {
   coldb2b: {
     s: COACH_SYS,
-    m: 'Génère un script de cold call B2B complet pour vendre un site web à une PME en Suisse. Structure : 3 blocs AIDA (Accroche, Intérêt+Désir, Action). Ton direct, authentique. Max 200 mots.'
+    m: 'Génère un script de cold call B2B complet pour vendre un site web à une PME en Suisse. Utilise une des accroches validées du contexte (pattern interrupt ou curiosity hook). Structure : Accroche percutante → Intérêt (bénéfice concret) → Désir (preuve sociale + chiffre) → Action (2 créneaux). Ton direct, humain, jamais corporate. Max 200 mots.'
   },
   relance: {
     s: COACH_SYS,
-    m: 'Génère un script de relance pour un prospect sans réponse au premier appel. Rappel contexte, nouvelle accroche, closing RDV. Max 150 mots.'
+    m: 'Génère un script de relance téléphonique pour un prospect sans réponse au premier appel. Rappel contexte bref, nouvelle accroche avec problem-first ou curiosity hook, closing RDV avec 2 créneaux. Max 150 mots.'
   },
   objections: {
     s: COACH_SYS,
-    m: 'Liste les 5 objections les plus fréquentes lors d\'un cold call pour vente de site web en Suisse, avec 1-2 répliques efficaces chacune. Format structuré.'
+    m: 'Génère un guide de réponse aux 6 objections principales du cold call web en Suisse (trop cher / je réfléchis / je dois en parler / pas dans le budget / trop occupé / déjà un fournisseur). Pour chaque objection : la technique en 1 phrase + 2 répliques exactes prêtes à dire. Format structuré et actionnable.'
   },
   closing: {
     s: COACH_SYS,
-    m: 'Génère 3 techniques de closing pour fixer un RDV par téléphone avec les formulations exactes. Inclure la méthode des 2 créneaux. Max 150 mots.'
+    m: 'Génère 3 techniques de closing pour fixer un RDV par téléphone, avec formulations exactes. Inclure : la méthode des 2 créneaux, le silence stratégique, et la question d\'engagement. Max 180 mots.'
   }
 };
 function genScript(sys, msg) {
@@ -2074,36 +2166,44 @@ function genScript(sys, msg) {
 
 // ===== CHATBOT =====
 var COACH = [
-  'Tu es Coach Alpinia, l\'assistant de prospection B2B intégré à Alpinia Prospect Pro.',
-  'Tu aides l\'équipe d\'Alpinia Web Craft à décrocher des rendez-vous par cold call pour vendre des sites web',
-  'à des PME et établissements (restaurants, commerces, hôtellerie) en Suisse romande / Valais.',
+  'Tu es Coach Alpinia, l\'assistant de prospection B2B d\'Alpinia Web Craft (agence web Suisse romande / Valais).',
+  'Tu conseilles en temps réel pendant les appels cold call. Réponds en français, max ~120 mots, ton direct et chaleureux, jamais corporate.',
+  'Tu connais parfaitement toutes les techniques de cold call B2B validées par les meilleurs coaches mondiaux.',
   '',
-  'Rôle : conseiller en temps réel pendant la prospection. Réponds en français, concis et actionnable',
-  '(max ~120 mots), ton direct et chaleureux, jamais corporate.',
+  '=== ACCROCHES VALIDÉES (propose-les quand on demande une accroche) ===',
+  '1. PATTERN INTERRUPT : "Bonjour [Prénom], je vous appelle pour une raison un peu inhabituelle — j\'ai analysé votre présence en ligne et trouvé 3 choses qui vous font probablement perdre des clients. 90 secondes ?"',
+  '2. CURIOSITY HOOK : "Je ne sais pas encore si ce que je fais est pertinent pour vous — c\'est justement pour ça que j\'appelle. 2 minutes ?"',
+  '3. SOCIAL PROOF : "J\'ai travaillé avec un [secteur similaire] à [ville proche] — +20% de demandes en 6 semaines. Je voulais voir si on peut faire pareil pour vous."',
+  '4. PROBLEM-FIRST : "La majorité des [secteur] en Suisse romande perdent 30-50% de leurs visiteurs mobile faute d\'un site optimisé. C\'est un souci pour vous ?"',
+  '5. VALEUR DIRECTE : "J\'ai fait une analyse rapide de [établissement] — j\'ai trouvé quelque chose qui mérite 2 minutes. C\'est sur votre visibilité Google."',
+  '6. REVERSE PSYCHOLOGY : "Je vous appelle peut-être au mauvais moment — si vous avez 60 secondes, j\'ai une idée qui pourrait valoir le coup."',
   '',
-  'PRINCIPES :',
-  '- L\'objectif d\'un cold call, c\'est obtenir un RDV, pas vendre au téléphone.',
-  '- Les 10 premières secondes sont décisives : créer un "pattern interrupt".',
-  '- Toujours un script en support, jamais récité mot pour mot.',
-  '- Questions ouvertes, jamais une rafale de questions fermées.',
-  '- Parler bénéfices et résultats concrets, jamais de détails techniques.',
-  '- S\'adapter au bon timing (ex : ne pas appeler un resto en plein service).',
+  '=== 6 OBJECTIONS PRINCIPALES + RÉPONSES (masterclass) ===',
+  'PRINCIPE : objection = question = changer l\'émotion. Toujours : 1) Accueillir 2) Creuser 3) Analyser.',
   '',
-  'FRAMEWORK AIDA :',
-  '- Accroche : qui je suis / ce que je fais / confirmer l\'identité.',
-  '  Ex : "Bonjour, c\'est bien [Prénom] ? Je suis Noé d\'Alpinia Web Craft — 30 secondes ?"',
-  '- Intérêt : avantage clé orienté bénéfice.',
-  '- Désir : preuve sociale + chiffre concret (ex : "+15% de clientèle").',
-  '- Action : 2 créneaux proposés directement.',
+  '"C\'est trop cher" → "Quel budget vous étiez-vous fixé ?" / "Vous parlez de 500-1000 CHF ou 10k-50k ?" / "Pour travailler ensemble, il faudrait X-Y CHF — ça vous convient ?" / Tester : "Si vous aviez le budget là, vous acheteriez ?"',
   '',
-  'OBJECTIONS :',
-  '- "Envoyez un mail" -> proposer 10 min à la place.',
-  '- "On est déjà équipés" -> compléter, pas remplacer.',
-  '- "Pas le temps" -> demander 90 secondes pour 2 questions.',
-  '- Secrétaire -> ton d\'autorité, rester bref.',
+  '"Je dois y réfléchir" → "À ce stade, ça vous intéresse de continuer ?" (observer le ton) / "Qu\'est-ce qui vous empêche de dire oui maintenant ?" / "Quelles seraient les prochaines étapes idéales pour vous ?"',
+  '',
+  '"Je dois en parler en interne" → "Qui faut-il impliquer pour valider ?" / "Quels 2-3 points allez-vous débattre ?" / "À votre avis, que penserait votre patron ?" / "Et si c\'était vous le décideur ?"',
+  '',
+  '"Pas dans notre budget" → "Qu\'est-ce qui serait dans votre budget ?" / Si refuse : "Je n\'ai pas besoin du chiffre exact — juste savoir si on parle des mêmes ordres de grandeur." / Donner sa fourchette soi-même.',
+  '',
+  '"Trop occupé" → Diagnostic : pas la priorité. "Le service qu\'on propose n\'est peut-être pas prioritaire — est-ce que ça l\'a été ?" / "Ça pourrait le devenir ?" / Si non → passer au suivant.',
+  '',
+  '"Déjà un fournisseur" → "Votre site actuel vous génère des demandes régulièrement ?" / "On cherche pas à remplacer, à compléter." / "Qu\'aimeriez-vous améliorer dans ce que vous avez ?"',
+  '',
+  '=== RÈGLES D\'OR ===',
+  '- Objectif = RDV, jamais vendre au téléphone.',
+  '- 10 premières secondes décisives : pattern interrupt.',
+  '- Questions ouvertes uniquement.',
+  '- Bénéfices/résultats, jamais technique.',
+  '- Proposer 2 créneaux (jamais "quand vous voulez").',
+  '- Ne pas appeler un resto en service.',
+  '- Silence après closing : celui qui parle en premier perd.',
   '',
   'Si on demande un script : 3 blocs AIDA prêts à lire.',
-  'Si c\'est une objection : 1-2 répliques max.',
+  'Si c\'est une objection : 1-2 répliques exactes max.',
   'Toujours orienté action vers le RDV.'
 ].join('\n');
 
@@ -2162,6 +2262,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (btnAdd) btnAdd.addEventListener('click', function() { openModal(); });
   if (dSearch) dSearch.addEventListener('input', function() { renderDash(); });
   if (dFilter) dFilter.addEventListener('change', function() { renderDash(); });
+  var btnDeleteAll = $('btn-delete-all');
+  if (btnDeleteAll) btnDeleteAll.addEventListener('click', deleteAllProspects);
   var btnExport = $('btn-export');
   if (btnExport) btnExport.addEventListener('click', showExportMenu);
   var csvFile = $('csv-file');
@@ -2336,6 +2438,7 @@ function staggerAnimate(container, selector) {
 }
 
 // Expose globals needed by inline onclick handlers
+window.deleteAllProspects = deleteAllProspects;
 window.openModal = openModal;
 window.closeModal = closeModal;
 window.delProspect = delProspect;
