@@ -321,9 +321,9 @@ tr.expanded td{border-bottom:none}
 
 /* ===== DESIGN ENHANCEMENTS ===== */
 
-/* View transitions */
-[data-view]{opacity:0;transform:translateY(10px);transition:opacity .28s var(--ease),transform .28s var(--ease)}
-[data-view].on{opacity:1;transform:translateY(0)}
+/* View transitions — keyframe-based so the resting state is always visible (no stuck opacity:0 on iOS) */
+[data-view].on{animation:view-in .34s var(--ease) both}
+@keyframes view-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
 /* Shimmer skeleton */
 @keyframes shimmer{0%{background-position:-600px 0}100%{background-position:600px 0}}
@@ -433,6 +433,81 @@ tbody tr:hover td:first-child{border-left:2px solid var(--violet2)}
 
 /* Select arrow styling */
 select.fi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a1a1b3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:30px}
+
+/* ===== MORE ANIMATIONS ===== */
+
+/* Section title slide-in when its view opens */
+[data-view].on .sec-title,[data-view].on .hero-title{animation:title-in .5s var(--ease) both}
+@keyframes title-in{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:translateX(0)}}
+[data-view].on .sec-sub,[data-view].on .hero-sub{animation:title-in .5s var(--ease) .08s both}
+
+/* Dashboard stats staggered entrance */
+[data-view].on .stat{animation:stat-in .5s var(--ease) both}
+[data-view].on .stat:nth-child(1){animation-delay:.05s}
+[data-view].on .stat:nth-child(2){animation-delay:.13s}
+[data-view].on .stat:nth-child(3){animation-delay:.21s}
+@keyframes stat-in{from{opacity:0;transform:translateY(16px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+/* Toolbar fade-in */
+[data-view].on .toolbar,[data-view].on .toolbar2,[data-view].on .tasks-toolbar,[data-view].on .cc-head{animation:fade-up .5s var(--ease) .1s both}
+@keyframes fade-up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* Nav buttons hover lift */
+.nav-btn{transition:background .15s,color .15s,transform .12s}
+.nav-btn:hover{transform:translateY(-1px)}
+.bnav-btn:active{transform:scale(.92)}
+
+/* Logo subtle glow pulse */
+.nav-logo{transition:filter .3s}
+.nav-logo:hover{filter:drop-shadow(0 0 10px rgba(168,85,247,.6))}
+
+/* Chat button breathing animation */
+@keyframes chat-breathe{0%,100%{box-shadow:0 4px 24px rgba(168,85,247,.5)}50%{box-shadow:0 4px 34px rgba(168,85,247,.85),0 0 0 6px rgba(168,85,247,.08)}}
+#chat-btn{animation:chat-breathe 3.5s ease-in-out infinite}
+#chat-btn:hover{animation-play-state:paused}
+#chat-btn svg{transition:transform .3s var(--ease)}
+#chat-btn:hover svg{transform:scale(1.15) rotate(-8deg)}
+
+/* Chat panel slide-up */
+#chat-panel.on{animation:panel-in .28s var(--ease)}
+@keyframes panel-in{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+/* Chat messages enter */
+.msg{animation:msg-in .25s var(--ease)}
+@keyframes msg-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* Badge pop on render */
+.badge{animation:badge-pop .3s var(--ease)}
+@keyframes badge-pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* Empty state float */
+.empty svg{animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* Icon button press feedback */
+.btn-icon:active{transform:scale(.9)}
+
+/* Primary button shine sweep on hover */
+.btn-primary{position:relative;overflow:hidden}
+.btn-primary::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .6s var(--ease)}
+.btn-primary:hover::after{left:140%}
+
+/* Modal close X rotate on hover */
+.modal-hd .btn-icon:hover{transform:rotate(90deg)}
+
+/* Spinner gradient */
+.spin{border-top-color:var(--violet2);border-right-color:var(--pink)}
+
+/* Smooth scroll */
+html{scroll-behavior:smooth}
+
+/* Loading screen fade-out */
+#loading{transition:opacity .4s var(--ease)}
+#loading.hide{opacity:0}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
 </style>
 </head>
 <body>
@@ -665,7 +740,6 @@ select.fi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
         Activer rappels
       </button>
-    </div>
     </div>
     <div class="task-list" id="task-list"></div>
   </div>
