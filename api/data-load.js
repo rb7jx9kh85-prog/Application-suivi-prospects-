@@ -21,17 +21,35 @@ function emailFromToken(token) {
   } catch (e) { return null }
 }
 
-function fetchRaw() {
+function fetchFromGithubAPI() {
   return new Promise((resolve, reject) => {
-    const url = `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/${FILE}?t=${Date.now()}`
-    https.get(url, (r) => {
+    const token = process.env.GITHUB_TOKEN
+    const headers = {
+      'User-Agent': 'alpinia-app/1.0',
+      Accept: 'application/vnd.github.v3+json',
+    }
+    if (token) headers.Authorization = 'Bearer ' + token
+
+    const req = https.request({
+      hostname: 'api.github.com',
+      path: `/repos/${OWNER}/${REPO}/contents/${FILE}`,
+      method: 'GET',
+      headers,
+    }, (r) => {
       let out = ''
       r.on('data', c => { out += c })
       r.on('end', () => {
-        if (r.statusCode === 404) return resolve({})
-        try { resolve(JSON.parse(out)) } catch (e) { resolve({}) }
+        try {
+          const json = JSON.parse(out)
+          if (r.statusCode === 404) return resolve({})
+          if (r.statusCode !== 200) return reject(new Error('GitHub ' + r.statusCode + ': ' + (json.message || out)))
+          const content = Buffer.from(json.content, 'base64').toString('utf8')
+          resolve(JSON.parse(content || '{}'))
+        } catch (e) { reject(e) }
       })
-    }).on('error', reject)
+    })
+    req.on('error', reject)
+    req.end()
   })
 }
 
@@ -49,7 +67,7 @@ module.exports = async function handler(req, res) {
   if (!email) return res.status(401).json({ error: 'Token invalide' })
 
   try {
-    const db = await fetchRaw()
+    const db = await fetchFromGithubAPI()
     const key = crypto.createHash('sha256').update(email).digest('hex')
     const userData = db[key] || {}
     return res.status(200).json({
