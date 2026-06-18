@@ -960,9 +960,15 @@ html{scroll-behavior:smooth}
         <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="address"/> Adresse</label>
         <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="industry"/> Secteur</label>
         <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="employees"/> Employ&eacute;s</label>
-        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="decision_maker"/> D&eacute;cisionnaire</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="decision_maker"/> D&eacute;cideur (nom)</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="decision_maker_phone"/> T&eacute;l. d&eacute;cideur</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="linkedin"/> LinkedIn</label>
         <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" class="batch-field-cb" value="description"/> Description</label>
       </div>
+      <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;cursor:pointer;margin-bottom:8px;padding:12px;border:1px solid rgba(168,85,247,.3);border-radius:var(--r10);background:rgba(124,58,237,.06)">
+        <input type="checkbox" id="batch-deep-search" style="margin-top:2px"/>
+        <span><strong>&#128269; Recherche web approfondie (LinkedIn)</strong><br><span style="color:var(--t3);font-size:12px">Cherche le dirigeant et son num&eacute;ro direct en naviguant vraiment sur le web. Bien plus pr&eacute;cis pour le t&eacute;l. d&eacute;cideur, mais plus lent et un peu plus cher.</span></span>
+      </label>
       <div style="display:flex;gap:10px;justify-content:flex-end">
         <button class="btn btn-ghost" id="batch-modal-cancel">Annuler</button>
         <button class="btn btn-primary" id="batch-start-btn">&#9889; Lancer l'enrichissement</button>
@@ -1474,13 +1480,15 @@ function eRow(p) {
   }
   var e = p._enrich;
   var fields = [
-    { k: 'Adresse', v: e.full_address },
+    { k: 'Adresse', v: e.full_address || e.address },
     { k: 'Téléphone', v: e.phone },
     { k: 'Email', v: e.email },
     { k: 'Horaires', v: e.opening_hours },
     { k: 'Note Google', v: e.google_rating },
-    { k: 'Employés', v: e.employees_approx },
-    { k: 'Décideur', v: e.key_decision_maker },
+    { k: 'Employés', v: e.employees_approx || e.employees },
+    { k: 'Décideur', v: e.key_decision_maker || e.decision_maker },
+    { k: '📱 Tél. décideur', v: e.decision_maker_phone },
+    { k: 'LinkedIn', v: e.linkedin },
     { k: 'Description', v: e.description }
   ].filter(function(f) { return f.v && f.v !== 'null'; });
   return '<tr class="enrich-row"><td colspan="6"><div class="enrich-panel">'
@@ -1570,8 +1578,11 @@ function startBatchEnrich() {
   var prospects = ids.map(function(id) {
     return S.prospects.filter(function(p) { return p.id === id; })[0];
   }).filter(Boolean);
+  var deepEl = $('batch-deep-search');
+  var deep = !!(deepEl && deepEl.checked);
   // Aucune limite : les prospects sont traités par lots successifs.
-  var CHUNK = 10;
+  // Lots plus petits en mode recherche web (chaque appel navigue, donc plus lent).
+  var CHUNK = deep ? 4 : 10;
   S.batchBackup = JSON.parse(JSON.stringify(S.prospects));
   S.batchAbort = false;
   S.batchRunning = true;
@@ -1611,7 +1622,7 @@ function startBatchEnrich() {
     var rangeEnd = Math.min(startIdx + chunk.length, total);
     var logEl = $('batch-log');
     if (logEl) logEl.textContent = 'Enrichissement ' + (startIdx + 1) + '–' + rangeEnd + ' / ' + total + '…';
-    var payload = { prospects: chunk.map(function(p) { return { id: p.id, name: p.name, city: p.city, domain: p.type, website: p.web }; }), fields: fields };
+    var payload = { prospects: chunk.map(function(p) { return { id: p.id, name: p.name, city: p.city, domain: p.type, website: p.web }; }), fields: fields, deepSearch: deep };
     fetch('/api/enrich-batch', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -1720,9 +1731,12 @@ function renderCard(p) {
         { k: '📍', v: p.city || enriched.address },
         { k: '🏢', v: p.type || enriched.industry },
         { k: '👥', v: enriched.employees || enriched.employees_approx },
-        { k: '🎯', v: p.contact || enriched.decision_maker }
-      ].filter(function(f) { return f.v; }).map(function(f) {
-        var val = f.href ? '<a href="' + esc(f.href) + '" style="color:var(--violet2)">' + esc(f.v) + '</a>' : esc(f.v);
+        { k: '🎯', v: p.contact || enriched.decision_maker || enriched.key_decision_maker },
+        { k: '📱', v: enriched.decision_maker_phone, href: enriched.decision_maker_phone ? 'tel:' + enriched.decision_maker_phone : null, label: 'décideur' },
+        { k: '🔗', v: enriched.linkedin, href: enriched.linkedin }
+      ].filter(function(f) { return f.v && f.v !== 'null'; }).map(function(f) {
+        var val = f.href ? '<a href="' + esc(f.href) + '" target="_blank" rel="noopener" style="color:var(--violet2)">' + esc(f.v) + '</a>' : esc(f.v);
+        if (f.label) val += ' <span style="font-size:10px;color:var(--t3)">(' + f.label + ')</span>';
         return '<div class="pcard-field"><span class="pcard-field-icon">' + f.k + '</span><span class="pcard-field-val">' + val + '</span></div>';
       }).join('')
     + '</div>'

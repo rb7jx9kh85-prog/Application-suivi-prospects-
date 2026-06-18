@@ -45,11 +45,17 @@ module.exports = async function handler(req, res) {
       + (loc ? ' (' + loc + ')' : '')
       + (website ? ', site web ' + website : '')
       + ', en Suisse.\n'
+      + 'Cherche EN PRIORITÉ, notamment sur LinkedIn et sur le site officiel, le ou la dirigeant·e '
+      + '(patron, gérant, directeur, fondateur) : son nom complet, sa fonction, son profil LinkedIn, '
+      + 'et son numéro de téléphone professionnel/direct s\'il est rendu public.\n'
       + 'Réponds UNIQUEMENT par un objet JSON valide, sans markdown, sans texte autour :\n'
-      + '{"full_address":"adresse complète CP+ville","phone":"téléphone direct","email":"email de contact",'
-      + '"opening_hours":"horaires","description":"1-2 phrases","google_rating":"note Google ex 4.3/5",'
-      + '"employees_approx":"estimation employés","key_decision_maker":"fonction du décideur (patron/gérant/directeur)"}\n'
-      + 'Mets null pour toute info introuvable.'
+      + '{"full_address":"adresse complète CP+ville","phone":"téléphone standard de l\'établissement",'
+      + '"email":"email de contact","opening_hours":"horaires","description":"1-2 phrases",'
+      + '"google_rating":"note Google ex 4.3/5","employees_approx":"estimation employés",'
+      + '"key_decision_maker":"Prénom Nom — fonction du décideur (patron/gérant/directeur)",'
+      + '"decision_maker_phone":"numéro direct/professionnel du décideur si trouvé publiquement",'
+      + '"linkedin":"URL du profil LinkedIn du décideur, ou à défaut la page LinkedIn de l\'entreprise"}\n'
+      + 'Mets null pour toute info introuvable. N\'invente JAMAIS un numéro ni un profil : uniquement des données réelles et publiques.'
 
     const r = await openai(key, {
       model: 'gpt-4o-mini-search-preview',
