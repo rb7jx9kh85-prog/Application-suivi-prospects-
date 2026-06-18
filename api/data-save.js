@@ -1,7 +1,12 @@
 const https = require('https')
 const crypto = require('crypto')
 
+const OWNER = 'rb7jx9kh85-prog'
+const REPO = 'Application-suivi-prospects-'
+const FILE = 'data/prospects.json'
+
 const secret = () => process.env.APP_SECRET || 'alpinia-default-secret-change-me'
+const ghToken = () => process.env.GITHUB_TOKEN
 
 function emailFromToken(token) {
   try {
@@ -17,38 +22,48 @@ function emailFromToken(token) {
   } catch (e) { return null }
 }
 
-function kvSet(key, value) {
+function ghRequest(method, path, body, token) {
   return new Promise((resolve, reject) => {
-    const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL
-    const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN
-    if (!url || !token) return reject(new Error('KV non configuré'))
-
-    const data = JSON.stringify(value)
-    const u = new URL(url)
+    const data = body ? JSON.stringify(body) : null
     const req = https.request({
-      hostname: u.hostname,
-      path: u.pathname.replace(/\/$/, '') + '/set/' + encodeURIComponent(key),
-      method: 'POST',
+      hostname: 'api.github.com',
+      path,
+      method,
       headers: {
         Authorization: 'Bearer ' + token,
+        'User-Agent': 'alpinia-app/1.0',
+        Accept: 'application/vnd.github.v3+json',
         'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(data),
+        ...(data ? { 'Content-Length': Buffer.byteLength(data) } : {}),
       },
     }, (r) => {
       let out = ''
       r.on('data', c => { out += c })
       r.on('end', () => {
-        try {
-          const json = JSON.parse(out)
-          if (json && json.error) return reject(new Error(json.error))
-          resolve(json)
-        } catch (e) { reject(e) }
+        try { resolve({ status: r.statusCode, body: JSON.parse(out) }) }
+        catch (e) { resolve({ status: r.statusCode, body: out }) }
       })
     })
     req.on('error', reject)
-    req.write(data)
+    if (data) req.write(data)
     req.end()
   })
+}
+
+async function readDb(token) {
+  const r = await ghRequest('GET', `/repos/${OWNER}/${REPO}/contents/${FILE}`, null, token)
+  if (r.status === 404) return { data: {}, sha: null }
+  if (r.status !== 200) throw new Error('GitHub read error ' + r.status)
+  const content = Buffer.from(r.body.content, 'base64').toString('utf8')
+  return { data: JSON.parse(content || '{}'), sha: r.body.sha }
+}
+
+async function writeDb(db, sha, token) {
+  const content = Buffer.from(JSON.stringify(db, null, 2)).toString('base64')
+  const body = { message: 'sync prospects', content, ...(sha ? { sha } : {}) }
+  const r = await ghRequest('PUT', `/repos/${OWNER}/${REPO}/contents/${FILE}`, body, token)
+  if (r.status !== 200 && r.status !== 201) throw new Error('GitHub write error ' + r.status + ': ' + JSON.stringify(r.body))
+  return r.body
 }
 
 module.exports = async function handler(req, res) {
@@ -58,18 +73,23 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end()
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method Not Allowed' })
 
-  const { token, prospects, todos } = req.body || {}
-  if (!token) return res.status(400).json({ error: 'token requis' })
+  const token = ghToken()
+  if (!token) return res.status(500).json({ error: 'GITHUB_TOKEN manquant dans Vercel' })
 
-  const email = emailFromToken(token)
+  const { token: appToken, prospects, todos } = req.body || {}
+  if (!appToken) return res.status(400).json({ error: 'token requis' })
+
+  const email = emailFromToken(appToken)
   if (!email) return res.status(401).json({ error: 'Token invalide' })
 
   try {
-    const ops = []
-    if (Array.isArray(prospects)) ops.push(kvSet('prospects:' + email, prospects))
-    if (Array.isArray(todos))     ops.push(kvSet('todos:'     + email, todos))
-    if (ops.length) await Promise.all(ops)
-    return res.status(200).json({ ok: true, saved: ops.length })
+    const key = crypto.createHash('sha256').update(email).digest('hex')
+    const { data: db, sha } = await readDb(token)
+    if (!db[key]) db[key] = {}
+    if (Array.isArray(prospects)) db[key].prospects = prospects
+    if (Array.isArray(todos)) db[key].todos = todos
+    await writeDb(db, sha, token)
+    return res.status(200).json({ ok: true })
   } catch (e) {
     return res.status(500).json({ error: e.message })
   }

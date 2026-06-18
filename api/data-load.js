@@ -1,11 +1,12 @@
 const https = require('https')
 const crypto = require('crypto')
 
+const OWNER = 'rb7jx9kh85-prog'
+const REPO = 'Application-suivi-prospects-'
+const FILE = 'data/prospects.json'
+
 const secret = () => process.env.APP_SECRET || 'alpinia-default-secret-change-me'
 
-// Extrait l'email du token (clé stable, identique sur tous les appareils).
-// Le token contient email|exp|signature — l'exp change à chaque login, donc on
-// NE PEUT PAS utiliser le token comme clé. On utilise l'email.
 function emailFromToken(token) {
   try {
     const decoded = Buffer.from(token, 'base64').toString('utf8')
@@ -20,36 +21,17 @@ function emailFromToken(token) {
   } catch (e) { return null }
 }
 
-function keyOf(email, name) {
-  return name + ':' + email
-}
-
-function kvGet(key) {
+function fetchRaw() {
   return new Promise((resolve, reject) => {
-    const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL
-    const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN
-    if (!url || !token) return reject(new Error('KV non configuré (KV_REST_API_URL / KV_REST_API_TOKEN manquants)'))
-
-    const u = new URL(url)
-    const req = https.request({
-      hostname: u.hostname,
-      path: u.pathname.replace(/\/$/, '') + '/get/' + encodeURIComponent(key),
-      method: 'GET',
-      headers: { Authorization: 'Bearer ' + token },
-    }, (r) => {
+    const url = `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/${FILE}?t=${Date.now()}`
+    https.get(url, (r) => {
       let out = ''
       r.on('data', c => { out += c })
       r.on('end', () => {
-        try {
-          const json = JSON.parse(out)
-          if (json && json.error) return reject(new Error(json.error))
-          const raw = json && json.result !== undefined ? json.result : null
-          resolve(raw !== null && typeof raw === 'string' ? JSON.parse(raw) : raw)
-        } catch (e) { reject(e) }
+        if (r.statusCode === 404) return resolve({})
+        try { resolve(JSON.parse(out)) } catch (e) { resolve({}) }
       })
-    })
-    req.on('error', reject)
-    req.end()
+    }).on('error', reject)
   })
 }
 
@@ -67,11 +49,13 @@ module.exports = async function handler(req, res) {
   if (!email) return res.status(401).json({ error: 'Token invalide' })
 
   try {
-    const [prospects, todos] = await Promise.all([
-      kvGet(keyOf(email, 'prospects')),
-      kvGet(keyOf(email, 'todos')),
-    ])
-    return res.status(200).json({ prospects: prospects || [], todos: todos || [] })
+    const db = await fetchRaw()
+    const key = crypto.createHash('sha256').update(email).digest('hex')
+    const userData = db[key] || {}
+    return res.status(200).json({
+      prospects: userData.prospects || [],
+      todos: userData.todos || [],
+    })
   } catch (e) {
     return res.status(500).json({ error: e.message })
   }
