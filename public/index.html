@@ -1481,13 +1481,13 @@ function eRow(p) {
   var e = p._enrich;
   var fields = [
     { k: 'Adresse', v: e.full_address || e.address },
-    { k: 'Téléphone', v: e.phone },
+    { k: 'Téléphone', v: e.phone, source: e.phone_source },
     { k: 'Email', v: e.email },
     { k: 'Horaires', v: e.opening_hours },
     { k: 'Note Google', v: e.google_rating },
     { k: 'Employés', v: e.employees_approx || e.employees },
     { k: 'Décideur', v: e.key_decision_maker || e.decision_maker },
-    { k: '📱 Tél. décideur', v: e.decision_maker_phone },
+    { k: '📱 Tél. décideur', v: e.decision_maker_phone, source: e.decision_maker_phone_source },
     { k: 'LinkedIn', v: e.linkedin },
     { k: 'Description', v: e.description }
   ].filter(function(f) { return f.v && f.v !== 'null'; });
@@ -1497,7 +1497,7 @@ function eRow(p) {
     + '<button class="btn btn-ghost" onclick="doEnrich(\'' + p.id + '\')" style="font-size:11px;height:28px;padding:0 10px">'
     + '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg> Actualiser</button>'
     + '</div><div class="enrich-grid">'
-    + fields.map(function(f) { return '<div class="ei"><div class="ei-k">' + esc(f.k) + '</div><div class="ei-v">' + esc(String(f.v)) + '</div></div>'; }).join('')
+    + fields.map(function(f) { var val = String(f.v); if (f.source) val += ' (' + f.source + ')'; return '<div class="ei"><div class="ei-k">' + esc(f.k) + '</div><div class="ei-v">' + esc(val) + '</div></div>'; }).join('')
     + '</div></div></td></tr>';
 }
 function renderCards(list) {
@@ -1692,15 +1692,16 @@ function renderCard(p) {
   var initials = (p.name || '?').split(' ').slice(0,2).map(function(w) { return w[0]; }).join('').toUpperCase();
   var enriched = p.enriched || p._enrich || {};
   var enrichedFields = [
-    { k: '📞 Téléphone', v: enriched.phone || enriched.full_address && '' || p.phone },
-    { k: '📧 Email', v: enriched.email || p.email },
-    { k: '🌐 Site web', v: enriched.website || p.web },
-    { k: '📍 Adresse', v: enriched.address || enriched.full_address || p.city },
-    { k: '🏢 Secteur', v: enriched.industry || p.type },
-    { k: '👥 Employés', v: enriched.employees || enriched.employees_approx },
-    { k: '🎯 Décisionnaire', v: enriched.decision_maker || enriched.key_decision_maker || p.contact },
-    { k: '📝 Description', v: enriched.description }
-  ].filter(function(f) { return f.v && f.v !== 'null'; });
+    enriched.phone ? { k: '📞 Téléphone', v: enriched.phone, source: enriched.phone_source } : null,
+    enriched.email || p.email ? { k: '📧 Email', v: enriched.email || p.email } : null,
+    enriched.website || p.web ? { k: '🌐 Site web', v: enriched.website || p.web } : null,
+    enriched.address || enriched.full_address || p.city ? { k: '📍 Adresse', v: enriched.address || enriched.full_address || p.city } : null,
+    enriched.industry || p.type ? { k: '🏢 Secteur', v: enriched.industry || p.type } : null,
+    enriched.employees || enriched.employees_approx ? { k: '👥 Employés', v: enriched.employees || enriched.employees_approx } : null,
+    enriched.decision_maker || enriched.key_decision_maker || p.contact ? { k: '🎯 Décisionnaire', v: enriched.decision_maker || enriched.key_decision_maker || p.contact } : null,
+    enriched.decision_maker_phone ? { k: '📱 Tél. décideur', v: enriched.decision_maker_phone, source: enriched.decision_maker_phone_source } : null,
+    enriched.description ? { k: '📝 Description', v: enriched.description } : null
+  ].filter(function(f) { return f && f.v && f.v !== 'null'; });
   var linkedTodos = S.todos.filter(function(t) { return t.prospectId === p.id; });
   inner.innerHTML = '<div class="pcard-hide-print" style="display:flex;justify-content:flex-end;gap:8px;margin-bottom:16px">'
     + '<button class="btn btn-ghost" onclick="window.print()" style="height:36px;font-size:13px">📄 PDF</button>'
@@ -1725,18 +1726,19 @@ function renderCard(p) {
     + '<div class="pcard-sec">'
     + '<div class="pcard-sec-title">Infos contact</div>'
     + [
-        { k: '📞', v: enriched.phone || p.phone, href: enriched.phone || p.phone ? 'tel:' + (enriched.phone || p.phone) : null },
+        { k: '📞', v: enriched.phone || p.phone, href: enriched.phone || p.phone ? 'tel:' + (enriched.phone || p.phone) : null, source: enriched.phone_source },
         { k: '📧', v: enriched.email || p.email, href: enriched.email || p.email ? 'mailto:' + (enriched.email || p.email) : null },
         { k: '🌐', v: enriched.website || p.web, href: enriched.website || p.web },
         { k: '📍', v: p.city || enriched.address },
         { k: '🏢', v: p.type || enriched.industry },
         { k: '👥', v: enriched.employees || enriched.employees_approx },
         { k: '🎯', v: p.contact || enriched.decision_maker || enriched.key_decision_maker },
-        { k: '📱', v: enriched.decision_maker_phone, href: enriched.decision_maker_phone ? 'tel:' + enriched.decision_maker_phone : null, label: 'décideur' },
+        { k: '📱', v: enriched.decision_maker_phone, href: enriched.decision_maker_phone ? 'tel:' + enriched.decision_maker_phone : null, label: 'décideur', source: enriched.decision_maker_phone_source },
         { k: '🔗', v: enriched.linkedin, href: enriched.linkedin }
       ].filter(function(f) { return f.v && f.v !== 'null'; }).map(function(f) {
         var val = f.href ? '<a href="' + esc(f.href) + '" target="_blank" rel="noopener" style="color:var(--violet2)">' + esc(f.v) + '</a>' : esc(f.v);
-        if (f.label) val += ' <span style="font-size:10px;color:var(--t3)">(' + f.label + ')</span>';
+        if (f.source) val += ' <span style="font-size:10px;color:var(--t3)">(' + esc(f.source) + ')</span>';
+        else if (f.label) val += ' <span style="font-size:10px;color:var(--t3)">(' + f.label + ')</span>';
         return '<div class="pcard-field"><span class="pcard-field-icon">' + f.k + '</span><span class="pcard-field-val">' + val + '</span></div>';
       }).join('')
     + '</div>'

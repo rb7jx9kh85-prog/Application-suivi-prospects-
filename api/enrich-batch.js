@@ -76,10 +76,11 @@ module.exports = async function handler(req, res) {
   const system = 'Tu es un assistant de prospection B2B en Suisse romande. '
     + 'Pour chaque établissement, retourne UNIQUEMENT un objet JSON avec les champs demandés. '
     + 'Si une info est inconnue, mets null. Ne génère JAMAIS de fausses données ni de faux numéros. '
-    + 'Champs possibles : email, phone (standard de l\'établissement), website, address, industry, '
+    + 'Champs possibles : email, phone (standard de l\'établissement), phone_source (source du téléphone), website, address, industry, '
     + 'employees (nombre approximatif), decision_maker (prénom nom + fonction du dirigeant : patron/gérant/directeur), '
-    + 'decision_maker_phone (numéro direct/professionnel du dirigeant si public), '
-    + 'linkedin (URL du profil LinkedIn du dirigeant ou de la page entreprise), description (1 phrase max).'
+    + 'decision_maker_phone (numéro direct/professionnel du dirigeant si public), decision_maker_phone_source (source du numéro dirigeant), '
+    + 'linkedin (URL du profil LinkedIn du dirigeant ou de la page entreprise), description (1 phrase max). '
+    + 'IMPORTANT: Pour chaque numéro de téléphone (phone et decision_maker_phone), fournis TOUJOURS la source (ex: "Site officiel", "LinkedIn", "Google Maps", "Pages Jaunes") dans les champs phone_source et decision_maker_phone_source.'
     + (deep
         ? ' Tu as accès au web : recherche activement sur LinkedIn et le site officiel le nom du dirigeant, son profil LinkedIn et son contact direct public.'
         : '')
