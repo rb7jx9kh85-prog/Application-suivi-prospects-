@@ -30,8 +30,9 @@ function buildFilters(defs) {
 
 function overpassQuery(city, defs, limit) {
   // Area exacte (anchored, insensible à la casse) → indexé, très rapide.
-  // timeout interne court : on veut une réponse rapide, pas un scan profond.
-  return `[out:json][timeout:25];
+  // timeout interne court (8s) : Vercel Hobby coupe la fonction à 10s, on doit
+  // rester bien en-dessous.
+  return `[out:json][timeout:8];
 area["name"~"^${city}$",i]["boundary"="administrative"]["admin_level"~"^(8|7|6)$"]->.a;
 (
   ${buildFilters(defs)}
@@ -75,7 +76,7 @@ function postFollow(urlStr, data, hops) {
         catch (e) { reject(new Error('Réponse illisible')) }
       })
     })
-    req.setTimeout(26000, () => { req.destroy(); reject(new Error('Timeout')) })
+    req.setTimeout(9000, () => { req.destroy(); reject(new Error('Timeout')) })
     req.on('error', reject)
     req.write(data)
     req.end()
@@ -86,17 +87,20 @@ function callOverpass(url, query) {
   return postFollow(url, 'data=' + encodeURIComponent(query), 0)
 }
 
-// Essaie chaque serveur jusqu'à ce qu'un réponde.
-async function callWithFallback(query) {
-  let lastErr = null
-  for (const url of ENDPOINTS) {
-    try {
-      return await callOverpass(url, query)
-    } catch (e) {
-      lastErr = e
-    }
-  }
-  throw lastErr || new Error('Tous les serveurs Overpass sont indisponibles')
+// Interroge les 3 serveurs EN PARALLÈLE : le premier qui renvoie un résultat
+// valide gagne. Vercel coupe à 10s → on ne peut pas les essayer en série.
+function callWithFallback(query) {
+  const attempts = ENDPOINTS.map(url => callOverpass(url, query))
+  return new Promise((resolve, reject) => {
+    let pending = attempts.length
+    let lastErr = null
+    attempts.forEach(p => {
+      p.then(data => resolve(data)).catch(e => {
+        lastErr = e
+        if (--pending === 0) reject(lastErr || new Error('Serveurs indisponibles'))
+      })
+    })
+  })
 }
 
 function parseElement(el) {
