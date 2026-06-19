@@ -36,7 +36,7 @@ area["name"~"^${city}$",i]["boundary"="administrative"]["admin_level"~"^(8|7|6)$
 (
   ${buildFilters(defs)}
 );
-out center tags ${limit * 4};`
+out center ${limit * 4};`
 }
 
 const ENDPOINTS = [
