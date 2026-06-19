@@ -4990,7 +4990,7 @@
       {
         "id": "2eb7yo48sebmqk1mz3b",
         "text": "Contacter fille du site Anna Claret pour leur dire que j’ai créé un site web",
-        "status": "todo",
+        "status": "done",
         "priority": "medium",
         "category": "call",
         "dueDate": null,
@@ -4998,7 +4998,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781820025895,
-        "doneAt": null
+        "doneAt": 1781887535237
       },
       {
         "id": "k3n309f8jimqjrh9t8",
