@@ -4951,7 +4951,7 @@
       {
         "id": "4v8cxoe95mtmqk25uas",
         "text": "Regarder comment faire exactement avce la visio de demain, est ce que je montrer ma tête etc…",
-        "status": "todo",
+        "status": "done",
         "priority": "high",
         "category": "agency",
         "dueDate": null,
@@ -4959,7 +4959,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781820906148,
-        "doneAt": null
+        "doneAt": 1781886952794
       },
       {
         "id": "72dcr9ixjzkmqk2554c",
