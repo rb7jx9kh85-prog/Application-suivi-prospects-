@@ -40,24 +40,33 @@ out center ${limit * 4};`
 }
 
 const ENDPOINTS = [
-  'overpass-api.de',
-  'overpass.kumi.systems',
-  'maps.mail.ru', // miroir Overpass
+  'https://overpass-api.de/api/interpreter',
+  'https://overpass.kumi.systems/api/interpreter',
+  'https://overpass.openstreetmap.fr/api/interpreter', // miroir FR, rapide pour la Suisse
 ]
 
-function callOverpass(host, query) {
+// POST vers une URL, en suivant les redirections 301/302 (jusqu'à 3 sauts).
+function postFollow(urlStr, data, hops) {
   return new Promise((resolve, reject) => {
-    const data = 'data=' + encodeURIComponent(query)
+    if (hops > 3) return reject(new Error('Trop de redirections'))
+    const u = new URL(urlStr)
     const req = https.request({
-      hostname: host,
-      path: '/api/interpreter',
+      hostname: u.hostname,
+      path: u.pathname + u.search,
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Content-Length': Buffer.byteLength(data),
         'User-Agent': 'AlpiniaProspect/1.0 (prospection B2B)',
+        'Accept': 'application/json',
       },
     }, (r) => {
+      // Redirection → on rejoue le POST vers la nouvelle URL
+      if ([301, 302, 307, 308].includes(r.statusCode) && r.headers.location) {
+        r.resume() // vide le flux
+        const next = new URL(r.headers.location, urlStr).toString()
+        return resolve(postFollow(next, data, hops + 1))
+      }
       let out = ''
       r.on('data', c => { out += c })
       r.on('end', () => {
@@ -73,12 +82,16 @@ function callOverpass(host, query) {
   })
 }
 
+function callOverpass(url, query) {
+  return postFollow(url, 'data=' + encodeURIComponent(query), 0)
+}
+
 // Essaie chaque serveur jusqu'à ce qu'un réponde.
 async function callWithFallback(query) {
   let lastErr = null
-  for (const host of ENDPOINTS) {
+  for (const url of ENDPOINTS) {
     try {
-      return await callOverpass(host, query)
+      return await callOverpass(url, query)
     } catch (e) {
       lastErr = e
     }
