@@ -4963,12 +4963,12 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781820906148,
-        "doneAt": 1781886952794
+        "doneAt": 1781899765883
       },
       {
         "id": "72dcr9ixjzkmqk2554c",
         "text": "Regarder les DNS de AlpiniaWebCraft.ch, ça ne pointe plus vers vercel.app —> changer ça pour que ça soit all Okey ⚠️",
-        "status": "done",
+        "status": "todo",
         "priority": "medium",
         "category": "agency",
         "dueDate": null,
@@ -4976,12 +4976,12 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781820873516,
-        "doneAt": 1781886956013
+        "doneAt": null
       },
       {
         "id": "kb5ktt0jfy8mqk24bet",
         "text": "Configurer + trouver une new API GRATUITE ou bien payer les OPENai ou les Anthropic",
-        "status": "done",
+        "status": "todo",
         "priority": "medium",
         "category": "agency",
         "dueDate": null,
@@ -4989,12 +4989,12 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781820835013,
-        "doneAt": 1781886958761
+        "doneAt": null
       },
       {
         "id": "2eb7yo48sebmqk1mz3b",
         "text": "Contacter fille du site Anna Claret pour leur dire que j’ai créé un site web",
-        "status": "done",
+        "status": "todo",
         "priority": "medium",
         "category": "call",
         "dueDate": null,
@@ -5002,7 +5002,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781820025895,
-        "doneAt": 1781887535237
+        "doneAt": null
       },
       {
         "id": "k3n309f8jimqjrh9t8",
@@ -5059,7 +5059,7 @@
       {
         "id": "4brv9pdt74mqjn7r0n",
         "text": "call visio la coopérative a aproz",
-        "status": "done",
+        "status": "todo",
         "priority": "high",
         "category": "call",
         "dueDate": "2026-06-19",
@@ -5067,7 +5067,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781795800967,
-        "doneAt": 1781881818428
+        "doneAt": null
       }
     ],
     "notes": [
