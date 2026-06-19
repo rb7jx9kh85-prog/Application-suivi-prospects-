@@ -5003,7 +5003,7 @@
       {
         "id": "k3n309f8jimqjrh9t8",
         "text": "cold calling vidéo: https://www.youtube.com/watch?v=A1dsYkSL7TM",
-        "status": "todo",
+        "status": "done",
         "priority": "medium",
         "category": "call",
         "dueDate": "2026-06-18",
@@ -5011,7 +5011,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781802963692,
-        "doneAt": null
+        "doneAt": 1781900628235
       },
       {
         "id": "hovle3qx3lsmqjrgybu",
