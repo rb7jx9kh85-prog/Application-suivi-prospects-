@@ -732,6 +732,10 @@ html{scroll-behavior:smooth}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
         <span>Import IA</span>
       </button>
+      <button class="btn btn-ghost" id="btn-find-places" onclick="openFindPlaces()" title="Trouver des établissements">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>Trouver</span>
+      </button>
       <button class="btn btn-cf" id="btn-add">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         <span>Ajouter</span>
@@ -999,6 +1003,84 @@ html{scroll-behavior:smooth}
         <button class="btn btn-primary" onclick="saveNoteModal()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
           Enregistrer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL TROUVER ÉTABLISSEMENTS -->
+<div class="modal-bg" id="modal-find-places" role="dialog" aria-modal="true">
+  <div class="modal" style="max-width:700px;padding:0">
+    <div style="background:var(--grad);border-radius:var(--r20) var(--r20) 0 0;padding:22px 24px 20px;position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;background:rgba(0,0,0,.18)"></div>
+      <div style="position:relative;display:flex;align-items:center;justify-content:space-between">
+        <div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:4px">OpenStreetMap · Gratuit</div>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:#fff;letter-spacing:-.02em;margin:0">🔍 Trouver des établissements</h2>
+        </div>
+        <button class="btn btn-icon" onclick="closeFindPlaces()" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.25);color:#fff">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <!-- Formulaire de recherche -->
+    <div id="find-form" style="padding:24px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="fgrp">
+          <label>Ville / Zone <span style="color:var(--violet2)">*</span></label>
+          <div style="position:relative">
+            <svg style="position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--t3);pointer-events:none" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <input id="fp-city" class="fi" style="padding-left:36px" placeholder="Ex: Sion, Genève, Lausanne…" />
+          </div>
+        </div>
+        <div class="fgrp">
+          <label>Secteur</label>
+          <select id="fp-cat" class="fi">
+            <option value="restaurant">🍽️ Restaurants &amp; Cafés</option>
+            <option value="hotel">🏨 Hôtels &amp; Hébergements</option>
+            <option value="commerce">🛍️ Commerces &amp; Boutiques</option>
+            <option value="beauty">💅 Beauté &amp; Bien-être</option>
+            <option value="sante">🏥 Santé &amp; Médical</option>
+            <option value="fitness">💪 Sport &amp; Fitness</option>
+            <option value="immobilier">🏠 Immobilier</option>
+            <option value="auto">🚗 Automobile</option>
+            <option value="it">💻 IT &amp; Consulting</option>
+            <option value="autre">🔍 Tous secteurs</option>
+          </select>
+        </div>
+      </div>
+      <div class="fgrp">
+        <label>Nombre d'établissements (max 100)</label>
+        <div style="display:flex;align-items:center;gap:14px">
+          <input id="fp-limit" type="range" min="5" max="100" step="5" value="30" oninput="$('fp-limit-val').textContent=this.value" style="flex:1;accent-color:var(--violet2)" />
+          <span id="fp-limit-val" style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--violet2);min-width:36px;text-align:right">30</span>
+        </div>
+      </div>
+      <div id="fp-error" style="display:none;padding:10px 14px;border-radius:var(--r10);background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.25);color:var(--err);font-size:13px"></div>
+      <button class="btn btn-primary" id="fp-search-btn" onclick="doFindPlaces()" style="align-self:flex-end;min-width:160px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Rechercher
+      </button>
+    </div>
+    <!-- Résultats -->
+    <div id="find-results" style="display:none;padding:0 24px 24px;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+        <div>
+          <span id="fp-count-label" style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--t1);font-size:15px"></span>
+          <span style="font-size:12px;color:var(--t3);margin-left:8px">· Source : OpenStreetMap</span>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost" onclick="fpSelectAll()" style="height:32px;padding:0 12px;font-size:12px">Tout cocher</button>
+          <button class="btn btn-ghost" onclick="fpSelectNone()" style="height:32px;padding:0 12px;font-size:12px">Tout décocher</button>
+        </div>
+      </div>
+      <div id="fp-list" style="display:flex;flex-direction:column;gap:6px;max-height:340px;overflow-y:auto;padding-right:4px"></div>
+      <div style="display:flex;gap:10px;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--br)">
+        <button class="btn btn-ghost" onclick="$('find-form').style.display='flex';$('find-results').style.display='none'">← Modifier</button>
+        <button class="btn btn-primary" id="fp-import-btn" onclick="doImportPlaces()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Importer la sélection
         </button>
       </div>
     </div>
@@ -3686,6 +3768,127 @@ window.aiSummarizeNote = aiSummarizeNote;
 window.aiImproveNote = aiImproveNote;
 
 $('modal-note').addEventListener('click', function(e){ if(e.target===this) closeNoteModal(); });
+
+// ===== TROUVER ÉTABLISSEMENTS =====
+var _fpResults = [];
+
+function openFindPlaces() {
+  $('find-form').style.display = 'flex';
+  $('find-results').style.display = 'none';
+  $('fp-error').style.display = 'none';
+  $('modal-find-places').classList.add('on');
+  setTimeout(function(){ $('fp-city').focus(); }, 80);
+}
+function closeFindPlaces() { $('modal-find-places').classList.remove('on'); }
+
+function doFindPlaces() {
+  var city = ($('fp-city').value||'').trim();
+  var cat = $('fp-cat').value;
+  var limit = parseInt($('fp-limit').value) || 30;
+  if (!city) { showFpError('Saisis une ville.'); return; }
+  $('fp-error').style.display = 'none';
+  var btn = $('fp-search-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Recherche…';
+  fetch('/api/search-places', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ city: city, category: cat, limit: limit })
+  }).then(function(r){ return r.json(); }).then(function(d) {
+    btn.disabled = false;
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Rechercher';
+    if (d.error) { showFpError(d.error); return; }
+    _fpResults = d.results || [];
+    if (!_fpResults.length) { showFpError('Aucun résultat pour "' + city + '" dans ce secteur. Essaie une ville plus grande ou un autre secteur.'); return; }
+    renderFpResults();
+  }).catch(function(e) {
+    btn.disabled = false;
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Rechercher';
+    showFpError('Erreur réseau : ' + (e.message||''));
+  });
+}
+
+function showFpError(msg) {
+  var el = $('fp-error');
+  el.textContent = '⚠️ ' + msg;
+  el.style.display = 'block';
+}
+
+function renderFpResults() {
+  $('find-form').style.display = 'none';
+  $('find-results').style.display = 'flex';
+  $('fp-count-label').textContent = _fpResults.length + ' établissement' + (_fpResults.length > 1 ? 's' : '') + ' trouvé' + (_fpResults.length > 1 ? 's' : '');
+  var list = $('fp-list');
+  list.innerHTML = _fpResults.map(function(p, i) {
+    var sub = [p.city, p.domain].filter(Boolean).join(' · ');
+    var extra = [p.phone ? '📞 ' + p.phone : '', p.website ? '🌐 ' + p.website.replace(/^https?:\/\//,'').split('/')[0] : ''].filter(Boolean).join('  ');
+    return '<label style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--r14);border:1px solid var(--br);background:var(--s2);cursor:pointer;transition:border-color .15s,background .15s" onmouseover="this.style.borderColor=\'rgba(168,85,247,.3)\';this.style.background=\'var(--s3)\'" onmouseout="this.style.borderColor=\'var(--br)\';this.style.background=\'var(--s2)\'">'
+      + '<input type="checkbox" data-fp-idx="' + i + '" checked style="width:16px;height:16px;accent-color:var(--violet2);flex-shrink:0" />'
+      + '<div style="min-width:0;flex:1">'
+      + '<div style="font-weight:600;font-size:13px;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + (p.establishment||'').replace(/</g,'&lt;') + '</div>'
+      + (sub ? '<div style="font-size:11px;color:var(--t3);margin-top:1px">' + sub.replace(/</g,'&lt;') + '</div>' : '')
+      + (extra ? '<div style="font-size:11px;color:var(--violet2);margin-top:2px">' + extra.replace(/</g,'&lt;') + '</div>' : '')
+      + '</div>'
+      + (p.phone || p.website ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" title="Données disponibles"><polyline points="20 6 9 17 4 12"/></svg>' : '')
+      + '</label>';
+  }).join('');
+  updateFpImportBtn();
+  list.querySelectorAll('input[type=checkbox]').forEach(function(cb) {
+    cb.addEventListener('change', updateFpImportBtn);
+  });
+}
+
+function fpSelectAll() {
+  $('fp-list').querySelectorAll('input[type=checkbox]').forEach(function(cb){ cb.checked = true; });
+  updateFpImportBtn();
+}
+function fpSelectNone() {
+  $('fp-list').querySelectorAll('input[type=checkbox]').forEach(function(cb){ cb.checked = false; });
+  updateFpImportBtn();
+}
+
+function updateFpImportBtn() {
+  var n = $('fp-list').querySelectorAll('input:checked').length;
+  $('fp-import-btn').textContent = n ? 'Importer ' + n + ' prospect' + (n > 1 ? 's' : '') : 'Aucun sélectionné';
+  $('fp-import-btn').disabled = !n;
+}
+
+function doImportPlaces() {
+  var checked = Array.from($('fp-list').querySelectorAll('input:checked'));
+  var toImport = checked.map(function(cb) { return _fpResults[parseInt(cb.dataset.fpIdx)]; }).filter(Boolean);
+  if (!toImport.length) return;
+  if (!S.prospects) S.prospects = [];
+  var added = 0;
+  toImport.forEach(function(p) {
+    var exists = S.prospects.some(function(x){ return x.establishment === p.establishment && x.city === p.city; });
+    if (!exists) {
+      S.prospects.unshift({
+        id: Math.random().toString(36).slice(2,10),
+        establishment: p.establishment,
+        website: p.website || '',
+        phone: p.phone || '',
+        city: p.city || '',
+        domain: p.domain || '',
+        notes: p.notes || '',
+        status: 'to_call',
+        at: Date.now(),
+      });
+      added++;
+    }
+  });
+  saveProspects();
+  closeFindPlaces();
+  renderDash();
+  toast('✅ ' + added + ' prospect' + (added > 1 ? 's' : '') + ' importé' + (added > 1 ? 's' : '') + (toImport.length - added > 0 ? ' (' + (toImport.length - added) + ' doublon' + (toImport.length - added > 1 ? 's' : '') + ' ignoré' + (toImport.length - added > 1 ? 's' : '') + ')' : ''));
+}
+
+window.openFindPlaces = openFindPlaces;
+window.closeFindPlaces = closeFindPlaces;
+window.doFindPlaces = doFindPlaces;
+window.fpSelectAll = fpSelectAll;
+window.fpSelectNone = fpSelectNone;
+window.doImportPlaces = doImportPlaces;
+$('modal-find-places').addEventListener('click', function(e){ if(e.target===this) closeFindPlaces(); });
+$('fp-city').addEventListener('keydown', function(e){ if(e.key==='Enter') doFindPlaces(); });
 
 })();
 </script>
