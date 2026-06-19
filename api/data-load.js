@@ -73,6 +73,7 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({
       prospects: userData.prospects || [],
       todos: userData.todos || [],
+      notes: userData.notes || [],
     })
   } catch (e) {
     return res.status(500).json({ error: e.message })

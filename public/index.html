@@ -643,6 +643,10 @@ html{scroll-behavior:smooth}
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
     Stats
   </button>
+  <button class="bnav-btn" data-nav="notes">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    Notes
+  </button>
 </nav>
 
 <!-- LOGIN -->
@@ -906,6 +910,59 @@ html{scroll-behavior:smooth}
     </div>
   </div>
 </section>
+
+<!-- NOTES VIDÉO -->
+<section data-view="notes" id="view-notes">
+  <div class="wrap">
+    <div class="cc-head">
+      <div>
+        <h1 class="sec-title">📝 Notes de vidéos</h1>
+        <p class="sec-sub" style="margin-bottom:0">Centralise tes apprentissages avec résumé IA</p>
+      </div>
+      <button class="btn btn-primary" id="note-add-btn" onclick="openNoteModal()">+ Nouvelle note</button>
+    </div>
+    <div id="notes-list" style="display:flex;flex-direction:column;gap:14px;margin-top:8px"></div>
+  </div>
+</section>
+
+<!-- MODAL NOTE -->
+<div class="modal-bg" id="modal-note" role="dialog" aria-modal="true" style="display:none">
+  <div class="modal" style="max-width:640px">
+    <div class="modal-hd">
+      <h2 class="modal-title" id="note-modal-title">Nouvelle note</h2>
+      <button class="btn btn-icon" onclick="closeNoteModal()" aria-label="Fermer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;padding:0 24px 24px">
+      <div style="display:flex;gap:12px">
+        <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+          <label class="field-label">Nom de la vidéo *</label>
+          <input id="note-title" class="input" placeholder="Ex: Comment closer en cold call" />
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;min-width:150px">
+          <label class="field-label">Date</label>
+          <input id="note-date" type="date" class="input" />
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <label class="field-label">Source (URL ou chaîne)</label>
+        <input id="note-source" class="input" placeholder="https://youtube.com/... ou Nom de la chaîne" />
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <label class="field-label">Mes notes</label>
+        <textarea id="note-body" class="input" rows="8" style="resize:vertical" placeholder="Colle ou écris tes notes ici..."></textarea>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn btn-ghost" style="flex:1" onclick="aiImproveNote()">✨ Améliorer avec IA</button>
+        <button class="btn btn-ghost" style="flex:1" onclick="aiSummarizeNote()">📋 Résumer avec IA</button>
+      </div>
+      <div id="note-ai-loader" style="display:none;text-align:center;color:var(--t2);font-size:13px;padding:8px">IA en cours...</div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:4px">
+        <button class="btn btn-ghost" onclick="closeNoteModal()">Annuler</button>
+        <button class="btn btn-primary" onclick="saveNoteModal()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- MODAL IMPORT IA -->
 <div class="modal-bg" id="modal-ai" role="dialog" aria-modal="true" aria-labelledby="ai-modal-title">
@@ -1202,7 +1259,7 @@ function sopts(cur) {
 }
 
 // ===== ROUTING =====
-var VIEWS = ['login','dashboard','coldcall','scripts','tasks','stats'];
+var VIEWS = ['login','dashboard','coldcall','scripts','tasks','stats','notes'];
 function nav(v, rep) {
   var h = '#/' + v;
   if (rep) history.replaceState(null, '', h);
@@ -1228,6 +1285,7 @@ function render(v) {
   if (v === 'scripts') refreshScriptProspects();
   if (v === 'tasks') { refreshTaskProspects(); renderTasks(); }
   if (v === 'stats') renderStats();
+  if (v === 'notes') renderNotes();
 }
 window.addEventListener('hashchange', function() {
   var h = location.hash.replace('#/', '').split('/')[0] || 'login';
@@ -1266,12 +1324,24 @@ function loadProspects() {
     if (!Array.isArray(S.prospects)) S.prospects = [];
   } catch(e) { S.prospects = []; }
 }
+function loadNotes() {
+  try {
+    var raw = localStorage.getItem('ap_notes') || '[]';
+    S.notes = JSON.parse(raw);
+    if (!Array.isArray(S.notes)) S.notes = [];
+  } catch(e) { S.notes = []; }
+}
+function saveNotes() {
+  try { localStorage.setItem('ap_notes', JSON.stringify(S.notes)); } catch(e) {}
+  if (_saveTimer) clearTimeout(_saveTimer);
+  _saveTimer = setTimeout(function() { pushToKV(); }, 1000);
+}
 function pushToKV() {
   if (!S.token) return Promise.resolve();
   return fetch('/api/data-save', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ token: S.token, prospects: S.prospects, todos: S.todos })
+    body: JSON.stringify({ token: S.token, prospects: S.prospects, todos: S.todos, notes: S.notes })
   }).catch(function() {});
 }
 function saveProspects() {
@@ -1295,7 +1365,7 @@ function syncFromKV(cb) {
     }
     var kvP = Array.isArray(d.prospects) ? d.prospects : [];
     var kvT = Array.isArray(d.todos) ? d.todos : [];
-    // Le cloud (KV) a plus de données → on adopte le cloud (cas : nouvel appareil)
+    var kvN = Array.isArray(d.notes) ? d.notes : [];
     if (kvP.length > S.prospects.length) {
       S.prospects = kvP;
       try { localStorage.setItem('ap_prospects', JSON.stringify(S.prospects)); } catch(e) {}
@@ -1305,9 +1375,11 @@ function syncFromKV(cb) {
       try { localStorage.setItem('ap_todos', JSON.stringify(S.todos)); } catch(e) {}
       updateTaskBadge();
     }
-    // Le local a plus de données que le cloud → on pousse le local vers le cloud
-    // (cas : PC déjà rempli, première synchro vers la nouvelle clé email)
-    if (S.prospects.length > kvP.length || S.todos.length > kvT.length) {
+    if (kvN.length > S.notes.length) {
+      S.notes = kvN;
+      try { localStorage.setItem('ap_notes', JSON.stringify(S.notes)); } catch(e) {}
+    }
+    if (S.prospects.length > kvP.length || S.todos.length > kvT.length || S.notes.length > kvN.length) {
       pushToKV();
     }
     renderDash();
@@ -1339,6 +1411,7 @@ function checkSession() {
     if (navUser && S.user) navUser.textContent = S.user.name || S.user.email || '';
     loadProspects();
     loadTodos();
+    loadNotes();
     var h = location.hash.replace('#/', '').split('/')[0] || 'dashboard';
     var valid = ['dashboard','coldcall','scripts','tasks'];
     nav(valid.indexOf(h) !== -1 ? h : 'dashboard', true);
@@ -1375,6 +1448,7 @@ function doLogin() {
     if (navUser && S.user) navUser.textContent = S.user.name || S.user.email || '';
     loadProspects();
     loadTodos();
+    loadNotes();
     nav('dashboard', true);
     syncFromKV(); // charge les données depuis KV (autre appareil, autre navigateur)
   });
@@ -3412,6 +3486,125 @@ window.bulkDetectDupes = bulkDetectDupes;
 window.bulkScoreProspects = bulkScoreProspects;
 window.generateCallScript = generateCallScript;
 window.generateEmail = generateEmail;
+
+// ===== NOTES VIDÉO =====
+var _noteEditId = null;
+
+function uid8() { return Math.random().toString(36).slice(2,10); }
+
+function renderNotes() {
+  var list = $('notes-list');
+  if (!list) return;
+  if (!S.notes || !S.notes.length) {
+    list.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--t3)"><div style="font-size:40px;margin-bottom:12px">📝</div><p style="font-size:15px;color:var(--t2);font-weight:600">Aucune note</p><p style="font-size:13px;margin-top:4px">Ajoute ta première note de vidéo</p></div>';
+    return;
+  }
+  var sorted = S.notes.slice().sort(function(a,b){ return (b.date||'') > (a.date||'') ? 1 : -1; });
+  list.innerHTML = sorted.map(function(n) {
+    var preview = (n.body||'').slice(0,200).replace(/</g,'&lt;');
+    return '<div class="stats-card" style="cursor:default">'
+      + '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px">'
+      + '<div style="min-width:0">'
+      + '<div style="font-weight:700;font-size:16px;color:var(--t1);margin-bottom:4px">' + (n.title||'Sans titre').replace(/</g,'&lt;') + '</div>'
+      + '<div style="font-size:12px;color:var(--t3);display:flex;gap:14px;flex-wrap:wrap">'
+      + (n.date ? '<span>📅 ' + n.date + '</span>' : '')
+      + (n.source ? '<span>🔗 ' + n.source.replace(/</g,'&lt;').slice(0,60) + '</span>' : '')
+      + '</div></div>'
+      + '<div style="display:flex;gap:8px;flex-shrink:0">'
+      + '<button class="btn btn-icon" onclick="openNoteModal(\'' + n.id + '\')" title="Modifier"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>'
+      + '<button class="btn btn-icon" onclick="deleteNote(\'' + n.id + '\')" title="Supprimer" style="color:var(--err)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button>'
+      + '</div></div>'
+      + '<div style="font-size:13px;color:var(--t2);white-space:pre-wrap;line-height:1.6;max-height:120px;overflow:hidden">' + preview + (n.body && n.body.length > 200 ? '…' : '') + '</div>'
+      + '</div>';
+  }).join('');
+}
+
+function openNoteModal(id) {
+  _noteEditId = id || null;
+  var n = id ? (S.notes||[]).find(function(x){return x.id===id;}) : null;
+  $('note-modal-title').textContent = id ? 'Modifier la note' : 'Nouvelle note';
+  $('note-title').value = n ? (n.title||'') : '';
+  $('note-date').value = n ? (n.date||today()) : today();
+  $('note-source').value = n ? (n.source||'') : '';
+  $('note-body').value = n ? (n.body||'') : '';
+  $('modal-note').style.display = 'flex';
+  $('note-ai-loader').style.display = 'none';
+  setTimeout(function(){ $('note-title').focus(); }, 80);
+}
+
+function today() {
+  var d = new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+
+function closeNoteModal() {
+  $('modal-note').style.display = 'none';
+  _noteEditId = null;
+}
+
+function saveNoteModal() {
+  var title = ($('note-title').value||'').trim();
+  if (!title) { toast('Le nom de la vidéo est requis.','err'); return; }
+  if (!S.notes) S.notes = [];
+  if (_noteEditId) {
+    var idx = S.notes.findIndex(function(x){return x.id===_noteEditId;});
+    if (idx !== -1) {
+      S.notes[idx].title = title;
+      S.notes[idx].date = $('note-date').value||'';
+      S.notes[idx].source = ($('note-source').value||'').trim();
+      S.notes[idx].body = ($('note-body').value||'').trim();
+      S.notes[idx].updatedAt = Date.now();
+    }
+  } else {
+    S.notes.unshift({ id: uid8(), title: title, date: $('note-date').value||'', source: ($('note-source').value||'').trim(), body: ($('note-body').value||'').trim(), createdAt: Date.now() });
+  }
+  saveNotes();
+  closeNoteModal();
+  renderNotes();
+  toast('Note sauvegardée ✓');
+}
+
+function deleteNote(id) {
+  if (!confirm('Supprimer cette note ?')) return;
+  S.notes = (S.notes||[]).filter(function(x){return x.id!==id;});
+  saveNotes();
+  renderNotes();
+}
+
+function aiNoteAction(mode) {
+  var body = ($('note-body').value||'').trim();
+  var title = ($('note-title').value||'').trim();
+  if (!body) { toast('Écris tes notes avant d\'utiliser l\'IA.','err'); return; }
+  $('note-ai-loader').style.display = 'block';
+  var prompt = mode === 'summarize'
+    ? 'Voici mes notes brutes d\'une vidéo intitulée "' + title + '".\nFais un résumé structuré en bullet points des points clés, avec des titres de sections. Garde les infos importantes, supprime les répétitions. Réponds directement en français.\n\nNOTES:\n' + body
+    : 'Voici mes notes brutes d\'une vidéo intitulée "' + title + '".\nAméliore-les : mets en forme, structure en sections avec titres, clarifie les formulations, ajoute des bullet points là où c\'est utile. Garde TOUTES les informations, ne retire rien. Réponds directement en français.\n\nNOTES:\n' + body;
+  fetch('/api/ai', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ system:'Tu es un assistant expert en prise de notes et formation.', messages:[{role:'user',content:prompt}] })
+  }).then(function(r){return r.json();}).then(function(d){
+    $('note-ai-loader').style.display = 'none';
+    if (d.error) { toast('Erreur IA : '+d.error,'err'); return; }
+    var text = (d.content&&d.content[0]&&d.content[0].text) ? d.content[0].text : '';
+    if (!text) { toast('Réponse IA vide.','err'); return; }
+    $('note-body').value = text;
+    toast(mode==='summarize' ? 'Résumé généré ✓' : 'Notes améliorées ✓');
+  }).catch(function(){ $('note-ai-loader').style.display='none'; toast('Erreur réseau.','err'); });
+}
+
+function aiSummarizeNote() { aiNoteAction('summarize'); }
+function aiImproveNote() { aiNoteAction('improve'); }
+
+window.openNoteModal = openNoteModal;
+window.closeNoteModal = closeNoteModal;
+window.saveNoteModal = saveNoteModal;
+window.deleteNote = deleteNote;
+window.aiSummarizeNote = aiSummarizeNote;
+window.aiImproveNote = aiImproveNote;
+
+// Fermer modal note en cliquant sur le fond
+var modalNote = $('modal-note');
+if (modalNote) modalNote.addEventListener('click', function(e){ if(e.target===this) closeNoteModal(); });
 
 })();
 </script>

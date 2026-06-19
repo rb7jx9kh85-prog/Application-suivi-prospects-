@@ -76,7 +76,7 @@ module.exports = async function handler(req, res) {
   const token = ghToken()
   if (!token) return res.status(500).json({ error: 'GITHUB_TOKEN manquant dans Vercel' })
 
-  const { token: appToken, prospects, todos } = req.body || {}
+  const { token: appToken, prospects, todos, notes } = req.body || {}
   if (!appToken) return res.status(400).json({ error: 'token requis' })
 
   const email = emailFromToken(appToken)
@@ -88,6 +88,7 @@ module.exports = async function handler(req, res) {
     if (!db[key]) db[key] = {}
     if (Array.isArray(prospects)) db[key].prospects = prospects
     if (Array.isArray(todos)) db[key].todos = todos
+    if (Array.isArray(notes)) db[key].notes = notes
     await writeDb(db, sha, token)
     return res.status(200).json({ ok: true })
   } catch (e) {
