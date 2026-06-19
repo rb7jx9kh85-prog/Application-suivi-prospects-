@@ -4964,7 +4964,7 @@
       {
         "id": "72dcr9ixjzkmqk2554c",
         "text": "Regarder les DNS de AlpiniaWebCraft.ch, ça ne pointe plus vers vercel.app —> changer ça pour que ça soit all Okey ⚠️",
-        "status": "todo",
+        "status": "done",
         "priority": "medium",
         "category": "agency",
         "dueDate": null,
@@ -4972,7 +4972,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781820873516,
-        "doneAt": null
+        "doneAt": 1781886956013
       },
       {
         "id": "kb5ktt0jfy8mqk24bet",
