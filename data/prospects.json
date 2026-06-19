@@ -5055,7 +5055,7 @@
       {
         "id": "4brv9pdt74mqjn7r0n",
         "text": "call visio la coopérative a aproz",
-        "status": "todo",
+        "status": "done",
         "priority": "high",
         "category": "call",
         "dueDate": "2026-06-19",
@@ -5063,7 +5063,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781795800967,
-        "doneAt": null
+        "doneAt": 1781881818428
       }
     ]
   }
