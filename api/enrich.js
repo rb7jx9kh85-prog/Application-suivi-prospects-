@@ -63,6 +63,7 @@ module.exports = async function handler(req, res) {
     const r = await openai(key, {
       model: 'gpt-4o-mini-search-preview',
       web_search_options: { user_location: { type: 'approximate', approximate: { country: 'CH' } } },
+      max_completion_tokens: 500,
       messages: [{ role: 'user', content: prompt }],
     })
 

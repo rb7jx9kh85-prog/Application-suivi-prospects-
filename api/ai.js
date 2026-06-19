@@ -1,36 +1,26 @@
 const https = require('https')
 
-function gemini(key, system, messages) {
+function openai(key, payload) {
   return new Promise((resolve, reject) => {
-    const contents = messages.map(m => ({
-      role: m.role === 'assistant' ? 'model' : 'user',
-      parts: [{ text: m.content }],
-    }))
-
-    const payload = JSON.stringify({
-      system_instruction: system ? { parts: [{ text: system }] } : undefined,
-      contents,
-      generationConfig: { maxOutputTokens: 1200 },
-    })
-
-    const model = 'gemini-2.0-flash'
+    const data = JSON.stringify(payload)
     const req = https.request({
-      hostname: 'generativelanguage.googleapis.com',
-      path: `/v1beta/models/${model}:generateContent?key=${key}`,
+      hostname: 'api.openai.com',
+      path: '/v1/chat/completions',
       method: 'POST',
       headers: {
+        Authorization: 'Bearer ' + key,
         'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(payload),
+        'Content-Length': Buffer.byteLength(data),
       },
     }, (r) => {
       let out = ''
-      r.on('data', c => { out += c })
+      r.on('data', (c) => { out += c })
       r.on('end', () => {
-        try { resolve(JSON.parse(out)) } catch (e) { reject(new Error('Réponse Gemini illisible')) }
+        try { resolve(JSON.parse(out)) } catch (e) { reject(new Error('Réponse OpenAI illisible')) }
       })
     })
     req.on('error', reject)
-    req.write(payload)
+    req.write(data)
     req.end()
   })
 }
@@ -43,14 +33,21 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end()
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method Not Allowed' })
 
-  const key = process.env.GEMINI_API_KEY
-  if (!key) return res.status(200).json({ error: 'GEMINI_API_KEY non configurée dans les variables Vercel.' })
+  const key = process.env.OPENAI_API_KEY || process.env.OPENAI_API
+  if (!key) return res.status(200).json({ error: 'OPENAI_API_KEY non configurée dans les variables Vercel.' })
 
   try {
     const { system, messages } = req.body || {}
-    const r = await gemini(key, system || 'Tu es un assistant utile.', Array.isArray(messages) ? messages : [])
-    if (r.error) return res.status(200).json({ error: r.error.message || 'Erreur Gemini' })
-    const text = r.candidates?.[0]?.content?.parts?.[0]?.text || ''
+    const r = await openai(key, {
+      model: 'gpt-4o-mini',
+      max_tokens: 1200,
+      messages: [
+        { role: 'system', content: system || 'Tu es un assistant utile.' },
+        ...(Array.isArray(messages) ? messages : []),
+      ],
+    })
+    if (r.error) return res.status(200).json({ error: r.error.message || 'Erreur OpenAI' })
+    const text = r.choices?.[0]?.message?.content || ''
     return res.status(200).json({ content: [{ text }] })
   } catch (e) {
     return res.status(200).json({ error: e.message || 'Erreur serveur' })
