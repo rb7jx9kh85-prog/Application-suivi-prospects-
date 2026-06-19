@@ -4977,7 +4977,7 @@
       {
         "id": "kb5ktt0jfy8mqk24bet",
         "text": "Configurer + trouver une new API GRATUITE ou bien payer les OPENai ou les Anthropic",
-        "status": "todo",
+        "status": "done",
         "priority": "medium",
         "category": "agency",
         "dueDate": null,
@@ -4985,7 +4985,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781820835013,
-        "doneAt": null
+        "doneAt": 1781886958761
       },
       {
         "id": "2eb7yo48sebmqk1mz3b",
