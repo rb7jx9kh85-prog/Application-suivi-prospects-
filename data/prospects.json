@@ -927,17 +927,16 @@
             "Pages Jaunes",
             "LinkedIn",
             "Google Maps",
-            "allbiz.ch",
-            "commune-evolene.ch",
-            "search.ch",
-            "local.ch",
-            "coiffeurvergleich.ch",
-            "meilleurcoiffeur.com"
+            "Allbiz.ch",
+            "Commune d'Evolène",
+            "Local.ch",
+            "Coiffeurvergleich.ch"
           ],
           "verdict": "Aucun site web trouvé pour Coiffure Ab'Salon à Evolène."
         },
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "_verifyingWebsite": false
       },
       {
         "id": "iipxj1lq89mqjlo25q",
@@ -2435,6 +2434,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781967470415
+    "lastSaved": 1781967503587
   }
 }
