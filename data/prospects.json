@@ -10,7 +10,9 @@
         "type": "service.beauty",
         "notes": "3 Chemin du Grand Clos, 1896, Miex",
         "status": "to_call",
-        "at": 1781968048950
+        "at": 1781968048950,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "c0ggzubo",
@@ -83,7 +85,9 @@
         "type": "service.beauty",
         "notes": "1860, Aigle",
         "status": "to_call",
-        "at": 1781968048950
+        "at": 1781968048950,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "5q55echp",
@@ -367,7 +371,22 @@
           "linkedin": null,
           "description": "Océanne Coiffure est un salon de coiffure situé à Monthey, proposant des services personnalisés pour chaque client."
         },
-        "enrichedAt": 1781968970191
+        "enrichedAt": 1781968970191,
+        "interactions": [],
+        "tags": [],
+        "_verifyingWebsite": false,
+        "_noWebsite": {
+          "has_website": false,
+          "website_url": null,
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps"
+          ],
+          "verdict": "Aucune présence en ligne confirmée pour Océanne Coiffure à Monthey."
+        }
       },
       {
         "id": "v8rnveb1",
@@ -2652,7 +2671,7 @@
       {
         "id": "qgmchglb2qimqmejo7s",
         "text": "minimum 10 cold call",
-        "status": "todo",
+        "status": "done",
         "priority": "high",
         "category": "agency",
         "dueDate": null,
@@ -2660,7 +2679,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781962639192,
-        "doneAt": null
+        "doneAt": 1781969292270
       },
       {
         "id": "e2mib65umzpmqmegqzd",
@@ -2860,6 +2879,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781969020187
+    "lastSaved": 1781969293072
   }
 }
