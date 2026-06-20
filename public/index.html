@@ -708,6 +708,7 @@ html{scroll-behavior:smooth}
     <div class="stats">
       <div class="stat glass"><span class="stat-n n-violet" id="s-total">0</span><span class="stat-l">Total</span></div>
       <div class="stat glass"><span class="stat-n n-warn" id="s-tocall">0</span><span class="stat-l">&Agrave; appeler</span></div>
+      <div class="stat glass"><span class="stat-n" id="s-called" style="color:#a78bfa">0</span><span class="stat-l">Appels effectu&eacute;s</span></div>
       <div class="stat glass"><span class="stat-n n-ok" id="s-rdv">0</span><span class="stat-l">RDV obtenus</span></div>
       <div class="stat glass"><span class="stat-n n-ok" id="s-won">0</span><span class="stat-l">Clients sign&eacute;s</span></div>
       <div class="stat glass"><span class="stat-n n-violet" id="s-pipeline" style="font-size:1.4rem">0</span><span class="stat-l">Pipeline (CHF)</span></div>
@@ -1642,9 +1643,10 @@ function pipelineValue() {
   }, 0);
 }
 function updateStats() {
-  var total = $('s-total'), tocall = $('s-tocall'), rdv = $('s-rdv'), won = $('s-won'), pipe = $('s-pipeline');
+  var total = $('s-total'), tocall = $('s-tocall'), called = $('s-called'), rdv = $('s-rdv'), won = $('s-won'), pipe = $('s-pipeline');
   animateCounter(total, S.prospects.length);
   animateCounter(tocall, S.prospects.filter(function(p) { return !p.status || p.status === 'to_call'; }).length);
+  if (called) animateCounter(called, S.prospects.filter(function(p) { return p.status === 'called' || p.status === 'voicemail' || p.status === 'recall' || p.status === 'refusal' || p.status === 'video_rdv' || p.status === 'won'; }).length);
   animateCounter(rdv, S.prospects.filter(function(p) { return p.status === 'video_rdv'; }).length);
   animateCounter(won, S.prospects.filter(function(p) { return p.status === 'won'; }).length);
   if (pipe) pipe.textContent = fmtCHF(pipelineValue());
