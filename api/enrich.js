@@ -37,28 +37,39 @@ module.exports = async function handler(req, res) {
   if (!key) return res.status(200).json({ error: 'OPENAI_API_KEY (ou OPENAI_API) non configurée dans les variables Vercel.' })
 
   try {
-    const { prospectName, website, type, city } = req.body || {}
+    const { prospectName, website, type, city, hoursOnly } = req.body || {}
     if (!prospectName) return res.status(400).json({ error: 'prospectName requis.' })
 
     const loc = [type, city ? 'à ' + city : ''].filter(Boolean).join(' ')
-    const prompt = 'Recherche sur le web des informations à jour sur l\'établissement "' + prospectName + '"'
-      + (loc ? ' (' + loc + ')' : '')
-      + (website ? ', site web ' + website : '')
-      + ', en Suisse.\n'
-      + 'Cherche EN PRIORITÉ, notamment sur LinkedIn et sur le site officiel, le ou la dirigeant·e '
-      + '(patron, gérant, directeur, fondateur) : son nom complet, sa fonction, son profil LinkedIn, '
-      + 'et son numéro de téléphone professionnel/direct s\'il est rendu public.\n'
-      + 'Réponds UNIQUEMENT par un objet JSON valide, sans markdown, sans texte autour :\n'
-      + '{"full_address":"adresse complète CP+ville","phone":"téléphone standard de l\'établissement",'
-      + '"phone_source":"source du téléphone (Site officiel, Google Maps, Pages Jaunes, etc)",'
-      + '"email":"email de contact","opening_hours":"horaires","description":"1-2 phrases",'
-      + '"google_rating":"note Google ex 4.3/5","employees_approx":"estimation employés",'
-      + '"key_decision_maker":"Prénom Nom — fonction du décideur (patron/gérant/directeur)",'
-      + '"decision_maker_phone":"numéro direct/professionnel du décideur si trouvé publiquement",'
-      + '"decision_maker_phone_source":"source du numéro du décideur (LinkedIn, site officiel, etc)",'
-      + '"linkedin":"URL du profil LinkedIn du décideur, ou à défaut la page LinkedIn de l\'entreprise"}\n'
-      + 'IMPORTANT: Pour CHAQUE numéro de téléphone trouvé, fournis TOUJOURS la source (phone_source et decision_maker_phone_source).\n'
-      + 'Mets null pour toute info introuvable. N\'invente JAMAIS un numéro ni un profil : uniquement des données réelles et publiques.'
+
+    let prompt
+    if (hoursOnly) {
+      prompt = 'Recherche les horaires d\'ouverture de l\'établissement "' + prospectName + '"'
+        + (loc ? ' (' + loc + ')' : '')
+        + (website ? ', site ' + website : '')
+        + ', en Suisse. Cherche sur Google Maps, le site officiel, Pages Jaunes.\n'
+        + 'Réponds UNIQUEMENT par un objet JSON : {"opening_hours":"horaires complets (ex: Lun-Ven 9h-18h, Sam 9h-12h, fermé dim)","source":"Google Maps / site officiel / etc"}\n'
+        + 'Mets null si introuvable. N\'invente JAMAIS.'
+    } else {
+      prompt = 'Recherche sur le web des informations à jour sur l\'établissement "' + prospectName + '"'
+        + (loc ? ' (' + loc + ')' : '')
+        + (website ? ', site web ' + website : '')
+        + ', en Suisse.\n'
+        + 'Cherche EN PRIORITÉ, notamment sur LinkedIn et sur le site officiel, le ou la dirigeant·e '
+        + '(patron, gérant, directeur, fondateur) : son nom complet, sa fonction, son profil LinkedIn, '
+        + 'et son numéro de téléphone professionnel/direct s\'il est rendu public.\n'
+        + 'Réponds UNIQUEMENT par un objet JSON valide, sans markdown, sans texte autour :\n'
+        + '{"full_address":"adresse complète CP+ville","phone":"téléphone standard de l\'établissement",'
+        + '"phone_source":"source du téléphone (Site officiel, Google Maps, Pages Jaunes, etc)",'
+        + '"email":"email de contact","opening_hours":"horaires","description":"1-2 phrases",'
+        + '"google_rating":"note Google ex 4.3/5","employees_approx":"estimation employés",'
+        + '"key_decision_maker":"Prénom Nom — fonction du décideur (patron/gérant/directeur)",'
+        + '"decision_maker_phone":"numéro direct/professionnel du décideur si trouvé publiquement",'
+        + '"decision_maker_phone_source":"source du numéro du décideur (LinkedIn, site officiel, etc)",'
+        + '"linkedin":"URL du profil LinkedIn du décideur, ou à défaut la page LinkedIn de l\'entreprise"}\n'
+        + 'IMPORTANT: Pour CHAQUE numéro de téléphone trouvé, fournis TOUJOURS la source (phone_source et decision_maker_phone_source).\n'
+        + 'Mets null pour toute info introuvable. N\'invente JAMAIS un numéro ni un profil : uniquement des données réelles et publiques.'
+    }
 
     const r = await openai(key, {
       model: 'gpt-4o-mini-search-preview',

@@ -112,6 +112,7 @@ label{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bottom
 .b-voicemail{background:rgba(251,191,36,.15);color:#fde68a}
 .b-refusal{background:rgba(248,113,113,.2);color:#fca5a5}
 .b-video_rdv{background:rgba(52,211,153,.2);color:#6ee7b7}
+.b-recall{background:rgba(251,146,60,.2);color:#fdba74}
 /* Views */
 [data-view]{display:none}
 [data-view].on{display:block}
@@ -141,8 +142,8 @@ label{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bottom
 .nav-btn:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
 .nav-right{display:flex;align-items:center;gap:10px;flex:none}
 .nav-user{font-size:12px;color:var(--t3);max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#bnav{position:fixed;bottom:0;left:0;right:0;z-index:100;height:60px;background:rgba(10,10,10,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--br);display:none;justify-content:space-around;align-items:center;padding:0 8px}
-.bnav-btn{display:flex;flex-direction:column;align-items:center;gap:2px;height:52px;justify-content:center;padding:0 12px;background:none;border:none;color:var(--t3);font-size:10px;font-weight:500;cursor:pointer;font-family:inherit;border-radius:var(--r10);transition:color .15s;min-width:60px}
+#bnav{position:fixed;bottom:0;left:0;right:0;z-index:100;height:60px;background:rgba(10,10,10,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--br);display:none;justify-content:space-around;align-items:center;padding:0 4px}
+.bnav-btn{display:flex;flex-direction:column;align-items:center;gap:2px;height:52px;justify-content:center;padding:0 6px;background:none;border:none;color:var(--t3);font-size:9px;font-weight:500;cursor:pointer;font-family:inherit;border-radius:var(--r10);transition:color .15s;min-width:0;flex:1}
 .bnav-btn svg{width:20px;height:20px}
 .bnav-btn.on{color:var(--violet2)}
 @media(max-width:767px){#topnav .nav-links{display:none}#app{padding-bottom:60px}}
@@ -212,6 +213,28 @@ tr.expanded td{border-bottom:none}
 #view-scripts{padding:24px 0 40px}
 .sc-layout{display:grid;gap:20px}
 @media(min-width:768px){.sc-layout{grid-template-columns:1fr 1fr}}
+/* ColdCraft AI */
+#view-coldcraft{padding:24px 0 60px}
+.cc-brand{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.cc-brand-badge{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--violet),var(--pink));display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(168,85,247,.4);flex:none}
+.ccg-layout{display:grid;gap:20px}
+@media(min-width:900px){.ccg-layout{grid-template-columns:380px 1fr;align-items:start}}
+.ccg-form{display:flex;flex-direction:column;gap:14px;padding:20px}
+.ccg-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ccg-result{min-height:300px}
+.ccg-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding:50px 24px;color:var(--t3);font-size:13px;line-height:1.6;border:1px dashed var(--br2);border-radius:var(--r20)}
+.cc-card{background:var(--s1);border:1px solid var(--br2);border-radius:var(--r16);padding:18px;margin-bottom:14px;animation:fade-up .4s var(--ease) both}
+.cc-card-hd{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.cc-card-title{display:flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:var(--t1)}
+.cc-card-tag{font-size:10px;font-weight:600;color:var(--violet2);background:rgba(168,85,247,.12);padding:2px 8px;border-radius:20px}
+.cc-card-body{font-size:13.5px;line-height:1.65;color:var(--t1);white-space:pre-wrap}
+.cc-copy{display:inline-flex;align-items:center;gap:5px;height:28px;padding:0 10px;border-radius:8px;border:1px solid var(--br);background:transparent;color:var(--t2);font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s}
+.cc-copy:hover{background:rgba(168,85,247,.12);color:var(--violet2);border-color:rgba(168,85,247,.4)}
+.cc-obj{padding:10px 12px;border-radius:10px;background:rgba(251,146,60,.08);border:1px solid rgba(251,146,60,.2);margin-bottom:8px;font-size:13px;line-height:1.55;color:var(--t1)}
+.cc-obj b{color:#fdba74}
+.cc-relance{padding:12px 14px;border-radius:10px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);font-size:13px;line-height:1.55;color:var(--t1);font-style:italic}
+.cc-hist-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;border-radius:var(--r12);background:var(--s1);border:1px solid var(--br);cursor:pointer;transition:border-color .15s}
+.cc-hist-item:hover{border-color:rgba(168,85,247,.4)}
 .presets{display:flex;flex-direction:column;gap:8px}
 .preset{width:100%;text-align:left;background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:var(--r14);padding:12px 16px;color:var(--t1);font-size:13px;cursor:pointer;font-family:inherit;transition:background .15s,border .15s}
 .preset:hover{background:rgba(255,255,255,.07);border-color:var(--br2)}
@@ -596,6 +619,7 @@ html{scroll-behavior:smooth}
 <!-- NAV -->
 <nav id="topnav" style="display:none">
   <span class="nav-logo">Alpinia Pro</span>
+  <span id="cloud-status" style="font-size:11px;font-weight:500;color:var(--t3);margin-left:8px;display:none"></span>
   <div class="nav-links">
     <button class="nav-btn" data-nav="dashboard">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
@@ -608,6 +632,10 @@ html{scroll-behavior:smooth}
     <button class="nav-btn" data-nav="scripts">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
       Scripts IA
+    </button>
+    <button class="nav-btn" data-nav="coldcraft">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      ColdCraft
     </button>
     <button class="nav-btn" data-nav="tasks">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
@@ -646,6 +674,10 @@ html{scroll-behavior:smooth}
   <button class="bnav-btn" data-nav="stats">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
     Stats
+  </button>
+  <button class="bnav-btn" data-nav="coldcraft">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    ColdCraft
   </button>
   <button class="bnav-btn" data-nav="notes">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
@@ -707,6 +739,7 @@ html{scroll-behavior:smooth}
     <div class="stats">
       <div class="stat glass"><span class="stat-n n-violet" id="s-total">0</span><span class="stat-l">Total</span></div>
       <div class="stat glass"><span class="stat-n n-warn" id="s-tocall">0</span><span class="stat-l">&Agrave; appeler</span></div>
+      <div class="stat glass"><span class="stat-n" id="s-called" style="color:#a78bfa">0</span><span class="stat-l">Appels effectu&eacute;s</span></div>
       <div class="stat glass"><span class="stat-n n-ok" id="s-rdv">0</span><span class="stat-l">RDV obtenus</span></div>
       <div class="stat glass"><span class="stat-n n-ok" id="s-won">0</span><span class="stat-l">Clients sign&eacute;s</span></div>
       <div class="stat glass"><span class="stat-n n-violet" id="s-pipeline" style="font-size:1.4rem">0</span><span class="stat-l">Pipeline (CHF)</span></div>
@@ -719,6 +752,7 @@ html{scroll-behavior:smooth}
         <option value="to_call">&Agrave; appeler</option>
         <option value="called">Appel&eacute;</option>
         <option value="voicemail">R&eacute;pondeur</option>
+        <option value="recall">Rappeler</option>
         <option value="refusal">Refus</option>
         <option value="video_rdv">RDV</option>
         <option value="won">Client sign&eacute;</option>
@@ -893,6 +927,80 @@ html{scroll-behavior:smooth}
         </button>
       </div>
       <div class="sc-out" id="sc-out"><span class="sc-ph">Le script g&eacute;n&eacute;r&eacute; appara&icirc;tra ici&hellip;</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- COLDCRAFT AI — Générateur de script intelligent -->
+<section data-view="coldcraft" id="view-coldcraft">
+  <div class="wrap">
+    <div class="cc-brand">
+      <div class="cc-brand-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <div>
+        <h1 class="sec-title" style="margin-bottom:2px">ColdCraft <span class="grad-text">AI</span></h1>
+        <p class="sec-sub" style="margin-bottom:0">L'assistant qui &eacute;crit ton script avant l'appel &mdash; 6 infos, 10 secondes.</p>
+      </div>
+    </div>
+
+    <div class="ccg-layout">
+      <!-- Formulaire -->
+      <div class="ccg-form glass-s">
+        <div class="fgrp" style="margin-bottom:0">
+          <label for="cc-prospect">Pr&eacute;-remplir depuis un prospect (optionnel)</label>
+          <select class="fi" id="cc-prospect"><option value="">— Saisie manuelle —</option></select>
+        </div>
+        <div class="fgrp" style="margin-bottom:0">
+          <label for="cc-nom">Nom de l'&eacute;tablissement *</label>
+          <input class="fi" type="text" id="cc-nom" placeholder="Caf&eacute; de la Coop&eacute;rative"/>
+        </div>
+        <div class="ccg-row">
+          <div class="fgrp" style="margin-bottom:0">
+            <label for="cc-secteur">Secteur</label>
+            <select class="fi" id="cc-secteur">
+              <option>Restauration</option><option>H&ocirc;tellerie</option><option>Beaut&eacute;</option>
+              <option>Fitness</option><option>Services</option><option>Sant&eacute;</option><option>Autre</option>
+            </select>
+          </div>
+          <div class="fgrp" style="margin-bottom:0">
+            <label for="cc-taille">Taille</label>
+            <select class="fi" id="cc-taille"><option>Ind&eacute;pendant</option><option>TPE</option><option>PME</option></select>
+          </div>
+        </div>
+        <div class="ccg-row">
+          <div class="fgrp" style="margin-bottom:0">
+            <label for="cc-caractere">Caract&egrave;re du patron</label>
+            <select class="fi" id="cc-caractere"><option>Inconnu</option><option>S&eacute;rieux</option><option>Amical</option><option>Direct</option></select>
+          </div>
+          <div class="fgrp" style="margin-bottom:0">
+            <label for="cc-objectif">Objectif</label>
+            <select class="fi" id="cc-objectif"><option>RDV visio</option><option>Vente directe</option><option>Relance</option></select>
+          </div>
+        </div>
+        <div class="fgrp" style="margin-bottom:0">
+          <label for="cc-canal">Canal de pr&eacute;sentation</label>
+          <select class="fi" id="cc-canal"><option>Visio</option><option>Sur place</option><option>T&eacute;l&eacute;phone uniquement</option></select>
+        </div>
+        <button class="btn btn-cf" id="cc-gen-btn" style="width:100%;margin-top:4px">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>G&eacute;n&eacute;rer le script</span>
+        </button>
+      </div>
+
+      <!-- Résultat -->
+      <div class="ccg-result" id="cc-result">
+        <div class="ccg-empty" id="cc-empty">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="opacity:.3"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <p>Remplis le formulaire et g&eacute;n&egrave;re ton script personnalis&eacute;.<br>Tu obtiendras&nbsp;: version courte, version longue, 3 objections probables et une relance.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Historique -->
+    <div id="cc-history-wrap" style="margin-top:24px;display:none">
+      <div style="font-size:13px;font-weight:600;color:var(--t2);margin-bottom:10px">Scripts r&eacute;cents</div>
+      <div id="cc-history" style="display:flex;flex-direction:column;gap:8px"></div>
     </div>
   </div>
 </section>
@@ -1205,7 +1313,7 @@ html{scroll-behavior:smooth}
       <div class="fgrp" style="margin-bottom:0"><label for="m-phone">T&eacute;l&eacute;phone</label><input class="fi" type="tel" id="m-phone" placeholder="+41 27 123 45 67"/></div>
       <div class="fgrp" style="margin-bottom:0"><label for="m-email">Email</label><input class="fi" type="email" id="m-email" placeholder="contact@exemple.ch"/></div>
       <div class="fgrp" style="margin-bottom:0"><label for="m-web">Site web</label><input class="fi" type="url" id="m-web" placeholder="https://&hellip;"/></div>
-      <div class="fgrp" style="margin-bottom:0"><label for="m-status">Statut</label><select class="fi" id="m-status"><option value="to_call">&Agrave; appeler</option><option value="called">Appel&eacute;</option><option value="voicemail">R&eacute;pondeur</option><option value="refusal">Refus</option><option value="video_rdv">RDV</option><option value="won">Client sign&eacute;</option></select></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-status">Statut</label><select class="fi" id="m-status"><option value="to_call">&Agrave; appeler</option><option value="called">Appel&eacute;</option><option value="voicemail">R&eacute;pondeur</option><option value="recall">Rappeler</option><option value="refusal">Refus</option><option value="video_rdv">RDV</option><option value="won">Client sign&eacute;</option></select></div>
       <div class="fgrp" style="margin-bottom:0"><label for="m-contact">Contact d&eacute;cideur</label><input class="fi" type="text" id="m-contact" placeholder="Pr&eacute;nom Nom"/></div>
       <div class="fgrp" style="margin-bottom:0"><label for="m-value">Valeur estim&eacute;e (CHF)</label><input class="fi" type="number" id="m-value" placeholder="3500" min="0" step="100"/></div>
       <div class="fgrp" style="margin-bottom:0"><label for="m-followup">Prochaine relance</label><input class="fi" type="date" id="m-followup"/></div>
@@ -1226,6 +1334,7 @@ html{scroll-behavior:smooth}
     <option value="to_call">&Agrave; appeler</option>
     <option value="called">Appel&eacute;</option>
     <option value="voicemail">R&eacute;pondeur</option>
+    <option value="recall">Rappeler</option>
     <option value="refusal">Refus</option>
     <option value="video_rdv">RDV</option>
     <option value="won">Client sign&eacute;</option>
@@ -1233,6 +1342,7 @@ html{scroll-behavior:smooth}
   <button class="bulk-bar-btn" id="bulk-tag-btn">&#127991; Tag</button>
   <button class="bulk-bar-btn" id="bulk-followup-btn">&#128197; Relance</button>
   <button class="bulk-bar-btn" id="bulk-enrich-btn">&#9889; Enrichir</button>
+  <button class="bulk-bar-btn" id="bulk-hours-btn">&#128336; Horaires</button>
   <button class="bulk-bar-btn" id="bulk-verify-web-btn">&#127758; V&eacute;rifier sites</button>
   <button class="bulk-bar-btn" id="bulk-dupes-btn">&#127991; Doublons</button>
   <button class="bulk-bar-btn" id="bulk-score-btn">&#128202; Score IA</button>
@@ -1367,13 +1477,14 @@ var ST = {
   to_call:   { l: 'A appeler',  c: 'b-to_call'  },
   called:    { l: 'Appele',     c: 'b-called'    },
   voicemail: { l: 'Repondeur',  c: 'b-voicemail' },
+  recall:    { l: 'Rappeler',   c: 'b-recall'    },
   refusal:   { l: 'Refus',      c: 'b-refusal'   },
   video_rdv: { l: 'RDV',        c: 'b-video_rdv' },
   won:       { l: 'Client',     c: 'b-won'       }
 };
 var ST_LABELS = {
   to_call: 'À appeler', called: 'Appelé',
-  voicemail: 'Répondeur', refusal: 'Refus', video_rdv: 'RDV', won: 'Client signé'
+  voicemail: 'Répondeur', recall: 'Rappeler', refusal: 'Refus', video_rdv: 'RDV', won: 'Client signé'
 };
 // Statuses that count as "the prospect was contacted"
 var CONTACTED_ST = { called: 1, voicemail: 1, video_rdv: 1, won: 1, refusal: 1 };
@@ -1382,14 +1493,14 @@ function badge(s) {
   return '<span class="badge ' + x.c + '">' + (ST_LABELS[s] || x.l) + '</span>';
 }
 function sopts(cur) {
-  var keys = ['to_call','called','voicemail','refusal','video_rdv','won'];
+  var keys = ['to_call','called','voicemail','recall','refusal','video_rdv','won'];
   return keys.map(function(k) {
     return '<option value="' + k + '"' + ((cur || 'to_call') === k ? ' selected' : '') + '>' + (ST_LABELS[k] || k) + '</option>';
   }).join('');
 }
 
 // ===== ROUTING =====
-var VIEWS = ['login','dashboard','coldcall','scripts','tasks','stats','notes'];
+var VIEWS = ['login','dashboard','coldcall','scripts','coldcraft','tasks','stats','notes'];
 function nav(v, rep) {
   var h = '#/' + v;
   if (rep) history.replaceState(null, '', h);
@@ -1401,7 +1512,7 @@ function render(v) {
     var el = document.querySelector('[data-view="' + x + '"]');
     if (el) el.classList.toggle('on', x === v);
   });
-  var auth = ['dashboard','coldcall','scripts','tasks','stats'].indexOf(v) !== -1;
+  var auth = ['dashboard','coldcall','scripts','coldcraft','tasks','stats','notes'].indexOf(v) !== -1;
   var topnav = $('topnav');
   var bnav = $('bnav');
   if (topnav) topnav.style.display = auth ? '' : 'none';
@@ -1413,10 +1524,28 @@ function render(v) {
   if (v === 'dashboard') renderDash();
   if (v === 'coldcall') renderCC();
   if (v === 'scripts') refreshScriptProspects();
+  if (v === 'coldcraft') { refreshColdcraftProspects(); renderColdcraftHistory(); }
   if (v === 'tasks') { refreshTaskProspects(); renderTasks(); }
   if (v === 'stats') renderStats();
   if (v === 'notes') renderNotes();
 }
+// Force sauvegarde cloud si l'onglet est fermé ou mis en arrière-plan avec des données en attente
+window.addEventListener('beforeunload', function() {
+  if (_pushPending && S.token) {
+    // sendBeacon est synchrone au déchargement — fiable même si l'onglet se ferme
+    var payload = JSON.stringify({ token: S.token, prospects: S.prospects, todos: S.todos, notes: S.notes, lastSaved: Date.now() });
+    navigator.sendBeacon('/api/data-save', new Blob([payload], { type: 'application/json' }));
+  }
+});
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'hidden' && _pushPending && S.token) {
+    if (_saveTimer) { clearTimeout(_saveTimer); _saveTimer = null; }
+    pushToKV();
+  }
+});
+window.addEventListener('online', function() {
+  if (_pushPending && S.token) pushToKV();
+});
 window.addEventListener('hashchange', function() {
   var h = location.hash.replace('#/', '').split('/')[0] || 'login';
   if (!S.token && h !== 'login') { nav('login', true); return; }
@@ -1446,6 +1575,17 @@ function api(fn, body) {
 
 // ===== PROSPECTS (KV sync + localStorage cache) =====
 var _saveTimer = null;
+var _pushPending = false;
+var _pushRetryTimer = null;
+function cloudStatus(state, msg) {
+  var el = $('cloud-status');
+  if (!el) return;
+  el.style.display = 'inline';
+  if (state === 'saving')  { el.textContent = '⏳ Sauvegarde…'; el.style.color = 'var(--t3)'; }
+  if (state === 'ok')      { el.textContent = '☁ Sauvegardé';   el.style.color = 'var(--ok)'; setTimeout(function(){ el.style.color='var(--t3)'; }, 2500); }
+  if (state === 'err')     { el.textContent = '⚠ Non sauvegardé — nouvelle tentative…'; el.style.color = 'var(--err)'; }
+  if (state === 'offline') { el.textContent = '📵 Hors ligne — données en attente'; el.style.color = 'var(--warn)'; }
+}
 function loadProspects() {
   // Charge immédiatement depuis localStorage (affichage instantané)
   try {
@@ -1462,24 +1602,65 @@ function loadNotes() {
   } catch(e) { S.notes = []; }
 }
 function saveNotes() {
-  try { localStorage.setItem('ap_notes', JSON.stringify(S.notes)); } catch(e) {}
+  var ts = Date.now();
+  try {
+    localStorage.setItem('ap_notes', JSON.stringify(S.notes));
+    localStorage.setItem('ap_lastSaved', String(ts));
+  } catch(e) {}
+  _pushPending = true;
   if (_saveTimer) clearTimeout(_saveTimer);
-  _saveTimer = setTimeout(function() { pushToKV(); }, 1000);
+  _saveTimer = setTimeout(function() { _saveTimer = null; pushToKV(); }, 400);
 }
 function pushToKV() {
   if (!S.token) return Promise.resolve();
+  _pushPending = false;
+  cloudStatus('saving');
+  var ts = Date.now();
+  var payload = {
+    token: S.token,
+    prospects: S.prospects,
+    todos: S.todos,
+    notes: S.notes,
+    lastSaved: ts
+  };
   return fetch('/api/data-save', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ token: S.token, prospects: S.prospects, todos: S.todos, notes: S.notes })
-  }).catch(function() {});
+    body: JSON.stringify(payload)
+  }).then(function(r) { return r.json(); }).then(function(d) {
+    if (d.ok) {
+      try { localStorage.setItem('ap_lastSaved', String(ts)); } catch(e) {}
+      cloudStatus('ok');
+      if (_pushRetryTimer) { clearTimeout(_pushRetryTimer); _pushRetryTimer = null; }
+    } else {
+      cloudStatus('err');
+      scheduleRetry();
+    }
+  }).catch(function() {
+    if (navigator.onLine === false) {
+      cloudStatus('offline');
+    } else {
+      cloudStatus('err');
+    }
+    scheduleRetry();
+  });
+}
+function scheduleRetry() {
+  if (_pushRetryTimer) return;
+  _pushRetryTimer = setTimeout(function() {
+    _pushRetryTimer = null;
+    if (S.token) pushToKV();
+  }, 8000);
 }
 function saveProspects() {
-  // Sauvegarde locale immédiate
-  try { localStorage.setItem('ap_prospects', JSON.stringify(S.prospects)); } catch(e) {}
-  // Sync KV avec debounce 1s pour ne pas spammer
+  var ts = Date.now();
+  try {
+    localStorage.setItem('ap_prospects', JSON.stringify(S.prospects));
+    localStorage.setItem('ap_lastSaved', String(ts));
+  } catch(e) {}
+  _pushPending = true;
   if (_saveTimer) clearTimeout(_saveTimer);
-  _saveTimer = setTimeout(function() { pushToKV(); }, 1000);
+  _saveTimer = setTimeout(function() { _saveTimer = null; pushToKV(); }, 400);
 }
 function syncFromKV(cb) {
   if (!S.token) { if (cb) cb(); return; }
@@ -1488,30 +1669,35 @@ function syncFromKV(cb) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ token: S.token })
   }).then(function(r) { return r.json(); }).then(function(d) {
-    if (d.error) {
-      toast('Sync cloud : ' + d.error, 'err');
-      if (cb) cb();
-      return;
+    if (d.error) { toast('Sync cloud : ' + d.error, 'err'); if (cb) cb(); return; }
+
+    var cloudP = Array.isArray(d.prospects) ? d.prospects : [];
+    var cloudT = Array.isArray(d.todos) ? d.todos : [];
+    var cloudN = Array.isArray(d.notes) ? d.notes : [];
+    var cloudTs = d.lastSaved || 0;
+    var localTs = parseInt(localStorage.getItem('ap_lastSaved') || '0');
+
+    // Cloud wins if it has data and is newer (or local has nothing)
+    var takeCloud = (cloudTs >= localTs) || (!localTs && cloudP.length > 0);
+
+    if (takeCloud) {
+      S.prospects = cloudP;
+      S.todos = cloudT;
+      S.notes = cloudN;
+      try {
+        localStorage.setItem('ap_prospects', JSON.stringify(S.prospects));
+        localStorage.setItem('ap_todos', JSON.stringify(S.todos));
+        localStorage.setItem('ap_notes', JSON.stringify(S.notes));
+        localStorage.setItem('ap_lastSaved', String(cloudTs));
+      } catch(e) {}
+    } else {
+      // Local is newer → push it to cloud to update it
+      pushToKV().then(function() {
+        localStorage.setItem('ap_lastSaved', String(Date.now()));
+      });
     }
-    var kvP = Array.isArray(d.prospects) ? d.prospects : [];
-    var kvT = Array.isArray(d.todos) ? d.todos : [];
-    var kvN = Array.isArray(d.notes) ? d.notes : [];
-    if (kvP.length > S.prospects.length) {
-      S.prospects = kvP;
-      try { localStorage.setItem('ap_prospects', JSON.stringify(S.prospects)); } catch(e) {}
-    }
-    if (kvT.length > S.todos.length) {
-      S.todos = kvT;
-      try { localStorage.setItem('ap_todos', JSON.stringify(S.todos)); } catch(e) {}
-      updateTaskBadge();
-    }
-    if (kvN.length > S.notes.length) {
-      S.notes = kvN;
-      try { localStorage.setItem('ap_notes', JSON.stringify(S.notes)); } catch(e) {}
-    }
-    if (S.prospects.length > kvP.length || S.todos.length > kvT.length || S.notes.length > kvN.length) {
-      pushToKV();
-    }
+
+    updateTaskBadge();
     renderDash();
     renderCC();
     if (cb) cb();
@@ -1623,9 +1809,10 @@ function pipelineValue() {
   }, 0);
 }
 function updateStats() {
-  var total = $('s-total'), tocall = $('s-tocall'), rdv = $('s-rdv'), won = $('s-won'), pipe = $('s-pipeline');
+  var total = $('s-total'), tocall = $('s-tocall'), called = $('s-called'), rdv = $('s-rdv'), won = $('s-won'), pipe = $('s-pipeline');
   animateCounter(total, S.prospects.length);
   animateCounter(tocall, S.prospects.filter(function(p) { return !p.status || p.status === 'to_call'; }).length);
+  if (called) animateCounter(called, S.prospects.filter(function(p) { return p.status === 'called' || p.status === 'voicemail' || p.status === 'recall' || p.status === 'refusal' || p.status === 'video_rdv' || p.status === 'won'; }).length);
   animateCounter(rdv, S.prospects.filter(function(p) { return p.status === 'video_rdv'; }).length);
   animateCounter(won, S.prospects.filter(function(p) { return p.status === 'won'; }).length);
   if (pipe) pipe.textContent = fmtCHF(pipelineValue());
@@ -2079,7 +2266,8 @@ function renderCard(p) {
         { k: '👥', v: enriched.employees || enriched.employees_approx },
         { k: '🎯', v: p.contact || enriched.decision_maker || enriched.key_decision_maker },
         { k: '📱', v: enriched.decision_maker_phone, href: enriched.decision_maker_phone ? 'tel:' + enriched.decision_maker_phone : null, label: 'décideur', source: enriched.decision_maker_phone_source },
-        { k: '🔗', v: enriched.linkedin, href: enriched.linkedin }
+        { k: '🔗', v: enriched.linkedin, href: enriched.linkedin },
+        { k: '🕐', v: enriched.opening_hours || enriched.hours, label: enriched.hours_source || '' }
       ].filter(function(f) { return f.v && f.v !== 'null'; }).map(function(f) {
         var val = f.href ? '<a href="' + esc(f.href) + '" target="_blank" rel="noopener" style="color:var(--violet2)">' + esc(f.v) + '</a>' : esc(f.v);
         if (f.source) val += ' <span style="font-size:10px;color:var(--t3)">(' + esc(f.source) + ')</span>';
@@ -2311,6 +2499,40 @@ function bulkDelete() {
   renderDash();
   renderCC();
   toast(list.length + ' prospect(s) supprimé(s).', 'ok');
+}
+function bulkFetchHours() {
+  var list = selectedProspects().filter(function(p) { return p.name; });
+  if (!list.length) { toast('Aucun prospect sélectionné.', 'err'); return; }
+  if (!confirm('Récupérer les horaires de ' + list.length + ' établissement(s) via recherche web ?\n(1 appel IA par établissement — quelques secondes)')) return;
+  var done = 0, found = 0;
+  toast('Recherche des horaires en cours…', 'info');
+  list.forEach(function(p) {
+    fetch('/api/enrich', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prospectName: p.name, city: p.city, type: p.type, website: p.web || '', hoursOnly: true })
+    }).then(function(r) { return r.json(); }).then(function(d) {
+      done++;
+      if (d.enrichedData && d.enrichedData.opening_hours) {
+        if (!p.enriched) p.enriched = {};
+        p.enriched.opening_hours = d.enrichedData.opening_hours;
+        if (d.enrichedData.source) p.enriched.hours_source = d.enrichedData.source;
+        found++;
+      }
+      if (done === list.length) {
+        saveProspects();
+        renderDash();
+        toast('✅ Horaires trouvés pour ' + found + '/' + list.length + ' établissement(s).', 'ok');
+      }
+    }).catch(function() {
+      done++;
+      if (done === list.length) {
+        saveProspects();
+        renderDash();
+        toast('Horaires : ' + found + '/' + list.length + ' trouvés.', 'ok');
+      }
+    });
+  });
 }
 function bulkVerifyWebsite() {
   var list = selectedProspects().filter(function(p) { return !p.web && !(p._enrich && p._enrich.website) && !(p.enriched && p.enriched.website); });
@@ -2631,14 +2853,15 @@ function loadTodos() {
   initNotifications();
 }
 function saveTodos() {
-  try { localStorage.setItem('ap_todos', JSON.stringify(S.todos)); } catch(e) {}
+  var ts = Date.now();
+  try {
+    localStorage.setItem('ap_todos', JSON.stringify(S.todos));
+    localStorage.setItem('ap_lastSaved', String(ts));
+  } catch(e) {}
   updateTaskBadge();
-  if (!S.token) return;
-  fetch('/api/data-save', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ token: S.token, todos: S.todos })
-  }).catch(function() {});
+  _pushPending = true;
+  if (_saveTimer) clearTimeout(_saveTimer);
+  _saveTimer = setTimeout(function() { _saveTimer = null; pushToKV(); }, 400);
 }
 function updateTaskBadge() {
   var now = Date.now();
@@ -3201,6 +3424,136 @@ function onScriptProspectChange() {
   toast('Prospect pré-rempli : ' + p.name, 'ok');
 }
 
+// ===== COLDCRAFT AI — Générateur de script intelligent =====
+var CC_SECTORS = { 'restaurant':'Restauration','restauration':'Restauration','hotel':'Hôtellerie','hôtel':'Hôtellerie','hotellerie':'Hôtellerie','beauty':'Beauté','beaute':'Beauté','beauté':'Beauté','coiffure':'Beauté','fitness':'Fitness','sport':'Fitness','sante':'Santé','santé':'Santé','health':'Santé' };
+function refreshColdcraftProspects() {
+  var sel = $('cc-prospect');
+  if (!sel) return;
+  var cur = sel.value;
+  sel.innerHTML = '<option value="">— Saisie manuelle —</option>'
+    + S.prospects.map(function(p) {
+      return '<option value="' + p.id + '"' + (p.id === cur ? ' selected' : '') + '>'
+        + esc(p.name) + (p.city ? ' — ' + esc(p.city) : '') + '</option>';
+    }).join('');
+}
+function onColdcraftProspectChange() {
+  var sel = $('cc-prospect');
+  if (!sel || !sel.value) return;
+  var p = S.prospects.filter(function(x) { return x.id === sel.value; })[0];
+  if (!p) return;
+  if ($('cc-nom')) $('cc-nom').value = p.name || '';
+  // Map le type du prospect vers un secteur ColdCraft
+  if (p.type && $('cc-secteur')) {
+    var key = p.type.toLowerCase();
+    var matched = '';
+    Object.keys(CC_SECTORS).forEach(function(k) { if (key.indexOf(k) > -1) matched = CC_SECTORS[k]; });
+    if (matched) $('cc-secteur').value = matched;
+  }
+  toast('Pré-rempli : ' + p.name, 'ok');
+}
+function coldcraftGenerate() {
+  var nom = $('cc-nom') ? $('cc-nom').value.trim() : '';
+  if (!nom) { toast('Indique le nom de l\'établissement.', 'err'); if ($('cc-nom')) $('cc-nom').focus(); return; }
+  var params = {
+    mode: 'coldcraft',
+    nom: nom,
+    secteur: $('cc-secteur') ? $('cc-secteur').value : '',
+    taille: $('cc-taille') ? $('cc-taille').value : '',
+    caractere: $('cc-caractere') ? $('cc-caractere').value : '',
+    objectif: $('cc-objectif') ? $('cc-objectif').value : '',
+    canal: $('cc-canal') ? $('cc-canal').value : ''
+  };
+  var btn = $('cc-gen-btn');
+  if (btn) { btn.disabled = true; btn.querySelector('span').textContent = 'Génération…'; }
+  var res = $('cc-result');
+  if (res) res.innerHTML = '<div class="ccg-empty"><div class="typing-dots"><span class="dot-a"></span><span class="dot-a"></span><span class="dot-a"></span></div><p>L\'IA rédige ton script personnalisé…</p></div>';
+  fetch('/api/call-script', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(params)
+  }).then(function(r) { return r.json(); }).then(function(d) {
+    if (btn) { btn.disabled = false; btn.querySelector('span').textContent = 'Générer le script'; }
+    if (d.error || !d.result) { if (res) res.innerHTML = '<div class="ccg-empty"><p style="color:var(--err)">Erreur : ' + esc(d.error || 'réponse vide') + '</p></div>'; return; }
+    renderColdcraft(d.result, params);
+    saveColdcraftHistory(params, d.result);
+    toast('Script généré ✨', 'ok');
+  }).catch(function(e) {
+    if (btn) { btn.disabled = false; btn.querySelector('span').textContent = 'Générer le script'; }
+    if (res) res.innerHTML = '<div class="ccg-empty"><p style="color:var(--err)">Erreur réseau : ' + esc(e.message) + '</p></div>';
+  });
+}
+function renderColdcraft(r, params) {
+  var res = $('cc-result');
+  if (!res) return;
+  var objs = Array.isArray(r.objections_probables) ? r.objections_probables : [];
+  function objHtml(o) {
+    // Sépare "objection — réponse" si possible
+    var m = String(o).match(/^(.*?)[—:–]\s*(.*)$/);
+    if (m) return '<div class="cc-obj"><b>' + esc(m[1].trim()) + '</b><br>' + esc(m[2].trim()) + '</div>';
+    return '<div class="cc-obj">' + esc(o) + '</div>';
+  }
+  res.innerHTML =
+    '<div class="cc-card"><div class="cc-card-hd"><div class="cc-card-title">⚡ Version courte <span class="cc-card-tag">~35s</span></div>'
+      + '<button class="cc-copy" data-cc-copy="court">📋 Copier</button></div>'
+      + '<div class="cc-card-body" id="cc-court">' + esc(r.court || '') + '</div></div>'
+    + '<div class="cc-card"><div class="cc-card-hd"><div class="cc-card-title">📞 Version longue <span class="cc-card-tag">~1m30</span></div>'
+      + '<button class="cc-copy" data-cc-copy="long">📋 Copier</button></div>'
+      + '<div class="cc-card-body" id="cc-long">' + esc(r.long || '') + '</div></div>'
+    + (objs.length ? '<div class="cc-card"><div class="cc-card-title" style="margin-bottom:12px">🛡️ Objections probables</div>' + objs.map(objHtml).join('') + '</div>' : '')
+    + (r.relance ? '<div class="cc-card"><div class="cc-card-title" style="margin-bottom:10px">🔄 Phrase de relance</div><div class="cc-relance">' + esc(r.relance) + '</div></div>' : '')
+    + '<button class="btn btn-ghost" id="cc-export-btn" style="width:100%;margin-top:4px">💾 Enregistrer dans les notes du prospect</button>';
+  // Boutons copier
+  res.querySelectorAll('[data-cc-copy]').forEach(function(b) {
+    b.addEventListener('click', function() {
+      var el = $('cc-' + b.dataset.ccCopy);
+      if (el) navigator.clipboard.writeText(el.textContent).then(function() { toast('Copié !', 'ok'); b.textContent = '✓ Copié'; setTimeout(function(){ b.textContent = '📋 Copier'; }, 1500); });
+    });
+  });
+  // Export vers prospect
+  var exp = $('cc-export-btn');
+  if (exp) exp.addEventListener('click', function() { coldcraftExport(r, params); });
+}
+function coldcraftExport(r, params) {
+  var p = S.prospects.filter(function(x) { return (x.name || '').toLowerCase().trim() === (params.nom || '').toLowerCase().trim(); })[0];
+  var block = '📝 SCRIPT COLDCRAFT (' + new Date().toLocaleDateString('fr-CH') + ')\n— COURT —\n' + (r.court || '') + '\n— LONG —\n' + (r.long || '');
+  if (!p) {
+    var selId = $('cc-prospect') ? $('cc-prospect').value : '';
+    if (selId) p = S.prospects.filter(function(x) { return x.id === selId; })[0];
+  }
+  if (!p) { toast('Aucun prospect "' + params.nom + '" trouvé. Crée-le d\'abord.', 'err'); return; }
+  p.notes = (p.notes ? p.notes + '\n\n' : '') + block;
+  saveProspects();
+  toast('Script enregistré dans ' + p.name + ' ✓', 'ok');
+}
+function saveColdcraftHistory(params, result) {
+  var hist = [];
+  try { hist = JSON.parse(localStorage.getItem('ap_coldcraft') || '[]'); } catch(e) {}
+  hist.unshift({ at: Date.now(), nom: params.nom, secteur: params.secteur, params: params, result: result });
+  hist = hist.slice(0, 10);
+  try { localStorage.setItem('ap_coldcraft', JSON.stringify(hist)); } catch(e) {}
+  renderColdcraftHistory();
+}
+function renderColdcraftHistory() {
+  var wrap = $('cc-history-wrap'), list = $('cc-history');
+  if (!list) return;
+  var hist = [];
+  try { hist = JSON.parse(localStorage.getItem('ap_coldcraft') || '[]'); } catch(e) {}
+  if (!hist.length) { if (wrap) wrap.style.display = 'none'; return; }
+  if (wrap) wrap.style.display = 'block';
+  list.innerHTML = hist.map(function(h, i) {
+    return '<div class="cc-hist-item" data-cc-hist="' + i + '">'
+      + '<div style="min-width:0"><div style="font-weight:600;font-size:13px;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + esc(h.nom) + '</div>'
+      + '<div style="font-size:11px;color:var(--t3)">' + esc(h.secteur || '') + ' · ' + new Date(h.at).toLocaleDateString('fr-CH') + '</div></div>'
+      + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>';
+  }).join('');
+  list.querySelectorAll('[data-cc-hist]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      var h = hist[parseInt(el.dataset.ccHist)];
+      if (h) { renderColdcraft(h.result, h.params); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    });
+  });
+}
+
 function parseCSVLine(line) {
   var result = [], cur = '', inQ = false;
   for (var i = 0; i < line.length; i++) {
@@ -3550,6 +3903,13 @@ document.addEventListener('DOMContentLoaded', function() {
   var scProspect = $('sc-prospect');
   if (scProspect) scProspect.addEventListener('change', onScriptProspectChange);
 
+  // ColdCraft
+  var ccGenBtn = $('cc-gen-btn');
+  if (ccGenBtn) ccGenBtn.addEventListener('click', coldcraftGenerate);
+  var ccProspect = $('cc-prospect');
+  if (ccProspect) ccProspect.addEventListener('change', onColdcraftProspectChange);
+  renderColdcraftHistory();
+
   // Modal
   var modalX = $('modal-x');
   var modalCancel = $('modal-cancel');
@@ -3650,6 +4010,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (bulkFollowupBtn) bulkFollowupBtn.addEventListener('click', bulkFollowUp);
   var bulkEnrichBtn = $('bulk-enrich-btn');
   if (bulkEnrichBtn) bulkEnrichBtn.addEventListener('click', openBatchModal);
+  var bulkHoursBtn = $('bulk-hours-btn');
+  if (bulkHoursBtn) bulkHoursBtn.addEventListener('click', bulkFetchHours);
   var bulkVerifyWebBtn = $('bulk-verify-web-btn');
   if (bulkVerifyWebBtn) bulkVerifyWebBtn.addEventListener('click', bulkVerifyWebsite);
   var bulkDeleteBtn = $('bulk-delete-btn');
