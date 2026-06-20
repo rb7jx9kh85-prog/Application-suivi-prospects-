@@ -1247,14 +1247,14 @@ html{scroll-behavior:smooth}
 <div class="glass-s" id="chat-panel" role="dialog" aria-label="Coach Alpinia">
   <div class="chat-hd">
     <div class="chat-av"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-    <div><div style="font-weight:700;font-size:13px">Coach Alpinia</div><div style="font-size:11px;color:var(--ok)">En ligne &middot; Expert prospection</div></div>
+    <div><div style="font-weight:700;font-size:13px">Coach Alpinia</div><div style="font-size:11px;color:var(--ok)">En ligne &middot; Agent &middot; Accès aux prospects</div></div>
     <button class="btn btn-icon" id="chat-x" aria-label="Fermer" style="margin-left:auto;border:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
   </div>
   <div class="chat-msgs" id="chat-msgs">
-    <div class="msg b">Salut ! Je suis Coach Alpinia, expert en prospection B2B. Demande-moi un script, comment g&eacute;rer une objection, ou comment pr&eacute;parer ton prochain appel !</div>
+    <div class="msg b">Salut ! Je suis Coach Alpinia, ton agent de prospection. Je connais toute ta liste de prospects et je peux <b>agir</b> pour toi. Essaie&nbsp;:<br>&bull; &laquo;&nbsp;Combien de prospects sans site web&nbsp;?&nbsp;&raquo;<br>&bull; &laquo;&nbsp;Lesquels appeler en priorit&eacute; &agrave; Sion&nbsp;?&nbsp;&raquo;<br>&bull; &laquo;&nbsp;Passe Restaurant du Lac en Appel&eacute;&nbsp;&raquo;<br>&bull; &laquo;&nbsp;Cr&eacute;e une t&acirc;che&nbsp;: relancer H&ocirc;tel Bellevue&nbsp;&raquo;<br>&bull; &laquo;&nbsp;S&eacute;lectionne tous ceux avec un site web&nbsp;&raquo;</div>
   </div>
   <div class="chat-ft">
-    <input type="text" id="chat-inp" placeholder="Pose ta question&hellip;" autocomplete="off" aria-label="Message"/>
+    <input type="text" id="chat-inp" placeholder="Demande ou ordonne une action&hellip;" autocomplete="off" aria-label="Message"/>
     <button class="chat-send" id="chat-send" aria-label="Envoyer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
   </div>
 </div>
@@ -3382,6 +3382,83 @@ function chatAppend(role, text) {
   msgs.scrollTop = msgs.scrollHeight;
   return el;
 }
+// ===== AGENT : contexte + actions =====
+function prospectsContext() {
+  if (!S.prospects || !S.prospects.length) return 'Aucun prospect dans la base.';
+  return S.prospects.slice(0, 300).map(function(p, i) {
+    var tel = (p.phone || (p._enrich && p._enrich.phone)) ? 'tel✓' : 'tel✗';
+    var web = (p.web || p.website || (p._enrich && p._enrich.website)) ? 'web✓' : 'web✗';
+    return (i + 1) + '. ' + (p.name || '(sans nom)') + ' | ' + (p.city || '?') + ' | ' + (p.type || '?')
+      + ' | ' + (ST_LABELS[p.status || 'to_call'] || p.status || '?') + ' | ' + tel + ' ' + web;
+  }).join('\n');
+}
+function agentSystem() {
+  var n = S.prospects ? S.prospects.length : 0;
+  return COACH + '\n\n=== MODE AGENT ===\n'
+    + 'Tu as accès à la liste complète des prospects de l\'utilisateur (ci-dessous). '
+    + 'Tu peux répondre à toute question sur eux : compter, filtrer, lister, analyser, prioriser, suggérer qui appeler en premier.\n'
+    + 'Tu peux aussi AGIR. Pour exécuter des actions, termine ta réponse par une ligne "@@ACTIONS@@" suivie d\'un tableau JSON. Actions:\n'
+    + '- {"do":"set_status","name":"<nom exact>","status":"to_call|called|voicemail|refusal|video_rdv|won"}\n'
+    + '- {"do":"add_task","text":"<tâche>","name":"<nom prospect optionnel>","priority":"low|medium|high"}\n'
+    + '- {"do":"add_note","name":"<nom exact>","note":"<texte>"}\n'
+    + '- {"do":"set_followup","name":"<nom exact>","days":<nombre>}\n'
+    + '- {"do":"select","filter":"website|no_website|no_phone|status:<statut>|city:<ville>"}\n'
+    + 'Exemple : @@ACTIONS@@ [{"do":"set_status","name":"Restaurant du Lac","status":"called"}]\n'
+    + 'Règles : n\'invente JAMAIS de prospect, utilise exactement les noms de la liste. '
+    + 'Si une demande est ambiguë ou destructrice, demande confirmation au lieu d\'agir. '
+    + 'Avant le bloc @@ACTIONS@@, explique en 1 phrase ce que tu fais. Sans action à faire, ne mets pas le bloc.\n\n'
+    + '=== LISTE DES PROSPECTS (' + n + ') ===\n' + prospectsContext();
+}
+function findProspectByName(name) {
+  if (!name) return null;
+  var nm = String(name).toLowerCase().trim();
+  var exact = S.prospects.filter(function(p) { return (p.name || '').toLowerCase().trim() === nm; });
+  if (exact.length) return exact[0];
+  return S.prospects.filter(function(p) { return (p.name || '').toLowerCase().indexOf(nm) > -1; })[0] || null;
+}
+function applyAgentSelect(filter) {
+  S.selectedIds = {};
+  var f = String(filter || '').toLowerCase();
+  S.prospects.forEach(function(p) {
+    var web = p.web || p.website || (p._enrich && p._enrich.website);
+    var has = false;
+    if (f === 'website') has = !!web;
+    else if (f === 'no_website') has = !web;
+    else if (f === 'no_phone') has = !(p.phone || (p._enrich && p._enrich.phone));
+    else if (f.indexOf('status:') === 0) has = (p.status || 'to_call') === f.slice(7);
+    else if (f.indexOf('city:') === 0) has = (p.city || '').toLowerCase().indexOf(f.slice(5)) > -1;
+    if (has) S.selectedIds[p.id] = 1;
+  });
+}
+function runAgentActions(actions) {
+  var done = [], changed = false, selChanged = false;
+  actions.forEach(function(a) {
+    if (!a || !a.do) return;
+    if (a.do === 'set_status') {
+      var p = findProspectByName(a.name);
+      if (p && a.status) { p.status = a.status; if (CONTACTED_ST[a.status]) p.lastContact = Date.now(); changed = true; done.push('✓ ' + p.name + ' → ' + (ST_LABELS[a.status] || a.status)); }
+      else done.push('✗ Prospect introuvable : ' + (a.name || '?'));
+    } else if (a.do === 'add_task') {
+      var pid = null; if (a.name) { var pp = findProspectByName(a.name); if (pp) pid = pp.id; }
+      S.todos.unshift({ id: genId(), text: a.text || 'Tâche', status: 'todo', priority: a.priority || 'medium', category: 'call', dueDate: a.due || null, prospectId: pid, reminderAt: null, notes: '', at: Date.now(), doneAt: null });
+      saveTodos(); done.push('✓ Tâche ajoutée : ' + (a.text || ''));
+    } else if (a.do === 'add_note') {
+      var p2 = findProspectByName(a.name);
+      if (p2) { p2.notes = (p2.notes ? p2.notes + ' · ' : '') + (a.note || ''); changed = true; done.push('✓ Note → ' + p2.name); }
+      else done.push('✗ Prospect introuvable : ' + (a.name || '?'));
+    } else if (a.do === 'set_followup') {
+      var p3 = findProspectByName(a.name);
+      if (p3) { var d = new Date(); d.setDate(d.getDate() + (parseInt(a.days) || 7)); p3.nextFollowUp = d.toISOString().slice(0, 10); changed = true; done.push('✓ Relance ' + p3.name + ' le ' + d.toLocaleDateString('fr-CH')); }
+      else done.push('✗ Prospect introuvable : ' + (a.name || '?'));
+    } else if (a.do === 'select') {
+      applyAgentSelect(a.filter); selChanged = true;
+      done.push('✓ ' + Object.keys(S.selectedIds).length + ' prospect(s) sélectionné(s) (' + a.filter + ')');
+    }
+  });
+  if (changed) { saveProspects(); renderDash(); renderCC(); }
+  if (selChanged) { renderTable(getFiltered()); updateBatchBtn(); updateBulkBar(); }
+  return done;
+}
 function sendChat() {
   var inp = $('chat-inp');
   var msgs = $('chat-msgs');
@@ -3395,11 +3472,27 @@ function sendChat() {
   typing.className = 'typing-dots';
   typing.innerHTML = '<span class="dot-a"></span><span class="dot-a"></span><span class="dot-a"></span>';
   if (msgs) { msgs.appendChild(typing); msgs.scrollTop = msgs.scrollHeight; }
-  api('ai', { system: COACH, messages: S.chatHistory }).then(function(d) {
+  api('ai', { system: agentSystem(), messages: S.chatHistory.slice(-8) }).then(function(d) {
     typing.remove();
     var reply = d.error ? ('Erreur : ' + d.error) : ((d.content && d.content[0] && d.content[0].text) ? d.content[0].text : '');
     S.chatHistory.push({ role: 'assistant', content: reply });
-    chatAppend('b', reply);
+    // Extraire et exécuter les actions
+    var displayText = reply, actions = null;
+    var idx = reply.indexOf('@@ACTIONS@@');
+    if (idx > -1) {
+      displayText = reply.slice(0, idx).trim();
+      var jsonStr = reply.slice(idx + 11).replace(/```json|```/g, '').trim();
+      try { actions = JSON.parse(jsonStr); } catch (e) { actions = null; }
+    }
+    chatAppend('b', displayText || '…');
+    if (actions && actions.length) {
+      var results = runAgentActions(actions);
+      if (results.length) {
+        var el = chatAppend('b', results.join('\n'));
+        if (el) { el.style.background = 'rgba(52,211,153,.12)'; el.style.borderColor = 'rgba(52,211,153,.3)'; }
+        toast('Agent : ' + results.length + ' action(s) exécutée(s)', 'ok');
+      }
+    }
   });
 }
 
