@@ -1068,7 +1068,7 @@
         "web": "",
         "status": "voicemail",
         "contact": "",
-        "notes": "",
+        "notes": "recall en semaine \n",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -2440,6 +2440,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781967747609
+    "lastSaved": 1781967796764
   }
 }
