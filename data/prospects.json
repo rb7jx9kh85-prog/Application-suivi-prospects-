@@ -406,7 +406,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "",
+        "notes": "ca",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -419,7 +419,9 @@
             "allbiz.ch"
           ],
           "verdict": "Aucun site web trouvé pour le salon de coiffure Paul Pannatier à Sion."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "ygajj8v9c5mqjlo25q",
