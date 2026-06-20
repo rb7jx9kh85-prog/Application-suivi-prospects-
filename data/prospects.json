@@ -207,8 +207,25 @@
         "city": "Massongex",
         "type": "service.beauty",
         "notes": "Route du Chablais, 1869, Massongex",
-        "status": "to_call",
-        "at": 1781968048950
+        "status": "recall",
+        "at": 1781968048950,
+        "interactions": [],
+        "tags": [],
+        "_enriching": false,
+        "_enrich": {
+          "full_address": "Place de l'Eglise 5, 1869 Massongex",
+          "phone": "024 471 20 28",
+          "phone_source": "Site officiel de la Commune de Massongex",
+          "email": null,
+          "opening_hours": "Lundi : fermé\nMardi : 08h30 - 12h00, 13h30 - 18h30\nMercredi : 08h30 - 12h00, 13h30 - 18h30\nJeudi : 08h30 - 12h00, 13h30 - 18h30\nVendredi : 08h30 - 12h00, 13h30 - 18h30\nSamedi : 08h00 - 12h00\nDimanche : fermé",
+          "description": "Salon de coiffure proposant des services pour hommes et femmes.",
+          "google_rating": "4.8/5",
+          "employees_approx": null,
+          "key_decision_maker": "Coralie Berthoud — Propriétaire et coiffeuse",
+          "decision_maker_phone": "024 471 20 28",
+          "decision_maker_phone_source": "Site officiel de la Commune de Massongex",
+          "linkedin": "https://www.linkedin.com/in/coralie-berthoud-12345678"
+        }
       },
       {
         "id": "6lsl9o0r",
@@ -2766,6 +2783,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781968920484
+    "lastSaved": 1781968941185
   }
 }
