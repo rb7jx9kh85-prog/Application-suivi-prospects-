@@ -553,7 +553,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "mail send\n",
+        "notes": "mail send\n\n",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -2456,6 +2456,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781967295765
+    "lastSaved": 1781967296606
   }
 }
