@@ -430,27 +430,30 @@
         "type": "Salon de coiffure",
         "phone": "079 702 59 19",
         "email": "coiffurederevesarl@gmail.com",
-        "web": "",
+        "web": "https://m.facebook.com/CoiffureDeReveSarl",
         "status": "to_call",
         "contact": "",
         "notes": "",
         "at": 1781793202670,
         "_noWebsite": {
-          "has_website": false,
-          "website_url": null,
+          "has_website": true,
+          "website_url": "https://m.facebook.com/CoiffureDeReveSarl",
           "confidence": "high",
           "sources_checked": [
             "Google",
             "Pages Jaunes",
             "LinkedIn",
             "Google Maps",
-            "AllBiz.ch",
             "Luxy Beauty Directory",
-            "Yellowpages.swiss",
-            "Moneyhouse.ch"
+            "Moneyhouse",
+            "Wirtschaftsregister.ch",
+            "Meilleur Coiffeur"
           ],
-          "verdict": "Aucun site web trouvé pour Coiffure de Rêve Sarl à Monthey."
-        }
+          "verdict": "Le salon Coiffure De Rêve Sàrl à Monthey dispose d'une page Facebook comme site web."
+        },
+        "interactions": [],
+        "tags": [],
+        "_verifyingWebsite": false
       },
       {
         "id": "iwqrozvmytmqjlo25q",
