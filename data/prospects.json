@@ -735,7 +735,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "mail send ",
+        "notes": "mail send \n",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
