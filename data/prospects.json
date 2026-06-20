@@ -46,7 +46,8 @@
         "domain": "commercial.clothing",
         "notes": "Avenue de la Gare, 1920, Martigny",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1781963228700,
+        "name": "Avenue de la Gare"
       },
       {
         "id": "xjnfpy9b",
