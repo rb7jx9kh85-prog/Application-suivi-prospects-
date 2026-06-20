@@ -2,6 +2,22 @@
   "155ab99e52611a1a0f906d91d94ef568ee65ba3c6b0f83f0cd840ef2512d2452": {
     "prospects": [
       {
+        "id": "ngexivuz60lmqmio1nc",
+        "name": "la coopérative",
+        "city": "aproz",
+        "type": "bar / resto",
+        "phone": "079 305 98 44",
+        "email": "",
+        "web": "pas de site",
+        "status": "video_rdv",
+        "contact": "Noémie délèze",
+        "notes": "elle est hyper hype. maquettes crées, présentation par visio faite -- elle me redit mercredi, je dois la re-call mercredi à 15 h",
+        "value": 800,
+        "nextFollowUp": "",
+        "lastContact": 1781969561688,
+        "at": 1781969561688
+      },
+      {
         "id": "r2k9u3bv",
         "name": "Chez Nathalie",
         "web": "",
@@ -102,7 +118,9 @@
           "linkedin": null,
           "description": "Emeric est un professionnel de la beauté à Villars-sur-Ollon."
         },
-        "enrichedAt": 1781969408878
+        "enrichedAt": 1781969408878,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "s26zlewq",
@@ -125,7 +143,9 @@
           "linkedin": null,
           "description": "Sonia Dias offre divers services de beauté à Chesières."
         },
-        "enrichedAt": 1781969408878
+        "enrichedAt": 1781969408878,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "6eiw0a45",
@@ -148,7 +168,9 @@
           "linkedin": null,
           "description": "MAKoiffure est un salon de beauté proposant des services de coiffure."
         },
-        "enrichedAt": 1781969408878
+        "enrichedAt": 1781969408878,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "2g9aj55q",
@@ -196,7 +218,9 @@
           "linkedin": null,
           "description": "Oxygène propose des services dans le domaine de la santé et de la beauté."
         },
-        "enrichedAt": 1781969408878
+        "enrichedAt": 1781969408878,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "p4vflkuq",
@@ -207,7 +231,9 @@
         "type": "service.beauty",
         "notes": "2 Chemin des Clous, 1895, Torgon",
         "status": "to_call",
-        "at": 1781968048950
+        "at": 1781968048950,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "y9cqefip",
@@ -2977,6 +3003,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781969409686
+    "lastSaved": 1781969562489
   }
 }
