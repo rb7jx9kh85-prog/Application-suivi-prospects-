@@ -916,7 +916,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "pas intà",
+        "notes": "pas intéressée ",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -2434,6 +2434,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781967601102
+    "lastSaved": 1781967603717
   }
 }
