@@ -4953,6 +4953,19 @@
     ],
     "todos": [
       {
+        "id": "mrediyc2stpmqme6ie2",
+        "text": "faire différents templates pour les dfférentes offres, pour faire les maquettes gratuites à montrer aux différents prospects",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1781962025114,
+        "doneAt": null
+      },
+      {
         "id": "pfea07gqfpmqme5ude",
         "text": "document de direction artistique TribuTerre",
         "status": "todo",
