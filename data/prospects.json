@@ -885,7 +885,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "",
+        "notes": "pas intéressée ",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -902,7 +902,9 @@
             "swissyp.com"
           ],
           "verdict": "Aucun site web trouvé pour Coiffure Evasion à Chamoson."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "hkua4u98a5nmqjlo25q",
@@ -2458,6 +2460,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781967302021
+    "lastSaved": 1781967310029
   }
 }
