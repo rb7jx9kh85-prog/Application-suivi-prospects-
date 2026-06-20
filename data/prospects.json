@@ -883,7 +883,7 @@
         "web": "",
         "status": "voicemail",
         "contact": "",
-        "notes": "recall ",
+        "notes": "whatsapp send",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -935,7 +935,9 @@
             "meilleurcoiffeur.com"
           ],
           "verdict": "Aucun site web trouvé pour Coiffure Ab'Salon à Evolène."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "iipxj1lq89mqjlo25q",
@@ -2433,6 +2435,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781967389399
+    "lastSaved": 1781967456517
   }
 }
