@@ -112,7 +112,7 @@
         "city": "Saint-Maurice",
         "type": "service.beauty",
         "notes": "1 Avenue d'Agaune, 1890, Saint-Maurice\n\n\n",
-        "status": "to_call",
+        "status": "refusal",
         "at": 1781968048950,
         "enriched": {
           "phone": "+41 24 473 13 00",
@@ -144,7 +144,8 @@
             "search.ch"
           ],
           "verdict": "Aucune présence en ligne confirmée pour \"Coiffure d'Agaune\" à Saint-Maurice, Suisse."
-        }
+        },
+        "lastContact": 1781968837372
       },
       {
         "id": "edelo1o1",
@@ -2757,6 +2758,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781968820528
+    "lastSaved": 1781968838176
   }
 }
