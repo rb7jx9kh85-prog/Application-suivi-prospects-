@@ -11,7 +11,8 @@
         "notes": "Place du Manoir, 1920, Martigny",
         "status": "to_call",
         "at": 1781963228700,
-        "_enriching": false
+        "_enriching": false,
+        "name": "Place du Manoir"
       },
       {
         "id": "amwgq63a",
