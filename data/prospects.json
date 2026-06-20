@@ -4951,19 +4951,6 @@
     ],
     "todos": [
       {
-        "id": "mo2zuopo5omqmj7dmm",
-        "text": "regarder cette vidéo_ https://youtu.be/q6huiFqS0Us?si=dW8Tv7yqYovTCOdh",
-        "status": "todo",
-        "priority": "medium",
-        "category": "agency",
-        "dueDate": null,
-        "prospectId": null,
-        "reminderAt": null,
-        "notes": "",
-        "at": 1781970463678,
-        "doneAt": null
-      },
-      {
         "id": "qgmchglb2qimqmejo7s",
         "text": "minimum 10 cold call",
         "status": "todo",
@@ -5147,6 +5134,14 @@
       }
     ],
     "notes": [
+      {
+        "id": "ypzoilog",
+        "title": "Remplacer une objection par un rendez-vous",
+        "date": "2026-06-20",
+        "source": "",
+        "body": "# Remplacer une Objection par un Rendez-vous\n\n## Accroche de la Vidéo\n- **Phrase d'accroche :** « Oui bonjour, si je vous dis que c’est un appel de prospection, est-ce que j’ai ruiné votre soirée ? »\n  \n## Importance de l'Humour\n- L'humour comme outil de désamorçage.\n- En cas de tension ou de résistance, utiliser l'humour pour rétablir une atmosphère détendue.\n\n## Stratégies de Prise de Rendez-vous\n- **Identifier les objections :** Écouter attentivement les préoccupations de l'interlocuteur.\n- **Réponses humoristiques :** Si la conversation dévie ou devient tendue, utiliser des réponses légères pour rediriger le dialogue.\n  \n## Techniques de Communication\n- Privilégier une approche conviviale et amicale.\n- Garder le ton léger pour faciliter l'engagement.\n  \n## Résumé des Points Clés\n- Utiliser l'humour pour désamorcer les objections.\n- Rester attentif aux signaux de l'autre personne pour ajuster son discours.\n- Transformer un non en opportunité pour un rendez-vous.\n\n## Conclusion\n- L'humour est un atout puissant en prospection.\n- Un bon équilibre entre sérieux et légèreté peut favoriser l'engagement et l'acceptation d'un rendez-vous.",
+        "createdAt": 1781970802216
+      },
       {
         "id": "peew0z66",
         "title": "Cold call live",
