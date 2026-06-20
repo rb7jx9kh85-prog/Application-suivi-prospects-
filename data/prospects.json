@@ -2,6 +2,22 @@
   "155ab99e52611a1a0f906d91d94ef568ee65ba3c6b0f83f0cd840ef2512d2452": {
     "prospects": [
       {
+        "id": "7622vh192lkmqmhonb5",
+        "name": "Le Salon par Charline",
+        "city": "salvan",
+        "type": "",
+        "phone": "079 305 98 44",
+        "email": "",
+        "web": "",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "value": 0,
+        "nextFollowUp": "",
+        "lastContact": null,
+        "at": 1781967910146
+      },
+      {
         "id": "k4ktrxaq7rkmqjpxwp4",
         "name": "le panda",
         "city": "leytron",
@@ -1319,7 +1335,9 @@
             "search.ch"
           ],
           "verdict": "Aucun site web trouvé pour Passion Coiffure à Salvan."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "2u9777wffajmqjlo25q",
@@ -2440,6 +2458,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781967796764
+    "lastSaved": 1781967910946
   }
 }
