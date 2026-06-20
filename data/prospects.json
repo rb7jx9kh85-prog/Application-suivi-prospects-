@@ -4058,6 +4058,19 @@
     ],
     "todos": [
       {
+        "id": "lgblk1tl6pmqmefz1m",
+        "text": "créer le document PDF de demande des mots clés de la marque et les photos qui représente vraiment. -- + création du skill claude pour le faire, en PDF et adapté au non verbal du lead + à la personne",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1781962466602,
+        "doneAt": null
+      },
+      {
         "id": "mrediyc2stpmqme6ie2",
         "text": "faire différents templates pour les dfférentes offres, pour faire les maquettes gratuites à montrer aux différents prospects",
         "status": "todo",
