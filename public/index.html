@@ -597,6 +597,7 @@ html{scroll-behavior:smooth}
 <!-- NAV -->
 <nav id="topnav" style="display:none">
   <span class="nav-logo">Alpinia Pro</span>
+  <span id="cloud-status" style="font-size:11px;font-weight:500;color:var(--t3);margin-left:8px;display:none"></span>
   <div class="nav-links">
     <button class="nav-btn" data-nav="dashboard">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
@@ -1423,6 +1424,23 @@ function render(v) {
   if (v === 'stats') renderStats();
   if (v === 'notes') renderNotes();
 }
+// Force sauvegarde cloud si l'onglet est fermé ou mis en arrière-plan avec des données en attente
+window.addEventListener('beforeunload', function() {
+  if (_pushPending && S.token) {
+    // sendBeacon est synchrone au déchargement — fiable même si l'onglet se ferme
+    var payload = JSON.stringify({ token: S.token, prospects: S.prospects, todos: S.todos, notes: S.notes, lastSaved: Date.now() });
+    navigator.sendBeacon('/api/data-save', new Blob([payload], { type: 'application/json' }));
+  }
+});
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'hidden' && _pushPending && S.token) {
+    if (_saveTimer) { clearTimeout(_saveTimer); _saveTimer = null; }
+    pushToKV();
+  }
+});
+window.addEventListener('online', function() {
+  if (_pushPending && S.token) pushToKV();
+});
 window.addEventListener('hashchange', function() {
   var h = location.hash.replace('#/', '').split('/')[0] || 'login';
   if (!S.token && h !== 'login') { nav('login', true); return; }
@@ -1452,6 +1470,17 @@ function api(fn, body) {
 
 // ===== PROSPECTS (KV sync + localStorage cache) =====
 var _saveTimer = null;
+var _pushPending = false;
+var _pushRetryTimer = null;
+function cloudStatus(state, msg) {
+  var el = $('cloud-status');
+  if (!el) return;
+  el.style.display = 'inline';
+  if (state === 'saving')  { el.textContent = '⏳ Sauvegarde…'; el.style.color = 'var(--t3)'; }
+  if (state === 'ok')      { el.textContent = '☁ Sauvegardé';   el.style.color = 'var(--ok)'; setTimeout(function(){ el.style.color='var(--t3)'; }, 2500); }
+  if (state === 'err')     { el.textContent = '⚠ Non sauvegardé — nouvelle tentative…'; el.style.color = 'var(--err)'; }
+  if (state === 'offline') { el.textContent = '📵 Hors ligne — données en attente'; el.style.color = 'var(--warn)'; }
+}
 function loadProspects() {
   // Charge immédiatement depuis localStorage (affichage instantané)
   try {
@@ -1468,24 +1497,55 @@ function loadNotes() {
   } catch(e) { S.notes = []; }
 }
 function saveNotes() {
-  try { localStorage.setItem('ap_notes', JSON.stringify(S.notes)); } catch(e) {}
+  var ts = Date.now();
+  try {
+    localStorage.setItem('ap_notes', JSON.stringify(S.notes));
+    localStorage.setItem('ap_lastSaved', String(ts));
+  } catch(e) {}
+  _pushPending = true;
   if (_saveTimer) clearTimeout(_saveTimer);
-  _saveTimer = setTimeout(function() { pushToKV(); }, 1000);
+  _saveTimer = setTimeout(function() { _saveTimer = null; pushToKV(); }, 400);
 }
 function pushToKV() {
   if (!S.token) return Promise.resolve();
+  _pushPending = false;
+  cloudStatus('saving');
+  var ts = Date.now();
   var payload = {
     token: S.token,
     prospects: S.prospects,
     todos: S.todos,
     notes: S.notes,
-    lastSaved: Date.now()
+    lastSaved: ts
   };
   return fetch('/api/data-save', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
-  }).catch(function() {});
+  }).then(function(r) { return r.json(); }).then(function(d) {
+    if (d.ok) {
+      try { localStorage.setItem('ap_lastSaved', String(ts)); } catch(e) {}
+      cloudStatus('ok');
+      if (_pushRetryTimer) { clearTimeout(_pushRetryTimer); _pushRetryTimer = null; }
+    } else {
+      cloudStatus('err');
+      scheduleRetry();
+    }
+  }).catch(function() {
+    if (navigator.onLine === false) {
+      cloudStatus('offline');
+    } else {
+      cloudStatus('err');
+    }
+    scheduleRetry();
+  });
+}
+function scheduleRetry() {
+  if (_pushRetryTimer) return;
+  _pushRetryTimer = setTimeout(function() {
+    _pushRetryTimer = null;
+    if (S.token) pushToKV();
+  }, 8000);
 }
 function saveProspects() {
   var ts = Date.now();
@@ -1493,8 +1553,9 @@ function saveProspects() {
     localStorage.setItem('ap_prospects', JSON.stringify(S.prospects));
     localStorage.setItem('ap_lastSaved', String(ts));
   } catch(e) {}
+  _pushPending = true;
   if (_saveTimer) clearTimeout(_saveTimer);
-  _saveTimer = setTimeout(function() { pushToKV(); }, 800);
+  _saveTimer = setTimeout(function() { _saveTimer = null; pushToKV(); }, 400);
 }
 function syncFromKV(cb) {
   if (!S.token) { if (cb) cb(); return; }
@@ -2693,8 +2754,9 @@ function saveTodos() {
     localStorage.setItem('ap_lastSaved', String(ts));
   } catch(e) {}
   updateTaskBadge();
+  _pushPending = true;
   if (_saveTimer) clearTimeout(_saveTimer);
-  _saveTimer = setTimeout(function() { pushToKV(); }, 800);
+  _saveTimer = setTimeout(function() { _saveTimer = null; pushToKV(); }, 400);
 }
 function updateTaskBadge() {
   var now = Date.now();
