@@ -112,6 +112,7 @@ label{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bottom
 .b-voicemail{background:rgba(251,191,36,.15);color:#fde68a}
 .b-refusal{background:rgba(248,113,113,.2);color:#fca5a5}
 .b-video_rdv{background:rgba(52,211,153,.2);color:#6ee7b7}
+.b-recall{background:rgba(251,146,60,.2);color:#fdba74}
 /* Views */
 [data-view]{display:none}
 [data-view].on{display:block}
@@ -719,6 +720,7 @@ html{scroll-behavior:smooth}
         <option value="to_call">&Agrave; appeler</option>
         <option value="called">Appel&eacute;</option>
         <option value="voicemail">R&eacute;pondeur</option>
+        <option value="recall">Rappeler</option>
         <option value="refusal">Refus</option>
         <option value="video_rdv">RDV</option>
         <option value="won">Client sign&eacute;</option>
@@ -1205,7 +1207,7 @@ html{scroll-behavior:smooth}
       <div class="fgrp" style="margin-bottom:0"><label for="m-phone">T&eacute;l&eacute;phone</label><input class="fi" type="tel" id="m-phone" placeholder="+41 27 123 45 67"/></div>
       <div class="fgrp" style="margin-bottom:0"><label for="m-email">Email</label><input class="fi" type="email" id="m-email" placeholder="contact@exemple.ch"/></div>
       <div class="fgrp" style="margin-bottom:0"><label for="m-web">Site web</label><input class="fi" type="url" id="m-web" placeholder="https://&hellip;"/></div>
-      <div class="fgrp" style="margin-bottom:0"><label for="m-status">Statut</label><select class="fi" id="m-status"><option value="to_call">&Agrave; appeler</option><option value="called">Appel&eacute;</option><option value="voicemail">R&eacute;pondeur</option><option value="refusal">Refus</option><option value="video_rdv">RDV</option><option value="won">Client sign&eacute;</option></select></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-status">Statut</label><select class="fi" id="m-status"><option value="to_call">&Agrave; appeler</option><option value="called">Appel&eacute;</option><option value="voicemail">R&eacute;pondeur</option><option value="recall">Rappeler</option><option value="refusal">Refus</option><option value="video_rdv">RDV</option><option value="won">Client sign&eacute;</option></select></div>
       <div class="fgrp" style="margin-bottom:0"><label for="m-contact">Contact d&eacute;cideur</label><input class="fi" type="text" id="m-contact" placeholder="Pr&eacute;nom Nom"/></div>
       <div class="fgrp" style="margin-bottom:0"><label for="m-value">Valeur estim&eacute;e (CHF)</label><input class="fi" type="number" id="m-value" placeholder="3500" min="0" step="100"/></div>
       <div class="fgrp" style="margin-bottom:0"><label for="m-followup">Prochaine relance</label><input class="fi" type="date" id="m-followup"/></div>
@@ -1226,6 +1228,7 @@ html{scroll-behavior:smooth}
     <option value="to_call">&Agrave; appeler</option>
     <option value="called">Appel&eacute;</option>
     <option value="voicemail">R&eacute;pondeur</option>
+    <option value="recall">Rappeler</option>
     <option value="refusal">Refus</option>
     <option value="video_rdv">RDV</option>
     <option value="won">Client sign&eacute;</option>
@@ -1233,6 +1236,7 @@ html{scroll-behavior:smooth}
   <button class="bulk-bar-btn" id="bulk-tag-btn">&#127991; Tag</button>
   <button class="bulk-bar-btn" id="bulk-followup-btn">&#128197; Relance</button>
   <button class="bulk-bar-btn" id="bulk-enrich-btn">&#9889; Enrichir</button>
+  <button class="bulk-bar-btn" id="bulk-hours-btn">&#128336; Horaires</button>
   <button class="bulk-bar-btn" id="bulk-verify-web-btn">&#127758; V&eacute;rifier sites</button>
   <button class="bulk-bar-btn" id="bulk-dupes-btn">&#127991; Doublons</button>
   <button class="bulk-bar-btn" id="bulk-score-btn">&#128202; Score IA</button>
@@ -1367,13 +1371,14 @@ var ST = {
   to_call:   { l: 'A appeler',  c: 'b-to_call'  },
   called:    { l: 'Appele',     c: 'b-called'    },
   voicemail: { l: 'Repondeur',  c: 'b-voicemail' },
+  recall:    { l: 'Rappeler',   c: 'b-recall'    },
   refusal:   { l: 'Refus',      c: 'b-refusal'   },
   video_rdv: { l: 'RDV',        c: 'b-video_rdv' },
   won:       { l: 'Client',     c: 'b-won'       }
 };
 var ST_LABELS = {
   to_call: 'À appeler', called: 'Appelé',
-  voicemail: 'Répondeur', refusal: 'Refus', video_rdv: 'RDV', won: 'Client signé'
+  voicemail: 'Répondeur', recall: 'Rappeler', refusal: 'Refus', video_rdv: 'RDV', won: 'Client signé'
 };
 // Statuses that count as "the prospect was contacted"
 var CONTACTED_ST = { called: 1, voicemail: 1, video_rdv: 1, won: 1, refusal: 1 };
@@ -1382,7 +1387,7 @@ function badge(s) {
   return '<span class="badge ' + x.c + '">' + (ST_LABELS[s] || x.l) + '</span>';
 }
 function sopts(cur) {
-  var keys = ['to_call','called','voicemail','refusal','video_rdv','won'];
+  var keys = ['to_call','called','voicemail','recall','refusal','video_rdv','won'];
   return keys.map(function(k) {
     return '<option value="' + k + '"' + ((cur || 'to_call') === k ? ' selected' : '') + '>' + (ST_LABELS[k] || k) + '</option>';
   }).join('');
@@ -2093,7 +2098,8 @@ function renderCard(p) {
         { k: '👥', v: enriched.employees || enriched.employees_approx },
         { k: '🎯', v: p.contact || enriched.decision_maker || enriched.key_decision_maker },
         { k: '📱', v: enriched.decision_maker_phone, href: enriched.decision_maker_phone ? 'tel:' + enriched.decision_maker_phone : null, label: 'décideur', source: enriched.decision_maker_phone_source },
-        { k: '🔗', v: enriched.linkedin, href: enriched.linkedin }
+        { k: '🔗', v: enriched.linkedin, href: enriched.linkedin },
+        { k: '🕐', v: enriched.opening_hours || enriched.hours, label: enriched.hours_source || '' }
       ].filter(function(f) { return f.v && f.v !== 'null'; }).map(function(f) {
         var val = f.href ? '<a href="' + esc(f.href) + '" target="_blank" rel="noopener" style="color:var(--violet2)">' + esc(f.v) + '</a>' : esc(f.v);
         if (f.source) val += ' <span style="font-size:10px;color:var(--t3)">(' + esc(f.source) + ')</span>';
@@ -2325,6 +2331,40 @@ function bulkDelete() {
   renderDash();
   renderCC();
   toast(list.length + ' prospect(s) supprimé(s).', 'ok');
+}
+function bulkFetchHours() {
+  var list = selectedProspects().filter(function(p) { return p.name; });
+  if (!list.length) { toast('Aucun prospect sélectionné.', 'err'); return; }
+  if (!confirm('Récupérer les horaires de ' + list.length + ' établissement(s) via recherche web ?\n(1 appel IA par établissement — quelques secondes)')) return;
+  var done = 0, found = 0;
+  toast('Recherche des horaires en cours…', 'info');
+  list.forEach(function(p) {
+    fetch('/api/enrich', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prospectName: p.name, city: p.city, type: p.type, website: p.web || '', hoursOnly: true })
+    }).then(function(r) { return r.json(); }).then(function(d) {
+      done++;
+      if (d.enrichedData && d.enrichedData.opening_hours) {
+        if (!p.enriched) p.enriched = {};
+        p.enriched.opening_hours = d.enrichedData.opening_hours;
+        if (d.enrichedData.source) p.enriched.hours_source = d.enrichedData.source;
+        found++;
+      }
+      if (done === list.length) {
+        saveProspects();
+        renderDash();
+        toast('✅ Horaires trouvés pour ' + found + '/' + list.length + ' établissement(s).', 'ok');
+      }
+    }).catch(function() {
+      done++;
+      if (done === list.length) {
+        saveProspects();
+        renderDash();
+        toast('Horaires : ' + found + '/' + list.length + ' trouvés.', 'ok');
+      }
+    });
+  });
 }
 function bulkVerifyWebsite() {
   var list = selectedProspects().filter(function(p) { return !p.web && !(p._enrich && p._enrich.website) && !(p.enriched && p.enriched.website); });
@@ -3664,6 +3704,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (bulkFollowupBtn) bulkFollowupBtn.addEventListener('click', bulkFollowUp);
   var bulkEnrichBtn = $('bulk-enrich-btn');
   if (bulkEnrichBtn) bulkEnrichBtn.addEventListener('click', openBatchModal);
+  var bulkHoursBtn = $('bulk-hours-btn');
+  if (bulkHoursBtn) bulkHoursBtn.addEventListener('click', bulkFetchHours);
   var bulkVerifyWebBtn = $('bulk-verify-web-btn');
   if (bulkVerifyWebBtn) bulkVerifyWebBtn.addEventListener('click', bulkVerifyWebsite);
   var bulkDeleteBtn = $('bulk-delete-btn');
