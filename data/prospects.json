@@ -916,7 +916,7 @@
         "phone": "027 283 13 56",
         "email": "—",
         "web": "",
-        "status": "to_call",
+        "status": "refusal",
         "contact": "",
         "notes": "pas intéressée \n",
         "at": 1781793202670,
@@ -938,7 +938,8 @@
         },
         "interactions": [],
         "tags": [],
-        "_verifyingWebsite": false
+        "_verifyingWebsite": false,
+        "lastContact": 1781967637344
       },
       {
         "id": "iipxj1lq89mqjlo25q",
@@ -2436,6 +2437,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781967631980
+    "lastSaved": 1781967638147
   }
 }
