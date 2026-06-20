@@ -2,6 +2,270 @@
   "155ab99e52611a1a0f906d91d94ef568ee65ba3c6b0f83f0cd840ef2512d2452": {
     "prospects": [
       {
+        "id": "r2k9u3bv",
+        "name": "Chez Nathalie",
+        "web": "",
+        "phone": "",
+        "city": "Miex",
+        "type": "service.beauty",
+        "notes": "3 Chemin du Grand Clos, 1896, Miex",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "c0ggzubo",
+        "name": "Aux doigts de Fée",
+        "web": "",
+        "phone": "",
+        "city": "Villars-sur-Ollon",
+        "type": "commercial.health_and_beauty",
+        "notes": "29 Route des Layeux, 1885, Villars-sur-Ollon",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "3vwcnekl",
+        "name": "Coiffure Anne",
+        "web": "",
+        "phone": "",
+        "city": "Villars-sur-Ollon",
+        "type": "service.beauty",
+        "notes": "22 Route des Hôtels, 1884, Villars-sur-Ollon",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "ltkhhk48",
+        "name": "Emeric",
+        "web": "",
+        "phone": "",
+        "city": "Villars-sur-Ollon",
+        "type": "service.beauty",
+        "notes": "Route des Hôtels, 1884, Villars-sur-Ollon",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "s26zlewq",
+        "name": "Sonia Dias",
+        "web": "",
+        "phone": "",
+        "city": "Chesières",
+        "type": "service.beauty",
+        "notes": "81 Avenue Centrale, 1885, Chesières",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "6eiw0a45",
+        "name": "MAKoiffure",
+        "web": "",
+        "phone": "",
+        "city": "Chesières",
+        "type": "service.beauty",
+        "notes": "29 Avenue Centrale, 1885, Chesières",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "2g9aj55q",
+        "name": "Chez Tony",
+        "web": "",
+        "phone": "",
+        "city": "Aigle",
+        "type": "service.beauty",
+        "notes": "1860, Aigle",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "5q55echp",
+        "name": "Oxygène",
+        "web": "",
+        "phone": "",
+        "city": "Morgins",
+        "type": "commercial.health_and_beauty",
+        "notes": "18A Route de France, 1875, Morgins",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "p4vflkuq",
+        "name": "Au Grand Hair",
+        "web": "",
+        "phone": "",
+        "city": "Torgon",
+        "type": "service.beauty",
+        "notes": "2 Chemin des Clous, 1895, Torgon",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "y9cqefip",
+        "name": "Coiffure d'Agaune",
+        "web": "",
+        "phone": "",
+        "city": "Saint-Maurice",
+        "type": "service.beauty",
+        "notes": "1 Avenue d'Agaune, 1890, Saint-Maurice",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "edelo1o1",
+        "name": "Aquarelle Coiffure",
+        "web": "",
+        "phone": "",
+        "city": "Bex",
+        "type": "service.beauty",
+        "notes": "5 Ruelle du Marché, 1880, Bex",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "c125t3oy",
+        "name": "Chez Nath",
+        "web": "",
+        "phone": "",
+        "city": "Bex",
+        "type": "service.beauty",
+        "notes": "4 Rue du Signal, 1880, Bex",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "8n8zgou4",
+        "name": "Jano",
+        "web": "",
+        "phone": "",
+        "city": "Bex",
+        "type": "service.beauty",
+        "notes": "3 Rue du Cropt, 1880, Bex",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "xfyldm3u",
+        "name": "Coiffure Ivana",
+        "web": "",
+        "phone": "",
+        "city": "Bex",
+        "type": "service.beauty",
+        "notes": "12 Rue du Cropt, 1880, Bex",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "ak0gzavz",
+        "name": "Karakt'R Coiffure",
+        "web": "",
+        "phone": "",
+        "city": "Massongex",
+        "type": "service.beauty",
+        "notes": "Route du Chablais, 1869, Massongex",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "6lsl9o0r",
+        "name": "Soleil Institut",
+        "web": "",
+        "phone": "",
+        "city": "Collombey-le-Grand",
+        "type": "commercial.health_and_beauty",
+        "notes": "14 Zone Artisanale Entre deux Fossaux, 1868, Collombey-le-Grand",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "h4vkbgdo",
+        "name": "e coiffure",
+        "web": "",
+        "phone": "",
+        "city": "Monthey",
+        "type": "service.beauty",
+        "notes": "Route de Collombey, 1868, Monthey",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "xkzud5a6",
+        "name": "Tania Coiffure",
+        "web": "",
+        "phone": "",
+        "city": "Monthey",
+        "type": "service.beauty",
+        "notes": "Avenue de l'Industrie, 1870, Monthey",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "ekne3zkm",
+        "name": "Design Coiffure",
+        "web": "",
+        "phone": "",
+        "city": "Monthey",
+        "type": "service.beauty",
+        "notes": "1 Rue de la Reconfière, 1870, Monthey",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "mz956amd",
+        "name": "Acti'fs",
+        "web": "",
+        "phone": "",
+        "city": "Monthey",
+        "type": "service.beauty",
+        "notes": "1A Place de l'Hôtel-de-Ville, 1870, Monthey",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "b3aosmwg",
+        "name": "Indigo Coiffure",
+        "web": "",
+        "phone": "",
+        "city": "Monthey",
+        "type": "service.beauty",
+        "notes": "15 Avenue de France, 1870, Monthey",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "dr8gp81d",
+        "name": "Océanne Coiffure",
+        "web": "",
+        "phone": "",
+        "city": "Monthey",
+        "type": "service.beauty",
+        "notes": "Rue du Bourg-aux-Favres, 1870, Monthey",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "v8rnveb1",
+        "name": "Infini-Tif",
+        "web": "",
+        "phone": "+41 79 283 33 11",
+        "city": "Muraz",
+        "type": "service.beauty",
+        "notes": "5 Place St-André, 1893, Muraz",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
+        "id": "pkw6ebwq",
+        "name": "Isa Coiffure",
+        "web": "",
+        "phone": "+41 24 471 14 73",
+        "city": "Collombey-le-Grand",
+        "type": "service.beauty",
+        "notes": "Rue des Dents-du-Midi, 1868, Collombey-le-Grand",
+        "status": "to_call",
+        "at": 1781968048950
+      },
+      {
         "id": "7622vh192lkmqmhonb5",
         "name": "Le Salon par Charline",
         "city": "salvan",
@@ -2458,6 +2722,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781967910946
+    "lastSaved": 1781968049761
   }
 }
