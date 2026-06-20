@@ -4951,6 +4951,19 @@
     ],
     "todos": [
       {
+        "id": "mo2zuopo5omqmj7dmm",
+        "text": "regarder cette vidéo_ https://youtu.be/q6huiFqS0Us?si=dW8Tv7yqYovTCOdh",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1781970463678,
+        "doneAt": null
+      },
+      {
         "id": "qgmchglb2qimqmejo7s",
         "text": "minimum 10 cold call",
         "status": "todo",
@@ -5169,6 +5182,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781969562489
+    "lastSaved": 1781970464480
   }
 }
