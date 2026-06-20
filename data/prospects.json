@@ -247,7 +247,21 @@
         "type": "service.beauty",
         "notes": "Route de Collombey, 1868, Monthey",
         "status": "to_call",
-        "at": 1781968048950
+        "at": 1781968048950,
+        "interactions": [],
+        "tags": [],
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Monthey, Suisse",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "e coiffure est un salon de coiffure situé à Monthey, offrant divers services de beauté."
+        },
+        "enrichedAt": 1781968970191
       },
       {
         "id": "xkzud5a6",
@@ -258,7 +272,19 @@
         "type": "service.beauty",
         "notes": "Avenue de l'Industrie, 1870, Monthey",
         "status": "to_call",
-        "at": 1781968048950
+        "at": 1781968048950,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Monthey, Suisse",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Tania Coiffure est un salon de coiffure local à Monthey, spécialisé dans les coupes et les coiffures."
+        },
+        "enrichedAt": 1781968970191
       },
       {
         "id": "ekne3zkm",
@@ -269,7 +295,19 @@
         "type": "service.beauty",
         "notes": "1 Rue de la Reconfière, 1870, Monthey",
         "status": "to_call",
-        "at": 1781968048950
+        "at": 1781968048950,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Monthey, Suisse",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Design Coiffure est un salon situé à Monthey, connu pour ses services de coiffure créatifs."
+        },
+        "enrichedAt": 1781968970191
       },
       {
         "id": "mz956amd",
@@ -291,7 +329,19 @@
         "type": "service.beauty",
         "notes": "15 Avenue de France, 1870, Monthey",
         "status": "to_call",
-        "at": 1781968048950
+        "at": 1781968048950,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Monthey, Suisse",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Indigo Coiffure est un salon de coiffure à Monthey, offrant une gamme complète de services de soins capillaires."
+        },
+        "enrichedAt": 1781968970191
       },
       {
         "id": "dr8gp81d",
@@ -302,7 +352,19 @@
         "type": "service.beauty",
         "notes": "Rue du Bourg-aux-Favres, 1870, Monthey",
         "status": "to_call",
-        "at": 1781968048950
+        "at": 1781968048950,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Monthey, Suisse",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Océanne Coiffure est un salon de coiffure situé à Monthey, proposant des services personnalisés pour chaque client."
+        },
+        "enrichedAt": 1781968970191
       },
       {
         "id": "v8rnveb1",
@@ -324,7 +386,19 @@
         "type": "service.beauty",
         "notes": "Rue des Dents-du-Midi, 1868, Collombey-le-Grand",
         "status": "to_call",
-        "at": 1781968048950
+        "at": 1781968048950,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Collombey-le-Grand, Suisse",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Isa Coiffure est un salon de coiffure établi à Collombey-le-Grand, offrant des services variés pour répondre aux besoins de sa clientèle."
+        },
+        "enrichedAt": 1781968970191
       },
       {
         "id": "7622vh192lkmqmhonb5",
@@ -2783,6 +2857,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781968941185
+    "lastSaved": 1781968970996
   }
 }
