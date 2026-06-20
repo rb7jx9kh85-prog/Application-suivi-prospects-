@@ -75,7 +75,7 @@ async function searchGeoapify(key, city, category, cap) {
     const p = f.properties || {}
     const addr = [p.housenumber && p.street ? p.housenumber + ' ' + p.street : p.street, p.postcode, p.city].filter(Boolean).join(', ')
     return {
-      establishment: p.name || '',
+      establishment: p.name || (p.datasource && p.datasource.raw && (p.datasource.raw.name || p.datasource.raw['name:fr'] || p.datasource.raw.brand || p.datasource.raw.operator)) || '',
       website: p.website || '',
       phone: p.phone || (p.datasource && p.datasource.raw && (p.datasource.raw.phone || p.datasource.raw['contact:phone'])) || '',
       email: p.email || '',
