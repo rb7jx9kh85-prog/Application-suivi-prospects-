@@ -1066,7 +1066,7 @@
         "phone": "027 282 50 20",
         "email": "—",
         "web": "",
-        "status": "to_call",
+        "status": "voicemail",
         "contact": "",
         "notes": "",
         "at": 1781793202670,
@@ -1082,7 +1082,10 @@
             "site officiel de la commune d'Hérémence"
           ],
           "verdict": "Aucun site web trouvé pour Coiffure Chantal à Euseigne."
-        }
+        },
+        "interactions": [],
+        "tags": [],
+        "lastContact": 1781967726872
       },
       {
         "id": "db40wn6e2g5mqjlo25q",
@@ -2437,6 +2440,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781967638147
+    "lastSaved": 1781967727682
   }
 }
