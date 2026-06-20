@@ -1791,10 +1791,10 @@ function lookupName(id) {
   var city = (p.city || '').trim();
   if (!address && !city) { toast('Adresse introuvable pour ce prospect.', 'err'); return; }
   toast('Recherche du nom en cours…', 'info');
-  fetch('/api/name-lookup', {
+  fetch('/api/search-places', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ address: address, city: city })
+    body: JSON.stringify({ mode: 'lookup', address: address, city: city })
   }).then(function(r) { return r.json(); }).then(function(data) {
     if (data.error) { toast('Erreur : ' + data.error, 'err'); return; }
     if (!data.name) { toast('Nom introuvable pour cette adresse.', 'err'); return; }

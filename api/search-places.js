@@ -166,7 +166,39 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end()
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method Not Allowed' })
 
-  const { city, category, limit = 30 } = req.body || {}
+  const body = req.body || {}
+
+  // ----- Mode "lookup" : trouver le nom d'un établissement à partir d'une adresse -----
+  if (body.mode === 'lookup') {
+    const geoKey2 = process.env.GEOAPIFY_KEY || process.env.GEOAPIFY_API_KEY
+    if (!geoKey2) return res.status(400).json({ error: 'GEOAPIFY_KEY non configurée' })
+    const address = body.address || ''
+    const lcity = body.city || ''
+    if (!address && !lcity) return res.status(400).json({ error: 'Adresse requise' })
+    const query = [address, lcity, 'Suisse'].filter(Boolean).join(', ')
+    const nameOf = (f) => {
+      const p = f.properties || {}
+      const raw = (p.datasource && p.datasource.raw) || {}
+      return p.name || raw.name || raw['name:fr'] || raw.brand || raw.operator
+    }
+    try {
+      const geoUrl = `https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(query)}&limit=5&lang=fr&apiKey=${geoKey2}`
+      const geo = await getJSON(geoUrl, 8000)
+      const features = geo.features || []
+      for (const f of features) { const n = nameOf(f); if (n) return res.status(200).json({ name: n }) }
+      if (features.length > 0) {
+        const [lon, lat] = features[0].geometry.coordinates
+        const placesUrl = `https://api.geoapify.com/v2/places?categories=commercial,catering,service,office,accommodation,healthcare,sport,leisure&filter=circle:${lon},${lat},80&limit=5&lang=fr&apiKey=${geoKey2}`
+        const nearby = await getJSON(placesUrl, 8000)
+        for (const f of (nearby.features || [])) { const n = nameOf(f); if (n) return res.status(200).json({ name: n }) }
+      }
+      return res.status(200).json({ name: null, hint: 'Nom introuvable pour cette adresse' })
+    } catch (e) {
+      return res.status(200).json({ error: e.message })
+    }
+  }
+
+  const { city, category, limit = 30 } = body
   if (!city) return res.status(400).json({ error: 'Indique une ville.' })
 
   const cap = Math.min(Math.max(parseInt(limit) || 30, 1), 100)
