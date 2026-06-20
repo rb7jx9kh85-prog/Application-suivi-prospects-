@@ -676,7 +676,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "whatsapp send, rappeller lundi aprem ",
+        "notes": "whatsapp send, rappeller lundi aprem \n",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -704,27 +704,26 @@
         "type": "Salon de coiffure",
         "phone": "079 246 15 04",
         "email": "—",
-        "web": "",
+        "web": "https://www.evasioncoiffure.ch/",
         "status": "to_call",
         "contact": "",
         "notes": "",
         "at": 1781793202670,
         "_noWebsite": {
-          "has_website": false,
-          "website_url": null,
+          "has_website": true,
+          "website_url": "https://www.evasioncoiffure.ch/",
           "confidence": "high",
           "sources_checked": [
             "Google",
             "Pages Jaunes",
             "LinkedIn",
-            "Google Maps",
-            "search.ch",
-            "allbiz.ch",
-            "meilleurcoiffeur.com",
-            "swissyp.com"
+            "Google Maps"
           ],
-          "verdict": "Aucun site web trouvé pour Coiffure Evasion à Chamoson."
-        }
+          "verdict": "Le salon de coiffure \"Coiffure Evasion\" à Chamoson dispose d'un site web officiel."
+        },
+        "interactions": [],
+        "tags": [],
+        "_verifyingWebsite": false
       },
       {
         "id": "hkua4u98a5nmqjlo25q",
