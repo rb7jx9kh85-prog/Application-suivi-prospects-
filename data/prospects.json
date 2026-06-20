@@ -914,7 +914,7 @@
         "phone": "078 636 38 72",
         "email": "locas-morais@hotmail.ch",
         "web": "",
-        "status": "to_call",
+        "status": "voicemail",
         "contact": "",
         "notes": "",
         "at": 1781793202670,
@@ -927,11 +927,17 @@
             "Pages Jaunes",
             "LinkedIn",
             "Google Maps",
+            "local.ch",
             "search.ch",
-            "local.ch"
+            "coiffeurvergleich.ch",
+            "chamoson.ch"
           ],
           "verdict": "Aucun site web trouvé pour L'Atelier Coiffure by Silvia à Chamoson."
-        }
+        },
+        "interactions": [],
+        "tags": [],
+        "_verifyingWebsite": false,
+        "lastContact": 1781967368742
       },
       {
         "id": "i1iroz83g6mqjlo25q",
@@ -2460,6 +2466,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781967310029
+    "lastSaved": 1781967369544
   }
 }
