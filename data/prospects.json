@@ -524,7 +524,7 @@
         "phone": "027 322 12 74",
         "email": "—",
         "web": "",
-        "status": "called",
+        "status": "refusal",
         "contact": "",
         "notes": "pas intéressé\n",
         "at": 1781793202670,
@@ -542,7 +542,7 @@
         },
         "interactions": [],
         "tags": [],
-        "lastContact": 1781967618282
+        "lastContact": 1781967622986
       },
       {
         "id": "ygajj8v9c5mqjlo25q",
@@ -2435,6 +2435,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781967619092
+    "lastSaved": 1781967623790
   }
 }
