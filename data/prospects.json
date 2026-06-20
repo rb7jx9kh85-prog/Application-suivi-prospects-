@@ -193,9 +193,11 @@
         "phone": "",
         "city": "Bex",
         "type": "service.beauty",
-        "notes": "12 Rue du Cropt, 1880, Bex",
+        "notes": "12 Rue du Cropt, 1880, Bex\nnum : 076 202 15 76",
         "status": "to_call",
-        "at": 1781968048950
+        "at": 1781968048950,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "ak0gzavz",
@@ -2764,6 +2766,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781968880507
+    "lastSaved": 1781968905471
   }
 }
