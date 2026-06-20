@@ -9,13 +9,15 @@
         "phone": "0772695971",
         "email": "",
         "web": "",
-        "status": "called",
+        "status": "video_rdv",
         "contact": "",
-        "notes": "Je leur ai envoyé un mail ils étaient très intéressés par la création d’une app mobile pour voir les plats et la carte, je leur ai proposé un rendez-vous demain ou bien même la semaine pro",
-        "value": 600,
+        "notes": "j'ai envoyé un mail au fondateur, il m'a répondu, demander d'être dispo pour un call à 19h le 19.06. notes du call: pas fait le 19.06 mais c'est pas grave, je vais le relancer par mail pour lui dire qu'on s'organise un nouveau call, pour discuter du site web. Il a salué le travail et la beauté du site web la-panda.netlify.app. il va m'appeler durant la semaine prochaine \n",
+        "value": 800,
         "nextFollowUp": "",
-        "lastContact": 1781819965019,
-        "at": 1781800380616
+        "lastContact": 1781897330643,
+        "at": 1781800380616,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "apus4nw9vw8mqjn6t2o",
@@ -27,9 +29,9 @@
         "web": "pas de site",
         "status": "video_rdv",
         "contact": "Noémie",
-        "notes": "enthousiaste: offre a proposer pour commencer: la junior à 600, mias essayer d'aller viser sur du 800 si possible, on va commencer par ça.",
+        "notes": "enthousiaste: offre a proposer pour commencer: la junior à 600, mias essayer d'aller viser sur du 800 si possible, on va commencer par ça. poste sur ig et facebook de temps en tant. ce qu'elle a trouvé interessant 'est que elle pense que ses resaux sociaux lele pense que c'est très ok. elle pense qu'on vend les sites plusieurs milliers de francs. rappeler mercredi apres midi.  15h",
         "value": 600,
-        "nextFollowUp": "2026-06-23",
+        "nextFollowUp": "2026-06-22",
         "lastContact": 1781795766800,
         "at": 1781795756976,
         "interactions": [],
@@ -413,7 +415,7 @@
         "web": "https://www.cvdp.ch",
         "status": "called",
         "contact": "",
-        "notes": "appeler et contacter fils du sierre anna claret",
+        "notes": "appeler et contacter fils du sierre anna claret. mail envoyé le 19.06.2026",
         "at": 1781793202669,
         "_noWebsite": {
           "has_website": true,
@@ -4961,7 +4963,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781820906148,
-        "doneAt": 1781899765883
+        "doneAt": 1781886952794
       },
       {
         "id": "72dcr9ixjzkmqk2554c",
@@ -4974,7 +4976,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781820873516,
-        "doneAt": 1781899776581
+        "doneAt": 1781886956013
       },
       {
         "id": "kb5ktt0jfy8mqk24bet",
@@ -4987,7 +4989,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781820835013,
-        "doneAt": 1781899773080
+        "doneAt": 1781886958761
       },
       {
         "id": "2eb7yo48sebmqk1mz3b",
@@ -5000,12 +5002,12 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781820025895,
-        "doneAt": 1781899774280
+        "doneAt": 1781887535237
       },
       {
         "id": "k3n309f8jimqjrh9t8",
         "text": "cold calling vidéo: https://www.youtube.com/watch?v=A1dsYkSL7TM",
-        "status": "done",
+        "status": "todo",
         "priority": "medium",
         "category": "call",
         "dueDate": "2026-06-18",
@@ -5013,7 +5015,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781802963692,
-        "doneAt": 1781900628235
+        "doneAt": null
       },
       {
         "id": "hovle3qx3lsmqjrgybu",
@@ -5065,7 +5067,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781795800967,
-        "doneAt": 1781899769579
+        "doneAt": 1781881818428
       }
     ],
     "notes": [
