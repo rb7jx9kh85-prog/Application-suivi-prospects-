@@ -74,6 +74,7 @@ module.exports = async function handler(req, res) {
       prospects: userData.prospects || [],
       todos: userData.todos || [],
       notes: userData.notes || [],
+      lastSaved: userData.lastSaved || 0,
     })
   } catch (e) {
     return res.status(500).json({ error: e.message })

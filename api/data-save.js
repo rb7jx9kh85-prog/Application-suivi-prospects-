@@ -89,8 +89,9 @@ module.exports = async function handler(req, res) {
     if (Array.isArray(prospects)) db[key].prospects = prospects
     if (Array.isArray(todos)) db[key].todos = todos
     if (Array.isArray(notes)) db[key].notes = notes
+    db[key].lastSaved = req.body.lastSaved || Date.now()
     await writeDb(db, sha, token)
-    return res.status(200).json({ ok: true })
+    return res.status(200).json({ ok: true, lastSaved: db[key].lastSaved })
   } catch (e) {
     return res.status(500).json({ error: e.message })
   }

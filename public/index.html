@@ -1468,18 +1468,27 @@ function saveNotes() {
 }
 function pushToKV() {
   if (!S.token) return Promise.resolve();
+  var payload = {
+    token: S.token,
+    prospects: S.prospects,
+    todos: S.todos,
+    notes: S.notes,
+    lastSaved: Date.now()
+  };
   return fetch('/api/data-save', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ token: S.token, prospects: S.prospects, todos: S.todos, notes: S.notes })
+    body: JSON.stringify(payload)
   }).catch(function() {});
 }
 function saveProspects() {
-  // Sauvegarde locale immédiate
-  try { localStorage.setItem('ap_prospects', JSON.stringify(S.prospects)); } catch(e) {}
-  // Sync KV avec debounce 1s pour ne pas spammer
+  var ts = Date.now();
+  try {
+    localStorage.setItem('ap_prospects', JSON.stringify(S.prospects));
+    localStorage.setItem('ap_lastSaved', String(ts));
+  } catch(e) {}
   if (_saveTimer) clearTimeout(_saveTimer);
-  _saveTimer = setTimeout(function() { pushToKV(); }, 1000);
+  _saveTimer = setTimeout(function() { pushToKV(); }, 800);
 }
 function syncFromKV(cb) {
   if (!S.token) { if (cb) cb(); return; }
@@ -1488,30 +1497,35 @@ function syncFromKV(cb) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ token: S.token })
   }).then(function(r) { return r.json(); }).then(function(d) {
-    if (d.error) {
-      toast('Sync cloud : ' + d.error, 'err');
-      if (cb) cb();
-      return;
+    if (d.error) { toast('Sync cloud : ' + d.error, 'err'); if (cb) cb(); return; }
+
+    var cloudP = Array.isArray(d.prospects) ? d.prospects : [];
+    var cloudT = Array.isArray(d.todos) ? d.todos : [];
+    var cloudN = Array.isArray(d.notes) ? d.notes : [];
+    var cloudTs = d.lastSaved || 0;
+    var localTs = parseInt(localStorage.getItem('ap_lastSaved') || '0');
+
+    // Cloud wins if it has data and is newer (or local has nothing)
+    var takeCloud = (cloudTs >= localTs) || (!localTs && cloudP.length > 0);
+
+    if (takeCloud) {
+      S.prospects = cloudP;
+      S.todos = cloudT;
+      S.notes = cloudN;
+      try {
+        localStorage.setItem('ap_prospects', JSON.stringify(S.prospects));
+        localStorage.setItem('ap_todos', JSON.stringify(S.todos));
+        localStorage.setItem('ap_notes', JSON.stringify(S.notes));
+        localStorage.setItem('ap_lastSaved', String(cloudTs));
+      } catch(e) {}
+    } else {
+      // Local is newer → push it to cloud to update it
+      pushToKV().then(function() {
+        localStorage.setItem('ap_lastSaved', String(Date.now()));
+      });
     }
-    var kvP = Array.isArray(d.prospects) ? d.prospects : [];
-    var kvT = Array.isArray(d.todos) ? d.todos : [];
-    var kvN = Array.isArray(d.notes) ? d.notes : [];
-    if (kvP.length > S.prospects.length) {
-      S.prospects = kvP;
-      try { localStorage.setItem('ap_prospects', JSON.stringify(S.prospects)); } catch(e) {}
-    }
-    if (kvT.length > S.todos.length) {
-      S.todos = kvT;
-      try { localStorage.setItem('ap_todos', JSON.stringify(S.todos)); } catch(e) {}
-      updateTaskBadge();
-    }
-    if (kvN.length > S.notes.length) {
-      S.notes = kvN;
-      try { localStorage.setItem('ap_notes', JSON.stringify(S.notes)); } catch(e) {}
-    }
-    if (S.prospects.length > kvP.length || S.todos.length > kvT.length || S.notes.length > kvN.length) {
-      pushToKV();
-    }
+
+    updateTaskBadge();
     renderDash();
     renderCC();
     if (cb) cb();
@@ -2631,14 +2645,14 @@ function loadTodos() {
   initNotifications();
 }
 function saveTodos() {
-  try { localStorage.setItem('ap_todos', JSON.stringify(S.todos)); } catch(e) {}
+  var ts = Date.now();
+  try {
+    localStorage.setItem('ap_todos', JSON.stringify(S.todos));
+    localStorage.setItem('ap_lastSaved', String(ts));
+  } catch(e) {}
   updateTaskBadge();
-  if (!S.token) return;
-  fetch('/api/data-save', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ token: S.token, todos: S.todos })
-  }).catch(function() {});
+  if (_saveTimer) clearTimeout(_saveTimer);
+  _saveTimer = setTimeout(function() { pushToKV(); }, 800);
 }
 function updateTaskBadge() {
   var now = Date.now();
