@@ -4058,6 +4058,19 @@
     ],
     "todos": [
       {
+        "id": "e2mib65umzpmqmegqzd",
+        "text": "préparer le document \"type\" pour la DA -- envoyer le document au lead, puis, il le complète",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1781962502809,
+        "doneAt": null
+      },
+      {
         "id": "lgblk1tl6pmqmefz1m",
         "text": "créer le document PDF de demande des mots clés de la marque et les photos qui représente vraiment. -- + création du skill claude pour le faire, en PDF et adapté au non verbal du lead + à la personne",
         "status": "todo",
