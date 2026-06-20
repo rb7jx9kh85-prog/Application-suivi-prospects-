@@ -31,7 +31,7 @@
         "city": "Villars-sur-Ollon",
         "type": "service.beauty",
         "notes": "22 Route des Hôtels, 1884, Villars-sur-Ollon \nrecall: 9:00- jusqu’à 12:00 / 13:30- jusqu’à 18:00",
-        "status": "voicemail",
+        "status": "recall",
         "at": 1781968048950,
         "email": "",
         "contact": "",
@@ -2860,6 +2860,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781969009916
+    "lastSaved": 1781969020187
   }
 }
