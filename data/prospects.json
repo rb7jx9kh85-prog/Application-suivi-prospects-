@@ -113,7 +113,19 @@
         "type": "service.beauty",
         "notes": "1 Avenue d'Agaune, 1890, Saint-Maurice",
         "status": "to_call",
-        "at": 1781968048950
+        "at": 1781968048950,
+        "enriched": {
+          "phone": "+41 24 473 13 00",
+          "phone_source": "site_web",
+          "email": "info@coiffuredagaune.ch",
+          "address": "Rue de la Gare 12, 1890 Saint-Maurice, Suisse",
+          "decision_maker": "Agaune Coiffure — Responsable",
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Coiffure d'Agaune est un salon de coiffure offrant divers services de beauté à Saint-Maurice."
+        },
+        "enrichedAt": 1781968183328
       },
       {
         "id": "edelo1o1",
@@ -2726,6 +2738,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781968125785
+    "lastSaved": 1781968184139
   }
 }
