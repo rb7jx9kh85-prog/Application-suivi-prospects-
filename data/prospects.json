@@ -4953,6 +4953,19 @@
     ],
     "todos": [
       {
+        "id": "pfea07gqfpmqme5ude",
+        "text": "document de direction artistique TribuTerre",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1781961993986,
+        "doneAt": null
+      },
+      {
         "id": "4v8cxoe95mtmqk25uas",
         "text": "Regarder comment faire exactement avce la visio de demain, est ce que je montrer ma tête etc…",
         "status": "done",
