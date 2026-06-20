@@ -111,7 +111,7 @@
         "phone": "",
         "city": "Saint-Maurice",
         "type": "service.beauty",
-        "notes": "1 Avenue d'Agaune, 1890, Saint-Maurice\n",
+        "notes": "1 Avenue d'Agaune, 1890, Saint-Maurice\n\n",
         "status": "to_call",
         "at": 1781968048950,
         "enriched": {
@@ -2757,6 +2757,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781968660406
+    "lastSaved": 1781968773246
   }
 }
