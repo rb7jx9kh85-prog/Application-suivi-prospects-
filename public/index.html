@@ -1776,7 +1776,11 @@ function selectAll(checked) {
   updateBulkBar();
 }
 function selectWithWebsite() {
-  var withSite = S.prospects.filter(function(p) { return p.website && p.website.trim(); });
+  function hasSite(p) {
+    var w = p.web || p.website || (p._enrich && p._enrich.website) || (p.enriched && p.enriched.website);
+    return w && String(w).trim();
+  }
+  var withSite = S.prospects.filter(hasSite);
   if (!withSite.length) { toast('Aucun prospect avec site web.', 'warn'); return; }
   withSite.forEach(function(p) { S.selectedIds[p.id] = 1; });
   renderTable(getFiltered());
@@ -3631,6 +3635,7 @@ window.verifyNoWebsite = verifyNoWebsite;
 window.removeAIParsed = removeAIParsed;
 window.toggleSelect = toggleSelect;
 window.selectAll = selectAll;
+window.selectWithWebsite = selectWithWebsite;
 window.openCard = openCard;
 window.closeCard = closeCard;
 window.addInteraction = addInteraction;
@@ -3897,12 +3902,12 @@ function doImportPlaces() {
   if (!S.prospects) S.prospects = [];
   var added = 0;
   toImport.forEach(function(p) {
-    var exists = S.prospects.some(function(x){ return x.establishment === p.establishment && x.city === p.city; });
+    var exists = S.prospects.some(function(x){ return x.name === p.establishment && x.city === p.city; });
     if (!exists) {
       S.prospects.unshift({
         id: Math.random().toString(36).slice(2,10),
         name: p.establishment || '',
-        website: p.website || '',
+        web: p.website || '',
         phone: p.phone || '',
         city: p.city || '',
         type: p.domain || '',
