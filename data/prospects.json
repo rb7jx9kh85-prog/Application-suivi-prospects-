@@ -4058,6 +4058,19 @@
     ],
     "todos": [
       {
+        "id": "qgmchglb2qimqmejo7s",
+        "text": "minimum 10 cold call",
+        "status": "todo",
+        "priority": "high",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1781962639192,
+        "doneAt": null
+      },
+      {
         "id": "e2mib65umzpmqmegqzd",
         "text": "préparer le document \"type\" pour la DA -- envoyer le document au lead, puis, il le complète",
         "status": "todo",
