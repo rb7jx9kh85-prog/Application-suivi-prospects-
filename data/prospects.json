@@ -553,7 +553,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "",
+        "notes": "mail send\n",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -570,7 +570,9 @@
             "Moneyhouse.ch"
           ],
           "verdict": "Aucun site web trouvé pour Coiffure de Rêve Sarl à Monthey."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "iwqrozvmytmqjlo25q",
@@ -2454,6 +2456,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781967287963
+    "lastSaved": 1781967295765
   }
 }
