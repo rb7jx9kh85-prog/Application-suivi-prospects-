@@ -12,7 +12,19 @@
         "status": "to_call",
         "at": 1781968048950,
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Miex, Suisse",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Chez Nathalie est un établissement de beauté offrant divers services."
+        },
+        "enrichedAt": 1781969408878
       },
       {
         "id": "c0ggzubo",
@@ -23,7 +35,21 @@
         "type": "commercial.health_and_beauty",
         "notes": "29 Route des Layeux, 1885, Villars-sur-Ollon",
         "status": "to_call",
-        "at": 1781968048950
+        "at": 1781968048950,
+        "interactions": [],
+        "tags": [],
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Villars-sur-Ollon, Suisse",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Aux doigts de Fée propose des soins de santé et de beauté."
+        },
+        "enrichedAt": 1781969408878
       },
       {
         "id": "3vwcnekl",
@@ -41,7 +67,19 @@
         "nextFollowUp": "",
         "interactions": [],
         "tags": [],
-        "lastContact": 1781969009114
+        "lastContact": 1781969009114,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Villars-sur-Ollon, Suisse",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Coiffure Anne est un salon de coiffure à Villars-sur-Ollon."
+        },
+        "enrichedAt": 1781969408878
       },
       {
         "id": "ltkhhk48",
@@ -52,7 +90,19 @@
         "type": "service.beauty",
         "notes": "Route des Hôtels, 1884, Villars-sur-Ollon",
         "status": "to_call",
-        "at": 1781968048950
+        "at": 1781968048950,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Villars-sur-Ollon, Suisse",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Emeric est un professionnel de la beauté à Villars-sur-Ollon."
+        },
+        "enrichedAt": 1781969408878
       },
       {
         "id": "s26zlewq",
@@ -63,7 +113,19 @@
         "type": "service.beauty",
         "notes": "81 Avenue Centrale, 1885, Chesières",
         "status": "to_call",
-        "at": 1781968048950
+        "at": 1781968048950,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Chesières, Suisse",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Sonia Dias offre divers services de beauté à Chesières."
+        },
+        "enrichedAt": 1781969408878
       },
       {
         "id": "6eiw0a45",
@@ -74,7 +136,19 @@
         "type": "service.beauty",
         "notes": "29 Avenue Centrale, 1885, Chesières",
         "status": "to_call",
-        "at": 1781968048950
+        "at": 1781968048950,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Chesières, Suisse",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "MAKoiffure est un salon de beauté proposant des services de coiffure."
+        },
+        "enrichedAt": 1781969408878
       },
       {
         "id": "2g9aj55q",
@@ -87,7 +161,19 @@
         "status": "to_call",
         "at": 1781968048950,
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Aigle, Suisse",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Chez Tony est un salon de beauté situé à Aigle."
+        },
+        "enrichedAt": 1781969408878
       },
       {
         "id": "5q55echp",
@@ -98,7 +184,19 @@
         "type": "commercial.health_and_beauty",
         "notes": "18A Route de France, 1875, Morgins",
         "status": "to_call",
-        "at": 1781968048950
+        "at": 1781968048950,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Morgins, Suisse",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Oxygène propose des services dans le domaine de la santé et de la beauté."
+        },
+        "enrichedAt": 1781969408878
       },
       {
         "id": "p4vflkuq",
@@ -2879,6 +2977,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781969293072
+    "lastSaved": 1781969409686
   }
 }
