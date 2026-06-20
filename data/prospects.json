@@ -851,7 +851,7 @@
         "phone": "079 246 15 04",
         "email": "—",
         "web": "",
-        "status": "to_call",
+        "status": "refusal",
         "contact": "",
         "notes": "pas intéressée ",
         "at": 1781793202670,
@@ -872,7 +872,8 @@
           "verdict": "Aucun site web trouvé pour Coiffure Evasion à Chamoson."
         },
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "lastContact": 1781967631167
       },
       {
         "id": "hkua4u98a5nmqjlo25q",
@@ -2435,6 +2436,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781967623790
+    "lastSaved": 1781967631980
   }
 }
