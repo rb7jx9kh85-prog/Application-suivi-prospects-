@@ -34,12 +34,12 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method Not Allowed' })
 
   const key = process.env.OPENAI_API_KEY || process.env.OPENAI_API
-  if (!key) return res.status(200).json({ error: 'OPENAI_API_KEY (ou OPENAI_API) non configurée dans les variables Vercel.' })
+  if (!key) return res.status(200).json({ error: 'OPENAI_API_KEY non configurée dans les variables Vercel.' })
 
   try {
-    const { system, messages, model } = req.body || {}
+    const { system, messages } = req.body || {}
     const r = await openai(key, {
-      model: model || 'gpt-4o-mini',
+      model: 'gpt-4o-mini',
       max_tokens: 1200,
       messages: [
         { role: 'system', content: system || 'Tu es un assistant utile.' },
@@ -47,7 +47,7 @@ module.exports = async function handler(req, res) {
       ],
     })
     if (r.error) return res.status(200).json({ error: r.error.message || 'Erreur OpenAI' })
-    const text = (r.choices && r.choices[0] && r.choices[0].message && r.choices[0].message.content) ? r.choices[0].message.content : ''
+    const text = r.choices?.[0]?.message?.content || ''
     return res.status(200).json({ content: [{ text }] })
   } catch (e) {
     return res.status(200).json({ error: e.message || 'Erreur serveur' })

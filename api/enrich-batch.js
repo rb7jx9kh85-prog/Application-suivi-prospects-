@@ -1,16 +1,15 @@
 const https = require('https')
 
-const MAX_BATCH = 20
-const DELAY_MS = 800
-const TIMEOUT_MS = 25000
+const MAX_PER_CALL = 25
+const BATCH_SIZE = 10 // prospects par appel API → réduit le nb d'appels
 
 function openaiCall(key, messages) {
   return new Promise((resolve, reject) => {
     const payload = JSON.stringify({
       model: 'gpt-4o-mini',
-      max_tokens: 400,
-      messages,
+      max_tokens: 1500,
       response_format: { type: 'json_object' },
+      messages,
     })
     const req = https.request({
       hostname: 'api.openai.com',
@@ -30,17 +29,28 @@ function openaiCall(key, messages) {
       })
     })
     req.on('error', reject)
-    req.setTimeout(10000, () => { req.destroy(); reject(new Error('Timeout OpenAI')) })
+    req.setTimeout(20000, () => { req.destroy(); reject(new Error('Timeout')) })
     req.write(payload)
     req.end()
   })
 }
 
-function delay(ms) { return new Promise(r => setTimeout(r, ms)) }
+async function enrichBatch(key, batch) {
+  const system = 'Assistant B2B Suisse romande. Pour chaque établissement fourni, retourne un objet JSON avec la clé "results" contenant un tableau ordonné. Chaque élément du tableau contient : phone (standard), phone_source, email, address, decision_maker (Prénom Nom — fonction), decision_maker_phone, decision_maker_phone_source, linkedin, description (1 phrase). null si inconnu. Ne jamais inventer.'
 
-function stripJSON(text) {
-  const m = text.match(/\{[\s\S]*\}/)
-  return m ? m[0] : null
+  const userMsg = 'Enrichis ces ' + batch.length + ' établissements dans l\'ordre, retourne {"results":[...]}:\n'
+    + batch.map((p, i) => (i + 1) + '. ' + (p.name || p.establishment || '?') + ' | ' + (p.city || '?') + ' | ' + (p.type || p.domain || '?') + (p.web || p.website ? ' | ' + (p.web || p.website) : '')).join('\n')
+
+  const r = await openaiCall(key, [
+    { role: 'system', content: system },
+    { role: 'user', content: userMsg },
+  ])
+
+  if (r.error) throw new Error(r.error.message || 'Erreur OpenAI')
+  const text = r.choices?.[0]?.message?.content || ''
+  const parsed = JSON.parse(text)
+  const arr = parsed.results || []
+  return batch.map((p, i) => ({ id: p.id, enriched: arr[i] || null, error: arr[i] ? null : 'Non trouvé' }))
 }
 
 module.exports = async function handler(req, res) {
@@ -54,56 +64,22 @@ module.exports = async function handler(req, res) {
   const key = process.env.OPENAI_API_KEY || process.env.OPENAI_API
   if (!key) return res.status(200).json({ error: 'OPENAI_API_KEY non configurée.' })
 
-  const { prospects, fields } = req.body || {}
+  const { prospects } = req.body || {}
   if (!Array.isArray(prospects) || !prospects.length)
     return res.status(400).json({ error: 'prospects[] requis.' })
-  if (prospects.length > MAX_BATCH)
-    return res.status(400).json({ error: 'Maximum ' + MAX_BATCH + ' prospects par batch.' })
+  if (prospects.length > MAX_PER_CALL)
+    return res.status(400).json({ error: 'Max ' + MAX_PER_CALL + ' prospects par requête.' })
 
-  const wantedFields = Array.isArray(fields) && fields.length
-    ? fields
-    : ['email', 'phone', 'website', 'address', 'industry', 'employees', 'decision_maker', 'description']
-
-  const system = 'Tu es un assistant de prospection B2B en Suisse romande. '
-    + 'Pour chaque établissement, retourne UNIQUEMENT un objet JSON avec les champs demandés. '
-    + 'Si une info est inconnue, mets null. Ne génère JAMAIS de fausses données. '
-    + 'Champs possibles : email, phone, website, address, industry, '
-    + 'employees (nombre approximatif), decision_maker (prénom nom probable), description (1 phrase max).'
-
-  const results = []
-  const start = Date.now()
-
-  for (let i = 0; i < prospects.length; i++) {
-    if (Date.now() - start > TIMEOUT_MS) {
-      for (let j = i; j < prospects.length; j++) {
-        results.push({ id: prospects[j].id, enriched: null, error: 'Timeout global atteint' })
-      }
-      break
+  try {
+    // Découper en lots de BATCH_SIZE et traiter en séquence pour éviter les rate limits
+    const results = []
+    for (let i = 0; i < prospects.length; i += BATCH_SIZE) {
+      const batch = prospects.slice(i, i + BATCH_SIZE)
+      const batchResults = await enrichBatch(key, batch)
+      results.push(...batchResults)
     }
-
-    const p = prospects[i]
-    const userMsg = 'Établissement: ' + (p.name || p.establishment || '?')
-      + ', Ville: ' + (p.city || '?')
-      + ', Secteur: ' + (p.type || p.domain || '?')
-      + ', Site: ' + (p.web || p.website || 'inconnu')
-      + '. Retourne JSON avec uniquement ces champs: ' + wantedFields.join(', ') + '.'
-
-    try {
-      const r = await openaiCall(key, [
-        { role: 'system', content: system },
-        { role: 'user', content: userMsg },
-      ])
-      if (r.error) { results.push({ id: p.id, enriched: null, error: r.error.message || 'Erreur OpenAI' }); continue }
-      const text = r.choices?.[0]?.message?.content || ''
-      const raw = stripJSON(text)
-      if (!raw) { results.push({ id: p.id, enriched: null, error: 'Format JSON invalide' }); continue }
-      results.push({ id: p.id, enriched: JSON.parse(raw), error: null })
-    } catch (e) {
-      results.push({ id: p.id, enriched: null, error: e.message || 'Erreur' })
-    }
-
-    if (i < prospects.length - 1) await delay(DELAY_MS)
+    return res.status(200).json({ results })
+  } catch (e) {
+    return res.status(200).json({ error: e.message || 'Erreur serveur' })
   }
-
-  return res.status(200).json({ results })
 }
