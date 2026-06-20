@@ -154,11 +154,15 @@
         "phone": "",
         "city": "Bex",
         "type": "service.beauty",
-        "notes": "5 Ruelle du Marché, 1880, Bex",
+        "notes": "5 Ruelle du Marché, 1880, Bex\nundi\nFermé\nMardi\nFermé\nMercredi\nFermé\nJeudi\n8:00- jusqu’à 18:00\nVendredi\n8:00- jusqu’à 18:00\nSamedi *\n8:00- jusqu’à 13:00\nDimanche\nFermé\nLes jours marqués d'un * sont à convenir",
         "status": "recall",
         "at": 1781968048950,
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "email": "",
+        "contact": "",
+        "value": 0,
+        "nextFollowUp": ""
       },
       {
         "id": "c125t3oy",
@@ -2760,6 +2764,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1781968870873
+    "lastSaved": 1781968880507
   }
 }
