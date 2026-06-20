@@ -740,6 +740,9 @@ html{scroll-behavior:smooth}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <span>Trouver</span>
       </button>
+      <button class="btn btn-ghost" onclick="selectWithWebsite()" title="Sélectionner tous les prospects qui ont un site web" style="color:var(--violet2);border-color:rgba(168,85,247,.4)">
+        &#127760; <span>Avec site web</span>
+      </button>
       <button class="btn btn-cf" id="btn-add">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         <span>Ajouter</span>
@@ -770,18 +773,7 @@ html{scroll-behavior:smooth}
     </div>
     <div class="tbl-wrap">
       <table aria-label="Prospects">
-        <thead><tr>
-          <th style="width:36px;padding:10px 6px 10px 14px"><input type="checkbox" class="hdr-cb" id="select-all-cb" onchange="selectAll(this.checked)" aria-label="Tout sélectionner"/></th>
-          <th colspan="5" style="padding:0">
-            <div style="display:flex;align-items:center;gap:0">
-              <span style="flex:1;padding:10px 12px;font-size:12px;font-weight:600;color:var(--t2);text-transform:uppercase;letter-spacing:.05em">Nom / &Eacute;tablissement</span>
-              <button onclick="selectWithWebsite()" style="display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-radius:20px;border:1px solid rgba(168,85,247,.4);background:rgba(168,85,247,.1);color:var(--violet2);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap;margin-right:8px;transition:background .15s,border-color .15s" onmouseover="this.style.background='rgba(168,85,247,.2)';this.style.borderColor='rgba(168,85,247,.7)'" onmouseout="this.style.background='rgba(168,85,247,.1)';this.style.borderColor='rgba(168,85,247,.4)'" title="Sélectionner tous les prospects qui ont un site web, puis supprimer via la barre d\'action">
-                &#127760; Sélectionner avec site web
-              </button>
-            </div>
-          </th>
-          <th style="text-align:right">Actions</th>
-        </tr></thead>
+        <thead><tr><th style="width:36px;padding:10px 6px 10px 14px"><input type="checkbox" class="hdr-cb" id="select-all-cb" onchange="selectAll(this.checked)" aria-label="Tout sélectionner"/></th><th>Nom / &Eacute;tablissement</th><th>Ville</th><th>Type</th><th>Statut</th><th>Notes</th><th style="text-align:right">Actions</th></tr></thead>
         <tbody id="d-tbody"><tr class="load-td"><td colspan="6">Chargement&hellip;</td></tr></tbody>
       </table>
     </div>
