@@ -2227,6 +2227,19 @@
     ],
     "todos": [
       {
+        "id": "6z9crpx35ilmqnjxzos",
+        "text": "vidéo de cold calling, nnalyser + push dans notes",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782032171500,
+        "doneAt": null
+      },
+      {
         "id": "jpeqkrjxo6rmqnjxlas",
         "text": "regarder le volume de cold call a faire selon claude et des skill",
         "status": "todo",
@@ -2492,6 +2505,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782032153257
+    "lastSaved": 1782032171904
   }
 }
