@@ -825,7 +825,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "",
+        "notes": "mail + whatsapp send\n",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -841,7 +841,9 @@
             "local.ch"
           ],
           "verdict": "Aucun site web trouvé pour Coiffure Isabelle à Fully."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "6dp37zq6bt7mqjlo25q",
@@ -2442,6 +2444,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782031965019
+    "lastSaved": 1782031973298
   }
 }
