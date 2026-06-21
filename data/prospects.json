@@ -855,7 +855,7 @@
         "web": "",
         "status": "called",
         "contact": "",
-        "notes": "",
+        "notes": "pas intéressée\n",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -873,7 +873,9 @@
           ],
           "verdict": "Aucun site web trouvé pour Coiffure Evasion à Chamoson."
         },
-        "lastContact": 1782031983976
+        "lastContact": 1782031983976,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "hkua4u98a5nmqjlo25q",
@@ -2445,6 +2447,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782031984384
+    "lastSaved": 1782031992079
   }
 }
