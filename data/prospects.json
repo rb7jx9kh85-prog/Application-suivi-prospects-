@@ -2574,6 +2574,19 @@
     ],
     "todos": [
       {
+        "id": "a65960a4p5amqo9s4fi",
+        "text": "Finaliser mon blog en HTML simple + apprendre CSS, comprendre pourquoi le Chatbot ne fonctionne pas",
+        "status": "todo",
+        "priority": "low",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782075567726,
+        "doneAt": null
+      },
+      {
         "id": "fw1lgbpxtn9mqnlha7e",
         "text": "session de cold call 1h -- Mardi16h20-17h201hRestaurants / PizzeriasProspection intensive post-école",
         "status": "todo",
@@ -2952,6 +2965,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782060990175
+    "lastSaved": 1782075568127
   }
 }
