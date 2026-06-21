@@ -2227,6 +2227,19 @@
     ],
     "todos": [
       {
+        "id": "samgmfqojxhmqnjyoz7",
+        "text": "avec les nouvelles compétances acquises avec les nouveaux outils que claude me conseille, redesiger le site",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782032204275,
+        "doneAt": null
+      },
+      {
         "id": "6z9crpx35ilmqnjxzos",
         "text": "vidéo de cold calling, nnalyser + push dans notes",
         "status": "todo",
@@ -2505,6 +2518,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782032171904
+    "lastSaved": 1782032204688
   }
 }
