@@ -2227,6 +2227,19 @@
     ],
     "todos": [
       {
+        "id": "apkf3qafgcemqnjwnv6",
+        "text": "regrder comment faire des sites encore plus premium et avce quels outils",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782032109522,
+        "doneAt": null
+      },
+      {
         "id": "qgmchglb2qimqmejo7s",
         "text": "minimum 10 cold call",
         "status": "done",
@@ -2453,6 +2466,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782032071774
+    "lastSaved": 1782032109923
   }
 }
