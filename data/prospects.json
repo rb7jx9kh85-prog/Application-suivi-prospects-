@@ -2227,6 +2227,19 @@
     ],
     "todos": [
       {
+        "id": "26v5an5mpuvmqnlem8v",
+        "text": "session de cold call jeudi -- bars cafés -- 16h20-16h50",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": "2026-06-25",
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782034626847,
+        "doneAt": null
+      },
+      {
         "id": "gyft1uapxy6mqnld35v",
         "text": "session de cold call mercredi 17h-17h30 Petits hôtels / Guesthouses",
         "status": "todo",
@@ -2544,6 +2557,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782034555864
+    "lastSaved": 1782034627250
   }
 }
