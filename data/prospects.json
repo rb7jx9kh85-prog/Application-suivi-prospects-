@@ -2227,6 +2227,19 @@
     ],
     "todos": [
       {
+        "id": "jpeqkrjxo6rmqnjxlas",
+        "text": "regarder le volume de cold call a faire selon claude et des skill",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782032152852,
+        "doneAt": null
+      },
+      {
         "id": "wl0fxkdqr1mqnjx6yi",
         "text": "planifier les sessions de cold calling de la semaine prochaine",
         "status": "todo",
@@ -2479,6 +2492,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782032134677
+    "lastSaved": 1782032153257
   }
 }
