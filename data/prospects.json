@@ -912,7 +912,7 @@
         "phone": "027 283 13 56",
         "email": "—",
         "web": "",
-        "status": "to_call",
+        "status": "called",
         "contact": "",
         "notes": "",
         "at": 1781793202670,
@@ -933,7 +933,8 @@
             "meilleurcoiffeur.com"
           ],
           "verdict": "Aucun site web trouvé pour Coiffure Ab'Salon à Evolène."
-        }
+        },
+        "lastContact": 1782032035770
       },
       {
         "id": "iipxj1lq89mqjlo25q",
@@ -2447,6 +2448,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782032011046
+    "lastSaved": 1782032036175
   }
 }
