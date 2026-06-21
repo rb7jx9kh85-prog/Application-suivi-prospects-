@@ -573,7 +573,9 @@
             "Moneyhouse.ch"
           ],
           "verdict": "Aucun site web trouvé pour Coiffure de Rêve Sarl à Monthey."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "iwqrozvmytmqjlo25q",
@@ -630,39 +632,6 @@
             "Alpes Vaudoises"
           ],
           "verdict": "Aucun site web officiel trouvé pour le Restaurant Les Mazots à Salgesch."
-        }
-      },
-      {
-        "id": "g7f8eagvhpwmqjlo25q",
-        "name": "Coiffeursalon Royal",
-        "city": "Gampel",
-        "type": "Salon de coiffure",
-        "phone": "027 932 21 17",
-        "email": "—",
-        "web": "",
-        "status": "to_call",
-        "contact": "",
-        "notes": "",
-        "at": 1781793202670,
-        "_noWebsite": {
-          "has_website": false,
-          "website_url": null,
-          "confidence": "high",
-          "sources_checked": [
-            "Google",
-            "Pages Jaunes",
-            "LinkedIn",
-            "Google Maps",
-            "allbiz.ch",
-            "local.ch",
-            "search.ch",
-            "yellowpages.swiss",
-            "gampel-bratsch.ch",
-            "meilleurcoiffeur.com",
-            "moneyhouse.ch",
-            "zip.ch"
-          ],
-          "verdict": "Aucun site web trouvé pour Coiffeursalon Royal à Gampel."
         }
       },
       {
@@ -2473,6 +2442,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782031952855
+    "lastSaved": 1782031965019
   }
 }
