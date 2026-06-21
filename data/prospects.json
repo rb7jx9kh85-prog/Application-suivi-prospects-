@@ -2227,6 +2227,19 @@
     ],
     "todos": [
       {
+        "id": "ir05v6siqgimqnlcd6u",
+        "text": "session de cold calling -- mardi 17h-17h30 -- Petits hôtels / Guesthouses",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": "2026-06-23",
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782034521798,
+        "doneAt": null
+      },
+      {
         "id": "98gjbn2o4demqnl9yqb",
         "text": "session de cold call -- lundi 16h30-17h -- boulangerie et pâtisseries",
         "status": "todo",
@@ -2531,6 +2544,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782034410160
+    "lastSaved": 1782034522199
   }
 }
