@@ -15,7 +15,9 @@
         "value": 600,
         "nextFollowUp": "",
         "lastContact": 1781819965019,
-        "at": 1781800380616
+        "at": 1781800380616,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "viex0e2wjzmqjlo25p",
@@ -526,7 +528,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "",
+        "notes": "pas intéressé",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -539,7 +541,9 @@
             "allbiz.ch"
           ],
           "verdict": "Aucun site web trouvé pour le salon de coiffure Paul Pannatier à Sion."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "ygajj8v9c5mqjlo25q",
@@ -2468,6 +2472,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782031929408
+    "lastSaved": 1782031946623
   }
 }
