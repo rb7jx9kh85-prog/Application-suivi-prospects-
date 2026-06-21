@@ -2,6 +2,215 @@
   "155ab99e52611a1a0f906d91d94ef568ee65ba3c6b0f83f0cd840ef2512d2452": {
     "prospects": [
       {
+        "id": "h7ju0yj3",
+        "name": "Nouvel Hair",
+        "web": "",
+        "phone": "",
+        "city": "Sion",
+        "type": "service.beauty",
+        "notes": "Rue de l'Église, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "ymo0lw3t",
+        "name": "Carte Blanche",
+        "web": "",
+        "phone": "",
+        "city": "Sion",
+        "type": "service.beauty",
+        "notes": "Avenue de Pratifori, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "jdbrb2t6",
+        "name": "Initial hair essentials",
+        "web": "",
+        "phone": "",
+        "city": "Sion",
+        "type": "service.beauty",
+        "notes": "Rue du Pré-Fleuri, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "1pxbx1q0",
+        "name": "La Sphère",
+        "web": "",
+        "phone": "",
+        "city": "Sion",
+        "type": "service.beauty",
+        "notes": "Rue de Conthey, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "jlp7n2jv",
+        "name": "Goran Barber",
+        "web": "",
+        "phone": "",
+        "city": "Sion",
+        "type": "service.beauty",
+        "notes": "Rue de Condémines, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "hqw2xgli",
+        "name": "JDS",
+        "web": "",
+        "phone": "",
+        "city": "Sion",
+        "type": "service.beauty",
+        "notes": "Avenue des Mayennets, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "fwbwgch3",
+        "name": "Coiffure Création",
+        "web": "",
+        "phone": "",
+        "city": "Sion",
+        "type": "service.beauty",
+        "notes": "Rue des Vergers, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "sqiodlbe",
+        "name": "Color style",
+        "web": "",
+        "phone": "",
+        "city": "Sion",
+        "type": "service.beauty",
+        "notes": "Rue des Vergers, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "61ey85m9",
+        "name": "Tribus urbaines",
+        "web": "https://tribusurbaines.com/",
+        "phone": "",
+        "city": "Sion",
+        "type": "service.beauty",
+        "notes": "Rue des Odyssées, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "bx7jcce4",
+        "name": "Art Line Coiffure",
+        "web": "https://www.art-line-coiffure.ch",
+        "phone": "",
+        "city": "Sion",
+        "type": "service.beauty",
+        "notes": "2a Rue des Creusets, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "1gcly2ka",
+        "name": "Atelier du regard",
+        "web": "https://atelierduregard.ch/contact/contact-sion/",
+        "phone": "",
+        "city": "Sion",
+        "type": "commercial.health_and_beauty",
+        "notes": "7 Rue du Chanoine-Berchtold, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "zs170f3o",
+        "name": "La Grande Daphné",
+        "web": "https://lagrandedaphne.ch",
+        "phone": "",
+        "city": "Sion",
+        "type": "service.beauty",
+        "notes": "5 Rue Supersaxo, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "u29ujjvs",
+        "name": "Figaro's",
+        "web": "",
+        "phone": "+41 27 322 59 59",
+        "city": "Sion",
+        "type": "service.beauty",
+        "notes": "13 Rue de la Dixence, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "3zrje3kz",
+        "name": "La Touffe",
+        "web": "",
+        "phone": "+41787583523",
+        "city": "Sion",
+        "type": "service.beauty",
+        "notes": "11 Rue du Rhône, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "h8t5z37c",
+        "name": "Actuel Coiffure",
+        "web": "",
+        "phone": "+41 79 246 16 06",
+        "city": "Sion",
+        "type": "service.beauty",
+        "notes": "8 Rue de Lausanne, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "48t52nfp",
+        "name": "ADS Coiffure",
+        "web": "",
+        "phone": "+41 27 322 33 33",
+        "city": "Sion",
+        "type": "service.beauty",
+        "notes": "23 Rue de la Porte-Neuve, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "an4thz4y",
+        "name": "Onglerie Opale",
+        "web": "",
+        "phone": "+41 79 373 54 24",
+        "city": "Sion",
+        "type": "commercial.health_and_beauty",
+        "notes": "19 Rue de la Dent-Blanche, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "ppo811tj",
+        "name": "Glam' Color",
+        "web": "",
+        "phone": "+41795501984",
+        "city": "Sion",
+        "type": "commercial.health_and_beauty",
+        "notes": "1 Rue des Vergers, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
+        "id": "86tgy1ua",
+        "name": "Le temps d'un barbier",
+        "web": "https://le-temps-d-un-barbier.agenda.ch",
+        "phone": "+41 27 322 18 24",
+        "city": "Sion",
+        "type": "service.beauty",
+        "notes": "24 Avenue de la Gare, 1950, Sion",
+        "status": "to_call",
+        "at": 1782037904999
+      },
+      {
         "id": "k4ktrxaq7rkmqjpxwp4",
         "name": "le panda",
         "city": "leytron",
@@ -2554,14 +2763,6 @@
     ],
     "notes": [
       {
-        "id": "2yry818z",
-        "title": "Jordan Belfort —sales school",
-        "date": "2026-06-21",
-        "source": "",
-        "body": "Différentes stratégies pour accrocher, et maintenir le prospect en haleine. \n\nIl faut garder en tête que le call sert à obtenir un rendez vous ou Closer un deal. \n\nLe fait de devenir « ami » avec les secrétaires est une très vienne chose pour passer cette barrière.",
-        "createdAt": 1782035556537
-      },
-      {
         "id": "ypzoilog",
         "title": "Remplacer une objection par un rendez-vous",
         "date": "2026-06-20",
@@ -2604,6 +2805,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782035556940
+    "lastSaved": 1782037905408
   }
 }
