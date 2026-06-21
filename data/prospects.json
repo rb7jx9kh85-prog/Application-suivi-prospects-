@@ -76,7 +76,21 @@
         "type": "service.beauty",
         "notes": "Rue des Vergers, 1950, Sion",
         "status": "to_call",
-        "at": 1782037904999
+        "at": 1782037904999,
+        "interactions": [],
+        "tags": [],
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Sion, Valais",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Coiffure Création est un salon de coiffure situé à Sion offrant divers services de beauté."
+        },
+        "enrichedAt": 1782056287318
       },
       {
         "id": "sqiodlbe",
@@ -109,7 +123,19 @@
         "type": "service.beauty",
         "notes": "2a Rue des Creusets, 1950, Sion",
         "status": "to_call",
-        "at": 1782037904999
+        "at": 1782037904999,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Sion, Valais",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Art Line Coiffure est un salon de coiffure à Sion spécialisé dans les services de coiffure créative."
+        },
+        "enrichedAt": 1782056287318
       },
       {
         "id": "1gcly2ka",
@@ -164,7 +190,19 @@
         "type": "service.beauty",
         "notes": "8 Rue de Lausanne, 1950, Sion",
         "status": "to_call",
-        "at": 1782037904999
+        "at": 1782037904999,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Sion, Valais",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Actuel Coiffure est un salon de coiffure situé à Sion, proposant des coupes modernes et des soins capillaires."
+        },
+        "enrichedAt": 1782056287318
       },
       {
         "id": "48t52nfp",
@@ -175,7 +213,19 @@
         "type": "service.beauty",
         "notes": "23 Rue de la Porte-Neuve, 1950, Sion",
         "status": "to_call",
-        "at": 1782037904999
+        "at": 1782037904999,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Sion, Valais",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "ADS Coiffure est un salon situé à Sion offrant une variété de services de coiffure."
+        },
+        "enrichedAt": 1782056287318
       },
       {
         "id": "an4thz4y",
@@ -784,7 +834,19 @@
           "verdict": "Aucun site web trouvé pour Coiffure de Rêve Sarl à Monthey."
         },
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Monthey, Valais",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Coiffure de Reve Sarl est un salon de coiffure à Monthey, réputé pour son ambiance chaleureuse et ses services de qualité."
+        },
+        "enrichedAt": 1782056287318
       },
       {
         "id": "iwqrozvmytmqjlo25q",
@@ -1052,7 +1114,19 @@
           "verdict": "Aucun site web trouvé pour Coiffure Isabelle à Fully."
         },
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Fully, Valais",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Coiffure Isabelle est un salon de coiffure à Fully, offrant des prestations personnalisées."
+        },
+        "enrichedAt": 1782056287318
       },
       {
         "id": "6dp37zq6bt7mqjlo25q",
@@ -1111,7 +1185,19 @@
             "local.ch"
           ],
           "verdict": "Aucun site web trouvé pour L'Atelier Coiffure by Silvia à Chamoson."
-        }
+        },
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Chamoson, Valais",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "L'Atelier Coiffure by Silvia est un salon à Chamoson, connu pour ses coupes tendance et son service personnalisé."
+        },
+        "enrichedAt": 1782056287318
       },
       {
         "id": "i1iroz83g6mqjlo25q",
@@ -1525,7 +1611,19 @@
             "search.ch"
           ],
           "verdict": "Aucun site web trouvé pour Passion Coiffure à Salvan."
-        }
+        },
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Salvan, Valais",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Passion Coiffure est un salon de coiffure à Salvan, apprécié pour ses services de coiffure professionnels."
+        },
+        "enrichedAt": 1782056287318
       },
       {
         "id": "2u9777wffajmqjlo25q",
@@ -2814,6 +2912,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782050021200
+    "lastSaved": 1782056287721
   }
 }
