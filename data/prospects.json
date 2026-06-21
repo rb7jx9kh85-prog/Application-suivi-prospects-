@@ -121,7 +121,7 @@
         "phone": "",
         "city": "Sion",
         "type": "service.beauty",
-        "notes": "2a Rue des Creusets, 1950, Sion",
+        "notes": "2a Rue des Creusets, 1950, Sion\ndéja un site web mais c'est une catastrophe, les call qunad m'eme en leur proposant de comparer",
         "status": "to_call",
         "at": 1782037904999,
         "enriched": {
@@ -135,7 +135,9 @@
           "linkedin": null,
           "description": "Art Line Coiffure est un salon de coiffure à Sion spécialisé dans les services de coiffure créative."
         },
-        "enrichedAt": 1782056287318
+        "enrichedAt": 1782056287318,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "1gcly2ka",
@@ -2912,6 +2914,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782056287721
+    "lastSaved": 1782056329696
   }
 }
