@@ -526,7 +526,7 @@
         "phone": "027 322 12 74",
         "email": "—",
         "web": "",
-        "status": "to_call",
+        "status": "called",
         "contact": "",
         "notes": "pas intéressé",
         "at": 1781793202670,
@@ -543,7 +543,8 @@
           "verdict": "Aucun site web trouvé pour le salon de coiffure Paul Pannatier à Sion."
         },
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "lastContact": 1782031952454
       },
       {
         "id": "ygajj8v9c5mqjlo25q",
@@ -2472,6 +2473,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782031946623
+    "lastSaved": 1782031952855
   }
 }
