@@ -1883,7 +1883,19 @@
         "status": "to_call",
         "contact": "",
         "notes": "",
-        "at": 1781801638792
+        "at": 1781801638792,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": null,
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Un restaurant connu pour sa cuisine créole et son ambiance conviviale."
+        },
+        "enrichedAt": 1782060989768
       },
       {
         "id": "gejpakt2tv7mqjqovig",
@@ -1896,7 +1908,19 @@
         "status": "to_call",
         "contact": "",
         "notes": "",
-        "at": 1781801638792
+        "at": 1781801638792,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": null,
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Un restaurant proposant une cuisine méditerranéenne dans un cadre accueillant."
+        },
+        "enrichedAt": 1782060989768
       },
       {
         "id": "ax20iel8pzmqjqovig",
@@ -1909,7 +1933,19 @@
         "status": "to_call",
         "contact": "",
         "notes": "",
-        "at": 1781801638792
+        "at": 1781801638792,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": null,
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Une pizzeria réputée pour ses plats italiens authentiques."
+        },
+        "enrichedAt": 1782060989768
       },
       {
         "id": "r8ki3dhzsdimqjqovig",
@@ -2916,6 +2952,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782056354521
+    "lastSaved": 1782060990175
   }
 }
