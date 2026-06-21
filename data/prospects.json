@@ -2227,6 +2227,19 @@
     ],
     "todos": [
       {
+        "id": "abab86kb8x4mqnlg1qg",
+        "text": "session cold call vendredi -- 16h20-16h5030'Commerces locauxFin semaine, proprio dispo",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": "2026-06-26",
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782034693576,
+        "doneAt": null
+      },
+      {
         "id": "4ru6o7w8n8mqnleuh0",
         "text": "session de cold call mercredi 17h-17h30 Petits hôtels / Guesthouses",
         "status": "todo",
@@ -2557,6 +2570,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782034640841
+    "lastSaved": 1782034693981
   }
 }
