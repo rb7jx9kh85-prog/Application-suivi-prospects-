@@ -121,7 +121,7 @@
         "phone": "",
         "city": "Sion",
         "type": "service.beauty",
-        "notes": "2a Rue des Creusets, 1950, Sion\ndéja un site web mais c'est une catastrophe, les call qunad m'eme en leur proposant de comparer celui qu'ils ont mnt et la maquette faite par alpiniawebcraft",
+        "notes": "2a Rue des Creusets, 1950, Sion\ndéja un site web mais c'est une catastrophe, les call qunad m'eme en leur proposant de comparer celui qu'ils ont mnt et la maquette faite par alpiniawebcraft\n",
         "status": "to_call",
         "at": 1782037904999,
         "enriched": {
@@ -204,7 +204,9 @@
           "linkedin": null,
           "description": "Actuel Coiffure est un salon de coiffure situé à Sion, proposant des coupes modernes et des soins capillaires."
         },
-        "enrichedAt": 1782056287318
+        "enrichedAt": 1782056287318,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "48t52nfp",
@@ -2914,6 +2916,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782056345088
+    "lastSaved": 1782056354521
   }
 }
