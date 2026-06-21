@@ -2227,6 +2227,19 @@
     ],
     "todos": [
       {
+        "id": "98gjbn2o4demqnl9yqb",
+        "text": "session de cold call -- lundi 16h30-17h -- boulangerie et pâtisseries",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": "2026-06-22",
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782034409747,
+        "doneAt": null
+      },
+      {
         "id": "samgmfqojxhmqnjyoz7",
         "text": "avec les nouvelles compétances acquises avec les nouveaux outils que claude me conseille, redesiger le site",
         "status": "todo",
@@ -2518,6 +2531,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782034178597
+    "lastSaved": 1782034410160
   }
 }
