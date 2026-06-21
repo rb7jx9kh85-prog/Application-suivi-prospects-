@@ -121,7 +121,7 @@
         "phone": "",
         "city": "Sion",
         "type": "service.beauty",
-        "notes": "2a Rue des Creusets, 1950, Sion\ndéja un site web mais c'est une catastrophe, les call qunad m'eme en leur proposant de comparer",
+        "notes": "2a Rue des Creusets, 1950, Sion\ndéja un site web mais c'est une catastrophe, les call qunad m'eme en leur proposant de comparant ",
         "status": "to_call",
         "at": 1782037904999,
         "enriched": {
@@ -2914,6 +2914,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782056329696
+    "lastSaved": 1782056331551
   }
 }
