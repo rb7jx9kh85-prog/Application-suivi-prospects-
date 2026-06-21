@@ -2227,6 +2227,19 @@
     ],
     "todos": [
       {
+        "id": "vgt2egpgz1dmqnlgo5o",
+        "text": "session de cold call samedi - 1h min10h-11h1hHôtels 3-4⭐ / GîtesMatin weekend, contact direct --",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": "2026-06-27",
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782034722636,
+        "doneAt": null
+      },
+      {
         "id": "abab86kb8x4mqnlg1qg",
         "text": "session cold call vendredi -- 16h20-16h5030'Commerces locauxFin semaine, proprio dispo",
         "status": "todo",
@@ -2570,6 +2583,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782034693981
+    "lastSaved": 1782034723044
   }
 }
