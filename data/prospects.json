@@ -2227,6 +2227,19 @@
     ],
     "todos": [
       {
+        "id": "fw1lgbpxtn9mqnlha7e",
+        "text": "session de cold call 1h -- Mardi16h20-17h201hRestaurants / PizzeriasProspection intensive post-école",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": "2026-06-23",
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782034751210,
+        "doneAt": null
+      },
+      {
         "id": "vgt2egpgz1dmqnlgo5o",
         "text": "session de cold call samedi - 1h min10h-11h1hHôtels 3-4⭐ / GîtesMatin weekend, contact direct --",
         "status": "todo",
@@ -2583,6 +2596,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782034723044
+    "lastSaved": 1782034751615
   }
 }
