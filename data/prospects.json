@@ -210,17 +210,6 @@
         "tags": []
       },
       {
-        "id": "x5o2ov3z",
-        "name": "St James",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "catering.pub",
-        "notes": "Rue de la Dent-Blanche, 1950, Sion",
-        "status": "to_call",
-        "at": 1782138345862
-      },
-      {
         "id": "l1qn5dzv",
         "name": "Manor",
         "web": "",
@@ -3491,6 +3480,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782140322992
+    "lastSaved": 1782140345557
   }
 }
