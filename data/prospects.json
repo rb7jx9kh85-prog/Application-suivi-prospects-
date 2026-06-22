@@ -519,7 +519,7 @@
         "phone": "",
         "city": "Sion",
         "type": "service.beauty",
-        "notes": "Rue du Pré-Fleuri, 1950, Sion\n",
+        "notes": "Rue du Pré-Fleuri, 1950, Sion\nappeler a fribourg ",
         "status": "to_call",
         "at": 1782037904999,
         "interactions": [],
@@ -3572,6 +3572,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782143217535
+    "lastSaved": 1782143237065
   }
 }
