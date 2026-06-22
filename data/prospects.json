@@ -11,7 +11,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "pas de site web, potentiellement intéressé",
+        "notes": "pas de site web, potentiellement intéressé\ncall pendant ces horaires: Dimanche\n10:00-20:00\nLundi\n10:00-15:00\nMardi\n10:00-15:00\nMercredi\n10:00-15:00\nJeudi\n10:00-15:00\nVendredi\n10:00-15:00\nSamedi\n10:00-20:00",
         "value": 0,
         "nextFollowUp": "",
         "lastContact": null,
@@ -3530,6 +3530,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782139610681
+    "lastSaved": 1782139675459
   }
 }
