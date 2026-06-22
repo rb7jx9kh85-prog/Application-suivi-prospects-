@@ -465,10 +465,11 @@
         "city": "Sion",
         "type": "catering.cafe",
         "notes": "28 Avenue de la Gare, 1950, Sion\nil va arrêter / franchement pas intéressé mais je pourrais passer au café un jour pour leru montrer \n",
-        "status": "to_call",
+        "status": "called",
         "at": 1782138345862,
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "lastContact": 1782142900517
       },
       {
         "id": "vteohnwq",
@@ -3562,6 +3563,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782142898466
+    "lastSaved": 1782142900919
   }
 }
