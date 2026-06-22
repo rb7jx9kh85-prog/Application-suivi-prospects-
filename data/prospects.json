@@ -108,7 +108,7 @@
         "phone": "",
         "city": "Sion",
         "type": "catering.restaurant",
-        "notes": "Avenue des Mayennets, 1950, Sion\nls personne qui a cré",
+        "notes": "Avenue des Mayennets, 1950, Sion\nls personne qui a créer\n",
         "status": "to_call",
         "at": 1782138345862,
         "enriched": {
@@ -3507,6 +3507,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782139415645
+    "lastSaved": 1782139421181
   }
 }
