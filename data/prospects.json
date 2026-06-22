@@ -405,10 +405,11 @@
         "city": "Sion",
         "type": "catering.bar",
         "notes": "25 Place du Midi, 1950, Sion\nreapeller le matin ",
-        "status": "to_call",
+        "status": "voicemail",
         "at": 1782138345862,
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "lastContact": 1782141934401
       },
       {
         "id": "wobmq7lp",
@@ -3550,6 +3551,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782141926750
+    "lastSaved": 1782141934814
   }
 }
