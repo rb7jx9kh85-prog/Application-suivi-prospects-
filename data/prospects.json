@@ -3066,6 +3066,19 @@
     ],
     "todos": [
       {
+        "id": "5phzgbgham3mqpdmzwo",
+        "text": "trouver le numéro perso",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": "itgdosw8",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782142513224,
+        "doneAt": null
+      },
+      {
         "id": "q0rfteblf8mqpd92js",
         "text": "rectifier les APi sur le logiciel straight line sur guthub: demander a chat quel URL pour qu'elle call l'API correctement de platfrom.opeani",
         "status": "todo",
@@ -3543,6 +3556,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782142508830
+    "lastSaved": 1782142513629
   }
 }
