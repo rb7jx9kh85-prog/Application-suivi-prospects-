@@ -10,7 +10,21 @@
         "type": "catering.restaurant",
         "notes": "9 Avenue de la Gare, 1950, Sion",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "interactions": [],
+        "tags": [],
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Sion, Switzerland",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Cheeky Boys est un établissement de restauration à Sion offrant des services de catering."
+        },
+        "enrichedAt": 1782138665604
       },
       {
         "id": "nskag430",
@@ -21,7 +35,21 @@
         "type": "catering.fast_food",
         "notes": "Rue des Creusets, 1950, Sion",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "interactions": [],
+        "tags": [],
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Sion, Switzerland",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Chez Aladdin est un fast-food à Sion proposant une cuisine rapide et savoureuse."
+        },
+        "enrichedAt": 1782138665605
       },
       {
         "id": "n9cmw3x2",
@@ -32,7 +60,19 @@
         "type": "catering.restaurant",
         "notes": "Rue Saint-Théodule, 1950, Sion",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Sion, Switzerland",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Au Vieux Valais est un restaurant à Sion qui met en avant la cuisine valaisanne."
+        },
+        "enrichedAt": 1782138665605
       },
       {
         "id": "xr2aqvs7",
@@ -43,7 +83,19 @@
         "type": "catering.restaurant",
         "notes": "9 Rue de la Porte-Neuve, 1950, Sion",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Sion, Switzerland",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Chang Thai Noi est un restaurant thaï à Sion, connu pour ses plats authentiques."
+        },
+        "enrichedAt": 1782138665605
       },
       {
         "id": "usgcmm5c",
@@ -54,7 +106,19 @@
         "type": "catering.restaurant",
         "notes": "Avenue des Mayennets, 1950, Sion",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "enriched": {
+          "phone": null,
+          "phone_source": null,
+          "email": null,
+          "address": "Sion, Switzerland",
+          "decision_maker": null,
+          "decision_maker_phone": null,
+          "decision_maker_phone_source": null,
+          "linkedin": null,
+          "description": "Le Ticino est un restaurant à Sion spécialisé dans la cuisine italienne."
+        },
+        "enrichedAt": 1782138665605
       },
       {
         "id": "6tvctwqb",
@@ -3437,6 +3501,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782138346264
+    "lastSaved": 1782138666016
   }
 }
