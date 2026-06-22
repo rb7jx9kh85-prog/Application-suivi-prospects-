@@ -204,7 +204,7 @@
         "city": "Sion",
         "type": "catering.cafe",
         "notes": "Rue des Vergers, 1950, Sion\nrappeler le matin \n",
-        "status": "to_call",
+        "status": "recall",
         "at": 1782138345862,
         "interactions": [],
         "tags": []
@@ -3491,6 +3491,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782140319373
+    "lastSaved": 1782140322992
   }
 }
