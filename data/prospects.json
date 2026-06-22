@@ -279,7 +279,7 @@
         "phone": "+41273222544",
         "city": "Sion",
         "type": "catering.cafe",
-        "notes": "21 Rue du Rhône, 1950, Sion\n",
+        "notes": "21 Rue du Rhône, 1950, Sion\nrecall ",
         "status": "voicemail",
         "at": 1782138345862,
         "interactions": [],
@@ -3471,6 +3471,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782140957433
+    "lastSaved": 1782140962952
   }
 }
