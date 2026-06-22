@@ -405,7 +405,7 @@
         "city": "Sion",
         "type": "catering.bar",
         "notes": "25 Place du Midi, 1950, Sion\nreapeller le matin ",
-        "status": "voicemail",
+        "status": "recall",
         "at": 1782138345862,
         "interactions": [],
         "tags": [],
@@ -420,7 +420,9 @@
         "type": "catering.restaurant",
         "notes": "23 Rue de la Porte-Neuve, 1950, Sion",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "zeydskdw",
@@ -3551,6 +3553,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782141934814
+    "lastSaved": 1782141944812
   }
 }
