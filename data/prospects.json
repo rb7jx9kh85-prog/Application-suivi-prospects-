@@ -519,7 +519,7 @@
         "phone": "",
         "city": "Sion",
         "type": "service.beauty",
-        "notes": "Rue du Pré-Fleuri, 1950, Sion\nappeler a fribourg  / \nnum perso pas ne num peros mais appeler quand même a fribourg, trouver le nim perso, du gérant + lui propsoer une offre ultra high low ",
+        "notes": "Rue du Pré-Fleuri, 1950, Sion\nappeler a fribourg  / \nnum perso pas ne num peros mais appeler quand même a fribourg, trouver le nim perso, du gérant + lui propsoer une offre ultra high low ticket",
         "status": "to_call",
         "at": 1782037904999,
         "interactions": [],
@@ -3572,6 +3572,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782143360002
+    "lastSaved": 1782143363148
   }
 }
