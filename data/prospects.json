@@ -384,17 +384,6 @@
         "tags": []
       },
       {
-        "id": "jtjv9l5i",
-        "name": "Taquin Restaurant",
-        "web": "",
-        "phone": "+41 27 322 98 69",
-        "city": "Sion",
-        "type": "catering.restaurant",
-        "notes": "17 Rue de Conthey, 1950, Sion",
-        "status": "to_call",
-        "at": 1782138345862
-      },
-      {
         "id": "3kbwx5q0",
         "name": "Crêperie Sédunoise",
         "web": "",
@@ -3543,6 +3532,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782141539584
+    "lastSaved": 1782141629375
   }
 }
