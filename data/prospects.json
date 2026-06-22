@@ -3079,6 +3079,19 @@
     ],
     "todos": [
       {
+        "id": "5paj1tm5zc3mqpd24bw",
+        "text": "envoyer le mail a cet adresse en diant qu'on a créer déja le site gratuit info@likeathome.ch",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": "yrdn2q4x",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782141539180,
+        "doneAt": null
+      },
+      {
         "id": "k3wn4qg5z3mqpcyj60",
         "text": "trouver le vrai num",
         "status": "todo",
@@ -3530,6 +3543,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782141451072
+    "lastSaved": 1782141539584
   }
 }
