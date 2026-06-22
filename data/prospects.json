@@ -3121,19 +3121,6 @@
         "doneAt": 1782152602323
       },
       {
-        "id": "k3wn4qg5z3mqpcyj60",
-        "text": "trouver le vrai num",
-        "status": "todo",
-        "priority": "medium",
-        "category": "call",
-        "dueDate": null,
-        "prospectId": "aq3i0aqu",
-        "reminderAt": null,
-        "notes": "",
-        "at": 1782141371784,
-        "doneAt": null
-      },
-      {
         "id": "ojck19fhqt8mqpcxcyg",
         "text": "trouver le vrai num il est désafecté",
         "status": "done",
@@ -3572,6 +3559,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782152703249
+    "lastSaved": 1782152729057
   }
 }
