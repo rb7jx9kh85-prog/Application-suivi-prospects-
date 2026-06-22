@@ -94,31 +94,6 @@
         "lastContact": 1782139743565
       },
       {
-        "id": "xr2aqvs7",
-        "name": "Chang Thai Noi",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "catering.restaurant",
-        "notes": "9 Rue de la Porte-Neuve, 1950, Sion\nrappeler a ces horaires: lundi\tFermé\nmardi\t11:00–14:00\n18:00–22:00\nmercredi\t11:00–14:00\n18:00–22:00\njeudi\t11:00–14:00\n18:00–22:00\nvendredi\t11:00–14:00\n18:00–22:00\nsamedi\t11:00–14:00\n18:00–22:00\ndimanche\tFermé\n",
-        "status": "to_call",
-        "at": 1782138345862,
-        "enriched": {
-          "phone": null,
-          "phone_source": null,
-          "email": null,
-          "address": "Sion, Switzerland",
-          "decision_maker": null,
-          "decision_maker_phone": null,
-          "decision_maker_phone_source": null,
-          "linkedin": null,
-          "description": "Chang Thai Noi est un restaurant thaï à Sion, connu pour ses plats authentiques."
-        },
-        "enrichedAt": 1782138665605,
-        "interactions": [],
-        "tags": []
-      },
-      {
         "id": "usgcmm5c",
         "name": "Le Ticino",
         "web": "",
@@ -3531,6 +3506,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782139765067
+    "lastSaved": 1782139812527
   }
 }
