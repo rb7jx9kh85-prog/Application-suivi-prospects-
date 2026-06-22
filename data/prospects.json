@@ -143,9 +143,15 @@
         "phone": "",
         "city": "Sion",
         "type": "catering.bar",
-        "notes": "Place de la Planta, 1950, Sion",
+        "notes": "Place de la Planta, 1950, Sion\ntrouver num",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "interactions": [],
+        "tags": [],
+        "email": "",
+        "contact": "",
+        "value": 0,
+        "nextFollowUp": ""
       },
       {
         "id": "cd01zvgq",
@@ -3506,6 +3512,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782139812527
+    "lastSaved": 1782139888484
   }
 }
