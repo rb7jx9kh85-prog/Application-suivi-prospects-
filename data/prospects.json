@@ -184,17 +184,6 @@
         "tags": []
       },
       {
-        "id": "6pzd8uuk",
-        "name": "Bar Le Lido",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "catering.cafe",
-        "notes": "Parking Manor, 1950, Sion",
-        "status": "to_call",
-        "at": 1782138345862
-      },
-      {
         "id": "tmudmfze",
         "name": "Giorgio",
         "web": "",
@@ -3509,6 +3498,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782140101164
+    "lastSaved": 1782140156534
   }
 }
