@@ -2,6 +2,22 @@
   "155ab99e52611a1a0f906d91d94ef568ee65ba3c6b0f83f0cd840ef2512d2452": {
     "prospects": [
       {
+        "id": "ii4x1bmavpmqpbwrzb",
+        "name": "Buvette l'Entre Deux",
+        "city": "sion",
+        "type": "",
+        "phone": "+41 77 508 31 13",
+        "email": "",
+        "web": "",
+        "status": "to_call",
+        "contact": "",
+        "notes": "pas de site web, potentiellement intéressé",
+        "value": 0,
+        "nextFollowUp": "",
+        "lastContact": null,
+        "at": 1782139610279
+      },
+      {
         "id": "sywcsiwk",
         "name": "Cheeky Boys",
         "web": "",
@@ -140,7 +156,9 @@
         "type": "catering.bar",
         "notes": "Rue des Cèdres, 1950, Sion",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "8jftbiey",
@@ -3512,6 +3530,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782139547013
+    "lastSaved": 1782139610681
   }
 }
