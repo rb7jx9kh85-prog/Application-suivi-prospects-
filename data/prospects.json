@@ -3070,6 +3070,19 @@
     ],
     "todos": [
       {
+        "id": "q0rfteblf8mqpd92js",
+        "text": "rectifier les APi sur le logiciel straight line sur guthub: demander a chat quel URL pour qu'elle call l'API correctement de platfrom.opeani",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782141863464,
+        "doneAt": null
+      },
+      {
         "id": "5paj1tm5zc3mqpd24bw",
         "text": "envoyer le mail a cet adresse en diant qu'on a créer déja le site gratuit info@likeathome.ch",
         "status": "todo",
@@ -3534,6 +3547,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782141658575
+    "lastSaved": 1782141863874
   }
 }
