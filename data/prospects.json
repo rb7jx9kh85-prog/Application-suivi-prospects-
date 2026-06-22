@@ -216,9 +216,11 @@
         "phone": "",
         "city": "Sion",
         "type": "catering.fast_food",
-        "notes": "Rue de la Dent-Blanche, 1950, Sion",
+        "notes": "Rue de la Dent-Blanche, 1950, Sion\n",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "4ylbo6p1",
@@ -3469,6 +3471,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782140348803
+    "lastSaved": 1782140374953
   }
 }
