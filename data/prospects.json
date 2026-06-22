@@ -419,10 +419,11 @@
         "city": "Sion",
         "type": "catering.bar",
         "notes": "21 Rue de Lausanne, 1950, Sion\ndéja engagé le site web -- ils ne sont pas fermés \npartante pour une visio -- ils veulent faire \ntres tres ok \n\n",
-        "status": "to_call",
+        "status": "called",
         "at": 1782138345862,
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "lastContact": 1782142197121
       },
       {
         "id": "rboxc76j",
@@ -3542,6 +3543,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782142188139
+    "lastSaved": 1782142197521
   }
 }
