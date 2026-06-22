@@ -352,7 +352,9 @@
         "type": "catering.restaurant",
         "notes": "29 Place du Midi, 1950, Sion",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "auevyf8l",
@@ -3072,6 +3074,19 @@
     ],
     "todos": [
       {
+        "id": "k3wn4qg5z3mqpcyj60",
+        "text": "trouver le vrai num",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": "aq3i0aqu",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782141371784,
+        "doneAt": null
+      },
+      {
         "id": "ojck19fhqt8mqpcxcyg",
         "text": "trouver le vrai num il est désafecté",
         "status": "todo",
@@ -3510,6 +3525,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782141317491
+    "lastSaved": 1782141372191
   }
 }
