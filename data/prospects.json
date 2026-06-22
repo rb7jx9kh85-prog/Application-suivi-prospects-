@@ -3058,7 +3058,7 @@
       {
         "id": "g0dmb1mno1rmqpdxwr6",
         "text": "trouver le contact et si on l'a appeler sur notes etc.. parce que je n'ai plusle souvenir et il n'est plus sur le CRM",
-        "status": "done",
+        "status": "todo",
         "priority": "medium",
         "category": "agency",
         "dueDate": null,
@@ -3066,7 +3066,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1782143022354,
-        "doneAt": 1782153171231
+        "doneAt": null
       },
       {
         "id": "5phzgbgham3mqpdmzwo",
@@ -3546,6 +3546,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782153171633
+    "lastSaved": 1782153251843
   }
 }
