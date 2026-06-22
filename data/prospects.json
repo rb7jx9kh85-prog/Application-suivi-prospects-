@@ -540,17 +540,6 @@
         "tags": []
       },
       {
-        "id": "jlp7n2jv",
-        "name": "Goran Barber",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "Rue de Condémines, 1950, Sion",
-        "status": "to_call",
-        "at": 1782037904999
-      },
-      {
         "id": "hqw2xgli",
         "name": "JDS",
         "web": "",
@@ -3588,6 +3577,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782143514830
+    "lastSaved": 1782143546386
   }
 }
