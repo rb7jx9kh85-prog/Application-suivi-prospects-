@@ -533,9 +533,11 @@
         "phone": "",
         "city": "Sion",
         "type": "service.beauty",
-        "notes": "Rue de Conthey, 1950, Sion",
+        "notes": "Rue de Conthey, 1950, Sion\n",
         "status": "to_call",
-        "at": 1782037904999
+        "at": 1782037904999,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "jlp7n2jv",
@@ -3573,6 +3575,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782143374225
+    "lastSaved": 1782143437361
   }
 }
