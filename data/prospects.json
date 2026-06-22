@@ -505,11 +505,12 @@
         "phone": "",
         "city": "Sion",
         "type": "service.beauty",
-        "notes": "Rue de l'Église, 1950, Sion\nrecall ",
-        "status": "to_call",
+        "notes": "Rue de l'Église, 1950, Sion\nrecall demain \n",
+        "status": "voicemail",
         "at": 1782037904999,
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "lastContact": 1782143128410
       },
       {
         "id": "ymo0lw3t",
@@ -3580,6 +3581,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782143121720
+    "lastSaved": 1782143128830
   }
 }
