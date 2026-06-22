@@ -412,19 +412,6 @@
         "lastContact": 1782141934401
       },
       {
-        "id": "wobmq7lp",
-        "name": "Chez Paolo",
-        "web": "",
-        "phone": "+41 27 3220008",
-        "city": "Sion",
-        "type": "catering.restaurant",
-        "notes": "23 Rue de la Porte-Neuve, 1950, Sion",
-        "status": "to_call",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": []
-      },
-      {
         "id": "zeydskdw",
         "name": "Le Comptoir",
         "web": "",
@@ -3553,6 +3540,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782141944812
+    "lastSaved": 1782141998835
   }
 }
