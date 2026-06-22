@@ -190,7 +190,7 @@
         "phone": "",
         "city": "Sion",
         "type": "catering.bar",
-        "notes": "Espace des Remparts, 1950, Sion\nrecall a ces horaires: mardi\t09:00–00:00\nmercredi\t09:00–00:00\njeudi\t09:00–00:00\nvendredi\t09:00–00:00\nsamedi\t10:00–00:00\ndimanche\tFermé\nSuggérer de nouveaux ho",
+        "notes": "Espace des Remparts, 1950, Sion\nrecall a ces horaires: mardi\t09:00–00:00\nmercredi\t09:00–00:00\njeudi\t09:00–00:00\nvendredi\t09:00–00:00\nsamedi\t10:00–00:00\ndimanche\tFermé\nSuggérer de nouveaux ho\n",
         "status": "to_call",
         "at": 1782138345862,
         "interactions": [],
@@ -3500,6 +3500,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782140194138
+    "lastSaved": 1782140195902
   }
 }
