@@ -279,7 +279,7 @@
         "phone": "+41273222544",
         "city": "Sion",
         "type": "catering.cafe",
-        "notes": "21 Rue du Rhône, 1950, Sion\nrecall lundi\t10:30–15:00, 17:30–23:00\nmardi\tFermé\nmercredi\tFermé\njeudi\t10:30–15:00, 17:30–23:00\nvendredi\t10:00–00:00\nsamedi\t10:30–00:00\ndimanche\t10:30–23:0",
+        "notes": "21 Rue du Rhône, 1950, Sion\nrecall lundi\t10:30–15:00, 17:30–23:00\nmardi\tFermé\nmercredi\tFermé\njeudi\t10:30–15:00, 17:30–23:00\nvendredi\t10:00–00:00\nsamedi\t10:30–00:00\ndimanche\t10:30–23:0\n",
         "status": "voicemail",
         "at": 1782138345862,
         "interactions": [],
@@ -295,7 +295,9 @@
         "type": "catering.restaurant",
         "notes": "25 Rue du Rhône, 1950, Sion",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "1t834nvp",
@@ -3471,6 +3473,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782140974449
+    "lastSaved": 1782140984090
   }
 }
