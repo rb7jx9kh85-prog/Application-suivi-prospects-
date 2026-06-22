@@ -513,17 +513,6 @@
         "lastContact": 1782143128410
       },
       {
-        "id": "ymo0lw3t",
-        "name": "Carte Blanche",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "Avenue de Pratifori, 1950, Sion",
-        "status": "to_call",
-        "at": 1782037904999
-      },
-      {
         "id": "jdbrb2t6",
         "name": "Initial hair essentials",
         "web": "",
@@ -3581,6 +3570,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782143128830
+    "lastSaved": 1782143146570
   }
 }
