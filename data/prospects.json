@@ -108,7 +108,7 @@
         "phone": "",
         "city": "Sion",
         "type": "catering.restaurant",
-        "notes": "Avenue des Mayennets, 1950, Sion",
+        "notes": "Avenue des Mayennets, 1950, Sion\n",
         "status": "to_call",
         "at": 1782138345862,
         "enriched": {
@@ -122,7 +122,9 @@
           "linkedin": null,
           "description": "Le Ticino est un restaurant à Sion spécialisé dans la cuisine italienne."
         },
-        "enrichedAt": 1782138665605
+        "enrichedAt": 1782138665605,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "6tvctwqb",
@@ -3505,6 +3507,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782138964978
+    "lastSaved": 1782138989252
   }
 }
