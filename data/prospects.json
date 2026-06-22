@@ -280,11 +280,11 @@
         "city": "Sion",
         "type": "catering.cafe",
         "notes": "c'est dead, j'a fait le con",
-        "status": "voicemail",
+        "status": "refusal",
         "at": 1782138345862,
         "interactions": [],
         "tags": [],
-        "lastContact": 1782140957024,
+        "lastContact": 1782141225607,
         "email": "",
         "contact": "",
         "value": 0,
@@ -3493,6 +3493,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782141217655
+    "lastSaved": 1782141226017
   }
 }
