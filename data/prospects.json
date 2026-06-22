@@ -247,12 +247,16 @@
         "phone": "+41 76 612 49 71",
         "city": "Sion",
         "type": "catering.restaurant",
-        "notes": "35 Place du Midi, 1950, Sion\nrecall 18h30 et 21h30 tous les jours \n",
+        "notes": "35 Place du Midi, 1950, Sion\nrecall 18h30 et 21h30 tous les jours",
         "status": "voicemail",
         "at": 1782138345862,
         "interactions": [],
         "tags": [],
-        "lastContact": 1782140806060
+        "lastContact": 1782140806060,
+        "email": "",
+        "contact": "",
+        "value": 0,
+        "nextFollowUp": ""
       },
       {
         "id": "49nrbqqi",
@@ -3472,6 +3476,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782140806485
+    "lastSaved": 1782140812348
   }
 }
