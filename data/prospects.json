@@ -580,17 +580,6 @@
         "lastContact": 1782143655498
       },
       {
-        "id": "sqiodlbe",
-        "name": "Color style",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "Rue des Vergers, 1950, Sion",
-        "status": "to_call",
-        "at": 1782037904999
-      },
-      {
         "id": "61ey85m9",
         "name": "Tribus urbaines",
         "web": "https://tribusurbaines.com/",
@@ -3581,6 +3570,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782143655900
+    "lastSaved": 1782143672438
   }
 }
