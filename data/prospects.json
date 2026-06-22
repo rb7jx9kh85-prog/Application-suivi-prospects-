@@ -451,10 +451,11 @@
         "city": "Sion",
         "type": "catering.restaurant",
         "notes": "10 Espace des Remparts, 1950, Sion\n\ndemain matin recall \n",
-        "status": "to_call",
+        "status": "voicemail",
         "at": 1782138345862,
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "lastContact": 1782142526098
       },
       {
         "id": "3wijxqyi",
@@ -3556,6 +3557,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782142513629
+    "lastSaved": 1782142526505
   }
 }
