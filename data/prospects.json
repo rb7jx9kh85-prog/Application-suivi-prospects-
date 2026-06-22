@@ -418,9 +418,11 @@
         "phone": "+41 27 321 21 63",
         "city": "Sion",
         "type": "catering.bar",
-        "notes": "21 Rue de Lausanne, 1950, Sion",
+        "notes": "21 Rue de Lausanne, 1950, Sion\n",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "rboxc76j",
@@ -3540,6 +3542,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782141998835
+    "lastSaved": 1782142017036
   }
 }
