@@ -157,12 +157,18 @@
         "id": "cd01zvgq",
         "name": "Le Troquet",
         "web": "",
-        "phone": "",
+        "phone": "027 322 0960",
         "city": "Sion",
         "type": "catering.fast_food",
-        "notes": "Espace des Remparts, 1950, Sion",
+        "notes": "Espace des Remparts, 1950, Sion\nles patrons sont la à 14 heures",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "interactions": [],
+        "tags": [],
+        "email": "",
+        "contact": "",
+        "value": 0,
+        "nextFollowUp": ""
       },
       {
         "id": "pyrh85pz",
@@ -184,7 +190,9 @@
         "type": "catering.cafe",
         "notes": "Parking Manor, 1950, Sion",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "6pzd8uuk",
@@ -3512,6 +3520,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782139888484
+    "lastSaved": 1782139993054
   }
 }
