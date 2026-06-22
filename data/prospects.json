@@ -75,7 +75,7 @@
         "city": "Sion",
         "type": "catering.restaurant",
         "notes": "Rue Saint-Théodule, 1950, Sion\npas de réponse\n\n",
-        "status": "to_call",
+        "status": "called",
         "at": 1782138345862,
         "enriched": {
           "phone": null,
@@ -90,7 +90,8 @@
         },
         "enrichedAt": 1782138665605,
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "lastContact": 1782139743565
       },
       {
         "id": "xr2aqvs7",
@@ -3530,6 +3531,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782139734242
+    "lastSaved": 1782139743970
   }
 }
