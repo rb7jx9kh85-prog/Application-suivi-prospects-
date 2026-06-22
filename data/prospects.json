@@ -337,9 +337,11 @@
         "phone": "+41 27 323 48 18",
         "city": "Sion",
         "type": "catering.cafe",
-        "notes": "15 Avenue de la Gare, 1950, Sion",
+        "notes": "15 Avenue de la Gare, 1950, Sion\n",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "aq3i0aqu",
@@ -3495,6 +3497,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782141289451
+    "lastSaved": 1782141309875
   }
 }
