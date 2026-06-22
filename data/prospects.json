@@ -450,9 +450,11 @@
         "phone": "+41 27 322 94 33",
         "city": "Sion",
         "type": "catering.restaurant",
-        "notes": "10 Espace des Remparts, 1950, Sion",
+        "notes": "10 Espace des Remparts, 1950, Sion\n",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "3wijxqyi",
@@ -2306,7 +2308,9 @@
         "status": "to_call",
         "contact": "",
         "notes": "",
-        "at": 1781801638792
+        "at": 1781801638792,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "arqn07rs1gcmqjqovig",
@@ -3539,6 +3543,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782142369743
+    "lastSaved": 1782142444337
   }
 }
