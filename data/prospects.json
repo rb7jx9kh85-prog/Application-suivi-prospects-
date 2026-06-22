@@ -478,10 +478,11 @@
         "city": "Sion",
         "type": "catering.fast_food",
         "notes": "6 Rue des Vergers, 1950, Sion\n\nadresse mail: il m'envoie pas whatsapp\n\n",
-        "status": "to_call",
+        "status": "called",
         "at": 1782138345862,
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "lastContact": 1782142898055
       },
       {
         "id": "1rkbh3i7",
@@ -3561,6 +3562,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782142887017
+    "lastSaved": 1782142898466
   }
 }
