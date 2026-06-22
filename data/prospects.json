@@ -444,17 +444,6 @@
         "nextFollowUp": ""
       },
       {
-        "id": "hd40b2bl",
-        "name": "Le Mocambo",
-        "web": "",
-        "phone": "+41 27 322 10 08",
-        "city": "Sion",
-        "type": "catering.bar",
-        "notes": "17 Rue de la Dent-Blanche, 1950, Sion",
-        "status": "to_call",
-        "at": 1782138345862
-      },
-      {
         "id": "itgdosw8",
         "name": "Toto Chez Franco",
         "web": "",
@@ -3550,6 +3539,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782142350663
+    "lastSaved": 1782142369743
   }
 }
