@@ -33,7 +33,7 @@
         "phone": "",
         "city": "Sion",
         "type": "catering.fast_food",
-        "notes": "Rue des Creusets, 1950, Sion",
+        "notes": "Rue des Creusets, 1950, Sion\n",
         "status": "to_call",
         "at": 1782138345862,
         "interactions": [],
@@ -72,7 +72,9 @@
           "linkedin": null,
           "description": "Au Vieux Valais est un restaurant à Sion qui met en avant la cuisine valaisanne."
         },
-        "enrichedAt": 1782138665605
+        "enrichedAt": 1782138665605,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "xr2aqvs7",
@@ -95,7 +97,9 @@
           "linkedin": null,
           "description": "Chang Thai Noi est un restaurant thaï à Sion, connu pour ses plats authentiques."
         },
-        "enrichedAt": 1782138665605
+        "enrichedAt": 1782138665605,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "usgcmm5c",
@@ -3501,6 +3505,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782138666016
+    "lastSaved": 1782138797210
   }
 }
