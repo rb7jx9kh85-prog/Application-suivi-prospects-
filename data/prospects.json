@@ -197,17 +197,6 @@
         "tags": []
       },
       {
-        "id": "31tfmrqx",
-        "name": "Le Déli",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "catering.cafe",
-        "notes": "Espace des Remparts, 1950, Sion",
-        "status": "to_call",
-        "at": 1782138345862
-      },
-      {
         "id": "g5ykzn3i",
         "name": "Salon de Thé Clémentine",
         "web": "",
@@ -3500,6 +3489,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782140200227
+    "lastSaved": 1782140230663
   }
 }
