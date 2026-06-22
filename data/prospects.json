@@ -561,7 +561,7 @@
         "city": "Sion",
         "type": "service.beauty",
         "notes": "Rue des Vergers, 1950, Sion\n",
-        "status": "to_call",
+        "status": "voicemail",
         "at": 1782037904999,
         "interactions": [],
         "tags": [],
@@ -576,7 +576,8 @@
           "linkedin": null,
           "description": "Coiffure Création est un salon de coiffure situé à Sion offrant divers services de beauté."
         },
-        "enrichedAt": 1782056287318
+        "enrichedAt": 1782056287318,
+        "lastContact": 1782143655498
       },
       {
         "id": "sqiodlbe",
@@ -3580,6 +3581,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782143630566
+    "lastSaved": 1782143655900
   }
 }
