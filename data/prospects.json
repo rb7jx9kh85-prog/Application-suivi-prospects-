@@ -3110,7 +3110,7 @@
       {
         "id": "5paj1tm5zc3mqpd24bw",
         "text": "envoyer le mail a cet adresse en diant qu'on a créer déja le site gratuit info@likeathome.ch",
-        "status": "todo",
+        "status": "done",
         "priority": "medium",
         "category": "call",
         "dueDate": null,
@@ -3118,7 +3118,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1782141539180,
-        "doneAt": null
+        "doneAt": 1782152602323
       },
       {
         "id": "k3wn4qg5z3mqpcyj60",
@@ -3572,6 +3572,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782143694641
+    "lastSaved": 1782152602726
   }
 }
