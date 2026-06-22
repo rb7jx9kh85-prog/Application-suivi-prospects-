@@ -363,9 +363,11 @@
         "phone": "+41 27 322 02 16",
         "city": "Sion",
         "type": "catering.cafe",
-        "notes": "6 Rue de Lausanne, 1950, Sion",
+        "notes": "6 Rue de Lausanne, 1950, Sion\n",
         "status": "to_call",
-        "at": 1782138345862
+        "at": 1782138345862,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "yrdn2q4x",
@@ -3525,6 +3527,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782141372191
+    "lastSaved": 1782141401161
   }
 }
