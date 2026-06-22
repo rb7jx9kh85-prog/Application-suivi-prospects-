@@ -404,7 +404,7 @@
         "phone": "+41 27 322 11 98",
         "city": "Sion",
         "type": "catering.bar",
-        "notes": "25 Place du Midi, 1950, Sion\n",
+        "notes": "25 Place du Midi, 1950, Sion\nl",
         "status": "to_call",
         "at": 1782138345862,
         "interactions": [],
@@ -3550,6 +3550,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782141905276
+    "lastSaved": 1782141917054
   }
 }
