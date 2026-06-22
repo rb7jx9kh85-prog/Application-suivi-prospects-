@@ -161,7 +161,7 @@
         "city": "Sion",
         "type": "catering.fast_food",
         "notes": "Espace des Remparts, 1950, Sion\nles patrons sont la à 14 heures",
-        "status": "to_call",
+        "status": "recall",
         "at": 1782138345862,
         "interactions": [],
         "tags": [],
@@ -3520,6 +3520,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782139993054
+    "lastSaved": 1782140011544
   }
 }
