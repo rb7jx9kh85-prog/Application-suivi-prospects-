@@ -778,9 +778,11 @@
         "phone": "+41787583523",
         "city": "Sion",
         "type": "service.beauty",
-        "notes": "11 Rue du Rhône, 1950, Sion",
+        "notes": "11 Rue du Rhône, 1950, Sion\n",
         "status": "to_call",
-        "at": 1782037904999
+        "at": 1782037904999,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "h8t5z37c",
@@ -3673,6 +3675,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782229032944
+    "lastSaved": 1782229064656
   }
 }
