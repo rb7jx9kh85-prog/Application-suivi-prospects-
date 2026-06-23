@@ -3045,7 +3045,7 @@
       {
         "id": "xkkp1sstmhmqpe8gfs",
         "text": "envoyer un watsapp proposant un site gratit et au gout du jour // attention, ils ont déja un site fait par une agnce de merde, mais dire que leur site est tres bin mais qu'il y avait 2,3 petites améliorations a fiaire",
-        "status": "todo",
+        "status": "done",
         "priority": "medium",
         "category": "agency",
         "dueDate": null,
@@ -3053,7 +3053,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1782143514424,
-        "doneAt": null
+        "doneAt": 1782198905964
       },
       {
         "id": "g0dmb1mno1rmqpdxwr6",
@@ -3546,6 +3546,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782153251843
+    "lastSaved": 1782198906366
   }
 }
