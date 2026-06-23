@@ -1143,7 +1143,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "",
+        "notes": "trouver le vrai num\n",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -1163,7 +1163,9 @@
             "Region Dents du Midi"
           ],
           "verdict": "Aucun site web trouvé pour l'établissement Chapelay Laurence à Champéry."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "rhno5vb9wrmqjlo25q",
@@ -3566,6 +3568,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782227585018
+    "lastSaved": 1782227627220
   }
 }
