@@ -40,8 +40,11 @@
         "city": "Sion",
         "type": "commercial.florist",
         "notes": "Avenue du Midi, 1950, Sion",
-        "status": "to_call",
-        "at": 1782227715602
+        "status": "voicemail",
+        "at": 1782227715602,
+        "interactions": [],
+        "tags": [],
+        "lastContact": 1782227925689
       },
       {
         "id": "lh5uuhw8",
@@ -3707,6 +3710,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782227793097
+    "lastSaved": 1782227926093
   }
 }
