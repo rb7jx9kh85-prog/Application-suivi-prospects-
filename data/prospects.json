@@ -53,9 +53,11 @@
         "phone": "",
         "city": "Sion",
         "type": "commercial.clothing",
-        "notes": "Rue des Vergers, 1950, Sion",
+        "notes": "Rue des Vergers, 1950, Sion\n",
         "status": "to_call",
-        "at": 1782227715602
+        "at": 1782227715602,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "6zwjm2jm",
@@ -3710,6 +3712,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782227926093
+    "lastSaved": 1782228015188
   }
 }
