@@ -909,7 +909,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "semaine prochaine",
+        "notes": "recall fin de semaine prochaine ",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -3552,6 +3552,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782226548645
+    "lastSaved": 1782226558823
   }
 }
