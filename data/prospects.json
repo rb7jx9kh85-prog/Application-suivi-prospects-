@@ -9,7 +9,7 @@
         "phone": "",
         "email": "",
         "web": "",
-        "status": "to_call",
+        "status": "recall",
         "contact": "",
         "notes": "recall demain matin à 7h30-8h",
         "value": 0,
@@ -3589,6 +3589,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782226114281
+    "lastSaved": 1782226119548
   }
 }
