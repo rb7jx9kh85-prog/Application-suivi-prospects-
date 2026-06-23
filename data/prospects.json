@@ -909,7 +909,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "",
+        "notes": "semaine pr",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -929,7 +929,9 @@
             "Moneyhouse.ch"
           ],
           "verdict": "Aucune présence en ligne confirmée pour l'établissement Fracheboud Nicolas à Vionnaz."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "xkrrd3gcuymqjlo25q",
@@ -3550,6 +3552,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782226223487
+    "lastSaved": 1782226545765
   }
 }
