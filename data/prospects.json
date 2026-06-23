@@ -89,17 +89,6 @@
         "lastContact": 1782228370837
       },
       {
-        "id": "vbalthol",
-        "name": "Credit Suisse",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "service.financial",
-        "notes": "Parking Manor, 1950, Sion",
-        "status": "to_call",
-        "at": 1782227715602
-      },
-      {
         "id": "o2tcdbjm",
         "name": "La Liseuse",
         "web": "",
@@ -3719,6 +3708,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782228371242
+    "lastSaved": 1782228378295
   }
 }
