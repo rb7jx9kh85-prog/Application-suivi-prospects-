@@ -11,11 +11,13 @@
         "web": "pas de fucong site",
         "status": "to_call",
         "contact": "",
-        "notes": "",
+        "notes": "pas",
         "value": 0,
         "nextFollowUp": "",
         "lastContact": null,
-        "at": 1782226983088
+        "at": 1782226983088,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "cgkwkmtefuwmqqreukv",
@@ -3586,6 +3588,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782226983498
+    "lastSaved": 1782227164335
   }
 }
