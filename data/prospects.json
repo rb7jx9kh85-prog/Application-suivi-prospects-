@@ -3131,7 +3131,7 @@
       {
         "id": "zo3aup9o0xmqpcv7xc",
         "text": "trouver le vrai num",
-        "status": "todo",
+        "status": "done",
         "priority": "medium",
         "category": "call",
         "dueDate": null,
@@ -3139,7 +3139,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1782141217248,
-        "doneAt": null
+        "doneAt": 1782199291394
       },
       {
         "id": "7j1q3kfmt7kmqpclsmg",
@@ -3554,6 +3554,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782199284085
+    "lastSaved": 1782199291795
   }
 }
