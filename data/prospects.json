@@ -3073,6 +3073,19 @@
     ],
     "todos": [
       {
+        "id": "5yp6bagxsyrmqqrfpjx",
+        "text": "call à 7h45 le délice a leytron",
+        "status": "todo",
+        "priority": "high",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": "cgkwkmtefuwmqqreukv",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782226154013,
+        "doneAt": null
+      },
+      {
         "id": "plvckwqel6fmqqr5r6y",
         "text": "envoyer ea + mail au ticino leur proposant un call",
         "status": "todo",
@@ -3589,6 +3602,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782226119548
+    "lastSaved": 1782226154418
   }
 }
