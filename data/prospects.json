@@ -1117,7 +1117,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "",
+        "notes": "recall a ce numéro: ",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -1139,7 +1139,9 @@
             "Commune de Conthey"
           ],
           "verdict": "Aucune présence en ligne confirmée pour Bétrisey Reynald à Conthey."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "v04xo0qluxfmqjlo25q",
@@ -3570,6 +3572,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782227173357
+    "lastSaved": 1782227336190
   }
 }
