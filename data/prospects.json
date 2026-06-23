@@ -89,17 +89,6 @@
         "lastContact": 1782228370837
       },
       {
-        "id": "gsbk5xa2",
-        "name": "Valiant",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "service.financial",
-        "notes": "Avenue du Midi, 1950, Sion",
-        "status": "to_call",
-        "at": 1782227715602
-      },
-      {
         "id": "5d093f0d",
         "name": "Les Choix de Peggy",
         "web": "https://www.facebook.com/leschoixdepeggy/posts/724246378959256",
@@ -3675,6 +3664,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782228428966
+    "lastSaved": 1782228433768
   }
 }
