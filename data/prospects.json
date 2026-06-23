@@ -3136,6 +3136,19 @@
     ],
     "todos": [
       {
+        "id": "0ybx5ekxzqcmqqz6tka",
+        "text": "Préparer le call de demain avec Noémie café la coopérative",
+        "status": "todo",
+        "priority": "high",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782239176234,
+        "doneAt": null
+      },
+      {
         "id": "0u4n2x5qjg6mqqrvagp",
         "text": "trouver le nim perso du gérant, il s'appelle gérald",
         "status": "todo",
@@ -3678,6 +3691,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782229242854
+    "lastSaved": 1782239176637
   }
 }
