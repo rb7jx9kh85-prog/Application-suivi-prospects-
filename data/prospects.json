@@ -108,11 +108,15 @@
         "phone": "+41 27 322 59 30",
         "city": "Sion",
         "type": "service.cleaning",
-        "notes": "10 Rue de la Dent-Blanche, 1950, Sion\n\nlundi \n0792743944\n\n",
+        "notes": "10 Rue de la Dent-Blanche, 1950, Sion\n\nrecall lundi \n0792743944 -- la patrone",
         "status": "recall",
         "at": 1782227715602,
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "email": "",
+        "contact": "",
+        "value": 0,
+        "nextFollowUp": ""
       },
       {
         "id": "cgkwkmtefuwmqqreukv",
@@ -3668,6 +3672,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782228778321
+    "lastSaved": 1782228794025
   }
 }
