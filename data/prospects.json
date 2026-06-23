@@ -96,8 +96,10 @@
         "city": "Sion",
         "type": "commercial.clothing",
         "notes": "12 Rue des Vergers, 1950, Sion",
-        "status": "to_call",
-        "at": 1782227715602
+        "status": "recall",
+        "at": 1782227715602,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "owol7p11",
@@ -3664,6 +3666,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782228433768
+    "lastSaved": 1782228663557
   }
 }
