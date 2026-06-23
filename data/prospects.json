@@ -944,7 +944,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "ne veut rien jusqu'à la rentrée -- mais je ",
+        "notes": "ne veut rien jusqu'à la rentrée -- mais je l'ai laché trop vite, beaucoup trop vite, le recall la semaine pro\n",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -3555,6 +3555,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782226850715
+    "lastSaved": 1782226863038
   }
 }
