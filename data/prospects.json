@@ -1540,7 +1540,7 @@
         "phone": "077 505 21 73",
         "email": "—",
         "web": "",
-        "status": "to_call",
+        "status": "voicemail",
         "contact": "",
         "notes": "mail + whatsapp send\n",
         "at": 1781793202670,
@@ -1572,7 +1572,8 @@
           "linkedin": null,
           "description": "Coiffure Isabelle est un salon de coiffure à Fully, offrant des prestations personnalisées."
         },
-        "enrichedAt": 1782056287318
+        "enrichedAt": 1782056287318,
+        "lastContact": 1782227584611
       },
       {
         "id": "6dp37zq6bt7mqjlo25q",
@@ -3565,6 +3566,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782227486397
+    "lastSaved": 1782227585018
   }
 }
