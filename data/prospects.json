@@ -3144,7 +3144,7 @@
       {
         "id": "7j1q3kfmt7kmqpclsmg",
         "text": "envoyer un wa pour leeur dire qu'on a créer un site web gratzuitemetb",
-        "status": "todo",
+        "status": "done",
         "priority": "medium",
         "category": "call",
         "dueDate": null,
@@ -3152,7 +3152,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1782140777512,
-        "doneAt": null
+        "doneAt": 1782199525609
       },
       {
         "id": "a65960a4p5amqo9s4fi",
@@ -3554,6 +3554,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782199291795
+    "lastSaved": 1782199526011
   }
 }
