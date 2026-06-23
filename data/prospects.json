@@ -89,17 +89,6 @@
         "lastContact": 1782228370837
       },
       {
-        "id": "mgti1caz",
-        "name": "Color style",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "Rue des Vergers, 1950, Sion",
-        "status": "to_call",
-        "at": 1782227715602
-      },
-      {
         "id": "gsbk5xa2",
         "name": "Valiant",
         "web": "",
@@ -3686,6 +3675,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782228417143
+    "lastSaved": 1782228428966
   }
 }
