@@ -82,10 +82,11 @@
         "city": "Sion",
         "type": "commercial.hobby",
         "notes": "Rue des Vergers, 1950, Sion\n\nsemaine prochaine recall \n",
-        "status": "to_call",
+        "status": "called",
         "at": 1782227715602,
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "lastContact": 1782228370837
       },
       {
         "id": "vbalthol",
@@ -3718,6 +3719,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782228360355
+    "lastSaved": 1782228371242
   }
 }
