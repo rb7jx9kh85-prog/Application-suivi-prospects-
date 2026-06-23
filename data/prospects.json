@@ -3055,6 +3055,19 @@
     ],
     "todos": [
       {
+        "id": "plvckwqel6fmqqr5r6y",
+        "text": "envoyer ea + mail au ticino leur proposant un call",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": "ov6vfbxm",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782225689578,
+        "doneAt": null
+      },
+      {
         "id": "xkkp1sstmhmqpe8gfs",
         "text": "envoyer un watsapp proposant un site gratit et au gout du jour // attention, ils ont déja un site fait par une agnce de merde, mais dire que leur site est tres bin mais qu'il y avait 2,3 petites améliorations a fiaire",
         "status": "done",
@@ -3558,6 +3571,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782225649563
+    "lastSaved": 1782225689990
   }
 }
