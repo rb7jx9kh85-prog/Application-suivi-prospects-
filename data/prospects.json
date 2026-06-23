@@ -836,37 +836,9 @@
             "swissyp.com"
           ],
           "verdict": "Aucun site web officiel trouvé pour le Café Les Mésanges à Orsières."
-        }
-      },
-      {
-        "id": "8q3rpa7ajwimqjlo25p",
-        "name": "Cafe de la Poste (Varen)",
-        "city": "Varen",
-        "type": "Cafe / Restaurant",
-        "phone": "—",
-        "email": "—",
-        "web": "",
-        "status": "to_call",
-        "contact": "",
-        "notes": "",
-        "at": 1781793202669,
-        "_noWebsite": {
-          "has_website": false,
-          "website_url": null,
-          "confidence": "high",
-          "sources_checked": [
-            "Google Maps",
-            "Pages Jaunes",
-            "LinkedIn",
-            "Google",
-            "Varen.ch",
-            "AllBiz.ch",
-            "Sluurpy.com",
-            "search.ch",
-            "Moneyhouse.ch"
-          ],
-          "verdict": "Aucune présence en ligne confirmée pour le Café de la Poste à Varen."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "2f7uo7ysihfmqjlo25p",
@@ -3602,6 +3574,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782226154418
+    "lastSaved": 1782226200497
   }
 }
