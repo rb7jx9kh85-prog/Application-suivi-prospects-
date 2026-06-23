@@ -3011,8 +3011,10 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "",
-        "at": 1781801638793
+        "notes": "mail: ",
+        "at": 1781801638793,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "wstbfx8l7knmqjqovih",
@@ -3676,6 +3678,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782229132563
+    "lastSaved": 1782229224089
   }
 }
