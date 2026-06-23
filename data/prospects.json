@@ -108,9 +108,11 @@
         "phone": "+41 27 322 59 30",
         "city": "Sion",
         "type": "service.cleaning",
-        "notes": "10 Rue de la Dent-Blanche, 1950, Sion",
+        "notes": "10 Rue de la Dent-Blanche, 1950, Sion\n",
         "status": "to_call",
-        "at": 1782227715602
+        "at": 1782227715602,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "cgkwkmtefuwmqqreukv",
@@ -3666,6 +3668,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782228663557
+    "lastSaved": 1782228688536
   }
 }
