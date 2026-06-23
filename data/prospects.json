@@ -2043,7 +2043,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "ca s'appelle le salon charline\n",
+        "notes": "ca s'appelle le salon charline\nrecall\n",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -3564,6 +3564,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782227467523
+    "lastSaved": 1782227469523
   }
 }
