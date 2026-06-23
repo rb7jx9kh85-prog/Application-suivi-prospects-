@@ -3235,7 +3235,7 @@
       {
         "id": "98gjbn2o4demqnl9yqb",
         "text": "session de cold call -- lundi 16h30-17h -- boulangerie et pâtisseries",
-        "status": "todo",
+        "status": "done",
         "priority": "medium",
         "category": "call",
         "dueDate": "2026-06-22",
@@ -3243,7 +3243,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1782034409747,
-        "doneAt": null
+        "doneAt": 1782199542811
       },
       {
         "id": "samgmfqojxhmqnjyoz7",
@@ -3554,6 +3554,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782199526011
+    "lastSaved": 1782199543212
   }
 }
