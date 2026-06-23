@@ -89,17 +89,6 @@
         "lastContact": 1782228370837
       },
       {
-        "id": "u91qgem7",
-        "name": "St James",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "catering.pub",
-        "notes": "Rue de la Dent-Blanche, 1950, Sion",
-        "status": "to_call",
-        "at": 1782227715602
-      },
-      {
         "id": "mgti1caz",
         "name": "Color style",
         "web": "",
@@ -3697,6 +3686,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782228404360
+    "lastSaved": 1782228417143
   }
 }
