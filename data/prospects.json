@@ -944,7 +944,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "",
+        "notes": "ne veut rien jus",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -961,7 +961,9 @@
             "swissyp.com"
           ],
           "verdict": "Aucune présence en ligne confirmée pour la Boulangerie de l'Arlequin à Sion."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "w55a5q5oddrmqjlo25q",
@@ -3553,6 +3555,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782226575099
+    "lastSaved": 1782226841418
   }
 }
