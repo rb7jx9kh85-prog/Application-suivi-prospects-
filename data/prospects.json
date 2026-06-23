@@ -81,9 +81,11 @@
         "phone": "",
         "city": "Sion",
         "type": "commercial.hobby",
-        "notes": "Rue des Vergers, 1950, Sion",
+        "notes": "Rue des Vergers, 1950, Sion\n",
         "status": "to_call",
-        "at": 1782227715602
+        "at": 1782227715602,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "vbalthol",
@@ -3716,6 +3718,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782228148492
+    "lastSaved": 1782228285857
   }
 }
