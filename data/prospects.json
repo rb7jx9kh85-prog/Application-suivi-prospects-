@@ -4,13 +4,32 @@
       {
         "id": "zu7m41cu",
         "name": "Les griffes intemporelles",
-        "web": "",
+        "web": "https://www.facebook.com/BoutiqueLesGriffes",
         "phone": "",
         "city": "Sion",
         "type": "commercial.clothing",
         "notes": "Rue des Vergers, 1950, Sion",
         "status": "to_call",
-        "at": 1782227715602
+        "at": 1782227715602,
+        "interactions": [],
+        "tags": [],
+        "_verifyingWebsite": false,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.facebook.com/BoutiqueLesGriffes",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "search.ch",
+            "local.ch",
+            "ZIP.ch",
+            "swissyp.com"
+          ],
+          "verdict": "Le magasin \"Les Griffes Intemporelles\" à Sion dispose d'une page Facebook comme site web."
+        }
       },
       {
         "id": "h3106j9j",
@@ -3687,6 +3706,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782227716003
+    "lastSaved": 1782227724684
   }
 }
