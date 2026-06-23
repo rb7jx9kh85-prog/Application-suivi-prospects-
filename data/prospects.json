@@ -528,7 +528,7 @@
         "phone": "",
         "city": "Sion",
         "type": "service.beauty",
-        "notes": "Rue de Conthey, 1950, Sion\nchaud ed\n",
+        "notes": "Rue de Conthey, 1950, Sion\nchaud ed'échanger par message\n\n",
         "status": "to_call",
         "at": 1782037904999,
         "interactions": [],
@@ -3554,6 +3554,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782225296262
+    "lastSaved": 1782225301744
   }
 }
