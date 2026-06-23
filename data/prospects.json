@@ -3011,7 +3011,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "mail: ",
+        "notes": "mail: \n",
         "at": 1781801638793,
         "interactions": [],
         "tags": []
@@ -3678,6 +3678,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782229224089
+    "lastSaved": 1782229230570
   }
 }
