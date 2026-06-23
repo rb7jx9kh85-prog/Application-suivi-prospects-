@@ -89,17 +89,6 @@
         "lastContact": 1782228370837
       },
       {
-        "id": "o2tcdbjm",
-        "name": "La Liseuse",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "commercial.books",
-        "notes": "14 Rue des Vergers, 1950, Sion",
-        "status": "to_call",
-        "at": 1782227715602
-      },
-      {
         "id": "u91qgem7",
         "name": "St James",
         "web": "",
@@ -3708,6 +3697,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782228378295
+    "lastSaved": 1782228404360
   }
 }
