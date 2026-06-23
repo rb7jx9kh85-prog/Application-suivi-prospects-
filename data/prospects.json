@@ -1115,7 +1115,7 @@
         "phone": "027 346 35 36",
         "email": "—",
         "web": "",
-        "status": "to_call",
+        "status": "called",
         "contact": "",
         "notes": "recall a ce numéro: 0795423418 \n",
         "at": 1781793202670,
@@ -1141,7 +1141,8 @@
           "verdict": "Aucune présence en ligne confirmée pour Bétrisey Reynald à Conthey."
         },
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "lastContact": 1782227347221
       },
       {
         "id": "v04xo0qluxfmqjlo25q",
@@ -3572,6 +3573,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782227345878
+    "lastSaved": 1782227347627
   }
 }
