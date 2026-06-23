@@ -2,24 +2,6 @@
   "155ab99e52611a1a0f906d91d94ef568ee65ba3c6b0f83f0cd840ef2512d2452": {
     "prospects": [
       {
-        "id": "cgzussoot3vmqqrxh9s",
-        "name": "Le boucher du coin Sàrl",
-        "city": "sion",
-        "type": "boucherie",
-        "phone": "027 203 01 36*",
-        "email": "",
-        "web": "pas de fucong site",
-        "status": "to_call",
-        "contact": "",
-        "notes": "passe",
-        "value": 0,
-        "nextFollowUp": "",
-        "lastContact": null,
-        "at": 1782226983088,
-        "interactions": [],
-        "tags": []
-      },
-      {
         "id": "cgkwkmtefuwmqqreukv",
         "name": "le délice",
         "city": "leytron",
@@ -3588,6 +3570,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782227165616
+    "lastSaved": 1782227173357
   }
 }
