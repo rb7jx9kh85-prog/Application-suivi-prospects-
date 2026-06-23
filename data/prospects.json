@@ -11,7 +11,7 @@
         "web": "pas de fucong site",
         "status": "to_call",
         "contact": "",
-        "notes": "pas",
+        "notes": "passe",
         "value": 0,
         "nextFollowUp": "",
         "lastContact": null,
@@ -3588,6 +3588,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782227164335
+    "lastSaved": 1782227165616
   }
 }
