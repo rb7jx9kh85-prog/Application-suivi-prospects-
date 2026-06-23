@@ -779,10 +779,11 @@
         "city": "Sion",
         "type": "service.beauty",
         "notes": "11 Rue du Rhône, 1950, Sion\n",
-        "status": "to_call",
+        "status": "refusal",
         "at": 1782037904999,
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "lastContact": 1782229132154
       },
       {
         "id": "h8t5z37c",
@@ -3675,6 +3676,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782229064656
+    "lastSaved": 1782229132563
   }
 }
