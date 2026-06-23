@@ -67,9 +67,11 @@
         "phone": "",
         "city": "Sion",
         "type": "commercial.clothing",
-        "notes": "Avenue du Midi, 1950, Sion",
+        "notes": "Avenue du Midi, 1950, Sion\n",
         "status": "to_call",
-        "at": 1782227715602
+        "at": 1782227715602,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "1uhlkg8n",
@@ -3713,6 +3715,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782228032080
+    "lastSaved": 1782228111514
   }
 }
