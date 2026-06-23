@@ -109,7 +109,7 @@
         "city": "Sion",
         "type": "service.cleaning",
         "notes": "10 Rue de la Dent-Blanche, 1950, Sion\n\nlundi \n0792743944\n\n",
-        "status": "to_call",
+        "status": "recall",
         "at": 1782227715602,
         "interactions": [],
         "tags": []
@@ -3668,6 +3668,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782228774354
+    "lastSaved": 1782228778321
   }
 }
