@@ -865,7 +865,9 @@
             "allbiz.ch"
           ],
           "verdict": "Aucune présence en ligne confirmée pour le Café de la Poste à Nendaz."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "17efdfuzhuamqjlo25p",
@@ -893,35 +895,9 @@
             "search.ch"
           ],
           "verdict": "Aucun site web trouvé pour le Café de la Poste à La Vernaz (Les Agettes)."
-        }
-      },
-      {
-        "id": "lwo4epnzv7amqjlo25q",
-        "name": "Auberge de Sapinhaut",
-        "city": "Saxon",
-        "type": "Cafe / Restaurant / Auberge",
-        "phone": "027 744 14 96",
-        "email": "—",
-        "web": "",
-        "status": "to_call",
-        "contact": "",
-        "notes": "",
-        "at": 1781793202670,
-        "_noWebsite": {
-          "has_website": false,
-          "website_url": null,
-          "confidence": "high",
-          "sources_checked": [
-            "Google",
-            "Pages Jaunes",
-            "LinkedIn",
-            "Google Maps",
-            "allbiz.ch",
-            "firmen.ch",
-            "local.ch"
-          ],
-          "verdict": "Aucune présence en ligne confirmée pour l'Auberge de Sapinhaut à Saxon."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "qguh6jwe95dmqjlo25q",
@@ -3574,6 +3550,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782226200497
+    "lastSaved": 1782226223487
   }
 }
