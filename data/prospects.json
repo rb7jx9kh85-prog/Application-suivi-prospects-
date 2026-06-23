@@ -3026,6 +3026,19 @@
     ],
     "todos": [
       {
+        "id": "0u4n2x5qjg6mqqrvagp",
+        "text": "trouver le nim perso du gérant, il s'appelle gérald",
+        "status": "todo",
+        "priority": "high",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": "xkrrd3gcuymqjlo25q",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782226880953,
+        "doneAt": null
+      },
+      {
         "id": "5yp6bagxsyrmqqrfpjx",
         "text": "call à 7h45 le délice a leytron",
         "status": "todo",
@@ -3555,6 +3568,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782226868121
+    "lastSaved": 1782226881366
   }
 }
