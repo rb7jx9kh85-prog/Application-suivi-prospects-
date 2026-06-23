@@ -2041,7 +2041,7 @@
         "phone": "079 305 98 44",
         "email": "—",
         "web": "",
-        "status": "to_call",
+        "status": "voicemail",
         "contact": "",
         "notes": "ca s'appelle le salon charline\nrecall\n",
         "at": 1781793202670,
@@ -2073,7 +2073,8 @@
         },
         "enrichedAt": 1782056287318,
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "lastContact": 1782227485993
       },
       {
         "id": "2u9777wffajmqjlo25q",
@@ -3564,6 +3565,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782227469523
+    "lastSaved": 1782227486397
   }
 }
