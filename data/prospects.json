@@ -975,7 +975,9 @@
             "local.ch"
           ],
           "verdict": "L'établissement Boulangerie Gaillard à Sion a définitivement fermé en janvier 2026."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "x1ap3lexkvrmqjlo25q",
@@ -2041,7 +2043,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "",
+        "notes": "ca s'appelle le salon charline\n",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -2069,7 +2071,9 @@
           "linkedin": null,
           "description": "Passion Coiffure est un salon de coiffure à Salvan, apprécié pour ses services de coiffure professionnels."
         },
-        "enrichedAt": 1782056287318
+        "enrichedAt": 1782056287318,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "2u9777wffajmqjlo25q",
@@ -3560,6 +3564,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782227393034
+    "lastSaved": 1782227467523
   }
 }
