@@ -3079,7 +3079,7 @@
       {
         "id": "5phzgbgham3mqpdmzwo",
         "text": "trouver le numéro perso",
-        "status": "todo",
+        "status": "done",
         "priority": "medium",
         "category": "agency",
         "dueDate": null,
@@ -3087,7 +3087,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1782142513224,
-        "doneAt": null
+        "doneAt": 1782199220443
       },
       {
         "id": "q0rfteblf8mqpd92js",
@@ -3554,6 +3554,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782199216111
+    "lastSaved": 1782199220844
   }
 }
