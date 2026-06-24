@@ -839,7 +839,9 @@
           "linkedin": null,
           "description": "ADS Coiffure est un salon situé à Sion offrant une variété de services de coiffure."
         },
-        "enrichedAt": 1782056287318
+        "enrichedAt": 1782056287318,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "an4thz4y",
@@ -849,8 +851,11 @@
         "city": "Sion",
         "type": "commercial.health_and_beauty",
         "notes": "19 Rue de la Dent-Blanche, 1950, Sion",
-        "status": "to_call",
-        "at": 1782037904999
+        "status": "voicemail",
+        "at": 1782037904999,
+        "interactions": [],
+        "tags": [],
+        "lastContact": 1782306413597
       },
       {
         "id": "ppo811tj",
@@ -3724,6 +3729,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782306317323
+    "lastSaved": 1782306414014
   }
 }
