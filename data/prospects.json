@@ -747,8 +747,9 @@
         "city": "Sion",
         "type": "commercial.health_and_beauty",
         "notes": "7 Rue du Chanoine-Berchtold, 1950, Sion",
-        "status": "to_call",
-        "at": 1782037904999
+        "status": "voicemail",
+        "at": 1782037904999,
+        "lastContact": 1782306152064
       },
       {
         "id": "zs170f3o",
@@ -3720,6 +3721,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782306127082
+    "lastSaved": 1782306152476
   }
 }
