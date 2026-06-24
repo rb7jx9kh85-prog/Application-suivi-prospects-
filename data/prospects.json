@@ -128,7 +128,7 @@
         "web": "",
         "status": "recall",
         "contact": "",
-        "notes": "recall demain matin à 7h30-8h",
+        "notes": "recall demain matin à 7h30-8h\nAller le voir, il a dit qu’il n’était pas intéressé",
         "value": 0,
         "nextFollowUp": "",
         "lastContact": null,
@@ -3691,6 +3691,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782239176637
+    "lastSaved": 1782280174808
   }
 }
