@@ -865,10 +865,11 @@
         "city": "Sion",
         "type": "commercial.health_and_beauty",
         "notes": "1 Rue des Vergers, 1950, Sion\nrepondeur -- elle s'appelle Noémie la patrone \n--> elle va nous recall \n",
-        "status": "to_call",
+        "status": "voicemail",
         "at": 1782037904999,
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "lastContact": 1782306509109
       },
       {
         "id": "86tgy1ua",
@@ -3731,6 +3732,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782306502430
+    "lastSaved": 1782306509511
   }
 }
