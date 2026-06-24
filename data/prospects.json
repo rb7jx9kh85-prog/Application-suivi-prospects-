@@ -39,7 +39,7 @@
         "phone": "",
         "city": "Sion",
         "type": "commercial.florist",
-        "notes": "Avenue du Midi, 1950, Sion\n",
+        "notes": "Avenue du Midi, 1950, Sion\nbouton-d'or",
         "status": "voicemail",
         "at": 1782227715602,
         "interactions": [],
@@ -3717,6 +3717,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782305742246
+    "lastSaved": 1782305764439
   }
 }
