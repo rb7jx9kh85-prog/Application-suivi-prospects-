@@ -3152,7 +3152,7 @@
       {
         "id": "0ybx5ekxzqcmqqz6tka",
         "text": "Préparer le call de demain avec Noémie café la coopérative",
-        "status": "todo",
+        "status": "done",
         "priority": "high",
         "category": "call",
         "dueDate": null,
@@ -3160,7 +3160,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1782239176234,
-        "doneAt": null
+        "doneAt": 1782307208360
       },
       {
         "id": "0u4n2x5qjg6mqqrvagp",
@@ -3705,6 +3705,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782307039203
+    "lastSaved": 1782307208770
   }
 }
