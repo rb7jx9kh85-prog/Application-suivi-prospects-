@@ -1093,7 +1093,7 @@
         "phone": "024 471 12 80",
         "email": "—",
         "web": "",
-        "status": "to_call",
+        "status": "voicemail",
         "contact": "",
         "notes": "rappeler quand il a plus de temps\n",
         "at": 1781793202670,
@@ -1114,7 +1114,8 @@
           "verdict": "Aucun site web officiel trouvé pour Au Péché Mignon à Monthey."
         },
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "lastContact": 1782307030764
       },
       {
         "id": "x1uh9xzc6crmqjlo25q",
@@ -3704,6 +3705,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782307026226
+    "lastSaved": 1782307031167
   }
 }
