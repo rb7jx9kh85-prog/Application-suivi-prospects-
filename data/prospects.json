@@ -900,6 +900,36 @@
         }
       },
       {
+        "id": "8q3rpa7ajwimqjlo25p",
+        "name": "Cafe de la Poste (Varen)",
+        "city": "Varen",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": false,
+          "website_url": null,
+          "confidence": "high",
+          "sources_checked": [
+            "Google Maps",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google",
+            "Varen.ch",
+            "AllBiz.ch",
+            "Sluurpy.com",
+            "search.ch",
+            "Moneyhouse.ch"
+          ],
+          "verdict": "Aucune présence en ligne confirmée pour le Café de la Poste à Varen."
+        }
+      },
+      {
         "id": "2f7uo7ysihfmqjlo25p",
         "name": "Cafe de la Poste (Nendaz)",
         "city": "Nendaz",
@@ -2774,7 +2804,7 @@
         "phone": "077 505 21 73",
         "email": "—",
         "web": "",
-        "status": "refusal",
+        "status": "to_call",
         "contact": "",
         "notes": "",
         "at": 1781793202670,
@@ -2792,8 +2822,7 @@
             "local.ch"
           ],
           "verdict": "Aucun site web trouvé pour Coiffure Isabelle à Fully."
-        },
-        "lastContact": 1782320212320
+        }
       },
       {
         "id": "tpi4gmik6hhmqjlo25q",
