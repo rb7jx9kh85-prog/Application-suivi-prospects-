@@ -2774,7 +2774,7 @@
         "phone": "077 505 21 73",
         "email": "—",
         "web": "",
-        "status": "to_call",
+        "status": "refusal",
         "contact": "",
         "notes": "",
         "at": 1781793202670,
@@ -2792,7 +2792,8 @@
             "local.ch"
           ],
           "verdict": "Aucun site web trouvé pour Coiffure Isabelle à Fully."
-        }
+        },
+        "lastContact": 1782320212320
       },
       {
         "id": "tpi4gmik6hhmqjlo25q",
@@ -5510,6 +5511,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782319846969
+    "lastSaved": 1782320212723
   }
 }
