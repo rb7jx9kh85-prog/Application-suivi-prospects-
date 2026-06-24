@@ -8,7 +8,7 @@
         "phone": "",
         "city": "Sion",
         "type": "commercial.clothing",
-        "notes": "Rue des Vergers, 1950, Sion",
+        "notes": "Rue des Vergers, 1950, Sion\ntrere",
         "status": "voicemail",
         "at": 1782227715602,
         "interactions": [],
@@ -3658,15 +3658,6 @@
     ],
     "notes": [
       {
-        "id": "km7ckpzg",
-        "title": "Sales school — jordan Belfort — advanced looping",
-        "date": "2026-06-24",
-        "source": "",
-        "body": "Notre job en tant que sales n’est pas de transformer les « non » en « oui » mais de transformer le peut-être en oui. —> par le biais de la réponse aux objection. \nNotre goal quand on a une objection qui vient dans notre call, notre job est de revenir avant dans la présentation et peser ses mots. \n—> imaginer la straight line\nQuand on commence par poser la première question au prospect, c’est le subit du vrai call c’est plus une présentation \nToutes les premières objections sont des objection écran de fumée, ca arrive à 99% du temps, il faut les contrer.\nLa raison que le prospect a des objections c’est qu’il est pas sur de la compagnie, de nous, ou du produit. \n—> si « John dit: « je dois en parler à ma femme » ➡️ « j’entends john, mais laissez moi vous poser une question: est ce que l’idée vous plaît ? » \n—> souvent: « oui ça a l’air cool »\n—> laisser l’argent en dehors de ça.\n—> essayer d’avoir la ligne de 1-10 de la certitude du prospect, on sait ce qu’on doit faire pour le Closer. \nS’il dit « oui ça semble être une bonne idée » \n—> répondre par exactement, avce différentes manières, de plus ça ressemble à du 10, plus c’est excitant. \n—> ça fait un looping, un premier. \nAprès la première objection, on sait mieux comment traiter le prospect, on sait comment lui poser les questions et on sait quoi dire après ! \nPeser les mots\n—> « oui l’idée a l’idée cool »\n—> exactement, c’est une idée phénoménale john ! \n\nReprendre ces mots et les peser ‼️\nAprès avoir contrer une objection et remis le prospect sur la straight Line, garder le même niveau d’enthousiasme et après, l’augmenter un peu. —> ça va « chauffer » l’ambiance.",
-        "createdAt": 1782304083501,
-        "updatedAt": 1782305376619
-      },
-      {
         "id": "8b6z5n4i",
         "title": "technique de vente jordan belfort -- selling anything to anyone",
         "date": "2026-06-22",
@@ -3706,7 +3697,7 @@
         "source": "https://youtu.be/KQ6c9vceu7A?si=EllDIXm99FNYuu5f",
         "body": "Pitcher le produit = être un looser \nLes gens achètent des résultats. Pas des caractéristiques produit. \n\nTous les prospects sont différentes, et pourtant il faut leur vendre la même chose. \nSi on pense que tous les prospects sont pareils, et qu’on adapte pas nos calls, c’est la chose à NE PAS FAIRE. \nIl faut savoir que pas tous les gens et prospects ne sont pas tous closables. \n\nIl faut savoir que celst une question de volume. Sinon call 5 personnes on a que de la chance si on close quelqu’un. \n\n1. Il faut prendre le contrôle de la conversation 💬 \nIl faut comprendre le prospect, et réagir en fonction. Il faut connaître ses peurs, ses désirs, sa situation actuelle etc…\n\nPas finie. Arrêter à 8´",
         "createdAt": 1781901215766,
-        "updatedAt": 1782304091324
+        "updatedAt": 1781901256153
       },
       {
         "id": "e46sr354",
@@ -3726,6 +3717,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782305377023
+    "lastSaved": 1782305467346
   }
 }
