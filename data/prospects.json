@@ -126,12 +126,12 @@
         "phone": "",
         "email": "",
         "web": "",
-        "status": "voicemail",
+        "status": "refusal",
         "contact": "",
         "notes": "recall demain matin à 7h30-8h\nAller le voir, il a dit qu’il n’était pas intéressé",
         "value": 0,
         "nextFollowUp": "",
-        "lastContact": 1782280180723,
+        "lastContact": 1782280182592,
         "at": 1782226113871
       },
       {
@@ -3691,6 +3691,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782280181124
+    "lastSaved": 1782280182993
   }
 }
