@@ -864,7 +864,7 @@
         "phone": "+41795501984",
         "city": "Sion",
         "type": "commercial.health_and_beauty",
-        "notes": "1 Rue des Vergers, 1950, Sion\nrepondeur -- elle s'appelle Noémie la patrone \n",
+        "notes": "1 Rue des Vergers, 1950, Sion\nrepondeur -- elle s'appelle Noémie la patrone \n--> elle va nous recall \n",
         "status": "to_call",
         "at": 1782037904999,
         "interactions": [],
@@ -3731,6 +3731,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782306497235
+    "lastSaved": 1782306502430
   }
 }
