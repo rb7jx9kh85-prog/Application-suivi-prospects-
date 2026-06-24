@@ -904,40 +904,6 @@
         "tags": []
       },
       {
-        "id": "viex0e2wjzmqjlo25p",
-        "name": "Restaurant Le Repos Da Giuseppe",
-        "city": "Val-d'Illiez",
-        "type": "Restaurant / Italien",
-        "phone": "024 477 14 14",
-        "email": "info@lereposchefgiuseppe.ch",
-        "web": "",
-        "status": "to_call",
-        "contact": "",
-        "notes": "call principalement \n",
-        "at": 1781793202669,
-        "_noWebsite": {
-          "has_website": false,
-          "website_url": null,
-          "confidence": "high",
-          "sources_checked": [
-            "Google",
-            "Pages Jaunes",
-            "LinkedIn",
-            "Google Maps",
-            "myswitzerland.com",
-            "sluury.com",
-            "allbiz.ch",
-            "guidle.com",
-            "local.ch",
-            "shab.lixt.ch"
-          ],
-          "verdict": "Le Repos Da Giuseppe à Val-d'Illiez a cessé ses activités en août 2023 et n'a pas de site web actif."
-        },
-        "interactions": [],
-        "tags": [],
-        "_verifyingWebsite": false
-      },
-      {
         "id": "dbudhpx6k5fmqjlo25p",
         "name": "Cafe Les Mesanges",
         "city": "Orsieres",
@@ -3735,6 +3701,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782306631809
+    "lastSaved": 1782306704459
   }
 }
