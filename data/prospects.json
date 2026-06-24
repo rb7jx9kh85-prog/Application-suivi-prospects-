@@ -772,10 +772,11 @@
         "city": "Sion",
         "type": "service.beauty",
         "notes": "13 Rue de la Dixence, 1950, Sion\nfigaros.sarl@hotmail.com --> send le mail a cette adresse\n",
-        "status": "to_call",
+        "status": "called",
         "at": 1782037904999,
         "interactions": [],
-        "tags": []
+        "tags": [],
+        "lastContact": 1782306316921
       },
       {
         "id": "3zrje3kz",
@@ -3723,6 +3724,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782306313091
+    "lastSaved": 1782306317323
   }
 }
