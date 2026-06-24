@@ -2,890 +2,6 @@
   "155ab99e52611a1a0f906d91d94ef568ee65ba3c6b0f83f0cd840ef2512d2452": {
     "prospects": [
       {
-        "id": "zu7m41cu",
-        "name": "Les griffes intemporelles",
-        "web": "https://www.facebook.com/BoutiqueLesGriffes",
-        "phone": "",
-        "city": "Sion",
-        "type": "commercial.clothing",
-        "notes": "Rue des Vergers, 1950, Sion\nfucking repondeur de merde \n",
-        "status": "voicemail",
-        "at": 1782227715602,
-        "interactions": [],
-        "tags": [],
-        "_verifyingWebsite": false,
-        "_noWebsite": {
-          "has_website": true,
-          "website_url": "https://www.facebook.com/BoutiqueLesGriffes",
-          "confidence": "high",
-          "sources_checked": [
-            "Google",
-            "Pages Jaunes",
-            "LinkedIn",
-            "Google Maps",
-            "search.ch",
-            "local.ch",
-            "ZIP.ch",
-            "swissyp.com"
-          ],
-          "verdict": "Le magasin \"Les Griffes Intemporelles\" à Sion dispose d'une page Facebook comme site web."
-        },
-        "lastContact": 1782227792691
-      },
-      {
-        "id": "h3106j9j",
-        "name": "Au Bouton d'Or",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "commercial.florist",
-        "notes": "Avenue du Midi, 1950, Sion\nbouton-d'or\nleur créer une maquette de site web améliorée \n+ leur envoyer le mail avce le lien sur vercel de la maquette \n",
-        "status": "called",
-        "at": 1782227715602,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782305839995
-      },
-      {
-        "id": "lh5uuhw8",
-        "name": "Clinique de l'habillement",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "commercial.clothing",
-        "notes": "Rue des Vergers, 1950, Sion\nlundi \n",
-        "status": "called",
-        "at": 1782227715602,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782228031668
-      },
-      {
-        "id": "6zwjm2jm",
-        "name": "Mano et moi",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "commercial.clothing",
-        "notes": "Avenue du Midi, 1950, Sion\n",
-        "status": "voicemail",
-        "at": 1782227715602,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782228148080
-      },
-      {
-        "id": "1uhlkg8n",
-        "name": "Musiq",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "commercial.hobby",
-        "notes": "Rue des Vergers, 1950, Sion\n\nsemaine prochaine recall \n",
-        "status": "called",
-        "at": 1782227715602,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782228370837
-      },
-      {
-        "id": "5d093f0d",
-        "name": "Les Choix de Peggy",
-        "web": "https://www.facebook.com/leschoixdepeggy/posts/724246378959256",
-        "phone": "",
-        "city": "Sion",
-        "type": "commercial.clothing",
-        "notes": "12 Rue des Vergers, 1950, Sion",
-        "status": "recall",
-        "at": 1782227715602,
-        "interactions": [],
-        "tags": []
-      },
-      {
-        "id": "owol7p11",
-        "name": "Pressing de la Croisée",
-        "web": "",
-        "phone": "+41 27 322 59 30",
-        "city": "Sion",
-        "type": "service.cleaning",
-        "notes": "10 Rue de la Dent-Blanche, 1950, Sion\n\nrecall lundi \n0792743944 -- la patrone",
-        "status": "recall",
-        "at": 1782227715602,
-        "interactions": [],
-        "tags": [],
-        "email": "",
-        "contact": "",
-        "value": 0,
-        "nextFollowUp": ""
-      },
-      {
-        "id": "cgkwkmtefuwmqqreukv",
-        "name": "le délice",
-        "city": "leytron",
-        "type": "",
-        "phone": "",
-        "email": "",
-        "web": "",
-        "status": "refusal",
-        "contact": "",
-        "notes": "recall demain matin à 7h30-8h\nAller le voir, il a dit qu’il n’était pas intéressé",
-        "value": 0,
-        "nextFollowUp": "",
-        "lastContact": 1782280182592,
-        "at": 1782226113871
-      },
-      {
-        "id": "ii4x1bmavpmqpbwrzb",
-        "name": "Buvette l'Entre Deux",
-        "city": "sion",
-        "type": "",
-        "phone": "+41 77 508 31 13",
-        "email": "",
-        "web": "",
-        "status": "voicemail",
-        "contact": "",
-        "notes": "pas de site web, potentiellement intéressé\ncall pendant ces horaires: Dimanche\n10:00-20:00\nLundi\n10:00-15:00\nMardi\n10:00-15:00\nMercredi\n10:00-15:00\nJeudi\n10:00-15:00\nVendredi\n10:00-15:00\nSamedi\n10:00-20:00",
-        "value": 0,
-        "nextFollowUp": "",
-        "lastContact": 1782139680529,
-        "at": 1782139610279,
-        "interactions": [],
-        "tags": []
-      },
-      {
-        "id": "sywcsiwk",
-        "name": "Cheeky Boys",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "catering.restaurant",
-        "notes": "9 Avenue de la Gare, 1950, Sion\npas de noméro de tel \naller slui montrer directement sur place \n",
-        "status": "called",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "enriched": {
-          "phone": null,
-          "phone_source": null,
-          "email": null,
-          "address": "Sion, Switzerland",
-          "decision_maker": null,
-          "decision_maker_phone": null,
-          "decision_maker_phone_source": null,
-          "linkedin": null,
-          "description": "Cheeky Boys est un établissement de restauration à Sion offrant des services de catering."
-        },
-        "enrichedAt": 1782138665604,
-        "lastContact": 1782225319287
-      },
-      {
-        "id": "nskag430",
-        "name": "Chez Aladdin",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "catering.fast_food",
-        "notes": "Rue des Creusets, 1950, Sion\nraccroché je crois essayer de recall\nle patron n'est pas la, il est la demain a 11 heures \n\n\n",
-        "status": "called",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "enriched": {
-          "phone": null,
-          "phone_source": null,
-          "email": null,
-          "address": "Sion, Switzerland",
-          "decision_maker": null,
-          "decision_maker_phone": null,
-          "decision_maker_phone_source": null,
-          "linkedin": null,
-          "description": "Chez Aladdin est un fast-food à Sion proposant une cuisine rapide et savoureuse."
-        },
-        "enrichedAt": 1782138665605,
-        "lastContact": 1782225485249
-      },
-      {
-        "id": "n9cmw3x2",
-        "name": "Au Vieux Valais",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "catering.restaurant",
-        "notes": "Rue Saint-Théodule, 1950, Sion\ncall le 23 mais appel dévié et m'a pas donner le numéro du patron \n\n\n\n",
-        "status": "called",
-        "at": 1782138345862,
-        "enriched": {
-          "phone": null,
-          "phone_source": null,
-          "email": null,
-          "address": "Sion, Switzerland",
-          "decision_maker": null,
-          "decision_maker_phone": null,
-          "decision_maker_phone_source": null,
-          "linkedin": null,
-          "description": "Au Vieux Valais est un restaurant à Sion qui met en avant la cuisine valaisanne."
-        },
-        "enrichedAt": 1782138665605,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782139743565
-      },
-      {
-        "id": "usgcmm5c",
-        "name": "Le Ticino",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "catering.restaurant",
-        "notes": "Avenue des Mayennets, 1950, Sion\nls personne qui a créer le site web a fait faillite \n0792532880\ngrace_valente@hotmail.com\n\ngrave chaude let go",
-        "status": "video_rdv",
-        "at": 1782138345862,
-        "enriched": {
-          "phone": null,
-          "phone_source": null,
-          "email": null,
-          "address": "Sion, Switzerland",
-          "decision_maker": null,
-          "decision_maker_phone": null,
-          "decision_maker_phone_source": null,
-          "linkedin": null,
-          "description": "Le Ticino est un restaurant à Sion spécialisé dans la cuisine italienne."
-        },
-        "enrichedAt": 1782138665605,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782139535442,
-        "email": "",
-        "contact": "",
-        "value": 0,
-        "nextFollowUp": ""
-      },
-      {
-        "id": "8jftbiey",
-        "name": "Au 13 Novembre",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "catering.bar",
-        "notes": "Place de la Planta, 1950, Sion\ntrouver num -- le num perso a trouver\n",
-        "status": "called",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "email": "",
-        "contact": "",
-        "value": 0,
-        "nextFollowUp": "",
-        "lastContact": 1782225817827
-      },
-      {
-        "id": "cd01zvgq",
-        "name": "Le Troquet",
-        "web": "",
-        "phone": "027 322 0960",
-        "city": "Sion",
-        "type": "catering.fast_food",
-        "notes": "Espace des Remparts, 1950, Sion\nles patrons sont la à 14 heures",
-        "status": "recall",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "email": "",
-        "contact": "",
-        "value": 0,
-        "nextFollowUp": ""
-      },
-      {
-        "id": "pyrh85pz",
-        "name": "Le Soleil",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "catering.bar",
-        "notes": "17 Espace des Remparts, 1950, Sion\nrapeller dans 15 minutes vers 17:10\n\n",
-        "status": "recall",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": []
-      },
-      {
-        "id": "tmudmfze",
-        "name": "Giorgio",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "catering.bar",
-        "notes": "Espace des Remparts, 1950, Sion\nrecall a ces horaires: mardi\t09:00–00:00\nmercredi\t09:00–00:00\njeudi\t09:00–00:00\nvendredi\t09:00–00:00\nsamedi\t10:00–00:00\ndimanche\tFermé\nSuggérer de nouveaux ho\n",
-        "status": "recall",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": []
-      },
-      {
-        "id": "g5ykzn3i",
-        "name": "Salon de Thé Clémentine",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "catering.cafe",
-        "notes": "Rue des Vergers, 1950, Sion\nrappeler le matin \n",
-        "status": "recall",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": []
-      },
-      {
-        "id": "0co9dadq",
-        "name": "M&S Tacos",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "catering.fast_food",
-        "notes": "Rue de la Dent-Blanche, 1950, Sion\nrecall",
-        "status": "voicemail",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782140392473,
-        "email": "",
-        "contact": "",
-        "value": 0,
-        "nextFollowUp": ""
-      },
-      {
-        "id": "arcxdc1g",
-        "name": "Chez Chou",
-        "web": "https://restaurantchezchou.ch/",
-        "phone": "",
-        "city": "Sion",
-        "type": "catering.restaurant",
-        "notes": "Espace des Remparts, 1950, Sion\nrecall pendant les ouvertures \n",
-        "status": "recall",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": []
-      },
-      {
-        "id": "p7tmftev",
-        "name": "Burgerlution",
-        "web": "",
-        "phone": "+41 76 612 49 71",
-        "city": "Sion",
-        "type": "catering.restaurant",
-        "notes": "35 Place du Midi, 1950, Sion\nrecall 18h30 et 21h30 tous les jours",
-        "status": "recall",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782140806060,
-        "email": "",
-        "contact": "",
-        "value": 0,
-        "nextFollowUp": ""
-      },
-      {
-        "id": "pzw1jjby",
-        "name": "Café de Paris",
-        "web": "",
-        "phone": "+41 27 322 65 70",
-        "city": "Sion",
-        "type": "catering.restaurant",
-        "notes": "12 Rue de Conthey, 1950, Sion\nrecall un jour ou ils osn touverts mais ça pourrait être garve valorisé cher \n",
-        "status": "to_call",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782140904194
-      },
-      {
-        "id": "16t3nazq",
-        "name": "Udrisard Café",
-        "web": "",
-        "phone": "+41273222544",
-        "city": "Sion",
-        "type": "catering.cafe",
-        "notes": "c'est dead, j'a fait le con",
-        "status": "refusal",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782141225607,
-        "email": "",
-        "contact": "",
-        "value": 0,
-        "nextFollowUp": ""
-      },
-      {
-        "id": "ov6vfbxm",
-        "name": "Taverne sédunoise",
-        "web": "",
-        "phone": "+41273222122",
-        "city": "Sion",
-        "type": "catering.restaurant",
-        "notes": "25 Rue du Rhône, 1950, Sion\nrecall horaires d'open \n",
-        "status": "voicemail",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782141175860
-      },
-      {
-        "id": "1t834nvp",
-        "name": "Café de la Place",
-        "web": "",
-        "phone": "+41 27 322 18 26",
-        "city": "Sion",
-        "type": "catering.restaurant",
-        "notes": "31 Place du Midi, 1950, Sion\nnuméro faux\nVrai numéro: +41 76 731 28 06",
-        "status": "recall",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": []
-      },
-      {
-        "id": "uohnajt1",
-        "name": "La Clef",
-        "web": "",
-        "phone": "+41 27 322 18 49",
-        "city": "Sion",
-        "type": "catering.bar",
-        "notes": "38 Rue du Rhône, 1950, Sion\nrapeller vers 19-20h\n",
-        "status": "recall",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": []
-      },
-      {
-        "id": "resql0wy",
-        "name": "Couleur Café",
-        "web": "",
-        "phone": "+41 27 323 48 18",
-        "city": "Sion",
-        "type": "catering.cafe",
-        "notes": "15 Avenue de la Gare, 1950, Sion\n",
-        "status": "to_call",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": []
-      },
-      {
-        "id": "auevyf8l",
-        "name": "Café Bar Cherika",
-        "web": "",
-        "phone": "+41 27 322 02 16",
-        "city": "Sion",
-        "type": "catering.cafe",
-        "notes": "6 Rue de Lausanne, 1950, Sion\n",
-        "status": "voicemail",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782141427655
-      },
-      {
-        "id": "yrdn2q4x",
-        "name": "Le Sillon",
-        "web": "",
-        "phone": "+41 79 220 78 07",
-        "city": "Sion",
-        "type": "catering.bar",
-        "notes": "17 Rue de Conthey, 1950, Sion\n",
-        "status": "to_call",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": []
-      },
-      {
-        "id": "3kbwx5q0",
-        "name": "Crêperie Sédunoise",
-        "web": "",
-        "phone": "+41 27 322 30 97",
-        "city": "Sion",
-        "type": "catering.restaurant",
-        "notes": "10 Rue de Lausanne, 1950, Sion\n",
-        "status": "voicemail",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782141885820
-      },
-      {
-        "id": "b8d06zdi",
-        "name": "Le Brésilien",
-        "web": "",
-        "phone": "+41 27 322 11 98",
-        "city": "Sion",
-        "type": "catering.bar",
-        "notes": "25 Place du Midi, 1950, Sion\nreapeller le matin ",
-        "status": "recall",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782141934401
-      },
-      {
-        "id": "zeydskdw",
-        "name": "Le Comptoir",
-        "web": "",
-        "phone": "+41 27 321 21 63",
-        "city": "Sion",
-        "type": "catering.bar",
-        "notes": "21 Rue de Lausanne, 1950, Sion\ndéja engagé le site web -- ils ne sont pas fermés \npartante pour une visio -- ils veulent faire \ntres tres ok \n\n",
-        "status": "called",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782142197121
-      },
-      {
-        "id": "rboxc76j",
-        "name": "Le Boulevard",
-        "web": "",
-        "phone": "+41 27 321 12 00",
-        "city": "Sion",
-        "type": "catering.pub",
-        "notes": "23 Avenue du Midi, 1950, Sion\nappeler demain matin recall un matin mais ont l'air plutot ok",
-        "status": "called",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782142334128,
-        "email": "",
-        "contact": "",
-        "value": 0,
-        "nextFollowUp": ""
-      },
-      {
-        "id": "itgdosw8",
-        "name": "Toto Chez Franco",
-        "web": "",
-        "phone": "+41 27 322 94 33",
-        "city": "Sion",
-        "type": "catering.restaurant",
-        "notes": "10 Espace des Remparts, 1950, Sion\n\ndemain matin recall \nRecall tous les matins si possible, pas le PM",
-        "status": "recall",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782142526098,
-        "email": "",
-        "contact": "",
-        "value": 0,
-        "nextFollowUp": ""
-      },
-      {
-        "id": "3wijxqyi",
-        "name": "Nouvelle époque",
-        "web": "",
-        "phone": "+41273227977",
-        "city": "Sion",
-        "type": "catering.cafe",
-        "notes": "28 Avenue de la Gare, 1950, Sion\nil va arrêter / franchement pas intéressé mais je pourrais passer au café un jour pour leru montrer \n",
-        "status": "called",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782142900517
-      },
-      {
-        "id": "vteohnwq",
-        "name": "Le Sultan",
-        "web": "",
-        "phone": "+41 27 321 31 73",
-        "city": "Sion",
-        "type": "catering.fast_food",
-        "notes": "6 Rue des Vergers, 1950, Sion\n\nadresse mail: il m'envoie par\n whatsapp\n\n",
-        "status": "called",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782142898055
-      },
-      {
-        "id": "1rkbh3i7",
-        "name": "Le Midi",
-        "web": "https://www.facebook.com/people/Le-Midi/61571403717680/",
-        "phone": "+41 27 558 81 02",
-        "city": "Sion",
-        "type": "catering.restaurant",
-        "notes": "30 Place du Midi, 1950, Sion\nRecall pendant les horaires d’open",
-        "status": "recall",
-        "at": 1782138345862,
-        "interactions": [],
-        "tags": [],
-        "email": "",
-        "contact": "",
-        "value": 0,
-        "nextFollowUp": ""
-      },
-      {
-        "id": "h7ju0yj3",
-        "name": "Nouvel Hair",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "Rue de l'Église, 1950, Sion\nrecall demain \n",
-        "status": "voicemail",
-        "at": 1782037904999,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782143128410
-      },
-      {
-        "id": "jdbrb2t6",
-        "name": "Initial hair essentials",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "Rue du Pré-Fleuri, 1950, Sion\nappeler a fribourg  / \nnum perso pas ne num peros mais appeler quand même a fribourg, trouver le nim perso, du gérant + lui propsoer une offre ultra high low ticket",
-        "status": "called",
-        "at": 1782037904999,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782143373816
-      },
-      {
-        "id": "1pxbx1q0",
-        "name": "La Sphère",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "Rue de Conthey, 1950, Sion\nchaud ed'échanger par message\n\n",
-        "status": "voicemail",
-        "at": 1782037904999,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782225983815
-      },
-      {
-        "id": "hqw2xgli",
-        "name": "JDS",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "Avenue des Mayennets, 1950, Sion\nrecall \n",
-        "status": "voicemail",
-        "at": 1782037904999,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782143587760
-      },
-      {
-        "id": "fwbwgch3",
-        "name": "Coiffure Création",
-        "web": "",
-        "phone": "",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "Rue des Vergers, 1950, Sion\n",
-        "status": "voicemail",
-        "at": 1782037904999,
-        "interactions": [],
-        "tags": [],
-        "enriched": {
-          "phone": null,
-          "phone_source": null,
-          "email": null,
-          "address": "Sion, Valais",
-          "decision_maker": null,
-          "decision_maker_phone": null,
-          "decision_maker_phone_source": null,
-          "linkedin": null,
-          "description": "Coiffure Création est un salon de coiffure situé à Sion offrant divers services de beauté."
-        },
-        "enrichedAt": 1782056287318,
-        "lastContact": 1782143655498
-      },
-      {
-        "id": "61ey85m9",
-        "name": "Tribus urbaines",
-        "web": "https://tribusurbaines.com/",
-        "phone": "",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "Rue des Odyssées, 1950, Sion\n",
-        "status": "to_call",
-        "at": 1782037904999,
-        "interactions": [],
-        "tags": []
-      },
-      {
-        "id": "bx7jcce4",
-        "name": "Art Line Coiffure",
-        "web": "https://www.art-line-coiffure.ch",
-        "phone": "",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "2a Rue des Creusets, 1950, Sion\ndéja un site web mais c'est une catastrophe, les call qunad m'eme en leur proposant de comparer celui qu'ils ont mnt et la maquette faite par alpiniawebcraft\ndemain de 8h a 15h / ",
-        "status": "called",
-        "at": 1782037904999,
-        "enriched": {
-          "phone": null,
-          "phone_source": null,
-          "email": null,
-          "address": "Sion, Valais",
-          "decision_maker": null,
-          "decision_maker_phone": null,
-          "decision_maker_phone_source": null,
-          "linkedin": null,
-          "description": "Art Line Coiffure est un salon de coiffure à Sion spécialisé dans les services de coiffure créative."
-        },
-        "enrichedAt": 1782056287318,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782306126681
-      },
-      {
-        "id": "1gcly2ka",
-        "name": "Atelier du regard",
-        "web": "https://atelierduregard.ch/contact/contact-sion/",
-        "phone": "",
-        "city": "Sion",
-        "type": "commercial.health_and_beauty",
-        "notes": "7 Rue du Chanoine-Berchtold, 1950, Sion",
-        "status": "voicemail",
-        "at": 1782037904999,
-        "lastContact": 1782306152064
-      },
-      {
-        "id": "zs170f3o",
-        "name": "La Grande Daphné",
-        "web": "https://lagrandedaphne.ch",
-        "phone": "",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "5 Rue Supersaxo, 1950, Sion\nrecall en heures d'ouvertures\n",
-        "status": "to_call",
-        "at": 1782037904999,
-        "interactions": [],
-        "tags": []
-      },
-      {
-        "id": "u29ujjvs",
-        "name": "Figaro's",
-        "web": "",
-        "phone": "+41 27 322 59 59",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "13 Rue de la Dixence, 1950, Sion\nfigaros.sarl@hotmail.com --> send le mail a cette adresse\n",
-        "status": "called",
-        "at": 1782037904999,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782306316921
-      },
-      {
-        "id": "3zrje3kz",
-        "name": "La Touffe",
-        "web": "",
-        "phone": "+41787583523",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "11 Rue du Rhône, 1950, Sion\n",
-        "status": "refusal",
-        "at": 1782037904999,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782229132154
-      },
-      {
-        "id": "h8t5z37c",
-        "name": "Actuel Coiffure",
-        "web": "",
-        "phone": "+41 79 246 16 06",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "8 Rue de Lausanne, 1950, Sion",
-        "status": "voicemail",
-        "at": 1782037904999,
-        "enriched": {
-          "phone": null,
-          "phone_source": null,
-          "email": null,
-          "address": "Sion, Valais",
-          "decision_maker": null,
-          "decision_maker_phone": null,
-          "decision_maker_phone_source": null,
-          "linkedin": null,
-          "description": "Actuel Coiffure est un salon de coiffure situé à Sion, proposant des coupes modernes et des soins capillaires."
-        },
-        "enrichedAt": 1782056287318,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782229032543
-      },
-      {
-        "id": "48t52nfp",
-        "name": "ADS Coiffure",
-        "web": "",
-        "phone": "+41 27 322 33 33",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "23 Rue de la Porte-Neuve, 1950, Sion",
-        "status": "to_call",
-        "at": 1782037904999,
-        "enriched": {
-          "phone": null,
-          "phone_source": null,
-          "email": null,
-          "address": "Sion, Valais",
-          "decision_maker": null,
-          "decision_maker_phone": null,
-          "decision_maker_phone_source": null,
-          "linkedin": null,
-          "description": "ADS Coiffure est un salon situé à Sion offrant une variété de services de coiffure."
-        },
-        "enrichedAt": 1782056287318,
-        "interactions": [],
-        "tags": []
-      },
-      {
-        "id": "an4thz4y",
-        "name": "Onglerie Opale",
-        "web": "",
-        "phone": "+41 79 373 54 24",
-        "city": "Sion",
-        "type": "commercial.health_and_beauty",
-        "notes": "19 Rue de la Dent-Blanche, 1950, Sion",
-        "status": "voicemail",
-        "at": 1782037904999,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782306413597
-      },
-      {
-        "id": "ppo811tj",
-        "name": "Glam' Color",
-        "web": "",
-        "phone": "+41795501984",
-        "city": "Sion",
-        "type": "commercial.health_and_beauty",
-        "notes": "1 Rue des Vergers, 1950, Sion\nrepondeur -- elle s'appelle Noémie la patrone \n--> elle va nous recall \n",
-        "status": "voicemail",
-        "at": 1782037904999,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782306509109
-      },
-      {
-        "id": "86tgy1ua",
-        "name": "Le temps d'un barbier",
-        "web": "https://le-temps-d-un-barbier.agenda.ch",
-        "phone": "+41 27 322 18 24",
-        "city": "Sion",
-        "type": "service.beauty",
-        "notes": "24 Avenue de la Gare, 1950, Sion",
-        "status": "refusal",
-        "at": 1782037904999,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782306631407
-      },
-      {
         "id": "k4ktrxaq7rkmqjpxwp4",
         "name": "le panda",
         "city": "leytron",
@@ -899,9 +15,785 @@
         "value": 600,
         "nextFollowUp": "",
         "lastContact": 1781819965019,
-        "at": 1781800380616,
+        "at": 1781800380616
+      },
+      {
+        "id": "apus4nw9vw8mqjn6t2o",
+        "name": "café la cooéérative",
+        "city": "Aproz",
+        "type": "restaurant, café",
+        "phone": "079 579 92 81",
+        "email": "noémie-délèze@hotmail.com",
+        "web": "pas de site",
+        "status": "video_rdv",
+        "contact": "Noémie",
+        "notes": "enthousiaste: offre a proposer pour commencer: la junior à 600, mias essayer d'aller viser sur du 800 si possible, on va commencer par ça.",
+        "value": 600,
+        "nextFollowUp": "2026-06-23",
+        "lastContact": 1781795766800,
+        "at": 1781795756976,
         "interactions": [],
         "tags": []
+      },
+      {
+        "id": "yl44l8uvpj9mqjlo25p",
+        "name": "Cafe de la Place",
+        "city": "Sion",
+        "type": "Cafe / Restaurant",
+        "phone": "076 731 28 06",
+        "email": "carmel2753@gmail.com",
+        "web": "https://www.cafedelaplace-sion.ch",
+        "status": "voicemail",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "enriched": {
+          "phone": null,
+          "website": null,
+          "decision_maker_phone": null
+        },
+        "enrichedAt": 1781794288810,
+        "_enriching": false,
+        "_enrich": {
+          "full_address": "Pl. du Midi 30, 1950 Sion, Suisse",
+          "phone": "027 322 18 26",
+          "email": "null",
+          "opening_hours": "Lundi–Samedi : 08:00–00:00\nDimanche : 09:00–19:00",
+          "description": "Le Café de la Place est un restaurant renommé depuis plus de 25 ans, situé sur la principale \"zone de rencontre\" de Sion. Avec sa grande terrasse pouvant accueillir jusqu'à 100 personnes, les clients peuvent profiter d'un apéritif et déguster des plats traditionnels tels que la fondue au fromage, la fondue chinoise et la fondue Bacchus, qui sont les spécialités de notre établissement.",
+          "google_rating": "4,0/5",
+          "employees_approx": "null",
+          "key_decision_maker": "null",
+          "decision_maker_phone": "null",
+          "linkedin": "null"
+        },
+        "interactions": [],
+        "tags": [],
+        "_verifyingWebsite": false,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.cafedelaplace-sion.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Allbiz.ch",
+            "Local.ch",
+            "RestaurantGuru.com"
+          ],
+          "verdict": "Le Café de la Place à Sion dispose d'un site web officiel."
+        },
+        "value": 0,
+        "nextFollowUp": "",
+        "lastContact": 1781798748040
+      },
+      {
+        "id": "ct7yr2mqkznmqjlo25p",
+        "name": "Le Midi",
+        "city": "Sion",
+        "type": "Restaurant",
+        "phone": "027 558 81 02",
+        "email": "—",
+        "web": "https://www.facebook.com/people/Le-Midi/61571403717680",
+        "status": "called",
+        "contact": "",
+        "notes": "envoyer sur insta -- rappeler, la patronne n'est pas la",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.facebook.com/people/Le-Midi/61571403717680",
+          "confidence": "high",
+          "sources_checked": [
+            "Sion Tourisme",
+            "Abyssinia Restaurant",
+            "Eisenbahn Zell",
+            "TheFork",
+            "SwipeIn Restaurant"
+          ],
+          "verdict": "Le Midi à Sion dispose d'une page Facebook comme site web."
+        },
+        "value": 0,
+        "nextFollowUp": "",
+        "lastContact": 1781799104209
+      },
+      {
+        "id": "xfylregk05qmqjlo25p",
+        "name": "Cafe Restaurant le trait d'union",
+        "city": "Sion",
+        "type": "Cafe / Restaurant",
+        "phone": "027 346 53 64",
+        "email": "letraitdunion@orif.ch",
+        "web": "https://www.orif.ch/fr/nos-restaurants/le-trait-dunion",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.orif.ch/fr/nos-restaurants/le-trait-dunion",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Orif Sion",
+            "Local.ch",
+            "Sion Tourisme"
+          ],
+          "verdict": "Le Trait d'Union à Sion dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "h5mmp9v4o8kmqjlo25p",
+        "name": "Le Bourg-Ville",
+        "city": "Martigny",
+        "type": "Restaurant",
+        "phone": "027 722 16 00",
+        "email": "restaurantbourgville@gmail.com",
+        "web": "https://www.bourg-ville.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.bourg-ville.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "site officiel du restaurant",
+            "Allbiz.ch",
+            "Martigny Tourisme"
+          ],
+          "verdict": "Le restaurant Le Bourg-Ville à Martigny dispose d'un site web officiel."
+        },
+        "interactions": [],
+        "tags": []
+      },
+      {
+        "id": "gif3aall8pmqjlo25p",
+        "name": "Restaurant Les Touristes",
+        "city": "Martigny",
+        "type": "Restaurant",
+        "phone": "027 552 01 50",
+        "email": "info@touristes-martigny.ch",
+        "web": "https://www.touristes-martigny.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.touristes-martigny.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Abyssinia Restaurant",
+            "Allbiz.ch",
+            "Suisse Terroir",
+            "Eisenbahn Zell",
+            "MySwitzerland.com"
+          ],
+          "verdict": "Le Restaurant Les Touristes à Martigny dispose d'un site web officiel."
+        },
+        "interactions": [],
+        "tags": []
+      },
+      {
+        "id": "fgpj9swf7bcmqjlo25p",
+        "name": "Cafe le National",
+        "city": "Martigny",
+        "type": "Cafe / Restaurant",
+        "phone": "027 722 53 90",
+        "email": "info@cafenational.ch",
+        "web": "https://cafenational.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://cafenational.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "allbiz.ch",
+            "search.ch",
+            "passeport-gourmand.ch",
+            "swissyp.com",
+            "martigny.com"
+          ],
+          "verdict": "Le Café Le National à Martigny dispose d'un site web officiel."
+        },
+        "interactions": [],
+        "tags": []
+      },
+      {
+        "id": "0d7nxmeczghgmqjlo25p",
+        "name": "Drapeau Suisse",
+        "city": "Martigny-Croix",
+        "type": "Restaurant",
+        "phone": "027 722 00 73",
+        "email": "info@drapeausuisse.ch",
+        "web": "http://www.drapeausuisse.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "http://www.drapeausuisse.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "allbiz.ch",
+            "local.ch",
+            "myswitzerland.com"
+          ],
+          "verdict": "Le restaurant Le Drapeau Suisse à Martigny-Croix dispose d'un site web officiel."
+        },
+        "interactions": [],
+        "tags": []
+      },
+      {
+        "id": "3kz30sj81qjmqjlo25p",
+        "name": "Steak House chez Steve et Arnaud",
+        "city": "Martigny",
+        "type": "Restaurant / Steakhouse",
+        "phone": "027 722 25 65",
+        "email": "steakhousemartigny@gmail.com",
+        "web": "https://www.steakhouse-martigny.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.steakhouse-martigny.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "site officiel du restaurant",
+            "search.ch",
+            "Tripadvisor",
+            "Valais.ch"
+          ],
+          "verdict": "Le restaurant dispose d'un site web officiel."
+        },
+        "interactions": [],
+        "tags": []
+      },
+      {
+        "id": "h7vmdlr56gamqjlo25p",
+        "name": "Le Bistrot d'Italie",
+        "city": "Martigny",
+        "type": "Restaurant / Italien",
+        "phone": "027 722 00 53",
+        "email": "info@lebistrotditalie.ch",
+        "web": "https://www.lebistrotditalie.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.lebistrotditalie.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Abyssinia Restaurant",
+            "AllBiz",
+            "Suisse Terroir",
+            "Local.ch",
+            "Moneyhouse",
+            "TripAdvisor",
+            "Swissyp",
+            "MyMenuWeb",
+            "Search.ch"
+          ],
+          "verdict": "Le Bistrot d'Italie à Martigny possède un site web officiel."
+        },
+        "interactions": [],
+        "tags": []
+      },
+      {
+        "id": "fo6xhthipxfmqjlo25p",
+        "name": "Cafe Restaurant Damas",
+        "city": "Saxon",
+        "type": "Cafe / Restaurant",
+        "phone": "027 303 23 23",
+        "email": "—",
+        "web": "https://cafe-restaurant-mezze-damas.digitalone.site",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://cafe-restaurant-mezze-damas.digitalone.site",
+          "confidence": "high",
+          "sources_checked": [
+            "local.ch",
+            "search.ch",
+            "corestaurant.ch",
+            "restaurantguru.it"
+          ],
+          "verdict": "Le Café Restaurant Damas à Saxon dispose d'un site web officiel."
+        },
+        "interactions": [],
+        "tags": []
+      },
+      {
+        "id": "46oz2fmv2gymqjlo25p",
+        "name": "O Fondue Caquelon Sarl",
+        "city": "Riddes",
+        "type": "Cafe / Restaurant",
+        "phone": "027 306 42 42",
+        "email": "info@ofonduecaquelon.ch",
+        "web": "https://www.ofonduecaquelon.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.ofonduecaquelon.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "search.ch",
+            "local.ch",
+            "valais.ch",
+            "verbier.ch"
+          ],
+          "verdict": "L'établissement Ô Fondue Caquelon Sàrl à Riddes dispose d'un site web officiel."
+        },
+        "interactions": [],
+        "tags": []
+      },
+      {
+        "id": "uzqxkxqe79mqjlo25p",
+        "name": "Pizzeria St-Laurent",
+        "city": "Riddes",
+        "type": "Cafe / Restaurant / Pizzeria",
+        "phone": "027 306 66 44",
+        "email": "—",
+        "web": "https://st-laurent-riddes.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://st-laurent-riddes.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "site officiel",
+            "local.ch",
+            "allbiz.ch",
+            "search.ch"
+          ],
+          "verdict": "Le restaurant Pizzeria St-Laurent à Riddes dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "3p8un2cnzx3mqjlo25p",
+        "name": "L'Oenotheque de Leytron",
+        "city": "Leytron",
+        "type": "Restaurant / Bar a vin",
+        "phone": "027 307 13 30",
+        "email": "info@oeno.ch",
+        "web": "https://www.cvdp.ch",
+        "status": "called",
+        "contact": "",
+        "notes": "appeler et contacter fils du sierre anna claret",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.cvdp.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "My Farm",
+            "Suisse Tourisme",
+            "Allbiz",
+            "Valais.ch"
+          ],
+          "verdict": "L'Oenothèque de Leytron possède un site web à l'adresse https://www.cvdp.ch."
+        },
+        "interactions": [],
+        "tags": [],
+        "value": 0,
+        "nextFollowUp": "",
+        "lastContact": 1781799086462
+      },
+      {
+        "id": "ub34zr3b91amqjlo25p",
+        "name": "Cafe des Alpes",
+        "city": "Ardon",
+        "type": "Cafe / Restaurant",
+        "phone": "027 306 11 05",
+        "email": "lesalpesardon@netplus.ch",
+        "web": "https://lesalpesardon.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://lesalpesardon.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Annuaire communal de la Commune d'Ardon",
+            "AllBiz.ch",
+            "search.ch",
+            "Guidle.com"
+          ],
+          "verdict": "Le Café des Alpes à Ardon dispose d'un site web officiel."
+        },
+        "interactions": [],
+        "tags": []
+      },
+      {
+        "id": "ngeehk3o54mqjlo25p",
+        "name": "La Cambuse",
+        "city": "Vetroz",
+        "type": "Cafe / Restaurant",
+        "phone": "027 346 13 21",
+        "email": "cambuse@hotmail.com",
+        "web": "https://cambuse.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://cambuse.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Tripadvisor",
+            "Menuweb",
+            "LaCarte.menu",
+            "R3STO",
+            "Abyssinia Restaurant",
+            "search.ch"
+          ],
+          "verdict": "Le restaurant La Cambuse à Vétroz dispose d'un site web officiel."
+        },
+        "interactions": [],
+        "tags": []
+      },
+      {
+        "id": "sconr8fjzymqjlo25p",
+        "name": "Kidam Sarl",
+        "city": "Vetroz",
+        "type": "Cafe / Restaurant",
+        "phone": "027 346 20 20",
+        "email": "info@lekidam.ch",
+        "web": "https://lekidam.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://lekidam.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "local.ch",
+            "guidle.com",
+            "search.ch"
+          ],
+          "verdict": "Le restaurant Kidam Sàrl à Vétroz dispose d'un site web officiel."
+        },
+        "interactions": [],
+        "tags": []
+      },
+      {
+        "id": "weawklqrjmqjlo25p",
+        "name": "Les Fougeres",
+        "city": "Conthey",
+        "type": "Cafe / Restaurant",
+        "phone": "027 346 05 40",
+        "email": "lesfougeres@netplus.ch",
+        "web": "https://www.restaurant-les-fougeres.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "interactions": [],
+        "tags": [],
+        "_verifyingWebsite": false,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.restaurant-les-fougeres.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "site officiel de la commune de Conthey",
+            "Abyssinia Restaurant",
+            "Sluurpy",
+            "R3STO",
+            "Allbiz",
+            "Tripadvisor",
+            "Swissyp",
+            "search.ch"
+          ],
+          "verdict": "Le restaurant Les Fougères à Conthey dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "4z2lwv1id73mqjlo25p",
+        "name": "Le Cervin Grill Conthey",
+        "city": "Conthey",
+        "type": "Cafe / Restaurant / Grill",
+        "phone": "027 345 50 82",
+        "email": "—",
+        "web": "https://www.lecervin-conthey.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.lecervin-conthey.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Allbiz",
+            "Local.ch",
+            "BestResto",
+            "Passeport Gourmand"
+          ],
+          "verdict": "Le Cervin Grill Conthey dispose d'un site web officiel."
+        },
+        "interactions": [],
+        "tags": []
+      },
+      {
+        "id": "1n5h6h2twf0jmqjlo25p",
+        "name": "Chalet-Binii",
+        "city": "Saviese",
+        "type": "Cafe / Restaurant",
+        "phone": "027 395 12 17",
+        "email": "info@chalet-binii.ch",
+        "web": "http://www.chalet-binii.ch",
+        "status": "refusal",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "http://www.chalet-binii.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "allbiz.ch",
+            "local.ch",
+            "saviese-tourisme.ch"
+          ],
+          "verdict": "Le Chalet Binii à Savièse dispose d'un site web officiel."
+        },
+        "interactions": [],
+        "tags": [],
+        "value": 0,
+        "nextFollowUp": "",
+        "lastContact": 1781799303763
+      },
+      {
+        "id": "ycivkakbr3mqjlo25p",
+        "name": "La Taverne Cafe",
+        "city": "Monthey",
+        "type": "Cafe / Restaurant",
+        "phone": "024 471 54 66",
+        "email": "gluck.steve@yahoo.fr",
+        "web": "https://tea-room-la-taverne.digitalone.site",
+        "status": "refusal",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://tea-room-la-taverne.digitalone.site",
+          "confidence": "high",
+          "sources_checked": [
+            "local.ch",
+            "allbiz.ch",
+            "tripadvisor.com",
+            "lacarte.menu",
+            "coffeeland.ch",
+            "eisenbahn-zell.ch",
+            "swissyp.com",
+            "search.ch"
+          ],
+          "verdict": "Un site web a été trouvé pour La Taverne Café à Monthey."
+        },
+        "interactions": [],
+        "tags": [],
+        "lastContact": 1781799454827
+      },
+      {
+        "id": "viex0e2wjzmqjlo25p",
+        "name": "Restaurant Le Repos Da Giuseppe",
+        "city": "Val-d'Illiez",
+        "type": "Restaurant / Italien",
+        "phone": "024 477 14 14",
+        "email": "info@lereposchefgiuseppe.ch",
+        "web": "",
+        "status": "to_call",
+        "contact": "",
+        "notes": "call principalement \n",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": false,
+          "website_url": null,
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "myswitzerland.com",
+            "sluury.com",
+            "allbiz.ch",
+            "guidle.com",
+            "local.ch",
+            "shab.lixt.ch"
+          ],
+          "verdict": "Le Repos Da Giuseppe à Val-d'Illiez a cessé ses activités en août 2023 et n'a pas de site web actif."
+        },
+        "interactions": [],
+        "tags": [],
+        "_verifyingWebsite": false
+      },
+      {
+        "id": "9flkcbd7mbcmqjlo25p",
+        "name": "Le Gueullhi",
+        "city": "Champery",
+        "type": "Restaurant / Specialites suisses",
+        "phone": "024 479 35 55",
+        "email": "legueullhi@bluewin.ch",
+        "web": "https://www.legueullhi.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.legueullhi.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "site officiel du restaurant",
+            "Tripadvisor",
+            "Allbiz",
+            "Local.ch",
+            "Eisenbahn Zell",
+            "Search.ch",
+            "Petit Futé",
+            "Region Dents du Midi"
+          ],
+          "verdict": "Le restaurant Le Gueullhi à Champéry dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "udhsiaba44mqjlo25p",
+        "name": "Cafe du Centre",
+        "city": "Champery",
+        "type": "Cafe / Restaurant",
+        "phone": "024 565 18 74",
+        "email": "info@lecentre-champery.ch",
+        "web": "https://www.cafelecentre.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.cafelecentre.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Suisse Tourisme",
+            "Allbiz",
+            "Trip.com",
+            "Suisse Gourmet",
+            "LaCarte.menu",
+            "Carta.menu"
+          ],
+          "verdict": "Le Café du Centre à Chamoson dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "sf6tgycox8dmqjlo25p",
+        "name": "Hotel Restaurant le Communal",
+        "city": "Val-d'Illiez",
+        "type": "Restaurant / Hotel",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.hotelcommunal.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.hotelcommunal.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "allbiz.ch",
+            "local.ch",
+            "falstaff.com",
+            "swissyp.com",
+            "search.ch"
+          ],
+          "verdict": "L'Hôtel Restaurant le Communal à Val-d'Illiez dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "jlkcu5uqtimqjlo25p",
+        "name": "Laiterie d'Orsieres",
+        "city": "Orsieres",
+        "type": "Restaurant / Fromagerie / Fondue",
+        "phone": "—",
+        "email": "—",
+        "web": "https://laiterie-orsieres.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://laiterie-orsieres.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "local.ch",
+            "valais.ch",
+            "laiterie-orsieres.ch"
+          ],
+          "verdict": "Le site web de la Laiterie d'Orsières a été trouvé."
+        }
       },
       {
         "id": "dbudhpx6k5fmqjlo25p",
@@ -928,9 +820,114 @@
             "swissyp.com"
           ],
           "verdict": "Aucun site web officiel trouvé pour le Café Les Mésanges à Orsières."
-        },
-        "interactions": [],
-        "tags": []
+        }
+      },
+      {
+        "id": "7mlhgm2iua5mqjlo25p",
+        "name": "Cafe Restaurant Quai de l'Ours",
+        "city": "Orsieres",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.terminus-orsieres.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.terminus-orsieres.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "TheFork",
+            "search.ch",
+            "Hinto",
+            "local.ch",
+            "myswitzerland.com"
+          ],
+          "verdict": "Le Café-Restaurant Quai de l'Ours à Orsières dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "ls6rtj8c1xmqjlo25p",
+        "name": "Cafe-Restaurant du Chatelet",
+        "city": "Orsieres",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://restaurant-du-chatelet.business.site",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://restaurant-du-chatelet.business.site",
+          "confidence": "high",
+          "sources_checked": [
+            "Tripadvisor",
+            "Allbiz.ch",
+            "search.ch",
+            "local.ch"
+          ],
+          "verdict": "Un site web a été trouvé pour le Café-Restaurant du Châtelet à Orsières."
+        }
+      },
+      {
+        "id": "83ma93n8ilxmqjlo25p",
+        "name": "Cafe de la Poste (Evionnaz)",
+        "city": "Evionnaz",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://website-7921204473850190575136-cafe.business.site",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://website-7921204473850190575136-cafe.business.site",
+          "confidence": "high",
+          "sources_checked": [
+            "Allbiz.ch"
+          ],
+          "verdict": "Un site web a été trouvé pour le Café de la Poste à Evionnaz."
+        }
+      },
+      {
+        "id": "8q3rpa7ajwimqjlo25p",
+        "name": "Cafe de la Poste (Varen)",
+        "city": "Varen",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": false,
+          "website_url": null,
+          "confidence": "high",
+          "sources_checked": [
+            "Google Maps",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google",
+            "Varen.ch",
+            "AllBiz.ch",
+            "Sluurpy.com",
+            "search.ch",
+            "Moneyhouse.ch"
+          ],
+          "verdict": "Aucune présence en ligne confirmée pour le Café de la Poste à Varen."
+        }
       },
       {
         "id": "2f7uo7ysihfmqjlo25p",
@@ -957,9 +954,7 @@
             "allbiz.ch"
           ],
           "verdict": "Aucune présence en ligne confirmée pour le Café de la Poste à Nendaz."
-        },
-        "interactions": [],
-        "tags": []
+        }
       },
       {
         "id": "17efdfuzhuamqjlo25p",
@@ -987,9 +982,561 @@
             "search.ch"
           ],
           "verdict": "Aucun site web trouvé pour le Café de la Poste à La Vernaz (Les Agettes)."
-        },
-        "interactions": [],
-        "tags": []
+        }
+      },
+      {
+        "id": "wrc2vr3vwinmqjlo25p",
+        "name": "Poste (Saillon)",
+        "city": "Saillon",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.cafedelapostesaillon.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.cafedelapostesaillon.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "site officiel",
+            "Google Maps",
+            "Pages Jaunes",
+            "Tripadvisor",
+            "Suissegourmet.ch"
+          ],
+          "verdict": "Le Café - Restaurant de la Poste à Saillon dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "77nz3z200obmqjlo25p",
+        "name": "Hotel de la Poste (Montagnier)",
+        "city": "Le Chable VS",
+        "type": "Cafe / Restaurant / Hotel",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.theecolodgeverbier.com/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.theecolodgeverbier.com/",
+          "confidence": "high",
+          "sources_checked": [
+            "site officiel de l'hôtel",
+            "LinkedIn",
+            "Pages Jaunes",
+            "Google Maps"
+          ],
+          "verdict": "L'hôtel dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "rdjpp386tqtmqjlo25p",
+        "name": "Restaurant de la Gare (Vernayaz)",
+        "city": "Vernayaz",
+        "type": "Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://restaurant-vernayaz.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://restaurant-vernayaz.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps"
+          ],
+          "verdict": "Le Restaurant de la Gare à Vernayaz dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "rxm90a6zi78mqjlo25p",
+        "name": "Reves Gourmands",
+        "city": "Vernayaz",
+        "type": "Restaurant / Hotel",
+        "phone": "—",
+        "email": "—",
+        "web": "https://revesgourmands.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://revesgourmands.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Vernayaz.ch",
+            "Allbiz.ch",
+            "Martigny.com",
+            "TheFork.ch"
+          ],
+          "verdict": "Le restaurant-hôtel \"Rêves Gourmands\" à Vernayaz possède un site web officiel."
+        }
+      },
+      {
+        "id": "dt2yq01g9qemqjlo25p",
+        "name": "Restaurant Auberge de Vouvry",
+        "city": "Vouvry",
+        "type": "Restaurant / Auberge",
+        "phone": "—",
+        "email": "—",
+        "web": "http://www.aubergedevouvry.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "http://www.aubergedevouvry.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "TripAdvisor",
+            "Falstaff",
+            "myswitzerland.com"
+          ],
+          "verdict": "Le Restaurant Auberge de Vouvry dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "xwez0n3kg5qmqjlo25p",
+        "name": "La Treille",
+        "city": "Muraz / Collombey",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "http://www.latreille-muraz.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "http://www.latreille-muraz.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "AllBiz",
+            "GotoEat",
+            "Yoys",
+            "Swissyp",
+            "MySwitzerland"
+          ],
+          "verdict": "Le Café-Restaurant La Treille à Muraz/Collombey dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "3z128fhsfjmmqjlo25p",
+        "name": "Chez Myriam - Miam Miam",
+        "city": "Vernamiege / Mont-Noble",
+        "type": "Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.chezmyriam.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.chezmyriam.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "Tripadvisor",
+            "Sluurpy",
+            "Passeport Gourmand",
+            "Eisenbahn Zell",
+            "Local.ch",
+            "Allbiz.ch"
+          ],
+          "verdict": "L'établissement \"Chez Myriam - Miam Miam\" dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "waws4bg557mqjlo25p",
+        "name": "Hotel Restaurant Mont Noble",
+        "city": "Nax / Mont-Noble",
+        "type": "Restaurant / Hotel",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.hotelleriesuisse.ch/de/hotels/search/hotel-details/11550",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.hotelleriesuisse.ch/de/hotels/search/hotel-details/11550",
+          "confidence": "high",
+          "sources_checked": [
+            "local.ch",
+            "allbiz.ch",
+            "search.ch",
+            "tripadvisor.ch"
+          ],
+          "verdict": "L'Hôtel Restaurant Mont Noble à Nax dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "zxfop7fvfumqjlo25p",
+        "name": "Horli-hitta",
+        "city": "Fiesch im Wallis",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.alpinafiescheralp.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.alpinafiescheralp.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "allbiz.ch",
+            "myswitzerland.com",
+            "local.ch",
+            "search.ch"
+          ],
+          "verdict": "Le restaurant Horli-Hitta dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "gcaqv258659mqjlo25p",
+        "name": "Zur Wildi",
+        "city": "Wiler / Lotschen",
+        "type": "Restaurant / Hotel alpin",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.zurwildi.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.zurwildi.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Suisse Tourisme",
+            "Allbiz.ch",
+            "Local.ch"
+          ],
+          "verdict": "Le restaurant-hôtel \"Zur Wildi\" à Wiler/Lötschental possède un site web officiel."
+        }
+      },
+      {
+        "id": "8d6uilpz3vnmqjlo25p",
+        "name": "Zum Froehlichen Jass",
+        "city": "Blatten / Lotschen",
+        "type": "Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.loetschental.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.loetschental.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "allbiz.ch",
+            "swissyp.com",
+            "business-informations.ch",
+            "local.ch"
+          ],
+          "verdict": "Le restaurant 'Zum Fröhlichen Jass' à Blatten (Lötschen) dispose d'un site web à l'adresse https://www.loetschental.ch."
+        }
+      },
+      {
+        "id": "d3jafql4vo7mqjlo25q",
+        "name": "Nest- und Bietschhorn",
+        "city": "Blatten / Lotschen",
+        "type": "Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.nest-bietschhorn.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.nest-bietschhorn.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "myswitzerland.com",
+            "Falstaff",
+            "Sluurpy",
+            "Allbiz.ch",
+            "Star Wine List"
+          ],
+          "verdict": "Le restaurant \"Nest- und Bietschhorn\" à Blatten / Lötschental possède un site web officiel."
+        }
+      },
+      {
+        "id": "5dgwe1mjc3omqjlo25q",
+        "name": "Zudili Panoramarestaurant",
+        "city": "Wiler / Lotschen",
+        "type": "Restaurant / Panoramique",
+        "phone": "—",
+        "email": "—",
+        "web": "http://www.zudili.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "http://www.zudili.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "AllBiz.ch",
+            "Local.ch",
+            "Sluurpy.com",
+            "SwipeIn.restaurant"
+          ],
+          "verdict": "Le Zudili Panoramarestaurant dispose d'un site web officiel à l'adresse http://www.zudili.ch."
+        }
+      },
+      {
+        "id": "2ngv6ge39blmqjlo25q",
+        "name": "Hotel-Restaurant Bergheimat",
+        "city": "Saas-Grund",
+        "type": "Restaurant / Hotel",
+        "phone": "—",
+        "email": "—",
+        "web": "https://top-of-saas.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://top-of-saas.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "allbiz.ch",
+            "hotel-hostel-unterkunft.ch",
+            "search.ch",
+            "myswitzerland.com"
+          ],
+          "verdict": "L'établissement dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "x3krrka8u9kmqjlo25q",
+        "name": "Restaurant Lac de Moiry",
+        "city": "Grimentz",
+        "type": "Restaurant / Montagne",
+        "phone": "027 475 15 48",
+        "email": "virmoiry@gmail.com",
+        "web": "https://clemsfabs.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://clemsfabs.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "clemsfabs.ch",
+            "valdanniviers.ch",
+            "search.ch"
+          ],
+          "verdict": "Le Restaurant du Lac de Moiry à Grimentz dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "x45tmylbjnnmqjlo25q",
+        "name": "Restaurant Etable du Marais",
+        "city": "Grimentz",
+        "type": "Restaurant / Montagne",
+        "phone": "027 476 20 18",
+        "email": "marais@grimentz-zinal.ch",
+        "web": "https://restaurant-marais.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://restaurant-marais.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "local.ch",
+            "magicpass.ch",
+            "search.ch",
+            "restaurant-marais.ch"
+          ],
+          "verdict": "Le Restaurant Etable du Marais dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "gyi63jwa3umqjlo25q",
+        "name": "Restaurant Alpina",
+        "city": "Saas-Almagell",
+        "type": "Restaurant / Montagne",
+        "phone": "027 957 24 43",
+        "email": "info@bergrestaurant-alpina.ch",
+        "web": "https://www.bergrestaurant-alpina.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.bergrestaurant-alpina.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Saas-Fee Tourisme",
+            "Suisse Tourisme",
+            "Restaurant Guru",
+            "Tripadvisor",
+            "AllBiz",
+            "Guidle",
+            "SwipeIn",
+            "Sluurpy",
+            "Local.ch"
+          ],
+          "verdict": "Le Restaurant Alpina à Saas-Almagell dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "lwo4epnzv7amqjlo25q",
+        "name": "Auberge de Sapinhaut",
+        "city": "Saxon",
+        "type": "Cafe / Restaurant / Auberge",
+        "phone": "027 744 14 96",
+        "email": "—",
+        "web": "",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": false,
+          "website_url": null,
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "allbiz.ch",
+            "firmen.ch",
+            "local.ch"
+          ],
+          "verdict": "Aucune présence en ligne confirmée pour l'Auberge de Sapinhaut à Saxon."
+        }
+      },
+      {
+        "id": "lfthnccay4mqjlo25q",
+        "name": "Cafe Restaurant de la Gare (Saxon)",
+        "city": "Saxon",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.saxontourisme.ch/fr/gastronomie/restaurants/cafe-restaurant-de-la-gare.html",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.saxontourisme.ch/fr/gastronomie/restaurants/cafe-restaurant-de-la-gare.html",
+          "confidence": "high",
+          "sources_checked": [
+            "Google Maps",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google",
+            "TripAdvisor",
+            "Sluurpy",
+            "Allbiz",
+            "LaCarte.menu",
+            "GoLunch"
+          ],
+          "verdict": "Un site web a été trouvé pour le Café Restaurant de la Gare à Saxon."
+        }
+      },
+      {
+        "id": "gih0v16u90wmqjlo25q",
+        "name": "Cafe de la Place (Saint-Maurice)",
+        "city": "Saint-Maurice",
+        "type": "Cafe / Restaurant",
+        "phone": "024 565 05 67",
+        "email": "—",
+        "web": "https://cafedelaplacestmoss.business.site",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://cafedelaplacestmoss.business.site",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Allbiz.ch",
+            "Tripadvisor",
+            "ZIP.ch"
+          ],
+          "verdict": "Le Café de la Place à Saint-Maurice dispose d'un site web officiel."
+        }
       },
       {
         "id": "qguh6jwe95dmqjlo25q",
@@ -999,9 +1546,9 @@
         "phone": "024 481 26 30",
         "email": "—",
         "web": "",
-        "status": "called",
+        "status": "to_call",
         "contact": "",
-        "notes": "recall fin de semaine prochaine \nvrai num 024 481 26 30\n",
+        "notes": "",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -1021,10 +1568,7 @@
             "Moneyhouse.ch"
           ],
           "verdict": "Aucune présence en ligne confirmée pour l'établissement Fracheboud Nicolas à Vionnaz."
-        },
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782226574689
+        }
       },
       {
         "id": "xkrrd3gcuymqjlo25q",
@@ -1034,9 +1578,9 @@
         "phone": "027 322 30 19",
         "email": "—",
         "web": "",
-        "status": "called",
+        "status": "to_call",
         "contact": "",
-        "notes": "ne veut rien jusqu'à la rentrée -- mais je l'ai laché trop vite, beaucoup trop vite, le recall la semaine pro\n+ trouver somn num perso",
+        "notes": "",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -1053,10 +1597,33 @@
             "swissyp.com"
           ],
           "verdict": "Aucune présence en ligne confirmée pour la Boulangerie de l'Arlequin à Sion."
-        },
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782306720371
+        }
+      },
+      {
+        "id": "g5ks1p09c3amqjlo25q",
+        "name": "Le Delice du Grand-Pont Sarl",
+        "city": "Sion",
+        "type": "Boulangerie / Patisserie",
+        "phone": "027 322 26 29",
+        "email": "ledelicedugrandpont@me.com",
+        "web": "https://www.ledelice-sion.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.ledelice-sion.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "site officiel",
+            "search.ch",
+            "local.ch",
+            "Moneyhouse",
+            "leconstantinople.ch"
+          ],
+          "verdict": "Le Délice du Grand-Pont Sàrl dispose d'un site web officiel."
+        }
       },
       {
         "id": "w55a5q5oddrmqjlo25q",
@@ -1081,9 +1648,33 @@
             "local.ch"
           ],
           "verdict": "L'établissement Boulangerie Gaillard à Sion a définitivement fermé en janvier 2026."
-        },
-        "interactions": [],
-        "tags": []
+        }
+      },
+      {
+        "id": "fekn8lstj5smqjlo25q",
+        "name": "Le Delice (Leytron)",
+        "city": "Leytron",
+        "type": "Boulangerie / Patisserie",
+        "phone": "027 306 32 91",
+        "email": "albert.michellod@bluewin.ch",
+        "web": "https://www.vergersdelice.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.vergersdelice.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "local.ch",
+            "swissyp.com",
+            "yellowpages.swiss",
+            "allbiz.ch",
+            "suisseterroir.ch"
+          ],
+          "verdict": "Le Délice à Leytron possède un site web à l'adresse https://www.vergersdelice.ch."
+        }
       },
       {
         "id": "x1ap3lexkvrmqjlo25q",
@@ -1093,9 +1684,9 @@
         "phone": "024 471 12 80",
         "email": "—",
         "web": "",
-        "status": "recall",
+        "status": "to_call",
         "contact": "",
-        "notes": "rappeler quand il a plus de temps\n",
+        "notes": "",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -1112,10 +1703,55 @@
             "Boulangerie-Comparatif.ch"
           ],
           "verdict": "Aucun site web officiel trouvé pour Au Péché Mignon à Monthey."
-        },
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782307030764
+        }
+      },
+      {
+        "id": "84iu828he6wmqjlo25q",
+        "name": "Le Planain",
+        "city": "Vernayaz",
+        "type": "Boulangerie / Patisserie",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.valleedutrient.ch/fr/boulangerie-le-planain-fp46",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.valleedutrient.ch/fr/boulangerie-le-planain-fp46",
+          "confidence": "high",
+          "sources_checked": [
+            "https://www.valleedutrient.ch/fr/boulangerie-le-planain-fp46",
+            "https://www.local.ch/fr/d/vernayaz/1904/boulangerie-et-patisserie/le-planain-lHPQ7U4JdsbZgCeI0nz1IQ",
+            "https://www.allbiz.ch/fr/le-planain-027-764-14-39"
+          ],
+          "verdict": "Le Planain dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "sritydqvndmqjlo25q",
+        "name": "DM Une Histoire de Gout",
+        "city": "Sion",
+        "type": "Boulangerie / Patisserie / Epicerie / Cafe",
+        "phone": "027 563 00 20",
+        "email": "info@histoire-de-gout.ch",
+        "web": "https://histoire-de-gout.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://histoire-de-gout.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "local.ch",
+            "search.ch",
+            "boulangerie-comparatif.ch"
+          ],
+          "verdict": "L'établissement dispose d'un site web officiel."
+        }
       },
       {
         "id": "x1uh9xzc6crmqjlo25q",
@@ -1173,9 +1809,7 @@
             "wirtschaftsregister.ch"
           ],
           "verdict": "Aucun site web trouvé pour Boucherie des Oliviers Sàrl à Sion."
-        },
-        "interactions": [],
-        "tags": []
+        }
       },
       {
         "id": "7siib2kty3mqjlo25q",
@@ -1213,9 +1847,9 @@
         "phone": "027 346 35 36",
         "email": "—",
         "web": "",
-        "status": "called",
+        "status": "to_call",
         "contact": "",
-        "notes": "recall a ce numéro: 0795423418 \n",
+        "notes": "",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -1237,10 +1871,31 @@
             "Commune de Conthey"
           ],
           "verdict": "Aucune présence en ligne confirmée pour Bétrisey Reynald à Conthey."
-        },
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782227347221
+        }
+      },
+      {
+        "id": "k9dkyhpg5xmqjlo25q",
+        "name": "Crettaz Serge",
+        "city": "Lens",
+        "type": "Boucherie",
+        "phone": "—",
+        "email": "—",
+        "web": "www.boucherielalienne.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "www.boucherielalienne.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "suisseterroir.ch",
+            "business-informations.ch",
+            "allbiz.ch"
+          ],
+          "verdict": "La Boucherie La Lienne, dirigée par Serge Crettaz, dispose d'un site web officiel."
+        }
       },
       {
         "id": "v04xo0qluxfmqjlo25q",
@@ -1252,7 +1907,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "trouver le vrai num\n",
+        "notes": "",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -1272,9 +1927,29 @@
             "Region Dents du Midi"
           ],
           "verdict": "Aucun site web trouvé pour l'établissement Chapelay Laurence à Champéry."
-        },
-        "interactions": [],
-        "tags": []
+        }
+      },
+      {
+        "id": "vlh3rr6oy4dmqjlo25q",
+        "name": "Boucherie Chevaline de Monthey Sarl",
+        "city": "Monthey",
+        "type": "Boucherie / Chevaline",
+        "phone": "024 471 27 52",
+        "email": "boucheriedepreville@outlook.com",
+        "web": "https://www.lachablaisienne.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.lachablaisienne.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "allbiz.ch"
+          ],
+          "verdict": "Le site web de Boucherie Chevaline de Monthey Sàrl est www.lachablaisienne.ch."
+        }
       },
       {
         "id": "rhno5vb9wrmqjlo25q",
@@ -1302,6 +1977,31 @@
             "search.ch"
           ],
           "verdict": "Aucune présence en ligne confirmée pour \"Schneiter Gerard\" à Grône."
+        }
+      },
+      {
+        "id": "9vtljbte4fmqjlo25q",
+        "name": "Metzgerei Bammatter",
+        "city": "Naters",
+        "type": "Boucherie / Metzgerei",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.bammatter-naters.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.bammatter-naters.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "allbiz.ch",
+            "moneyhouse.ch",
+            "search.ch",
+            "yellowpages.swiss"
+          ],
+          "verdict": "Metzgerei Bammatter dispose d'un site web officiel."
         }
       },
       {
@@ -1342,9 +2042,9 @@
         "phone": "027 322 12 74",
         "email": "—",
         "web": "",
-        "status": "called",
+        "status": "to_call",
         "contact": "",
-        "notes": "pas intéressé",
+        "notes": "",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -1357,10 +2057,7 @@
             "allbiz.ch"
           ],
           "verdict": "Aucun site web trouvé pour le salon de coiffure Paul Pannatier à Sion."
-        },
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782031952454
+        }
       },
       {
         "id": "ygajj8v9c5mqjlo25q",
@@ -1389,21 +2086,110 @@
             "Moneyhouse.ch"
           ],
           "verdict": "Aucun site web trouvé pour Coiffure de Rêve Sarl à Monthey."
-        },
-        "interactions": [],
-        "tags": [],
-        "enriched": {
-          "phone": null,
-          "phone_source": null,
-          "email": null,
-          "address": "Monthey, Valais",
-          "decision_maker": null,
-          "decision_maker_phone": null,
-          "decision_maker_phone_source": null,
-          "linkedin": null,
-          "description": "Coiffure de Reve Sarl est un salon de coiffure à Monthey, réputé pour son ambiance chaleureuse et ses services de qualité."
-        },
-        "enrichedAt": 1782056287318
+        }
+      },
+      {
+        "id": "dhe3a1gedfrmqjlo25q",
+        "name": "Courant d'Hair",
+        "city": "Sierre",
+        "type": "Salon de coiffure",
+        "phone": "027 456 22 54",
+        "email": "caro.berset@bluewin.ch",
+        "web": "https://courant-dhair.digitalone.site",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://courant-dhair.digitalone.site",
+          "confidence": "high",
+          "sources_checked": [
+            "Allbiz.ch",
+            "Swissyp.com",
+            "Search.ch",
+            "Local.ch"
+          ],
+          "verdict": "Le salon de coiffure Courant d'Hair à Sierre dispose d'un site web actif."
+        }
+      },
+      {
+        "id": "yxct92yxlasmqjlo25q",
+        "name": "Hairlines Coiffure",
+        "city": "Martigny",
+        "type": "Salon de coiffure",
+        "phone": "027 722 14 94",
+        "email": "hairlines.coiffure1995@gmail.com",
+        "web": "https://hairlines-coiffure.business.site",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://hairlines-coiffure.business.site",
+          "confidence": "high",
+          "sources_checked": [
+            "Google Maps",
+            "Allbiz.ch",
+            "Local.ch"
+          ],
+          "verdict": "Le salon Hairlines Coiffure à Martigny dispose d'un site web."
+        }
+      },
+      {
+        "id": "4ziliov59tamqjlo25q",
+        "name": "New Look",
+        "city": "Martigny",
+        "type": "Salon de coiffure",
+        "phone": "027 722 37 23",
+        "email": "—",
+        "web": "https://www.newlookgroup.com",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.newlookgroup.com",
+          "confidence": "high",
+          "sources_checked": [
+            "Google Maps",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google",
+            "Allbiz.ch",
+            "search.ch",
+            "local.ch"
+          ],
+          "verdict": "Le salon de coiffure 'New Look' à Martigny possède un site web."
+        }
+      },
+      {
+        "id": "fva4t4wyqgmqjlo25q",
+        "name": "Restaurant zum Wasserfall",
+        "city": "Turtmann",
+        "type": "Restaurant",
+        "phone": "027 932 13 22",
+        "email": "rest.wasserfall@gmx.ch",
+        "web": "https://www.facebook.com/patricktenud",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.facebook.com/patricktenud",
+          "confidence": "high",
+          "sources_checked": [
+            "local.ch",
+            "allbiz.ch",
+            "suissegourmet.ch",
+            "search.ch",
+            "sluury.com"
+          ],
+          "verdict": "Le Restaurant zum Wasserfall à Turtmann dispose d'une page Facebook comme site web."
+        }
       },
       {
         "id": "iwqrozvmytmqjlo25q",
@@ -1463,6 +2249,39 @@
         }
       },
       {
+        "id": "g7f8eagvhpwmqjlo25q",
+        "name": "Coiffeursalon Royal",
+        "city": "Gampel",
+        "type": "Salon de coiffure",
+        "phone": "027 932 21 17",
+        "email": "—",
+        "web": "",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": false,
+          "website_url": null,
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "allbiz.ch",
+            "local.ch",
+            "search.ch",
+            "yellowpages.swiss",
+            "gampel-bratsch.ch",
+            "meilleurcoiffeur.com",
+            "moneyhouse.ch",
+            "zip.ch"
+          ],
+          "verdict": "Aucun site web trouvé pour Coiffeursalon Royal à Gampel."
+        }
+      },
+      {
         "id": "u9r49mn0izhmqjlo25q",
         "name": "Cafe du Telepherique Chalais",
         "city": "Chalais",
@@ -1489,6 +2308,107 @@
             "Local.ch"
           ],
           "verdict": "Aucun site web officiel trouvé pour le Café du Téléphérique Chalais."
+        }
+      },
+      {
+        "id": "78lkvy1h6bmqjlo25q",
+        "name": "Restaurant La Bergere",
+        "city": "Vercorin / Chalais",
+        "type": "Cafe / Restaurant",
+        "phone": "027 565 23 11",
+        "email": "bergereverco@outlook.com",
+        "web": "https://www.vercorin.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.vercorin.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google Maps",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Tripadvisor",
+            "Moneyhouse"
+          ],
+          "verdict": "Le restaurant La Bergère à Vercorin dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "e7hoguurgxamqjlo25q",
+        "name": "Restaurant Valser",
+        "city": "Agarn",
+        "type": "Restaurant",
+        "phone": "027 474 61 60",
+        "email": "—",
+        "web": "https://www.facebook.com/Restaurantpouletaguia",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.facebook.com/Restaurantpouletaguia",
+          "confidence": "high",
+          "sources_checked": [
+            "allbiz.ch",
+            "pfyn-finges.ch",
+            "sluupy.com",
+            "swipein.restaurant"
+          ],
+          "verdict": "Le Restaurant Valser à Agarn dispose d'une page Facebook, mais pas de site web officiel."
+        }
+      },
+      {
+        "id": "jc1k9q3yhacmqjlo25q",
+        "name": "Le Bonheur de Swissplage",
+        "city": "Salgesch",
+        "type": "Restaurant de camping",
+        "phone": "027 455 44 34",
+        "email": "—",
+        "web": "https://www.restaurantbonheurcampingswissplage.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.restaurantbonheurcampingswissplage.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "site officiel du restaurant",
+            "Sierre Tourisme",
+            "Allbiz.ch"
+          ],
+          "verdict": "Le Bonheur de Swissplage possède un site web officiel."
+        }
+      },
+      {
+        "id": "45ezmgsz06zmqjlo25q",
+        "name": "Boulangerie-Cafe-Restaurant Mathieu",
+        "city": "Susten",
+        "type": "Boulangerie / Salon de the",
+        "phone": "027 473 13 59",
+        "email": "—",
+        "web": "https://baeckerei-mathieu.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://baeckerei-mathieu.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Les Parcs suisses",
+            "Valais.ch",
+            "Naturpark Pfyn-Finges",
+            "Suisse Tourisme"
+          ],
+          "verdict": "Le site web de la Boulangerie-Café-Restaurant Mathieu est disponible."
         }
       },
       {
@@ -1524,6 +2444,157 @@
         }
       },
       {
+        "id": "miwp5ua5tvmqjlo25q",
+        "name": "Restaurant Pension Park",
+        "city": "Gampel",
+        "type": "Restaurant / Pension",
+        "phone": "027 932 36 16",
+        "email": "—",
+        "web": "https://www.pension-park.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.pension-park.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "myswitzerland.com",
+            "suissegourmet.ch",
+            "local.ch"
+          ],
+          "verdict": "Le Restaurant Pension Park à Gampel dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "mq8beb2caxmmqjlo25q",
+        "name": "Restaurant Pizzeria Tourist",
+        "city": "Gampel-Bratsch",
+        "type": "Restaurant / Pizzeria",
+        "phone": "—",
+        "email": "—",
+        "web": "https://tourist-gampel.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://tourist-gampel.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Gampel-Bratsch Firmenverzeichnis",
+            "local.ch",
+            "allbiz.ch",
+            "Tripadvisor",
+            "suissegourmet.ch"
+          ],
+          "verdict": "Le Restaurant Pizzeria Tourist à Gampel-Bratsch dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "pu83la3msh8mqjlo25q",
+        "name": "Piccola Casa Villa",
+        "city": "Leuk Stadt",
+        "type": "Restaurant italien",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.casavilla.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.casavilla.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Yellowpages.swiss",
+            "firmen.ch"
+          ],
+          "verdict": "Le restaurant Casa Villa à Leuk Stadt dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "707e7yt7gcsmqjlo25q",
+        "name": "Cafe des Amis (chez Martha)",
+        "city": "Fully",
+        "type": "Cafe / Restaurant",
+        "phone": "027 746 18 95",
+        "email": "—",
+        "web": "https://www.facebook.com/cafedesamisfully",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.facebook.com/cafedesamisfully",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Allbiz.ch",
+            "Local.ch",
+            "Eisenbahn-Zell.ch",
+            "ComArt Fully"
+          ],
+          "verdict": "Le Café des Amis (chez Martha) à Fully dispose d'une page Facebook officielle."
+        }
+      },
+      {
+        "id": "y0lmijc86comqjlo25q",
+        "name": "Les Alpes Fully",
+        "city": "Fully",
+        "type": "Bar / Restaurant",
+        "phone": "027 746 19 77",
+        "email": "—",
+        "web": "https://cafe-restaurant-les-alpes.business.site",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://cafe-restaurant-les-alpes.business.site",
+          "confidence": "high",
+          "sources_checked": [
+            "local.ch",
+            "allbiz.ch",
+            "search.ch"
+          ],
+          "verdict": "Le Café Restaurant Les Alpes Fully dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "k6ds6v4wpf7mqjlo25q",
+        "name": "Cafe le Centrale",
+        "city": "Fully",
+        "type": "Cafe / Restaurant",
+        "phone": "027 746 34 83",
+        "email": "—",
+        "web": "https://www.restaurantlecentral.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.restaurantlecentral.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "site officiel",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps"
+          ],
+          "verdict": "Le Café-Restaurant Le Central à Fully dispose d'un site web officiel."
+        }
+      },
+      {
         "id": "42s7no78e26mqjlo25q",
         "name": "Cafe du Commerce",
         "city": "Fully",
@@ -1553,6 +2624,31 @@
         }
       },
       {
+        "id": "sfripom2ilamqjlo25q",
+        "name": "Restaurant Vignerons",
+        "city": "Fully",
+        "type": "Restaurant / Cave",
+        "phone": "027 746 16 45",
+        "email": "—",
+        "web": "https://thetaz-vin.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://thetaz-vin.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps"
+          ],
+          "verdict": "Le Restaurant Vignerons à Fully possède un site web officiel."
+        }
+      },
+      {
         "id": "miu5m3so1xmqjlo25q",
         "name": "Les Saveurs du Balkan",
         "city": "Charrat",
@@ -1578,6 +2674,38 @@
             "search.ch"
           ],
           "verdict": "Aucun site web trouvé pour 'Les Saveurs du Balkan' à Charrat."
+        }
+      },
+      {
+        "id": "3iwdftqob5hmqjlo25q",
+        "name": "Cafe Restaurant de l'Union",
+        "city": "Iserables",
+        "type": "Cafe / Restaurant",
+        "phone": "027 306 26 32",
+        "email": "union@chezboubier.com",
+        "web": "https://www.chezboubier.com",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.chezboubier.com",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Sluurpy",
+            "Restaurant Guru",
+            "Tripadvisor",
+            "Suisse Terroir",
+            "Local.ch",
+            "Swipein",
+            "Search.ch"
+          ],
+          "verdict": "Le Café de l'Union à Isérables dispose d'un site web officiel."
         }
       },
       {
@@ -1644,6 +2772,31 @@
         }
       },
       {
+        "id": "iqvwla8hgqfmqjlo25q",
+        "name": "Boucherie-Traiteur Aux 3 Petits Cochons",
+        "city": "Fully",
+        "type": "Boucherie / Traiteur",
+        "phone": "027 746 22 29",
+        "email": "—",
+        "web": "http://www.aux3petitscochons.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "http://www.aux3petitscochons.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "fullylocal.ch",
+            "search.ch",
+            "local.ch",
+            "suisseterroir.ch"
+          ],
+          "verdict": "L'établissement dispose d'un site web."
+        }
+      },
+      {
         "id": "wv0x5bxecfbmqjlo25q",
         "name": "Coiffure Isabelle",
         "city": "Fully",
@@ -1651,9 +2804,9 @@
         "phone": "077 505 21 73",
         "email": "—",
         "web": "",
-        "status": "voicemail",
+        "status": "to_call",
         "contact": "",
-        "notes": "mail + whatsapp send\n",
+        "notes": "",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -1669,22 +2822,61 @@
             "local.ch"
           ],
           "verdict": "Aucun site web trouvé pour Coiffure Isabelle à Fully."
-        },
-        "interactions": [],
-        "tags": [],
-        "enriched": {
-          "phone": null,
-          "phone_source": null,
-          "email": null,
-          "address": "Fully, Valais",
-          "decision_maker": null,
-          "decision_maker_phone": null,
-          "decision_maker_phone_source": null,
-          "linkedin": null,
-          "description": "Coiffure Isabelle est un salon de coiffure à Fully, offrant des prestations personnalisées."
-        },
-        "enrichedAt": 1782056287318,
-        "lastContact": 1782227584611
+        }
+      },
+      {
+        "id": "tpi4gmik6hhmqjlo25q",
+        "name": "Couper Court Sarl",
+        "city": "Fully",
+        "type": "Salon de coiffure",
+        "phone": "027 746 25 19",
+        "email": "coupercourtalex@gmail.com",
+        "web": "https://couper-court.digitalone.site",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://couper-court.digitalone.site",
+          "confidence": "high",
+          "sources_checked": [
+            "Allbiz.ch",
+            "Annuaire-horaire.ch",
+            "Moneyhouse.ch",
+            "Local.ch"
+          ],
+          "verdict": "Le salon de coiffure Couper Court Sàrl à Fully dispose d'un site web actif."
+        }
+      },
+      {
+        "id": "xklx9fpo31mqjlo25q",
+        "name": "Salon du Chavalard",
+        "city": "Fully",
+        "type": "Salon de coiffure",
+        "phone": "027 746 46 00",
+        "email": "—",
+        "web": "https://www.pro-d.ch/fr/entreprise/fully-coiffure-du-chavalard",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.pro-d.ch/fr/entreprise/fully-coiffure-du-chavalard",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "allbiz.ch",
+            "search.ch",
+            "local.ch",
+            "swissyp.com"
+          ],
+          "verdict": "Le Salon du Chavalard à Fully dispose d'un site web officiel."
+        }
       },
       {
         "id": "6dp37zq6bt7mqjlo25q",
@@ -1694,9 +2886,9 @@
         "phone": "079 246 15 04",
         "email": "—",
         "web": "",
-        "status": "called",
+        "status": "to_call",
         "contact": "",
-        "notes": "pas intéressée\n\n",
+        "notes": "",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -1713,10 +2905,7 @@
             "swissyp.com"
           ],
           "verdict": "Aucun site web trouvé pour Coiffure Evasion à Chamoson."
-        },
-        "lastContact": 1782031983976,
-        "interactions": [],
-        "tags": []
+        }
       },
       {
         "id": "hkua4u98a5nmqjlo25q",
@@ -1743,19 +2932,64 @@
             "local.ch"
           ],
           "verdict": "Aucun site web trouvé pour L'Atelier Coiffure by Silvia à Chamoson."
-        },
-        "enriched": {
-          "phone": null,
-          "phone_source": null,
-          "email": null,
-          "address": "Chamoson, Valais",
-          "decision_maker": null,
-          "decision_maker_phone": null,
-          "decision_maker_phone_source": null,
-          "linkedin": null,
-          "description": "L'Atelier Coiffure by Silvia est un salon à Chamoson, connu pour ses coupes tendance et son service personnalisé."
-        },
-        "enrichedAt": 1782056287318
+        }
+      },
+      {
+        "id": "lmlq2fjjezsmqjlo25q",
+        "name": "Top Line Coiffure",
+        "city": "Charrat",
+        "type": "Salon de coiffure",
+        "phone": "—",
+        "email": "—",
+        "web": "https://123coiffure.ch/company/top-line-coiffure",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://123coiffure.ch/company/top-line-coiffure",
+          "confidence": "high",
+          "sources_checked": [
+            "allbiz.ch",
+            "local.ch",
+            "meilleurcoiffeur.com",
+            "search.ch",
+            "coiffeurs.nosavis.ch"
+          ],
+          "verdict": "Un site web a été trouvé pour Top Line Coiffure à Charrat."
+        }
+      },
+      {
+        "id": "fx6uiimd7gmqjlo25q",
+        "name": "Taverne Evolenarde",
+        "city": "Evolene",
+        "type": "Cafe / Restaurant / Pizzeria",
+        "phone": "027 283 12 02",
+        "email": "info@lataverneevolenarde.ch",
+        "web": "https://www.lataverneevolenarde.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.lataverneevolenarde.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Tripadvisor",
+            "Suisse Tourisme",
+            "Local.ch",
+            "Allbiz.ch",
+            "Guidle",
+            "Valais.ch"
+          ],
+          "verdict": "Le site officiel de la Taverne Evolénarde est accessible à l'adresse https://www.lataverneevolenarde.ch."
+        }
       },
       {
         "id": "i1iroz83g6mqjlo25q",
@@ -1765,7 +2999,7 @@
         "phone": "027 283 13 56",
         "email": "—",
         "web": "",
-        "status": "called",
+        "status": "to_call",
         "contact": "",
         "notes": "",
         "at": 1781793202670,
@@ -1786,10 +3020,31 @@
             "meilleurcoiffeur.com"
           ],
           "verdict": "Aucun site web trouvé pour Coiffure Ab'Salon à Evolène."
-        },
-        "lastContact": 1782032035770,
-        "interactions": [],
-        "tags": []
+        }
+      },
+      {
+        "id": "5qmqmb1n20vmqjlo25q",
+        "name": "Salon de Coiffure Daniele",
+        "city": "Les Hauderes",
+        "type": "Salon de coiffure",
+        "phone": "027 283 22 52",
+        "email": "—",
+        "web": "www.commune-evolene.ch/fr/salon-coiffure-daniele-241.html",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "www.commune-evolene.ch/fr/salon-coiffure-daniele-241.html",
+          "confidence": "high",
+          "sources_checked": [
+            "search.ch",
+            "local.ch",
+            "commune-evolene.ch"
+          ],
+          "verdict": "Le Salon de Coiffure Danièle à Les Haudères dispose d'un site web officiel."
+        }
       },
       {
         "id": "iipxj1lq89mqjlo25q",
@@ -1824,6 +3079,61 @@
         }
       },
       {
+        "id": "di9mdpbdn54mqjlo25q",
+        "name": "Cafe de l'Etoile (Les Hauderes)",
+        "city": "Les Hauderes",
+        "type": "Cafe",
+        "phone": "027 283 11 76",
+        "email": "—",
+        "web": "https://www.valdherens.ch/fr/cafe-de-l-etoile-fp32041",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.valdherens.ch/fr/cafe-de-l-etoile-fp32041",
+          "confidence": "high",
+          "sources_checked": [
+            "Google Maps",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google",
+            "Tripadvisor"
+          ],
+          "verdict": "Le Café de l'Etoile aux Haudères dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "tbvnm9buvxmqjlo25q",
+        "name": "Cafe Crystal",
+        "city": "Les Hauderes",
+        "type": "Cafe",
+        "phone": "027 283 10 10",
+        "email": "—",
+        "web": "https://www.valdherens.ch/fr/le-cafe-cristal-fp32040",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.valdherens.ch/fr/le-cafe-cristal-fp32040",
+          "confidence": "high",
+          "sources_checked": [
+            "Google Maps",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google",
+            "Coffeeland.ch",
+            "Allbiz.ch",
+            "Local.ch",
+            "Valdherens.ch"
+          ],
+          "verdict": "Le Café Crystal dispose d'un site web officiel."
+        }
+      },
+      {
         "id": "w824dh780pmqjlo25q",
         "name": "Buvette Le Petit Paradis",
         "city": "Les Hauderes",
@@ -1850,6 +3160,32 @@
             "buvettes-alpage.ch"
           ],
           "verdict": "Aucune présence en ligne confirmée pour 'Buvette Le Petit Paradis'."
+        }
+      },
+      {
+        "id": "bzspbizot47mqjlo25q",
+        "name": "Cafe de la Place (Vex)",
+        "city": "Vex",
+        "type": "Cafe / Restaurant",
+        "phone": "027 207 20 41",
+        "email": "smilcic@hotmail.com",
+        "web": "https://www.facebook.com/people/Caf%C3%A9-de-la-PlaceVex/100060361942516",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.facebook.com/people/Caf%C3%A9-de-la-PlaceVex/100060361942516",
+          "confidence": "high",
+          "sources_checked": [
+            "Google Maps",
+            "Facebook",
+            "local.ch",
+            "Sluurpy",
+            "Swipein.restaurant"
+          ],
+          "verdict": "Le Café de la Place à Vex dispose d'une page Facebook comme site web."
         }
       },
       {
@@ -1882,6 +3218,29 @@
         }
       },
       {
+        "id": "iz0w9a4jzjqmqjlo25q",
+        "name": "Marina (coiffure)",
+        "city": "Vex",
+        "type": "Salon de coiffure",
+        "phone": "079 347 71 37",
+        "email": "—",
+        "web": "https://barber.ch.ivof.com/marina",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://barber.ch.ivof.com/marina",
+          "confidence": "high",
+          "sources_checked": [
+            "search.ch",
+            "local.ch"
+          ],
+          "verdict": "Le salon de coiffure Marina à Vex dispose d'un site web."
+        }
+      },
+      {
         "id": "kd692y7ogudmqjlo25q",
         "name": "Cafe-Restaurant du Relais (Heremence)",
         "city": "Heremence",
@@ -1909,6 +3268,58 @@
         }
       },
       {
+        "id": "t01fy8ffr4dmqjlo25q",
+        "name": "Cafe-Restaurant du Lac des Dix",
+        "city": "Heremence",
+        "type": "Cafe / Restaurant",
+        "phone": "076 232 19 59",
+        "email": "lacdesdix@outlook.com",
+        "web": "https://www.heremence-tourisme.ch/commerces-et-services/cafe-restaurant-du-lac-des-dix",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.heremence-tourisme.ch/commerces-et-services/cafe-restaurant-du-lac-des-dix",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Hérémence Tourisme",
+            "Commune d'Hérémence",
+            "local.ch"
+          ],
+          "verdict": "Le Café-Restaurant du Lac des Dix à Hérémence dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "yjkeos7ubcamqjlo25q",
+        "name": "Cafe Edelweiss Market",
+        "city": "Heremence",
+        "type": "Cafe / Epicerie",
+        "phone": "027 281 20 66",
+        "email": "—",
+        "web": "http://www.edelweissmarket.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "http://www.edelweissmarket.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Commune d'Hérémence",
+            "Val d'Hérens",
+            "Allbiz.ch"
+          ],
+          "verdict": "Le Café Edelweiss Market à Hérémence dispose d'un site web officiel."
+        }
+      },
+      {
         "id": "wmut6435hcmqjlo25q",
         "name": "Coiffure Chantal",
         "city": "Euseigne / Heremence",
@@ -1916,7 +3327,7 @@
         "phone": "027 282 50 20",
         "email": "—",
         "web": "",
-        "status": "called",
+        "status": "to_call",
         "contact": "",
         "notes": "",
         "at": 1781793202670,
@@ -1932,10 +3343,32 @@
             "site officiel de la commune d'Hérémence"
           ],
           "verdict": "Aucun site web trouvé pour Coiffure Chantal à Euseigne."
-        },
-        "lastContact": 1782032039873,
-        "interactions": [],
-        "tags": []
+        }
+      },
+      {
+        "id": "et203od1hyrmqjlo25q",
+        "name": "Cafe-Pizzeria Le Central (Nax)",
+        "city": "Nax",
+        "type": "Cafe / Pizzeria",
+        "phone": "027 203 16 96",
+        "email": "—",
+        "web": "https://nax-region.ch/services/en-detail/pizzeria-le-central",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://nax-region.ch/services/en-detail/pizzeria-le-central",
+          "confidence": "high",
+          "sources_checked": [
+            "Google Maps",
+            "Tripadvisor",
+            "Sluurpy",
+            "Allbiz.ch"
+          ],
+          "verdict": "Le Pizzeria Le Central à Nax dispose d'un site web officiel."
+        }
       },
       {
         "id": "db40wn6e2g5mqjlo25q",
@@ -2018,9 +3451,7 @@
             "Google Maps"
           ],
           "verdict": "Aucune présence en ligne confirmée pour la Boulangerie PKB d'Ayent."
-        },
-        "interactions": [],
-        "tags": []
+        }
       },
       {
         "id": "9zo2vicr038mqjlo25q",
@@ -2052,6 +3483,54 @@
         }
       },
       {
+        "id": "g38ew8szi9mqjlo25q",
+        "name": "Cafe Union",
+        "city": "Volleges",
+        "type": "Cafe / Restaurant",
+        "phone": "027 785 10 80",
+        "email": "—",
+        "web": "https://www.resto-union.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.resto-union.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "local.ch",
+            "search.ch"
+          ],
+          "verdict": "Le Café Union à Vollèges dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "x55ufiv1frmqjlo25q",
+        "name": "Cafe De La Gare (Finhaut)",
+        "city": "Finhaut",
+        "type": "Cafe / Restaurant",
+        "phone": "078 614 39 66",
+        "email": "info@cafedelagarefinhaut.ch",
+        "web": "https://www.valleedutrient.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.valleedutrient.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "allbiz.ch",
+            "zaubee.com",
+            "restaurantguru.com",
+            "search.ch"
+          ],
+          "verdict": "Le Café de la Gare à Finhaut dispose d'un site web officiel."
+        }
+      },
+      {
         "id": "6s0c090ztrhmqjlo25q",
         "name": "Cafe-Restaurant Beau-Soleil",
         "city": "Finhaut",
@@ -2078,6 +3557,61 @@
             "Swissyp.com"
           ],
           "verdict": "Aucun site web trouvé pour le Café-Restaurant Beau-Soleil à Finhaut."
+        }
+      },
+      {
+        "id": "wczh7v47868mqjlo25q",
+        "name": "Cafe Restaurant Bar Central (Finhaut)",
+        "city": "Finhaut",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.finhaut.ch/vie-locale/commerces-et-services/cafes-et-restaurants/le-central-2224",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.finhaut.ch/vie-locale/commerces-et-services/cafes-et-restaurants/le-central-2224",
+          "confidence": "high",
+          "sources_checked": [
+            "local.ch",
+            "Sluurpy",
+            "LaCarte.menu",
+            "Tripadvisor",
+            "Finhaut.ch"
+          ],
+          "verdict": "Le Café Restaurant Bar Central à Finhaut dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "453e7cqsmw2mqjlo25q",
+        "name": "Restaurant du Barrage d'Emosson",
+        "city": "Finhaut",
+        "type": "Restaurant panoramique",
+        "phone": "027 768 12 74",
+        "email": "restemosson@mycable.ch",
+        "web": "http://www.emossonresto.com/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "http://www.emossonresto.com/",
+          "confidence": "high",
+          "sources_checked": [
+            "Google Maps",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google",
+            "Sluurpy",
+            "Allbiz",
+            "Corestaurant",
+            "Local.ch"
+          ],
+          "verdict": "Le Restaurant du Barrage d'Emosson dispose d'un site web officiel."
         }
       },
       {
@@ -2112,6 +3646,119 @@
             "wikipedia.org"
           ],
           "verdict": "Aucun site web trouvé pour l'établissement \"Bonaparte\" à Les Valettes / Bovernier, Suisse."
+        }
+      },
+      {
+        "id": "pbwjh4smvqmqjlo25q",
+        "name": "Restaurant Melodie",
+        "city": "Naters",
+        "type": "Restaurant",
+        "phone": "076 536 34 35",
+        "email": "—",
+        "web": "https://restaurant-melodie.digitalone.site",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://restaurant-melodie.digitalone.site",
+          "confidence": "high",
+          "sources_checked": [
+            "search.ch",
+            "local.ch",
+            "belalp.ch"
+          ],
+          "verdict": "Le Restaurant Melodie à Naters dispose d'un site web actif."
+        }
+      },
+      {
+        "id": "e2gt9vmp4wvmqjlo25q",
+        "name": "Restaurant Belalp",
+        "city": "Naters",
+        "type": "Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.loetschberg-naters.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.loetschberg-naters.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "allbiz.ch",
+            "Firmania.ch"
+          ],
+          "verdict": "Le Restaurant Belalp à Naters dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "3xsc4zmaqxmqjlo25q",
+        "name": "Les Gourmands Disent",
+        "city": "Vionnaz",
+        "type": "Cafe / Restaurant",
+        "phone": "024 565 30 50",
+        "email": "—",
+        "web": "https://www.facebook.com/gaytonmarina/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.facebook.com/gaytonmarina/",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "AllBiz",
+            "Sluurpy",
+            "TripAdvisor",
+            "Swissyp",
+            "Local.ch",
+            "Guide Gastronomique",
+            "Search.ch"
+          ],
+          "verdict": "L'établissement \"Les Gourmands Disent\" dispose d'une page Facebook comme site web."
+        }
+      },
+      {
+        "id": "g1rczdrlei7mqjlo25q",
+        "name": "Restaurant L'Auberge de l'Etoile",
+        "city": "Vionnaz",
+        "type": "Restaurant / Pizzeria",
+        "phone": "024 481 53 54",
+        "email": "—",
+        "web": "http://www.aubergeetoile.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "http://www.aubergeetoile.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "AllBiz.ch",
+            "Local.ch",
+            "Sluurpy.com",
+            "MenuWeb.menu",
+            "LaCarte.menu",
+            "Piatti.menu",
+            "Eisenbahn-Zell.ch",
+            "Search.ch",
+            "TripAdvisor.com"
+          ],
+          "verdict": "Le Restaurant L'Auberge de l'Étoile à Vionnaz dispose d'un site web officiel."
         }
       },
       {
@@ -2153,9 +3800,9 @@
         "phone": "079 305 98 44",
         "email": "—",
         "web": "",
-        "status": "voicemail",
+        "status": "to_call",
         "contact": "",
-        "notes": "ca s'appelle le salon charline\nrecall\n",
+        "notes": "",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -2171,22 +3818,7 @@
             "search.ch"
           ],
           "verdict": "Aucun site web trouvé pour Passion Coiffure à Salvan."
-        },
-        "enriched": {
-          "phone": null,
-          "phone_source": null,
-          "email": null,
-          "address": "Salvan, Valais",
-          "decision_maker": null,
-          "decision_maker_phone": null,
-          "decision_maker_phone_source": null,
-          "linkedin": null,
-          "description": "Passion Coiffure est un salon de coiffure à Salvan, apprécié pour ses services de coiffure professionnels."
-        },
-        "enrichedAt": 1782056287318,
-        "interactions": [],
-        "tags": [],
-        "lastContact": 1782227485993
+        }
       },
       {
         "id": "2u9777wffajmqjlo25q",
@@ -2214,6 +3846,141 @@
             "search.ch"
           ],
           "verdict": "Aucun site web trouvé pour le restaurant Diana Maks à Salvan."
+        }
+      },
+      {
+        "id": "neekelrgtamqjlo25q",
+        "name": "Le Clair de Lune",
+        "city": "Les Marecottes",
+        "type": "Cafe / Restaurant",
+        "phone": "027 761 10 02",
+        "email": "—",
+        "web": "https://www.zoo-alpin.ch/en/le-clair-de-lune-fp35",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.zoo-alpin.ch/en/le-clair-de-lune-fp35",
+          "confidence": "high",
+          "sources_checked": [
+            "Tripadvisor",
+            "Verticalp Les Marecottes",
+            "Passeport Gourmand",
+            "Local.ch",
+            "Moneyhouse"
+          ],
+          "verdict": "Le Clair de Lune dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "gekz1qg9gftmqjlo25q",
+        "name": "Auberge de Mollens",
+        "city": "Mollens VS",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.aubergemollens.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.aubergemollens.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "site officiel",
+            "Google Maps",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google"
+          ],
+          "verdict": "L'Auberge de Mollens dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "sihh1fz8n9mqjlo25q",
+        "name": "Hotel Restaurant Panorama",
+        "city": "Mollens VS",
+        "type": "Hotel / Restaurant",
+        "phone": "027 480 37 07",
+        "email": "—",
+        "web": "https://www.hotelpanorama.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.hotelpanorama.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "myswitzerland.com",
+            "myfarm.ch",
+            "local.ch",
+            "guidle.com",
+            "pfyn-finges.ch"
+          ],
+          "verdict": "Le site officiel de l'Hôtel Restaurant Panorama à Mollens VS est https://www.hotelpanorama.ch/."
+        }
+      },
+      {
+        "id": "6en7k5niz0pmqjlo25q",
+        "name": "Hotel-Restaurant Bellevue",
+        "city": "Venthone",
+        "type": "Hotel / Restaurant",
+        "phone": "027 455 11 75",
+        "email": "—",
+        "web": "https://bellevue-onnens.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://bellevue-onnens.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps"
+          ],
+          "verdict": "L'Hôtel-Restaurant Bellevue à Onnens dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "6zezunzdrc3mqjlo25q",
+        "name": "Tandem Cafe",
+        "city": "Venthone",
+        "type": "Cafe / Restaurant",
+        "phone": "027 565 02 82",
+        "email": "—",
+        "web": "https://www.tandemcafeventhone.com/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.tandemcafeventhone.com/",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "allbiz.ch",
+            "noble-contree.ch",
+            "corestaurant.ch",
+            "sierretourisme.ch",
+            "agenda.culturevalais.ch",
+            "zip.ch",
+            "search.ch"
+          ],
+          "verdict": "Le Tandem Café à Venthône dispose d'un site web officiel."
         }
       },
       {
@@ -2265,6 +4032,34 @@
             "tripadvisor.com"
           ],
           "verdict": "Aucun site web n'a été trouvé pour Roots Restaurant and Bar à Randogne."
+        }
+      },
+      {
+        "id": "j8yau9yz02mqjlo25q",
+        "name": "Restaurant Augenstern",
+        "city": "Reckingen",
+        "type": "Restaurant / Camping",
+        "phone": "027 973 13 95",
+        "email": "—",
+        "web": "http://www.campingaugenstern.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "http://www.campingaugenstern.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Sluurpy",
+            "Pages Jaunes Suisse",
+            "search.ch",
+            "Sluurpy",
+            "Coparking.ch",
+            "Local.ch",
+            "Tripadvisor"
+          ],
+          "verdict": "Le Restaurant Augenstern à Reckingen possède un site web officiel."
         }
       },
       {
@@ -2323,6 +4118,78 @@
         }
       },
       {
+        "id": "x3cuqkc5qk8mqjlo25q",
+        "name": "Restaurant Pizzeria Bistro Bellevue",
+        "city": "Lax",
+        "type": "Restaurant / Pizzeria",
+        "phone": "027 971 30 30",
+        "email": "restaurantbellevue100@gmail.com",
+        "web": "https://restaurant-pizzeria-bistro-bellevue-3994-lax.brunch-lunch-dinner.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://restaurant-pizzeria-bistro-bellevue-3994-lax.brunch-lunch-dinner.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "search.ch",
+            "local.ch",
+            "tripadvisor.ch",
+            "allbiz.ch"
+          ],
+          "verdict": "Le Restaurant Pizzeria Bistro Bellevue à Lax dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "ttp7p1h5q6pmqjlo25q",
+        "name": "Hotel Restaurant Aletsch",
+        "city": "Morel",
+        "type": "Hotel / Restaurant",
+        "phone": "027 928 63 63",
+        "email": "hotel-aletsch@aletschbahnen.ch",
+        "web": "",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670
+      },
+      {
+        "id": "j4095ld67cfmqjlo25q",
+        "name": "Gasthaus Tschiffra",
+        "city": "Blitzingen",
+        "type": "Gasthaus / Restaurant",
+        "phone": "027 971 11 77",
+        "email": "info@gasthaus-tschiffra.ch",
+        "web": "https://www.gasthaus-tschiffra.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.gasthaus-tschiffra.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "myswitzerland.com",
+            "regio-swiss.ch",
+            "gaultmillau.ch",
+            "sluury.com",
+            "gasthaus-tschiffra.goto-where.com",
+            "gasthaus-tschiffra-3989-blitzingen.brunch-lunch-dinner.ch",
+            "tripadvisor.ch"
+          ],
+          "verdict": "Le Gasthaus Tschiffra à Blitzingen possède un site web officiel."
+        },
+        "interactions": [],
+        "tags": []
+      },
+      {
         "id": "1m3np4twwvtmqjlo25q",
         "name": "Bozon Philippe - La Gastronome",
         "city": "Sion",
@@ -2364,9 +4231,7 @@
         "status": "to_call",
         "contact": "",
         "notes": "",
-        "at": 1781801638792,
-        "interactions": [],
-        "tags": []
+        "at": 1781801638792
       },
       {
         "id": "arqn07rs1gcmqjqovig",
@@ -2431,19 +4296,7 @@
         "status": "to_call",
         "contact": "",
         "notes": "",
-        "at": 1781801638792,
-        "enriched": {
-          "phone": null,
-          "phone_source": null,
-          "email": null,
-          "address": null,
-          "decision_maker": null,
-          "decision_maker_phone": null,
-          "decision_maker_phone_source": null,
-          "linkedin": null,
-          "description": "Un restaurant connu pour sa cuisine créole et son ambiance conviviale."
-        },
-        "enrichedAt": 1782060989768
+        "at": 1781801638792
       },
       {
         "id": "gejpakt2tv7mqjqovig",
@@ -2456,19 +4309,7 @@
         "status": "to_call",
         "contact": "",
         "notes": "",
-        "at": 1781801638792,
-        "enriched": {
-          "phone": null,
-          "phone_source": null,
-          "email": null,
-          "address": null,
-          "decision_maker": null,
-          "decision_maker_phone": null,
-          "decision_maker_phone_source": null,
-          "linkedin": null,
-          "description": "Un restaurant proposant une cuisine méditerranéenne dans un cadre accueillant."
-        },
-        "enrichedAt": 1782060989768
+        "at": 1781801638792
       },
       {
         "id": "ax20iel8pzmqjqovig",
@@ -2481,19 +4322,7 @@
         "status": "to_call",
         "contact": "",
         "notes": "",
-        "at": 1781801638792,
-        "enriched": {
-          "phone": null,
-          "phone_source": null,
-          "email": null,
-          "address": null,
-          "decision_maker": null,
-          "decision_maker_phone": null,
-          "decision_maker_phone_source": null,
-          "linkedin": null,
-          "description": "Une pizzeria réputée pour ses plats italiens authentiques."
-        },
-        "enrichedAt": 1782060989768
+        "at": 1781801638792
       },
       {
         "id": "r8ki3dhzsdimqjqovig",
@@ -2999,10 +4828,8 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "mail: croithaifully@gmail.com",
-        "at": 1781801638793,
-        "interactions": [],
-        "tags": []
+        "notes": "",
+        "at": 1781801638793
       },
       {
         "id": "wstbfx8l7knmqjqovih",
