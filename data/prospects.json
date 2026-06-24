@@ -900,36 +900,6 @@
         }
       },
       {
-        "id": "8q3rpa7ajwimqjlo25p",
-        "name": "Cafe de la Poste (Varen)",
-        "city": "Varen",
-        "type": "Cafe / Restaurant",
-        "phone": "—",
-        "email": "—",
-        "web": "",
-        "status": "to_call",
-        "contact": "",
-        "notes": "",
-        "at": 1781793202669,
-        "_noWebsite": {
-          "has_website": false,
-          "website_url": null,
-          "confidence": "high",
-          "sources_checked": [
-            "Google Maps",
-            "Pages Jaunes",
-            "LinkedIn",
-            "Google",
-            "Varen.ch",
-            "AllBiz.ch",
-            "Sluurpy.com",
-            "search.ch",
-            "Moneyhouse.ch"
-          ],
-          "verdict": "Aucune présence en ligne confirmée pour le Café de la Poste à Varen."
-        }
-      },
-      {
         "id": "2f7uo7ysihfmqjlo25p",
         "name": "Cafe de la Poste (Nendaz)",
         "city": "Nendaz",
@@ -5540,6 +5510,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782307482417
+    "lastSaved": 1782319846969
   }
 }
