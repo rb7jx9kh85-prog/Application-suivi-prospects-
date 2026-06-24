@@ -720,7 +720,7 @@
         "phone": "",
         "city": "Sion",
         "type": "service.beauty",
-        "notes": "2a Rue des Creusets, 1950, Sion\ndéja un site web mais c'est une catastrophe, les call qunad m'eme en leur proposant de comparer celui qu'ils ont mnt et la maquette faite par alpiniawebcraft\ndemain de 8h a 15 h ",
+        "notes": "2a Rue des Creusets, 1950, Sion\ndéja un site web mais c'est une catastrophe, les call qunad m'eme en leur proposant de comparer celui qu'ils ont mnt et la maquette faite par alpiniawebcraft\ndemain de 8h a 15h ",
         "status": "to_call",
         "at": 1782037904999,
         "enriched": {
@@ -3719,6 +3719,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782306102335
+    "lastSaved": 1782306105883
   }
 }
