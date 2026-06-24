@@ -3178,7 +3178,7 @@
       {
         "id": "5yp6bagxsyrmqqrfpjx",
         "text": "call à 7h45 le délice a leytron",
-        "status": "todo",
+        "status": "done",
         "priority": "high",
         "category": "call",
         "dueDate": null,
@@ -3186,7 +3186,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1782226154013,
-        "doneAt": null
+        "doneAt": 1782307215941
       },
       {
         "id": "plvckwqel6fmqqr5r6y",
@@ -3705,6 +3705,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782307208770
+    "lastSaved": 1782307216346
   }
 }
