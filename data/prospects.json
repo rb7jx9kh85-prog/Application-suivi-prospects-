@@ -879,8 +879,11 @@
         "city": "Sion",
         "type": "service.beauty",
         "notes": "24 Avenue de la Gare, 1950, Sion",
-        "status": "to_call",
-        "at": 1782037904999
+        "status": "refusal",
+        "at": 1782037904999,
+        "interactions": [],
+        "tags": [],
+        "lastContact": 1782306631407
       },
       {
         "id": "k4ktrxaq7rkmqjpxwp4",
@@ -3732,6 +3735,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782306509511
+    "lastSaved": 1782306631809
   }
 }
