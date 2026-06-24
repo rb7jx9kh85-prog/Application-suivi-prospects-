@@ -771,9 +771,11 @@
         "phone": "+41 27 322 59 59",
         "city": "Sion",
         "type": "service.beauty",
-        "notes": "13 Rue de la Dixence, 1950, Sion",
+        "notes": "13 Rue de la Dixence, 1950, Sion\n",
         "status": "to_call",
-        "at": 1782037904999
+        "at": 1782037904999,
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "3zrje3kz",
@@ -3721,6 +3723,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782306152476
+    "lastSaved": 1782306269808
   }
 }
