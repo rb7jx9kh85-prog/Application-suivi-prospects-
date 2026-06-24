@@ -1095,7 +1095,7 @@
         "web": "",
         "status": "to_call",
         "contact": "",
-        "notes": "",
+        "notes": "rappeler quand il a plus de temps",
         "at": 1781793202670,
         "_noWebsite": {
           "has_website": false,
@@ -1112,7 +1112,9 @@
             "Boulangerie-Comparatif.ch"
           ],
           "verdict": "Aucun site web officiel trouvé pour Au Péché Mignon à Monthey."
-        }
+        },
+        "interactions": [],
+        "tags": []
       },
       {
         "id": "x1uh9xzc6crmqjlo25q",
@@ -3702,6 +3704,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782306720773
+    "lastSaved": 1782307025105
   }
 }
