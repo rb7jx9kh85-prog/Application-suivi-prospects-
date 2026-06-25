@@ -4966,7 +4966,7 @@
       {
         "id": "a0xpsuj7jx6mqs0ec9v",
         "text": "call isabelle coiffure",
-        "status": "todo",
+        "status": "done",
         "priority": "medium",
         "category": "call",
         "dueDate": null,
@@ -4974,7 +4974,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1782301672867,
-        "doneAt": null
+        "doneAt": 1782404870908
       },
       {
         "id": "0ybx5ekxzqcmqqz6tka",
@@ -5556,6 +5556,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782323973039
+    "lastSaved": 1782404871309
   }
 }
