@@ -4969,6 +4969,19 @@
     ],
     "todos": [
       {
+        "id": "vyu02o7jyssmqv4307l",
+        "text": "finaliser le site web pour qu'il soit parfait, puis envoyer le lien du site modifié d'ici samedi",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": "k4ktrxaq7rkmqjpxwp4",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782489261009,
+        "doneAt": null
+      },
+      {
         "id": "ppuugzltk2bmqs0eimk",
         "text": "call actuel coiffure",
         "status": "todo",
@@ -5582,6 +5595,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782487345290
+    "lastSaved": 1782489261410
   }
 }
