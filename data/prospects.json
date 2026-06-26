@@ -4969,6 +4969,19 @@
     ],
     "todos": [
       {
+        "id": "letdd3oqb6mqvh4sc6",
+        "text": "Crée application pour le gérant + lui send l’app",
+        "status": "todo",
+        "priority": "high",
+        "category": "call",
+        "dueDate": "2026-06-27",
+        "prospectId": "k4ktrxaq7rkmqjpxwp4",
+        "reminderAt": 1782597540000,
+        "notes": "",
+        "at": 1782511179126,
+        "doneAt": null
+      },
+      {
         "id": "lzi1079dz2mqv68b0z",
         "text": "voir ou va le Web3Forms, essayer de faire send les reservations vers le mail du panda directement et pas sur mien",
         "status": "todo",
@@ -5621,6 +5634,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782492867951
+    "lastSaved": 1782511179528
   }
 }
