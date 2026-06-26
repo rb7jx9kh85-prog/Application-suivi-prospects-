@@ -4969,6 +4969,19 @@
     ],
     "todos": [
       {
+        "id": "70tl284xizvmqv674db",
+        "text": "rectifier + revroi ce qui ne va pas sur le site le panda par claude code",
+        "status": "todo",
+        "priority": "high",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": "k4ktrxaq7rkmqjpxwp4",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782492812255,
+        "doneAt": null
+      },
+      {
         "id": "k3lnb6nt0vdmqv66dsr",
         "text": "rectifier + revroi ce qui ne va pas sur le site le panda par claude code",
         "status": "todo",
@@ -5608,6 +5621,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782492778222
+    "lastSaved": 1782492812662
   }
 }
