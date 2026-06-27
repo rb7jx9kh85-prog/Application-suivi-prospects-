@@ -4969,6 +4969,19 @@
     ],
     "todos": [
       {
+        "id": "sfe0zlhs2simqw5a08x",
+        "text": "se pencher sur le sujet: soit on met une app directement sur le site vitrine (moins pro) soit une autre plus pro et en plus déja commencée à être dev",
+        "status": "todo",
+        "priority": "high",
+        "category": "agency",
+        "dueDate": "2026-06-27",
+        "prospectId": "k4ktrxaq7rkmqjpxwp4",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782551733441,
+        "doneAt": null
+      },
+      {
         "id": "wmxxcu29q4mqw58xl9",
         "text": "finaliser l'app pour modifier les plats avce fire bas by google: session claude code: https://claude.ai/code/session_01V22srBYA5sJdNMMPSseJCm",
         "status": "todo",
@@ -5686,6 +5699,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782551683745
+    "lastSaved": 1782551733848
   }
 }
