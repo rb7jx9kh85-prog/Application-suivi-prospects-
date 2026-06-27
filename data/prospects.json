@@ -4969,6 +4969,19 @@
     ],
     "todos": [
       {
+        "id": "hnzwplfh2omqwj0okc",
+        "text": "ajouter de petites animations sur le site le panda pour qu'il fasse encore plus pro -- demander des conseilles a claude + lui faire faire un prompt puis enfin le send a claude code",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782574813020,
+        "doneAt": null
+      },
+      {
         "id": "k8dzju89himqwixcl0",
         "text": "créer tous les documents pour le panda: regarder pour le contrat, comment on peut faire et aussi générer les différetes fichs, le devis etc... à lui envoyer d'ici lundi + lui demander un call pour en discuter",
         "status": "todo",
@@ -5751,6 +5764,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782574657931
+    "lastSaved": 1782574813422
   }
 }
