@@ -5036,7 +5036,7 @@
       {
         "id": "sfe0zlhs2simqw5a08x",
         "text": "se pencher sur le sujet: soit on met une app directement sur le site vitrine (moins pro) soit une autre plus pro et en plus déja commencée à être dev",
-        "status": "todo",
+        "status": "done",
         "priority": "high",
         "category": "agency",
         "dueDate": "2026-06-27",
@@ -5044,7 +5044,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1782551733441,
-        "doneAt": null
+        "doneAt": 1782598816426
       },
       {
         "id": "wmxxcu29q4mqw58xl9",
@@ -5764,6 +5764,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782598805228
+    "lastSaved": 1782598816827
   }
 }
