@@ -4969,6 +4969,19 @@
     ],
     "todos": [
       {
+        "id": "k8dzju89himqwixcl0",
+        "text": "créer tous les documents pour le panda: regarder pour le contrat, comment on peut faire et aussi générer les différetes fichs, le devis etc... à lui envoyer d'ici lundi + lui demander un call pour en discuter",
+        "status": "todo",
+        "priority": "high",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": "k4ktrxaq7rkmqjpxwp4",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782574657524,
+        "doneAt": null
+      },
+      {
         "id": "mge15rgbn8lmqwiw9re",
         "text": "revoir le logiciel de modification du menu, revoir ça pour que ça trouve des menus avec genre ça: 🔴  Plats du jour de la semaine du 16 au 19 juin : CHF 21.50            2 entrées, un plat principal à choix et un dessert 😄  Mardi  16 juin entrée : beignets de crevettes Plat principal au choix :  •Bœuf 5 épices, riz parfumé  •poulet au curry rouge, riz parfumé  😋  Mercredi 17 juin : Entrée : rouleau de printemps Plat principal au choix :  •Crevettes au basilic, riz parfumé  •Poulet croustillant, riz parfumé  🤗  Jeudi 18 juin : Entrées : calamars frits  Plat principal au choix :  -Canard au curry jaune, riz parfumé  •Poulet au soja noir riz parfumé  🙄  Vendredi 19 juin  : Entrée : brochettes de poulet Satay Plat principal au choix :  •porc ciboule et gingembre, riz parfumé  •Poulet aigre-doux, riz parfumé 🔴  Samedi et dimanche 20-21 juin        Service à la carte uniquemen",
         "status": "todo",
@@ -5738,6 +5751,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782574607612
+    "lastSaved": 1782574657931
   }
 }
