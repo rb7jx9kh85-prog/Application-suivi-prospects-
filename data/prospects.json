@@ -4969,6 +4969,19 @@
     ],
     "todos": [
       {
+        "id": "23q9q34st5wmqwxbzkj",
+        "text": "Finaliser le site web le panda + trouver ce qui bloque dna elle voie des mails",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782598855123,
+        "doneAt": null
+      },
+      {
         "id": "hnzwplfh2omqwj0okc",
         "text": "ajouter de petites animations sur le site le panda pour qu'il fasse encore plus pro -- demander des conseilles a claude + lui faire faire un prompt puis enfin le send a claude code",
         "status": "todo",
@@ -5764,6 +5777,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782598820527
+    "lastSaved": 1782598855525
   }
 }
