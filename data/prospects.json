@@ -4969,6 +4969,19 @@
     ],
     "todos": [
       {
+        "id": "s9hy1w2zgwmqw93xos",
+        "text": "revoir le chatbot et l'automatisation de l'envoi par mail des reservations",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782558168652,
+        "doneAt": null
+      },
+      {
         "id": "sfe0zlhs2simqw5a08x",
         "text": "se pencher sur le sujet: soit on met une app directement sur le site vitrine (moins pro) soit une autre plus pro et en plus déja commencée à être dev",
         "status": "todo",
@@ -5699,6 +5712,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782551733848
+    "lastSaved": 1782558169055
   }
 }
