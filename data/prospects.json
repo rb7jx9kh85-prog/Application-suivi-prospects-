@@ -4969,6 +4969,19 @@
     ],
     "todos": [
       {
+        "id": "wmxxcu29q4mqw58xl9",
+        "text": "finaliser l'app pour modifier les plats avce fire bas by google: session claude code: https://claude.ai/code/session_01V22srBYA5sJdNMMPSseJCm",
+        "status": "todo",
+        "priority": "high",
+        "category": "agency",
+        "dueDate": "2026-06-27",
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782551683341,
+        "doneAt": null
+      },
+      {
         "id": "g5v41a8jutmqw56h8q",
         "text": "finaliser le site alpiniawebcraft.ch -- mettre les prix suivants sur les années suivantes l'années de l'achat: pour le starter: on est sur du 450 la première et les suivantes 200, pour a junior: on est sur du 600 la première et 400 la deuxième, et sur PME elite: on est sur du 800 la première année et apres 600. aussi, je veux mettre un truc un mode payement anticipé = 25% de réduction sur les années suivantes-- si la première et deuxime année est payée= -15%, et si les 3 ans sont payés= -25%",
         "status": "todo",
@@ -5673,6 +5686,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782551569255
+    "lastSaved": 1782551683745
   }
 }
