@@ -4969,6 +4969,19 @@
     ],
     "todos": [
       {
+        "id": "c4ocwd7z6lrmqwir6ru",
+        "text": "revoir avec claude le'nvoi du formualire de reservation qui ne se send pas -- demaner de revoir son architechture.",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": "k4ktrxaq7rkmqjpxwp4",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782574370058,
+        "doneAt": null
+      },
+      {
         "id": "s9hy1w2zgwmqw93xos",
         "text": "revoir le chatbot et l'automatisation de l'envoi par mail des reservations",
         "status": "todo",
@@ -5712,6 +5725,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782558169055
+    "lastSaved": 1782574370460
   }
 }
