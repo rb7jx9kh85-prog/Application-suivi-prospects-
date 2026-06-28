@@ -4969,6 +4969,19 @@
     ],
     "todos": [
       {
+        "id": "gs4qpselirumqxkx7j3",
+        "text": "création maquette pour le ticino a sion",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782638476383,
+        "doneAt": null
+      },
+      {
         "id": "23q9q34st5wmqwxbzkj",
         "text": "Finaliser le site web le panda + trouver ce qui bloque dna elle voie des mails",
         "status": "todo",
@@ -5777,6 +5790,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782598855525
+    "lastSaved": 1782638476794
   }
 }
