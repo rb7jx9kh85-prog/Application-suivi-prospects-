@@ -2,6 +2,22 @@
   "155ab99e52611a1a0f906d91d94ef568ee65ba3c6b0f83f0cd840ef2512d2452": {
     "prospects": [
       {
+        "id": "nttba4cqc2mqxl018x",
+        "name": "le ticino",
+        "city": "Sion",
+        "type": "bar",
+        "phone": "027 322 38 08",
+        "email": "info@ticino-sion.ch",
+        "web": "https://www.ticino-sion.ch/",
+        "status": "video_rdv",
+        "contact": "pas connu",
+        "notes": "--> refonte du site web est à faire, la personne m'a informé que le prestataire qui lui a créer le site web a tout simplement fait faillite. okey pour rendez vous mais ne pormet rien car ses enfants finissent une école de marketing et vont peut-être le lui créer.",
+        "value": 800,
+        "nextFollowUp": "",
+        "lastContact": 1782638608209,
+        "at": 1782638608209
+      },
+      {
         "id": "c4ev4folzoumqv2xxpz",
         "name": "boulangerie le fiacre",
         "city": "saillon",
@@ -5790,6 +5806,6 @@
         "updatedAt": 1781900264666
       }
     ],
-    "lastSaved": 1782638476794
+    "lastSaved": 1782638608619
   }
 }
