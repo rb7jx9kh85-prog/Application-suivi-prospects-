@@ -1532,8 +1532,10 @@ function render(v) {
 // Force sauvegarde cloud si l'onglet est fermé ou mis en arrière-plan avec des données en attente
 window.addEventListener('beforeunload', function() {
   if (_pushPending && S.token) {
-    // sendBeacon est synchrone au déchargement — fiable même si l'onglet se ferme
-    var payload = JSON.stringify({ token: S.token, prospects: S.prospects, todos: S.todos, notes: S.notes, lastSaved: Date.now() });
+    // sendBeacon est synchrone au déchargement — on envoie uniquement le delta.
+    var changes = computeDelta();
+    if (!changes) return;
+    var payload = JSON.stringify({ token: S.token, delta: true, changes: changes, lastSaved: Date.now() });
     navigator.sendBeacon('/api/data-save', new Blob([payload], { type: 'application/json' }));
   }
 });
@@ -1573,10 +1575,61 @@ function api(fn, body) {
   });
 }
 
-// ===== PROSPECTS (KV sync + localStorage cache) =====
+// ===== PROSPECTS (Firestore sync par delta + cache localStorage) =====
+// Principe anti-« ça part en couille » : on n'envoie au cloud QUE ce qui a
+// réellement changé depuis la dernière synchro confirmée (le « baseline »).
+// Un cache périmé ne peut donc plus réécrire tout le tableau du cloud.
 var _saveTimer = null;
 var _pushPending = false;
 var _pushRetryTimer = null;
+var SYNC_V = 'ap_sync_v2'; // marqueur : cet appareil a fait le reset unique vers Firestore
+var COLS = ['prospects', 'todos', 'notes'];
+
+// Baseline = état exact confirmé côté serveur, par collection : { id: jsonRecord }
+var _synced = { prospects: {}, todos: {}, notes: {} };
+(function initSynced() {
+  try {
+    var raw = localStorage.getItem('ap_synced');
+    if (raw) { var s = JSON.parse(raw); if (s && typeof s === 'object') _synced = s; }
+  } catch(e) {}
+  COLS.forEach(function(c) { if (!_synced[c] || typeof _synced[c] !== 'object') _synced[c] = {}; });
+})();
+function persistSynced() {
+  try { localStorage.setItem('ap_synced', JSON.stringify(_synced)); } catch(e) {}
+}
+// Retire les champs volatils (préfixe _, ex. _enriching) avant comparaison/envoi.
+function sanitize(rec) {
+  var out = {};
+  for (var k in rec) { if (rec.hasOwnProperty(k) && k.charAt(0) !== '_') out[k] = rec[k]; }
+  return out;
+}
+function snapMap(arr) {
+  var m = {};
+  (arr || []).forEach(function(r) {
+    if (r && r.id != null) m[String(r.id)] = JSON.stringify(sanitize(r));
+  });
+  return m;
+}
+// Calcule le delta (upserts + deletes) de chaque collection vs baseline.
+function computeDelta() {
+  var changes = {};
+  var has = false;
+  COLS.forEach(function(c) {
+    var cur = snapMap(S[c]);
+    var base = _synced[c] || {};
+    var upserts = [], deletes = [];
+    for (var id in cur) { if (cur[id] !== base[id]) upserts.push(JSON.parse(cur[id])); }
+    for (var oid in base) { if (!(oid in cur)) deletes.push(oid); }
+    if (upserts.length || deletes.length) has = true;
+    changes[c] = { upserts: upserts, deletes: deletes };
+  });
+  return has ? changes : null;
+}
+// Met à jour le baseline après une sauvegarde/synchro réussie.
+function markSynced() {
+  COLS.forEach(function(c) { _synced[c] = snapMap(S[c]); });
+  persistSynced();
+}
 function cloudStatus(state, msg) {
   var el = $('cloud-status');
   if (!el) return;
@@ -1601,9 +1654,12 @@ function loadNotes() {
     if (!Array.isArray(S.notes)) S.notes = [];
   } catch(e) { S.notes = []; }
 }
-function saveNotes() {
+function saveNotes() { scheduleSave(); }
+function scheduleSave() {
   var ts = Date.now();
   try {
+    localStorage.setItem('ap_prospects', JSON.stringify(S.prospects));
+    localStorage.setItem('ap_todos', JSON.stringify(S.todos));
     localStorage.setItem('ap_notes', JSON.stringify(S.notes));
     localStorage.setItem('ap_lastSaved', String(ts));
   } catch(e) {}
@@ -1614,21 +1670,20 @@ function saveNotes() {
 function pushToKV() {
   if (!S.token) return Promise.resolve();
   _pushPending = false;
+  var changes = computeDelta();
+  if (!changes) { cloudStatus('ok'); return Promise.resolve(); } // rien à envoyer
   cloudStatus('saving');
   var ts = Date.now();
-  var payload = {
-    token: S.token,
-    prospects: S.prospects,
-    todos: S.todos,
-    notes: S.notes,
-    lastSaved: ts
-  };
+  var sent = { prospects: snapMap(S.prospects), todos: snapMap(S.todos), notes: snapMap(S.notes) };
   return fetch('/api/data-save', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
+    body: JSON.stringify({ token: S.token, delta: true, changes: changes, lastSaved: ts })
   }).then(function(r) { return r.json(); }).then(function(d) {
     if (d.ok) {
+      // Le baseline devient exactement ce qu'on vient d'envoyer.
+      COLS.forEach(function(c) { _synced[c] = sent[c]; });
+      persistSynced();
       try { localStorage.setItem('ap_lastSaved', String(ts)); } catch(e) {}
       cloudStatus('ok');
       if (_pushRetryTimer) { clearTimeout(_pushRetryTimer); _pushRetryTimer = null; }
@@ -1637,11 +1692,8 @@ function pushToKV() {
       scheduleRetry();
     }
   }).catch(function() {
-    if (navigator.onLine === false) {
-      cloudStatus('offline');
-    } else {
-      cloudStatus('err');
-    }
+    if (navigator.onLine === false) cloudStatus('offline');
+    else cloudStatus('err');
     scheduleRetry();
   });
 }
@@ -1652,59 +1704,50 @@ function scheduleRetry() {
     if (S.token) pushToKV();
   }, 8000);
 }
-function saveProspects() {
-  var ts = Date.now();
+function saveProspects() { scheduleSave(); }
+// Applique l'état serveur (autoritaire) en local et met à jour caches + baseline.
+function applyServerState(d) {
+  S.prospects = Array.isArray(d.prospects) ? d.prospects : [];
+  S.todos = Array.isArray(d.todos) ? d.todos : [];
+  S.notes = Array.isArray(d.notes) ? d.notes : [];
   try {
     localStorage.setItem('ap_prospects', JSON.stringify(S.prospects));
-    localStorage.setItem('ap_lastSaved', String(ts));
+    localStorage.setItem('ap_todos', JSON.stringify(S.todos));
+    localStorage.setItem('ap_notes', JSON.stringify(S.notes));
+    localStorage.setItem('ap_lastSaved', String(d.lastSaved || Date.now()));
   } catch(e) {}
-  _pushPending = true;
-  if (_saveTimer) clearTimeout(_saveTimer);
-  _saveTimer = setTimeout(function() { _saveTimer = null; pushToKV(); }, 400);
+  markSynced();
 }
-function syncFromKV(cb) {
-  if (!S.token) { if (cb) cb(); return; }
+function loadFromServer(cb) {
   fetch('/api/data-load', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ token: S.token })
   }).then(function(r) { return r.json(); }).then(function(d) {
     if (d.error) { toast('Sync cloud : ' + d.error, 'err'); if (cb) cb(); return; }
-
-    var cloudP = Array.isArray(d.prospects) ? d.prospects : [];
-    var cloudT = Array.isArray(d.todos) ? d.todos : [];
-    var cloudN = Array.isArray(d.notes) ? d.notes : [];
-    var cloudTs = d.lastSaved || 0;
-    var localTs = parseInt(localStorage.getItem('ap_lastSaved') || '0');
-
-    // Cloud wins if it has data and is newer (or local has nothing)
-    var takeCloud = (cloudTs >= localTs) || (!localTs && cloudP.length > 0);
-
-    if (takeCloud) {
-      S.prospects = cloudP;
-      S.todos = cloudT;
-      S.notes = cloudN;
-      try {
-        localStorage.setItem('ap_prospects', JSON.stringify(S.prospects));
-        localStorage.setItem('ap_todos', JSON.stringify(S.todos));
-        localStorage.setItem('ap_notes', JSON.stringify(S.notes));
-        localStorage.setItem('ap_lastSaved', String(cloudTs));
-      } catch(e) {}
-    } else {
-      // Local is newer → push it to cloud to update it
-      pushToKV().then(function() {
-        localStorage.setItem('ap_lastSaved', String(Date.now()));
-      });
-    }
-
-    updateTaskBadge();
-    renderDash();
-    renderCC();
+    applyServerState(d);
+    try { localStorage.setItem(SYNC_V, '1'); } catch(e) {}
+    updateTaskBadge(); renderDash(); renderCC();
     if (cb) cb();
   }).catch(function() {
     toast('Sync cloud indisponible.', 'err');
     if (cb) cb();
   });
+}
+function syncFromKV(cb) {
+  if (!S.token) { if (cb) cb(); return; }
+  var firstRun = !localStorage.getItem(SYNC_V);
+  if (firstRun) {
+    // Première ouverture après migration Firestore : le serveur fait foi.
+    // On repart proprement de la donnée migrée (fin des caches périmés).
+    loadFromServer(cb);
+    return;
+  }
+  // Fonctionnement normal : on pousse d'abord nos changements locaux, puis on
+  // récupère l'état serveur consolidé (fusion multi-appareils par id).
+  var changes = computeDelta();
+  if (changes) { pushToKV().then(function() { loadFromServer(cb); }); }
+  else { loadFromServer(cb); }
 }
 
 // ===== AUTH =====

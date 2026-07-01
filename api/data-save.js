@@ -1,69 +1,71 @@
-const https = require('https')
-const crypto = require('crypto')
+// Sauvegarde les données vers Firestore, 1 document par enregistrement.
+//
+// Deux modes :
+//  1) DELTA (nouveau front) : { token, delta:true, changes:{ prospects:{upserts,deletes}, ... } }
+//     → applique exactement les créations/modifs/suppressions. Zéro écrasement
+//       du reste : un appareil n'envoie que ce QU'IL a réellement changé.
+//  2) LEGACY (ancien front encore en cache) : { token, prospects:[...], ... }
+//     → upsert « si absent » uniquement : un cache périmé peut seulement AJOUTER
+//       des enregistrements manquants, jamais écraser ni supprimer. C'est ce qui
+//       neutralise le bug « le téléphone réécrit tout avec sa vieille version ».
+const { getDb, emailFromToken, userKey, COLLECTIONS } = require('./_firebase')
 
-const OWNER = 'rb7jx9kh85-prog'
-const REPO = 'Application-suivi-prospects-'
-const FILE = 'data/prospects.json'
+const CHUNK = 400 // limite Firestore : 500 opérations par batch
 
-const secret = () => process.env.APP_SECRET || 'alpinia-default-secret-change-me'
-const ghToken = () => process.env.GITHUB_TOKEN
-
-function emailFromToken(token) {
-  try {
-    const decoded = Buffer.from(token, 'base64').toString('utf8')
-    const lastPipe = decoded.lastIndexOf('|')
-    if (lastPipe === -1) return null
-    const sig = decoded.slice(lastPipe + 1)
-    const payload = decoded.slice(0, lastPipe)
-    const expected = crypto.createHmac('sha256', secret()).update(payload).digest('hex')
-    if (sig !== expected) return null
-    const parts = payload.split('|')
-    return (parts[0] || '').toLowerCase().trim()
-  } catch (e) { return null }
+function docId(rec) {
+  return String(rec && rec.id != null ? rec.id : '').trim()
 }
 
-function ghRequest(method, path, body, token) {
-  return new Promise((resolve, reject) => {
-    const data = body ? JSON.stringify(body) : null
-    const req = https.request({
-      hostname: 'api.github.com',
-      path,
-      method,
-      headers: {
-        Authorization: 'Bearer ' + token,
-        'User-Agent': 'alpinia-app/1.0',
-        Accept: 'application/vnd.github.v3+json',
-        'Content-Type': 'application/json',
-        ...(data ? { 'Content-Length': Buffer.byteLength(data) } : {}),
-      },
-    }, (r) => {
-      let out = ''
-      r.on('data', c => { out += c })
-      r.on('end', () => {
-        try { resolve({ status: r.statusCode, body: JSON.parse(out) }) }
-        catch (e) { resolve({ status: r.statusCode, body: out }) }
-      })
+async function commitOps(db, ops) {
+  for (let i = 0; i < ops.length; i += CHUNK) {
+    const batch = db.batch()
+    ops.slice(i, i + CHUNK).forEach(op => {
+      if (op.type === 'set') batch.set(op.ref, op.data)
+      else if (op.type === 'delete') batch.delete(op.ref)
     })
-    req.on('error', reject)
-    if (data) req.write(data)
-    req.end()
-  })
+    await batch.commit()
+  }
 }
 
-async function readDb(token) {
-  const r = await ghRequest('GET', `/repos/${OWNER}/${REPO}/contents/${FILE}`, null, token)
-  if (r.status === 404) return { data: {}, sha: null }
-  if (r.status !== 200) throw new Error('GitHub read error ' + r.status)
-  const content = Buffer.from(r.body.content, 'base64').toString('utf8')
-  return { data: JSON.parse(content || '{}'), sha: r.body.sha }
+// Mode DELTA : applique upserts + deletes tels quels.
+async function applyDelta(db, userRef, changes) {
+  const ops = []
+  const now = Date.now()
+  for (const name of COLLECTIONS) {
+    const c = changes[name] || {}
+    const col = userRef.collection(name)
+    ;(Array.isArray(c.upserts) ? c.upserts : []).forEach(rec => {
+      const id = docId(rec)
+      if (!id) return
+      ops.push({ type: 'set', ref: col.doc(id), data: Object.assign({}, rec, { _m: now }) })
+    })
+    ;(Array.isArray(c.deletes) ? c.deletes : []).forEach(id => {
+      id = String(id || '').trim()
+      if (!id) return
+      ops.push({ type: 'delete', ref: col.doc(id) })
+    })
+  }
+  await commitOps(db, ops)
 }
 
-async function writeDb(db, sha, token) {
-  const content = Buffer.from(JSON.stringify(db, null, 2)).toString('base64')
-  const body = { message: 'sync prospects', content, ...(sha ? { sha } : {}) }
-  const r = await ghRequest('PUT', `/repos/${OWNER}/${REPO}/contents/${FILE}`, body, token)
-  if (r.status !== 200 && r.status !== 201) throw new Error('GitHub write error ' + r.status + ': ' + JSON.stringify(r.body))
-  return r.body
+// Mode LEGACY : upsert « si absent » — ne touche jamais aux docs existants.
+async function applyLegacy(db, userRef, arrays) {
+  const ops = []
+  const now = Date.now()
+  for (const name of COLLECTIONS) {
+    const incoming = Array.isArray(arrays[name]) ? arrays[name] : []
+    if (!incoming.length) continue
+    const col = userRef.collection(name)
+    const existing = new Set()
+    const snap = await col.get()
+    snap.forEach(d => existing.add(d.id))
+    incoming.forEach(rec => {
+      const id = docId(rec)
+      if (!id || existing.has(id)) return
+      ops.push({ type: 'set', ref: col.doc(id), data: Object.assign({}, rec, { _m: now }) })
+    })
+  }
+  await commitOps(db, ops)
 }
 
 module.exports = async function handler(req, res) {
@@ -73,25 +75,26 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end()
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method Not Allowed' })
 
-  const token = ghToken()
-  if (!token) return res.status(500).json({ error: 'GITHUB_TOKEN manquant dans Vercel' })
-
-  const { token: appToken, prospects, todos, notes } = req.body || {}
+  const body = req.body || {}
+  const appToken = body.token
   if (!appToken) return res.status(400).json({ error: 'token requis' })
 
   const email = emailFromToken(appToken)
   if (!email) return res.status(401).json({ error: 'Token invalide' })
 
   try {
-    const key = crypto.createHash('sha256').update(email).digest('hex')
-    const { data: db, sha } = await readDb(token)
-    if (!db[key]) db[key] = {}
-    if (Array.isArray(prospects)) db[key].prospects = prospects
-    if (Array.isArray(todos)) db[key].todos = todos
-    if (Array.isArray(notes)) db[key].notes = notes
-    db[key].lastSaved = req.body.lastSaved || Date.now()
-    await writeDb(db, sha, token)
-    return res.status(200).json({ ok: true, lastSaved: db[key].lastSaved })
+    const db = getDb()
+    const userRef = db.collection('users').doc(userKey(email))
+    const lastSaved = body.lastSaved || Date.now()
+
+    if (body.delta) {
+      await applyDelta(db, userRef, body.changes || {})
+    } else {
+      await applyLegacy(db, userRef, body)
+    }
+
+    await userRef.set({ lastSaved, email }, { merge: true })
+    return res.status(200).json({ ok: true, lastSaved })
   } catch (e) {
     return res.status(500).json({ error: e.message })
   }

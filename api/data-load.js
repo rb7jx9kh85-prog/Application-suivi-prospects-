@@ -1,56 +1,20 @@
-const https = require('https')
-const crypto = require('crypto')
+// Charge les données de l'utilisateur depuis Firestore.
+// Structure : users/{userKey}/prospects, /todos, /notes (1 document par enregistrement).
+const { getDb, emailFromToken, userKey, COLLECTIONS } = require('./_firebase')
 
-const OWNER = 'rb7jx9kh85-prog'
-const REPO = 'Application-suivi-prospects-'
-const FILE = 'data/prospects.json'
-
-const secret = () => process.env.APP_SECRET || 'alpinia-default-secret-change-me'
-
-function emailFromToken(token) {
-  try {
-    const decoded = Buffer.from(token, 'base64').toString('utf8')
-    const lastPipe = decoded.lastIndexOf('|')
-    if (lastPipe === -1) return null
-    const sig = decoded.slice(lastPipe + 1)
-    const payload = decoded.slice(0, lastPipe)
-    const expected = crypto.createHmac('sha256', secret()).update(payload).digest('hex')
-    if (sig !== expected) return null
-    const parts = payload.split('|')
-    return (parts[0] || '').toLowerCase().trim()
-  } catch (e) { return null }
+// Retire les champs internes de synchro avant de renvoyer au client.
+function clean(doc) {
+  const d = doc.data() || {}
+  delete d._m
+  delete d._deleted
+  return d
 }
 
-function fetchFromGithubAPI() {
-  return new Promise((resolve, reject) => {
-    const token = process.env.GITHUB_TOKEN
-    const headers = {
-      'User-Agent': 'alpinia-app/1.0',
-      Accept: 'application/vnd.github.v3+json',
-    }
-    if (token) headers.Authorization = 'Bearer ' + token
-
-    const req = https.request({
-      hostname: 'api.github.com',
-      path: `/repos/${OWNER}/${REPO}/contents/${FILE}`,
-      method: 'GET',
-      headers,
-    }, (r) => {
-      let out = ''
-      r.on('data', c => { out += c })
-      r.on('end', () => {
-        try {
-          const json = JSON.parse(out)
-          if (r.statusCode === 404) return resolve({})
-          if (r.statusCode !== 200) return reject(new Error('GitHub ' + r.statusCode + ': ' + (json.message || out)))
-          const content = Buffer.from(json.content, 'base64').toString('utf8')
-          resolve(JSON.parse(content || '{}'))
-        } catch (e) { reject(e) }
-      })
-    })
-    req.on('error', reject)
-    req.end()
-  })
+async function readCollection(userRef, name) {
+  const snap = await userRef.collection(name).get()
+  const out = []
+  snap.forEach(doc => { out.push(clean(doc)) })
+  return out
 }
 
 module.exports = async function handler(req, res) {
@@ -67,15 +31,17 @@ module.exports = async function handler(req, res) {
   if (!email) return res.status(401).json({ error: 'Token invalide' })
 
   try {
-    const db = await fetchFromGithubAPI()
-    const key = crypto.createHash('sha256').update(email).digest('hex')
-    const userData = db[key] || {}
-    return res.status(200).json({
-      prospects: userData.prospects || [],
-      todos: userData.todos || [],
-      notes: userData.notes || [],
-      lastSaved: userData.lastSaved || 0,
-    })
+    const db = getDb()
+    const userRef = db.collection('users').doc(userKey(email))
+
+    const [prospects, todos, notes] = await Promise.all(
+      COLLECTIONS.map(name => readCollection(userRef, name))
+    )
+
+    const metaSnap = await userRef.get()
+    const lastSaved = (metaSnap.exists && metaSnap.data().lastSaved) || 0
+
+    return res.status(200).json({ prospects, todos, notes, lastSaved })
   } catch (e) {
     return res.status(500).json({ error: e.message })
   }

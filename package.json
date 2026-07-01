@@ -2,6 +2,10 @@
   "name": "alpinia-prospect-pro",
   "version": "2.0.0",
   "scripts": {
-    "build": "echo 'static site — no build step'"
+    "build": "echo 'static site — no build step'",
+    "migrate": "node scripts/migrate-to-firestore.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.7.0"
   }
 }
