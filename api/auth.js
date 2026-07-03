@@ -1,6 +1,6 @@
 const crypto = require('crypto')
 
-const secret = () => process.env.APP_SECRET || 'alpinia-default-secret-change-me'
+const secret = () => process.env.APP_SECRET || ''
 const appEmail = () => (process.env.APP_EMAIL || process.env.APP_MAIL || '').toLowerCase().trim()
 const appPassword = () => process.env.APP_PASSWORD || ''
 const appName = () => process.env.APP_NAME || 'Alpinia Pro'
@@ -14,6 +14,7 @@ function makeToken(email) {
 }
 
 function verifyToken(token) {
+  if (!secret()) return null
   try {
     const decoded = Buffer.from(token, 'base64').toString('utf8')
     const lastPipe = decoded.lastIndexOf('|')
@@ -45,6 +46,7 @@ module.exports = async function handler(req, res) {
     const pw = String(body.password || '')
     if (!appEmail()) return res.status(500).json({ error: 'Variable APP_EMAIL non configurée dans Vercel → Settings → Environment Variables.' })
     if (!appPassword()) return res.status(500).json({ error: 'Variable APP_PASSWORD non configurée dans Vercel → Settings → Environment Variables.' })
+    if (!secret()) return res.status(500).json({ error: 'Variable APP_SECRET non configurée dans Vercel → Settings → Environment Variables.' })
     if (email !== appEmail() || pw !== appPassword()) return res.status(401).json({ error: 'Email ou mot de passe incorrect.' })
     const token = makeToken(email)
     return res.status(200).json({ token, user: { email, name: appName() } })

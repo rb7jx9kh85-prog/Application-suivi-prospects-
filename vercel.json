@@ -3,7 +3,8 @@
   "functions": {
     "api/enrich-batch.js": { "maxDuration": 60 },
     "api/verify-no-website.js": { "maxDuration": 30 },
-    "api/search-places.js": { "maxDuration": 30 }
+    "api/search-places.js": { "maxDuration": 30 },
+    "api/score-ideal.js": { "maxDuration": 30 }
   },
   "rewrites": [
     { "source": "/((?!api/).*)", "destination": "/index.html" }

@@ -12,7 +12,7 @@
 const admin = require('firebase-admin')
 const crypto = require('crypto')
 
-const secret = () => process.env.APP_SECRET || 'alpinia-default-secret-change-me'
+const secret = () => process.env.APP_SECRET || ''
 
 let _db = null
 
@@ -47,6 +47,7 @@ function getDb() {
 
 // Reconstruit l'email depuis le token applicatif (HMAC signé côté serveur).
 function emailFromToken(token) {
+  if (!secret()) return null
   try {
     const decoded = Buffer.from(token, 'base64').toString('utf8')
     const lastPipe = decoded.lastIndexOf('|')

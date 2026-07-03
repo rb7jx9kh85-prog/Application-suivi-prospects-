@@ -67,18 +67,25 @@ async function searchGeoapify(key, city, category, cap) {
   const [lon, lat] = feat.geometry.coordinates
 
   // 2) Chercher les établissements dans un rayon de 12 km
+  // On sur-échantillonne (jusqu'à 3x le nombre demandé) pour pouvoir ensuite
+  // trier par pertinence "prospect idéal" (sans site, Facebook seul, etc.)
+  // et garder les meilleurs dans la limite demandée par l'utilisateur.
+  const fetchLimit = Math.min(cap * 3, 200)
   const cats = GEOAPIFY_CATS[category] || GEOAPIFY_CATS.restaurant
-  const placesUrl = `https://api.geoapify.com/v2/places?categories=${cats}&filter=circle:${lon},${lat},12000&bias=proximity:${lon},${lat}&limit=${cap}&lang=fr&apiKey=${key}`
+  const placesUrl = `https://api.geoapify.com/v2/places?categories=${cats}&filter=circle:${lon},${lat},12000&bias=proximity:${lon},${lat}&limit=${fetchLimit}&lang=fr&apiKey=${key}`
   const data = await getJSON(placesUrl, 9000)
 
   return (data.features || []).map(f => {
     const p = f.properties || {}
+    const raw = (p.datasource && p.datasource.raw) || {}
     const addr = [p.housenumber && p.street ? p.housenumber + ' ' + p.street : p.street, p.postcode, p.city].filter(Boolean).join(', ')
     return {
-      establishment: p.name || (p.datasource && p.datasource.raw && (p.datasource.raw.name || p.datasource.raw['name:fr'] || p.datasource.raw.brand || p.datasource.raw.operator)) || '',
-      website: p.website || '',
-      phone: p.phone || (p.datasource && p.datasource.raw && (p.datasource.raw.phone || p.datasource.raw['contact:phone'])) || '',
-      email: p.email || '',
+      establishment: p.name || (raw.name || raw['name:fr'] || raw.brand || raw.operator) || '',
+      website: p.website || raw.website || raw['contact:website'] || '',
+      phone: p.phone || raw.phone || raw['contact:phone'] || '',
+      email: p.email || raw.email || raw['contact:email'] || '',
+      facebook: p.facebook || raw.facebook || raw['contact:facebook'] || '',
+      instagram: p.instagram || raw.instagram || raw['contact:instagram'] || '',
       city: p.city || '',
       domain: (p.categories || []).find(c => c.indexOf('.') > -1) || (p.categories || [])[0] || '',
       notes: addr || '',
@@ -152,10 +159,26 @@ function parseOverpass(el) {
     website: t.website || t['contact:website'] || '',
     phone: t.phone || t['contact:phone'] || t['contact:mobile'] || '',
     email: t.email || t['contact:email'] || '',
+    facebook: t.facebook || t['contact:facebook'] || '',
+    instagram: t.instagram || t['contact:instagram'] || '',
     city: t['addr:city'] || '',
     domain: t.amenity || t.shop || t.tourism || t.leisure || t.office || t.healthcare || t.craft || '',
     notes: addr || '', status: 'to_call',
   }
+}
+
+// ---- Priorité "prospect idéal" : pas de site (ou Facebook seul) + contactable ----
+// C'est le seul filtrage fiable qu'OpenStreetMap/Geoapify permettent nativement.
+// Les autres critères (ancienneté du site, nb d'avis Google, qualité des photos,
+// activité Instagram, bouche-à-oreille) ne sont pas dans ces données et nécessitent
+// l'analyse IA (voir /api/score-ideal côté client, bouton "Analyser — profil idéal").
+function leadPriority(p) {
+  let score = 0
+  if (!p.website) score += 3
+  if (!p.website && p.facebook) score += 2
+  if (p.phone) score += 1
+  if (p.website) score -= 2
+  return score
 }
 
 // ================= HANDLER =================
@@ -222,8 +245,8 @@ module.exports = async function handler(req, res) {
       if (seen.has(k)) return false
       seen.add(k); return true
     })
-    // tri : téléphone/site d'abord (mais on garde TOUT)
-    elements.sort((a, b) => ((b.phone ? 2 : 0) + (b.website ? 1 : 0)) - ((a.phone ? 2 : 0) + (a.website ? 1 : 0)))
+    // tri : prospects "idéaux" d'abord — sans site (ou Facebook seul) mais joignables (mais on garde TOUT)
+    elements.sort((a, b) => leadPriority(b) - leadPriority(a))
     elements = elements.slice(0, cap)
 
     if (!elements.length) {
