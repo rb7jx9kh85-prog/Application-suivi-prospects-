@@ -77,7 +77,7 @@ module.exports = async function handler(req, res) {
     const metaSnap = await userRef.get()
     const meta = metaSnap.exists ? metaSnap.data() : {}
 
-    let [prospects, todos, notes] = await Promise.all(
+    let [prospects, todos, notes, callSessions, attachments] = await Promise.all(
       COLLECTIONS.map(name => readCollection(userRef, name))
     )
 
@@ -89,15 +89,17 @@ module.exports = async function handler(req, res) {
         prospects = restored.prospects
         todos = restored.todos
         notes = restored.notes
+        callSessions = restored.callSessions || []
+        attachments = restored.attachments || []
         lastSaved = Date.now()
       }
       console.log('[auto-restore]', key.slice(0, 10), restored
-        ? { prospects: prospects.length, todos: todos.length, notes: notes.length }
+        ? { prospects: prospects.length, todos: todos.length, notes: notes.length, callSessions: callSessions.length, attachments: attachments.length }
         : 'no backup found for this account')
       await userRef.set({ migrated: true, lastSaved, email }, { merge: true })
     }
 
-    return res.status(200).json({ prospects, todos, notes, lastSaved })
+    return res.status(200).json({ prospects, todos, notes, callSessions, attachments, lastSaved })
   } catch (e) {
     return res.status(500).json({ error: e.message })
   }
