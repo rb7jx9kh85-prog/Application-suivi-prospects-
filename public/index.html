@@ -6,7 +6,7 @@
 <title>Alpinia Prospect Pro</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 <link rel="apple-touch-icon" href="/favicon.svg"/>
-<meta name="theme-color" content="#7c3aed"/>
+<meta name="theme-color" content="#08090d"/>
 <meta name="description" content="Alpinia Prospect Pro — Prospection B2B, enrichissement IA, scripts de cold call et suivi des RDV."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -15,9 +15,9 @@
 :root{
   --bg:#0a0a0a;--s1:#111114;--s2:#17171c;--s3:#202028;
   --br:rgba(255,255,255,.07);--br2:rgba(255,255,255,.13);
-  --violet:#7c3aed;--violet2:#a855f7;--pink:#ec4899;
-  --grad:linear-gradient(135deg,#7c3aed 0%,#a855f7 50%,#ec4899 100%);
-  --t1:#f4f1fb;--t2:#a1a1b3;--t3:#5b5b6b;
+  --violet:#3f6fff;--violet2:#82a0ff;--pink:#ff6b3d;
+  --grad:linear-gradient(135deg,#3f6fff 0%,#6f8dff 45%,#ff7146 100%);
+  --t1:#fff;--t2:#b7bac4;--t3:#777b88;
   --ok:#34d399;--warn:#fbbf24;--err:#f87171;
   --r10:10px;--r14:14px;--r20:20px;--rfull:9999px;
   --ease:cubic-bezier(.22,.8,.3,1);
@@ -113,6 +113,21 @@ label{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bottom
 .b-refusal{background:rgba(248,113,113,.2);color:#fca5a5}
 .b-video_rdv{background:rgba(52,211,153,.2);color:#6ee7b7}
 .b-recall{background:rgba(251,146,60,.2);color:#fdba74}
+.b-interested{background:rgba(56,189,248,.2);color:#7dd3fc}
+.b-quote_sent{background:rgba(168,85,247,.2);color:#d8b4fe}
+.b-lost{background:rgba(148,163,184,.2);color:#cbd5e1}
+/* Badges de chaleur (HOT/WARM/COLD/DEAD) */
+.heat-badge{display:inline-flex;align-items:center;gap:3px;height:22px;padding:0 9px;border-radius:var(--rfull);font-size:11px;font-weight:700}
+.heat-HOT{background:rgba(248,113,113,.22);color:#fca5a5}
+.heat-WARM{background:rgba(251,146,60,.2);color:#fdba74}
+.heat-COLD{background:rgba(56,189,248,.18);color:#7dd3fc}
+.heat-DEAD{background:rgba(100,116,139,.22);color:#94a3b8}
+/* Badges de niveau ICP */
+.icp-excellent{background:rgba(34,197,94,.2);color:#86efac}
+.icp-good{background:rgba(52,211,153,.2);color:#6ee7b7}
+.icp-medium{background:rgba(251,191,36,.2);color:#fde68a}
+.icp-weak{background:rgba(248,113,113,.18);color:#fca5a5}
+.icp-avoid{background:rgba(127,29,29,.35);color:#fecaca}
 /* Views */
 [data-view]{display:none}
 [data-view].on{display:block}
@@ -358,10 +373,10 @@ tr.expanded td{border-bottom:none}
 .skel-row td{padding:12px 14px}
 .skel-row td span{display:block;height:14px;border-radius:6px;background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.1) 50%,rgba(255,255,255,.04) 75%);background-size:600px 100%;animation:shimmer 1.6s infinite linear}
 
-/* Button ripple */
-.btn{position:relative;overflow:hidden}
-.ripple-wave{position:absolute;border-radius:50%;transform:scale(0);animation:ripple-anim .5s linear;background:rgba(255,255,255,.25);pointer-events:none}
-@keyframes ripple-anim{to{transform:scale(3.5);opacity:0}}
+/* Micro-interactions boutons : lift au survol, léger enfoncement au clic */
+.btn,.btn-cf,.btn-primary,.btn-ghost,.btn-icon,.preset{transition:transform .15s var(--ease),box-shadow .2s,filter .15s}
+.btn:hover:not(:disabled),.btn-ghost:hover:not(:disabled),.btn-icon:hover:not(:disabled),.preset:hover:not(:disabled){transform:translateY(-1px)}
+.btn:active:not(:disabled),.btn-cf:active:not(:disabled),.btn-primary:active:not(:disabled),.btn-ghost:active:not(:disabled),.btn-icon:active:not(:disabled),.preset:active:not(:disabled){transform:scale(.96) translateY(0);filter:brightness(.95)}
 
 /* Enhanced button glow on primary */
 .btn-primary{transition:transform .12s var(--ease),box-shadow .2s,filter .2s}
@@ -599,6 +614,62 @@ html{scroll-behavior:smooth}
 
 /* Modal grid spans full-width for some fields */
 .modal-grid .fgrp.span2{grid-column:1/-1}
+
+/* ===== Alpinia mobile: black & white, blue and orange accents ===== */
+:root{--bg:#08090d;--s1:#101116;--s2:#171920;--s3:#22242c;--br:rgba(255,255,255,.09);--br2:rgba(255,255,255,.17)}
+.grad-layer:nth-child(1){background:linear-gradient(135deg,#17101d,#08090d 45%,#0b1a39)}
+.grad-layer:nth-child(2){background:linear-gradient(135deg,#201019,#08090d 50%,#132756)}
+.grad-layer:nth-child(3){background:linear-gradient(135deg,#08090d,#111a39 48%,#311712)}
+.b1{background:radial-gradient(circle at 30% 30%,rgba(63,111,255,.38),transparent 62%)}
+.b2{background:radial-gradient(circle at 70% 70%,rgba(255,107,61,.32),transparent 62%)}
+.b3{background:radial-gradient(circle at 50% 50%,rgba(130,160,255,.2),transparent 64%)}
+.chat-attach{width:40px;height:40px;border:1px solid var(--br);border-radius:var(--r10);background:rgba(255,255,255,.05);color:var(--t2);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none}
+.chat-attach:hover{color:var(--t1);border-color:rgba(130,160,255,.55)}
+.attachment-bar{padding:0 12px 10px;display:flex;gap:6px;flex-wrap:wrap;background:rgba(10,10,10,.5)}
+.attachment-chip{display:inline-flex;gap:6px;align-items:center;max-width:100%;padding:6px 9px;border:1px solid rgba(130,160,255,.28);border-radius:999px;background:rgba(63,111,255,.11);font-size:11px;color:var(--t1)}
+.call-session-list{display:grid;gap:8px;margin-top:18px}.call-session{padding:12px 14px;border:1px solid var(--br);border-radius:var(--r14);background:rgba(255,255,255,.035)}
+@media(max-width:767px){
+  body{background:#08090d}.wrap{padding-left:14px;padding-right:14px}
+  #topnav{height:62px;padding:0 14px;background:rgba(8,9,13,.86)}
+  .nav-logo{font-size:18px}.nav-right .btn{width:34px;padding:0;font-size:0}.nav-user{display:none}
+  #bnav{height:68px;padding:0 8px;background:rgba(8,9,13,.94);border-top-color:rgba(255,255,255,.12)}
+  .bnav-btn{height:58px;border-radius:14px}.bnav-btn.on{color:#fff;background:linear-gradient(135deg,rgba(63,111,255,.35),rgba(255,107,61,.18))}
+  #app{padding-bottom:76px}.sec-title{font-size:27px;letter-spacing:-.045em}.sec-sub{font-size:14px;line-height:1.5}
+  .card,.stats-card,.modal-full{border-radius:20px}.stat{border-radius:16px;background:rgba(255,255,255,.05)}
+  .stats,.ov-grid,.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.stat{padding:14px 12px}.stat-n{font-size:1.7rem}
+  .toolbar,.toolbar2,.tasks-toolbar{gap:8px}.toolbar>.btn,.toolbar2>.btn{min-height:42px}
+  .p-card{padding:15px;border-radius:18px;background:rgba(255,255,255,.045)}
+  .cc-item,.task-item{align-items:flex-start;padding:14px;border-radius:18px}.cc-acts{flex-wrap:wrap;justify-content:flex-end}
+  #chat-btn{bottom:88px;right:16px;width:56px;height:56px;box-shadow:0 10px 30px rgba(63,111,255,.35),0 0 0 1px rgba(255,255,255,.15)}
+  #chat-panel{bottom:82px;right:10px;width:calc(100vw - 20px);max-width:none;height:min(70vh,580px);border-radius:24px}
+  .modal-bg{padding:0;align-items:flex-end}.modal{border-radius:24px 24px 0 0;max-height:88vh;padding:24px 18px}.modal-full-bg{padding:0}.modal-full{border-radius:24px 24px 0 0;padding:24px 18px;min-height:70vh}
+}
+
+/* Pipeline Kanban */
+#view-pipeline{padding:24px 0 96px}
+.kanban-board{display:flex;gap:14px;overflow-x:auto;padding-bottom:12px;align-items:flex-start}
+.kanban-col{flex:0 0 260px;background:var(--s1);border:1px solid var(--br);border-radius:var(--r16);padding:12px;display:flex;flex-direction:column;gap:10px;max-height:calc(100vh - 220px)}
+.kanban-col-hd{display:flex;align-items:center;justify-content:space-between;padding:2px 4px 8px;border-bottom:1px solid var(--br)}
+.kanban-col-title{font-size:12px;font-weight:700;color:var(--t1);text-transform:uppercase;letter-spacing:.04em}
+.kanban-col-count{font-size:11px;font-weight:700;color:var(--t3);background:rgba(255,255,255,.06);border-radius:var(--rfull);padding:1px 8px}
+.kanban-col-value{font-size:11px;color:var(--t3);margin-top:2px}
+.kanban-cards{display:flex;flex-direction:column;gap:8px;overflow-y:auto;padding-right:2px}
+.kanban-card{background:var(--s2);border:1px solid var(--br);border-radius:var(--r14);padding:11px 12px;display:flex;flex-direction:column;gap:6px;cursor:pointer;transition:border-color .15s,transform .12s}
+.kanban-card:hover{border-color:rgba(168,85,247,.35);transform:translateY(-1px)}
+.kanban-card-name{font-size:13px;font-weight:700;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kanban-card-sub{font-size:11px;color:var(--t3)}
+.kanban-card-row{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap}
+.kanban-card-move{display:flex;gap:4px;margin-top:2px}
+.kanban-move-btn{flex:1;height:24px;border-radius:8px;border:1px solid var(--br2);background:rgba(255,255,255,.04);color:var(--t2);font-size:11px;cursor:pointer;font-family:inherit}
+.kanban-move-btn:hover{background:rgba(255,255,255,.1);color:var(--t1)}
+.kanban-empty{font-size:11px;color:var(--t3);text-align:center;padding:14px 4px}
+
+/* Vue d'ensemble (Dashboard principal) */
+#view-overview{padding:24px 0 96px}
+.ov-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}
+.ov-heat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-bottom:20px}
+.ov-quick{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.icp-score-big{font-family:'Space Grotesk',sans-serif;font-weight:800;letter-spacing:-.03em}
 </style>
 </head>
 <body>
@@ -621,9 +692,17 @@ html{scroll-behavior:smooth}
   <span class="nav-logo">Alpinia Pro</span>
   <span id="cloud-status" style="font-size:11px;font-weight:500;color:var(--t3);margin-left:8px;display:none"></span>
   <div class="nav-links">
+    <button class="nav-btn" data-nav="overview">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      Dashboard
+    </button>
     <button class="nav-btn" data-nav="dashboard">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
       Prospects
+    </button>
+    <button class="nav-btn" data-nav="pipeline">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="12" rx="1"/><rect x="17" y="3" width="5" height="7" rx="1"/></svg>
+      Pipeline
     </button>
     <button class="nav-btn" data-nav="coldcall">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -655,9 +734,17 @@ html{scroll-behavior:smooth}
   </div>
 </nav>
 <nav id="bnav">
+  <button class="bnav-btn" data-nav="overview">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    Dashboard
+  </button>
   <button class="bnav-btn" data-nav="dashboard">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
     Prospects
+  </button>
+  <button class="bnav-btn" data-nav="pipeline">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="12" rx="1"/><rect x="17" y="3" width="5" height="7" rx="1"/></svg>
+    Pipeline
   </button>
   <button class="bnav-btn" data-nav="coldcall">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -733,6 +820,49 @@ html{scroll-behavior:smooth}
   </div>
 </section>
 
+<!-- VUE D'ENSEMBLE (Dashboard principal) -->
+<section data-view="overview" id="view-overview">
+  <div class="wrap">
+    <div class="cc-head">
+      <div>
+        <h1 class="sec-title">Dashboard</h1>
+        <p class="sec-sub" style="margin-bottom:0">Qui appeler, pourquoi, et quoi vendre — en 10 secondes</p>
+      </div>
+    </div>
+    <div class="ov-grid" id="ov-kpis"></div>
+    <div class="stats-card">
+      <div class="stats-card-title">🔥 Répartition par chaleur (HOT / WARM / COLD / DEAD)</div>
+      <div class="ov-heat-grid" id="ov-heat"></div>
+    </div>
+    <div class="ov-quick">
+      <button class="btn btn-cf" onclick="nav('pipeline')">📊 Voir le pipeline</button>
+      <button class="btn btn-ghost" onclick="nav('tasks')">✅ Voir les tâches</button>
+      <button class="btn btn-ghost" onclick="selectIdealMatches();nav('dashboard')">🎯 Prospects profil idéal</button>
+    </div>
+    <div class="stats-card">
+      <div class="stats-card-title">📞 À appeler en priorité (ICP le plus élevé)</div>
+      <div id="ov-priority-list"></div>
+    </div>
+    <div class="stats-card">
+      <div class="stats-card-title">⏰ Relances en retard</div>
+      <div id="ov-overdue-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE (Kanban) -->
+<section data-view="pipeline" id="view-pipeline">
+  <div class="wrap">
+    <div class="cc-head">
+      <div>
+        <h1 class="sec-title">Pipeline commercial</h1>
+        <p class="sec-sub" style="margin-bottom:0">Vue d'ensemble de l'avancement des prospects</p>
+      </div>
+    </div>
+    <div class="kanban-board" id="kanban-board"></div>
+  </div>
+</section>
+
 <!-- DASHBOARD -->
 <section data-view="dashboard" id="view-dashboard">
   <div class="wrap">
@@ -753,9 +883,11 @@ html{scroll-behavior:smooth}
         <option value="called">Appel&eacute;</option>
         <option value="voicemail">R&eacute;pondeur</option>
         <option value="recall">Rappeler</option>
-        <option value="refusal">Refus</option>
-        <option value="video_rdv">RDV</option>
+        <option value="interested">Int&eacute;ress&eacute;</option>
+        <option value="video_rdv">RDV pr&eacute;vu</option>
+        <option value="quote_sent">Devis envoy&eacute;</option>
         <option value="won">Client sign&eacute;</option>
+        <option value="refusal">Perdu</option>
       </select>
       <button class="btn btn-ghost" id="btn-export" title="Exporter en CSV">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -777,6 +909,9 @@ html{scroll-behavior:smooth}
       <button class="btn btn-ghost" onclick="selectWithWebsite()" title="Sélectionner tous les prospects qui ont un site web" style="color:var(--violet2);border-color:rgba(168,85,247,.4)">
         &#127760; <span>Avec site web</span>
       </button>
+      <button class="btn btn-ghost" onclick="selectIdealMatches()" title="Sélectionner les prospects déjà analysés qui correspondent au profil idéal" style="color:var(--violet2);border-color:rgba(168,85,247,.4)">
+        &#127919; <span>Profil idéal</span>
+      </button>
       <button class="btn btn-cf" id="btn-add">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         <span>Ajouter</span>
@@ -794,12 +929,39 @@ html{scroll-behavior:smooth}
       <select class="fi fi-sm" id="d-city" style="width:auto" aria-label="Filtrer par ville">
         <option value="">Toutes villes</option>
       </select>
+      <select class="fi fi-sm" id="d-canton" style="width:auto" aria-label="Filtrer par canton">
+        <option value="">Tous cantons</option>
+      </select>
+      <select class="fi fi-sm" id="d-heat" style="width:auto" aria-label="Filtrer par chaleur">
+        <option value="">Toute chaleur</option>
+        <option value="HOT">🔥 HOT</option>
+        <option value="WARM">🌤️ WARM</option>
+        <option value="COLD">❄️ COLD</option>
+        <option value="DEAD">💀 DEAD</option>
+      </select>
+      <select class="fi fi-sm" id="d-icp" style="width:auto" aria-label="Filtrer par score ICP">
+        <option value="">Tout score ICP</option>
+        <option value="80">ICP Excellent (80+)</option>
+        <option value="60">ICP Bon (60+)</option>
+        <option value="40">ICP Moyen (40+)</option>
+        <option value="0">ICP Faible (0+)</option>
+        <option value="avoid">À éviter (score négatif)</option>
+      </select>
+      <select class="fi fi-sm" id="d-followup-filter" style="width:auto" aria-label="Filtrer par prochaine relance">
+        <option value="">Toute relance</option>
+        <option value="overdue">Relance en retard</option>
+        <option value="today">Relance aujourd'hui</option>
+        <option value="week">Relance sous 7 jours</option>
+        <option value="none">Sans relance prévue</option>
+      </select>
       <select class="fi fi-sm" id="d-sort" style="width:auto" aria-label="Trier">
         <option value="">Tri : Date ajout ↓</option>
         <option value="name_asc">Nom A→Z</option>
         <option value="name_desc">Nom Z→A</option>
         <option value="date_asc">Date ajout ↑</option>
         <option value="enriched">Enrichis d'abord</option>
+        <option value="icp_desc">Score ICP ↓</option>
+        <option value="followup_asc">Prochaine relance</option>
       </select>
       <button class="btn btn-ghost" id="d-clear-filters" style="height:32px;padding:0 12px;font-size:12px;display:none">
         &times; Effacer filtres (<span id="d-filter-count">0</span>)
@@ -881,6 +1043,10 @@ html{scroll-behavior:smooth}
       <button class="btn btn-ghost" id="cc-toggle">Voir tous</button>
     </div>
     <div class="cc-list" id="cc-list"></div>
+    <div style="margin-top:24px">
+      <h2 style="font-size:14px;font-weight:700;color:var(--t2);margin-bottom:10px">Sessions récentes</h2>
+      <div class="call-session-list" id="call-session-list"></div>
+    </div>
   </div>
 </section>
 
@@ -1185,10 +1351,23 @@ html{scroll-behavior:smooth}
           <span id="fp-count-label" style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--t1);font-size:15px"></span>
           <span style="font-size:12px;color:var(--t3);margin-left:8px">· Source : OpenStreetMap</span>
         </div>
-        <div style="display:flex;gap:8px">
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
           <button class="btn btn-ghost" onclick="fpSelectAll()" style="height:32px;padding:0 12px;font-size:12px">Tout cocher</button>
           <button class="btn btn-ghost" onclick="fpSelectNone()" style="height:32px;padding:0 12px;font-size:12px">Tout décocher</button>
         </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-radius:var(--r10);background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.25);flex-wrap:wrap">
+        <div style="flex:1;min-width:200px;font-size:12px;color:var(--t2);line-height:1.5">
+          🎯 <strong>Profil prospect idéal</strong> : sans site (ou site daté), Facebook seul, beaucoup d'avis Google, actif sur Instagram, bouche-à-oreille… Analyse chaque établissement par recherche web IA et ne garde que les meilleurs.
+        </div>
+        <button class="btn btn-cf" id="fp-analyze-btn" onclick="fpAnalyzeIdeal()" style="height:32px;font-size:12px;flex-shrink:0">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>Analyser — profil idéal</span>
+        </button>
+      </div>
+      <div id="fp-analyze-progress" style="display:none;font-size:12px;color:var(--violet2);font-weight:600"></div>
+      <div id="fp-restore-wrap" style="display:none">
+        <button class="btn btn-ghost" onclick="fpRestoreAll()" style="height:28px;padding:0 10px;font-size:11px">↺ Annuler le filtrage IA — réafficher tous les résultats</button>
       </div>
       <div id="fp-list" style="display:flex;flex-direction:column;gap:6px;max-height:340px;overflow-y:auto;padding-right:4px"></div>
       <div style="display:flex;gap:10px;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--br)">
@@ -1301,23 +1480,68 @@ html{scroll-behavior:smooth}
 
 <!-- MODAL PROSPECT -->
 <div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-  <div class="modal">
+  <div class="modal" style="max-width:820px">
     <div class="modal-hd">
       <h2 class="modal-title" id="modal-title">Nouveau prospect</h2>
       <button class="btn btn-icon" id="modal-x" aria-label="Fermer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
     <div class="modal-grid">
       <div class="fgrp" style="margin-bottom:0"><label for="m-name">Nom / &Eacute;tablissement *</label><input class="fi" type="text" id="m-name" placeholder="Restaurant du Lac"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-type">Type d'&eacute;tablissement</label><input class="fi" type="text" id="m-type" placeholder="Restaurant, Coiffeur, Cave&hellip;"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-canton">Canton</label><select class="fi" id="m-canton"><option value="">&mdash;</option></select></div>
       <div class="fgrp" style="margin-bottom:0"><label for="m-city">Ville</label><input class="fi" type="text" id="m-city" placeholder="Sion"/></div>
-      <div class="fgrp" style="margin-bottom:0"><label for="m-type">Type</label><input class="fi" type="text" id="m-type" placeholder="Restaurant, H&ocirc;tel&hellip;"/></div>
+      <div class="fgrp span2" style="margin-bottom:0"><label for="m-address">Adresse</label><input class="fi" type="text" id="m-address" placeholder="Rue, num&eacute;ro, NPA"/></div>
       <div class="fgrp" style="margin-bottom:0"><label for="m-phone">T&eacute;l&eacute;phone</label><input class="fi" type="tel" id="m-phone" placeholder="+41 27 123 45 67"/></div>
       <div class="fgrp" style="margin-bottom:0"><label for="m-email">Email</label><input class="fi" type="email" id="m-email" placeholder="contact@exemple.ch"/></div>
-      <div class="fgrp" style="margin-bottom:0"><label for="m-web">Site web</label><input class="fi" type="url" id="m-web" placeholder="https://&hellip;"/></div>
-      <div class="fgrp" style="margin-bottom:0"><label for="m-status">Statut</label><select class="fi" id="m-status"><option value="to_call">&Agrave; appeler</option><option value="called">Appel&eacute;</option><option value="voicemail">R&eacute;pondeur</option><option value="recall">Rappeler</option><option value="refusal">Refus</option><option value="video_rdv">RDV</option><option value="won">Client sign&eacute;</option></select></div>
-      <div class="fgrp" style="margin-bottom:0"><label for="m-contact">Contact d&eacute;cideur</label><input class="fi" type="text" id="m-contact" placeholder="Pr&eacute;nom Nom"/></div>
-      <div class="fgrp" style="margin-bottom:0"><label for="m-value">Valeur estim&eacute;e (CHF)</label><input class="fi" type="number" id="m-value" placeholder="3500" min="0" step="100"/></div>
-      <div class="fgrp" style="margin-bottom:0"><label for="m-followup">Prochaine relance</label><input class="fi" type="date" id="m-followup"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-web">Site web existant (URL si oui)</label><input class="fi" type="url" id="m-web" placeholder="https://&hellip; (laisser vide si aucun)"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-contact">D&eacute;cideur (nom)</label><input class="fi" type="text" id="m-contact" placeholder="Pr&eacute;nom Nom"/></div>
     </div>
+
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--t3);margin:18px 0 8px">Pr&eacute;sence digitale</div>
+    <div class="modal-grid">
+      <div class="fgrp" style="margin-bottom:0"><label for="m-sitequality">Qualit&eacute; du site</label><select class="fi" id="m-sitequality"><option value="">&mdash;</option><option value="none">Aucun site</option><option value="bad">Mauvais / tr&egrave;s ancien</option><option value="medium">Moyen</option><option value="good">Bon</option><option value="excellent">Excellent</option></select></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-reviews">Nombre d'avis Google</label><input class="fi" type="number" id="m-reviews" min="0" placeholder="0"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-rating">Note Google (/5)</label><input class="fi" type="number" id="m-rating" min="0" max="5" step="0.1" placeholder="4.5"/></div>
+      <div class="fgrp" style="margin-bottom:0;display:flex;flex-direction:column;gap:8px;justify-content:center">
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" id="m-gmaps"/> Pr&eacute;sent sur Google Maps</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" id="m-instagram"/> Actif sur Instagram</label>
+      </div>
+      <div class="fgrp" style="margin-bottom:0;display:flex;flex-direction:column;gap:8px;justify-content:center">
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" id="m-facebook"/> Pr&eacute;sent sur Facebook</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" id="m-photos"/> Photos de qualit&eacute;</label>
+      </div>
+      <div class="fgrp" style="margin-bottom:0;display:flex;align-items:center"><label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" id="m-beautiful"/> Belle entreprise / image soign&eacute;e</label></div>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--t3);margin:18px 0 8px">Entreprise &amp; qualification commerciale</div>
+    <div class="modal-grid">
+      <div class="fgrp" style="margin-bottom:0"><label for="m-employees">Employ&eacute;s (estim&eacute;)</label><input class="fi" type="number" id="m-employees" min="0" placeholder="3"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-revenue">CA estim&eacute; (CHF/an)</label><input class="fi" type="number" id="m-revenue" min="0" step="10000" placeholder="500000"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-status">Statut commercial</label><select class="fi" id="m-status"><option value="to_call">&Agrave; appeler</option><option value="called">Appel&eacute;</option><option value="voicemail">R&eacute;pondeur</option><option value="recall">Rappeler</option><option value="interested">Int&eacute;ress&eacute;</option><option value="video_rdv">RDV pr&eacute;vu</option><option value="quote_sent">Devis envoy&eacute;</option><option value="won">Client sign&eacute;</option><option value="refusal">Perdu</option></select></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-heat">Niveau de chaleur</label><select class="fi" id="m-heat"><option value="">Auto (selon score ICP)</option><option value="HOT">🔥 HOT</option><option value="WARM">🌤️ WARM</option><option value="COLD">❄️ COLD</option><option value="DEAD">💀 DEAD</option></select></div>
+      <div class="fgrp" style="margin-bottom:0">
+        <label for="m-offer">Offre recommand&eacute;e</label>
+        <div style="display:flex;gap:6px">
+          <select class="fi" id="m-offer" style="flex:1"><option value="">&mdash;</option><option value="450">450 CHF/an</option><option value="600">600 CHF/an</option><option value="800">800 CHF/an</option><option value="900+">900 CHF+ (sur devis)</option></select>
+          <button type="button" class="btn btn-ghost" onclick="suggestOfferInModal()" style="height:38px;padding:0 10px;font-size:11px;white-space:nowrap">🎯 Sugg&eacute;rer</button>
+        </div>
+      </div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-value">Valeur potentielle estim&eacute;e (CHF)</label><input class="fi" type="number" id="m-value" placeholder="3500" min="0" step="100"/></div>
+      <div class="fgrp" style="margin-bottom:0"><label for="m-followup">Prochaine relance</label><input class="fi" type="date" id="m-followup"/></div>
+      <div class="fgrp span2" style="margin-bottom:0"><label for="m-nextaction">Prochaine action</label><input class="fi" type="text" id="m-nextaction" placeholder="Ex: Appeler pour proposer une d&eacute;mo"/></div>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--t3);margin:18px 0 8px">Red flags (hors ICP)</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px">
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" id="m-flag-franchise"/> Franchise</label>
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" id="m-flag-chain"/> Grande cha&icirc;ne</label>
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" id="m-flag-marketing"/> &Eacute;quipe marketing interne</label>
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" id="m-flag-agency"/> Agence web / digitale</label>
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" id="m-flag-small"/> Trop petite / non rentable</label>
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" id="m-flag-cheap"/> Cherche uniquement le moins cher</label>
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:0"><input type="checkbox" id="m-flag-refusal"/> Refus direct et d&eacute;finitif</label>
+    </div>
+
     <div class="fgrp span2" style="margin-top:12px;margin-bottom:0"><label for="m-notes">Notes</label><textarea class="fi" id="m-notes" placeholder="Observations&hellip;" style="min-height:72px"></textarea></div>
     <div style="display:flex;gap:10px;margin-top:20px;justify-content:flex-end">
       <button class="btn btn-ghost" id="modal-cancel">Annuler</button>
@@ -1335,9 +1559,11 @@ html{scroll-behavior:smooth}
     <option value="called">Appel&eacute;</option>
     <option value="voicemail">R&eacute;pondeur</option>
     <option value="recall">Rappeler</option>
-    <option value="refusal">Refus</option>
-    <option value="video_rdv">RDV</option>
+    <option value="interested">Int&eacute;ress&eacute;</option>
+    <option value="video_rdv">RDV pr&eacute;vu</option>
+    <option value="quote_sent">Devis envoy&eacute;</option>
     <option value="won">Client sign&eacute;</option>
+    <option value="refusal">Perdu</option>
   </select>
   <button class="bulk-bar-btn" id="bulk-tag-btn">&#127991; Tag</button>
   <button class="bulk-bar-btn" id="bulk-followup-btn">&#128197; Relance</button>
@@ -1346,6 +1572,7 @@ html{scroll-behavior:smooth}
   <button class="bulk-bar-btn" id="bulk-verify-web-btn">&#127758; V&eacute;rifier sites</button>
   <button class="bulk-bar-btn" id="bulk-dupes-btn">&#127991; Doublons</button>
   <button class="bulk-bar-btn" id="bulk-score-btn">&#128202; Score IA</button>
+  <button class="bulk-bar-btn" id="bulk-ideal-btn" title="Analyse IA : sans site, Facebook seul, avis Google, Instagram, bouche-&agrave;-oreille&hellip;">&#127919; Profil id&eacute;al</button>
   <button class="bulk-bar-btn danger" id="bulk-delete-btn">&#128465; Suppr.</button>
   <button class="bulk-bar-btn" id="bulk-clear-btn" aria-label="D&eacute;s&eacute;lectionner">&times;</button>
 </div>
@@ -1357,13 +1584,15 @@ html{scroll-behavior:smooth}
 <div class="glass-s" id="chat-panel" role="dialog" aria-label="Coach Alpinia">
   <div class="chat-hd">
     <div class="chat-av"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-    <div><div style="font-weight:700;font-size:13px">Coach Alpinia</div><div style="font-size:11px;color:var(--ok)">En ligne &middot; Agent &middot; Accès aux prospects</div></div>
+    <div><div style="font-weight:700;font-size:13px">Alpinia Agent</div><div style="font-size:11px;color:var(--ok)">En ligne &middot; Accès aux prospects</div></div>
     <button class="btn btn-icon" id="chat-x" aria-label="Fermer" style="margin-left:auto;border:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
   </div>
   <div class="chat-msgs" id="chat-msgs">
     <div class="msg b">Salut ! Je suis Coach Alpinia, ton agent de prospection. Je connais toute ta liste de prospects et je peux <b>agir</b> pour toi. Essaie&nbsp;:<br>&bull; &laquo;&nbsp;Combien de prospects sans site web&nbsp;?&nbsp;&raquo;<br>&bull; &laquo;&nbsp;Lesquels appeler en priorit&eacute; &agrave; Sion&nbsp;?&nbsp;&raquo;<br>&bull; &laquo;&nbsp;Passe Restaurant du Lac en Appel&eacute;&nbsp;&raquo;<br>&bull; &laquo;&nbsp;Cr&eacute;e une t&acirc;che&nbsp;: relancer H&ocirc;tel Bellevue&nbsp;&raquo;<br>&bull; &laquo;&nbsp;S&eacute;lectionne tous ceux avec un site web&nbsp;&raquo;</div>
   </div>
+  <div class="attachment-bar" id="attachment-bar"></div>
   <div class="chat-ft">
+    <label class="chat-attach" for="chat-file-input" title="Joindre un fichier (max. 2 Mo)" aria-label="Joindre un fichier">&#128206;<input type="file" id="chat-file-input" style="display:none"/></label>
     <input type="text" id="chat-inp" placeholder="Demande ou ordonne une action&hellip;" autocomplete="off" aria-label="Message"/>
     <button class="chat-send" id="chat-send" aria-label="Envoyer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
   </div>
@@ -1430,12 +1659,20 @@ var S = {
   user: null,
   prospects: [],
   todos: [],
+  notes: [],
+  callSessions: [],
+  attachments: [],
+  fileContexts: {},
   enrichOpen: null,
   chatHistory: [],
   ccShowAll: false,
   selectedIds: {},
   filterSector: '',
   filterCity: '',
+  filterCanton: '',
+  filterHeat: '',
+  filterIcp: '',
+  filterFollowup: '',
   sortBy: '',
   taskFilter: 'all',
   cardProspect: null,
@@ -1474,33 +1711,178 @@ function toast(msg, type) {
 
 // ===== STATUSES =====
 var ST = {
-  to_call:   { l: 'A appeler',  c: 'b-to_call'  },
-  called:    { l: 'Appele',     c: 'b-called'    },
-  voicemail: { l: 'Repondeur',  c: 'b-voicemail' },
-  recall:    { l: 'Rappeler',   c: 'b-recall'    },
-  refusal:   { l: 'Refus',      c: 'b-refusal'   },
-  video_rdv: { l: 'RDV',        c: 'b-video_rdv' },
-  won:       { l: 'Client',     c: 'b-won'       }
+  to_call:    { l: 'A appeler',    c: 'b-to_call'    },
+  called:     { l: 'Appele',       c: 'b-called'     },
+  voicemail:  { l: 'Repondeur',    c: 'b-voicemail'  },
+  recall:     { l: 'Rappeler',     c: 'b-recall'     },
+  interested: { l: 'Interesse',    c: 'b-interested' },
+  video_rdv:  { l: 'RDV',          c: 'b-video_rdv'  },
+  quote_sent: { l: 'Devis envoye', c: 'b-quote_sent' },
+  won:        { l: 'Client',       c: 'b-won'        },
+  refusal:    { l: 'Perdu',        c: 'b-lost'       }
 };
 var ST_LABELS = {
-  to_call: 'À appeler', called: 'Appelé',
-  voicemail: 'Répondeur', recall: 'Rappeler', refusal: 'Refus', video_rdv: 'RDV', won: 'Client signé'
+  to_call: 'À appeler', called: 'Appelé', voicemail: 'Répondeur', recall: 'Rappeler',
+  interested: 'Intéressé', video_rdv: 'RDV prévu', quote_sent: 'Devis envoyé',
+  won: 'Client signé', refusal: 'Perdu'
 };
 // Statuses that count as "the prospect was contacted"
-var CONTACTED_ST = { called: 1, voicemail: 1, video_rdv: 1, won: 1, refusal: 1 };
+var CONTACTED_ST = { called: 1, voicemail: 1, interested: 1, video_rdv: 1, quote_sent: 1, won: 1, refusal: 1 };
 function badge(s) {
   var x = ST[s] || ST.to_call;
   return '<span class="badge ' + x.c + '">' + (ST_LABELS[s] || x.l) + '</span>';
 }
 function sopts(cur) {
-  var keys = ['to_call','called','voicemail','recall','refusal','video_rdv','won'];
+  var keys = ['to_call','called','voicemail','recall','interested','video_rdv','quote_sent','won','refusal'];
   return keys.map(function(k) {
     return '<option value="' + k + '"' + ((cur || 'to_call') === k ? ' selected' : '') + '>' + (ST_LABELS[k] || k) + '</option>';
   }).join('');
 }
 
+// ============================================================================
+// ===== ICP (Ideal Customer Profile) — Alpinia Web Craft =====
+// Détecteur de cohérence ICP : moteur de règles 100% local (pas d'appel API).
+// Architecture pensée pour brancher plus tard une analyse OpenAI en complément
+// (voir generateICPAnalysis ci-dessous — remplacer/augmenter par un appel à un
+// futur /api/icp-analysis sans toucher au moteur de score déterministe).
+// ============================================================================
+var CANTONS = [
+  { k: 'VS', l: 'Valais' },
+  { k: 'VD', l: 'Vaud' },
+  { k: 'GE', l: 'Genève' },
+  { k: 'FR', l: 'Fribourg' },
+  { k: 'NE', l: 'Neuchâtel' },
+  { k: 'JU', l: 'Jura' },
+  { k: 'AUTRE', l: 'Autre / hors Suisse romande' }
+];
+var CANTON_LABEL = {};
+CANTONS.forEach(function(c) { CANTON_LABEL[c.k] = c.l; });
+var ROMANDY_NO_VS = ['VD', 'GE', 'FR', 'NE', 'JU'];
+
+var HEAT_LEVELS = ['HOT', 'WARM', 'COLD', 'DEAD'];
+var HEAT_ICON = { HOT: '🔥', WARM: '🌤️', COLD: '❄️', DEAD: '💀' };
+var HEAT_LABEL = { HOT: 'HOT — Prioritaire', WARM: 'WARM — À travailler', COLD: 'COLD — Basse priorité', DEAD: 'DEAD — Non qualifié' };
+var ICP_COLOR = { excellent: '#22c55e', good: '#34d399', medium: '#fbbf24', weak: '#f87171', avoid: '#dc2626' };
+
+var OFFERS = ['450', '600', '800', '900+'];
+var OFFER_LABEL = {
+  '450': '450 CHF/an — Site simple + chatbot local + réservation formulaire',
+  '600': '600 CHF/an — Site complet + IA simple + app admin possible',
+  '800': '800 CHF/an — Site premium + animations + app admin avancée',
+  '900+': '900 CHF+ — Sur mesure / multi-succursales'
+};
+
+// Secteurs prioritaires Alpinia Web Craft
+var PRIORITY_SECTOR_RE = /restaurant|caf[ée]|bar\b|brasserie|bistro|coiffeur|barber|salon|institut|beaut[ée]|spa|cave\b|vign|oenoth|œnoth|boutique|shopify|e-?commerce|pme|artisan|boulangerie|traiteur|p[aâ]tisserie/i;
+function isPrioritySector(type) { return PRIORITY_SECTOR_RE.test(type || ''); }
+
+var ICP_POSITIVE_RULES = [
+  { pts: 30, label: 'Pas de site web', test: function(p) { return !p.web; } },
+  { pts: 20, label: 'Site très ancien ou mauvais', test: function(p) { return !!p.web && p.siteQuality === 'bad'; } },
+  { pts: 20, label: 'Présent sur Google Maps sans site', test: function(p) { return !!p.gmaps && !p.web; } },
+  { pts: 25, label: 'Plus de 250 avis Google', test: function(p) { return (parseInt(p.reviewCount, 10) || 0) >= 250; } },
+  { pts: 15, label: 'Plus de 100 avis Google', test: function(p) { var r = parseInt(p.reviewCount, 10) || 0; return r >= 100 && r < 250; } },
+  { pts: 10, label: 'Note Google ≥ 4.3', test: function(p) { return (parseFloat(p.rating) || 0) >= 4.3; } },
+  { pts: 10, label: 'Photos de qualité', test: function(p) { return !!p.qualityPhotos; } },
+  { pts: 10, label: 'Belle entreprise / image soignée', test: function(p) { return !!p.beautifulBusiness; } },
+  { pts: 10, label: 'Actif sur Instagram', test: function(p) { return !!p.hasInstagram; } },
+  { pts: 10, label: 'Facebook uniquement (pas de site)', test: function(p) { return !!p.hasFacebook && !p.web; } },
+  { pts: 10, label: 'Décideur identifié', test: function(p) { return !!(p.contact && p.contact.trim()); } },
+  { pts: 10, label: '1 à 10 employés', test: function(p) { var e = parseInt(p.employees, 10) || 0; return e >= 1 && e <= 10; } },
+  { pts: 15, label: 'CA estimé entre 150k et 3M CHF', test: function(p) { var r = parseFloat(p.revenue) || 0; return r >= 150000 && r <= 3000000; } },
+  { pts: 15, label: 'Situé en Valais', test: function(p) { return p.canton === 'VS'; } },
+  { pts: 8, label: 'Situé en Suisse romande (hors Valais)', test: function(p) { return ROMANDY_NO_VS.indexOf(p.canton) !== -1; } },
+  { pts: 15, label: 'Secteur prioritaire', test: function(p) { return isPrioritySector(p.type); } }
+];
+var ICP_NEGATIVE_RULES = [
+  { pts: -40, label: 'Franchise', test: function(p) { return !!(p.flags && p.flags.franchise); } },
+  { pts: -50, label: 'Grande chaîne', test: function(p) { return !!(p.flags && p.flags.chain); } },
+  { pts: -40, label: 'Équipe marketing interne', test: function(p) { return !!(p.flags && p.flags.marketing); } },
+  { pts: -60, label: 'Agence web / digitale', test: function(p) { return !!(p.flags && p.flags.agency); } },
+  { pts: -50, label: 'Très bon site déjà existant', test: function(p) { return p.siteQuality === 'good'; } },
+  { pts: -70, label: 'Site excellent déjà existant', test: function(p) { return p.siteQuality === 'excellent'; } },
+  { pts: -100, label: 'Refus direct et définitif', test: function(p) { return !!(p.flags && p.flags.refusal); } },
+  { pts: -30, label: 'Entreprise trop petite / non rentable', test: function(p) { return !!(p.flags && p.flags.small); } },
+  { pts: -20, label: 'Cherche uniquement le moins cher', test: function(p) { return !!(p.flags && p.flags.cheap); } },
+  { pts: -25, label: 'Hors Suisse romande', test: function(p) { return !!p.canton && p.canton !== 'VS' && ROMANDY_NO_VS.indexOf(p.canton) === -1; } }
+];
+var ICP_ALL_RULES = ICP_POSITIVE_RULES.concat(ICP_NEGATIVE_RULES);
+
+function computeICP(p) {
+  p = p || {};
+  var score = 0, breakdown = [];
+  ICP_ALL_RULES.forEach(function(rule) {
+    if (rule.test(p)) { score += rule.pts; breakdown.push({ label: rule.label, pts: rule.pts }); }
+  });
+  var level, levelLabel, recommendation;
+  if (score < 0) { level = 'avoid'; levelLabel = 'À ÉVITER'; recommendation = 'À supprimer de la liste'; }
+  else if (score >= 80) { level = 'excellent'; levelLabel = 'ICP EXCELLENT'; recommendation = 'À appeler en priorité'; }
+  else if (score >= 60) { level = 'good'; levelLabel = 'ICP BON'; recommendation = 'Bon prospect à travailler'; }
+  else if (score >= 40) { level = 'medium'; levelLabel = 'ICP MOYEN'; recommendation = 'À garder mais pas prioritaire'; }
+  else { level = 'weak'; levelLabel = 'ICP FAIBLE'; recommendation = 'Faible priorité'; }
+  breakdown.sort(function(a, b) { return b.pts - a.pts; });
+  return { score: score, level: level, levelLabel: levelLabel, recommendation: recommendation, breakdown: breakdown };
+}
+
+function suggestHeat(score) {
+  if (score >= 80) return 'HOT';
+  if (score >= 60) return 'WARM';
+  if (score >= 40) return 'COLD';
+  return 'DEAD';
+}
+
+function suggestOffer(p) {
+  if (p.flags && (p.flags.agency || p.flags.chain || p.flags.marketing)) return null;
+  var emp = parseInt(p.employees, 10) || 0;
+  if (emp > 10) return '900+';
+  if (emp >= 7 || (p.beautifulBusiness && (parseInt(p.reviewCount, 10) || 0) >= 150)) return '800';
+  if (emp >= 4 || p.hasInstagram) return '600';
+  return '450';
+}
+
+function icpSectorAngle(type) {
+  var t = (type || '').toLowerCase();
+  if (/restaurant|caf[ée]|bar\b|brasserie|bistro/.test(t)) return 'Visibilité sur Google, mise en valeur du menu et réservation en ligne simple.';
+  if (/coiffeur|barber|institut|beaut[ée]|spa/.test(t)) return 'Prise de rendez-vous en ligne et mise en valeur des réalisations (avant/après).';
+  if (/cave|vign|oenoth|œnoth/.test(t)) return 'Présentation des cuvées, storytelling du domaine et vente en ligne simple.';
+  if (/boutique|shopify|e-?commerce|magasin|commerce/.test(t)) return 'Boutique en ligne professionnelle cohérente avec les réseaux sociaux.';
+  if (/pme|artisan|entreprise/.test(t)) return 'Crédibilité en ligne, présentation claire des services et facilité de contact.';
+  return 'Renforcer la présence en ligne et faciliter la prise de contact.';
+}
+function icpLikelyObjection(p) {
+  if (p.flags && p.flags.cheap) return 'Je n\'ai pas le budget pour ça.';
+  if (!p.web) return 'Je m\'en sors très bien avec juste Facebook / le bouche-à-oreille.';
+  if (p.web) return 'J\'ai déjà un site, ça me suffit.';
+  return 'Je vais réfléchir.';
+}
+function icpCallHook(p) {
+  var name = p.name || 'votre établissement';
+  if (!p.web && (p.gmaps || p.hasFacebook)) return 'Bonjour, je vois que ' + name + ' a une super réputation mais pas encore de site — je peux vous montrer en 2 minutes comment ça pourrait vous amener plus de clients.';
+  if (p.web && p.siteQuality === 'bad') return 'Bonjour, j\'ai vu le site de ' + name + ' et je pense qu\'il pourrait vous amener beaucoup plus de demandes avec une petite modernisation — je vous montre ?';
+  return 'Bonjour, je travaille avec des entreprises comme ' + name + ' en Valais / Suisse romande pour améliorer leur visibilité en ligne, avez-vous 2 minutes ?';
+}
+// Analyse ICP textuelle — version rule-based locale (aucun appel API).
+function generateICPAnalysis(p, icp) {
+  icp = icp || computeICP(p);
+  var pos = icp.breakdown.filter(function(b) { return b.pts > 0; }).map(function(b) { return b.label.toLowerCase(); });
+  var neg = icp.breakdown.filter(function(b) { return b.pts < 0; }).map(function(b) { return b.label.toLowerCase(); });
+  var whyGood = pos.length
+    ? 'Ce prospect correspond ' + (icp.score >= 60 ? 'bien' : 'partiellement') + ' à l\'ICP Alpinia Web Craft : ' + pos.slice(0, 4).join(', ') + (pos.length > 4 ? ', et ' + (pos.length - 4) + ' autre(s) critère(s)' : '') + '.'
+    : 'Ce prospect ne coche pour l\'instant aucun critère positif clair de l\'ICP.';
+  var whyBad = neg.length ? 'Points de vigilance : ' + neg.join(', ') + '.' : 'Aucun red flag détecté.';
+  var offer = suggestOffer(p);
+  var offerTxt = offer ? 'L\'offre la plus adaptée semble être ' + offer + ' CHF/an.' : 'Aucune offre standard ne semble adaptée (probablement hors cible).';
+  return {
+    text: whyGood + ' ' + whyBad + ' ' + offerTxt,
+    offer: offer,
+    angle: icpSectorAngle(p.type),
+    objection: icpLikelyObjection(p),
+    hook: icpCallHook(p)
+  };
+}
+
 // ===== ROUTING =====
-var VIEWS = ['login','dashboard','coldcall','scripts','coldcraft','tasks','stats','notes'];
+var VIEWS = ['login','overview','dashboard','coldcall','pipeline','scripts','coldcraft','tasks','stats','notes'];
 function nav(v, rep) {
   var h = '#/' + v;
   if (rep) history.replaceState(null, '', h);
@@ -1512,7 +1894,7 @@ function render(v) {
     var el = document.querySelector('[data-view="' + x + '"]');
     if (el) el.classList.toggle('on', x === v);
   });
-  var auth = ['dashboard','coldcall','scripts','coldcraft','tasks','stats','notes'].indexOf(v) !== -1;
+  var auth = ['overview','dashboard','coldcall','pipeline','scripts','coldcraft','tasks','stats','notes'].indexOf(v) !== -1;
   var topnav = $('topnav');
   var bnav = $('bnav');
   if (topnav) topnav.style.display = auth ? '' : 'none';
@@ -1521,8 +1903,10 @@ function render(v) {
     b.classList.toggle('on', b.dataset.nav === v);
     b.setAttribute('aria-current', b.dataset.nav === v ? 'page' : 'false');
   });
+  if (v === 'overview') renderOverview();
   if (v === 'dashboard') renderDash();
-  if (v === 'coldcall') renderCC();
+  if (v === 'coldcall') { renderCC(); renderCallSessions(); }
+  if (v === 'pipeline') renderPipeline();
   if (v === 'scripts') refreshScriptProspects();
   if (v === 'coldcraft') { refreshColdcraftProspects(); renderColdcraftHistory(); }
   if (v === 'tasks') { refreshTaskProspects(); renderTasks(); }
@@ -1532,8 +1916,10 @@ function render(v) {
 // Force sauvegarde cloud si l'onglet est fermé ou mis en arrière-plan avec des données en attente
 window.addEventListener('beforeunload', function() {
   if (_pushPending && S.token) {
-    // sendBeacon est synchrone au déchargement — fiable même si l'onglet se ferme
-    var payload = JSON.stringify({ token: S.token, prospects: S.prospects, todos: S.todos, notes: S.notes, lastSaved: Date.now() });
+    // sendBeacon est synchrone au déchargement — on envoie uniquement le delta.
+    var changes = computeDelta();
+    if (!changes) return;
+    var payload = JSON.stringify({ token: S.token, delta: true, changes: changes, lastSaved: Date.now() });
     navigator.sendBeacon('/api/data-save', new Blob([payload], { type: 'application/json' }));
   }
 });
@@ -1549,12 +1935,13 @@ window.addEventListener('online', function() {
 window.addEventListener('hashchange', function() {
   var h = location.hash.replace('#/', '').split('/')[0] || 'login';
   if (!S.token && h !== 'login') { nav('login', true); return; }
-  if (S.token && h === 'login') { nav('dashboard', true); return; }
+  if (S.token && h === 'login') { nav('overview', true); return; }
   render(h);
 });
 
 // ===== API =====
 function api(fn, body) {
+  body = Object.assign({}, body || {}, S.token ? { token: S.token } : {});
   return fetch('/api/' + fn, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -1573,10 +1960,61 @@ function api(fn, body) {
   });
 }
 
-// ===== PROSPECTS (KV sync + localStorage cache) =====
+// ===== PROSPECTS (Firestore sync par delta + cache localStorage) =====
+// Principe anti-« ça part en couille » : on n'envoie au cloud QUE ce qui a
+// réellement changé depuis la dernière synchro confirmée (le « baseline »).
+// Un cache périmé ne peut donc plus réécrire tout le tableau du cloud.
 var _saveTimer = null;
 var _pushPending = false;
 var _pushRetryTimer = null;
+var SYNC_V = 'ap_sync_v2'; // marqueur : cet appareil a fait le reset unique vers Firestore
+var COLS = ['prospects', 'todos', 'notes', 'callSessions', 'attachments'];
+
+// Baseline = état exact confirmé côté serveur, par collection : { id: jsonRecord }
+var _synced = { prospects: {}, todos: {}, notes: {} };
+(function initSynced() {
+  try {
+    var raw = localStorage.getItem('ap_synced');
+    if (raw) { var s = JSON.parse(raw); if (s && typeof s === 'object') _synced = s; }
+  } catch(e) {}
+  COLS.forEach(function(c) { if (!_synced[c] || typeof _synced[c] !== 'object') _synced[c] = {}; });
+})();
+function persistSynced() {
+  try { localStorage.setItem('ap_synced', JSON.stringify(_synced)); } catch(e) {}
+}
+// Retire les champs volatils (préfixe _, ex. _enriching) avant comparaison/envoi.
+function sanitize(rec) {
+  var out = {};
+  for (var k in rec) { if (rec.hasOwnProperty(k) && k.charAt(0) !== '_') out[k] = rec[k]; }
+  return out;
+}
+function snapMap(arr) {
+  var m = {};
+  (arr || []).forEach(function(r) {
+    if (r && r.id != null) m[String(r.id)] = JSON.stringify(sanitize(r));
+  });
+  return m;
+}
+// Calcule le delta (upserts + deletes) de chaque collection vs baseline.
+function computeDelta() {
+  var changes = {};
+  var has = false;
+  COLS.forEach(function(c) {
+    var cur = snapMap(S[c]);
+    var base = _synced[c] || {};
+    var upserts = [], deletes = [];
+    for (var id in cur) { if (cur[id] !== base[id]) upserts.push(JSON.parse(cur[id])); }
+    for (var oid in base) { if (!(oid in cur)) deletes.push(oid); }
+    if (upserts.length || deletes.length) has = true;
+    changes[c] = { upserts: upserts, deletes: deletes };
+  });
+  return has ? changes : null;
+}
+// Met à jour le baseline après une sauvegarde/synchro réussie.
+function markSynced() {
+  COLS.forEach(function(c) { _synced[c] = snapMap(S[c]); });
+  persistSynced();
+}
 function cloudStatus(state, msg) {
   var el = $('cloud-status');
   if (!el) return;
@@ -1601,10 +2039,23 @@ function loadNotes() {
     if (!Array.isArray(S.notes)) S.notes = [];
   } catch(e) { S.notes = []; }
 }
-function saveNotes() {
+function loadCallSessions() {
+  try { S.callSessions = JSON.parse(localStorage.getItem('ap_call_sessions') || '[]'); } catch(e) { S.callSessions = []; }
+  if (!Array.isArray(S.callSessions)) S.callSessions = [];
+}
+function loadAttachments() {
+  try { S.attachments = JSON.parse(localStorage.getItem('ap_attachments') || '[]'); } catch(e) { S.attachments = []; }
+  if (!Array.isArray(S.attachments)) S.attachments = [];
+}
+function saveNotes() { scheduleSave(); }
+function scheduleSave() {
   var ts = Date.now();
   try {
+    localStorage.setItem('ap_prospects', JSON.stringify(S.prospects));
+    localStorage.setItem('ap_todos', JSON.stringify(S.todos));
     localStorage.setItem('ap_notes', JSON.stringify(S.notes));
+    localStorage.setItem('ap_call_sessions', JSON.stringify(S.callSessions));
+    localStorage.setItem('ap_attachments', JSON.stringify(S.attachments));
     localStorage.setItem('ap_lastSaved', String(ts));
   } catch(e) {}
   _pushPending = true;
@@ -1614,21 +2065,20 @@ function saveNotes() {
 function pushToKV() {
   if (!S.token) return Promise.resolve();
   _pushPending = false;
+  var changes = computeDelta();
+  if (!changes) { cloudStatus('ok'); return Promise.resolve(); } // rien à envoyer
   cloudStatus('saving');
   var ts = Date.now();
-  var payload = {
-    token: S.token,
-    prospects: S.prospects,
-    todos: S.todos,
-    notes: S.notes,
-    lastSaved: ts
-  };
+  var sent = { prospects: snapMap(S.prospects), todos: snapMap(S.todos), notes: snapMap(S.notes), callSessions: snapMap(S.callSessions), attachments: snapMap(S.attachments) };
   return fetch('/api/data-save', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
+    body: JSON.stringify({ token: S.token, delta: true, changes: changes, lastSaved: ts })
   }).then(function(r) { return r.json(); }).then(function(d) {
     if (d.ok) {
+      // Le baseline devient exactement ce qu'on vient d'envoyer.
+      COLS.forEach(function(c) { _synced[c] = sent[c]; });
+      persistSynced();
       try { localStorage.setItem('ap_lastSaved', String(ts)); } catch(e) {}
       cloudStatus('ok');
       if (_pushRetryTimer) { clearTimeout(_pushRetryTimer); _pushRetryTimer = null; }
@@ -1637,11 +2087,8 @@ function pushToKV() {
       scheduleRetry();
     }
   }).catch(function() {
-    if (navigator.onLine === false) {
-      cloudStatus('offline');
-    } else {
-      cloudStatus('err');
-    }
+    if (navigator.onLine === false) cloudStatus('offline');
+    else cloudStatus('err');
     scheduleRetry();
   });
 }
@@ -1652,59 +2099,78 @@ function scheduleRetry() {
     if (S.token) pushToKV();
   }, 8000);
 }
-function saveProspects() {
-  var ts = Date.now();
+function saveProspects() { scheduleSave(); }
+// Applique l'état serveur (autoritaire) en local et met à jour caches + baseline.
+function applyServerState(d) {
+  S.prospects = Array.isArray(d.prospects) ? d.prospects : [];
+  S.todos = Array.isArray(d.todos) ? d.todos : [];
+  S.notes = Array.isArray(d.notes) ? d.notes : [];
+  S.callSessions = Array.isArray(d.callSessions) ? d.callSessions : [];
+  S.attachments = Array.isArray(d.attachments) ? d.attachments : [];
   try {
     localStorage.setItem('ap_prospects', JSON.stringify(S.prospects));
-    localStorage.setItem('ap_lastSaved', String(ts));
+    localStorage.setItem('ap_todos', JSON.stringify(S.todos));
+    localStorage.setItem('ap_notes', JSON.stringify(S.notes));
+    localStorage.setItem('ap_call_sessions', JSON.stringify(S.callSessions));
+    localStorage.setItem('ap_attachments', JSON.stringify(S.attachments));
+    localStorage.setItem('ap_lastSaved', String(d.lastSaved || Date.now()));
   } catch(e) {}
-  _pushPending = true;
-  if (_saveTimer) clearTimeout(_saveTimer);
-  _saveTimer = setTimeout(function() { _saveTimer = null; pushToKV(); }, 400);
+  markSynced();
 }
-function syncFromKV(cb) {
-  if (!S.token) { if (cb) cb(); return; }
+function loadFromServer(cb) {
   fetch('/api/data-load', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ token: S.token })
   }).then(function(r) { return r.json(); }).then(function(d) {
     if (d.error) { toast('Sync cloud : ' + d.error, 'err'); if (cb) cb(); return; }
-
-    var cloudP = Array.isArray(d.prospects) ? d.prospects : [];
-    var cloudT = Array.isArray(d.todos) ? d.todos : [];
-    var cloudN = Array.isArray(d.notes) ? d.notes : [];
-    var cloudTs = d.lastSaved || 0;
-    var localTs = parseInt(localStorage.getItem('ap_lastSaved') || '0');
-
-    // Cloud wins if it has data and is newer (or local has nothing)
-    var takeCloud = (cloudTs >= localTs) || (!localTs && cloudP.length > 0);
-
-    if (takeCloud) {
-      S.prospects = cloudP;
-      S.todos = cloudT;
-      S.notes = cloudN;
-      try {
-        localStorage.setItem('ap_prospects', JSON.stringify(S.prospects));
-        localStorage.setItem('ap_todos', JSON.stringify(S.todos));
-        localStorage.setItem('ap_notes', JSON.stringify(S.notes));
-        localStorage.setItem('ap_lastSaved', String(cloudTs));
-      } catch(e) {}
-    } else {
-      // Local is newer → push it to cloud to update it
-      pushToKV().then(function() {
-        localStorage.setItem('ap_lastSaved', String(Date.now()));
-      });
-    }
-
-    updateTaskBadge();
-    renderDash();
-    renderCC();
+    applyServerState(d);
+    try { localStorage.setItem(SYNC_V, '1'); } catch(e) {}
+    updateTaskBadge(); renderDash(); renderCC(); renderCallSessions(); renderAttachments();
     if (cb) cb();
   }).catch(function() {
     toast('Sync cloud indisponible.', 'err');
     if (cb) cb();
   });
+}
+// Restauration en un clic depuis la sauvegarde serveur (data/prospects.json)
+// vers Firestore, pour le cas où l'app est ouverte avant que la migration
+// n'ait été lancée et affiche une base vide.
+function restoreFromBackup(btn) {
+  if (btn) { btn.disabled = true; }
+  if (!S.token) { toast('Session expirée — reconnecte-toi puis réessaie.', 'err'); if (btn) btn.disabled = false; return; }
+  toast('Restauration en cours…', 'ok');
+  fetch('/api/migrate-once', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token: S.token })
+  }).then(function(r) { return r.json(); }).then(function(d) {
+    if (btn) btn.disabled = false;
+    if (d.error) { toast('Restauration : ' + d.error, 'err'); return; }
+    loadFromServer(function() {
+      toast('✅ Données restaurées !', 'ok');
+      renderDash();
+      renderCC();
+    });
+  }).catch(function(e) {
+    if (btn) btn.disabled = false;
+    toast('Restauration impossible : ' + (e && e.message ? e.message : 'erreur réseau'), 'err');
+  });
+}
+function syncFromKV(cb) {
+  if (!S.token) { if (cb) cb(); return; }
+  var firstRun = !localStorage.getItem(SYNC_V);
+  if (firstRun) {
+    // Première ouverture après migration Firestore : le serveur fait foi.
+    // On repart proprement de la donnée migrée (fin des caches périmés).
+    loadFromServer(cb);
+    return;
+  }
+  // Fonctionnement normal : on pousse d'abord nos changements locaux, puis on
+  // récupère l'état serveur consolidé (fusion multi-appareils par id).
+  var changes = computeDelta();
+  if (changes) { pushToKV().then(function() { loadFromServer(cb); }); }
+  else { loadFromServer(cb); }
 }
 
 // ===== AUTH =====
@@ -1728,9 +2194,11 @@ function checkSession() {
     loadProspects();
     loadTodos();
     loadNotes();
-    var h = location.hash.replace('#/', '').split('/')[0] || 'dashboard';
-    var valid = ['dashboard','coldcall','scripts','tasks'];
-    nav(valid.indexOf(h) !== -1 ? h : 'dashboard', true);
+    loadCallSessions();
+    loadAttachments();
+    var h = location.hash.replace('#/', '').split('/')[0] || 'overview';
+    var valid = ['overview','dashboard','coldcall','pipeline','scripts','coldcraft','tasks','stats','notes'];
+    nav(valid.indexOf(h) !== -1 ? h : 'overview', true);
     syncFromKV(); // sync silencieux depuis KV après affichage initial
   });
 }
@@ -1765,8 +2233,10 @@ function doLogin() {
     loadProspects();
     loadTodos();
     loadNotes();
-    nav('dashboard', true);
-    syncFromKV(); // charge les données depuis KV (autre appareil, autre navigateur)
+    loadCallSessions();
+    loadAttachments();
+    // Supprime définitivement le chemin /login après une authentification valide.
+    window.location.replace('https://alpiniaweb-crm.xyz/#/overview');
   });
 }
 
@@ -1823,12 +2293,33 @@ function getFiltered() {
   var f = df ? df.value : '';
   var sector = S.filterSector;
   var city = S.filterCity;
+  var canton = S.filterCanton;
+  var heat = S.filterHeat;
+  var icpFilter = S.filterIcp;
+  var followup = S.filterFollowup;
   var list = S.prospects.filter(function(p) {
     var m = !q || [p.name, p.city, p.type, p.notes, p.contact].filter(Boolean).join(' ').toLowerCase().indexOf(q) !== -1;
     if (!m) return false;
     if (f && (p.status || 'to_call') !== f) return false;
     if (sector && (p.type || '').toLowerCase() !== sector.toLowerCase()) return false;
     if (city && (p.city || '').toLowerCase() !== city.toLowerCase()) return false;
+    if (canton && p.canton !== canton) return false;
+    if (heat) {
+      var ph = p.heat || suggestHeat(computeICP(p).score);
+      if (ph !== heat) return false;
+    }
+    if (icpFilter) {
+      var sc = computeICP(p).score;
+      if (icpFilter === 'avoid') { if (sc >= 0) return false; }
+      else if (sc < parseInt(icpFilter, 10)) return false;
+    }
+    if (followup) {
+      var d = daysFromNow(p.nextFollowUp);
+      if (followup === 'overdue' && !(d !== null && d < 0)) return false;
+      if (followup === 'today' && d !== 0) return false;
+      if (followup === 'week' && !(d !== null && d >= 0 && d <= 7)) return false;
+      if (followup === 'none' && p.nextFollowUp) return false;
+    }
     return true;
   });
   var sort = S.sortBy;
@@ -1836,6 +2327,12 @@ function getFiltered() {
   else if (sort === 'name_desc') list.sort(function(a,b){ return (b.name||'').localeCompare(a.name||''); });
   else if (sort === 'date_asc') list.sort(function(a,b){ return (a.at||0)-(b.at||0); });
   else if (sort === 'enriched') list.sort(function(a,b){ return (b._enrich||b.enriched?1:0)-(a._enrich||a.enriched?1:0); });
+  else if (sort === 'icp_desc') list.sort(function(a,b){ return computeICP(b).score - computeICP(a).score; });
+  else if (sort === 'followup_asc') list.sort(function(a,b){
+    var da = a.nextFollowUp ? new Date(a.nextFollowUp).getTime() : Infinity;
+    var db = b.nextFollowUp ? new Date(b.nextFollowUp).getTime() : Infinity;
+    return da - db;
+  });
   return list;
 }
 function updateFilterSelects() {
@@ -1856,11 +2353,22 @@ function updateFilterSelects() {
     cit.innerHTML = '<option value="">Toutes villes</option>'
       + Object.keys(cities).sort().map(function(c) { return '<option value="' + esc(c) + '"' + (c === curCit ? ' selected' : '') + '>' + esc(c) + '</option>'; }).join('');
   }
-  var active = (S.filterSector ? 1 : 0) + (S.filterCity ? 1 : 0) + (S.sortBy ? 1 : 0);
+  var can = $('d-canton');
+  if (can) {
+    var curCan = can.value;
+    can.innerHTML = '<option value="">Tous cantons</option>'
+      + CANTONS.map(function(c) { return '<option value="' + c.k + '"' + (c.k === curCan ? ' selected' : '') + '>' + esc(c.l) + '</option>'; }).join('');
+  }
+  var active = (S.filterSector ? 1 : 0) + (S.filterCity ? 1 : 0) + (S.filterCanton ? 1 : 0) + (S.filterHeat ? 1 : 0) + (S.filterIcp ? 1 : 0) + (S.filterFollowup ? 1 : 0) + (S.sortBy ? 1 : 0);
   var clearBtn = $('d-clear-filters');
   var countSpan = $('d-filter-count');
   if (clearBtn) clearBtn.style.display = active > 0 ? '' : 'none';
   if (countSpan) countSpan.textContent = active;
+}
+function filterByHeatAndGo(h) {
+  S.filterHeat = h;
+  nav('dashboard');
+  setTimeout(function() { var el = $('d-heat'); if (el) el.value = h; }, 50);
 }
 function renderDash() {
   updateStats();
@@ -1913,7 +2421,7 @@ function renderTable(list) {
   var tbody = $('d-tbody');
   if (!tbody) return;
   if (!list.length) {
-    tbody.innerHTML = '<tr><td colspan="7"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Aucun prospect.<br>Ajoutez le premier !</p><button class="btn btn-cf" onclick="openModal()"><span>Ajouter un prospect</span></button></div></td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Aucun prospect.<br>Ajoutez le premier !</p><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><button class="btn btn-cf" onclick="openModal()"><span>Ajouter un prospect</span></button><button class="btn btn-ghost" onclick="restoreFromBackup(this)"><span>☁ Restaurer depuis la sauvegarde</span></button></div></div></td></tr>';
     return;
   }
   tbody.innerHTML = list.map(pRow).join('');
@@ -1931,9 +2439,18 @@ function pRow(p) {
   var isOpen = S.enrichOpen === p.id;
   var checked = S.selectedIds[p.id] ? ' checked' : '';
   var enrichedDot = (p._enrich || p.enriched) ? '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ok);margin-left:4px;vertical-align:middle" title="Enrichi"></span>' : '';
+  var idealBadge = '';
+  if (p._ideal) {
+    var isc = p._ideal.score || 0;
+    var icol = isc >= 70 ? '#34d399' : isc >= 40 ? '#fbbf24' : '#f87171';
+    idealBadge = '<span title="' + esc(p._ideal.reason||'') + '" style="display:inline-flex;align-items:center;gap:2px;font-size:10px;font-weight:700;color:' + icol + ';background:rgba(255,255,255,.06);border:1px solid ' + icol + ';border-radius:20px;padding:1px 7px;margin-left:6px;vertical-align:middle">🎯 ' + isc + '%</span>';
+  }
+  var icp = computeICP(p);
+  var icpBadge = '<span class="badge icp-' + icp.level + '" style="margin-left:6px;vertical-align:middle;cursor:pointer" title="' + esc(icp.levelLabel + ' — ' + icp.recommendation) + '" onclick="event.stopPropagation();openCard(\'' + p.id + '\')">ICP ' + icp.score + '</span>';
+  var heatBadge = p.heat ? '<span class="heat-badge heat-' + esc(p.heat) + '" style="margin-left:4px;vertical-align:middle">' + HEAT_ICON[p.heat] + ' ' + esc(p.heat) + '</span>' : '';
   return '<tr data-id="' + p.id + '"' + (isOpen ? ' class="expanded"' : '') + '>'
     + '<td style="width:36px;padding:12px 6px 12px 14px"><input type="checkbox" class="row-cb" data-pid="' + p.id + '" onchange="toggleSelect(\'' + p.id + '\',this.checked)"' + checked + '/></td>'
-    + '<td><div class="name-cell"><button onclick="openCard(\'' + p.id + '\')" style="background:none;border:none;font-weight:600;color:var(--t1);cursor:pointer;font-family:inherit;font-size:inherit;text-align:left;padding:0">' + esc(p.name) + enrichedDot + '</button>' + fuFlag(p) + '<small>' + esc([p.contact, p.value ? fmtCHF(p.value) + ' CHF' : ''].filter(Boolean).join(' · ')) + '</small></div></td>'
+    + '<td><div class="name-cell"><button onclick="openCard(\'' + p.id + '\')" style="background:none;border:none;font-weight:600;color:var(--t1);cursor:pointer;font-family:inherit;font-size:inherit;text-align:left;padding:0">' + esc(p.name) + enrichedDot + '</button>' + icpBadge + heatBadge + idealBadge + fuFlag(p) + '<small>' + esc([p.contact, p.value ? fmtCHF(p.value) + ' CHF' : ''].filter(Boolean).join(' · ')) + '</small></div></td>'
     + '<td>' + esc(p.city || '—') + '</td>'
     + '<td style="color:var(--t2);font-size:12px">' + esc(p.type || '—') + '</td>'
     + '<td><select class="ss" data-pid="' + p.id + '" onchange="chgStatus(this)" style="height:26px;font-size:11px">' + sopts(p.status) + '</select></td>'
@@ -2033,7 +2550,7 @@ function renderCards(list) {
   var c = $('d-cards');
   if (!c) return;
   if (!list.length) {
-    c.innerHTML = '<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Aucun prospect.</p><button class="btn btn-cf" onclick="openModal()"><span>Ajouter</span></button></div>';
+    c.innerHTML = '<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Aucun prospect.</p><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><button class="btn btn-cf" onclick="openModal()"><span>Ajouter</span></button><button class="btn btn-ghost" onclick="restoreFromBackup(this)"><span>☁ Restaurer</span></button></div></div>';
     return;
   }
   c.innerHTML = list.map(function(p) {
@@ -2053,12 +2570,42 @@ function renderCards(list) {
 function chgStatus(sel) {
   var p = S.prospects.filter(function(x) { return x.id === sel.dataset.pid; })[0];
   if (!p) return;
+  var prevStatus = p.status;
   p.status = sel.value;
   if (CONTACTED_ST[p.status]) p.lastContact = Date.now();
   if (p.status === 'won') toast('🎉 Client signé : ' + p.name, 'ok');
   saveProspects();
+  autoCreateTasksForStatus(p, prevStatus);
   renderDash();
   renderCC();
+}
+// ===== Création automatique de tâches (règles commerciales Alpinia Web Craft) =====
+function createAutoTask(prospectId, text, daysFromToday, priority, category) {
+  var due = null;
+  if (daysFromToday !== null && daysFromToday !== undefined) {
+    var d = new Date(); d.setDate(d.getDate() + daysFromToday);
+    due = d.toISOString().slice(0, 10);
+  }
+  S.todos.unshift({
+    id: genId(), text: text, status: 'todo', priority: priority || 'medium',
+    category: category || 'call', dueDate: due, prospectId: prospectId || null,
+    reminderAt: null, notes: '', at: Date.now(), doneAt: null
+  });
+  saveTodos();
+  if (typeof renderTasks === 'function') renderTasks();
+}
+// Déclenché sur changement de statut commercial
+function autoCreateTasksForStatus(p, prevStatus) {
+  if (p.status === prevStatus) return;
+  if (p.status === 'video_rdv') createAutoTask(p.id, 'Préparer le rendez-vous — ' + p.name, 0, 'high', 'meeting');
+  if (p.status === 'quote_sent') createAutoTask(p.id, 'Relancer le devis — ' + p.name, 3, 'medium', 'follow_up');
+}
+// Déclenché sur changement de niveau de chaleur (HOT/WARM/COLD/DEAD)
+function autoCreateTasksForHeat(p, prevHeat) {
+  if (p.heat === prevHeat) return;
+  if (p.heat === 'HOT') createAutoTask(p.id, 'Appeler ce prospect — ' + p.name, 0, 'high', 'call');
+  else if (p.heat === 'WARM') createAutoTask(p.id, 'Relancer dans 7 jours — ' + p.name, 7, 'medium', 'follow_up');
+  else if (p.heat === 'COLD') createAutoTask(p.id, 'Relancer dans 30 jours — ' + p.name, 30, 'low', 'follow_up');
 }
 function delProspect(id) {
   if (!confirm('Supprimer ce prospect ?')) return;
@@ -2209,6 +2756,17 @@ function openCard(id) {
   renderCard(p);
   var bg = $('modal-pcard'); if (bg) bg.classList.add('on');
 }
+function chgHeatCard(id, val) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p) return;
+  var prevHeat = p.heat;
+  p.heat = val || '';
+  saveProspects();
+  autoCreateTasksForHeat(p, prevHeat);
+  renderCard(p);
+  renderDash();
+  toast('Chaleur mise à jour : ' + (p.heat || 'Auto'), 'ok');
+}
 function closeCard() {
   var bg = $('modal-pcard'); if (bg) bg.classList.remove('on');
   S.cardProspect = null;
@@ -2232,6 +2790,30 @@ function renderCard(p) {
     enriched.description ? { k: '📝 Description', v: enriched.description } : null
   ].filter(function(f) { return f && f.v && f.v !== 'null'; });
   var linkedTodos = S.todos.filter(function(t) { return t.prospectId === p.id; });
+  var icp = computeICP(p);
+  var analysis = generateICPAnalysis(p, icp);
+  var icpPanel = '<div class="pcard-sec" style="margin-bottom:16px;border-color:' + ICP_COLOR[icp.level] + '44">'
+    + '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px">'
+    + '<div style="display:flex;align-items:center;gap:14px">'
+    + '<div class="icp-score-big" style="font-size:2.4rem;color:' + ICP_COLOR[icp.level] + '">' + icp.score + '</div>'
+    + '<div><span class="badge icp-' + icp.level + '" style="font-size:12px">' + esc(icp.levelLabel) + '</span>'
+    + '<div style="font-size:12px;color:var(--t2);margin-top:4px;font-weight:600">' + esc(icp.recommendation) + '</div></div>'
+    + '</div>'
+    + '<div style="display:flex;align-items:center;gap:8px">'
+    + '<label for="pcard-heat-sel" style="font-size:11px;color:var(--t3)">Chaleur :</label>'
+    + '<select class="fi fi-sm" id="pcard-heat-sel" onchange="chgHeatCard(\'' + p.id + '\',this.value)">'
+    + '<option value="">Auto</option>' + HEAT_LEVELS.map(function(h) { return '<option value="' + h + '"' + (p.heat === h ? ' selected' : '') + '>' + HEAT_ICON[h] + ' ' + h + '</option>'; }).join('')
+    + '</select></div></div>'
+    + (icp.breakdown.length ? '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">' + icp.breakdown.map(function(b) {
+        return '<span style="font-size:11px;padding:2px 8px;border-radius:20px;background:' + (b.pts > 0 ? 'rgba(52,211,153,.12)' : 'rgba(248,113,113,.12)') + ';color:' + (b.pts > 0 ? '#6ee7b7' : '#fca5a5') + '">' + (b.pts > 0 ? '+' : '') + b.pts + ' ' + esc(b.label) + '</span>';
+      }).join('') + '</div>' : '<div style="font-size:12px;color:var(--t3);margin-bottom:12px">Complète les infos ICP (site, avis, réseaux, canton…) pour affiner le score.</div>')
+    + '<div style="font-size:13px;color:var(--t1);line-height:1.6;margin-bottom:10px">' + esc(analysis.text) + '</div>'
+    + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px">'
+    + '<div><strong style="color:var(--t2)">Angle d\'approche :</strong><br>' + esc(analysis.angle) + '</div>'
+    + '<div><strong style="color:var(--t2)">Objection probable :</strong><br>« ' + esc(analysis.objection) + ' »</div>'
+    + '</div>'
+    + '<div style="margin-top:10px;padding:10px;border-radius:var(--r10);background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);font-size:12.5px;font-style:italic">💬 « ' + esc(analysis.hook) + ' »</div>'
+    + '</div>';
   inner.innerHTML = '<div class="pcard-hide-print" style="display:flex;justify-content:flex-end;gap:8px;margin-bottom:16px;flex-wrap:wrap">'
     + '<button class="btn btn-ghost" onclick="window.generateCallScript(\'' + p.id + '\')" style="height:36px;font-size:13px">📝 Script</button>'
     + '<button class="btn btn-ghost" onclick="window.generateEmail(\'' + p.id + '\')" style="height:36px;font-size:13px">📧 Email</button>'
@@ -2254,6 +2836,7 @@ function renderCard(p) {
     + '</div>'
     + '</div>'
     + '</div>'
+    + icpPanel
     + '<div class="pcard-grid">'
     + '<div class="pcard-sec">'
     + '<div class="pcard-sec-title">Infos contact</div>'
@@ -2294,9 +2877,19 @@ function renderCard(p) {
     + '<div class="pcard-sec-title">Historique interactions</div>'
     + '<div class="timeline" id="pcard-timeline">' + renderTimeline(p) + '</div>'
     + '<div style="margin-top:12px;display:flex;flex-direction:column;gap:6px" id="pcard-add-interaction">'
+    + '<div style="font-size:11px;color:var(--t3);margin-bottom:2px">Modèles rapides :</div>'
+    + '<div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:4px">'
+    + CALL_TEMPLATES.map(function(tpl, i) { return '<button class="btn btn-ghost" onclick="applyCallTemplate(' + i + ')" style="height:26px;font-size:11px;padding:0 9px">' + esc(tpl.label) + '</button>'; }).join('')
+    + '</div>'
     + '<select class="fi fi-sm" id="int-type"><option value="call">📞 Appel</option><option value="email">📧 Email</option><option value="rdv">🤝 RDV</option><option value="note">📝 Note</option><option value="visit">🏠 Visite</option></select>'
     + '<select class="fi fi-sm" id="int-outcome"><option value="neutral">— Neutre</option><option value="positive">✅ Positif</option><option value="negative">❌ Négatif</option></select>'
-    + '<input class="fi fi-sm" type="text" id="int-note" placeholder="Note…"/>'
+    + '<input class="fi fi-sm" type="text" id="int-note" placeholder="Résumé de l\'appel…"/>'
+    + '<input class="fi fi-sm" type="text" id="int-objections" placeholder="Objections (optionnel)…"/>'
+    + '<select class="fi fi-sm" id="int-interest"><option value="">Niveau d\'intérêt — non précisé</option><option value="low">Faible</option><option value="medium">Moyen</option><option value="high">Fort</option></select>'
+    + '<div style="display:flex;gap:6px;align-items:center">'
+    + '<label style="font-size:11px;color:var(--t3);white-space:nowrap" for="int-reminder">Rappel prévu :</label>'
+    + '<input class="fi fi-sm" type="date" id="int-reminder" style="flex:1"/>'
+    + '</div>'
     + '<button class="btn btn-ghost" onclick="addInteraction(\'' + p.id + '\')" style="height:32px;font-size:12px">+ Ajouter interaction</button>'
     + '</div>'
     + '</div>'
@@ -2332,19 +2925,44 @@ function renderCard(p) {
     : '<div style="font-size:13px;color:var(--t3)">Aucune tâche liée.</div>')
     + '</div>';
 }
+var INTEREST_LABEL = { low: 'Intérêt faible', medium: 'Intérêt moyen', high: 'Intérêt fort' };
 function renderTimeline(p) {
   if (!p.interactions || !p.interactions.length) return '<div style="font-size:13px;color:var(--t3)">Aucune interaction.</div>';
   var icons = { call: '📞', email: '📧', rdv: '🤝', note: '📝', visit: '🏠' };
   return p.interactions.slice().reverse().map(function(it, i) {
     var cls = it.outcome === 'positive' ? 'tl-pos' : it.outcome === 'negative' ? 'tl-neg' : 'tl-neu';
     var realIdx = p.interactions.length - 1 - i;
+    var meta = [
+      it.interestLevel ? INTEREST_LABEL[it.interestLevel] : '',
+      it.objections ? 'Objections : ' + it.objections : '',
+      it.reminderDate ? 'Rappel prévu : ' + new Date(it.reminderDate).toLocaleDateString('fr-CH') : ''
+    ].filter(Boolean).join(' · ');
     return '<div class="tl-item ' + cls + '">'
       + '<div class="tl-dot">' + (icons[it.type] || '📝') + '</div>'
       + '<div style="flex:1"><div style="font-size:13px">' + esc(it.note || it.type) + '</div>'
+      + (meta ? '<div style="font-size:11px;color:var(--violet2);margin-top:2px">' + esc(meta) + '</div>' : '')
       + '<div style="font-size:11px;color:var(--t3)">' + new Date(it.at||Date.now()).toLocaleDateString('fr-CH') + '</div></div>'
       + '<button onclick="deleteInteraction(\'' + p.id + '\',' + realIdx + ')" style="background:none;border:none;color:var(--t3);cursor:pointer;font-size:14px;padding:2px" aria-label="Supprimer">✕</button>'
       + '</div>';
   }).join('');
+}
+// Modèles rapides de notes d'appel
+var CALL_TEMPLATES = [
+  { label: 'Ne répond pas', note: 'Ne répond pas.', outcome: 'neutral' },
+  { label: 'À rappeler', note: 'À rappeler.', outcome: 'neutral' },
+  { label: 'Intéressé', note: 'Intéressé.', outcome: 'positive', interestLevel: 'high' },
+  { label: 'A déjà un prestataire', note: 'A déjà un prestataire.', outcome: 'negative' },
+  { label: 'Pas le budget', note: 'Pas le budget actuellement.', outcome: 'negative', objections: 'Budget' },
+  { label: 'Demande à voir une maquette', note: 'Demande à voir une maquette / des exemples.', outcome: 'positive', interestLevel: 'medium' },
+  { label: 'Veut réfléchir', note: 'Veut réfléchir.', outcome: 'neutral', interestLevel: 'medium' }
+];
+function applyCallTemplate(i) {
+  var tpl = CALL_TEMPLATES[i];
+  if (!tpl) return;
+  var noteEl = $('int-note'); if (noteEl) noteEl.value = tpl.note;
+  var outcomeEl = $('int-outcome'); if (outcomeEl) outcomeEl.value = tpl.outcome || 'neutral';
+  var objEl = $('int-objections'); if (objEl) objEl.value = tpl.objections || '';
+  var interestEl = $('int-interest'); if (interestEl) interestEl.value = tpl.interestLevel || '';
 }
 function addInteraction(id) {
   var p = S.prospects.filter(function(x) { return x.id === id; })[0];
@@ -2353,11 +2971,14 @@ function addInteraction(id) {
   var type = $('int-type') ? $('int-type').value : 'note';
   var outcome = $('int-outcome') ? $('int-outcome').value : 'neutral';
   var note = $('int-note') ? $('int-note').value.trim() : '';
-  p.interactions.push({ id: genId(), type: type, outcome: outcome, note: note, at: Date.now() });
+  var objections = $('int-objections') ? $('int-objections').value.trim() : '';
+  var interestLevel = $('int-interest') ? $('int-interest').value : '';
+  var reminderDate = $('int-reminder') ? $('int-reminder').value : '';
+  p.interactions.push({ id: genId(), type: type, outcome: outcome, note: note, objections: objections, interestLevel: interestLevel, reminderDate: reminderDate || null, at: Date.now() });
   p.lastContact = Date.now();
+  if (reminderDate) p.nextFollowUp = reminderDate;
   saveProspects();
-  var el = $('pcard-timeline');
-  if (el) el.innerHTML = renderTimeline(p);
+  renderCard(p);
   var noteInput = $('int-note'); if (noteInput) noteInput.value = '';
   toast('Interaction ajoutée.', 'ok');
 }
@@ -2452,8 +3073,10 @@ function bulkSetStatus(status) {
   if (!status) return;
   var list = selectedProspects();
   list.forEach(function(p) {
+    var prevStatus = p.status;
     p.status = status;
     if (CONTACTED_ST[status]) p.lastContact = Date.now();
+    autoCreateTasksForStatus(p, prevStatus);
   });
   saveProspects();
   renderDash();
@@ -2575,6 +3198,56 @@ function bulkVerifyWebsite() {
     });
   }
   next(0);
+}
+// Analyse "profil prospect idéal" par recherche web IA (ancienneté du site, avis
+// Google, activité Instagram, bouche-à-oreille…), puis propose de supprimer d'un
+// coup les prospects sélectionnés qui ne correspondent pas.
+function bulkIdealScore() {
+  var list = selectedProspects();
+  if (!list.length) return;
+  if (!confirm('Analyser ces ' + list.length + ' prospect(s) avec l\'IA (profil idéal) ?\n\nRecherche web réelle par prospect — peut prendre plusieurs minutes.')) return;
+
+  var done = 0, matched = 0;
+  toast('Analyse « profil idéal » en cours : 0 / ' + list.length + '…', 'ok');
+
+  function next(i) {
+    if (i >= list.length) {
+      saveProspects();
+      renderDash();
+      var rejected = list.filter(function(p) { return p._ideal && p._ideal.is_ideal_match === false; });
+      toast('🎯 Analyse terminée — ' + matched + '/' + list.length + ' correspondent au profil idéal.', 'ok');
+      if (rejected.length && confirm(rejected.length + ' prospect(s) ne correspondent PAS au profil idéal.\n\nLes supprimer de la liste maintenant ?')) {
+        S.prospects = S.prospects.filter(function(p) { return rejected.indexOf(p) === -1; });
+        rejected.forEach(function(p) { delete S.selectedIds[p.id]; });
+        saveProspects();
+        renderDash();
+        renderCC();
+        toast(rejected.length + ' prospect(s) non pertinent(s) supprimé(s).', 'ok');
+      }
+      return;
+    }
+    var p = list[i];
+    if (p._ideal) { if (p._ideal.is_ideal_match) matched++; next(i + 1); return; }
+    fetch('/api/score-ideal', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: p.name, city: p.city, type: p.type, website: p.web, phone: p.phone, facebook: p.facebook, instagram: p.instagram })
+    }).then(function(r) { return r.json(); }).then(function(d) {
+      done++;
+      if (d.result) { p._ideal = d.result; if (d.result.is_ideal_match) matched++; }
+      toast('Analyse « profil idéal » en cours : ' + done + ' / ' + list.length + '…', 'ok');
+      next(i + 1);
+    }).catch(function() { done++; next(i + 1); });
+  }
+  next(0);
+}
+function selectIdealMatches() {
+  var matches = S.prospects.filter(function(p) { return p._ideal && p._ideal.is_ideal_match; });
+  if (!matches.length) { toast('Aucun prospect analysé « profil idéal » pour l\'instant. Utilise le bouton 🎯 Profil idéal dans la barre d\'actions groupées.', 'warn'); return; }
+  matches.forEach(function(p) { S.selectedIds[p.id] = 1; });
+  renderTable(getFiltered());
+  updateBatchBtn();
+  updateBulkBar();
+  toast(matches.length + ' prospect(s) « profil idéal » sélectionné(s).', 'ok');
 }
 function levenshtein(a, b) {
   var m = a.length, n = b.length;
@@ -2718,6 +3391,135 @@ function bulkClear() {
   S.selectedIds = {};
   var cb = $('select-all-cb'); if (cb) cb.checked = false;
   renderDash();
+}
+
+// ===== VUE D'ENSEMBLE (Dashboard principal) =====
+function renderOverview() {
+  var ps = S.prospects;
+  var total = ps.length;
+  var heatCounts = { HOT: 0, WARM: 0, COLD: 0, DEAD: 0 };
+  var icpSum = 0;
+  ps.forEach(function(p) {
+    var icp = computeICP(p);
+    icpSum += icp.score;
+    var h = p.heat || suggestHeat(icp.score);
+    if (heatCounts[h] !== undefined) heatCounts[h]++;
+  });
+  var avgICP = total ? Math.round(icpSum / total) : 0;
+
+  var todayStr = todayISO();
+  var tasksToday = S.todos.filter(function(t) { return t.status !== 'done' && t.dueDate === todayStr; }).length;
+  var tasksOverdue = S.todos.filter(function(t) { return t.status !== 'done' && t.dueDate && t.dueDate < todayStr; }).length;
+  var rdvUpcoming = ps.filter(function(p) { return p.status === 'video_rdv'; }).length;
+
+  var kpis = [
+    { n: total, l: 'Prospects total', cls: 'n-violet' },
+    { n: tasksToday, l: 'Tâches du jour', cls: 'n-warn' },
+    { n: tasksOverdue, l: 'Relances en retard', cls: tasksOverdue ? '' : 'n-ok', color: tasksOverdue ? 'var(--err)' : null },
+    { n: rdvUpcoming, l: 'RDV prévus', cls: 'n-ok' },
+    { n: fmtCHF(pipelineValue()), l: 'Pipeline potentiel (CHF)', cls: 'n-violet' },
+    { n: avgICP, l: 'Score ICP moyen', cls: avgICP >= 60 ? 'n-ok' : avgICP >= 40 ? 'n-warn' : '' }
+  ];
+  var kpisEl = $('ov-kpis');
+  if (kpisEl) kpisEl.innerHTML = kpis.map(function(k) {
+    var style = k.color ? ' style="color:' + k.color + '"' : '';
+    return '<div class="kpi glass"><span class="kpi-n ' + (k.cls || '') + '"' + style + '>' + k.n + '</span><span class="kpi-l">' + k.l + '</span></div>';
+  }).join('');
+
+  var heatEl = $('ov-heat');
+  if (heatEl) heatEl.innerHTML = HEAT_LEVELS.map(function(h) {
+    return '<div class="kpi glass" style="cursor:pointer" onclick="filterByHeatAndGo(\'' + h + '\')" title="Voir les prospects ' + h + '">'
+      + '<span class="kpi-n" style="font-size:1.6rem">' + HEAT_ICON[h] + ' ' + heatCounts[h] + '</span>'
+      + '<span class="kpi-l">' + HEAT_LABEL[h] + '</span></div>';
+  }).join('');
+
+  var priority = ps.filter(function(p) { return p.status !== 'won' && p.status !== 'refusal'; })
+    .map(function(p) { return { p: p, icp: computeICP(p) }; })
+    .sort(function(a, b) { return b.icp.score - a.icp.score; })
+    .slice(0, 8);
+  var priEl = $('ov-priority-list');
+  if (priEl) priEl.innerHTML = priority.length ? priority.map(function(x) {
+    return '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--br)">'
+      + '<div style="min-width:0;flex:1;cursor:pointer" onclick="openCard(\'' + x.p.id + '\')"><div style="font-weight:600;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + esc(x.p.name) + '</div>'
+      + '<div style="font-size:11px;color:var(--t3)">' + esc([x.p.type, x.p.city].filter(Boolean).join(' · ') || '—') + '</div></div>'
+      + '<span class="badge icp-' + x.icp.level + '">' + esc(x.icp.levelLabel) + ' · ' + x.icp.score + '</span>'
+      + (x.p.phone ? '<a href="tel:' + esc(x.p.phone) + '" class="btn btn-icon" style="width:32px;height:32px;flex-shrink:0" aria-label="Appeler"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.19 19.79 19.79 0 01.34 2.65 2 2 0 012.33.66h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>' : '')
+      + '</div>';
+  }).join('') : '<div style="font-size:13px;color:var(--t3)">Aucun prospect actif.</div>';
+
+  var overdue = ps.filter(function(p) {
+    if (!p.nextFollowUp || p.status === 'refusal' || p.status === 'won') return false;
+    var d = daysFromNow(p.nextFollowUp);
+    return d !== null && d < 0;
+  }).sort(function(a, b) { return new Date(a.nextFollowUp) - new Date(b.nextFollowUp); });
+  var ovdEl = $('ov-overdue-list');
+  if (ovdEl) ovdEl.innerHTML = overdue.length ? overdue.map(function(p) {
+    var d = daysFromNow(p.nextFollowUp);
+    return '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--br);cursor:pointer" onclick="openCard(\'' + p.id + '\')">'
+      + '<div style="font-weight:600;font-size:13px">' + esc(p.name) + '</div>'
+      + '<span style="font-size:11px;color:var(--err);font-weight:600">en retard de ' + (-d) + 'j</span></div>';
+  }).join('') : '<div style="font-size:13px;color:var(--t3)">Aucune relance en retard. 🎉</div>';
+}
+
+// ===== PIPELINE (Kanban) =====
+var PIPELINE_STAGES = [
+  { key: 'to_contact', label: 'À contacter', statuses: ['to_call'] },
+  { key: 'contacted', label: 'Contacté', statuses: ['called', 'voicemail', 'recall'] },
+  { key: 'interested', label: 'Intéressé', statuses: ['interested'] },
+  { key: 'rdv', label: 'RDV prévu', statuses: ['video_rdv'] },
+  { key: 'quote', label: 'Devis envoyé', statuses: ['quote_sent'] },
+  { key: 'won', label: 'Gagné', statuses: ['won'] },
+  { key: 'lost', label: 'Perdu', statuses: ['refusal'] }
+];
+function pipelineNextStatus(currentStatus) {
+  var order = ['to_call', 'called', 'interested', 'video_rdv', 'quote_sent', 'won'];
+  var idx = order.indexOf(currentStatus);
+  if (idx === -1 || idx === order.length - 1) return null;
+  return order[idx + 1];
+}
+function movePipelineCard(id, newStatus) {
+  var p = S.prospects.filter(function(x) { return x.id === id; })[0];
+  if (!p) return;
+  var prevStatus = p.status;
+  p.status = newStatus;
+  if (CONTACTED_ST[p.status]) p.lastContact = Date.now();
+  saveProspects();
+  autoCreateTasksForStatus(p, prevStatus);
+  renderPipeline();
+  renderDash();
+  renderCC();
+  toast(esc(p.name) + ' → ' + (ST_LABELS[newStatus] || newStatus), 'ok');
+}
+function renderPipeline() {
+  var board = $('kanban-board');
+  if (!board) return;
+  board.innerHTML = PIPELINE_STAGES.map(function(stage) {
+    var cards = S.prospects.filter(function(p) { return stage.statuses.indexOf(p.status || 'to_call') !== -1; });
+    var value = cards.reduce(function(s, p) { return s + (parseFloat(p.value) || 0); }, 0);
+    var cardsHtml = cards.length ? cards.map(function(p) {
+      var icp = computeICP(p);
+      var offer = p.offer || suggestOffer(p) || '—';
+      var next = pipelineNextStatus(p.status || 'to_call');
+      return '<div class="kanban-card" onclick="openCard(\'' + p.id + '\')">'
+        + '<div class="kanban-card-name">' + esc(p.name) + '</div>'
+        + '<div class="kanban-card-sub">' + esc([p.type, p.city].filter(Boolean).join(' · ') || '—') + '</div>'
+        + '<div class="kanban-card-row">'
+        + '<span class="badge icp-' + icp.level + '" style="font-size:10px">ICP ' + icp.score + '</span>'
+        + (p.heat ? '<span class="heat-badge heat-' + esc(p.heat) + '" style="font-size:10px">' + HEAT_ICON[p.heat] + '</span>' : '')
+        + '<span style="font-size:11px;color:var(--t3)">' + (offer !== '—' ? offer + ' CHF' : '—') + '</span>'
+        + '</div>'
+        + (p.value ? '<div style="font-size:11px;color:var(--violet2);font-weight:700">' + fmtCHF(p.value) + ' CHF</div>' : '')
+        + (p.nextAction ? '<div style="font-size:11px;color:var(--t2)">➡ ' + esc(p.nextAction) + '</div>' : '')
+        + (next ? '<div class="kanban-card-move"><button class="kanban-move-btn" onclick="event.stopPropagation();movePipelineCard(\'' + p.id + '\',\'' + next + '\')">' + (ST_LABELS[next] || next) + ' →</button></div>' : '')
+        + '</div>';
+    }).join('') : '<div class="kanban-empty">Aucun prospect</div>';
+    return '<div class="kanban-col">'
+      + '<div class="kanban-col-hd"><div><div class="kanban-col-title">' + esc(stage.label) + '</div>'
+      + (value ? '<div class="kanban-col-value">' + fmtCHF(value) + ' CHF</div>' : '') + '</div>'
+      + '<span class="kanban-col-count">' + cards.length + '</span></div>'
+      + '<div class="kanban-cards">' + cardsHtml + '</div>'
+      + '</div>';
+  }).join('');
 }
 
 // ===== STATS / ANALYTICS =====
@@ -3114,25 +3916,67 @@ function renderCC() {
   staggerAnimate(cont, '.cc-item');
 }
 
+function renderCallSessions() {
+  var el = $('call-session-list');
+  if (!el) return;
+  var list = (S.callSessions || []).slice().sort(function(a,b) { return (b.at || 0) - (a.at || 0); }).slice(0, 8);
+  if (!list.length) { el.innerHTML = '<div style="font-size:12px;color:var(--t3);padding:8px 0">Aucune session enregistrée. L’agent peut en créer une après un appel.</div>'; return; }
+  el.innerHTML = list.map(function(s) {
+    var date = s.at ? new Date(s.at).toLocaleDateString('fr-CH') : '—';
+    return '<div class="call-session"><b>' + esc(s.prospectName || 'Prospect') + '</b><div style="font-size:12px;color:var(--t2);margin-top:3px">' + esc(s.outcome || 'Appel') + (s.durationMinutes ? ' · ' + esc(s.durationMinutes) + ' min' : '') + ' · ' + date + '</div>' + (s.summary ? '<div style="font-size:12px;color:var(--t3);margin-top:5px">' + esc(s.summary) + '</div>' : '') + '</div>';
+  }).join('');
+}
+
 // ===== MODAL =====
 var editId = null;
+function fillCantonSelect() {
+  var sel = $('m-canton');
+  if (!sel || sel.dataset.filled) return;
+  sel.innerHTML = '<option value="">—</option>' + CANTONS.map(function(c) { return '<option value="' + c.k + '">' + esc(c.l) + '</option>'; }).join('');
+  sel.dataset.filled = '1';
+}
 function openModal(id) {
   editId = id || null;
   var p = id ? S.prospects.filter(function(x) { return x.id === id; })[0] : null;
+  var flags = (p && p.flags) || {};
   var title = $('modal-title');
   if (title) title.textContent = p ? 'Modifier le prospect' : 'Nouveau prospect';
+  fillCantonSelect();
   function val(id, v) { var el = $(id); if (el) el.value = v || ''; }
+  function chk(id, v) { var el = $(id); if (el) el.checked = !!v; }
   val('m-name', p ? p.name : '');
   val('m-city', p ? p.city : '');
   val('m-type', p ? p.type : '');
+  val('m-canton', p ? p.canton : '');
+  val('m-address', p ? p.address : '');
   val('m-phone', p ? p.phone : '');
   val('m-email', p ? p.email : '');
   val('m-web', p ? p.web : '');
   val('m-status', p ? (p.status || 'to_call') : 'to_call');
   val('m-contact', p ? p.contact : '');
+  val('m-sitequality', p ? p.siteQuality : '');
+  val('m-reviews', p && p.reviewCount ? p.reviewCount : '');
+  val('m-rating', p && p.rating ? p.rating : '');
+  chk('m-gmaps', p && p.gmaps);
+  chk('m-instagram', p && p.hasInstagram);
+  chk('m-facebook', p && p.hasFacebook);
+  chk('m-photos', p && p.qualityPhotos);
+  chk('m-beautiful', p && p.beautifulBusiness);
+  val('m-employees', p && p.employees ? p.employees : '');
+  val('m-revenue', p && p.revenue ? p.revenue : '');
+  val('m-heat', p ? p.heat : '');
+  val('m-offer', p ? p.offer : '');
   val('m-value', p && p.value ? p.value : '');
   val('m-followup', p ? p.nextFollowUp : '');
+  val('m-nextaction', p ? p.nextAction : '');
   val('m-notes', p ? p.notes : '');
+  chk('m-flag-franchise', flags.franchise);
+  chk('m-flag-chain', flags.chain);
+  chk('m-flag-marketing', flags.marketing);
+  chk('m-flag-agency', flags.agency);
+  chk('m-flag-small', flags.small);
+  chk('m-flag-cheap', flags.cheap);
+  chk('m-flag-refusal', flags.refusal);
   var modal = $('modal');
   if (modal) modal.classList.add('on');
   setTimeout(function() { var el = $('m-name'); if (el) el.focus(); }, 50);
@@ -3142,29 +3986,62 @@ function closeModal() {
   if (modal) modal.classList.remove('on');
   editId = null;
 }
+function suggestOfferInModal() {
+  var draft = {
+    employees: $('m-employees') ? $('m-employees').value : '',
+    beautifulBusiness: $('m-beautiful') ? $('m-beautiful').checked : false,
+    reviewCount: $('m-reviews') ? $('m-reviews').value : '',
+    hasInstagram: $('m-instagram') ? $('m-instagram').checked : false,
+    flags: {
+      agency: $('m-flag-agency') ? $('m-flag-agency').checked : false,
+      chain: $('m-flag-chain') ? $('m-flag-chain').checked : false,
+      marketing: $('m-flag-marketing') ? $('m-flag-marketing').checked : false
+    }
+  };
+  var offer = suggestOffer(draft);
+  var sel = $('m-offer');
+  if (sel) sel.value = offer || '';
+  toast(offer ? 'Offre suggérée : ' + offer + ' CHF/an' : 'Aucune offre standard suggérée (hors cible).', offer ? 'ok' : 'warn');
+}
 function saveModal() {
   var nameEl = $('m-name');
   var name = nameEl ? nameEl.value.trim() : '';
   if (!name) { toast('Le nom est requis.', 'err'); if (nameEl) nameEl.focus(); return; }
   function fv(id) { var el = $(id); return el ? el.value.trim() : ''; }
   function fvr(id) { var el = $(id); return el ? el.value : ''; }
+  function fvc(id) { var el = $(id); return el ? el.checked : false; }
+  var flags = {
+    franchise: fvc('m-flag-franchise'), chain: fvc('m-flag-chain'), marketing: fvc('m-flag-marketing'),
+    agency: fvc('m-flag-agency'), small: fvc('m-flag-small'), cheap: fvc('m-flag-cheap'), refusal: fvc('m-flag-refusal')
+  };
+  var heatInput = fvr('m-heat');
+  var common = {
+    name: name, city: fv('m-city'), type: fv('m-type'), canton: fvr('m-canton'), address: fv('m-address'),
+    phone: fv('m-phone'), email: fv('m-email'), web: fv('m-web'),
+    status: fvr('m-status'), contact: fv('m-contact'), notes: fv('m-notes'),
+    siteQuality: fvr('m-sitequality'), reviewCount: parseInt(fv('m-reviews'), 10) || 0, rating: parseFloat(fv('m-rating')) || 0,
+    gmaps: fvc('m-gmaps'), hasInstagram: fvc('m-instagram'), hasFacebook: fvc('m-facebook'),
+    qualityPhotos: fvc('m-photos'), beautifulBusiness: fvc('m-beautiful'),
+    employees: parseInt(fv('m-employees'), 10) || 0, revenue: parseFloat(fv('m-revenue')) || 0,
+    offer: fvr('m-offer'), value: parseFloat(fv('m-value')) || 0, nextFollowUp: fvr('m-followup'),
+    nextAction: fv('m-nextaction'), flags: flags
+  };
+  var prevHeat = null, prevStatus = null, isNew = !editId;
   if (editId) {
     var p = S.prospects.filter(function(x) { return x.id === editId; })[0];
     if (p) {
-      p.name = name; p.city = fv('m-city'); p.type = fv('m-type');
-      p.phone = fv('m-phone'); p.email = fv('m-email'); p.web = fv('m-web');
-      p.status = fvr('m-status'); p.contact = fv('m-contact'); p.notes = fv('m-notes');
-      p.value = parseFloat(fv('m-value')) || 0; p.nextFollowUp = fvr('m-followup');
+      prevHeat = p.heat; prevStatus = p.status;
+      Object.keys(common).forEach(function(k) { p[k] = common[k]; });
+      p.heat = heatInput || suggestHeat(computeICP(p).score);
       if (CONTACTED_ST[p.status] && !p.lastContact) p.lastContact = Date.now();
+      autoCreateTasksForStatus(p, prevStatus);
+      autoCreateTasksForHeat(p, prevHeat);
     }
   } else {
-    S.prospects.unshift({
-      id: genId(), name: name, city: fv('m-city'), type: fv('m-type'),
-      phone: fv('m-phone'), email: fv('m-email'), web: fv('m-web'),
-      status: fvr('m-status'), contact: fv('m-contact'), notes: fv('m-notes'),
-      value: parseFloat(fv('m-value')) || 0, nextFollowUp: fvr('m-followup'),
-      lastContact: CONTACTED_ST[fvr('m-status')] ? Date.now() : null, at: Date.now()
-    });
+    var np = Object.assign({ id: genId(), at: Date.now(), lastContact: CONTACTED_ST[common.status] ? Date.now() : null }, common);
+    np.heat = heatInput || suggestHeat(computeICP(np).score);
+    S.prospects.unshift(np);
+    autoCreateTasksForHeat(np, null);
   }
   saveProspects();
   renderDash();
@@ -3747,6 +4624,7 @@ function prospectsContext() {
 }
 function agentSystem() {
   var n = S.prospects ? S.prospects.length : 0;
+  var files = Object.keys(S.fileContexts || {}).map(function(id) { var f = S.fileContexts[id]; return '- ' + f.name + ' (' + f.rows + ' lignes' + (f.moneyRows ? ', ' + f.moneyRows + ' avec 💸' : '') + ')'; }).join('\n') || 'Aucun fichier tabulaire joint.';
   return COACH + '\n\n=== MODE AGENT ===\n'
     + 'Tu as accès à la liste complète des prospects de l\'utilisateur (ci-dessous). '
     + 'Tu peux répondre à toute question sur eux : compter, filtrer, lister, analyser, prioriser, suggérer qui appeler en premier.\n'
@@ -3755,12 +4633,15 @@ function agentSystem() {
     + '- {"do":"add_task","text":"<tâche>","name":"<nom prospect optionnel>","priority":"low|medium|high"}\n'
     + '- {"do":"add_note","name":"<nom exact>","note":"<texte>"}\n'
     + '- {"do":"set_followup","name":"<nom exact>","days":<nombre>}\n'
+    + '- {"do":"update_prospect","name":"<nom exact>","fields":{"city":"...","type":"...","status":"...","notes":"..."}}\n'
+    + '- {"do":"create_call_session","name":"<nom exact>","outcome":"...","durationMinutes":3,"summary":"..."}\n'
+    + '- {"do":"import_csv_prospects","attachmentId":"<id>","contains":"💸"}\n'
     + '- {"do":"select","filter":"website|no_website|no_phone|status:<statut>|city:<ville>"}\n'
     + 'Exemple : @@ACTIONS@@ [{"do":"set_status","name":"Restaurant du Lac","status":"called"}]\n'
     + 'Règles : n\'invente JAMAIS de prospect, utilise exactement les noms de la liste. '
     + 'Si une demande est ambiguë ou destructrice, demande confirmation au lieu d\'agir. '
     + 'Avant le bloc @@ACTIONS@@, explique en 1 phrase ce que tu fais. Sans action à faire, ne mets pas le bloc.\n\n'
-    + '=== LISTE DES PROSPECTS (' + n + ') ===\n' + prospectsContext();
+    + '=== FICHIERS JOINTS ===\n' + files + '\n\n=== LISTE DES PROSPECTS (' + n + ') ===\n' + prospectsContext();
 }
 function findProspectByName(name) {
   if (!name) return null;
@@ -3783,6 +4664,39 @@ function applyAgentSelect(filter) {
     if (has) S.selectedIds[p.id] = 1;
   });
 }
+function parseCsvRows(text) {
+  var rows = [], row = [], cell = '', quoted = false;
+  for (var i = 0; i < text.length; i++) {
+    var ch = text[i], next = text[i + 1];
+    if (ch === '"' && quoted && next === '"') { cell += '"'; i++; }
+    else if (ch === '"') quoted = !quoted;
+    else if ((ch === ';' || ch === ',') && !quoted) { row.push(cell.trim()); cell = ''; }
+    else if ((ch === '\n' || ch === '\r') && !quoted) { if (ch === '\r' && next === '\n') i++; row.push(cell.trim()); if (row.some(Boolean)) rows.push(row.slice()); row.length = 0; cell = ''; }
+    else cell += ch;
+  }
+  if (cell || row.length) { row.push(cell.trim()); rows.push(row); }
+  return rows;
+}
+function importCsvProspects(attachmentId, contains) {
+  var f = (S.fileContexts || {})[attachmentId];
+  if (!f || !f.text) return '✗ Fichier introuvable : il faut le joindre à nouveau dans cette session.';
+  var rows = parseCsvRows(f.text); if (rows.length < 2) return '✗ CSV vide ou invalide.';
+  var heads = rows[0].map(function(h) { return String(h || '').toLowerCase().trim(); });
+  var index = function(names) { for (var i = 0; i < names.length; i++) { var n = heads.indexOf(names[i]); if (n >= 0) return n; } return -1; };
+  var nameI = index(['nom','name','entreprise','company']), cityI = index(['ville','city']), webI = index(['site_officiel','site','website','web']), noteI = index(['notes','audit_site','audit']), priI = index(['priorite_icp','priorité_icp','priorite']);
+  var added = 0;
+  rows.slice(1).forEach(function(r) {
+    var marker = priI >= 0 ? (r[priI] || '') : r.join(' ');
+    if (contains && marker.indexOf(contains) < 0) return;
+    var name = nameI >= 0 ? r[nameI] : ''; if (!name) return;
+    var city = cityI >= 0 ? r[cityI] : '';
+    var duplicate = S.prospects.some(function(p) { return (p.name || '').toLowerCase() === name.toLowerCase() && (p.city || '').toLowerCase() === city.toLowerCase(); });
+    if (duplicate) return;
+    S.prospects.unshift({ id: genId(), name: name, city: city, web: webI >= 0 ? r[webI] : '', notes: noteI >= 0 ? r[noteI] : '', status: 'to_call', tags: contains === '💸' ? ['💸'] : [], at: Date.now() }); added++;
+  });
+  if (added) { saveProspects(); renderDash(); renderCC(); }
+  return '✓ ' + added + ' prospect(s) importé(s) depuis ' + f.name + '.';
+}
 function runAgentActions(actions) {
   var done = [], changed = false, selChanged = false;
   actions.forEach(function(a) {
@@ -3803,6 +4717,16 @@ function runAgentActions(actions) {
       var p3 = findProspectByName(a.name);
       if (p3) { var d = new Date(); d.setDate(d.getDate() + (parseInt(a.days) || 7)); p3.nextFollowUp = d.toISOString().slice(0, 10); changed = true; done.push('✓ Relance ' + p3.name + ' le ' + d.toLocaleDateString('fr-CH')); }
       else done.push('✗ Prospect introuvable : ' + (a.name || '?'));
+    } else if (a.do === 'update_prospect') {
+      var p4 = findProspectByName(a.name), allowed = ['name','city','type','phone','web','status','notes','contact','nextFollowUp','value'];
+      if (p4 && a.fields && typeof a.fields === 'object') { allowed.forEach(function(k) { if (a.fields[k] !== undefined) p4[k] = String(a.fields[k]).slice(0, 2000); }); changed = true; done.push('✓ Prospect mis à jour : ' + p4.name); }
+      else done.push('✗ Prospect introuvable ou champs invalides.');
+    } else if (a.do === 'create_call_session') {
+      var p5 = findProspectByName(a.name);
+      if (p5) { S.callSessions.unshift({ id: genId(), prospectId: p5.id, prospectName: p5.name, outcome: a.outcome || 'Appel', durationMinutes: Math.max(0, parseInt(a.durationMinutes, 10) || 0), summary: a.summary || '', at: Date.now() }); scheduleSave(); renderCallSessions(); done.push('✓ Session cold call ajoutée : ' + p5.name); }
+      else done.push('✗ Prospect introuvable : ' + (a.name || '?'));
+    } else if (a.do === 'import_csv_prospects') {
+      done.push(importCsvProspects(a.attachmentId, a.contains || ''));
     } else if (a.do === 'select') {
       applyAgentSelect(a.filter); selChanged = true;
       done.push('✓ ' + Object.keys(S.selectedIds).length + ' prospect(s) sélectionné(s) (' + a.filter + ')');
@@ -3811,6 +4735,35 @@ function runAgentActions(actions) {
   if (changed) { saveProspects(); renderDash(); renderCC(); }
   if (selChanged) { renderTable(getFiltered()); updateBatchBtn(); updateBulkBar(); }
   return done;
+}
+function renderAttachments() {
+  var bar = $('attachment-bar'); if (!bar) return;
+  var items = (S.attachments || []).slice(0, 5);
+  bar.innerHTML = items.map(function(a) { return '<span class="attachment-chip" title="' + esc(a.name) + '">📎 ' + esc(a.name) + ' <button type="button" onclick="downloadAttachment(\'' + esc(a.id) + '\')" style="border:0;background:none;color:inherit;cursor:pointer">↓</button></span>'; }).join('');
+}
+function downloadAttachment(id) {
+  var a = (S.attachments || []).filter(function(x) { return x.id === id; })[0]; if (!a) return;
+  fetch('/api/download-file', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ token:S.token, url:a.url, name:a.name }) }).then(function(r) { if (!r.ok) throw new Error('Téléchargement impossible'); return r.blob(); }).then(function(blob) {
+    var url = URL.createObjectURL(blob), link = document.createElement('a'); link.href = url; link.download = a.name; link.click(); setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  }).catch(function(e) { toast(e.message, 'err'); });
+}
+function uploadChatFile(file) {
+  if (!file) return;
+  if (file.size > 2 * 1024 * 1024) { toast('Le fichier dépasse 2 Mo.', 'err'); return; }
+  var reader = new FileReader();
+  reader.onload = function() {
+    var b64 = String(reader.result || '').split(',').pop();
+    fetch('/api/upload-file', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ token:S.token, name:file.name, mime:file.type, content:b64 }) }).then(function(r){ return r.json(); }).then(function(d) {
+      if (d.error || !d.attachment) { toast(d.error || 'Envoi impossible.', 'err'); return; }
+      S.attachments.unshift(d.attachment); S.attachments = S.attachments.slice(0, 80); scheduleSave(); renderAttachments();
+      if (/csv|text|json/i.test(file.type) || /\.(csv|txt|json)$/i.test(file.name)) {
+        var textReader = new FileReader(); textReader.onload = function() { var text = String(textReader.result || ''); var rows = parseCsvRows(text); var moneyRows = rows.slice(1).filter(function(r){ return r.join(' ').indexOf('💸') >= 0; }).length; S.fileContexts[d.attachment.id] = { name:file.name, text:text, rows:Math.max(0, rows.length - 1), moneyRows:moneyRows }; chatAppend('b', 'Fichier joint : ' + file.name + ' (' + Math.max(0, rows.length - 1) + ' lignes, ' + moneyRows + ' avec 💸). Tu peux me demander de les importer.'); };
+        textReader.readAsText(file, 'UTF-8');
+      }
+      toast('Fichier ajouté : ' + file.name, 'ok');
+    }).catch(function(){ toast('Envoi impossible.', 'err'); });
+  };
+  reader.readAsDataURL(file);
 }
 function sendChat() {
   var inp = $('chat-inp');
@@ -3825,7 +4778,7 @@ function sendChat() {
   typing.className = 'typing-dots';
   typing.innerHTML = '<span class="dot-a"></span><span class="dot-a"></span><span class="dot-a"></span>';
   if (msgs) { msgs.appendChild(typing); msgs.scrollTop = msgs.scrollHeight; }
-  api('ai', { system: agentSystem(), messages: S.chatHistory.slice(-8) }).then(function(d) {
+  api('ai', { mode: 'crm_agent', system: agentSystem(), messages: S.chatHistory.slice(-8) }).then(function(d) {
     typing.remove();
     var reply = d.error ? ('Erreur : ' + d.error) : ((d.content && d.content[0] && d.content[0].text) ? d.content[0].text : '');
     S.chatHistory.push({ role: 'assistant', content: reply });
@@ -3976,6 +4929,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   if (chatSend) chatSend.addEventListener('click', sendChat);
   if (chatInp) chatInp.addEventListener('keydown', function(e) { if (e.key === 'Enter') sendChat(); });
+  var chatFileInput = $('chat-file-input');
+  if (chatFileInput) chatFileInput.addEventListener('change', function() { if (this.files && this.files[0]) uploadChatFile(this.files[0]); this.value = ''; });
 
   // Init
   loadTodos();
@@ -4022,6 +4977,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (bulkDupesBtn) bulkDupesBtn.addEventListener('click', bulkDetectDupes);
   var bulkScoreBtn = $('bulk-score-btn');
   if (bulkScoreBtn) bulkScoreBtn.addEventListener('click', bulkScoreProspects);
+  var bulkIdealBtn = $('bulk-ideal-btn');
+  if (bulkIdealBtn) bulkIdealBtn.addEventListener('click', bulkIdealScore);
 
   // Tasks
   var tAddBtn = $('t-add-btn');
@@ -4039,32 +4996,29 @@ document.addEventListener('DOMContentLoaded', function() {
   if (dSector) dSector.addEventListener('change', function() { S.filterSector = this.value; renderDash(); });
   var dCity = $('d-city');
   if (dCity) dCity.addEventListener('change', function() { S.filterCity = this.value; renderDash(); });
+  var dCanton = $('d-canton');
+  if (dCanton) dCanton.addEventListener('change', function() { S.filterCanton = this.value; renderDash(); });
+  var dHeat = $('d-heat');
+  if (dHeat) dHeat.addEventListener('change', function() { S.filterHeat = this.value; renderDash(); });
+  var dIcp = $('d-icp');
+  if (dIcp) dIcp.addEventListener('change', function() { S.filterIcp = this.value; renderDash(); });
+  var dFollowupFilter = $('d-followup-filter');
+  if (dFollowupFilter) dFollowupFilter.addEventListener('change', function() { S.filterFollowup = this.value; renderDash(); });
   var dSort = $('d-sort');
   if (dSort) dSort.addEventListener('change', function() { S.sortBy = this.value; renderDash(); });
   var dClearFilters = $('d-clear-filters');
   if (dClearFilters) dClearFilters.addEventListener('click', function() {
-    S.filterSector = ''; S.filterCity = ''; S.sortBy = '';
+    S.filterSector = ''; S.filterCity = ''; S.filterCanton = ''; S.filterHeat = ''; S.filterIcp = ''; S.filterFollowup = ''; S.sortBy = '';
     var dSec = $('d-sector'); if (dSec) dSec.value = '';
     var dCit = $('d-city'); if (dCit) dCit.value = '';
+    var dCan = $('d-canton'); if (dCan) dCan.value = '';
+    var dHt = $('d-heat'); if (dHt) dHt.value = '';
+    var dIc = $('d-icp'); if (dIc) dIc.value = '';
+    var dFf = $('d-followup-filter'); if (dFf) dFf.value = '';
     var dSrt = $('d-sort'); if (dSrt) dSrt.value = '';
     renderDash();
   });
 });
-
-// ===== RIPPLE EFFECT =====
-document.addEventListener('click', function(e) {
-  var btn = e.target.closest('.btn,.btn-cf,.btn-primary,.btn-ghost,.btn-icon,.nav-btn,.bnav-btn,.preset');
-  if (!btn) return;
-  var rect = btn.getBoundingClientRect();
-  var size = Math.max(rect.width, rect.height) * 1.4;
-  var x = e.clientX - rect.left - size / 2;
-  var y = e.clientY - rect.top - size / 2;
-  var wave = document.createElement('span');
-  wave.className = 'ripple-wave';
-  wave.style.cssText = 'width:' + size + 'px;height:' + size + 'px;left:' + x + 'px;top:' + y + 'px';
-  btn.appendChild(wave);
-  setTimeout(function() { wave.remove(); }, 600);
-}, true);
 
 // ===== STAGGER ANIMATION =====
 function staggerAnimate(container, selector) {
@@ -4091,6 +5045,7 @@ window.removeAIParsed = removeAIParsed;
 window.toggleSelect = toggleSelect;
 window.selectAll = selectAll;
 window.selectWithWebsite = selectWithWebsite;
+window.selectIdealMatches = selectIdealMatches;
 window.openCard = openCard;
 window.closeCard = closeCard;
 window.addInteraction = addInteraction;
@@ -4107,6 +5062,13 @@ window.bulkDetectDupes = bulkDetectDupes;
 window.bulkScoreProspects = bulkScoreProspects;
 window.generateCallScript = generateCallScript;
 window.generateEmail = generateEmail;
+window.chgHeatCard = chgHeatCard;
+window.suggestOfferInModal = suggestOfferInModal;
+window.filterByHeatAndGo = filterByHeatAndGo;
+window.movePipelineCard = movePipelineCard;
+window.applyCallTemplate = applyCallTemplate;
+window.nav = nav;
+window.downloadAttachment = downloadAttachment;
 
 // ===== NOTES VIDÉO =====
 var _noteEditId = null;
@@ -4269,6 +5231,8 @@ $('modal-note').addEventListener('click', function(e){ if(e.target===this) close
 
 // ===== TROUVER ÉTABLISSEMENTS =====
 var _fpResults = [];
+var _fpResultsAll = null; // sauvegarde avant filtrage IA, pour pouvoir restaurer
+var _fpAnalyzing = false;
 
 function openFindPlaces() {
   $('find-form').style.display = 'flex';
@@ -4296,6 +5260,9 @@ function doFindPlaces() {
     btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Rechercher';
     if (d.error) { showFpError(d.error); return; }
     _fpResults = d.results || [];
+    _fpResultsAll = null;
+    $('fp-restore-wrap').style.display = 'none';
+    $('fp-analyze-progress').style.display = 'none';
     if (!_fpResults.length) { showFpError(d.hint || ('Aucun résultat pour "' + city + '". Essaie une ville plus grande ou un autre secteur.')); return; }
     renderFpResults();
   }).catch(function(e) {
@@ -4311,6 +5278,19 @@ function showFpError(msg) {
   el.style.display = 'block';
 }
 
+function fpBadges(p) {
+  var badges = [];
+  if (!p.website && p.facebook) badges.push('<span style="display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;color:#60a5fa;background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.3);border-radius:20px;padding:2px 8px">📘 Facebook seul</span>');
+  else if (!p.website) badges.push('<span style="display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;color:#34d399;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);border-radius:20px;padding:2px 8px">🎯 Sans site</span>');
+  if (p.instagram) badges.push('<span style="display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;color:#ec4899;background:rgba(236,72,153,.12);border:1px solid rgba(236,72,153,.3);border-radius:20px;padding:2px 8px">📸 Instagram</span>');
+  if (p._ideal) {
+    var sc = p._ideal.score || 0;
+    var col = sc >= 70 ? '#34d399' : sc >= 40 ? '#fbbf24' : '#f87171';
+    badges.push('<span title="' + (p._ideal.reason||'').replace(/"/g,'&quot;') + '" style="display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;color:' + col + ';background:rgba(255,255,255,.06);border:1px solid ' + col + ';border-radius:20px;padding:2px 8px">🧠 ' + sc + '%</span>');
+  }
+  return badges.join(' ');
+}
+
 function renderFpResults() {
   $('find-form').style.display = 'none';
   $('find-results').style.display = 'flex';
@@ -4319,12 +5299,15 @@ function renderFpResults() {
   list.innerHTML = _fpResults.map(function(p, i) {
     var sub = [p.city, p.domain].filter(Boolean).join(' · ');
     var extra = [p.phone ? '📞 ' + p.phone : '', p.website ? '🌐 ' + p.website.replace(/^https?:\/\//,'').split('/')[0] : ''].filter(Boolean).join('  ');
+    var badges = fpBadges(p);
+    var checked = p._ideal ? (p._ideal.is_ideal_match ? ' checked' : '') : ' checked';
     return '<label style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--r14);border:1px solid var(--br);background:var(--s2);cursor:pointer;transition:border-color .15s,background .15s" onmouseover="this.style.borderColor=\'rgba(168,85,247,.3)\';this.style.background=\'var(--s3)\'" onmouseout="this.style.borderColor=\'var(--br)\';this.style.background=\'var(--s2)\'">'
-      + '<input type="checkbox" data-fp-idx="' + i + '" checked style="width:16px;height:16px;accent-color:var(--violet2);flex-shrink:0" />'
+      + '<input type="checkbox" data-fp-idx="' + i + '"' + checked + ' style="width:16px;height:16px;accent-color:var(--violet2);flex-shrink:0" />'
       + '<div style="min-width:0;flex:1">'
       + '<div style="font-weight:600;font-size:13px;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + (p.establishment||'').replace(/</g,'&lt;') + '</div>'
       + (sub ? '<div style="font-size:11px;color:var(--t3);margin-top:1px">' + sub.replace(/</g,'&lt;') + '</div>' : '')
       + (extra ? '<div style="font-size:11px;color:var(--violet2);margin-top:2px">' + extra.replace(/</g,'&lt;') + '</div>' : '')
+      + (badges ? '<div style="margin-top:5px;display:flex;gap:5px;flex-wrap:wrap">' + badges + '</div>' : '')
       + '</div>'
       + (p.phone || p.website ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" title="Données disponibles"><polyline points="20 6 9 17 4 12"/></svg>' : '')
       + '</label>';
@@ -4350,6 +5333,58 @@ function updateFpImportBtn() {
   $('fp-import-btn').disabled = !n;
 }
 
+// Analyse IA par recherche web réelle : ancienneté du site, avis Google, activité
+// Instagram, bouche-à-oreille… (ce que Geoapify/OSM ne fournissent pas). Sélectionne
+// automatiquement les établissements qui correspondent, retire les autres de la liste.
+function fpAnalyzeIdeal() {
+  if (_fpAnalyzing) return;
+  if (!_fpResults.length) return;
+  var n = _fpResults.length;
+  if (!confirm('Analyser ces ' + n + ' établissement(s) avec l\'IA (recherche web réelle) ?\n\nCela peut prendre plusieurs minutes (~2-5s par établissement) et consomme des appels OpenAI.')) return;
+
+  _fpAnalyzing = true;
+  if (!_fpResultsAll) _fpResultsAll = _fpResults.slice();
+  var btn = $('fp-analyze-btn');
+  btn.disabled = true;
+  var progress = $('fp-analyze-progress');
+  progress.style.display = 'block';
+
+  var done = 0, matched = 0;
+  function next(i) {
+    if (i >= _fpResults.length) {
+      _fpAnalyzing = false;
+      btn.disabled = false;
+      var rejected = _fpResults.length - matched;
+      _fpResults = _fpResults.filter(function(p) { return !p._ideal || p._ideal.is_ideal_match; });
+      _fpResults.sort(function(a, b) { return (b._ideal ? b._ideal.score : 0) - (a._ideal ? a._ideal.score : 0); });
+      progress.style.display = 'none';
+      $('fp-restore-wrap').style.display = 'block';
+      renderFpResults();
+      toast('🎯 ' + matched + ' établissement(s) correspondent au profil idéal' + (rejected > 0 ? ', ' + rejected + ' retiré(s) (ne correspondent pas)' : '') + '.', 'ok');
+      return;
+    }
+    var p = _fpResults[i];
+    if (p._ideal) { if (p._ideal.is_ideal_match) matched++; next(i + 1); return; }
+    progress.textContent = '🧠 Analyse IA en cours : ' + (i + 1) + ' / ' + n + '…';
+    fetch('/api/score-ideal', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: p.establishment, city: p.city, type: p.domain, website: p.website, phone: p.phone, facebook: p.facebook, instagram: p.instagram })
+    }).then(function(r) { return r.json(); }).then(function(d) {
+      done++;
+      if (d.result) { p._ideal = d.result; if (d.result.is_ideal_match) matched++; }
+      next(i + 1);
+    }).catch(function() { done++; next(i + 1); });
+  }
+  next(0);
+}
+
+function fpRestoreAll() {
+  if (!_fpResultsAll) return;
+  _fpResults = _fpResultsAll.slice();
+  $('fp-restore-wrap').style.display = 'none';
+  renderFpResults();
+}
+
 function doImportPlaces() {
   var checked = Array.from($('fp-list').querySelectorAll('input:checked'));
   var toImport = checked.map(function(cb) { return _fpResults[parseInt(cb.dataset.fpIdx)]; }).filter(Boolean);
@@ -4364,11 +5399,14 @@ function doImportPlaces() {
         name: p.establishment || '',
         web: p.website || '',
         phone: p.phone || '',
+        facebook: p.facebook || '',
+        instagram: p.instagram || '',
         city: p.city || '',
         type: p.domain || '',
         notes: p.notes || '',
         status: 'to_call',
         at: Date.now(),
+        _ideal: p._ideal || null,
       });
       added++;
     }
@@ -4384,6 +5422,8 @@ window.closeFindPlaces = closeFindPlaces;
 window.doFindPlaces = doFindPlaces;
 window.fpSelectAll = fpSelectAll;
 window.fpSelectNone = fpSelectNone;
+window.fpAnalyzeIdeal = fpAnalyzeIdeal;
+window.fpRestoreAll = fpRestoreAll;
 window.doImportPlaces = doImportPlaces;
 $('modal-find-places').addEventListener('click', function(e){ if(e.target===this) closeFindPlaces(); });
 $('fp-city').addEventListener('keydown', function(e){ if(e.key==='Enter') doFindPlaces(); });

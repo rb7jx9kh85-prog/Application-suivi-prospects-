@@ -1,56 +1,59 @@
-const https = require('https')
-const crypto = require('crypto')
+// Charge les données de l'utilisateur depuis Firestore.
+// Structure : users/{userKey}/prospects, /todos, /notes (1 document par enregistrement).
+//
+// Auto-restauration : si c'est le tout premier chargement après la migration
+// (aucun document Firestore pour ce compte, flag "migrated" absent) et que
+// data/prospects.json (l'ancienne sauvegarde GitHub) contient ce compte, on
+// réimporte automatiquement — aucune action de l'utilisateur requise. Le flag
+// "migrated" garantit que ça ne se déclenche qu'une seule fois : si
+// l'utilisateur vide sa liste plus tard volontairement, elle ne ressuscitera
+// pas depuis l'ancienne sauvegarde.
+const fs = require('fs')
+const path = require('path')
+const { getDb, emailFromToken, userKey, COLLECTIONS } = require('./_firebase')
 
-const OWNER = 'rb7jx9kh85-prog'
-const REPO = 'Application-suivi-prospects-'
-const FILE = 'data/prospects.json'
+const CHUNK = 400
 
-const secret = () => process.env.APP_SECRET || 'alpinia-default-secret-change-me'
-
-function emailFromToken(token) {
-  try {
-    const decoded = Buffer.from(token, 'base64').toString('utf8')
-    const lastPipe = decoded.lastIndexOf('|')
-    if (lastPipe === -1) return null
-    const sig = decoded.slice(lastPipe + 1)
-    const payload = decoded.slice(0, lastPipe)
-    const expected = crypto.createHmac('sha256', secret()).update(payload).digest('hex')
-    if (sig !== expected) return null
-    const parts = payload.split('|')
-    return (parts[0] || '').toLowerCase().trim()
-  } catch (e) { return null }
+// Retire les champs internes de synchro avant de renvoyer au client.
+function clean(doc) {
+  const d = doc.data() || {}
+  delete d._m
+  delete d._deleted
+  return d
 }
 
-function fetchFromGithubAPI() {
-  return new Promise((resolve, reject) => {
-    const token = process.env.GITHUB_TOKEN
-    const headers = {
-      'User-Agent': 'alpinia-app/1.0',
-      Accept: 'application/vnd.github.v3+json',
-    }
-    if (token) headers.Authorization = 'Bearer ' + token
+async function readCollection(userRef, name) {
+  const snap = await userRef.collection(name).get()
+  const out = []
+  snap.forEach(doc => { out.push(clean(doc)) })
+  return out
+}
 
-    const req = https.request({
-      hostname: 'api.github.com',
-      path: `/repos/${OWNER}/${REPO}/contents/${FILE}`,
-      method: 'GET',
-      headers,
-    }, (r) => {
-      let out = ''
-      r.on('data', c => { out += c })
-      r.on('end', () => {
-        try {
-          const json = JSON.parse(out)
-          if (r.statusCode === 404) return resolve({})
-          if (r.statusCode !== 200) return reject(new Error('GitHub ' + r.statusCode + ': ' + (json.message || out)))
-          const content = Buffer.from(json.content, 'base64').toString('utf8')
-          resolve(JSON.parse(content || '{}'))
-        } catch (e) { reject(e) }
+async function autoRestoreFromBackup(db, userRef, key, email) {
+  const file = path.join(__dirname, '..', 'data', 'prospects.json')
+  if (!fs.existsSync(file)) return null
+  let dbJson
+  try { dbJson = JSON.parse(fs.readFileSync(file, 'utf8') || '{}') } catch (e) { return null }
+  const u = dbJson[key]
+  if (!u) return null
+
+  const now = Date.now()
+  const restored = {}
+  for (const name of COLLECTIONS) {
+    const records = Array.isArray(u[name]) ? u[name] : []
+    const col = userRef.collection(name)
+    for (let i = 0; i < records.length; i += CHUNK) {
+      const batch = db.batch()
+      records.slice(i, i + CHUNK).forEach(rec => {
+        const id = String(rec && rec.id != null ? rec.id : '').trim()
+        if (!id) return
+        batch.set(col.doc(id), Object.assign({}, rec, { _m: now }))
       })
-    })
-    req.on('error', reject)
-    req.end()
-  })
+      await batch.commit()
+    }
+    restored[name] = records.filter(r => r && r.id != null)
+  }
+  return restored
 }
 
 module.exports = async function handler(req, res) {
@@ -67,15 +70,36 @@ module.exports = async function handler(req, res) {
   if (!email) return res.status(401).json({ error: 'Token invalide' })
 
   try {
-    const db = await fetchFromGithubAPI()
-    const key = crypto.createHash('sha256').update(email).digest('hex')
-    const userData = db[key] || {}
-    return res.status(200).json({
-      prospects: userData.prospects || [],
-      todos: userData.todos || [],
-      notes: userData.notes || [],
-      lastSaved: userData.lastSaved || 0,
-    })
+    const db = getDb()
+    const key = userKey(email)
+    const userRef = db.collection('users').doc(key)
+
+    const metaSnap = await userRef.get()
+    const meta = metaSnap.exists ? metaSnap.data() : {}
+
+    let [prospects, todos, notes, callSessions, attachments] = await Promise.all(
+      COLLECTIONS.map(name => readCollection(userRef, name))
+    )
+
+    let lastSaved = meta.lastSaved || 0
+
+    if (!prospects.length && !todos.length && !notes.length && !meta.migrated) {
+      const restored = await autoRestoreFromBackup(db, userRef, key, email)
+      if (restored) {
+        prospects = restored.prospects
+        todos = restored.todos
+        notes = restored.notes
+        callSessions = restored.callSessions || []
+        attachments = restored.attachments || []
+        lastSaved = Date.now()
+      }
+      console.log('[auto-restore]', key.slice(0, 10), restored
+        ? { prospects: prospects.length, todos: todos.length, notes: notes.length, callSessions: callSessions.length, attachments: attachments.length }
+        : 'no backup found for this account')
+      await userRef.set({ migrated: true, lastSaved, email }, { merge: true })
+    }
+
+    return res.status(200).json({ prospects, todos, notes, callSessions, attachments, lastSaved })
   } catch (e) {
     return res.status(500).json({ error: e.message })
   }
