@@ -1,4 +1,21 @@
 const https = require('https')
+const crypto = require('crypto')
+
+const secret = () => process.env.APP_SECRET || 'alpinia-default-secret-change-me'
+
+function validToken(token) {
+  try {
+    const decoded = Buffer.from(token || '', 'base64').toString('utf8')
+    const lastPipe = decoded.lastIndexOf('|')
+    if (lastPipe === -1) return false
+    const sig = decoded.slice(lastPipe + 1)
+    const payload = decoded.slice(0, lastPipe)
+    const expected = crypto.createHmac('sha256', secret()).update(payload).digest('hex')
+    if (sig !== expected) return false
+    const exp = parseInt(payload.split('|').pop(), 10)
+    return !isNaN(exp) && exp >= Date.now()
+  } catch (e) { return false }
+}
 
 function openai(key, payload) {
   return new Promise((resolve, reject) => {
@@ -32,15 +49,21 @@ module.exports = async function handler(req, res) {
 
   if (req.method === 'OPTIONS') return res.status(200).end()
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method Not Allowed' })
+  if (!validToken((req.body || {}).token)) return res.status(401).json({ error: 'Session expirée. Connectez-vous à nouveau.' })
 
   const key = process.env.OPENAI_API_KEY || process.env.OPENAI_API
   if (!key) return res.status(200).json({ error: 'OPENAI_API_KEY non configurée dans les variables Vercel.' })
 
   try {
-    const { system, messages } = req.body || {}
+    const { system, messages, mode } = req.body || {}
+    // The model stays server-controlled.  A client cannot quietly switch the
+    // agent to an unexpectedly expensive model by sending an arbitrary value.
+    const defaultModel = process.env.OPENAI_MODEL || 'gpt-4o-mini'
+    const agentModel = process.env.CRM_AGENT_MODEL || 'gpt-5.6-sol'
+    const model = mode === 'crm_agent' ? agentModel : defaultModel
     const r = await openai(key, {
-      model: 'gpt-4o-mini',
-      max_tokens: 1200,
+      model,
+      max_completion_tokens: 1200,
       messages: [
         { role: 'system', content: system || 'Tu es un assistant utile.' },
         ...(Array.isArray(messages) ? messages : []),

@@ -6,6 +6,7 @@
     "migrate": "node scripts/migrate-to-firestore.js"
   },
   "dependencies": {
+    "@vercel/blob": "^2.6.1",
     "firebase-admin": "^12.7.0"
   }
 }

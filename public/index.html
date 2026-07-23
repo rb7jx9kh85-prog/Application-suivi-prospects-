@@ -6,7 +6,7 @@
 <title>Alpinia Prospect Pro</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 <link rel="apple-touch-icon" href="/favicon.svg"/>
-<meta name="theme-color" content="#7c3aed"/>
+<meta name="theme-color" content="#08090d"/>
 <meta name="description" content="Alpinia Prospect Pro — Prospection B2B, enrichissement IA, scripts de cold call et suivi des RDV."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -15,9 +15,9 @@
 :root{
   --bg:#0a0a0a;--s1:#111114;--s2:#17171c;--s3:#202028;
   --br:rgba(255,255,255,.07);--br2:rgba(255,255,255,.13);
-  --violet:#7c3aed;--violet2:#a855f7;--pink:#ec4899;
-  --grad:linear-gradient(135deg,#7c3aed 0%,#a855f7 50%,#ec4899 100%);
-  --t1:#f4f1fb;--t2:#a1a1b3;--t3:#5b5b6b;
+  --violet:#3f6fff;--violet2:#82a0ff;--pink:#ff6b3d;
+  --grad:linear-gradient(135deg,#3f6fff 0%,#6f8dff 45%,#ff7146 100%);
+  --t1:#fff;--t2:#b7bac4;--t3:#777b88;
   --ok:#34d399;--warn:#fbbf24;--err:#f87171;
   --r10:10px;--r14:14px;--r20:20px;--rfull:9999px;
   --ease:cubic-bezier(.22,.8,.3,1);
@@ -615,6 +615,36 @@ html{scroll-behavior:smooth}
 /* Modal grid spans full-width for some fields */
 .modal-grid .fgrp.span2{grid-column:1/-1}
 
+/* ===== Alpinia mobile: black & white, blue and orange accents ===== */
+:root{--bg:#08090d;--s1:#101116;--s2:#171920;--s3:#22242c;--br:rgba(255,255,255,.09);--br2:rgba(255,255,255,.17)}
+.grad-layer:nth-child(1){background:linear-gradient(135deg,#17101d,#08090d 45%,#0b1a39)}
+.grad-layer:nth-child(2){background:linear-gradient(135deg,#201019,#08090d 50%,#132756)}
+.grad-layer:nth-child(3){background:linear-gradient(135deg,#08090d,#111a39 48%,#311712)}
+.b1{background:radial-gradient(circle at 30% 30%,rgba(63,111,255,.38),transparent 62%)}
+.b2{background:radial-gradient(circle at 70% 70%,rgba(255,107,61,.32),transparent 62%)}
+.b3{background:radial-gradient(circle at 50% 50%,rgba(130,160,255,.2),transparent 64%)}
+.chat-attach{width:40px;height:40px;border:1px solid var(--br);border-radius:var(--r10);background:rgba(255,255,255,.05);color:var(--t2);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none}
+.chat-attach:hover{color:var(--t1);border-color:rgba(130,160,255,.55)}
+.attachment-bar{padding:0 12px 10px;display:flex;gap:6px;flex-wrap:wrap;background:rgba(10,10,10,.5)}
+.attachment-chip{display:inline-flex;gap:6px;align-items:center;max-width:100%;padding:6px 9px;border:1px solid rgba(130,160,255,.28);border-radius:999px;background:rgba(63,111,255,.11);font-size:11px;color:var(--t1)}
+.call-session-list{display:grid;gap:8px;margin-top:18px}.call-session{padding:12px 14px;border:1px solid var(--br);border-radius:var(--r14);background:rgba(255,255,255,.035)}
+@media(max-width:767px){
+  body{background:#08090d}.wrap{padding-left:14px;padding-right:14px}
+  #topnav{height:62px;padding:0 14px;background:rgba(8,9,13,.86)}
+  .nav-logo{font-size:18px}.nav-right .btn{width:34px;padding:0;font-size:0}.nav-user{display:none}
+  #bnav{height:68px;padding:0 8px;background:rgba(8,9,13,.94);border-top-color:rgba(255,255,255,.12)}
+  .bnav-btn{height:58px;border-radius:14px}.bnav-btn.on{color:#fff;background:linear-gradient(135deg,rgba(63,111,255,.35),rgba(255,107,61,.18))}
+  #app{padding-bottom:76px}.sec-title{font-size:27px;letter-spacing:-.045em}.sec-sub{font-size:14px;line-height:1.5}
+  .card,.stats-card,.modal-full{border-radius:20px}.stat{border-radius:16px;background:rgba(255,255,255,.05)}
+  .stats,.ov-grid,.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.stat{padding:14px 12px}.stat-n{font-size:1.7rem}
+  .toolbar,.toolbar2,.tasks-toolbar{gap:8px}.toolbar>.btn,.toolbar2>.btn{min-height:42px}
+  .p-card{padding:15px;border-radius:18px;background:rgba(255,255,255,.045)}
+  .cc-item,.task-item{align-items:flex-start;padding:14px;border-radius:18px}.cc-acts{flex-wrap:wrap;justify-content:flex-end}
+  #chat-btn{bottom:88px;right:16px;width:56px;height:56px;box-shadow:0 10px 30px rgba(63,111,255,.35),0 0 0 1px rgba(255,255,255,.15)}
+  #chat-panel{bottom:82px;right:10px;width:calc(100vw - 20px);max-width:none;height:min(70vh,580px);border-radius:24px}
+  .modal-bg{padding:0;align-items:flex-end}.modal{border-radius:24px 24px 0 0;max-height:88vh;padding:24px 18px}.modal-full-bg{padding:0}.modal-full{border-radius:24px 24px 0 0;padding:24px 18px;min-height:70vh}
+}
+
 /* Pipeline Kanban */
 #view-pipeline{padding:24px 0 96px}
 .kanban-board{display:flex;gap:14px;overflow-x:auto;padding-bottom:12px;align-items:flex-start}
@@ -1013,6 +1043,10 @@ html{scroll-behavior:smooth}
       <button class="btn btn-ghost" id="cc-toggle">Voir tous</button>
     </div>
     <div class="cc-list" id="cc-list"></div>
+    <div style="margin-top:24px">
+      <h2 style="font-size:14px;font-weight:700;color:var(--t2);margin-bottom:10px">Sessions récentes</h2>
+      <div class="call-session-list" id="call-session-list"></div>
+    </div>
   </div>
 </section>
 
@@ -1550,13 +1584,15 @@ html{scroll-behavior:smooth}
 <div class="glass-s" id="chat-panel" role="dialog" aria-label="Coach Alpinia">
   <div class="chat-hd">
     <div class="chat-av"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-    <div><div style="font-weight:700;font-size:13px">Coach Alpinia</div><div style="font-size:11px;color:var(--ok)">En ligne &middot; Agent &middot; Accès aux prospects</div></div>
+    <div><div style="font-weight:700;font-size:13px">Alpinia Agent</div><div style="font-size:11px;color:var(--ok)">En ligne &middot; Accès aux prospects</div></div>
     <button class="btn btn-icon" id="chat-x" aria-label="Fermer" style="margin-left:auto;border:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
   </div>
   <div class="chat-msgs" id="chat-msgs">
     <div class="msg b">Salut ! Je suis Coach Alpinia, ton agent de prospection. Je connais toute ta liste de prospects et je peux <b>agir</b> pour toi. Essaie&nbsp;:<br>&bull; &laquo;&nbsp;Combien de prospects sans site web&nbsp;?&nbsp;&raquo;<br>&bull; &laquo;&nbsp;Lesquels appeler en priorit&eacute; &agrave; Sion&nbsp;?&nbsp;&raquo;<br>&bull; &laquo;&nbsp;Passe Restaurant du Lac en Appel&eacute;&nbsp;&raquo;<br>&bull; &laquo;&nbsp;Cr&eacute;e une t&acirc;che&nbsp;: relancer H&ocirc;tel Bellevue&nbsp;&raquo;<br>&bull; &laquo;&nbsp;S&eacute;lectionne tous ceux avec un site web&nbsp;&raquo;</div>
   </div>
+  <div class="attachment-bar" id="attachment-bar"></div>
   <div class="chat-ft">
+    <label class="chat-attach" for="chat-file-input" title="Joindre un fichier (max. 2 Mo)" aria-label="Joindre un fichier">&#128206;<input type="file" id="chat-file-input" style="display:none"/></label>
     <input type="text" id="chat-inp" placeholder="Demande ou ordonne une action&hellip;" autocomplete="off" aria-label="Message"/>
     <button class="chat-send" id="chat-send" aria-label="Envoyer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
   </div>
@@ -1623,6 +1659,10 @@ var S = {
   user: null,
   prospects: [],
   todos: [],
+  notes: [],
+  callSessions: [],
+  attachments: [],
+  fileContexts: {},
   enrichOpen: null,
   chatHistory: [],
   ccShowAll: false,
@@ -1865,7 +1905,7 @@ function render(v) {
   });
   if (v === 'overview') renderOverview();
   if (v === 'dashboard') renderDash();
-  if (v === 'coldcall') renderCC();
+  if (v === 'coldcall') { renderCC(); renderCallSessions(); }
   if (v === 'pipeline') renderPipeline();
   if (v === 'scripts') refreshScriptProspects();
   if (v === 'coldcraft') { refreshColdcraftProspects(); renderColdcraftHistory(); }
@@ -1901,6 +1941,7 @@ window.addEventListener('hashchange', function() {
 
 // ===== API =====
 function api(fn, body) {
+  body = Object.assign({}, body || {}, S.token ? { token: S.token } : {});
   return fetch('/api/' + fn, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -1927,7 +1968,7 @@ var _saveTimer = null;
 var _pushPending = false;
 var _pushRetryTimer = null;
 var SYNC_V = 'ap_sync_v2'; // marqueur : cet appareil a fait le reset unique vers Firestore
-var COLS = ['prospects', 'todos', 'notes'];
+var COLS = ['prospects', 'todos', 'notes', 'callSessions', 'attachments'];
 
 // Baseline = état exact confirmé côté serveur, par collection : { id: jsonRecord }
 var _synced = { prospects: {}, todos: {}, notes: {} };
@@ -1998,6 +2039,14 @@ function loadNotes() {
     if (!Array.isArray(S.notes)) S.notes = [];
   } catch(e) { S.notes = []; }
 }
+function loadCallSessions() {
+  try { S.callSessions = JSON.parse(localStorage.getItem('ap_call_sessions') || '[]'); } catch(e) { S.callSessions = []; }
+  if (!Array.isArray(S.callSessions)) S.callSessions = [];
+}
+function loadAttachments() {
+  try { S.attachments = JSON.parse(localStorage.getItem('ap_attachments') || '[]'); } catch(e) { S.attachments = []; }
+  if (!Array.isArray(S.attachments)) S.attachments = [];
+}
 function saveNotes() { scheduleSave(); }
 function scheduleSave() {
   var ts = Date.now();
@@ -2005,6 +2054,8 @@ function scheduleSave() {
     localStorage.setItem('ap_prospects', JSON.stringify(S.prospects));
     localStorage.setItem('ap_todos', JSON.stringify(S.todos));
     localStorage.setItem('ap_notes', JSON.stringify(S.notes));
+    localStorage.setItem('ap_call_sessions', JSON.stringify(S.callSessions));
+    localStorage.setItem('ap_attachments', JSON.stringify(S.attachments));
     localStorage.setItem('ap_lastSaved', String(ts));
   } catch(e) {}
   _pushPending = true;
@@ -2018,7 +2069,7 @@ function pushToKV() {
   if (!changes) { cloudStatus('ok'); return Promise.resolve(); } // rien à envoyer
   cloudStatus('saving');
   var ts = Date.now();
-  var sent = { prospects: snapMap(S.prospects), todos: snapMap(S.todos), notes: snapMap(S.notes) };
+  var sent = { prospects: snapMap(S.prospects), todos: snapMap(S.todos), notes: snapMap(S.notes), callSessions: snapMap(S.callSessions), attachments: snapMap(S.attachments) };
   return fetch('/api/data-save', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -2054,10 +2105,14 @@ function applyServerState(d) {
   S.prospects = Array.isArray(d.prospects) ? d.prospects : [];
   S.todos = Array.isArray(d.todos) ? d.todos : [];
   S.notes = Array.isArray(d.notes) ? d.notes : [];
+  S.callSessions = Array.isArray(d.callSessions) ? d.callSessions : [];
+  S.attachments = Array.isArray(d.attachments) ? d.attachments : [];
   try {
     localStorage.setItem('ap_prospects', JSON.stringify(S.prospects));
     localStorage.setItem('ap_todos', JSON.stringify(S.todos));
     localStorage.setItem('ap_notes', JSON.stringify(S.notes));
+    localStorage.setItem('ap_call_sessions', JSON.stringify(S.callSessions));
+    localStorage.setItem('ap_attachments', JSON.stringify(S.attachments));
     localStorage.setItem('ap_lastSaved', String(d.lastSaved || Date.now()));
   } catch(e) {}
   markSynced();
@@ -2071,7 +2126,7 @@ function loadFromServer(cb) {
     if (d.error) { toast('Sync cloud : ' + d.error, 'err'); if (cb) cb(); return; }
     applyServerState(d);
     try { localStorage.setItem(SYNC_V, '1'); } catch(e) {}
-    updateTaskBadge(); renderDash(); renderCC();
+    updateTaskBadge(); renderDash(); renderCC(); renderCallSessions(); renderAttachments();
     if (cb) cb();
   }).catch(function() {
     toast('Sync cloud indisponible.', 'err');
@@ -2139,8 +2194,10 @@ function checkSession() {
     loadProspects();
     loadTodos();
     loadNotes();
+    loadCallSessions();
+    loadAttachments();
     var h = location.hash.replace('#/', '').split('/')[0] || 'overview';
-    var valid = ['overview','dashboard','coldcall','pipeline','scripts','tasks'];
+    var valid = ['overview','dashboard','coldcall','pipeline','scripts','coldcraft','tasks','stats','notes'];
     nav(valid.indexOf(h) !== -1 ? h : 'overview', true);
     syncFromKV(); // sync silencieux depuis KV après affichage initial
   });
@@ -2176,8 +2233,10 @@ function doLogin() {
     loadProspects();
     loadTodos();
     loadNotes();
-    nav('overview', true);
-    syncFromKV(); // charge les données depuis KV (autre appareil, autre navigateur)
+    loadCallSessions();
+    loadAttachments();
+    // Supprime définitivement le chemin /login après une authentification valide.
+    window.location.replace('https://alpiniaweb-crm.xyz/#/overview');
   });
 }
 
@@ -3857,6 +3916,17 @@ function renderCC() {
   staggerAnimate(cont, '.cc-item');
 }
 
+function renderCallSessions() {
+  var el = $('call-session-list');
+  if (!el) return;
+  var list = (S.callSessions || []).slice().sort(function(a,b) { return (b.at || 0) - (a.at || 0); }).slice(0, 8);
+  if (!list.length) { el.innerHTML = '<div style="font-size:12px;color:var(--t3);padding:8px 0">Aucune session enregistrée. L’agent peut en créer une après un appel.</div>'; return; }
+  el.innerHTML = list.map(function(s) {
+    var date = s.at ? new Date(s.at).toLocaleDateString('fr-CH') : '—';
+    return '<div class="call-session"><b>' + esc(s.prospectName || 'Prospect') + '</b><div style="font-size:12px;color:var(--t2);margin-top:3px">' + esc(s.outcome || 'Appel') + (s.durationMinutes ? ' · ' + esc(s.durationMinutes) + ' min' : '') + ' · ' + date + '</div>' + (s.summary ? '<div style="font-size:12px;color:var(--t3);margin-top:5px">' + esc(s.summary) + '</div>' : '') + '</div>';
+  }).join('');
+}
+
 // ===== MODAL =====
 var editId = null;
 function fillCantonSelect() {
@@ -4554,6 +4624,7 @@ function prospectsContext() {
 }
 function agentSystem() {
   var n = S.prospects ? S.prospects.length : 0;
+  var files = Object.keys(S.fileContexts || {}).map(function(id) { var f = S.fileContexts[id]; return '- ' + f.name + ' (' + f.rows + ' lignes' + (f.moneyRows ? ', ' + f.moneyRows + ' avec 💸' : '') + ')'; }).join('\n') || 'Aucun fichier tabulaire joint.';
   return COACH + '\n\n=== MODE AGENT ===\n'
     + 'Tu as accès à la liste complète des prospects de l\'utilisateur (ci-dessous). '
     + 'Tu peux répondre à toute question sur eux : compter, filtrer, lister, analyser, prioriser, suggérer qui appeler en premier.\n'
@@ -4562,12 +4633,15 @@ function agentSystem() {
     + '- {"do":"add_task","text":"<tâche>","name":"<nom prospect optionnel>","priority":"low|medium|high"}\n'
     + '- {"do":"add_note","name":"<nom exact>","note":"<texte>"}\n'
     + '- {"do":"set_followup","name":"<nom exact>","days":<nombre>}\n'
+    + '- {"do":"update_prospect","name":"<nom exact>","fields":{"city":"...","type":"...","status":"...","notes":"..."}}\n'
+    + '- {"do":"create_call_session","name":"<nom exact>","outcome":"...","durationMinutes":3,"summary":"..."}\n'
+    + '- {"do":"import_csv_prospects","attachmentId":"<id>","contains":"💸"}\n'
     + '- {"do":"select","filter":"website|no_website|no_phone|status:<statut>|city:<ville>"}\n'
     + 'Exemple : @@ACTIONS@@ [{"do":"set_status","name":"Restaurant du Lac","status":"called"}]\n'
     + 'Règles : n\'invente JAMAIS de prospect, utilise exactement les noms de la liste. '
     + 'Si une demande est ambiguë ou destructrice, demande confirmation au lieu d\'agir. '
     + 'Avant le bloc @@ACTIONS@@, explique en 1 phrase ce que tu fais. Sans action à faire, ne mets pas le bloc.\n\n'
-    + '=== LISTE DES PROSPECTS (' + n + ') ===\n' + prospectsContext();
+    + '=== FICHIERS JOINTS ===\n' + files + '\n\n=== LISTE DES PROSPECTS (' + n + ') ===\n' + prospectsContext();
 }
 function findProspectByName(name) {
   if (!name) return null;
@@ -4590,6 +4664,39 @@ function applyAgentSelect(filter) {
     if (has) S.selectedIds[p.id] = 1;
   });
 }
+function parseCsvRows(text) {
+  var rows = [], row = [], cell = '', quoted = false;
+  for (var i = 0; i < text.length; i++) {
+    var ch = text[i], next = text[i + 1];
+    if (ch === '"' && quoted && next === '"') { cell += '"'; i++; }
+    else if (ch === '"') quoted = !quoted;
+    else if ((ch === ';' || ch === ',') && !quoted) { row.push(cell.trim()); cell = ''; }
+    else if ((ch === '\n' || ch === '\r') && !quoted) { if (ch === '\r' && next === '\n') i++; row.push(cell.trim()); if (row.some(Boolean)) rows.push(row.slice()); row.length = 0; cell = ''; }
+    else cell += ch;
+  }
+  if (cell || row.length) { row.push(cell.trim()); rows.push(row); }
+  return rows;
+}
+function importCsvProspects(attachmentId, contains) {
+  var f = (S.fileContexts || {})[attachmentId];
+  if (!f || !f.text) return '✗ Fichier introuvable : il faut le joindre à nouveau dans cette session.';
+  var rows = parseCsvRows(f.text); if (rows.length < 2) return '✗ CSV vide ou invalide.';
+  var heads = rows[0].map(function(h) { return String(h || '').toLowerCase().trim(); });
+  var index = function(names) { for (var i = 0; i < names.length; i++) { var n = heads.indexOf(names[i]); if (n >= 0) return n; } return -1; };
+  var nameI = index(['nom','name','entreprise','company']), cityI = index(['ville','city']), webI = index(['site_officiel','site','website','web']), noteI = index(['notes','audit_site','audit']), priI = index(['priorite_icp','priorité_icp','priorite']);
+  var added = 0;
+  rows.slice(1).forEach(function(r) {
+    var marker = priI >= 0 ? (r[priI] || '') : r.join(' ');
+    if (contains && marker.indexOf(contains) < 0) return;
+    var name = nameI >= 0 ? r[nameI] : ''; if (!name) return;
+    var city = cityI >= 0 ? r[cityI] : '';
+    var duplicate = S.prospects.some(function(p) { return (p.name || '').toLowerCase() === name.toLowerCase() && (p.city || '').toLowerCase() === city.toLowerCase(); });
+    if (duplicate) return;
+    S.prospects.unshift({ id: genId(), name: name, city: city, web: webI >= 0 ? r[webI] : '', notes: noteI >= 0 ? r[noteI] : '', status: 'to_call', tags: contains === '💸' ? ['💸'] : [], at: Date.now() }); added++;
+  });
+  if (added) { saveProspects(); renderDash(); renderCC(); }
+  return '✓ ' + added + ' prospect(s) importé(s) depuis ' + f.name + '.';
+}
 function runAgentActions(actions) {
   var done = [], changed = false, selChanged = false;
   actions.forEach(function(a) {
@@ -4610,6 +4717,16 @@ function runAgentActions(actions) {
       var p3 = findProspectByName(a.name);
       if (p3) { var d = new Date(); d.setDate(d.getDate() + (parseInt(a.days) || 7)); p3.nextFollowUp = d.toISOString().slice(0, 10); changed = true; done.push('✓ Relance ' + p3.name + ' le ' + d.toLocaleDateString('fr-CH')); }
       else done.push('✗ Prospect introuvable : ' + (a.name || '?'));
+    } else if (a.do === 'update_prospect') {
+      var p4 = findProspectByName(a.name), allowed = ['name','city','type','phone','web','status','notes','contact','nextFollowUp','value'];
+      if (p4 && a.fields && typeof a.fields === 'object') { allowed.forEach(function(k) { if (a.fields[k] !== undefined) p4[k] = String(a.fields[k]).slice(0, 2000); }); changed = true; done.push('✓ Prospect mis à jour : ' + p4.name); }
+      else done.push('✗ Prospect introuvable ou champs invalides.');
+    } else if (a.do === 'create_call_session') {
+      var p5 = findProspectByName(a.name);
+      if (p5) { S.callSessions.unshift({ id: genId(), prospectId: p5.id, prospectName: p5.name, outcome: a.outcome || 'Appel', durationMinutes: Math.max(0, parseInt(a.durationMinutes, 10) || 0), summary: a.summary || '', at: Date.now() }); scheduleSave(); renderCallSessions(); done.push('✓ Session cold call ajoutée : ' + p5.name); }
+      else done.push('✗ Prospect introuvable : ' + (a.name || '?'));
+    } else if (a.do === 'import_csv_prospects') {
+      done.push(importCsvProspects(a.attachmentId, a.contains || ''));
     } else if (a.do === 'select') {
       applyAgentSelect(a.filter); selChanged = true;
       done.push('✓ ' + Object.keys(S.selectedIds).length + ' prospect(s) sélectionné(s) (' + a.filter + ')');
@@ -4618,6 +4735,35 @@ function runAgentActions(actions) {
   if (changed) { saveProspects(); renderDash(); renderCC(); }
   if (selChanged) { renderTable(getFiltered()); updateBatchBtn(); updateBulkBar(); }
   return done;
+}
+function renderAttachments() {
+  var bar = $('attachment-bar'); if (!bar) return;
+  var items = (S.attachments || []).slice(0, 5);
+  bar.innerHTML = items.map(function(a) { return '<span class="attachment-chip" title="' + esc(a.name) + '">📎 ' + esc(a.name) + ' <button type="button" onclick="downloadAttachment(\'' + esc(a.id) + '\')" style="border:0;background:none;color:inherit;cursor:pointer">↓</button></span>'; }).join('');
+}
+function downloadAttachment(id) {
+  var a = (S.attachments || []).filter(function(x) { return x.id === id; })[0]; if (!a) return;
+  fetch('/api/download-file', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ token:S.token, url:a.url, name:a.name }) }).then(function(r) { if (!r.ok) throw new Error('Téléchargement impossible'); return r.blob(); }).then(function(blob) {
+    var url = URL.createObjectURL(blob), link = document.createElement('a'); link.href = url; link.download = a.name; link.click(); setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  }).catch(function(e) { toast(e.message, 'err'); });
+}
+function uploadChatFile(file) {
+  if (!file) return;
+  if (file.size > 2 * 1024 * 1024) { toast('Le fichier dépasse 2 Mo.', 'err'); return; }
+  var reader = new FileReader();
+  reader.onload = function() {
+    var b64 = String(reader.result || '').split(',').pop();
+    fetch('/api/upload-file', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ token:S.token, name:file.name, mime:file.type, content:b64 }) }).then(function(r){ return r.json(); }).then(function(d) {
+      if (d.error || !d.attachment) { toast(d.error || 'Envoi impossible.', 'err'); return; }
+      S.attachments.unshift(d.attachment); S.attachments = S.attachments.slice(0, 80); scheduleSave(); renderAttachments();
+      if (/csv|text|json/i.test(file.type) || /\.(csv|txt|json)$/i.test(file.name)) {
+        var textReader = new FileReader(); textReader.onload = function() { var text = String(textReader.result || ''); var rows = parseCsvRows(text); var moneyRows = rows.slice(1).filter(function(r){ return r.join(' ').indexOf('💸') >= 0; }).length; S.fileContexts[d.attachment.id] = { name:file.name, text:text, rows:Math.max(0, rows.length - 1), moneyRows:moneyRows }; chatAppend('b', 'Fichier joint : ' + file.name + ' (' + Math.max(0, rows.length - 1) + ' lignes, ' + moneyRows + ' avec 💸). Tu peux me demander de les importer.'); };
+        textReader.readAsText(file, 'UTF-8');
+      }
+      toast('Fichier ajouté : ' + file.name, 'ok');
+    }).catch(function(){ toast('Envoi impossible.', 'err'); });
+  };
+  reader.readAsDataURL(file);
 }
 function sendChat() {
   var inp = $('chat-inp');
@@ -4632,7 +4778,7 @@ function sendChat() {
   typing.className = 'typing-dots';
   typing.innerHTML = '<span class="dot-a"></span><span class="dot-a"></span><span class="dot-a"></span>';
   if (msgs) { msgs.appendChild(typing); msgs.scrollTop = msgs.scrollHeight; }
-  api('ai', { system: agentSystem(), messages: S.chatHistory.slice(-8) }).then(function(d) {
+  api('ai', { mode: 'crm_agent', system: agentSystem(), messages: S.chatHistory.slice(-8) }).then(function(d) {
     typing.remove();
     var reply = d.error ? ('Erreur : ' + d.error) : ((d.content && d.content[0] && d.content[0].text) ? d.content[0].text : '');
     S.chatHistory.push({ role: 'assistant', content: reply });
@@ -4783,6 +4929,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   if (chatSend) chatSend.addEventListener('click', sendChat);
   if (chatInp) chatInp.addEventListener('keydown', function(e) { if (e.key === 'Enter') sendChat(); });
+  var chatFileInput = $('chat-file-input');
+  if (chatFileInput) chatFileInput.addEventListener('change', function() { if (this.files && this.files[0]) uploadChatFile(this.files[0]); this.value = ''; });
 
   // Init
   loadTodos();
@@ -4920,6 +5068,7 @@ window.filterByHeatAndGo = filterByHeatAndGo;
 window.movePipelineCard = movePipelineCard;
 window.applyCallTemplate = applyCallTemplate;
 window.nav = nav;
+window.downloadAttachment = downloadAttachment;
 
 // ===== NOTES VIDÉO =====
 var _noteEditId = null;

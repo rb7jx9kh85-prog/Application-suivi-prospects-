@@ -66,7 +66,9 @@ function userKey(email) {
   return crypto.createHash('sha256').update(email).digest('hex')
 }
 
-// Chemins Firestore : users/{userKey}/{prospects|todos|notes}/{recordId}
-const COLLECTIONS = ['prospects', 'todos', 'notes']
+// Chemins Firestore : users/{userKey}/{collection}/{recordId}
+// Les pièces jointes ne contiennent que leurs métadonnées ; le fichier reste
+// dans le Blob privé Vercel.
+const COLLECTIONS = ['prospects', 'todos', 'notes', 'callSessions', 'attachments']
 
 module.exports = { admin, getDb, emailFromToken, userKey, COLLECTIONS }
