@@ -2,247 +2,322 @@
   "155ab99e52611a1a0f906d91d94ef568ee65ba3c6b0f83f0cd840ef2512d2452": {
     "prospects": [
       {
-        "id": "iokxsleg",
-        "establishment": "Parking du Manoir",
-        "website": "",
+        "id": "twxb8mcs",
+        "name": "Le Ticino",
+        "web": "",
         "phone": "",
-        "city": "Martigny",
-        "domain": "access.yes",
-        "notes": "Place du Manoir, 1920, Martigny",
+        "city": "Sion",
+        "type": "catering.restaurant",
+        "notes": "Avenue des Mayennets, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700,
-        "_enriching": false
+        "at": 1782737446449
       },
       {
-        "id": "amwgq63a",
-        "establishment": "McOptic",
-        "website": "",
+        "id": "gty34q42",
+        "name": "L'Entracte",
+        "web": "",
         "phone": "",
-        "city": "Martigny",
-        "domain": "commercial.health_and_beauty",
-        "notes": "Avenue de la Gare, 1920, Martigny",
+        "city": "Sion",
+        "type": "catering.bar",
+        "notes": "Rue des Cèdres, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446449
       },
       {
-        "id": "36y5cl1t",
-        "establishment": "Boulangerie Michellod",
-        "website": "",
+        "id": "8kvqtuj6",
+        "name": "Au 13 Novembre",
+        "web": "",
         "phone": "",
-        "city": "Martigny",
-        "domain": "commercial.food_and_drink",
-        "notes": "Avenue de la Gare, 1920, Martigny",
+        "city": "Sion",
+        "type": "catering.bar",
+        "notes": "Place de la Planta, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446449
       },
       {
-        "id": "wk7vczih",
-        "establishment": "Boutique du Phuoc",
-        "website": "",
+        "id": "rgifzq9p",
+        "name": "Le Troquet",
+        "web": "",
         "phone": "",
-        "city": "Martigny",
-        "domain": "commercial.clothing",
-        "notes": "Avenue de la Gare, 1920, Martigny",
+        "city": "Sion",
+        "type": "catering.fast_food",
+        "notes": "Espace des Remparts, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446449
       },
       {
-        "id": "xjnfpy9b",
-        "establishment": "Marie & L’Enchanteur",
-        "website": "",
+        "id": "euezwwsc",
+        "name": "Le Soleil",
+        "web": "",
         "phone": "",
-        "city": "Martigny",
-        "domain": "commercial.clothing",
-        "notes": "Avenue de la Gare, 1920, Martigny",
+        "city": "Sion",
+        "type": "catering.bar",
+        "notes": "17 Espace des Remparts, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446449
       },
       {
-        "id": "kdq4wcli",
-        "establishment": "Bar Retro",
-        "website": "",
+        "id": "xlfolgug",
+        "name": "Le Flaurence",
+        "web": "",
         "phone": "",
-        "city": "Martigny",
-        "domain": "catering.bar",
-        "notes": "Rue du Rhône, 1920, Martigny",
+        "city": "Sion",
+        "type": "catering.cafe",
+        "notes": "Parking Manor, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
       },
       {
-        "id": "fz9sdofb",
-        "establishment": "McDonald's",
-        "website": "",
+        "id": "6mqqerol",
+        "name": "Bar Le Lido",
+        "web": "",
         "phone": "",
-        "city": "Martigny",
-        "domain": "catering.fast_food",
-        "notes": "Rue du Rhône, 1920, Martigny",
+        "city": "Sion",
+        "type": "catering.cafe",
+        "notes": "Parking Manor, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
       },
       {
-        "id": "rnhi0qt0",
-        "establishment": "Migros",
-        "website": "",
+        "id": "uk11wrcg",
+        "name": "Giorgio",
+        "web": "",
         "phone": "",
-        "city": "Martigny",
-        "domain": "building.commercial",
-        "notes": "Rue du Manoir, 1920, Martigny",
+        "city": "Sion",
+        "type": "catering.bar",
+        "notes": "Espace des Remparts, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
       },
       {
-        "id": "1sdczfx5",
-        "establishment": "Ciro Coiffure",
-        "website": "",
+        "id": "tqcsiy32",
+        "name": "Le Déli",
+        "web": "",
         "phone": "",
-        "city": "Martigny",
-        "domain": "service.beauty",
-        "notes": "Rue Marc Morand, 1920, Martigny",
+        "city": "Sion",
+        "type": "catering.cafe",
+        "notes": "Espace des Remparts, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
       },
       {
-        "id": "y9zz6710",
-        "establishment": "Levitation",
-        "website": "",
+        "id": "srxx4v9u",
+        "name": "Salon de Thé Clémentine",
+        "web": "",
         "phone": "",
-        "city": "Martigny",
-        "domain": "commercial.clothing",
-        "notes": "Rue du Rhône, 1920, Martigny",
+        "city": "Sion",
+        "type": "catering.cafe",
+        "notes": "Rue des Vergers, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
       },
       {
-        "id": "aevdegye",
-        "establishment": "Jonas",
-        "website": "",
+        "id": "mtwhwj86",
+        "name": "St James",
+        "web": "",
         "phone": "",
-        "city": "Martigny",
-        "domain": "catering.restaurant",
-        "notes": "Rue du Rhône, 1920, Martigny",
+        "city": "Sion",
+        "type": "catering.pub",
+        "notes": "Rue de la Dent-Blanche, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
       },
       {
-        "id": "c3ixgz47",
-        "establishment": "Gelateria Patella",
-        "website": "",
+        "id": "9asrbdr7",
+        "name": "Manor",
+        "web": "",
         "phone": "",
-        "city": "Martigny",
-        "domain": "catering.ice_cream",
-        "notes": "Rue du Rhône, 1920, Martigny",
+        "city": "Sion",
+        "type": "catering.restaurant",
+        "notes": "Parking Manor, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
       },
       {
-        "id": "vu37vsjg",
-        "establishment": "Côté Voyages",
-        "website": "",
+        "id": "36ldaxtp",
+        "name": "M&S Tacos",
+        "web": "",
         "phone": "",
-        "city": "Martigny",
-        "domain": "service.travel_agency",
-        "notes": "Rue du Rhône, 1920, Martigny",
+        "city": "Sion",
+        "type": "catering.fast_food",
+        "notes": "Rue de la Dent-Blanche, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
       },
       {
-        "id": "ays9ke0s",
-        "establishment": "L'Ovale",
-        "website": "",
+        "id": "zirn6fn6",
+        "name": "Le Belém",
+        "web": "",
         "phone": "",
-        "city": "Martigny",
-        "domain": "building.commercial",
-        "notes": "17 Rue Marc Morand, 1920, Martigny",
+        "city": "Sion",
+        "type": "catering.cafe",
+        "notes": "Rue de la Dent-Blanche, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
       },
       {
-        "id": "d0ykkr35",
-        "establishment": "La Maison du Chasseur",
-        "website": "",
+        "id": "wgp2barx",
+        "name": "Maui & Me",
+        "web": "https://www.facebook.com/maui.and.me.company/",
         "phone": "",
-        "city": "Martigny",
-        "domain": "commercial.weapons",
-        "notes": "3 Rue du Rhône, 1920, Martigny",
+        "city": "Sion",
+        "type": "catering.fast_food",
+        "notes": "15 Avenue de la Gare, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
       },
       {
-        "id": "k6zlht19",
-        "establishment": "Au Grotto",
-        "website": "",
-        "phone": "",
-        "city": "Martigny",
-        "domain": "catering.restaurant",
-        "notes": "Rue du Rhône, 1920, Martigny",
+        "id": "93oqz62m",
+        "name": "Le Sillon",
+        "web": "",
+        "phone": "+41 79 220 78 07",
+        "city": "Sion",
+        "type": "catering.bar",
+        "notes": "17 Rue de Conthey, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
       },
       {
-        "id": "nm1cbjf7",
-        "establishment": "Ancien Hôtel Clerc",
-        "website": "",
-        "phone": "",
-        "city": "Martigny",
-        "domain": "building.commercial",
-        "notes": "Rue Marc Morand, 1920, Martigny",
+        "id": "dbcbpnms",
+        "name": "Taquin Restaurant",
+        "web": "",
+        "phone": "+41 27 322 98 69",
+        "city": "Sion",
+        "type": "catering.restaurant",
+        "notes": "17 Rue de Conthey, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
       },
       {
-        "id": "aqt9hf1q",
-        "establishment": "L'Altro Mondo",
-        "website": "",
-        "phone": "+41 27 722 61 11",
-        "city": "Martigny",
-        "domain": "catering.cafe",
-        "notes": "2 Place Centrale, 1920, Martigny",
+        "id": "y6k9db2b",
+        "name": "Crêperie Sédunoise",
+        "web": "",
+        "phone": "+41 27 322 30 97",
+        "city": "Sion",
+        "type": "catering.restaurant",
+        "notes": "10 Rue de Lausanne, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
       },
       {
-        "id": "mkni29t9",
-        "establishment": "Le Tambourin",
-        "website": "",
-        "phone": "+41 27 565 09 02",
-        "city": "Martigny",
-        "domain": "catering.cafe",
-        "notes": "5 Rue Marc Morand, 1920, Martigny",
+        "id": "fezut8w3",
+        "name": "Le Brésilien",
+        "web": "",
+        "phone": "+41 27 322 11 98",
+        "city": "Sion",
+        "type": "catering.bar",
+        "notes": "25 Place du Midi, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
       },
       {
-        "id": "hng33dkg",
-        "establishment": "Yakito",
-        "website": "",
-        "phone": "+41 27 722 58 59",
-        "city": "Martigny",
-        "domain": "catering.restaurant",
-        "notes": "Avenue de la Fusion, 1920, Martigny",
+        "id": "kr3wvmqq",
+        "name": "Chez Paolo",
+        "web": "",
+        "phone": "+41 27 3220008",
+        "city": "Sion",
+        "type": "catering.restaurant",
+        "notes": "23 Rue de la Porte-Neuve, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
       },
       {
-        "id": "xjvgo5pt",
-        "establishment": "Sweet Melody",
-        "website": "",
-        "phone": "+41 27 722 26 40",
-        "city": "Martigny",
-        "domain": "service.beauty",
-        "notes": "Rue du Rhône, 1920, Martigny",
+        "id": "fysupcee",
+        "name": "Le Comptoir",
+        "web": "",
+        "phone": "+41 27 321 21 63",
+        "city": "Sion",
+        "type": "catering.bar",
+        "notes": "21 Rue de Lausanne, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
       },
       {
-        "id": "8a1kvr9f",
-        "establishment": "Sup'Hair Belles",
-        "website": "",
-        "phone": "+41 76 802 28 33",
-        "city": "Martigny",
-        "domain": "service.beauty",
-        "notes": "Rue du Grand Verger, 1920, Martigny",
+        "id": "x13uyn68",
+        "name": "Le Boulevard",
+        "web": "",
+        "phone": "+41 27 321 12 00",
+        "city": "Sion",
+        "type": "catering.pub",
+        "notes": "23 Avenue du Midi, 1950, Sion",
         "status": "to_call",
-        "at": 1781963228700
+        "at": 1782737446448
+      },
+      {
+        "id": "yzty33sy",
+        "name": "Le Mocambo",
+        "web": "",
+        "phone": "+41 27 322 10 08",
+        "city": "Sion",
+        "type": "catering.bar",
+        "notes": "17 Rue de la Dent-Blanche, 1950, Sion",
+        "status": "to_call",
+        "at": 1782737446448
+      },
+      {
+        "id": "2lek4g71",
+        "name": "Toto Chez Franco",
+        "web": "",
+        "phone": "+41 27 322 94 33",
+        "city": "Sion",
+        "type": "catering.restaurant",
+        "notes": "10 Espace des Remparts, 1950, Sion",
+        "status": "to_call",
+        "at": 1782737446448
+      },
+      {
+        "id": "u4ao57w3",
+        "name": "Nouvelle époque",
+        "web": "",
+        "phone": "+41273227977",
+        "city": "Sion",
+        "type": "catering.cafe",
+        "notes": "28 Avenue de la Gare, 1950, Sion",
+        "status": "to_call",
+        "at": 1782737446448
+      },
+      {
+        "id": "pzqa7391",
+        "name": "Le Sultan",
+        "web": "",
+        "phone": "+41 27 321 31 73",
+        "city": "Sion",
+        "type": "catering.fast_food",
+        "notes": "6 Rue des Vergers, 1950, Sion",
+        "status": "to_call",
+        "at": 1782737446448
+      },
+      {
+        "id": "nttba4cqc2mqxl018x",
+        "name": "le ticino",
+        "city": "Sion",
+        "type": "bar",
+        "phone": "027 322 38 08",
+        "email": "info@ticino-sion.ch",
+        "web": "https://www.ticino-sion.ch/",
+        "status": "video_rdv",
+        "contact": "pas connu",
+        "notes": "--> refonte du site web est à faire, la personne m'a informé que le prestataire qui lui a créer le site web a tout simplement fait faillite. okey pour rendez vous mais ne pormet rien car ses enfants finissent une école de marketing et vont peut-être le lui créer.",
+        "value": 800,
+        "nextFollowUp": "",
+        "lastContact": 1782638608209,
+        "at": 1782638608209
+      },
+      {
+        "id": "c4ev4folzoumqv2xxpz",
+        "name": "boulangerie le fiacre",
+        "city": "saillon",
+        "type": "boulangerie",
+        "phone": "027 744 29 95",
+        "email": "pas",
+        "web": "pas",
+        "status": "to_call",
+        "contact": "",
+        "notes": "a prendre en hyper important",
+        "value": 0,
+        "nextFollowUp": "",
+        "lastContact": null,
+        "at": 1782487344887
       },
       {
         "id": "k4ktrxaq7rkmqjpxwp4",
@@ -252,12 +327,12 @@
         "phone": "0772695971",
         "email": "",
         "web": "",
-        "status": "video_rdv",
+        "status": "called",
         "contact": "",
-        "notes": "j'ai envoyé un mail au fondateur, il m'a répondu, demander d'être dispo pour un call à 19h le 19.06. notes du call: pas fait le 19.06 mais c'est pas grave, je vais le relancer par mail pour lui dire qu'on s'organise un nouveau call, pour discuter du site web. Il a salué le travail et la beauté du site web la-panda.netlify.app. il va m'appeler durant la semaine prochaine \n",
-        "value": 800,
-        "nextFollowUp": "",
-        "lastContact": 1781897330643,
+        "notes": "Je leur ai envoyé un mail ils étaient très intéressés par la création d’une app mobile pour voir les plats et la carte, je leur ai proposé un rendez-vous demain ou bien même la semaine pro\n\nil veut plutût une app mobile pour qu'il puisse publier les plats ! \n\nessayer la réservation en ligne \n\n\nchatbot inclus\nintéressé par \n\nil a tous les textes sur facebook -- texte images",
+        "value": 1100,
+        "nextFollowUp": "2026-06-28",
+        "lastContact": 1781819965019,
         "at": 1781800380616,
         "interactions": [],
         "tags": []
@@ -272,9 +347,9 @@
         "web": "pas de site",
         "status": "video_rdv",
         "contact": "Noémie",
-        "notes": "enthousiaste: offre a proposer pour commencer: la junior à 600, mias essayer d'aller viser sur du 800 si possible, on va commencer par ça. poste sur ig et facebook de temps en tant. ce qu'elle a trouvé interessant 'est que elle pense que ses resaux sociaux lele pense que c'est très ok. elle pense qu'on vend les sites plusieurs milliers de francs. rappeler mercredi apres midi.  15h",
+        "notes": "enthousiaste: offre a proposer pour commencer: la junior à 600, mias essayer d'aller viser sur du 800 si possible, on va commencer par ça.\ncall de closing: \nrecall le café de la coopératve pour fiyer le call de closing \n",
         "value": 600,
-        "nextFollowUp": "2026-06-22",
+        "nextFollowUp": "2026-06-23",
         "lastContact": 1781795766800,
         "at": 1781795756976,
         "interactions": [],
@@ -658,7 +733,7 @@
         "web": "https://www.cvdp.ch",
         "status": "called",
         "contact": "",
-        "notes": "appeler et contacter fils du sierre anna claret. mail envoyé le 19.06.2026",
+        "notes": "appeler et contacter fils du sierre anna claret",
         "at": 1781793202669,
         "_noWebsite": {
           "has_website": true,
@@ -1017,6 +1092,604 @@
         }
       },
       {
+        "id": "jlkcu5uqtimqjlo25p",
+        "name": "Laiterie d'Orsieres",
+        "city": "Orsieres",
+        "type": "Restaurant / Fromagerie / Fondue",
+        "phone": "—",
+        "email": "—",
+        "web": "https://laiterie-orsieres.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://laiterie-orsieres.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "local.ch",
+            "valais.ch",
+            "laiterie-orsieres.ch"
+          ],
+          "verdict": "Le site web de la Laiterie d'Orsières a été trouvé."
+        }
+      },
+      {
+        "id": "dbudhpx6k5fmqjlo25p",
+        "name": "Cafe Les Mesanges",
+        "city": "Orsieres",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": false,
+          "website_url": null,
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "search.ch",
+            "swissyp.com"
+          ],
+          "verdict": "Aucun site web officiel trouvé pour le Café Les Mésanges à Orsières."
+        }
+      },
+      {
+        "id": "7mlhgm2iua5mqjlo25p",
+        "name": "Cafe Restaurant Quai de l'Ours",
+        "city": "Orsieres",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.terminus-orsieres.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.terminus-orsieres.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "TheFork",
+            "search.ch",
+            "Hinto",
+            "local.ch",
+            "myswitzerland.com"
+          ],
+          "verdict": "Le Café-Restaurant Quai de l'Ours à Orsières dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "ls6rtj8c1xmqjlo25p",
+        "name": "Cafe-Restaurant du Chatelet",
+        "city": "Orsieres",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://restaurant-du-chatelet.business.site",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://restaurant-du-chatelet.business.site",
+          "confidence": "high",
+          "sources_checked": [
+            "Tripadvisor",
+            "Allbiz.ch",
+            "search.ch",
+            "local.ch"
+          ],
+          "verdict": "Un site web a été trouvé pour le Café-Restaurant du Châtelet à Orsières."
+        }
+      },
+      {
+        "id": "83ma93n8ilxmqjlo25p",
+        "name": "Cafe de la Poste (Evionnaz)",
+        "city": "Evionnaz",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://website-7921204473850190575136-cafe.business.site",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://website-7921204473850190575136-cafe.business.site",
+          "confidence": "high",
+          "sources_checked": [
+            "Allbiz.ch"
+          ],
+          "verdict": "Un site web a été trouvé pour le Café de la Poste à Evionnaz."
+        }
+      },
+      {
+        "id": "8q3rpa7ajwimqjlo25p",
+        "name": "Cafe de la Poste (Varen)",
+        "city": "Varen",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": false,
+          "website_url": null,
+          "confidence": "high",
+          "sources_checked": [
+            "Google Maps",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google",
+            "Varen.ch",
+            "AllBiz.ch",
+            "Sluurpy.com",
+            "search.ch",
+            "Moneyhouse.ch"
+          ],
+          "verdict": "Aucune présence en ligne confirmée pour le Café de la Poste à Varen."
+        }
+      },
+      {
+        "id": "2f7uo7ysihfmqjlo25p",
+        "name": "Cafe de la Poste (Nendaz)",
+        "city": "Nendaz",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": false,
+          "website_url": null,
+          "confidence": "high",
+          "sources_checked": [
+            "Google Maps",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "restaurantguru.com",
+            "allbiz.ch"
+          ],
+          "verdict": "Aucune présence en ligne confirmée pour le Café de la Poste à Nendaz."
+        }
+      },
+      {
+        "id": "17efdfuzhuamqjlo25p",
+        "name": "Cafe de la Poste (La Vernaz)",
+        "city": "Les Agettes",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": false,
+          "website_url": null,
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "ZIP.ch",
+            "local.ch",
+            "search.ch"
+          ],
+          "verdict": "Aucun site web trouvé pour le Café de la Poste à La Vernaz (Les Agettes)."
+        }
+      },
+      {
+        "id": "wrc2vr3vwinmqjlo25p",
+        "name": "Poste (Saillon)",
+        "city": "Saillon",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.cafedelapostesaillon.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.cafedelapostesaillon.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "site officiel",
+            "Google Maps",
+            "Pages Jaunes",
+            "Tripadvisor",
+            "Suissegourmet.ch"
+          ],
+          "verdict": "Le Café - Restaurant de la Poste à Saillon dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "77nz3z200obmqjlo25p",
+        "name": "Hotel de la Poste (Montagnier)",
+        "city": "Le Chable VS",
+        "type": "Cafe / Restaurant / Hotel",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.theecolodgeverbier.com/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.theecolodgeverbier.com/",
+          "confidence": "high",
+          "sources_checked": [
+            "site officiel de l'hôtel",
+            "LinkedIn",
+            "Pages Jaunes",
+            "Google Maps"
+          ],
+          "verdict": "L'hôtel dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "rdjpp386tqtmqjlo25p",
+        "name": "Restaurant de la Gare (Vernayaz)",
+        "city": "Vernayaz",
+        "type": "Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://restaurant-vernayaz.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://restaurant-vernayaz.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps"
+          ],
+          "verdict": "Le Restaurant de la Gare à Vernayaz dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "rxm90a6zi78mqjlo25p",
+        "name": "Reves Gourmands",
+        "city": "Vernayaz",
+        "type": "Restaurant / Hotel",
+        "phone": "—",
+        "email": "—",
+        "web": "https://revesgourmands.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://revesgourmands.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Vernayaz.ch",
+            "Allbiz.ch",
+            "Martigny.com",
+            "TheFork.ch"
+          ],
+          "verdict": "Le restaurant-hôtel \"Rêves Gourmands\" à Vernayaz possède un site web officiel."
+        }
+      },
+      {
+        "id": "dt2yq01g9qemqjlo25p",
+        "name": "Restaurant Auberge de Vouvry",
+        "city": "Vouvry",
+        "type": "Restaurant / Auberge",
+        "phone": "—",
+        "email": "—",
+        "web": "http://www.aubergedevouvry.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "http://www.aubergedevouvry.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "TripAdvisor",
+            "Falstaff",
+            "myswitzerland.com"
+          ],
+          "verdict": "Le Restaurant Auberge de Vouvry dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "xwez0n3kg5qmqjlo25p",
+        "name": "La Treille",
+        "city": "Muraz / Collombey",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "http://www.latreille-muraz.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "http://www.latreille-muraz.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "AllBiz",
+            "GotoEat",
+            "Yoys",
+            "Swissyp",
+            "MySwitzerland"
+          ],
+          "verdict": "Le Café-Restaurant La Treille à Muraz/Collombey dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "3z128fhsfjmmqjlo25p",
+        "name": "Chez Myriam - Miam Miam",
+        "city": "Vernamiege / Mont-Noble",
+        "type": "Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.chezmyriam.ch/",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.chezmyriam.ch/",
+          "confidence": "high",
+          "sources_checked": [
+            "Tripadvisor",
+            "Sluurpy",
+            "Passeport Gourmand",
+            "Eisenbahn Zell",
+            "Local.ch",
+            "Allbiz.ch"
+          ],
+          "verdict": "L'établissement \"Chez Myriam - Miam Miam\" dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "waws4bg557mqjlo25p",
+        "name": "Hotel Restaurant Mont Noble",
+        "city": "Nax / Mont-Noble",
+        "type": "Restaurant / Hotel",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.hotelleriesuisse.ch/de/hotels/search/hotel-details/11550",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.hotelleriesuisse.ch/de/hotels/search/hotel-details/11550",
+          "confidence": "high",
+          "sources_checked": [
+            "local.ch",
+            "allbiz.ch",
+            "search.ch",
+            "tripadvisor.ch"
+          ],
+          "verdict": "L'Hôtel Restaurant Mont Noble à Nax dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "zxfop7fvfumqjlo25p",
+        "name": "Horli-hitta",
+        "city": "Fiesch im Wallis",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.alpinafiescheralp.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.alpinafiescheralp.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "allbiz.ch",
+            "myswitzerland.com",
+            "local.ch",
+            "search.ch"
+          ],
+          "verdict": "Le restaurant Horli-Hitta dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "gcaqv258659mqjlo25p",
+        "name": "Zur Wildi",
+        "city": "Wiler / Lotschen",
+        "type": "Restaurant / Hotel alpin",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.zurwildi.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.zurwildi.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Suisse Tourisme",
+            "Allbiz.ch",
+            "Local.ch"
+          ],
+          "verdict": "Le restaurant-hôtel \"Zur Wildi\" à Wiler/Lötschental possède un site web officiel."
+        }
+      },
+      {
+        "id": "8d6uilpz3vnmqjlo25p",
+        "name": "Zum Froehlichen Jass",
+        "city": "Blatten / Lotschen",
+        "type": "Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.loetschental.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202669,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.loetschental.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "allbiz.ch",
+            "swissyp.com",
+            "business-informations.ch",
+            "local.ch"
+          ],
+          "verdict": "Le restaurant 'Zum Fröhlichen Jass' à Blatten (Lötschen) dispose d'un site web à l'adresse https://www.loetschental.ch."
+        }
+      },
+      {
+        "id": "d3jafql4vo7mqjlo25q",
+        "name": "Nest- und Bietschhorn",
+        "city": "Blatten / Lotschen",
+        "type": "Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.nest-bietschhorn.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.nest-bietschhorn.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "myswitzerland.com",
+            "Falstaff",
+            "Sluurpy",
+            "Allbiz.ch",
+            "Star Wine List"
+          ],
+          "verdict": "Le restaurant \"Nest- und Bietschhorn\" à Blatten / Lötschental possède un site web officiel."
+        }
+      },
+      {
+        "id": "5dgwe1mjc3omqjlo25q",
+        "name": "Zudili Panoramarestaurant",
+        "city": "Wiler / Lotschen",
+        "type": "Restaurant / Panoramique",
+        "phone": "—",
+        "email": "—",
+        "web": "http://www.zudili.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "http://www.zudili.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "AllBiz.ch",
+            "Local.ch",
+            "Sluurpy.com",
+            "SwipeIn.restaurant"
+          ],
+          "verdict": "Le Zudili Panoramarestaurant dispose d'un site web officiel à l'adresse http://www.zudili.ch."
+        }
+      },
+      {
+        "id": "2ngv6ge39blmqjlo25q",
+        "name": "Hotel-Restaurant Bergheimat",
+        "city": "Saas-Grund",
+        "type": "Restaurant / Hotel",
+        "phone": "—",
+        "email": "—",
+        "web": "https://top-of-saas.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://top-of-saas.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "allbiz.ch",
+            "hotel-hostel-unterkunft.ch",
+            "search.ch",
+            "myswitzerland.com"
+          ],
+          "verdict": "L'établissement dispose d'un site web officiel."
+        }
+      },
+      {
         "id": "x3krrka8u9kmqjlo25q",
         "name": "Restaurant Lac de Moiry",
         "city": "Grimentz",
@@ -1125,6 +1798,36 @@
             "local.ch"
           ],
           "verdict": "Aucune présence en ligne confirmée pour l'Auberge de Sapinhaut à Saxon."
+        }
+      },
+      {
+        "id": "lfthnccay4mqjlo25q",
+        "name": "Cafe Restaurant de la Gare (Saxon)",
+        "city": "Saxon",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.saxontourisme.ch/fr/gastronomie/restaurants/cafe-restaurant-de-la-gare.html",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.saxontourisme.ch/fr/gastronomie/restaurants/cafe-restaurant-de-la-gare.html",
+          "confidence": "high",
+          "sources_checked": [
+            "Google Maps",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google",
+            "TripAdvisor",
+            "Sluurpy",
+            "Allbiz",
+            "LaCarte.menu",
+            "GoLunch"
+          ],
+          "verdict": "Un site web a été trouvé pour le Café Restaurant de la Gare à Saxon."
         }
       },
       {
@@ -1323,6 +2026,30 @@
         }
       },
       {
+        "id": "84iu828he6wmqjlo25q",
+        "name": "Le Planain",
+        "city": "Vernayaz",
+        "type": "Boulangerie / Patisserie",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.valleedutrient.ch/fr/boulangerie-le-planain-fp46",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.valleedutrient.ch/fr/boulangerie-le-planain-fp46",
+          "confidence": "high",
+          "sources_checked": [
+            "https://www.valleedutrient.ch/fr/boulangerie-le-planain-fp46",
+            "https://www.local.ch/fr/d/vernayaz/1904/boulangerie-et-patisserie/le-planain-lHPQ7U4JdsbZgCeI0nz1IQ",
+            "https://www.allbiz.ch/fr/le-planain-027-764-14-39"
+          ],
+          "verdict": "Le Planain dispose d'un site web officiel."
+        }
+      },
+      {
         "id": "sritydqvndmqjlo25q",
         "name": "DM Une Histoire de Gout",
         "city": "Sion",
@@ -1344,6 +2071,35 @@
             "boulangerie-comparatif.ch"
           ],
           "verdict": "L'établissement dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "x1uh9xzc6crmqjlo25q",
+        "name": "Boulangerie-Patisserie Chalais",
+        "city": "Chalais",
+        "type": "Boulangerie / Patisserie",
+        "phone": "—",
+        "email": "—",
+        "web": "",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": false,
+          "website_url": null,
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "allbiz.ch",
+            "boulangeriespatisseries.fr",
+            "telephone.city",
+            "sudcharentetourisme.fr"
+          ],
+          "verdict": "Aucune présence en ligne confirmée pour la Boulangerie-Pâtisserie Chalais."
         }
       },
       {
@@ -1438,6 +2194,30 @@
         }
       },
       {
+        "id": "k9dkyhpg5xmqjlo25q",
+        "name": "Crettaz Serge",
+        "city": "Lens",
+        "type": "Boucherie",
+        "phone": "—",
+        "email": "—",
+        "web": "www.boucherielalienne.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "www.boucherielalienne.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "suisseterroir.ch",
+            "business-informations.ch",
+            "allbiz.ch"
+          ],
+          "verdict": "La Boucherie La Lienne, dirigée par Serge Crettaz, dispose d'un site web officiel."
+        }
+      },
+      {
         "id": "v04xo0qluxfmqjlo25q",
         "name": "Chapelay Laurence",
         "city": "Champery",
@@ -1517,6 +2297,61 @@
             "search.ch"
           ],
           "verdict": "Aucune présence en ligne confirmée pour \"Schneiter Gerard\" à Grône."
+        }
+      },
+      {
+        "id": "9vtljbte4fmqjlo25q",
+        "name": "Metzgerei Bammatter",
+        "city": "Naters",
+        "type": "Boucherie / Metzgerei",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.bammatter-naters.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.bammatter-naters.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "allbiz.ch",
+            "moneyhouse.ch",
+            "search.ch",
+            "yellowpages.swiss"
+          ],
+          "verdict": "Metzgerei Bammatter dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "oe2t2wu353amqjlo25q",
+        "name": "Brunin Eric Boucherie-Charcuterie",
+        "city": "Chalais",
+        "type": "Boucherie / Charcuterie",
+        "phone": "—",
+        "email": "—",
+        "web": "",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": false,
+          "website_url": null,
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "allbiz.ch",
+            "boucheries.nosavis.ch",
+            "chalais.ch",
+            "wirtschaftsregister.ch",
+            "moneyhouse.ch"
+          ],
+          "verdict": "Aucun site web trouvé pour Brunin Eric Boucherie-Charcuterie à Chalais."
         }
       },
       {
@@ -1897,6 +2732,38 @@
         }
       },
       {
+        "id": "ewa1pm8e0hjmqjlo25q",
+        "name": "Cafe-Restaurant du Pont",
+        "city": "Susten",
+        "type": "Cafe / Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": false,
+          "website_url": null,
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "business-informations.ch",
+            "business-monitor.ch",
+            "allbiz.ch",
+            "search.ch",
+            "local.ch",
+            "zip.ch",
+            "pappers.ch"
+          ],
+          "verdict": "Aucun site web trouvé pour le Café-Restaurant du Pont à Susten."
+        }
+      },
+      {
         "id": "miwp5ua5tvmqjlo25q",
         "name": "Restaurant Pension Park",
         "city": "Gampel",
@@ -1918,6 +2785,55 @@
             "local.ch"
           ],
           "verdict": "Le Restaurant Pension Park à Gampel dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "mq8beb2caxmmqjlo25q",
+        "name": "Restaurant Pizzeria Tourist",
+        "city": "Gampel-Bratsch",
+        "type": "Restaurant / Pizzeria",
+        "phone": "—",
+        "email": "—",
+        "web": "https://tourist-gampel.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://tourist-gampel.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Gampel-Bratsch Firmenverzeichnis",
+            "local.ch",
+            "allbiz.ch",
+            "Tripadvisor",
+            "suissegourmet.ch"
+          ],
+          "verdict": "Le Restaurant Pizzeria Tourist à Gampel-Bratsch dispose d'un site web officiel."
+        }
+      },
+      {
+        "id": "pu83la3msh8mqjlo25q",
+        "name": "Piccola Casa Villa",
+        "city": "Leuk Stadt",
+        "type": "Restaurant italien",
+        "phone": "—",
+        "email": "—",
+        "web": "https://www.casavilla.ch",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://www.casavilla.ch",
+          "confidence": "high",
+          "sources_checked": [
+            "Yellowpages.swiss",
+            "firmen.ch"
+          ],
+          "verdict": "Le restaurant Casa Villa à Leuk Stadt dispose d'un site web officiel."
         }
       },
       {
@@ -2050,6 +2966,34 @@
             "Google Maps"
           ],
           "verdict": "Le Restaurant Vignerons à Fully possède un site web officiel."
+        }
+      },
+      {
+        "id": "miu5m3so1xmqjlo25q",
+        "name": "Les Saveurs du Balkan",
+        "city": "Charrat",
+        "type": "Restaurant",
+        "phone": "—",
+        "email": "—",
+        "web": "",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": false,
+          "website_url": null,
+          "confidence": "high",
+          "sources_checked": [
+            "Google",
+            "Pages Jaunes",
+            "LinkedIn",
+            "Google Maps",
+            "Moneyhouse",
+            "local.ch",
+            "search.ch"
+          ],
+          "verdict": "Aucun site web trouvé pour 'Les Saveurs du Balkan' à Charrat."
         }
       },
       {
@@ -2308,6 +3252,32 @@
             "local.ch"
           ],
           "verdict": "Aucun site web trouvé pour L'Atelier Coiffure by Silvia à Chamoson."
+        }
+      },
+      {
+        "id": "lmlq2fjjezsmqjlo25q",
+        "name": "Top Line Coiffure",
+        "city": "Charrat",
+        "type": "Salon de coiffure",
+        "phone": "—",
+        "email": "—",
+        "web": "https://123coiffure.ch/company/top-line-coiffure",
+        "status": "to_call",
+        "contact": "",
+        "notes": "",
+        "at": 1781793202670,
+        "_noWebsite": {
+          "has_website": true,
+          "website_url": "https://123coiffure.ch/company/top-line-coiffure",
+          "confidence": "high",
+          "sources_checked": [
+            "allbiz.ch",
+            "local.ch",
+            "meilleurcoiffeur.com",
+            "search.ch",
+            "coiffeurs.nosavis.ch"
+          ],
+          "verdict": "Un site web a été trouvé pour Top Line Coiffure à Charrat."
         }
       },
       {
@@ -4301,9 +5271,555 @@
     ],
     "todos": [
       {
+        "id": "gs4qpselirumqxkx7j3",
+        "text": "création maquette pour le ticino a sion",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782638476383,
+        "doneAt": null
+      },
+      {
+        "id": "23q9q34st5wmqwxbzkj",
+        "text": "Finaliser le site web le panda + trouver ce qui bloque dna elle voie des mails",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782598855123,
+        "doneAt": null
+      },
+      {
+        "id": "hnzwplfh2omqwj0okc",
+        "text": "ajouter de petites animations sur le site le panda pour qu'il fasse encore plus pro -- demander des conseilles a claude + lui faire faire un prompt puis enfin le send a claude code",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782574813020,
+        "doneAt": null
+      },
+      {
+        "id": "k8dzju89himqwixcl0",
+        "text": "créer tous les documents pour le panda: regarder pour le contrat, comment on peut faire et aussi générer les différetes fichs, le devis etc... à lui envoyer d'ici lundi + lui demander un call pour en discuter",
+        "status": "todo",
+        "priority": "high",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": "k4ktrxaq7rkmqjpxwp4",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782574657524,
+        "doneAt": null
+      },
+      {
+        "id": "mge15rgbn8lmqwiw9re",
+        "text": "revoir le logiciel de modification du menu, revoir ça pour que ça trouve des menus avec genre ça: 🔴  Plats du jour de la semaine du 16 au 19 juin : CHF 21.50            2 entrées, un plat principal à choix et un dessert 😄  Mardi  16 juin entrée : beignets de crevettes Plat principal au choix :  •Bœuf 5 épices, riz parfumé  •poulet au curry rouge, riz parfumé  😋  Mercredi 17 juin : Entrée : rouleau de printemps Plat principal au choix :  •Crevettes au basilic, riz parfumé  •Poulet croustillant, riz parfumé  🤗  Jeudi 18 juin : Entrées : calamars frits  Plat principal au choix :  -Canard au curry jaune, riz parfumé  •Poulet au soja noir riz parfumé  🙄  Vendredi 19 juin  : Entrée : brochettes de poulet Satay Plat principal au choix :  •porc ciboule et gingembre, riz parfumé  •Poulet aigre-doux, riz parfumé 🔴  Samedi et dimanche 20-21 juin        Service à la carte uniquemen",
+        "status": "done",
+        "priority": "high",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": "k4ktrxaq7rkmqjpxwp4",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782574607210,
+        "doneAt": 1782598804827
+      },
+      {
+        "id": "c4ocwd7z6lrmqwir6ru",
+        "text": "revoir avec claude le'nvoi du formualire de reservation qui ne se send pas -- demaner de revoir son architechture.",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": "k4ktrxaq7rkmqjpxwp4",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782574370058,
+        "doneAt": null
+      },
+      {
+        "id": "s9hy1w2zgwmqw93xos",
+        "text": "revoir le chatbot et l'automatisation de l'envoi par mail des reservations",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782558168652,
+        "doneAt": null
+      },
+      {
+        "id": "sfe0zlhs2simqw5a08x",
+        "text": "se pencher sur le sujet: soit on met une app directement sur le site vitrine (moins pro) soit une autre plus pro et en plus déja commencée à être dev",
+        "status": "done",
+        "priority": "high",
+        "category": "agency",
+        "dueDate": "2026-06-27",
+        "prospectId": "k4ktrxaq7rkmqjpxwp4",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782551733441,
+        "doneAt": 1782598816426
+      },
+      {
+        "id": "wmxxcu29q4mqw58xl9",
+        "text": "finaliser l'app pour modifier les plats avce fire bas by google: session claude code: https://claude.ai/code/session_01V22srBYA5sJdNMMPSseJCm",
+        "status": "done",
+        "priority": "high",
+        "category": "agency",
+        "dueDate": "2026-06-27",
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782551683341,
+        "doneAt": 1782598820126
+      },
+      {
+        "id": "g5v41a8jutmqw56h8q",
+        "text": "finaliser le site alpiniawebcraft.ch -- mettre les prix suivants sur les années suivantes l'années de l'achat: pour le starter: on est sur du 450 la première et les suivantes 200, pour a junior: on est sur du 600 la première et 400 la deuxième, et sur PME elite: on est sur du 800 la première année et apres 600. aussi, je veux mettre un truc un mode payement anticipé = 25% de réduction sur les années suivantes-- si la première et deuxime année est payée= -15%, et si les 3 ans sont payés= -25%",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": "2026-06-27",
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782551568842,
+        "doneAt": null
+      },
+      {
+        "id": "0v9lrvqs5cejmqvh741c",
+        "text": "Call la coopérative pour lui demander un call quand je peux le faire",
+        "status": "todo",
+        "priority": "high",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": "apus4nw9vw8mqjn6t2o",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782511287600,
+        "doneAt": null
+      },
+      {
+        "id": "pcfesch8xhmqvh6qvh",
+        "text": "Finaliser le site web le panda",
+        "status": "todo",
+        "priority": "high",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": "k4ktrxaq7rkmqjpxwp4",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782511270541,
+        "doneAt": null
+      },
+      {
+        "id": "letdd3oqb6mqvh4sc6",
+        "text": "Crée application pour le gérant + lui send l’app",
+        "status": "todo",
+        "priority": "high",
+        "category": "call",
+        "dueDate": "2026-06-27",
+        "prospectId": "k4ktrxaq7rkmqjpxwp4",
+        "reminderAt": 1782597540000,
+        "notes": "",
+        "at": 1782511179126,
+        "doneAt": null
+      },
+      {
+        "id": "lzi1079dz2mqv68b0z",
+        "text": "voir ou va le Web3Forms, essayer de faire send les reservations vers le mail du panda directement et pas sur mien",
+        "status": "todo",
+        "priority": "high",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": "k4ktrxaq7rkmqjpxwp4",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782492867539,
+        "doneAt": null
+      },
+      {
+        "id": "kmqk2gauqdmqv67grr",
+        "text": "finaliser le site web pour qu'il soit parfait, puis envoyer le lien du site modifié d'ici samedi",
+        "status": "todo",
+        "priority": "high",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": "k4ktrxaq7rkmqjpxwp4",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782492828327,
+        "doneAt": null
+      },
+      {
+        "id": "70tl284xizvmqv674db",
+        "text": "rectifier + revroi ce qui ne va pas sur le site le panda par claude code",
+        "status": "todo",
+        "priority": "high",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": "k4ktrxaq7rkmqjpxwp4",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782492812255,
+        "doneAt": null
+      },
+      {
+        "id": "ppuugzltk2bmqs0eimk",
+        "text": "call actuel coiffure",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782301681100,
+        "doneAt": null
+      },
+      {
+        "id": "a0xpsuj7jx6mqs0ec9v",
+        "text": "call isabelle coiffure",
+        "status": "done",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782301672867,
+        "doneAt": 1782404870908
+      },
+      {
+        "id": "0ybx5ekxzqcmqqz6tka",
+        "text": "Préparer le call de demain avec Noémie café la coopérative",
+        "status": "done",
+        "priority": "high",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782239176234,
+        "doneAt": 1782307208360
+      },
+      {
+        "id": "0u4n2x5qjg6mqqrvagp",
+        "text": "trouver le nim perso du gérant, il s'appelle gérald",
+        "status": "todo",
+        "priority": "high",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": "xkrrd3gcuymqjlo25q",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782226880953,
+        "doneAt": null
+      },
+      {
+        "id": "5yp6bagxsyrmqqrfpjx",
+        "text": "call à 7h45 le délice a leytron",
+        "status": "done",
+        "priority": "high",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": "cgkwkmtefuwmqqreukv",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782226154013,
+        "doneAt": 1782307215941
+      },
+      {
+        "id": "plvckwqel6fmqqr5r6y",
+        "text": "envoyer ea + mail au ticino leur proposant un call",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": "ov6vfbxm",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782225689578,
+        "doneAt": null
+      },
+      {
+        "id": "xkkp1sstmhmqpe8gfs",
+        "text": "envoyer un watsapp proposant un site gratit et au gout du jour // attention, ils ont déja un site fait par une agnce de merde, mais dire que leur site est tres bin mais qu'il y avait 2,3 petites améliorations a fiaire",
+        "status": "done",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": "1pxbx1q0",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782143514424,
+        "doneAt": 1782198905964
+      },
+      {
+        "id": "g0dmb1mno1rmqpdxwr6",
+        "text": "trouver le contact et si on l'a appeler sur notes etc.. parce que je n'ai plusle souvenir et il n'est plus sur le CRM",
+        "status": "done",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": "1rkbh3i7",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782143022354,
+        "doneAt": 1782199100606
+      },
+      {
+        "id": "5phzgbgham3mqpdmzwo",
+        "text": "trouver le numéro perso",
+        "status": "done",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": "itgdosw8",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782142513224,
+        "doneAt": 1782199220443
+      },
+      {
+        "id": "q0rfteblf8mqpd92js",
+        "text": "rectifier les APi sur le logiciel straight line sur guthub: demander a chat quel URL pour qu'elle call l'API correctement de platfrom.opeani",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782141863464,
+        "doneAt": null
+      },
+      {
+        "id": "5paj1tm5zc3mqpd24bw",
+        "text": "envoyer le mail a cet adresse en diant qu'on a créer déja le site gratuit info@likeathome.ch",
+        "status": "done",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": "yrdn2q4x",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782141539180,
+        "doneAt": 1782152602323
+      },
+      {
+        "id": "ojck19fhqt8mqpcxcyg",
+        "text": "trouver le vrai num il est désafecté",
+        "status": "done",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": "resql0wy",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782141317080,
+        "doneAt": 1782152694116
+      },
+      {
+        "id": "zo3aup9o0xmqpcv7xc",
+        "text": "trouver le vrai num",
+        "status": "done",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": "1t834nvp",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782141217248,
+        "doneAt": 1782199291394
+      },
+      {
+        "id": "7j1q3kfmt7kmqpclsmg",
+        "text": "envoyer un wa pour leeur dire qu'on a créer un site web gratzuitemetb",
+        "status": "done",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": null,
+        "prospectId": "p7tmftev",
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782140777512,
+        "doneAt": 1782199525609
+      },
+      {
+        "id": "a65960a4p5amqo9s4fi",
+        "text": "Finaliser mon blog en HTML simple + apprendre CSS, comprendre pourquoi le Chatbot ne fonctionne pas",
+        "status": "todo",
+        "priority": "low",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782075567726,
+        "doneAt": null
+      },
+      {
+        "id": "fw1lgbpxtn9mqnlha7e",
+        "text": "session de cold call 1h -- Mardi16h20-17h201hRestaurants / PizzeriasProspection intensive post-école",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": "2026-06-23",
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782034751210,
+        "doneAt": null
+      },
+      {
+        "id": "vgt2egpgz1dmqnlgo5o",
+        "text": "session de cold call samedi - 1h min10h-11h1hHôtels 3-4⭐ / GîtesMatin weekend, contact direct --",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": "2026-06-27",
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782034722636,
+        "doneAt": null
+      },
+      {
+        "id": "abab86kb8x4mqnlg1qg",
+        "text": "session cold call vendredi -- 16h20-16h5030'Commerces locauxFin semaine, proprio dispo",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": "2026-06-26",
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782034693576,
+        "doneAt": null
+      },
+      {
+        "id": "4ru6o7w8n8mqnleuh0",
+        "text": "session de cold call mercredi 17h-17h30 Petits hôtels / Guesthouses",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": "2026-06-24",
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782034637508,
+        "doneAt": null
+      },
+      {
+        "id": "26v5an5mpuvmqnlem8v",
+        "text": "session de cold call jeudi -- bars cafés -- 16h20-16h50",
+        "status": "todo",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": "2026-06-25",
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782034626847,
+        "doneAt": null
+      },
+      {
+        "id": "98gjbn2o4demqnl9yqb",
+        "text": "session de cold call -- lundi 16h30-17h -- boulangerie et pâtisseries",
+        "status": "done",
+        "priority": "medium",
+        "category": "call",
+        "dueDate": "2026-06-22",
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782034409747,
+        "doneAt": 1782199542811
+      },
+      {
+        "id": "samgmfqojxhmqnjyoz7",
+        "text": "avec les nouvelles compétances acquises avec les nouveaux outils que claude me conseille, redesiger le site",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782032204275,
+        "doneAt": null
+      },
+      {
+        "id": "6z9crpx35ilmqnjxzos",
+        "text": "vidéo de cold calling, nnalyser + push dans notes",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782032171500,
+        "doneAt": null
+      },
+      {
+        "id": "jpeqkrjxo6rmqnjxlas",
+        "text": "regarder le volume de cold call a faire selon claude et des skill",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782032152852,
+        "doneAt": null
+      },
+      {
+        "id": "wl0fxkdqr1mqnjx6yi",
+        "text": "planifier les sessions de cold calling de la semaine prochaine",
+        "status": "todo",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782032134266,
+        "doneAt": null
+      },
+      {
+        "id": "apkf3qafgcemqnjwnv6",
+        "text": "regrder comment faire des sites encore plus premium et avce quels outils",
+        "status": "done",
+        "priority": "medium",
+        "category": "agency",
+        "dueDate": null,
+        "prospectId": null,
+        "reminderAt": null,
+        "notes": "",
+        "at": 1782032109522,
+        "doneAt": 1782034178192
+      },
+      {
         "id": "qgmchglb2qimqmejo7s",
         "text": "minimum 10 cold call",
-        "status": "todo",
+        "status": "done",
         "priority": "high",
         "category": "agency",
         "dueDate": null,
@@ -4311,7 +5827,7 @@
         "reminderAt": null,
         "notes": "",
         "at": 1781962639192,
-        "doneAt": null
+        "doneAt": 1782032071374
       },
       {
         "id": "e2mib65umzpmqmegqzd",
@@ -4485,6 +6001,71 @@
     ],
     "notes": [
       {
+        "id": "vd5cicvx",
+        "title": "Sales school Jordan Belfort",
+        "date": "2026-06-25",
+        "source": "",
+        "body": "Straight line — how to handle an objection ?",
+        "createdAt": 1782405888499
+      },
+      {
+        "id": "e1dfs3ll",
+        "title": "The first 4 secondes",
+        "date": "2026-06-24",
+        "source": "Jordan Belfort",
+        "body": "Toutes les ventes sont les mêmes \nPourquoi: \nOn prend directement le contrôle de la vente\nOn a 4 secondes pour prendre contrôle pas une de plus ! \n1. Les prospects doivent se dirent « putian celst in expert » \n2. Être enthousiaste \n3. Être vif \nOn a 4 secs\nIl faut tout de prendre prendre le contrôle, sinon le prospect va prendre lui le contrôle du call —> fini ! \nIls faut qu’ils se sentes presque soumis, qu’il se dise « putain je vais pas le couper c’est un expert » \nPrendre le contrôle du call ➡️ poser des questions",
+        "createdAt": 1782323972639
+      },
+      {
+        "id": "1xysrno7",
+        "title": "The tritonal closing pattern",
+        "date": "2026-06-24",
+        "source": "Jordan Belfort",
+        "body": "Pour Closer tout le monde; il faut adopter 3 tonalités. \nÇa consiste en 3 passages: \n—> la certitude absolue \n—> vers la sincérité \n—> raisonnabilité\n\nIl faut tortu gérer, la tonalité de la voix est la chose la plus important.",
+        "createdAt": 1782323506029
+      },
+      {
+        "id": "0f1r4av3",
+        "title": "notes: mes prospects actuels -- juin 2026",
+        "date": "2026-06-24",
+        "source": "",
+        "body": "Café La Coopérative à Aproz: lead qualifé: call de close cette semaine sûr !\n\nLe Panda Leytron: Je leur ai envoyé un mail avec la maquette du site web que j'ai créer pour eux, ils ont salué mon travail, ils me recall durant la semaine.\n\nLe ticino à Sion: cold call validé -- contente et enthousiasmée - mail avec le lien de la maquette gratuite à envoyer.\n\nKebab Le Sultant à Sion -- m'a donner son numéro personnel, je doit lui créer la maquette du site web le 24.06.2026\n\nBoulangerie l'arlequin à Sion: ok pour que je lui recall après la rentrée \n\nMusiq à Sion: M'a dit qu'il était intéressé pour rediscuter à la rentrée",
+        "createdAt": 1782307482006
+      },
+      {
+        "id": "8b6z5n4i",
+        "title": "technique de vente jordan belfort -- selling anything to anyone",
+        "date": "2026-06-22",
+        "source": "https://www.youtube.com/watch?v=KQ6c9vceu7A&t=552s",
+        "body": "première chose: il faut oblier les pitchs de ventes. \nles acheteurs achètent des résulats pas des spécifications \nIl faut avoir le contrôle à 100% de la discussion.\nIl faut avoir dans la tête: \"every sale is the same-- toutes les ventes sont les mêmes. mêmes que les prospects sont tous difféents, le but du call est de vendre\nstraight line: il faut imaginer une ligne droite sur laquelle a 'extrémité gauche il y ale point \"A\", le début du call et le point \"B\" à l'êtrémité droite, c'est le sale \nil faut savoir aussi que le but est de closer toutes les personnes qui sont closables car pas toutes les personnes sont closables en réalité.\nles sales sont simplement un jeu de nombre ! \n\n\nsteps par step: \n1. prendre le contrôle du call: \nsi ont a pas le contrôle de la conversation, chacun des calls sont différents. \nsi on a le contrôle de la conversation, on sait ou on en est sur la straight line. \nquestions importantes à conanitre la reposne: \nils sont financièrement qualifiés ?\nquelles sont les valuers qui comptent pour eux ? \nquels sont els points faibles ?\nquelles sont les caractéristiqures du produit ?\nsi on ne connait déja pas ça, on ne pourra jamais persuader un prospect que notre solution est la bonne.\n\n2. les 4 premières secondes \n4 fondamentaux: comment on parle, la confiance en soit, la tonalité, la vitesse des mots \ntoutes les choses, les émotions qu'on exprime derrière le téléphone sont ressenties à l'appareil. le sourir, la tonalité, si on est joyeux ou quoi, ça s'entend --> pattern interrrupt, on est pas des sales débiles qui sont employés par une boite de merde \ndans les 4 premières secondes: \nil faut être perçu comme le numéro 1 \n2. il faut être putain d'enthousiate ais pas rop en faire nn plus, il faut aussi mettre presuqe une urgence, ce de quoi on parle est telelement bon \n3. il faut être ou le parraitre comme expert dans son domaine. --> exemple du médecin qui met en avant ses diplômes \nquand on va chez le médecin quand on est malade, c'est lui qui nous pose des questions pas nous en général, (qualification du problème) et ensuite, quand il pose le diagnostique, ça serra toujours bon pour lui (vente) --> il va soit nous donner une ordoonance, soit un traitement soit même nous faire faire une oppération. mais on ne se laisserait pas oppérer par un SDF dans la rue !!\nquand on veut d'améliorer dand qq chsoe, on va toujours voire les meilleures.\nil faut parraitre: perçu comme un expert, et être enthousaiste à 1000% et persuadé que le produit est fait pour eux, ils vont se remettre à nous. \npour les questions de qulification, il faut avoir certaines intonations comme:\n1. active listening, il faut uqe le prospect soit aussi impliqué dans la discussion, et nous aussi, quand on lui pose des questions, il faut être ouvert, prêt et actif, et pour faire ça, il faut à 100% poser des questions ouvertes (pas de réponse par oui ou non) \nil faut donner un retour d'info, il faut monter qu'on comprend à 100% leur problèeme\ntout ça pour qu'il se dise:\nwow, il me comrpend, \nil ressent ma douleur, \nil saisit la situation, les problèmes, les douleurs etc...\nc'est un expert \nil va être très utilsie pour améliorer ma vie.\n\n\n\nREPRENDRE LA VIDEO A 14 MINUTES",
+        "createdAt": 1782123622066
+      },
+      {
+        "id": "uzvoj8cs",
+        "title": "Jordan Belfort",
+        "date": "2026-06-21",
+        "source": "",
+        "body": "Il faut avoir à 100% confiance à son produit \nIl faut d’abord travailler sur notre cerveau \n—> il ne faut pas être pas à 100% sur dans notre produit et dans un moment pas ouf \nIl faut commencer par détruire ses croyances limitantes à nous. \nIl faut penser que du positif, il faut toujours savoir que tout ce qu’on pense ça se répond au téléphone en face. \nVendre = Transfert sa certitude, pas créé la certitude chez nous, il faut être à 100% sur. \n\n\n2 eme secret: \n« toutes les ventes se déroulent de la même façon » ce que dit Jordan Belfort \n\n—> tous les call sont une espèce de ligne, qui faut faire avancer en posant des questions, répondre à des objectifs. \n—> concept de la straight line. \nToutes les ventes sont exactement les mêmes, on commence par « a » et on essaye de les amener vers « b ». \nDe visualiser cette ligne durant un call est hyper fort 💪 \n3 phases: \n1. Prendre le contrôle de l’appel. JB explique que les 4 premières secondes sont les plus importantes, pour donner une bonne image de nous, de lui faire comprendre qu'on va aller à l’esse ciel et qu’on va lui faire obtenir ce qu’il désire. \n\n2. Collecter de l’info\n—> exemple de vendez-moi ce stylo 🖊️ \nIl faut poser des questions aux prospect pour savoir en quelle mesure le prospect est intéressé par le stylo 🖊️ \n—> il faut connaître, mesure obstacles, les objectifs etc…\nL’aider des questions c'est de lui faire dire que sa situation actuelle ne lui convient pas. \n3 eme phase: \nSi le pitch a été bon, c’est le prospect qui va nous demander de manière explicite comment on va l’aider pour atteindre sa situation désirée. \n—> on pourra ensuite lui expliquer les bénéfices de notre offre \n—> et ensuite on pourra s’il est convaincu lui expliquer comment ça marche \n\nEnsuite: 2 chemins possible \n-> il achète \n-> il a des objections \n\nDicton de Jordan Belfort « La vente commence au premier « non ». »\n\n\n\nComment contrer n’importe quelle objections (remettre chacun des prospects sur la straight line)\n\nExemple Stratton aukmont: \n\nIl a demander à tous les employés de participer à une réunion car ils ne vendants pas assez. \nIl a demander ce qui leur empêchaient de vendre autant que Jordan voulait. \n—> on dit que les prospects avaient trop d’objections.\nComme: « je dois en parler à ma femme », c’est trop cher », je dois en parler à mon associé etc… \n➡️ se sont toutes des objections écran de fumée 😐\nDerrière le outre les objections, se sont des craintes du prospects qui se traduisent. \n3 craintes possibles: \n1. Pas confiance en nous 2. Pas confiance au produit 3. Pas confiance à l’entreprise \nSi un client dit « je dois y réfléchir » ➡️ c’est une crainte, il veut s’échapper de la straight Line, il faut lui poser des questions, pour connaître ses craintes. \nExemple: « bien, pourriez vous m’envoyer mail avec une présentation détaillé » —> objection écran de fumée. \nRépondre: « ok je peux vous envoyer un mail, mais honnêtement vous en pensez quoi de mon offre, est ce que l’idée vous plaît ? » ➡️ ça le remet sur la straight Line \n—> il va dire ensuite sa réelle objection, qu’est ce qu’il lui fait peur. \nIl va dire ex: « écoutez je trouve ça très intéressant je me pose juste la question suivantes: est ce que vous pensez que ce service va fonctionner dans mon industrie ? » \n➡️Le rassurer \n\nC’est une boucle, \n🔂 objection écran de fumée ➡️ notre question ➡️ dit son objection ➡️ rassurer",
+        "createdAt": 1782047886919,
+        "updatedAt": 1782050020799
+      },
+      {
+        "id": "ypzoilog",
+        "title": "Remplacer une objection par un rendez-vous",
+        "date": "2026-06-20",
+        "source": "",
+        "body": "# Remplacer une Objection par un Rendez-vous\n\n## Accroche de la Vidéo\n- **Phrase d'accroche :** « Oui bonjour, si je vous dis que c’est un appel de prospection, est-ce que j’ai ruiné votre soirée ? »\n  \n## Importance de l'Humour\n- L'humour comme outil de désamorçage.\n- En cas de tension ou de résistance, utiliser l'humour pour rétablir une atmosphère détendue.\n\n## Stratégies de Prise de Rendez-vous\n- **Identifier les objections :** Écouter attentivement les préoccupations de l'interlocuteur.\n- **Réponses humoristiques :** Si la conversation dévie ou devient tendue, utiliser des réponses légères pour rediriger le dialogue.\n  \n## Techniques de Communication\n- Privilégier une approche conviviale et amicale.\n- Garder le ton léger pour faciliter l'engagement.\n  \n## Résumé des Points Clés\n- Utiliser l'humour pour désamorcer les objections.\n- Rester attentif aux signaux de l'autre personne pour ajuster son discours.\n- Transformer un non en opportunité pour un rendez-vous.\n\n## Conclusion\n- L'humour est un atout puissant en prospection.\n- Un bon équilibre entre sérieux et légèreté peut favoriser l'engagement et l'acceptation d'un rendez-vous.",
+        "createdAt": 1781970802216
+      },
+      {
+        "id": "peew0z66",
+        "title": "Cold call live",
+        "date": "2026-06-20",
+        "source": "Anas et Sylvain",
+        "body": "Commencer par de l’humour est très utile et est très accrocheur. \n\n\nRéponse à l’objection: « je n’ai pas trop le temps, pourriez-vous me faire un mail qui résume le tout ? » \n—> accepter et dire quelque chose comme: « alors je peux sans autre vous faire un mail mais je dois être très mauvais car on ne me répond pas souvent » \n—> ou bien: « oui bien sûr que je peux vous envoyer un petit mail, mais je peux vous prendre 30 petites secondes en plus pour vous expliquer » \nSi ce n’est plus le téléphone de la personne qu’on souhaite appeler, demander quand même si cette même personne est en chargée de X poste dans l’entreprise où était la personne qu’on recherche.",
+        "createdAt": 1781970369290
+      },
+      {
         "id": "agt6rc3d",
         "title": "Masterclass — vendre n’importe quoi à n’importe qui Jordan Belfort",
         "date": "2026-06-19",
@@ -4510,6 +6091,7 @@
         "createdAt": 1781898053255,
         "updatedAt": 1781900264666
       }
-    ]
+    ],
+    "lastSaved": 1782737446861
   }
 }

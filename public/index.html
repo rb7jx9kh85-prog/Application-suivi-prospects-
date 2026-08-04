@@ -185,7 +185,7 @@ label{display:block;font-size:13px;font-weight:500;color:var(--t2);margin-bottom
 .stat-l{font-size:12px;color:var(--t2);font-weight:500}
 .n-violet{color:var(--violet2)}.n-warn{color:var(--warn)}.n-ok{color:var(--ok)}
 .toolbar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
-.t-search{flex:1;min-width:180px}
+.t-search{flex:1;min-width:240px;position:relative}.t-search .fi{padding-right:38px}.search-clear{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:26px;height:26px;border:0;border-radius:8px;background:transparent;color:var(--t3);font-size:22px;line-height:1;cursor:pointer;display:none}.search-clear:hover{background:rgba(255,255,255,.08);color:var(--t1)}.t-search.has-query .search-clear{display:block}
 .tbl-wrap{overflow-x:auto;border-radius:var(--r20);border:1px solid var(--br)}
 table{width:100%;border-collapse:collapse;font-size:13px}
 th{padding:10px 14px;text-align:left;font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--br);background:rgba(255,255,255,.025)}
@@ -876,7 +876,7 @@ html{scroll-behavior:smooth}
     </div>
     <div id="followup-banner-wrap"></div>
     <div class="toolbar">
-      <div class="t-search"><input class="fi fi-sm" type="search" id="d-search" placeholder="Rechercher&hellip;" aria-label="Rechercher"/></div>
+      <div class="t-search"><input class="fi fi-sm" type="search" id="d-search" placeholder="Rechercher un prospect : nom, ville, téléphone…" aria-label="Rechercher un prospect"/><button type="button" id="d-search-clear" class="search-clear" aria-label="Effacer la recherche" title="Effacer">×</button></div>
       <select class="fi fi-sm" id="d-filter" style="width:auto;min-width:140px" aria-label="Filtrer">
         <option value="">Tous les statuts</option>
         <option value="to_call">&Agrave; appeler</option>
@@ -2298,7 +2298,8 @@ function getFiltered() {
   var icpFilter = S.filterIcp;
   var followup = S.filterFollowup;
   var list = S.prospects.filter(function(p) {
-    var m = !q || [p.name, p.city, p.type, p.notes, p.contact].filter(Boolean).join(' ').toLowerCase().indexOf(q) !== -1;
+    var enriched = p.enriched || p._enrich || {};
+    var m = !q || [p.name, p.city, p.type, p.notes, p.contact, p.phone, p.email, p.web, p.website, enriched.phone, enriched.email, enriched.full_address, enriched.key_decision_maker].filter(Boolean).join(' ').toLowerCase().indexOf(q) !== -1;
     if (!m) return false;
     if (f && (p.status || 'to_call') !== f) return false;
     if (sector && (p.type || '').toLowerCase() !== sector.toLowerCase()) return false;
@@ -2377,6 +2378,8 @@ function renderDash() {
   var l = getFiltered();
   renderTable(l);
   renderCards(l);
+  var searchWrap = $('d-search') && $('d-search').parentElement;
+  if (searchWrap) searchWrap.classList.toggle('has-query', !!$('d-search').value);
   updateBatchBtn();
   updateBulkBar();
   var delAllBtn = $('btn-delete-all');
@@ -4825,6 +4828,9 @@ document.addEventListener('DOMContentLoaded', function() {
   var dFilter = $('d-filter');
   if (btnAdd) btnAdd.addEventListener('click', function() { openModal(); });
   if (dSearch) dSearch.addEventListener('input', function() { renderDash(); });
+  if (dSearch) dSearch.addEventListener('keydown', function(e) { if (e.key === 'Escape') { dSearch.value = ''; renderDash(); } });
+  var dSearchClear = $('d-search-clear');
+  if (dSearchClear) dSearchClear.addEventListener('click', function() { if (dSearch) { dSearch.value = ''; dSearch.focus(); renderDash(); } });
   if (dFilter) dFilter.addEventListener('change', function() { renderDash(); });
   var btnDeleteAll = $('btn-delete-all');
   if (btnDeleteAll) btnDeleteAll.addEventListener('click', deleteAllProspects);
